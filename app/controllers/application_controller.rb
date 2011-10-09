@@ -61,13 +61,6 @@ class ApplicationController < ActionController::Base
     redirect_to(*params)
   end
   
-  
-  # nested layouts
-  def parent_layout(layout)
-    @content_for_layout = self.output_buffer
-    self.output_buffer = render(:file => "layouts/#{layout}")
-  end
-  
   private
   
   def set_locale

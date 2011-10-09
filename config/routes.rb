@@ -34,6 +34,15 @@ Iwyg::Application.routes.draw do
   end
   
 
+    
+  devise_for :users 
+  devise_scope :user do
+      get "sign_in", :to => "devise/sessions#new"
+      get "sign_out", :to => "devise/sessions#destroy"
+      get "sign_up", :to => "devise/registrations#new"
+  end
+
+  
   resources :users do
      resources :items, :transfers, :images, :pings, :accounts, :comments, :friendships, :events, :rates, :messages, :meetups
      resource :location
@@ -45,13 +54,8 @@ Iwyg::Application.routes.draw do
        get 'aim_suggestions'
      end
   end 
-    
-  # devise_for :users, :path => "", :path_names => { :sign_in => 'login', :sign_out => 'logout', :password => 'secret', :confirmation => 'verification', :unlock => 'unblock', :registration => 'register', :sign_up => 'cmon_let_me_in' }
-  devise_for :users do
-    get "sign_in", :to => "devise/sessions#new"
-  end
   
-   
+  
   resources :messages do
    member do
     get 'reply'

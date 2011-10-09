@@ -2,14 +2,14 @@ class UsersController < InheritedResources::Base
 
   protect_from_forgery :except => [:tag_suggestions]
   
-  layout :conditional_layout
+  layout 'userarea' # :conditional_layout
   respond_to :html, :xml, :json, :js
   helper :items, :pings, :friendships, :userdetails
-  before_filter :login_required, :only => [:edit]
+  #before_filter :authenticate_application_user!, :only => [:edit]
 
   auto_complete_for :aim_list, :name
   
-  has_scope :all_friends
+  # has_scope :all_friends
 
   def index
      if params[:search]

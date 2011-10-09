@@ -4,7 +4,7 @@ class ItemsController < InheritedResources::Base
   
   layout :conditional_layout
   respond_to :html, :xml, :js, :json
-  before_filter :login_required, :only => [:new, :edit, :create]
+  before_filter :authenticate_application_user!, :only => [:new, :edit, :create]
   helper :users, :transfers
   auto_complete_for :item, :title
   auto_complete_for :tag, :name
@@ -41,7 +41,7 @@ class ItemsController < InheritedResources::Base
       end
      
       prepare_search
-      @items = $scope.all.paginate( :page => params[:page], :per_page => ITEMS_PER_PAGE )
+      @items = $scope.paginate( :page => params[:page], :per_page => ITEMS_PER_PAGE )
       @items_count = $scope.count
       @searcher ||= current_user.id = nil if current_user
       @keywords = params[:search][:title_like_any].to_s.split if not params[:search][:title_like_any].blank?

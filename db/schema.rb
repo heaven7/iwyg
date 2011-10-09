@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111008181256) do
+ActiveRecord::Schema.define(:version => 20111005194609) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -301,7 +301,6 @@ ActiveRecord::Schema.define(:version => 20111008181256) do
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
-    t.datetime "created_at"
   end
 
 end

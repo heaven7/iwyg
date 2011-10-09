@@ -9,8 +9,8 @@
       <li><%= nav_link t("topnavigation.logout"), "logout" %></li>
     <% else %>
     <ul class="menu horizontal">
-      <li><%= nav_link t("topnavigation.register"), new_user_session_path %></li>      
-      <li>&nbsp;&#124;&nbsp;<%= nav_link t("topnavigation.login"), "login" %></li>
+      <li><%# nav_link t("topnavigation.register"), new_user_registration_path %></li>      
+      <li>&nbsp;&#124;&nbsp;<%# nav_link t("topnavigation.login"), new_user_session_path %></li>
     <% end %>
     </ul>    
   </div>

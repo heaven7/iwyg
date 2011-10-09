@@ -69,9 +69,9 @@
         </li>
         <li><%= link_to_unless_current t("menu.main.members"), users_path %></li>
 <!--        
-        <li><%= link_to_unless_current t("menu.main.about"), :controller => "page", :action => "about" %></li>
+        <li><%# link_to_unless_current t("menu.main.about"), :controller => "page", :action => "about" %></li>
         <% if user_signed_in? %>
-          <li><%= link_to_unless_current t("menu.main.help"), :controller => "page", :action => "help" %></li>
+          <li><%# link_to_unless_current t("menu.main.help"), :controller => "page", :action => "help" %></li>
         <% end %>
 -->
       </ul>
@@ -91,8 +91,8 @@
     </div>
   <% end -%>
   <div id="content">
-    <%= @geolocation %>
-    <%= yield(:content) or yield %>
+    <%# @geolocation %>
+    <%=  yield %>
   </div>
   
   <div id="footerwrap">

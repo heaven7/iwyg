@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
 
   # ajaxful_rater # has_many :rates
-  acts_as_taggable_on :interests, :wishs, :skills, :aims
+ # acts_as_taggable_on :interests, :wishs, :skills, :aims
   acts_as_tagger
   
   # has_many
@@ -200,7 +200,7 @@ class User < ActiveRecord::Base
   end
     
   def password_required?
-    crypted_password.blank? || !password.blank?
+    encrypted_password.blank? || !password.blank?
   end
   
   def make_activation_code
