@@ -2,10 +2,10 @@ class UsersController < InheritedResources::Base
 
   protect_from_forgery :except => [:tag_suggestions]
   
-  layout 'userarea' # :conditional_layout
+  layout :conditional_layout
   respond_to :html, :xml, :json, :js
   helper :items, :pings, :friendships, :userdetails
-  #before_filter :authenticate_application_user!, :only => [:edit]
+  before_filter :authenticate_application_user!, :only => [:edit]
 
   auto_complete_for :aim_list, :name
   
@@ -108,7 +108,7 @@ class UsersController < InheritedResources::Base
   
   def conditional_layout
     case action_name
-      when "index", "new", "create" : "application"
+      when "index", "new", "create" then "application"
       else "userarea"
     end
   end

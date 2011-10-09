@@ -60,6 +60,12 @@ class ApplicationController < ActionController::Base
     flash[:notice] = msg
     redirect_to(*params)
   end
+
+
+  # replacement for the former restful_authentication plugin
+  def logged_in?
+    user_signed_in?
+  end
   
   private
   
@@ -75,9 +81,9 @@ class ApplicationController < ActionController::Base
   def getLocationOnMap(location, title, imagepath)
   
     if !location.lat and !location.lng
-       geocode
-       location.lat = @user_location.lat
-       location.lng = @user_location.lng
+       #geocode
+       #location.lat = @user_location.lat
+       #location.lng = @user_location.lng
     end
   
     if location.lat and location.lng
@@ -136,7 +142,7 @@ class ApplicationController < ActionController::Base
   end
   
   def ip
-    @user_location ||= GeoKit::Geocoders::MultiGeocoder.geocode(request.remote_ip)
+  #  @user_location ||= GeoKit::Geocoders::MultiGeocoder.geocode(request.remote_ip)
   end
   
   #def current_user

@@ -15,7 +15,7 @@ class MailboxController < InheritedResources::Base
   def show
     @user = current_user
     @folder ||= @user.folders.find(params[:id])
-    @messages = @folder.messages.paginate :per_page => 10, :page => params[:page], :include => :message, :order => "messages.created_at DESC"
+    @messages = @folder.messages.paginate :per_page => 10, :page => params[:page], :include => :message, :order => "messages.created_at DESC" if @folder.messages
   end
     
 end

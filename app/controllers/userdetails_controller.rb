@@ -3,7 +3,7 @@ class UserdetailsController < InheritedResources::Base
   respond_to :html
   layout 'userarea'
   helper :users
-  before_filter :login_required, :exept => [:index, :show]
+  before_filter :authenticate_user!, :exept => [:index, :show]
 
   def index
     @user = User.find(params[:user_id])

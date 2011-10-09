@@ -25,5 +25,20 @@ Iwyg::Application.configure do
   
   # devise 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  
+    # Actionmailer
+  config.action_mailer.smtp_settings = {
+      :address => "mail.heavenseven.net",
+      :port => 587,
+      :domain => "www.heavenseven.net",
+      :user_name => "iwyg+heavenseven.net",
+      :password => "r1NmhzzisQw9",
+      :authentication => :plain
+   }
+   
+  # application configuration
+  HOST = "http://localhost:3000"
+  REPLY_EMAIL = "iwyg@heavenseven.net" 
+  Paperclip.options[:command_path] = "D:/Programme/ImageMagick-6.6.3-Q16"
 end
 

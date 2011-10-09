@@ -2,21 +2,23 @@ source :rubygems
 # source 'http://gems.github.com'
 # source 'http://gemcutter.org'
 
-gem 'rails', '3.0.10'
+gem 'rails', '3.0.9'
 
 
 
 group :production do
-  gem 'hpricot', '0.8.3'
+  gem 'hpricot'
 end
 
 group :development do 
-  gem 'hpricot', '0.8.3' 
+  gem 'hpricot' 
 #  gem 'mongrel'
 end
 
-
-gem 'devise' 
+gem 'jquery-rails', '>= 1.0.12'
+gem 'bcrypt-ruby', :require => 'bcrypt'
+gem 'rails3-jquery-autocomplete'
+gem 'devise' #, :git => 'git://github.com/plataformatec/devise.git' 
 gem 'mysql'        
 gem 'formtastic', '~> 2.0'
 gem 'cldwalker-hirb'

@@ -1,29 +1,23 @@
 <fieldset class="formular login shadowed">
   <br/>
-  <% form_tag new_user_session do -%>
+  <% form_for new_user_session_path do |f| -%>
     <p>
       <label for="login"><%= t("login.label.login") %></label>
-      <%= text_field_tag :login %>
+      <%= f.text_field :login %>
     </p>
     <br />
     <p>
       <label for="password"><%= t("login.label.password") %></label>
-      <%= password_field_tag :password %>
+      <%= f.password_field :password %>
     </p>
     <br />
-    <p>
-      <label for="remember_me"><%= t("login.label.remember") %>:</label>
-      <%= check_box_tag 'remember_me' %>
-    </p>
+    <%# if devise_mapping.rememberable? -%>
+      <p><%# f.check_box :remember_me %> <%# f.label :remember_me %></p>
+    <%# end -%>
     
     <div class="formbutton"><%= submit_tag t("login.label.submit") %></div>
   <% end -%>
 </fieldset>
-<!--
-<p>  
-  <%= nav_link t("login.label.forgotPassword"), "email", "remind" %>
-</p>
--->
 <p>
-  <%= t("login.notAMember") %> <%= nav_link t("login.label.register"), "signup" %>
+ <%# render :partial => "devise/shared/links" %>
 </p>

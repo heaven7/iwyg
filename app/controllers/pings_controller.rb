@@ -208,7 +208,7 @@ class PingsController < InheritedResources::Base
     
   def conditional_layout
     case action_name
-      when "new", "create" : "application"
+      when "new", "create" then "application"
       else "userarea"
     end
   end

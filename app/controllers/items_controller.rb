@@ -4,7 +4,7 @@ class ItemsController < InheritedResources::Base
   
   layout :conditional_layout
   respond_to :html, :xml, :js, :json
-  before_filter :authenticate_application_user!, :only => [:new, :edit, :create]
+  before_filter :authenticate_user!, :only => [:new, :edit, :create]
   helper :users, :transfers
   auto_complete_for :item, :title
   auto_complete_for :tag, :name
@@ -270,7 +270,7 @@ class ItemsController < InheritedResources::Base
   
   def conditional_layout
     case action_name
-      when "new", "edit" : "userarea"
+      when "new", "edit" then "userarea"
       else "application"
     end
   end
