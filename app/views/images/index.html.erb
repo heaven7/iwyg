@@ -1,0 +1,24 @@
+<h1>Listing images</h1>
+
+<table>
+  <tr>
+    <th>Image of</th>
+    <th>Name</th>
+    <th></th>
+  </tr>
+
+<% @images.each do |image| %>
+  <tr>
+    <td><%=h image.imageable_type.to_s %></td>
+    <td><%=h image.image_file_name %></td>
+    <td><%= image_tag image.image.url(:tiny) %></td>
+    <td><%= link_to 'Show', image %></td>
+    <td><%= link_to 'Edit', edit_polymorphic_path([@imageable, image]) %></td>
+    <td><%= link_to 'Destroy', polymorphic_path([@imageable, image]), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New image', new_polymorphic_url([@imageable, Image.new]) %>

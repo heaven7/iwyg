@@ -1,0 +1,7 @@
+<%= f.input :attachment_id, 
+            :label => "Attach Resource", 
+            :collection => current_user.items, 
+            :hint => "Select a resource you want to attach.",
+            :input_html => {:class => "ui-corner-all"},
+            :required => false
+%>

@@ -1,0 +1,13 @@
+<p>
+  <b>Title:</b>
+  <%=h @item_type.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @item_type.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_item_type_path(@item_type) %> |
+<%= link_to 'Back', item_types_path %>

@@ -1,0 +1,98 @@
+<% content_for(:head) do %>
+ <%= GMap.header(:hl=> params[:locale]) if @map %>
+ <%= @map.to_html if @map %>
+<% end %>
+<div class="centered"><%= render :partial => "usermenu", :locals => {:item => @item} %></div>
+<div id="col1">
+  <h1><%=h @item.title %></h1>
+  <%= render :partial => "share/images", :locals => {:images => @item.images} %>
+  <%= render :partial => "items/itemtype", :locals => { :item => @item } %>
+  <% if @item.status %>
+    <p class="left box ui-corner-all font-small">
+      <% if @item.transfer %>
+        <span class="float-right"><%= t("resources.status") %>: <%= link_to t(@item.itemstatus), transfer_path(@item.transfer) %></span>
+      <% else %>
+        <span><%= t("resources.status") %>: <%= render :partial => "items/itemstatus_with_users", :locals => { :item => @item, :owner => @item.owner  } %></span>
+      <% end %>
+    </p>
+  <% end %>
+ <div class="box ui-corner-all tags">
+  <% if !@item.tags.empty? %>
+    <p class="font-smaller">
+    <%= t("tags") %>:
+    <% for tag in @item.tags %>
+        <span><%= link_to tag, :controller => :items, :tag => tag.name %></span>
+      <% end %>
+    </p>
+  <% end %>
+  <% if @item.from || @item.till %>
+    <p class="font-small">
+      <%= t("resources.available") %>:
+      <%  
+         @begin = @item.created_at
+         @end = Time.now 
+      %>
+      <% if @item.from %>    
+         <span><%= t("resources.from") %> <%=h @item.from.to_date %></span>
+         <% @begin = @item.from %>
+      <% end %>
+      
+      <% if @item.till %>    
+         <span><%= t("resources.till") %> <%=h @item.till.to_date %></span>
+         <% @end = @item.till %>
+      <% end %>
+    <br />
+      <%= t("resources.duration") %>:
+      <%= distance_of_time_in_words(@begin, @end) %>
+    </p>
+  <% end %>
+  <% if logged_in? and not @location.country.blank? %>
+    <p>
+     <%= t("resources.locatedIn") %>:
+     <%= render :partial => "locations/location", :locals => {:location => @location} if @location %>
+    </p>
+  <% end %>
+ 
+  <% if @item.description %>
+    <p><%= @item.description %></p>
+  <% end %>
+  <% if @item.item_attachments.count > 0 %>
+    <div class="attachments">
+    <p class="font-smaller"><%= t("resources.attachedResources") %> (<%= @item.item_attachments.count %>)</p>
+    <% @item.item_attachments.each do |attachment| %>
+      <p class="font-smaller"><%= link_to image_tag(attachment.item.images.first.image.url("tiny")), item_path(attachment.item) if attachment.item && attachment.item.images %>
+      <%= link_to attachment.item.title, item_path(attachment.item) if attachment.item %></p>
+    <% end %> 
+    </div>
+  <% end %>
+  </div>
+  <%= render :partial => "share/pings", :locals => {:pings => @item.pings, :pingable => @item} %>
+</div>
+<div id="col2">
+  <% if logged_in? and @map %>
+    <h3><%= t("resources.location") %></h3>
+    <%= render "share/map" %>
+  <% end %> 
+  <% if @items_related_inverse.size > 0 && @item.tags.size > 0 %>
+    <h3><%= @items_related_title %> (<%= @items_related_inverse.size %>)</h3>
+    <ul style="clear:both;">
+      <% for item in @items_related_inverse do %>
+        <%= render :partial => "itempreview", :locals => { :item => item } %>
+      <% end %>
+    </ul>
+  <% end %>
+  <% if @events.size > 0 %>
+    <h3>Events (<%= @events.size %>)</h3>
+    <ul class="font-smaller box ui-corner-all">
+      <% for event in @events do %>
+        <li>
+          <%= render :partial => "events/eventaction", :locals => { :event => event } %><br />
+          <%= t("start") %>: <%= event.from %><br />
+          <%= t("end") %>: <%= event.till %><br />
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+  <%= render :partial => "share/comments", :locals => {:commentable => @item, :comments => @comments} %>
+</div>
+<div class="clearfix"></div>

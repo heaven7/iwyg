@@ -1,0 +1,24 @@
+<% semantic_form_for ([@locatable, @location]), :html => {:class => "shadowed"} do |f| %>
+  <%= f.error_messages %>
+  <% f.inputs do %>
+    <%= f.input :locatable_id, :value => @locatable.id, :as => :hidden %>
+    <%= f.input :locatable_type, :value => @locatable.class, :as => :hidden %>
+    <%= f.input :user_id, :value => current_user.id, :as => :hidden %>
+    
+    <%= f.input :address, :required => false %>
+    <%= f.input :city, :required => false %>
+    <%= f.input :zip, :required => false %>
+  <!--
+    <%= f.input :state, :required => false %>
+  -->
+    <li>
+      <label><%= t("formtastic.labels.location.country") %></label>
+      <%= localized_country_select(:location, :country, [], :include_blank => '') %>
+    </li>
+
+    <li><hr class="divider" /></li>
+  <% end %>
+  <% f.buttons do %>
+    <%= f.commit_button t("save") %>
+  <% end %>
+<% end %>

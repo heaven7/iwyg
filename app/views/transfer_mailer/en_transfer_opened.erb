@@ -1,0 +1,15 @@
+Hello <%= @receiver.login %>,
+<br />
+<%= @transferer.login %> has started to transfer your desired '<%= link_to @resource.title, item_path(@resource) %>'.
+<br />
+You can watch that <a href="<%= @transfer_url %>">here</a>.
+After receiving '<%=h  @resource.title %>' you can<br />
+<a href="<%= @receiver_transfers_url %>">accept or decline</a> that delivery.
+<br />
+Visit profile of <a href="<%= @transferer_url %>"><%=h @transferer.login %></a>.
+<br />
+
+<br />
+<br />
+Yours<br />
+IWYG-Team

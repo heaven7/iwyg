@@ -1,0 +1,10 @@
+<% if logged_in? and current_user.login == owner(item) %>
+  <ul class="horizontal usermenu ui-corner-all">
+    <li><%= link_to image_tag("icons/icon_edit.png", :title => t("edit"), :alt => t("edit")), edit_polymorphic_path([@user, item]) %></li>
+    <li><%= link_to image_tag("icons/icon_delete.png", :title => t("delete"), :alt => t("delete")), 
+          {:action => "destroy", :id => item},
+          :confirm => t("confirm_delete"),
+          :method => :delete %>
+    </li>
+  </ul>
+<% end %>

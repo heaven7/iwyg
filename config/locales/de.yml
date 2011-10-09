@@ -1,0 +1,715 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+de:
+  meta:
+    language_name: "Deutsch"
+    locale: "de"
+  ## date & time
+  
+  date:
+    formats:
+      default: "%d.%m.%Y"
+      short: "%e. %b"
+      long: "%e. %B %Y"
+      only_day: "%e"
+    day_names: [Sonntag, Montag, Dienstag, Mittwoch, Donnerstag, Freitag, Samstag]
+    abbr_day_names: [So, Mo, Di, Mi, Do, Fr, Sa]
+    month_names: [~, Januar, Februar, März, April, Mai, Juni, Juli, August, September, Oktober, November, Dezember]
+    abbr_month_names: [~, Jan, Feb, Mär, Apr, Mai, Jun, Jul, Aug, Sep, Okt, Nov, Dez]
+    order: [ :day, :month, :year ]
+
+  time:
+    formats:
+      default: "%A, %d. %B %Y, %H:%M Uhr"
+      time: "%H:%M"
+      short: "%e. %B, %H:%M Uhr"
+      long: "%A, %d. %B %Y, %H:%M Uhr"
+      only_second: "%S"
+    am: ""
+    pm: ""
+
+  datetime:
+    distance_in_words:
+      half_a_minute: 'eine halbe Minute'
+      less_than_x_seconds:
+        zero: 'weniger als 1 Sekunde'
+        one: '1 Sekunde'
+        other: '%{count} Sekunden'
+      x_seconds:
+        one: '1 Sekunde'
+        other: '%{count} Sekunden'
+      less_than_x_minutes:
+        zero: 'weniger als 1 Minute'
+        one: '1 Minute'
+        other: '%{count} Minuten'
+      x_minutes:
+        one: '1 Minute'
+        other: '%{count} Minuten'
+      about_x_hours:
+        one: 'etwa 1 Stunde'
+        other: '%{count} Stunden'
+      x_days:
+        one: '1 Tag'
+        other: '%{count} Tage'
+      about_x_months:
+        one: 'etwa 1 Monat'
+        other: '%{count} Monate'
+      x_months:
+        one: '1 Monat'
+        other: '%{count} Monate'
+      about_x_years:
+        one: 'etwa 1 Jahr'
+        other: '%{count} Jahre'
+      over_x_years:
+        one: 'mehr als 1 Jahr'
+        other: '%{count} Jahre'
+      almost_x_years:
+        one:   "fast 1 year"
+        other: "fasr %{count} years"
+    prompts:
+      year:   "Jahr"
+      month:  "Monat"
+      day:    "Tag"
+      hour:   "Stunde"
+      minute: "Minute"
+      second: "Sekunde"
+
+  validates_timeliness:
+    error_value_formats:
+      date: '%d.%m.%Y'
+      time: '%H:%M:%S'
+      datetime: '%d.%m.%Y %H:%M:%S'
+
+  ## login
+        
+  login:
+    description: "Bitte g&uuml;ltigen Usernamen und Passwort angeben."
+    notAMember: "Noch nicht dabei?"
+    label:
+      login: "Username"
+      password: "Passwort"
+      forgotPassword: "Passwort / Username vergessen?"
+      submit: "Einloggen"
+      remember: "Eingeloggt bleiben"
+      register: "Hier registrieren"
+  
+  ## register
+  
+  register:
+    required: "ben&ouml;tigt"
+    mandatoryFields: "Pflichtfelder"
+    signup: "Anmelden"
+    label:
+      login: "Username"
+      email: "Email"
+      password: "Passwort"
+      confirmPassword: "Passwort wiederholen"
+    
+  ## resources
+            
+  resource:
+    one: '1 Ressource'
+    other: '%{count} Ressourcen'
+    new: "Neue Ressource"
+  good:
+    one: "1 Gut"
+    other: "%{count} G&uuml;ter"
+    singular: "Gut"
+  service:
+    one: "1 Dienst"
+    other: "%{count} Dienste"
+    singular: "Dienst"
+  transport:
+    one: "1 Transport"
+    other: "%{count} Transporte"
+    singular: "Transport"
+  idea:
+    one: "1 Idee"
+    other: "%{count} Ideen"
+    singular: "Idee"
+  sharingpoint:
+    one: "1 Sammelstelle"
+    other: "%{count} Sammelstellen"
+    singular: "Sammelstelle"
+  user:
+    one: "1 User"
+    other: "%{count} User"
+    singular: "User"
+    aims: "Ziele"
+    aimsTo: "zielt nach"
+    canDo: "kann"
+    skills: "F&auml;higkeiten"
+    wishesTo: "w&uuml;nscht sich"
+    wishes: "W&uuml;nsche"
+    interestedIn: "interessiert sich f&uuml;r"
+    interests: "Interessen"
+    account:
+      activated: "Dein Account wurde erfolgreich aktiviert."
+      pleaseactivate: "Bitte aktiviere deinen Account."
+      created: "Dein Account wurde erstellt."
+  
+  ## general
+  
+  who: "Wer"
+  where: "Wo"
+  what: "Was"
+  when: "Wann"
+  show: "Ansehen"
+  back: "Zur&uuml;ck"
+  edit: "&auml;ndern"
+  delete: "l&ouml;schen"
+  unknown: "unbekannt"
+  with: "mit"
+  or: "oder"
+  and: "und"
+  add: "hinzuf&uuml;gen"
+  between: "zwischen"
+  remove: "l&ouml;schen"
+  sortBy: "Sortieren nach"
+  searchIn: "Suchen in"
+  help: "Hilfe"
+  about: "&Uuml;ber uns"
+  options: "Optionen"
+  confirm_delete: "Willst Du das wirklich l&ouml;schen?"
+  ago: "her"
+  previous: "zur&uuml;ck"
+  next: "vor"
+  more: "mehr"
+  things: 
+    taken:
+      one: "1 Ding genommen"
+      other: "%{count} Dinge genommen"
+    given:
+      one: "1 Ding gegeben"
+      other: "%{count} Dinge gegeben"
+  thing: 
+    one: "Ding"
+    other: "Dinge"
+  found: "gefunden"
+  send: "senden"
+  from: "von"
+  till: "bis"
+  start: "Beginn"
+  end: "Ende"
+  duration: "Dauer"
+  to: "bis"
+  by: "von"
+  distance: "Distanz"
+  submit: "Abschicken"
+  save: "Speichern"
+  tags: "Tags"
+  needs: "braucht das"
+  offers: "hat das"
+  accept: "Akzeptieren"
+  decline: "Ablehnen"
+  accepted: "akzeptiert"
+  declined: "abgelehnt"
+  opened: "er&ouml;ffnet"
+  closed: "geschlossen"
+  created_at: "erstellt am"
+  updated_at: "ge&auml;ndert am"
+  accepted_at: "akzeptiert am"
+
+  ## links
+
+  link:
+    ping:
+      loginToPing: "Log' dich ein um zu pingen."
+   
+  ## ping
+      
+  ping:
+    one: "1 Ping"
+    other: "%{count} Pings"
+    this: "Ping abgeben"
+    of: "Ping auf"
+    transfer: "Diesen Transfer pingen"
+    accept: "Akzeptieren"
+    decline: "Ablehnen"
+    setTransfer: "Transfer starten"
+    setAppointment: "Termin ausmachen"
+    setMeetup: "Treffpunkt ausmachen"
+    table:
+      who: "Wer"
+      what: "Was"
+      status: "Status"
+      madeOn: "am"
+      options: "Optionen"
+    notifyOn:
+      user: 
+        opened: "%{pinger} hat dich angepingt."
+        accepted: "%{user.login} hat deinen Ping akzeptiert."
+        declined: "%{user.login} hat deinen Ping  abgelehnt."
+        closed: "Dein Ping auf '%{resource_title}' wurde geschlossen."
+      transfer: 
+        opened: "%{pinger} hat deinen Transfer: '%{resource_title}' angepingt."
+        accepted: "Dein Ping auf Transfer: '%{resource_title}' wurde akzeptiert."
+        declined: "Dein Ping auf Transfer: '%{resource_title}' wurde abgelehnt."
+        closed: "Dein Ping auf Transfer: '%{resource_title}' wurde geschlossen."
+      item:
+        good:
+          opened: "%{pinger} hat dein Gut: '%{resource_title}' angepingt."
+          accepted: "Dein Ping auf Gut: '%{resource_title}' wurde akzeptiert."
+          declined: "Dein Ping auf Gut: '%{resource_title}' wurde abgelehnt."
+          closed: "Dein Ping auf Gut: '%{resource_title}' wurde geschlossen."
+        service:
+          opened: "%{pinger} hat deinen Dienst: '%{resource_title}' angepingt."
+          accepted: "Dein Ping auf Service: '%{resource_title}' wurde akzeptiert."
+          declined: "Dein Ping auf Service: '%{resource_title}' wurde abgelehnt."
+          closed: "Dein Ping auf Service: '%{resource_title}' wurde geschlossen."
+        idea:
+          opened: "%{pinger} hat deine Idee: '%{resource_title}' angepingt."
+          accepted: "Dein Ping auf Idee: '%{resource_title}' wurde akzeptiert."
+          declined: "Dein Ping auf Idee: '%{resource_title}' wurde abgelehnt."
+          closed: "Dein Ping auf Sammelstelle: '%{resource_title}' wurde geschlossen."
+        transport:
+          opened: "%{pinger} hat deinen Transport: '%{resource_title}' angepingt."
+          accepted: "Dein Ping auf Transport: '%{resource_title}' wurde akzeptiert."
+          declined: "Dein Ping auf Transport: '%{resource_title}' wurde abgelehnt."
+          closed: "Dein Ping auf Transport: '%{resource_title}' wurde geschlossen."
+        sharingpoint:
+          opened: "%{pinger} hat deine Sammelstelle: '%{resource_title}' angepingt."
+          accepted: "Dein Ping auf Sammelstelle: '%{resource_title}' wurde akzeptiert."
+          declined: "Dein Ping auf Sammelstelle: '%{resource_title}' wurde abgelehnt."
+          closed: "Dein Ping auf Sammelstelle: '%{resource_title}' wurde geschlossen."
+  
+  ## event
+  event:
+    one: "1 Event"
+    other: "%{count} Events"
+    new: "Neuer Event"
+    action: "%{owner} trifft sich mit %{pinger}: %{title}"  
+    status: "Event wurde %{status} von %{user}"
+    
+  ## meetup
+  
+  meetup:
+    one: "1 Treffpunkt"
+    other: "%{count} Treffpunkte"
+    new: "Neuer Treffpunkt"
+    participant:
+      one: "1 Teilnehmer"
+      other: "%{count} Teilnehmer"
+  
+  ## transfer
+  
+  transfer:
+    one: "1 Transfer"
+    other: "%{count} Transfers"
+    pinger: "Empf&auml;nger"
+    of: "Transfer von"
+    to: "nach"
+    status: "Transfer wurde %{status} von %{user}"
+    started: "Gestartet am"
+    accepted: "Akzeptiert am"
+    noSharingpointInRoute: "Es gibt keine Sammelstelle auf der Route!"
+    noFriendsInRoute: "Keiner deiner Freunde befindet sich in der N&auml;he der Route, aber du kannst einen dieser User fragen, die sind in der N&auml;he."
+    youCanDo: "Du kannst das Folgende tun: "
+    text:
+      form:  "<i>%{itemtitle}</i> soll transferiert werden.<br />
+              %{username} wird von deinen Transferaktionen benachrichtigt werden.<br />
+              Du weisst ja, nach Erhalt von <i>%{itemtitle}</i>, kann %{username} die Ware annehmen oder ablehnen,
+              so versuche dein Bestes, um %{username} zufrieden zu stellen."
+    option:
+      good:
+        one:  "Ich bringe es zu einer lokalen Sammelstelle."
+        two: "Ich frage meine Freunde"
+        three: "User muss es selbst abholen"
+        four: "Ich transportiere/sende es selbst"
+        five: "Ich weiss es nicht"
+        
+    table:
+      what: "Was"
+      from: "von"
+      to: "nach"
+      status: "Status"
+      madeOn: "am"
+      options: "Optionen"
+      
+  
+  ## flash (error and notice alerts)
+  
+  flash:
+    friendships:
+      create:
+        notice: "Freundschaft erfolgreich gebildet."
+        error: "Es war nicht möglich die Freundschaft aufzubauen (technisch...)"
+      destroy:
+        notice: "Freundschaft gel&ouml;st."
+      accept:
+        notice: "Freundschaft akzeptiert."
+        error: "Hm...irgendwas ging schief."
+    mailbox:
+      delete:
+        notice: "Nachricht gel&ouml;scht."
+      restore:
+        notice: "Nachricht wiederhergestellt."
+    session:
+      create:
+        notice: "Erfolgreich eingeloggt"
+        error: "Login fehlgeschlagen, bitte probiere es nocheinmal."
+      destroy:
+        notice: "Du wurdest erfolgreich ausgeloggt."
+    users:
+      create:
+        notice: "Erfolgreich registriert, vielen Dank!"
+      activate:
+        notice: "Profil erfolgreich aktiviert!"
+      update:
+        notice: "Profil erfolgreich ge&auml;ndert."
+    userdetails:
+      update:
+        notice: "Personendaten erfolgreich ge&auml;ndert."
+    items:
+      create:
+        notice: "Ressource erfolgreich erstellt."
+        error: "Ressource konnte nicht erstellt werden."
+      update:
+        notice: "Erfolgreich Ressource ge&auml;ndert." 
+    pings:
+      create:
+        error:
+          pingself: "Du kannst dich selbst nicht pingen!"
+          pingown: "Du kannst %{@resourceType} nicht pingen!"
+          pingedAlready: "Du hast schon diese(n) %{type} angepingt!"
+        notice: "Ping erfolgreich gesendet."
+      update:
+        notice: "Ping erfolgreich ge&auml;ndert."    
+      destroy:
+        notice: "ing erfolgreich  gel&ouml;scht." 
+      accept:
+        error:
+          alreadyAccepted: "Dieser Ping ist schon akzeptiert!"     
+          notAllowed: "Du darfst diesen Ping nicht akzeptieren!" 
+        notice: "Ping wurde akzeptiert!" 
+      decline:
+        error:
+          alreadyDeclined: "Dieser Ping ist schon abgelehnt!" 
+          alreadyAccepted: "Dieser Ping ist schon akzeptiert und daher kannst du nicht ablehnen!"    
+          notAllowed: "Du darfst diesen Ping nicht ablehnen!" 
+        notice: "Ping wurde abgelehnt!"  
+    locations:
+      create:
+        notice: "Standort gespeichert."
+      update:
+        notice: "Erfolgreich Standort ge&auml;ndert." 
+      destroy:
+        notice: "Erfolgreich Standort gel&ouml,scht." 
+    events:
+      create:
+        notice: "Event gespeichert."
+      update:
+        notice: "Erfolgreich Event ge&auml;ndert." 
+      destroy:
+        notice: "Erfolgreich Event gel&ouml;scht."
+    meetups:
+      create:
+        notice: "Treffpunkt gespeichert."
+      update:
+        notice: "Erfolgreich Treffpunkt ge&auml;ndert." 
+      destroy:
+        notice: "Erfolgreich Treffpunkt gel&ouml;scht."
+    images:
+      create:
+        notice: "Bild gespeichert."
+      update:
+        notice: "Erfolgreich Bild ge&auml;ndert." 
+      destroy:
+        notice: "Erfolgreich Bild gel&ouml,scht."    
+        
+  ## menu
+  
+  menu:
+    main:
+      resources: "Ressourcen"
+      members: "Mitglieder"
+      help: "Hilfe"
+      about: "&Uuml;ber uns"
+    user:
+      profile: "Profil"
+      resources: "Ressourcen"
+      pings: "Pings"
+      events: "Events"
+      meetups: "Treffpunkte"
+      transfers: "Transfer"
+      addToFriends: "Als Freund gewinnen"
+      sendMessage: "Nachricht schicken"
+      friends: "Freunde"
+      editLocation: "Standort &auml;ndern"
+      editUserdetails: "Personendaten &auml;ndern"
+  
+  ## userarea
+  
+  userarea:
+    edit:
+      avatar: "Bild &auml;ndern"
+      profile: "Profil &auml;ndern"
+  
+   ## resources 
+  
+  resources:
+    goods: "G&uuml;ter"
+    services: "Dienste"
+    transports: "Transporte"
+    ideas: "Ideen"
+    sharingpoints: "Sammelstellen"
+    status: "Status"
+    onHold: "wartend"
+    onTransfer: "im Transfer"
+    deactive: "nicht aktiv"
+    offered: "wird angeboten"
+    needed: "wird ben&ouml;tigt"
+    requested: "angefragt" 
+    from: "von"
+    till: "bis"
+    available: "Verf&uuml;gbar" 
+    amount: "Menge" 
+    duration: "Dauer" 
+    locatedIn: "Standort"
+    location: "Standort"
+    attachedResources: "Hinzugef&uuml;gte Ressourcen"
+    notPingableOnTransfer: "Ressourcen mit Status 'Transfer' k&ouml;nnen nicht gepingt werden."
+  
+  ## item attachments
+  
+  item_attachments:
+    new: "Anhang hinzuf&uuml;gen"
+  
+  ## images
+  
+  images:
+    new: "Bild hinzuf&uuml;gen"
+   
+  ## events
+  events:
+    ressource: "Resource"
+    description: "Beschreibung"
+  
+  ## friendships
+  
+  friendships:
+    pending: "Offene Freundschaftsanfragen"
+    friend: "Freunde"
+    accepted: "Akpetiert"
+  
+  ## comments
+  
+  comments:
+    comments: "Kommentare"
+    leaveAComment: "Schreibe einen Kommentar:"
+    hasCommentedYou: " hat dich kommentiert."
+    hasCommentedYour: " hat etwas von dir kommentiert: "
+    
+  ## titles
+  
+  title:
+    startpage:
+      weAre: "Wir sind"
+      weNeed: "Wir brauchen"
+      weHave: "Wir haben"
+    login: "Login"
+    mailbox: "Mailbox"
+    welcome: "Willkommen"
+    register: "Schreib' Dich ein:"
+    location: "Dein Standort"
+    event: "Event"
+    events: "Events"
+    editLocation: "&Auml;ndere deinen Standort"
+    newImage: "Neuer Bildupload"
+    editAvatar: "&Auml;ndere dein Avatarbild"
+    editUserdetails: "&Auml;ndere dein Profil"
+    editResource: "&Auml;ndere deine Ressource"
+    newResource: "Neue Ressource"
+    editEvent: "Event &auml;ndern"
+    newEvent: "Neuer Event"
+    meetups: "Treffpunkte"
+    editMeetup: "Treffpunkt &auml;ndern"
+    newMeetup: "Neuer Treffpunkt"      
+    resources:
+      iNeed: "Ich brauche"
+      iHave: "Ich habe"
+      iHaveTaken: "Ich habe genommen"
+      iHaveGiven: "Ich habe gegeben"
+      userNeed: "%{user} braucht"
+      userHave: "%{user} hat"
+      userHaveTaken: "%{user} hat genommen"
+      userHaveGiven: "%{user} hat gegeben"
+    pings:
+      of: "Pings von" 
+      ofUser: "Pings"
+      iPingedOn: "Ich habe gepingt"
+      othersPingedOn: "andere haben gepingt"
+    transfer:
+      myTransfers: "Meine Transfers"
+      transfersToMe: "Transfers zu mir"
+      new: "Neuer Transfer"
+      edit: "Transfer &auml;ndern"
+    
+  topnavigation:
+    mailbox: "Mailbox"
+    profile: "Profil"
+    register: "Registrieren"
+    login: "Login"
+    logout: "Logout"
+    
+  ## mailbox
+  
+  mailbox:
+    to: "An"
+    from: "Von"
+    received: "Erhalten"
+    reply: "Antworten"
+    inbox: "Posteingang"
+    sent: "Postausgang"
+    newMessage: "Neue Nachricht"
+    subject: "Betreff"
+    body: "Nachricht"
+    
+  ## mailer
+  
+  mailer:
+    ping:
+      yourping: "Dein ping wurde "
+      action:
+        accepted: "akzeptiert"
+        declined: "abgewiesen"
+        closed: "geschlossen"
+      subject:
+        accepted: " hat deinen Ping akzeptiert."
+        declined: " hat deinen Ping abgewiesen."
+        closed: " hat deinen Ping geschlossen."
+        opened: " hat dir einen Ping geschickt."
+  
+  ## forms
+  
+  form:
+    hint:
+      imageFormats: "Du kannst Dateien im Format JPG, GIF oder PNG uploaden. Maximal 2MB gross."
+    search:
+      description:
+        hint: ""
+    resource:
+      what: "Was"
+      howMuch: "Wieviel"
+      where: "Wo"
+      when: "Wann"
+      images: "Bilder"
+      attachments: "Anh&auml;nge"
+      i: "Ich"
+      need: "brauche"
+      have: "habe"
+      a: "ein(e,en)"
+      title: "Titel"
+    userdetails:
+      personality: "Pers&ouml;nlichkeit"
+      data: "Personendaten"
+      location: "Standort"
+      avatar: "Profilbild"
+      
+  formtastic: 
+    labels:
+      meetup:
+        title: "Titel"
+        description: "Beschreibung"
+        users: "Teilnehmer"  
+      item:
+        title: "Titel"
+        description: "Beschreibung"
+        multiple: "mehrmals verwendbar?"
+        amount: "Anzahl"
+        measure: "Einheit" 
+        tag_list: "Tags"
+      event:
+        from: "von"
+        till: "bis"
+        description: "Beschreibung"
+      location:
+        address: "Adresse"
+        city: "Stadt"
+        zip: "PLZ"
+        state: "Bundesland"
+        country: "Land" 
+      user:
+        aim_list: "Ziele"  
+        skill_list: "F&auml;higkeiten"
+        interest_list: "Interessen"
+        wish_list: "W&uuml;nsche" 
+        firstname: "Vorname"
+      userdetails:
+        firstname: "Vorname"
+        lastname: "Nachname"
+        birthdate: "Geburtstag"
+        occupation: "Beruf"
+        company: "Firma"
+        language : "Sprache"
+    hints:
+      item:
+        multiple: "ben&ouml;tigst du diese Ressource mehrmals oder regelm&auml;&szlig;ig? /<br />bietest Du diese Ressource mehrmals oder  regelm&auml;&szlig;ig an?"
+        #tag_list: "Getrennt durch Komma or Enter."
+      user:
+        #aim_list: "What is your heart burning for...?"
+        #skill_list: "What can you do easily and without effort?"
+        #interest_list: "What makes your eyes lighten up?"
+        #wish_list: "What are your dreams?"
+      event:
+        from: "klicke auf das Feld um den Kalender zu sehen." 
+        till: "klicke auf das Feld um den Kalender zu sehen." 
+        
+  order:
+    date: "Zeit"
+    title: "Titel"
+    location: "Ort"
+    user: "Name"
+    joined: "Datum"
+    
+  ## activemodel
+  
+  activerecord:
+    errors:
+      template:
+        header:
+          one:    "1 Fehler beim speichern von %{model}"
+          other:  "%{count} Fehler beim speichern von %{model}"
+        # The variable :count is also available
+        body: "Hoppla, du hast das Formluar nicht ganz richtig ausgef&uuml;llt."
+      messages:
+        inclusion: "ist nicht in der Liste inkludiert"
+        exclusion: "ist reserviert"
+        invalid: "ist ung&uuml;ltig"
+        confirmation: "stimmt nicht &uuml;berein"
+        accepted: "muss akzeptiert werden"
+        empty: "darf nicht leer sein"
+        blank: "darf nicht leer sein"
+        too_long: "ist zu lang (maximal %{count} Buchstaben)"
+        too_short: "ist zu kurz (mindestens %{count} Buchstaben)"
+        wrong_length: "hat die falsche L&auml;nge (sollte %{count} Buchstaben haben)"
+        taken: "ist bereits vergeben."
+        not_a_number: "ist keine Nummer"
+        not_an_integer: "ist keine Zahl"
+        greater_than: "muss gr&ouml;sser sein als %{count}"
+        greater_than_or_equal_to: "muss gr&ouml;sser oder gleich sein als %{count}"
+        equal_to: "muss gleich sein als %{count}"
+        less_than: "muss weniger sein als %{count}"
+        less_than_or_equal_to: "muss weniger oder gleich sein als %{count}"
+        odd: "muss ungerade sein"
+        even: "muss gerade sein"
+        record_invalid: "&Uuml;berpr&uuml;fung fehlgeschlagen: %{errors}"
+        invalid_date: "kein g&uuml;ltiges Datum"
+        invalid_time: "keine g&uuml;ltige Zeit"
+        invalid_datetime: "ung&uuml;ltig"
+        is_at: "muss genau %{restriction} sein"
+        before: "muss vor %{restriction} sein"
+        on_or_before: "muss gleich oder vor %{restriction} sein"
+        after: "muss anch %{restriction} sein"
+        on_or_after: "muss gleich oder nach %{restriction} sein"
+        between: "muss zwischen %{earliest} undnd %{latest} sein"
+        
+  ## misc
+  
+  # array.to_sentence
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " und "
+      last_word_connector: " und "

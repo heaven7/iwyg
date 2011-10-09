@@ -1,0 +1,15 @@
+Hello <%= @receiver.login %>,
+<br />
+<br />
+<%= @sender.login %> has suggested an appointment for ''<a href="<%= @resource_url %>"><%= @resource_title %></a>'':
+<br />
+Begin: <%= @event.from %>
+<br />
+Ende: <%= @event.till %>
+<br />
+<br />
+You can <a href="<%= @receiver_events_url %>">accept or decline</a> that appointment.
+<br />
+<br />
+Yours<br />
+IWYG-Team

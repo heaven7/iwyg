@@ -1,0 +1,131 @@
+<% content_for(:head) do %>
+   <%= GMap.header(:hl=> params[:locale]) if @map %>
+   <%= @map.to_html if @map %>
+   <script type="text/javascript">
+    $(document).ready(function (){
+    
+      resetTransferForm();
+            
+    });
+    
+     function getTransferOption(option) {
+       var option = option;  
+       resetTransferForm();  
+       if (option == '#option1') {
+        setReceiverType('Item');
+       } else if (option == '#option2') {
+        setReceiverType('User');
+       } else if (option == '#option3') {
+        setReceiverType('User');
+        setReceiverId(<%= @pinger.id  if @pinger %>);
+       } else if (option == '#option4') {
+        setReceiverType('User');
+        setReceiverId(<%= current_user.id %>);
+       }
+       $(option).show();
+     }
+     
+     function setReceiverId(id) {
+      $('#transfer_receiverable_id').attr('value', id);
+     }
+     function setReceiverType(type) {
+      $('#transfer_receiverable_type').attr('value', type);
+     }
+     function resetTransferForm() {   
+       $('.transferoption').hide();
+       $('#transfer_receiverable_id').removeAttr('value');
+       $('#transfer_receiverable_type').removeAttr('value'); 
+       $('#transfer_sharingpoint_select option:first').attr('selected', 'selected');
+       $('#transfer_friends_select option:first').attr('selected', 'selected');
+       $('#transfer_user_select option:first').attr('selected', 'selected');
+     }
+     
+   </script>
+<% end %>
+
+<% semantic_form_for ([@transferable, @transfer]) do |f| %>
+
+  <div id="col1">
+    <%= f.error_messages %>
+    <% f.inputs do %>
+    
+      <%= f.input :transferable_id, :as => :hidden, :value => @item.id %>
+      <%= f.input :transferable_type, :as => :hidden, :value => "Item" %> 
+      <%= f.input :user_id, :as => :hidden, :value => @user.id %>  
+      <%= f.input :pinger, :as => :hidden, :value => @pinger.id  if @pinger %> 
+      
+      <%= f.input :receiverable_type, :as => :hidden %>
+      <%= f.input :receiverable_id, :as => :hidden %>
+  
+      <p>
+        <% if @item.need? %>
+          <%= t("transfer.text.form", :username => @user.login, :itemtitle => @item.title) if @user && @item %><br />
+        <% else %>
+          <%= t("transfer.text.form", :username => @pinger.login, :itemtitle => @item.title) if @pinger && @item %><br />
+        <% end %>
+        <br />
+        <%= t("transfer.youCanDo") %>
+      </p>
+      
+      <% if @options %>
+          <%= f.input :transferoptions,
+                      :as => :select,
+                      :collection => @options,  
+                      :required => false,
+                      :label => "", 
+                      :input_html => { :onchange => "getTransferOption('#option' + this.value);" }  
+          %>
+          
+        <div class="transferoption" id="option1">
+          <h3><%= t("transfer.option.good.one") %></h3>
+          <% if @sharingpoints.size > 0 %>
+            <%= f.input :sharingpoint_select, :as => :select, :collection  => @sharingpoints, :label => "", :input_html => { :onchange => "setReceiverId(this.value);" } %>
+          <% else %>
+            <%= t("transfer.noSharingpointInRoute") %><br />
+          <% end %>
+        </div>
+        
+        <div class="transferoption" id="option2">
+          <h3><%= t("transfer.option.good.two") %></h3>
+          <% if @friends.size > 0 %>
+           <%= f.input :friends_select, :as => :select, :collection  => @friends, :label => "", :input_html => { :onchange => "setReceiverId(this.value);" } %>
+          <% elsif @users.size > 0 %>
+           <%= t("transfer.noFriendsInRoute") %><br />
+           <%= f.input :user_select, :as => :select, :collection  => @users, :label => "", :input_html => { :onchange => "setReceiverId(this.value);" }  %>
+          <% end %>
+        </div>
+        
+        <div class="transferoption" id="option3">
+         <h3><%= t("transfer.option.good.three") %></h3>
+        </div>
+        
+        <div class="transferoption" id="option4">
+         <h3><%= t("transfer.option.good.four") %></h3>
+        </div>
+        
+        <div class="transferoption" id="option5">
+         <h3><%= t("transfer.option.good.five") %></h3>
+        </div>
+     
+      <% else %>
+      Nothing...   
+      <% end %>
+      <li><hr class="divider" /></li>
+
+    <% end %>
+    
+    <% f.buttons do %>
+      <%= f.submit t("submit") %>
+    <% end %>
+    
+  </div>
+  <div id="col2">
+  
+    <% if @map %>
+      <h3>Transfer distance <%= @distance.to_int %> km</h3>
+      <%= @map.div(:width => 400, :height => 300) if @map %>
+    <% end %>
+     
+  </div>
+  <div class="clearfix"></div>
+<% end %>

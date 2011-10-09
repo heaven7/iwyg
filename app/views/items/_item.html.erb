@@ -1,0 +1,22 @@
+<div class="list-item <%=h item.itemtype.downcase if item.item_type_id? %> <%=h is_need?(item) %> ui-corner-all">
+  <%= render :partial => "items/usermenu", :locals => {:item => item} %>
+  <div class="item-type">
+    <%= image_tag "icons/icon_#{item.itemtype.downcase}.png", :title => item.localized_itemtype, :alt => item.localized_itemtype %>
+  </div>
+  <div class="item-status">
+    <%= render :partial => "items/itemstatus", :locals => { :item => item } %>    
+  </div>
+  <p class="font-small"><%= link_to shorten(item.title, 22), item  if item.title %></p>
+  <% if item.images.first %>
+    <div class="image-big ui-corner-all">
+      <%= link_to image_tag(item.images.first.image.url(:small)), item, :title => item.title, :class => "ui-corner-all" %>
+    </div>
+  <% else %>
+    <div class="details">
+      <p class="font-small"><%=h shorten(item.description) if item.description %></p>
+    </div>
+  <% end %>
+<!--
+  <p class="item-owner"><%= link_to image_tag(microThumb(item.owner)), profile_path(item.owner.login), :title => item.owner.login %></p>
+-->
+</div>

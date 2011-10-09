@@ -1,0 +1,5 @@
+<div class="image">
+  <%= f.hidden_field :imageable_id, :value => @item.id %>
+  <%= f.hidden_field :imageable_type, :value => "Item" %>
+  <%= f.input :path, :as => :file, :required => false, :label => "#{image_tag '/images/icons/icon_image.png'}" %>
+</div>

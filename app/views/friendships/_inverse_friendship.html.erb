@@ -1,0 +1,13 @@
+<p class="font-smaller">
+  <div class="image">
+    <%= link_to image_tag(tinyThumb(User.find(friendship.user_id))), 
+               user_path(friendship.friend_id), 
+               :title => User.find(friendship.user_id).login 
+    %>
+  </div>
+  <%= link_to User.find(friendship.user_id).login, user_path(friendship.user_id) %>
+
+  <% if friendship.accepted_at == nil and current_user.id == friendship.user_id %>
+    <%= link_to "Accept", accept_friendship_path(friendship), :method => :put %>
+  <% end %>
+</p>

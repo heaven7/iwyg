@@ -1,0 +1,4 @@
+<% if transfer.open? and transfer.pinger == current_user.id %>
+  <%= link_to t("accept"), accept_transfer_path(transfer), :method => :put %>
+  <%= link_to t("decline"), decline_transfer_path(transfer), :method => :put %>
+<% end %>

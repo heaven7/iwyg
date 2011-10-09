@@ -1,0 +1,32 @@
+<tr>
+  <td>
+    <%=h item(transfer.transferable_id).title %> (<%=h transfer.transferable_type %>)
+  </td>
+  <td>
+    <%=h user(transfer.user_id).login %>
+    <% if user(transfer.user_id).location %>
+      (<%=h user(transfer.user_id).location.city %>)
+    <% end %>
+  </td>
+  <td>
+    <%=h user(transfer.pinger).login %>
+    <% if user(transfer.pinger).location && user(transfer.pinger).location.city %>
+      (<%=h user(transfer.pinger).location.city %>)
+    <% end %>
+  </td>
+  <td>
+    <%=h status(transfer.status).title %>
+  </td>
+  <td>
+   <% if transfer.accepted_at %>
+    <%=h transfer.accepted_at %>
+  <% else %>
+    <%= transfer.created_at %>
+  <% end %>
+  </td>
+  <td>
+    <%= render :partial => "transferoptions", :locals => {:transfer => transfer} %>
+    <%= link_to t("show"), polymorphic_path([@transferable, transfer]) %>
+    
+  </td>
+</tr>

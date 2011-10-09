@@ -1,0 +1,16 @@
+  <div id="topnavigation">
+    <% if logged_in? and current_user %>
+    <div id="profile_dropdown">
+      <%= link_to h(image_tag(microThumb(current_user)) + "&nbsp;" + current_user.login), profile_path(current_user.login), :id => "profile_link" %>
+    </div> 
+    <ul class="profile menu">
+      <li><%= link_to t("topnavigation.profile"), profile_path(current_user.login)%></li>
+      <li><%= nav_link t('topnavigation.mailbox'), "mailbox" %></li>
+      <li><%= nav_link t("topnavigation.logout"), "logout" %></li>
+    <% else %>
+    <ul class="menu horizontal">
+      <li><%= nav_link t("topnavigation.register"), new_user_session_path %></li>      
+      <li>&nbsp;&#124;&nbsp;<%= nav_link t("topnavigation.login"), "login" %></li>
+    <% end %>
+    </ul>    
+  </div>

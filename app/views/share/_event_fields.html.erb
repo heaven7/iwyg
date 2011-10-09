@@ -1,0 +1,14 @@
+
+<%= f.input :from, 
+    :as  => :string,
+    :required => false, 
+    :input_html => {:class => "ui-corner-all"},
+    :label => (t("formtastic.labels.event.from") + "&nbsp;" + image_tag("icons/icon_event.png"))
+
+%>
+<%= f.input :till,  
+    :as  => :string,
+    :required => false, 
+    :input_html => {:class => "ui-corner-all"},
+    :label => (t("formtastic.labels.event.till") + "&nbsp;" + image_tag("icons/icon_event.png"))
+%>

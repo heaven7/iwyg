@@ -1,0 +1,198 @@
+/**
+ * Main style definition.
+ * 
+ * @author Christian Grlica
+ * @copyright 2011 by Heavenseven, www.heavenseven.net 
+ */
+@import url(menues.css);   
+@import url(mainnavigation.css);
+@import url(topnavigation.css);
+@import url(search.css);
+@import url(forms.css);
+@import url(links.css);
+@import url(sub2cols.css);
+@import url(lists.css);
+@import url(font.css);
+@import url(userarea.css);
+@import url(comments.css);
+@import url(user.css);
+@import url(events.css);
+@import url(items.css);
+ 
+body, html {
+  margin-left: 0px;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  overflow-x: hidden;
+}
+
+body {
+	margin:0;
+	padding:0;
+	border:0;
+	background:#f8fcea url('../../images/global/bg_main.gif') repeat-x top fixed;
+	width:100%;
+	font-family: Arial, sans-serif;
+	font-size:12pt;
+	color:#555555;
+	text-align:center;
+	margin:0px auto;
+}
+
+
+.clearfix {
+	clear:both;
+	height:0;
+	overflow:hidden;
+}
+.clear {
+	clear:both;
+}
+
+form {
+  padding-top:0.5em;
+  padding-bottom:0.5em;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family:"Georigia";
+	font-style:italic;
+	font-weight:normal;
+	color: #0b0d14;
+}
+h1 {
+	font-size:190%;
+	font-weight:bold;
+  margin-top:0em;
+}
+h2 {
+	font-size:145%;
+}
+h3 {
+  margin-top:0;
+  margin-bottom:0.3em;
+	font-size:115%;
+	clear:both;
+}
+.map h3 {
+  margin-top:0;
+  padding-top:0;
+}
+h4, h5 {
+	font-size:100%;
+	margin-bottom:0;
+  margin-top:0;
+}
+p {
+	line-height:1.5em;
+	margin:0;
+}
+em {
+  line-height: 2em;
+}
+img {
+	border:none;
+}
+ul {
+	line-height:1.5em;
+	list-style-type:none;
+  margin:0;
+  padding:0;
+}
+li {
+	list-style-type:none;
+}
+table {
+	width:100%;
+	padding:3px;
+}
+table td {
+  vertical-align:top;
+}
+
+.center {
+  text-align:center;
+  margin:0px auto;
+}
+.left {
+  text-align:left;
+}
+.right {
+  text-align:right;
+}
+.bordered {
+  border: 1px solid #B8C2B3;
+  padding:0.5em;
+  margin:0.5em;
+}  
+.shadowed {
+  -moz-box-shadow:5px 5px 10px #969E93;
+  -webkit-box-shadow:5px 5px 10px #969E93;
+  box-shadow:5px 5px 10px #969E93;
+  padding:0.5em;
+  padding-top:0;
+}
+.shadowed-small {
+  -moz-box-shadow:2px 2px 4px #969E93;
+  -webkit-box-shadow:2px 2px 4px #969E93;
+  box-shadow:2px 2px 4px #969E93;
+  padding:0.2em;
+  padding-top:0;
+}
+.shadowed-hover {
+  -moz-box-shadow:1px 1px 1px #969E93;
+  -webkit-box-shadow:1px 1px 1px #969E93;
+  box-shadow:1px 1px 1px #969E93;
+  padding:0.1em;
+}
+/* float-right */
+.float-right {
+  clear:both;
+  float:right;
+}
+
+/* boxes */
+
+.box-light-grey,
+.box {
+  padding:0.5em;
+  margin-bottom:8px;
+  margin-top:8px;
+}
+.box {
+  border:1px solid #848c82;
+}
+.box-light-grey {
+  border:1px solid #d8e0d0;
+  background: #b8c2b3;
+}
+/* block */
+.block {
+  min-height:120px;
+  border:1px solid #B8C2B3;
+  background:#D8E0D0;
+  padding:0.5em;
+  width:280px;
+}
+/* messages */
+.notice, .error {
+  padding:0.5em;
+  margin:0.5em auto 0.5em 4%;
+  text-align:left;
+  width:90%;
+}
+.notice {
+  border:2px solid #3c752d;
+  color:#46aa2b;
+  background:#D3DFCF;
+}
+.error {
+  border:2px solid #AA111A;
+  color: #AA111A;
+  background:#D3DFCF;
+}
+.exit {
+  position:relative;
+  text-align:right;
+  height:0;
+}

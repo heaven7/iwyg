@@ -1,0 +1,7 @@
+<%= f.input :address, :required => false, :label => I18n.t("formtastic.labels.location.address") %>
+<%= f.input :city, :required => false, :label => I18n.t("formtastic.labels.location.city") %>
+<%= f.input :zip, :required => false, :input_html => {:class => "short"}, :label => I18n.t("formtastic.labels.location.zip") %>
+<li id="<%= belongs_to %>_location_country_input" class="string optional">
+  <label><%= t("formtastic.labels.location.country") %></label>
+  <%= f.localized_country_select, :country, $priority_countries, :include_blank => '' %>
+</li>

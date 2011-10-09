@@ -1,0 +1,11 @@
+<table>
+  <tr>
+    <th><%= t("transfer.table.what") %></th>
+    <th><%= t("transfer.table.from") %></th>
+    <th><%= t("transfer.table.to") %></th>
+    <th><%= t("transfer.table.status") %></th>
+    <th><%= t("transfer.table.madeOn") %></th>
+    <th><%= t("transfer.table.options") %></th>
+  </tr>
+  <%= render :partial => "transfer", :collection => collection %>
+</table>

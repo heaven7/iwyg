@@ -1,0 +1,8 @@
+<h2><%=h(@message.subject) %></h2>
+<div class="messagehead font-small">
+<p><strong><%= t("mailbox.to") %>:</strong> <%= @message.recipients.map(&:login).to_sentence %></p>
+<p><strong><%= t("mailbox.sent") %>:</strong> <%= @message.created_at.to_s(:long) %></p>
+</div>
+<div class="messagebody ui-corner-all">
+<pre><%=h @message.body %></pre>
+</div>

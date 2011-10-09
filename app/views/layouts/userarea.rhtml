@@ -1,0 +1,13 @@
+<div class="sub2cols">
+  <div id="userdescription" class="subcol1">
+    <%= render :partial => "share/avatar", :locals => {:user => @user} %>
+    <%= render :partial => "share/profileusermenu", :locals => { :user => @user } %>
+    <%= render :partial => "share/usermenu", :locals => {:user => @user} %>
+  </div>
+  <div id="userarea" class="subcol2">
+    <h1 class="username"><%=h @user.login %></h1>
+    <p><%= render :partial => "locations/location", :locals => {:location => @user.location} if @user.location %></p>
+    <%= yield %>
+  </div>
+</div>
+<%= parent_layout 'application' %>

@@ -1,0 +1,5 @@
+<ul class="appointment horizontal"> 
+  <li><%= render :partial => "users/userpreview", :locals => { :user => user} %></li> 
+  <li><%= t("and") %></li> 
+  <li><%= render :partial => "share/usertiny", :locals => { :user => pinger} %></li>
+</ul>

@@ -1,0 +1,14 @@
+<p>
+  <%= nav_link User.find(@ping.user_id).login, "users", @ping.user_id %> pinged on <%=h @ping.pingable_type.downcase %>:
+  <% if @title %>
+    <%= @title %>
+  <% end %>
+</p>
+<p>
+on <%=h @ping.created_at %>
+</p>
+<p>
+<%=h @ping.body %>
+</p>
+
+<%= link_to 'Back', collection_url  %>

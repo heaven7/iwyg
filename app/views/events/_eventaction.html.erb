@@ -1,0 +1,2 @@
+<%= link_to t("event.action", :owner => event.owner.login, :pinger => event.ping.owner.login, :title => event.item.title ), event_path(event) if event.user_id and event.ping_id %>
+      

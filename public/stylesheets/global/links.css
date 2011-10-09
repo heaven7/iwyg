@@ -1,0 +1,64 @@
+/**
+ * Link element style definition.
+ * 
+ * @author Christian Grlica
+ * @copyright 2009 by Heavenseven, www.heavenseven.net 
+ */
+ 
+ 
+a {
+  color:#555555;
+  text-decoration:none;
+}
+a:hover {
+  text-decoration:underline;
+}
+.icon-arrow-down {
+    background: transparent url(../../images/global/arrow_down_blue.gif) no-repeat center right;
+    padding-right:1em;
+}
+.button {
+  margin:0.5em;
+  margin-left:0;
+}
+li.button {
+  display:inline;
+}
+.button a {
+  padding:0.2em;
+  background:none repeat scroll 0 0 #EDEFDF;
+  border:1px solid #A4B895; 
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  line-height:2em; 
+  -moz-box-shadow:1px 1px 2px #969E93;
+  -webkit-box-shadow:1px 1px 2px #969E93;
+  box-shadow:1px 1px 2px #969E93;
+}
+.button a:hover {
+  background:white none repeat scroll 0 0;
+  border:1px solid #b5e095;
+  text-decoration:none;
+}
+
+
+.new a {
+  padding:0.5em;
+  padding-left:2em;
+  background:#EDEFDF url("../../images/icons/icon_button_add.png") 0px  1px no-repeat;
+}
+
+.new a:hover {
+  background:white url("../../images/icons/icon_button_add.png") 0px  1px no-repeat;
+}
+
+.edit a {
+  padding:0.5em;
+  padding-left:2em;
+  background:#EDEFDF url("../../images/icons/icon_button_edit.png") 9px  8px no-repeat;
+}
+
+.edit a:hover {
+  background:white url("../../images/icons/icon_button_edit.png") 9px  8px no-repeat;
+}

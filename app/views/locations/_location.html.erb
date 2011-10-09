@@ -1,0 +1,6 @@
+<% if location.country || location.city %>
+  <span class="font-smaller">
+    <%= location.city if location.city %> 
+    <% if not location.country.blank? %> <%=h t( location.country, :scope => "countries" ) %><% end %> 
+  </span>
+<% end %>

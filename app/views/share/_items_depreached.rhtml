@@ -1,0 +1,13 @@
+<% if items %>
+<div id="items">
+  <div class="count">Items (<%= items.size %>)</div>
+  <div class="list">
+    <% items.each do |item| %>      
+      <p><%=h item.title %></p>
+      <p><%=h itemType(item) %></p>
+      <p><%=h itemStatus(item) %></p>
+      <p><%= itemImage(item) %></p>
+    <% end %>
+  </div>
+</div>
+<% end %>

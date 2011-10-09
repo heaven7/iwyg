@@ -1,0 +1,10 @@
+<table>
+  <tr>
+    <th><%= t("who") %></th>
+    <th><%= t("what") %></th>
+    <th><%= t("when") %></th>
+    <th><%= t("ping.table.status") %></th>
+    <th></th>
+  </tr>
+  <%= render :partial => "ping", :collection => collection %>
+</table>

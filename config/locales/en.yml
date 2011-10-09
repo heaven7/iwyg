@@ -1,0 +1,712 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  meta:
+    language_name: "English"
+    locale: "en-GB"
+  ## date & time
+  
+  date:
+    formats:
+      default: "%Y-%m-%d" 
+      short: "%b %d" 
+      long: "%B %d, %Y"
+      only_day: "%e"
+    day_names: [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
+    abbr_day_names: [Sun, Mon, Tue, Wed, Thu, Fri, Sat]  
+    month_names: [~, January, February, March, April, May, June, July, August, September, October, November, December]
+    abbr_month_names: [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
+    order: [ :year, :month, :day ]    
+   
+  time:
+    formats:
+      default: "%a, %d %b %Y %H:%M:%S %z"
+      time: "%H:%M"
+      short: "%d %b %H:%M"
+      long: "%B %d, %Y %H:%M"
+      only_second: "%S"
+    am: "am"
+    pm: "pm" 
+    
+  datetime:
+    distance_in_words:
+      half_a_minute: "half a minute"
+      less_than_x_seconds:
+        zero: "less than 1 second"
+        one:   "1 second"
+        other: "less than %{count} seconds"
+      x_seconds:
+        one:   "1 second"
+        other: "%{count} seconds"
+      less_than_x_minutes:
+        zero: "less than a minute"
+        one:   "1 minute"
+        other: "less than %{count} minutes"
+      x_minutes:
+        one:   "1 minute"
+        other: "%{count} minutes"
+      about_x_hours:
+        one:   "about 1 hour"
+        other: "about %{count} hours"
+      x_days:
+        one:   "1 day"
+        other: "%{count} days"
+      about_x_months:
+        one:   "about 1 month"
+        other: "about %{count} months"
+      x_months:
+        one:   "1 month"
+        other: "%{count} months"
+      about_x_years:
+        one:   "about 1 year"
+        other: "about %{count} years"
+      over_x_years:
+        one:   "over 1 year"
+        other: "over %{count} years"
+      almost_x_years:
+        one:   "almost 1 year"
+        other: "almost %{count} years"
+    prompts:
+      year:   "Year"
+      month:  "Month"
+      day:    "Day"
+      hour:   "Hour"
+      minute: "Minute"
+      second: "Seconds"
+  
+  validates_timeliness:
+    error_value_formats:
+      date: '%Y-%m-%d'
+      time: '%H:%M:%S'
+      datetime: '%Y-%m-%d %H:%M:%S'
+
+  ## login
+  
+  login:
+    description: "Please fill in with proper username and password to login."
+    notAMember: "Not a member?"
+    label:
+      login: "Username"
+      password: "Password"
+      forgotPassword: "Forgot your login name or password?"
+      submit: "Let me in"
+      remember: "Remember me"
+      register: "Please register"
+  
+  ## register 
+  
+  register:
+    required: "register"
+    mandatoryFields: "Mandatory fields"
+    signup: "Sign Up"
+    label:
+      login: "Username"
+      email: "Email"
+      password: "Password"
+      confirmPassword: "Confirm password"
+   
+  ## resources 
+       
+  resource:
+    one: "1 Resource"
+    other: "%{count} Resources"
+    new: "New Resource"
+  good:
+    one: "1 Good"
+    other: "%{count} Goods"
+    singular: "Good"
+  service:
+    one: "1 Service"
+    other: "%{count} Services"
+    singular: "Service"
+  transport:
+    one: "1 Transport"
+    other: "%{count} Transports"
+    singular: "Transport"
+  idea:
+    one: "1 Idea"
+    other: "%{count} Ideas"
+    singular: "Idea"
+  sharingpoint:
+    one: "1 Sharingpoint"
+    other: "%{count} Sharingpoints"
+    singular: "Sharingpoint"
+  user:
+    one: "1 User"
+    other: "%{count} Users"
+    singular: "User"
+    aimsTo: "aims to"
+    aims: "Aims"
+    canDo: "can do"
+    skills: "Skills"
+    wishesTo: "wishes"
+    wishes: "Wishes"
+    interestedIn: "is interested in"
+    interests: "Interests"
+    account:
+      activated: "Your account has been activated."
+      pleaseactivate: "Please activate your new account"
+      created: "Your account has been created."
+  
+  ## general
+  
+  who: "Who"
+  where: "Where"
+  what: "What"
+  when: "When"
+  show: "show"
+  back: "Back"
+  edit: "edit"
+  delete: "delete"
+  unknown: "unknown"
+  with: "with"
+  or: "or"
+  add: "add"
+  and: "and"
+  between: "between"
+  remove: "remove"
+  sortBy: "Sort by"
+  searchIn: "Search in"
+  help: "Help"
+  about: "About"
+  options: "Options"
+  confirm_delete: "Are you sure you want to delete this?"
+  ago: "ago"
+  previous: "previous"
+  next: "next"
+  more: "more"
+  things: 
+    taken:
+      one: "1 thing taken"
+      other: "%{count} things taken"
+    given:
+      one: "1 thing given"
+      other: "%{count} things given"
+  thing: 
+    one: "Thing"
+    other: "Things"
+  found: "found"
+  send: "send"
+  from: "from"
+  till: "till"
+  start: "Start"
+  end: "End"
+  duration: "Duration"
+  to: "to"
+  by: "by"
+  distance: "Distance"
+  submit: "Submit"
+  save: "Save"
+  tags: "Tags"
+  needs: "needs"
+  offers: "offers"
+  accept: "Accept"
+  decline: "Decline"
+  accepted: "accepted"
+  declined: "declined"
+  opened: "open"
+  closed: "closed"
+  created_at: "created on"
+  updated_at: "updated on"
+  accepted_at: "accepted on"
+  
+  ## links
+  
+  link:
+    ping:
+      loginToPing: "Log in to ping this"
+    
+  ## ping
+      
+  ping:
+    one: "1 Ping"
+    other: "%{count} Pings"
+    this: "Ping this"
+    of: "Ping of"
+    transfer: "Apply for this transfer (make a ping)"
+    accept: "Accept"
+    decline: "Decline"
+    setTransfer: "Set Transfer"
+    setAppointment: "Set Appointment"
+    setMeetup: "Set Meetup"
+    table:
+      who: "Who"
+      what: "What"
+      status: "Status"
+      madeOn: "made on"
+      options: "Options"
+    notifyOn:
+      user: 
+        opened: "%{pinger} has pinged you."
+        accepted: "%{user.login} has accepted your ping."
+        declined: "%{user.login} has declined your ping."
+        closed: "Your ping on %{resource_title} has been closed."
+      transfer: 
+        opened: "%{pinger} has pinged your transfer (of %{resource_title})."
+        accepted: "Your ping on transfer: '%{resource_title}' has been accepted."
+        declined: "Your ping on transfer: '%{resource_title}' has been declined."
+        closed: "Your ping on transfer: '%{resource_title}' has been closed."
+      item:
+        good:
+          opened: "%{pinger} has pinged your good: '%{resource_title}'."
+          accepted: "Your ping on good: '%{resource_title}' has been accepted."
+          declined: "Your ping on good: '%{resource_title}' has been declined."
+          closed: "Your ping on good: '%{resource_title}' has been closed."
+        service:
+          opened: "%{pinger} has pinged your service: '%{resource_title}'."
+          accepted: "Your ping on service: '%{resource_title}' has been accepted."
+          declined: "Your ping on service: '%{resource_title}' has been declined."
+          closed: "Your ping on service: '%{resource_title}' has been closed."
+        idea:
+          opened: "%{pinger} has pinged your idea: '%{resource_title}'."
+          accepted: "Your ping on idea: '%{resource_title}' has been accepted."
+          declined: "Your ping on idea: '%{resource_title}' has been declined."
+          closed: "Your ping on idea: '%{resource_title}' has been closed."
+        transport:
+          opened: "%{pinger} has pinged your transport: '%{resource_title}'."
+          accepted: "Your ping on transport: '%{resource_title}' has been accepted."
+          declined: "Your ping on transport: '%{resource_title}' has been declined."
+          closed: "Your ping on transport: '%{resource_title}' has been closed."
+        sharingpoint:
+          opened: "%{pinger} has pinged your sharingpoint: '%{resource_title}'."
+          accepted: "Your ping on sharingpoint: '%{resource_title}' has been accepted."
+          declined: "Your ping on sharinpoint: '%{resource_title}' has been declined."
+          closed: "Your ping on sharingpoint: '%{resource_title}' has been closed."
+
+  ## event
+  event:
+    one: "1 Event"
+    other: "%{count} Events"
+    new: "New Event"
+    action: "%{owner} meets up with %{pinger} because of: %{title}"
+    status: "Event wurde %{status} von %{user}"
+
+  ## meetup
+  
+  meetup:
+    one: "1 Meetup"
+    other: "%{count} Meetups"
+    new: "New Meetup"
+    participant:
+      one: "1 Participant"
+      other: "%{count} Participants"
+    
+         
+  ## transfer
+  
+  transfer:
+    one: "1 Transfer"
+    other: "%{count} Transfers"
+    pinger: "Receiver"
+    of: "Transfer of"
+    to: "to"
+    status: "Transfer was %{status} by %{user}"
+    started: "Started on"
+    accepted: "Accepted on"
+    noSharingpointInRoute: "It seems, that no sharingpoint is between this route!"
+    noFriendsInRoute: "It seems, that no friend is between this route, but you can ask this users living nearby this route!"
+    youCanDo: "You can do the following: "
+    text:
+      form:  "Your <i>%{itemtitle}</i> should be transfered.<br />
+              %{username} will be noticed of your transferactions.<br />
+              Remember, that after receiving <i>%{itemtitle}</i>, %{username} can accept or decline it,
+              so try your best to make %{username} happy."
+    option:
+      good:
+        one:  "I bring the good to a local SharingPoint"
+        two: "I ask my friends for transportation"
+        three: "User has to get it on its own"
+        four: "I transport/send it by my own"
+        five: "I don't know yet"
+        
+    youCanDo: "You can do the following: "
+    table:
+      what: "What"
+      from: "from"
+      to: "to"
+      status: "Status"
+      madeOn: "Made on"
+      options: "Options"  
+   
+  ## flash (error and notice alerts)
+      
+  flash:
+    friendships:
+      create:
+        notice: "Friend added."
+        error: "Unable to add friend."
+      destroy:
+        notice: "Friendship removed."
+      accept:
+        notice: "Friendship accepted"
+        error: "Something went wrong."
+    mailbox:
+      delete:
+        notice: "Message deleted."
+      restore:
+        notice: "Message restored."
+    session:
+      create:
+        notice: "Logged in successfully"
+        error: "Login failed, please try again."
+      destroy:
+        notice: "You have been logged out."
+    users:
+      create:
+        notice: "Thanks for signing up!"
+      activate:
+        notice: "Signup complete!" 
+      update:
+        notice: "User was successfully updated."
+    userdetails:
+      update:
+        notice: "Userdetails was successfully updated."
+    items:
+      create:
+        notice: "Resource created successfully."
+        error: "Resource could not be created."
+      update:
+        notice: "Successfully updated resource."
+    pings:
+      create:
+        error:
+          pingself: "You cannot ping yourself!"
+          pingown: "You cannot ping your own %{@resourceType}!"
+          pingedAlready: "You already have sent a ping to this %{type}!"
+        notice: "Ping was successfully sent."
+      update:
+        notice: "Successfully updated ping."    
+      destroy:
+        notice: "Successfully destroyed ping." 
+      accept:
+        error:
+          alreadyAccepted: "This ping is accepted already!"     
+          notAllowed: "You are not allowed to accept!" 
+        notice: "Ping is accepted!" 
+      decline:
+        error:
+          alreadyDeclined: "This ping is declined already!" 
+          alreadyAccepted: "This ping is accepted already and therefore you cannot decline it!"    
+          notAllowed: "You are not allowed to decline!" 
+        notice: "Ping is declined!" 
+    locations:
+      create:
+        notice: "Location saved."
+      update:
+        notice: "Successfully updated location." 
+      destroy:
+        notice: "Successfully destroyed location."   
+    events:
+      create:
+        notice: "Event saved."
+      update:
+        notice: "Successfully updated event." 
+      destroy:
+        notice: "Successfully destroyed event."  
+    meetups:
+      create:
+        notice: "Meetup saved."
+      update:
+        notice: "Successfully updated meetup." 
+      destroy:
+        notice: "Successfully destroyed meetup."  
+    images:
+      create:
+        notice: "Image saved."
+      update:
+        notice: "Successfully updated image." 
+      destroy:
+        notice: "Successfully destroyed image."  
+        
+  ##  menu  
+  
+  menu:
+    main:
+      resources: "Resources"
+      members: "Members"
+      help: "Help"
+      about: "About"
+    user:
+      profile: "Profile"
+      resources: "Resources"
+      pings: "Pings"
+      events: "Events"
+      transfers: "Transfers"
+      meetups: "Meetups"
+      addToFriends: "Add to friends"
+      sendMessage: "Send Message"
+      friends: "Friends"
+      editLocation: "Edit Location"
+      editUserdetails: "Edit Personal Data"
+  
+  ## userarea
+  
+  userarea:
+    edit:
+      avatar: "Edit Avatar"
+      profile: "Edit Profile"
+  
+  ## resources
+  
+  resources:
+    goods: "Goods"
+    services: "Services"
+    transports: "Transports"
+    ideas: "Ideas"
+    sharingpoints: "Sharingpoints" 
+    status: "Status"
+    onHold: "on hold"
+    onTransfer: "on Transfer"
+    deactive: "deactived"
+    offered: "offered"
+    needed: "needed"
+    requested: "requested"
+    from: "from"
+    till: "till"
+    available: "Available"
+    amount: "Amount"  
+    duration: "Duration"
+    locatedIn: "Located in"
+    location: "Location"
+    attachedResources: "Attached resources"
+    notPingableOnTransfer: "Resources beeing on Transfer cannot be pinged."
+  
+  ## item attachments
+  
+  item_attachments:
+    new: "Add attachment"
+  
+  ## images
+    
+  images:
+    new: "Add image"
+          
+  ## events
+  events:
+    ressource: "Ressource"
+    description: "Description"
+  
+  ## friendships
+  
+  friendships:
+    pending: "Pending friendships"
+    friend: "Friends"
+    accepted: "Accepted"
+  
+  ## comments
+  
+  comments:
+    comments: "Comments"
+    leaveAComment: "Leave a comment:"
+    hasCommentedYou: " has sent a comment."
+    hasCommentedYour: " has commented your "
+    
+  ## titles
+  
+  title:
+    startpage:
+      weAre: "We are"
+      weNeed: "We need"
+      weHave: "We have"
+    login: "Login"
+    mailbox: "Mailbox"
+    welcome: "Welcome"
+    register: "Join"
+    location: "Your location"
+    event: "Event"
+    events: "Events"
+    editLocation: "Change your location"
+    newImage: "New Picture upload"
+    editAvatar: "Change your avatar"
+    editUserdetails: "Change your profile"
+    editResource: "Change your resource"
+    newResource: "New resource"
+    editEvent: "Change event"
+    newEvent: "New event" 
+    meetups: "Meetups"
+    editMeetup: "Edit meetup"
+    newMeetup: "New meetup"
+    resources:
+      iNeed: "I need"
+      iHave: "I have got"
+      iHaveTaken: "I have taken"
+      iHaveGiven: "I have given"
+      userNeed: "%{user} needs"
+      userHave: "%{user} has got"
+      userHaveTaken: "%{user} has taken"
+      userHaveGiven: "%{user} has given"
+    pings:
+      of: "Pings of"
+      ofUser: "Pings"
+      iPingedOn: "I pinged on"
+      othersPingedOn: "others has pinged on"
+    transfer:
+      myTransfers: "My Transfers"
+      transfersToMe: "Transfers to me"
+      new: "New Transfer"
+      edit: "Edit Transfer"
+      
+  topnavigation:
+    mailbox: "Mailbox"
+    profile: "My Profile"
+    register: "Register"
+    login: "Login"
+    logout: "Logout"  
+    
+  ## mailbox
+  
+  mailbox:
+    to: "To"
+    from: "From"
+    received: "Received"
+    reply: "Reply"
+    inbox: "Inbox"
+    sent: "Sent"
+    newMessage: "New Message"
+    subject: "Subject"
+    body: "Text"
+    
+  ## mailer
+  
+  mailer:
+    ping:
+      yourping: "Your ping is "
+      action:
+        accepted: "accepted"
+        declined: "declined"
+        closed: "closed"
+      subject:
+        accepted: " has accepted your ping."
+        declined: " has declined your ping."
+        closed: " has closed your ping."
+        opened: " has send a ping to you."
+  
+  ## forms
+    
+  form:
+    hint:
+      imageFormats: "You can upload a JPG, GIF or PNG file. Maximum 2MB size."
+    search:
+      description:
+        hint: "Be concise and write information, what is needed to know about it. "   
+    resource:
+      what: "What"
+      howMuch: "How much"
+      where: "Where"
+      when: "When"
+      images: "Images"
+      attachments: "Attachments"
+      i: "I"
+      need: "need"
+      have: "have"
+      a: "a"
+      title: "Title"
+    userdetails:
+      personality: "Personality"
+      data: "Persondata" 
+      location: "Location"
+      avatar: "Profilepicture"
+
+  formtastic: 
+    labels:
+      meetup:
+        title: "Title"  
+      item:
+        title: "Title"  
+        description: "Description"
+        multiple: "for multiple use?"
+        amount: "Amount"
+        measure: "Measure" 
+        tag_list: "Tags"
+      event:
+        from: "from"
+        till: "till"
+        description: "Description"
+      location:
+        address: "Address"
+        city: "City"
+        zip: "Zip"
+        state: "State"
+        country: "Country" 
+      user:
+        aim_list: "Aims"  
+        skill_list: "Skills"
+        interest_list: "Interests"
+        wish_list: "Wishes"
+      userdetails:
+        firstname: "Firstname"
+        lastname: "Lastname"
+        birthdate: "Birthdate"
+        occupation: "Occupation"
+        company: "Company"
+        language : "Language"
+    hints:
+      item:
+        multiple: "do you need this resource occasionally or regularly? /<br />do you offer this resource occasionally or regularly?" 
+        #tag_list: "Tags are written commaseparated."
+      user:
+        #aim_list: "What is your heart burning for...?"
+        #skill_list: "What can you do easily and without effort?"
+        #interest_list: "What makes your eyes lighten up?"
+        #wish_list: "What are your dreams?"
+      event:
+        from: "click on the field above to see the calendar." 
+        till: "click on the field above to see the calendar."  
+  order:
+    date: "Time"
+    location: "Location"
+    title: "Title"  
+    user: "Username"
+    joined: "Date"  
+   
+  ## activerecord
+  
+  activerecord:
+    errors:
+      template:
+        header:
+          one:    "1 error prohibited this %{model} from being saved"
+          other:  "%{count} errors prohibited this %{model} from being saved"
+        # The variable :count is also available
+        body: "Oops, something went wrong here."
+      messages:
+        inclusion: "is not included in the list"
+        exclusion: "is reserved"
+        invalid: "is invalid"
+        confirmation: "doesn't match confirmation"
+        accepted: "must be accepted"
+        empty: "can't be empty"
+        blank: "can't be blank"
+        too_long: "is too long (maximum is %{count} characters)"
+        too_short: "is too short (minimum is %{count} characters)"
+        wrong_length: "is the wrong length (should be %{count} characters)"
+        taken: "has already been taken"
+        not_a_number: "is not a number"
+        not_an_integer: "must be an integer"
+        greater_than: "must be greater than %{count}"
+        greater_than_or_equal_to: "must be greater than or equal to %{count}"
+        equal_to: "must be equal to %{count}"
+        less_than: "must be less than %{count}"
+        less_than_or_equal_to: "must be less than or equal to %{count}"
+        odd: "must be odd"
+        even: "must be even"
+        record_invalid: "Validation failed: %{errors}"
+        invalid_date: "is not a valid date"
+        invalid_time: "is not a valid time"
+        invalid_datetime: "is not a valid datetime"
+        is_at: "must be at %{restriction}"
+        before: "must be before %{restriction}"
+        on_or_before: "must be on or before %{restriction}"
+        after: "must be after %{restriction}"
+        on_or_after: "must be on or after %{restriction}"
+        between: "must be between %{earliest} and %{latest}"
+        
+  ## misc
+  
+  # array.to_sentence
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " and "
+      last_word_connector: " and "

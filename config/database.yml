@@ -1,0 +1,27 @@
+# SQLite version 3.x
+#   gem install sqlite3-ruby (not necessary on OS X Leopard)
+development:
+  adapter: mysql
+  encoding: utf8
+  database: iwyg_development
+  username: root
+  password:
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test: &test
+  adapter: mysql
+  encoding: utf8
+  database: iwyg
+  username: root
+  password:
+
+production:
+  adapter: mysql
+  encoding: utf8
+  database: heaven7_iwyg
+  username: heaven7_iwyg
+  password: c34g6f8hj1
+  socket: /tmp/mysql.sock
+  port: 3306

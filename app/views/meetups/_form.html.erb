@@ -1,0 +1,68 @@
+<% content_for :head do %>     
+  <script type="text/javascript">
+    $(document).ready(function (){
+  
+      /* TABS */
+      $("#tabs").tabs(); 	
+      showErrorTabs();
+      
+      /* Current User and Pinger is participating by default */
+      
+      $("#meetup_user_ids_<%= current_user.id %>").attr("checked", "checked");
+      <% if @ping %>
+        $("#meetup_user_ids_<%= @ping.owner.id %>").attr("checked", "checked"); 
+      <% end %>
+      /* hide additional location fields */
+      $("#meetup_locations_attributes_1_address_input, #meetup_locations_attributes_1_city_input, #meetup_locations_attributes_1_zip_input, #meetup_locations_attributes_1_country").hide();
+      $("#meetup_locations_attributes_1_country").parent().find("label").hide();           
+    });
+	</script>
+<% end %>
+
+<% semantic_form_for @meetup, :method => "get"   do |f| %>
+  <%= f.error_messages %>
+  <div id="tabs">  
+    <ul>
+        <li><a href="#what"><%= t("what") %></a></li>
+        <li><a href="#where"><%= t("where") %></a></li>          
+        <li><a href="#when"><%= t("when") %></a></li>      
+        <li><a href="#who"><%= t("who") %></a></li>
+  	</ul>
+     <div id="what">
+       <% f.inputs do %>
+        <%= f.input :owner_id, :as => :hidden, :value => current_user.id %> 
+        <%= f.input :ownertype, :as => :hidden, :value => "User" %> 
+        <%= f.input :title %>
+        <%= f.input :description, :label => I18n.t("formtastic.labels.meetup.description") %>
+        <% if @thing %>
+          <li><hr /></li>
+          <li>
+            <label><%= t @thing.itemtype, :count => 1 if @thing.itemtype %></label>
+            <%= link_to @thing.title, @thing %>
+          </li>
+        <% end %>
+       <% end %>
+     </div>
+     <div id="where">
+       <% f.inputs do %>
+        <%= render :partial => "locations/nested_form", :locals => { :f => f, :belongs_to => "meetup" } %>
+       
+       <% end %>
+     
+     </div>
+     <div id="when">
+         <% f.inputs do %>
+        <%= render :partial => "events/nested_form", :locals => { :f => f, :belongs_to => "meetup" } %>
+       <% end %>
+     </div>
+     <div id="who"> 
+       <% f.inputs do %> 
+        <%= f.input :users, :as => :check_boxes, :collection => User.all %>
+        <% end %>     
+     </div>    
+   </div>
+  <% f.buttons do %>
+    <br />
+    <%= f.submit t("save") %>
+  <% end %>
+<% end %>

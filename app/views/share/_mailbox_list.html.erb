@@ -1,0 +1,10 @@
+<div id="mailbox_list" style="border:1px solid #aaa; float:right; margin:1em; padding:1em; width:20%">
+  <p><%= link_to "Compose", new_sent_path %></p>
+  
+  <p><strong>Mailboxes</strong></p>
+  <ul>
+    <li><%= link_to "Inbox", inbox_path %></li>
+    <li><%= link_to "Sent", :controller => "sent", :action => "index" %></li>
+  </ul>
+</div>
+

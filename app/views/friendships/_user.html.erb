@@ -1,0 +1,21 @@
+  <div class="user list-item ui-corner-all">
+    <div class="image ui-corner-all"><%= nav_link image_tag(tinyThumb(user)), user_path(user) %></div>
+      <p class="font-small">
+        <%=h user.login %><br />
+        <%=h user.location.city %><br />
+      </p>
+      <div id="description">
+        <%= nav_link pluralize(user.items.size, "Item"), user_items_path(user) %> <%= nav_link pluralize(user.pings.non_open.size, "Ping"), user_pings_path(user) %><br />
+        <%= nav_link "#{user.accounts.taken.size} taken", user_items_path(user) %> <%= nav_link "#{user.accounts.given.size} given", user_items_path(user) %>
+      </div>
+      <div class="menu">
+        <ul>
+          <li>
+            <% if !is_friend?(user) and logged_in? %>
+              <%= link_to t("menu.user.addToFriends"), friendships_path(:friend_id => user), :method => :post %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+      
+  </div>

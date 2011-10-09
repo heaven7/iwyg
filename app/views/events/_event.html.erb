@@ -1,0 +1,23 @@
+<h1><%= t("title.event") %></h1>
+
+<% if @event.item %>
+<p>
+  <b><%= t("events.ressource") %>: </b>
+  <%= link_to @event.item.icon + "&nbsp;" + @event.item.title, item_path(@event.item) %>
+</p>
+<% end %>
+
+<% if @event.description %>
+  <p>
+    <%= auto_link_urls(@event.description) %>
+  </p>
+<% end %>
+<p>
+  <b><%= t("from") %>:</b>
+  <%=h @event.from %>
+</p>
+
+<p>
+  <b><%= t("till") %>:</b>
+  <%=h @event.till %>
+</p>

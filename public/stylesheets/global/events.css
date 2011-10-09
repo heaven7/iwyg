@@ -1,0 +1,26 @@
+/**
+ * Events page style definition.
+ * 
+ * @author Christian Grlica
+ * @copyright 2010 by Heavenseven, www.heavenseven.net 
+ */
+ 
+.appointment {
+  height:100px;
+  margin:0 auto;
+  text-align:center;
+  width:300px;
+}
+
+.events {
+
+}
+.event .who {
+  width:40%;
+}
+.event .when {
+  width:40%;
+}
+.event .options {
+  width:20%;
+}

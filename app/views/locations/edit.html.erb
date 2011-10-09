@@ -1,0 +1,4 @@
+<% if current_user.location ==  @user.location %>
+  <h1><%= t("title.editLocation") %></h1>
+  <%= render :partial => "form" %>
+<% end %>

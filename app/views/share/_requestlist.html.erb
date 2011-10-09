@@ -1,0 +1,9 @@
+<h4>List</h4>
+<% @resource.requests.each do |r| %>
+  <div class="box font-small">
+    <%= nav_link thumbnail_tag(@resource.find_user(r.user_id)), "profile", @resource.find_user(r.user_id).login %>
+    <%=h @holder.login %>
+    <%=h r.encouragement %>
+    <p class="font-small"><%=h r.created_at %></p>
+  </div>
+<% end %>

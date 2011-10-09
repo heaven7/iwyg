@@ -1,0 +1,42 @@
+== 0.2.6
+* Added :description option and added proc ability to :children_method option for helpers.
+* Bug fix for no ENV['HOME'] on Windows.
+* Bug fix on unaliasing output_method.
+* Bug fix on multiple renders of vertical table.
+
+== 0.2.5
+* Added ability to use Hirb.enable with non-irb ruby shells.
+* Helper configs now recursively merge when inheriting from others via :ancestor option.
+
+== 0.2.4
+* Bug fix on UTF-8 support.
+
+== 0.2.3
+* Added UTF-8 support for Ruby 1.8.x
+* Added :all_fields option to Table helper.
+
+== 0.2.2
+* Added a friendlier default (a vertical table) to incorrectly configured tables.
+* Added vertical table helper thanks to chrononaut.
+* Added detection of :select option from ActiveRecord queries in ActiveRecordTable helper.
+* Added handling anything that responds to :to_a in AutoTable helper.
+
+== 0.2.1
+* Fixed typo in Hirb::Console.view
+
+== 0.2.0
+* Major refactoring with bug fixes and better tests.
+* Improved table algorithm to ensure that tables don't wrap.
+* Added a pager which detects if output should be paged, Hirb::Pager.
+* Added a selection menu, Hirb::Menu
+* Following API changes: Hirb::Helpers::Table.max_width removed and config files don't use
+  the :view key anymore.
+== 0.1.2
+* Added tree views.
+* Added output_method option to Hirb::View.render_output.
+
+== 0.1.1
+* Fixed bug when rendering table with many fields.
+
+== 0.1.0
+* Initial release

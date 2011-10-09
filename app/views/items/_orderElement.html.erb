@@ -1,0 +1,23 @@
+<% if @tag || @tagtype %>
+  <%= sort_link $search, :by => key, 
+                     :as => label, 
+                     :params => { :page => params[:page], 
+                                  @tagtype => @tag
+                     } 
+  %>
+<% elsif params[:search] %>  
+  <%= sort_link $search, :by => key, 
+                     :as => label, 
+                     :params => { :page => params[:page], 
+                                  "search[user_id]" => params[:search][:user_id],
+                                  "search[item_type_id_equals]" => params[:search][:item_type_id_equals],
+                                  "search[need_equals]" => params[:search][:need_equals],
+                     } 
+  %>
+<% else %>
+  <%= sort_link $search, :by => key, 
+                     :as => label, 
+                     :params => { :page => params[:page]
+                     } 
+  %>
+<% end %>

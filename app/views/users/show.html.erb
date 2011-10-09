@@ -1,0 +1,38 @@
+<% if user_signed_in? and @user == current_user %>
+  <div class="button edit">
+    <%= link_to t("userarea.edit.profile"), edit_polymorphic_path([@user, "userdetails"]) %>
+  </div>
+<% end %>
+<% if @user %>
+  <div class="sub2cols">
+    <div class="subcol1">
+      <h2><%= t("user.skills") %></h2>
+      <div class="block ui-corner-all">
+        <% for tag in @user.skill_list %>
+          <%= link_to tag, users_path({:skill => tag}) %>
+        <% end %>
+      </div>
+      <h2><%= t("user.aims") %></h2>
+      <div class="block ui-corner-all">
+        <% for tag in @user.aim_list %>
+          <%= link_to tag, users_path({:aim => tag}) %>
+        <% end %>
+      </div>
+    </div>
+    <div class="subcol2">
+      <h2><%= t("user.interests") %></h2>
+      <div class="block ui-corner-all">  
+        <% for tag in @user.interest_list %>
+          <%= link_to tag, users_path({:interest => tag}) %>
+        <% end %>
+      </div>
+      <h2><%= t("user.wishes") %></h2>
+      <div class="block ui-corner-all">
+        <% for tag in @user.wish_list %>
+          <%= link_to tag, users_path({:wish => tag}) %>
+        <% end %>
+      </div>
+      
+    </div>
+  </div>
+<% end %>

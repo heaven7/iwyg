@@ -1,0 +1,84 @@
+/**
+ * Index (Home) style definition.
+ * 
+ * @author Christian Grlica
+ * @copyright 2009 by Heavenseven, www.heavenseven.net 
+ */
+@import url(global/main.css);
+
+/* Logo */
+#logo {
+  padding-top:5em;  
+  padding-bottom:0.5em;
+  text-align:center;
+}
+
+/* Content  */
+#content {
+  text-align:center;
+  width:100%;
+}
+
+/* search */
+
+#search {
+  width:490px;
+  margin:0px auto;
+  margin-top:1em;
+  text-align:center;
+}
+
+#search #search_string {
+  height:25px;
+  position:relative;
+  top:-1px;
+}
+
+#search #searchform {
+  width:380px;
+}
+
+#search #searchmenu {
+  text-align:left;
+  padding-top:1.2em;
+}
+/* Footer  */
+#footer {
+	clear:both;
+	position:relative;
+	width:100%;
+	margin:0pt auto;
+	font-size:70%;
+	color:#a3a5a7;
+	line-height:1em!important;
+	text-align:center;
+	padding-top:2em;
+}
+#footer {
+	padding:.5em;
+}
+#footer .navi span {
+	float:left;
+}
+#footer a {
+	color:#5c5e5f;
+}
+
+html > body #footerwrap {
+  bottom:0;
+  left:0;
+  position:fixed;
+  right:0;
+  
+}
+#footerwrap {
+  clear:left;
+  z-index:100;
+}
+#weed {
+  background:transparent url(../images/global/bg_footer.png) repeat-x scroll 0 6px;
+  height:20px;
+  margin-top:0.5em;
+  padding:0 10px 10px;
+  text-align:center;
+}

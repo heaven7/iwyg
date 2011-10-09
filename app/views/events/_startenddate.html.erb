@@ -1,0 +1,9 @@
+<p class="font-smaller">
+  <b><%= t("from").camelcase %></b>: <%= startdate %>   
+  <% if :enddate %>
+    <br />
+    <b><%= t("till").camelcase %></b>: <%= enddate %>
+    <br />
+    <b><%= t("resources.duration").camelcase %></b>: <%= distance_of_time_in_words(startdate || Time.now, enddate || Time.now, true) %>
+  <% end %>
+</p>

@@ -1,0 +1,7 @@
+
+
+<table>
+<% @accounts.each do |account| %>
+  <%= render :partial => "account", :locals => {:account => account} %>
+<% end %>
+</table>

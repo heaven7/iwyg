@@ -1,0 +1,22 @@
+<h1>Listing item_statuses</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+  </tr>
+
+<% @item_statuses.each do |item_status| %>
+  <tr>
+    <td><%=h item_status.title %></td>
+    <td><%=h item_status.description %></td>
+    <td><%= link_to 'Show', item_status %></td>
+    <td><%= link_to 'Edit', edit_item_status_path(item_status) %></td>
+    <td><%= link_to 'Destroy', item_status, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New item_status', new_item_status_path %>

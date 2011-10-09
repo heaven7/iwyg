@@ -1,0 +1,12 @@
+<% semantic_form_for @account  do |f| %>
+  <%= f.error_messages %>
+  <% f.inputs do %>
+    <%= f.input :user, :include_blank => false %>
+    <%= f.input :has_taken, :as => :radio, :label => "Transfer", :collection => [["Has taken", true], ["Has given", false]] %>
+    <%= f.input :item, :include_blank => false  %>
+  <% end %>
+  
+  <% f.buttons do %>
+    <%= f.submit "Save" %>
+  <% end %>
+<% end %>

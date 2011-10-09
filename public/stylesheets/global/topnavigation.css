@@ -1,0 +1,89 @@
+/**
+ * Topnavigation style definition.
+ * 
+ * @author Christian Grlica
+ * @copyright 2011 by Heavenseven, www.heavenseven.net 
+ */
+
+#topnavigation {
+  float:right;
+  clear:both;
+  font-size:90%;
+  background:#9fc690;
+  border:1px solid #87a87b;
+  border-top:none;
+  position:absolute;
+  z-index:20;
+  min-width:100px;
+  text-align:right;
+  top:2.2em;
+  right:2em;
+  padding:0.5em;
+  -moz-border-radius-bottomleft:8px;
+  -moz-border-radius-bottomright:8px;
+  -webkit-border-radius-bottomleft:8px;
+  -webkit-border-radius-bottomright:8px;
+  border-radius-bottomleft:8px;
+  border-radius-bottomright:8px;
+  border-bottom-left-radius:8px 8px;
+  border-bottom-right-radius:8px 8px;
+  
+  -moz-border-radius-topleft:8px;
+  -moz-border-radius-topright:8px;
+  -webkit-border-radius-topleft:8px;
+  -webkit-border-radius-topright:8px;
+  border-radius-topleft:8px;
+  border-radius-topright:8px;
+  border-top-left-radius:8px 8px;
+  border-top-right-radius:8px 8px;
+}
+#topnavigation ul li {
+  color:#fff;
+}
+#topnavigation .horizontal a {
+  text-decoration:none;
+  padding:0.5em;
+  border:1px solid #9fc690;
+}
+
+#topnavigation .horizontal a:hover,
+#topnavigation .horizontal a:focus {
+  color:#fff;
+}
+
+#topnavigation #profile_link {
+  border:1px solid transparent;
+  background:transparent url("../../images/icons/icon_arrow_down.png") center right no-repeat;
+  padding-right: 1.2em;
+}
+
+#topnavigation #profile_link img {
+  height:20px;
+}
+
+#topnavigation .profile {
+  display:none;
+  position:absolute;
+  top:2.2em;
+  text-align:right;
+  background: #87A87B;
+  padding:1em;
+  right:0em;
+  min-width:100px;
+  -moz-border-radius-bottomleft:4px;
+  -moz-border-radius-bottomright:4px;
+  border-radius-bottomleft:4px 4px;
+  border-radius-bottomright:4px 4px;
+  border-bottom-left-radius: 4px 4px;
+  border-bottom-right-radius: 4px 4px;
+  -moz-border-radius-topleft:4px;
+  -moz-border-radius-topright:4px;
+  border-radius-topleft:4px 4px;
+  border-radius-topright:4px 4px;
+  border-top-left-radius: 4px 4px;
+  border-top-right-radius: 4px 4px;
+}
+
+#topnavigation:hover ul.profile {
+  display:block !important;
+}

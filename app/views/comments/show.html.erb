@@ -1,0 +1,28 @@
+<p>
+  <b>Body:</b>
+  <%=h @comment.body %>
+</p>
+
+<p>
+  <b>Commentable:</b>
+  <%=h @comment.commentable_id %>
+</p>
+
+<p>
+  <b>Commentable type:</b>
+  <%=h @comment.commentable_type %>
+</p>
+
+<p>
+  <b>Published:</b>
+  <%=h @comment.published %>
+</p>
+
+<p>
+  <b>Published at:</b>
+  <%=h @comment.published_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_comment_path(@comment) %> |
+<%= link_to 'Back', comments_path %>

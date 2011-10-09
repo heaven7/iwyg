@@ -1,0 +1,11 @@
+.DS_STORE
+Thumbs.db
+.bundle/
+log/development.log
+log/*
+tmp/*
+public/system/*
+Thumbs.db        
+vendor/*
+vendor/bundle/*
+Gemfile.lock

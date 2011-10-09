@@ -1,0 +1,31 @@
+<% content_for :head do %>   
+   <script type="text/javascript">
+  $(document).ready(function (){
+
+  	$(".event-from").datetimepicker({dateFormat: "yy-mm-dd", timeFormat: "hh:mm", changeYear: true });
+  	$(".event-till").datetimepicker({dateFormat: "yy-mm-dd", timeFormat: "hh:mm", changeYear: true });
+  	
+  });
+  </script>
+<% end %>
+
+<% f.inputs do %>
+  <% f.semantic_fields_for :events do |event_form| %> 
+    <%= event_form.input :eventable_id, :as => :hidden, :value => @eventable_id if @eventable_id %>
+    <%= event_form.input :eventable_type, :as => :hidden, :value => @eventable_type if @eventable_type %> 
+    <%= event_form.input :from, 
+      :as         => :string,
+      :required   => false, 
+      :input_html => {:class => "ui-corner-all event-from"},
+      :label      => (t("formtastic.labels.event.from") + "&nbsp;" + image_tag("icons/icon_event.png"))
+    %>
+    
+    <%= event_form.input :till,  
+      :as         => :string,
+      :required   => false, 
+      :input_html => {:class => "ui-corner-all event-till"},
+      :label      => (t("formtastic.labels.event.till") + "&nbsp;" + image_tag("icons/icon_event.png"))
+    %>
+  <% end %>
+ <% end %>
+

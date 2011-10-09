@@ -1,0 +1,27 @@
+/* startpage */
+
+
+.marquee-user {
+  margin:0 auto;
+  text-align:center;
+  width:90%;
+}
+.marquee-user ul {
+  line-height:1em;
+  text-align:left;
+}
+
+.marquee-user ul .image a  {
+  position:relative;
+  z-index:24;
+}
+.marquee-user ul li {
+  float:left;
+
+}
+
+
+#holder-offers,
+#holder-needs {
+  float:left;
+}

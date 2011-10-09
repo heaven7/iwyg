@@ -1,0 +1,8 @@
+
+<% if current_user.id == friendship.friend_id %>
+  <% user = friendship.user %>
+<% else %>
+  <% user = friendship.friend %>
+<% end %>
+
+<%= render :partial => "users/user", :locals => {:user => user} %>

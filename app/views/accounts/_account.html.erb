@@ -1,0 +1,6 @@
+<tr>
+    <td><%=h user(account.user_id).login %></td>
+    <td><%=h has_taken?(account.has_taken) %></td>
+    <td><%=h item(account.item_id).title %></td>
+    <td><%= link_to 'Show', account %></td>
+</tr>

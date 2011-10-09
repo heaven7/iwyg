@@ -1,0 +1,35 @@
+<% if @user and @user == current_user %>
+  <div class="button new">
+    <%= link_to t("event.new"), new_polymorphic_path([@eventable, Event.new]) %>
+  </div>
+<% end %>
+
+<h1><%= t("title.events") %></h1>
+
+<% if @events.size > 0 %>
+<table>
+  <tr>
+    <th><%= t("what") %></th>
+    <th><%= t("when") %></th>
+    <th></th>
+  </tr>
+
+<% for event in @events %>
+  <tr class="event">
+    <td class="who">
+      <% if event.item or event.ping %>
+        <%= render :partial => "eventaction", :locals => { :event => event } %>
+      <% elsif event.description %>
+        <%= link_to shorten(event.description, 50), event_path(event) %>
+      <% end %>
+    </td>
+    <td class="when">
+      <%= render :partial => "startenddate", :locals => { :startdate => event.from, :enddate => event.till } %>
+    </td>
+    <td class="options"><%= render :partial => "eventmenu", :locals => { :event => event, :eventable => @eventable } %></td>
+  </tr>
+<% end %>
+</table>
+<% else %>
+  <p>no events yet...</p>
+<% end %>

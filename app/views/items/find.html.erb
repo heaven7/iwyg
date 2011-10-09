@@ -1,0 +1,37 @@
+<% if params[:search_string] %>
+  <% if params[:need] %>
+    <h2>You offered: <%= params[:search_string] %></h2>
+  <% else %>  
+    <h2>You searched for: <%= params[:search_string] %></h2>
+  <% end %>
+  <% @keywords.each do |keyword| %>
+    '<%= keyword %>' was searched <%= search_count(keyword) %> times<br />
+  <% end %>
+<% else %>
+<h2>You searched for: nothing</h2>
+<% end %>
+
+<% if @items %>  
+<div class="list items horizontal">
+<% for item in @items %>
+  <ul class="item items">
+    <li class="details mini item">
+      <p class="image"><%= link_to image_tag(holderTinyThumb(item)), item %></p>
+      <p class="font-small"><%=h owner(item).login  %> <%=h is_need?(item) %></p>
+      <% if itemSmallThumb(item) %>
+        <p class="image"><%= link_to itemSmallThumb(item), item %></p>
+      <% end %>
+      <p><%=h item.title %></p>
+      <p class="description font-small"><%=h item.description %></p>
+    </li>
+    <li>
+      <ul class="menu horizontal">
+
+          <li><%= link_to 'More', item %></li>
+      </ul>
+  </li>  
+  </ul>
+<% end %>
+</div>
+<% end %>
+  

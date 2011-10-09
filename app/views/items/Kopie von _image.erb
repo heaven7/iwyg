@@ -1,0 +1,11 @@
+<div class="image">
+<% new_or_existing = image.new_record? ? 'new' : 'existing' %>
+<% prefix = "item[#{new_or_existing}_image_attributes][]" %>
+<%# fields_for prefix, image do |i| %>
+<% fields_for "item[image_attributes][]", image do |i| %>
+  <p>
+  <label>Image:</label> <%= i.file_field :path, :class => "inputfile" %>
+  <%= link_to_function "remove" , "$(this).up('.image').remove()" %>
+  </p>
+<% end %>
+</div>

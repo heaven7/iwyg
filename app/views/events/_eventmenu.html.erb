@@ -1,0 +1,6 @@
+<% if event.owner == current_user %>
+<ul>
+  <li class="button"><%= link_to t("edit"), edit_polymorphic_path([eventable, event]) if !event.ping and !event.eventable_type %></li>
+  <li class="button"><%= link_to t("delete"), event, :confirm => t("confirm_delete"), :method => :delete %></li>
+</ul>
+<% end %>

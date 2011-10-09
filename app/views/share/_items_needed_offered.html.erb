@@ -1,0 +1,28 @@
+<ul class="item-collection">
+  <% for itemType in itemTypes do %>
+
+    <li>
+      <% if need == 1
+          action = :needed
+        else
+          action = :offered
+        end
+      %>
+      <% if params[:user_id] %>
+        <%= link_to  image_tag(("icons/icon_" + itemType.title).downcase + ".png") + t( itemType.title.downcase, :count => resources[itemType.title.downcase.to_sym][action].size ), 
+            user_items_path( @user, 
+                             "search[item_type_id_equals]" => itemType.id, 
+                             "search[need_equals]" => need, 
+                             "search[user_id]" => @user.id,
+                             "search[order]" => "descend_by_created_at" )
+        %>
+      <% else %>
+        <%= link_to image_tag(("icons/icon_" + itemType.title).downcase + ".png") + t( itemType.title.downcase, :count => resources[itemType.title.downcase.to_sym][action].size ), 
+            items_path( "search[item_type_id_equals]" => itemType.id,
+                        "search[need_equals]" => need,
+                        "search[order]" => "descend_by_created_at" )
+        %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

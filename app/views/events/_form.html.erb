@@ -1,0 +1,22 @@
+<% semantic_form_for ([@eventable, @event]), :html => {:multipart => true, :class => "formular" } do |f| %>
+  <% if @pinger %>
+    <%= t("who") %>:
+    <%= render :partial => "appointment", :locals => { :pinger => @pinger, :user => current_user } %>
+  <% end %>
+  <%  if @item  %>
+    <br />
+    <%= t("what") %>: <%= @item.title + " (#{@item.localized_itemtype})" %>
+  <% end %>
+  <% f.inputs do %>
+    <%= f.error_messages %>
+    <%= f.input :eventable_id, :as => :hidden, :value => @eventable_id if @eventable_id %>
+    <%= f.input :eventable_type, :as => :hidden, :value => @eventable_type if @eventable_type %>
+    <%= f.input :ping_id, :as => :hidden, :value => @ping.id if @ping %>
+    <%= f.input :description, :as => :text, :required => false if !@pinger %>
+    <%= render 'share/event_fields', :f => f %>
+  <% end %>
+  
+  <% f.buttons do %>
+      <%= f.submit t("save") %>
+  <% end %>
+<% end %>

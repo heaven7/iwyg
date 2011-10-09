@@ -1,0 +1,77 @@
+<% content_for(:head) do %>
+   <%= GMap.header(:hl=> params[:locale]) if @map %>
+  <%= @map.to_html if @map %>
+<% end %>
+<div id="col1">
+<%= render :partial => "transferoptions", :locals => {:transfer => @transfer} %>
+<h1>
+    <%= t("transfer.of") %> <%= @transfer.itemType %><br />
+    "<%=h item(@transfer.transferable_id).title %>"
+</h1>
+  <%= render :partial => "share/images", :locals => {:images => @transfer.item.images} %>
+  
+<p>
+  <b><%= t("from") %></b>
+  <% if @transfer.item.need? %>
+    <%=h @receiver.location.city if @receiver.location.city %>
+  <% else %>
+    <%=h @transfer.item.location.city || user(@transfer.user_id).location.city if @transfer.item.location.city || user(@transfer.user_id).location.city %>
+  <% end %>
+</p>
+<p>
+  <b><%= t("transfer.to") %></b>
+  <% if @transfer.item.need? %>
+    <%=h @transfer.item.location.city || user(@transfer.user_id).location.city if @transfer.item.location.city || user(@transfer.user_id).location.city %>
+  <% else %>
+    <%=h @receiver.location.city if @receiver.location.city %>
+  <% end %>
+  
+</p>
+    
+<p>
+  <b><%= t("transfer.table.status") %></b>
+  <%= t(status(@transfer.status).title) %>
+</p>
+
+<p>
+  <b><%= t("transfer.started") %> :</b>
+  <%=h @transfer.created_at %>
+</p>
+<% if @transfer.accepted_at %>
+  <p>
+    <b><%= t("transfer.accepted") %> :</b>
+    <%=h @transfer.accepted_at %>
+  </p>
+<% end %>
+<% if @transfer.pinger %>
+  <p>
+    <b><%= t("transfer.pinger") %> :</b>
+    <%=h User.find(@transfer.pinger).login %>
+  </p>
+<% end %>
+<% if not @transfer.receiver.blank? %>
+  <p>
+    <b>Zwischenstop bei :</b>
+    <%= @transfer.receiver %>
+  </p>
+<% end %>
+<%= render :partial => "share/pings", :locals => {:pings => @transfer.pings, :pingable => @transfer} %>
+</div>
+<div id="col2">
+  <% if @map %>
+    <h3>Route (<%= t("distance") %>:<%= @distance.round %> km)</h3>
+
+    <%= @map.div(:width => 400, :height => 300) %>
+  
+    <% if @sharingpoints.to_s == "hier noch am werkeln" %>
+      <ul>
+      <% @sharingpoints.each do |item| %>
+      
+       <li><%= render :partial => "items/itemmaplist", :locals => {:item => item} %></li>
+      <% end %>
+      </ul>
+    <% end %>
+  <% end %>
+  <%= render :partial => "share/comments", :locals => {:commentable => @transfer, :comments => @comments} %>
+</div>
+<div class="clearfix"></div>

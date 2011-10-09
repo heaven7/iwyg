@@ -1,0 +1,9 @@
+<li class="box ui-corner-all"> 
+  <p class="font-small">
+    <%= image_tag "icons/icon_#{item.itemtype.downcase}.png", :title => item.localized_itemtype, :alt => item.localized_itemtype %>&nbsp;
+    <%= link_to shorten(item.title, 22), item_path(item) %>
+    <br />
+    Distance: has to be built...<br />
+    <%= distance_of_time_in_words(item.created_at, Time.now) %> <%= t("ago") %>
+  </p>
+</li>

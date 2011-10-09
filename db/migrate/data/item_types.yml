@@ -1,0 +1,16 @@
+good:
+  id: 1
+  title: good
+service:
+  id: 2
+  title: service
+idea:
+  id: 3
+  title: idea
+transport:
+  id: 4
+  title: transport
+sharingpoint:
+  id: 5
+  title: sharingpoint
+  

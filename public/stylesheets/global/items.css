@@ -1,0 +1,16 @@
+/**
+ * Events page style definition.
+ * 
+ * @author Christian Grlica
+ * @copyright 2011 by Heavenseven, www.heavenseven.net 
+ */
+ 
+.item-collection li img {
+  padding-right:0.5em;
+}
+
+.item-owner a {
+  position: relative;
+  left: 65px;
+  top: 2px;
+}

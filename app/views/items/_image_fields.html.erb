@@ -1,0 +1,7 @@
+<%= f.input :image,  
+    :as => :file, 
+    :required => false, 
+    :input_html => {:class => "ui-corner-all"},
+    :label => image_tag("icons/icon_image.png"),
+    :hint => t("form.hint.imageFormats") 
+%>

@@ -1,0 +1,13 @@
+onHold:
+  id: 1
+  title: resources.onHold
+offered:
+  id: 2
+  title: resources.offered
+requested:
+  id: 3
+  title: resources.requested
+onTransfer:
+  id: 4
+  title: resources.onTransfer
+  

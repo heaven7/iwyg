@@ -1,0 +1,17 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'swfobject' %>
+  <%= javascript_include_tag 'jquery.uploadify.v2.1.0.min' %>
+<% end %>
+
+<% semantic_form_for ([@imageable, @image]), :html => {:multipart => true, :class => "formular" } do |f| %>
+  <% f.inputs do %>
+    <%= f.error_messages %>
+    <%= f.input :imageable_id, :as => :hidden, :value => @imageable.id %>
+    <%= f.input :imageable_type, :as => :hidden, :value => @imageable.class %>
+    <%= render 'share/image_fields', :f => f %>
+  <% end %>
+  
+  <% f.buttons do %>
+      <%= f.submit t("save") %>
+  <% end %>
+<% end %>

@@ -1,0 +1,30 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'about' %>
+  <%= stylesheet_link_tag 'global/about' %>
+<% end %>
+
+<h1><%= t("about") %></h1>
+<h2><%=h t("title.startpage.weAre") %></h2>
+<div class="block marquee-user ui-corner-all">
+  <ul>
+    <% for user in @users do %>
+      <%= render :partial => "users/userpreview", :locals => {:user => user} %>
+    <% end %>
+  </ul>
+</div>
+<div class="clearfix"></div>
+<div class="sub2cols">
+  <div class="subcol1">
+    <h2><%=h t("title.startpage.weHave") %></h2>
+    <div id="holder-offers" class="block ui-corner-all">
+      <%= render :partial => "share/items_needed_offered", :locals => {:resources => @resources_offered, :itemTypes => @itemTypes, :need => 0 } %>
+    </div>
+  </div>
+  <div class="subcol2">
+    <h2><%=h t("title.startpage.weNeed") %></h2>
+    <div id="holder-needs" class="block ui-corner-all">
+      <%= render :partial => "share/items_needed_offered", :locals => {:resources => @resources_needed, :itemTypes => @itemTypes, :need => 1 } %>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>

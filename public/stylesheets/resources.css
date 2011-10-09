@@ -1,0 +1,16 @@
+/**
+ * Resource style definition.
+ * 
+ * @author Christian Grlica
+ * @copyright 2009 by Heavenseven, www.heavenseven.net 
+ */
+ 
+ /* NOTE: This file will be loaded on demand from RoR */
+ 
+@import url(requests.css);
+
+.resources .avatar {
+  float:left;
+  padding:1em;
+  margin:0;
+}

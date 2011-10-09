@@ -1,0 +1,14 @@
+Hello <%= @holder.login %>,
+<br />
+<%= @message %>
+<br />
+<br />
+Visit profile of <%= link_to @user.login, @user_url %>.
+<br />
+You can <a href="<%=h @ping_url %>">view</a>,  <a href="<%=h @holder_pings_url %>">accept or decline</a> this ping.
+<br />
+<br />
+Yours
+<br />
+IWYG-Team
+

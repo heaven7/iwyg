@@ -1,0 +1,29 @@
+<% if collection %>        
+  <div class="content-order-panel box-light-grey ui-corner-all">
+    <% if @users_count > 0 %>
+        <span class="font-smaller"><%= t("user", :count => @users_count) %> <%= t("found") %></span>
+        <%= render :partial => "share/tags", :locals => {:tags => @tags, :tagtype => @tagtype} %>
+    <% end %>
+
+    <% if @usersearch  %>
+      <% if @tag || @tagtype %>
+        <span class="font-smaller">
+          <%= t("sortBy") %> 
+          <%= sort_link @usersearch, :by => :login, :as => t("order.user"), :params => { @tagtype => @tag } %>
+          , 
+          <%= sort_link @usersearch, :by => :location_city, :params => { @tagtype => @tag }, :as => t("order.location") %>
+        </span>
+      <% else %>
+        <span class="font-smaller">
+          <%= t("sortBy") %> 
+          <%= sort_link @usersearch, :by => :login, :as => t("order.user") %>
+          , 
+          <%= sort_link @usersearch, :by => :location_city, :as => t("order.location") %>
+        </span>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="center"><%= will_paginate collection %></div>
+  <%= render :partial => "user", :collection => collection %>
+  <div class="center"><%= will_paginate collection %></div>
+<% end %>

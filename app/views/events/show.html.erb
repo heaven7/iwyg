@@ -1,0 +1,19 @@
+<h1><%= t("title.event") %></h1>
+<div class="box ui-corner-all">
+<% if @event.item %>
+<p>
+  <b><%= t("events.ressource") %>: </b>
+  <%= link_to @event.item.icon + "&nbsp;" + @event.item.title, item_path(@event.item) %>
+  <%= render :partial => "items/item", :locals => { :item => @event.item} %>
+  
+</p>
+<% end %>
+
+<% if @event.description %>
+  <p>
+    <%= auto_link_urls(simple_format(@event.description)) %>
+  </p>
+<% end %>
+  <%= render :partial => "startenddate", :locals => { :startdate => @event.from, :enddate => @event.till } %>
+  <div class="clearfix"></div>
+</div>

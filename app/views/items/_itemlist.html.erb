@@ -1,0 +1,17 @@
+<div class="list-item ui-corner-all <%=h itemType(item).downcase if item.item_type_id? %>">
+  <% if item.images.first %>
+    <div class="image-big"><%= link_to image_tag(item.images.first.image.url(:small)), item, :title => item.title %></div>
+  <% else %>
+    <div class="details">
+      <p class="font-small"><%= link_to item.title, item  if item.title %></p>
+      <p class="font-small"><%=h itemStatus(item) if item.status %></p>
+      <p class="font-small"><%=h shorten(item.description) if item.description %></p>
+    </div>
+  <% end %>
+  <% if @user == current_user %>
+    <%= link_to_function "Options", '$(this).next().toggle()', :class => "icon-arrow-down", :id => "user-options" %>
+    <div class="menu">
+      <%= render :partial => "items/usermenu", :locals => {:item => item} %>
+    </div>
+  <% end %>
+</div>

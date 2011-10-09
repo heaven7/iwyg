@@ -1,0 +1,12 @@
+<% semantic_form_for(@friendship), :html => {:class => "shadowed"} do |f| %>
+  <%= f.error_messages %>
+  <% f.inputs :name => "Friendship" do %>
+    <%= f.input :user_id, :value => current_user.id, :as => :hidden, :required => false %>
+    <%= f.input :friend_id, :value => params[:user_id], :as => :hidden, :required => false %>
+    <label>&nbsp;</label>
+    <p>
+    Make a friendship with <%= User.find(params[:user_id]).login %>.
+    </p>
+  <% end %>
+  <%= f.buttons %>
+<% end %>

@@ -1,0 +1,70 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'items' %>
+<% end %>
+
+<% if @user %>
+  <% if @user == current_user %>
+    <div class="button new">
+      <%= link_to t("resource.new"), new_item_path %>
+    </div>
+  <% end %>
+<% end %>
+<% if params[:search] %>
+  <% if @keywords %>
+    <ul class="vertical keywords font-smaller">
+    <% @keywords.each do |keyword|  %>
+      <li>'<%= keyword %>' was searched in <%= @searchItemType %>s <b><%= search_count(keyword) %></b> times</li>
+    <% end %>
+    </ul>
+  <% end %>
+<% end %>
+
+<% if @items_count %>
+<div class="content-order-panel box-light-grey ui-corner-all">
+    <span class="font-smaller"><%= t((@searchItemType.downcase), :count => @items_count) %> <%= t("found") if !params[:user_id] %> &#164;</span>  
+    <%= render :partial => "share/tags", :locals => {:tags => @tags, :tagtype => @tagtype} if @tags or @tagtype %>
+    <%= render :partial => "orderBy" %>
+</div>
+<% end %>
+
+<% if @user and !params[:search] %> 
+
+  <div class="sub2cols">
+    <div class="subcol1">
+      <h2><%= t("title.resources.#{@userSubtitle}Need", :user => @user.login) %> (<%= @items_needed.size %>)</h2>
+      <div class="block ui-corner-all">
+        <%= render :partial => "share/items_needed_offered", :locals => {:resources => @resources_needed, :itemTypes => @itemTypes, :need => 1 } %>
+      </div> 
+    </div>
+    
+    <div class="subcol2">
+      <h2><%= t("title.resources.#{@userSubtitle}Have", :user => @user.login) %> (<%= @items_offered.size %>)</h2>
+      <div class="block ui-corner-all">
+        <%= render :partial => "share/items_needed_offered", :locals => {:resources => @resources_offered, :itemTypes => @itemTypes, :need => 0 } %>
+      </div>
+    </div>
+    
+  </div> 
+  <div class="sub2cols">
+  
+    <div class="subcol1"> 
+     <h2><%= t("title.resources.#{@userSubtitle}HaveTaken", :user => @user.login) %> (<%= @items_taken.size %>)</h2>
+      <div class="block ui-corner-all">
+        <%= render :partial => "share/items_given_taken", :locals => {:resources => @resources_taken, :itemTypes => @itemTypes, :taken => 1 } %>
+      </div>
+    </div>
+    
+    <div class="subcol1">
+      <h2><%= t("title.resources.#{@userSubtitle}HaveGiven", :user => @user.login) %> (<%= @user.items_given.size %>)</h2>
+      <div class="block ui-corner-all">
+        <%= render :partial => "share/items_given_taken", :locals => {:resources => @resources_given, :itemTypes => @itemTypes, :taken => 0 } %>
+      </div>   
+    </div>
+    
+  </div>
+  
+<% else %>
+    <%= render :partial => "share/item_collection", :locals => {:collection => collection} %>
+    <%= render :partial => "item", :collection => collection %>
+    <%= render :partial => "share/item_collection", :locals => {:collection => collection} %>
+<% end %>

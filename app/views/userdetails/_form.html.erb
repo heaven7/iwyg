@@ -1,0 +1,86 @@
+<% content_for :head do %>   
+  <%= stylesheet_link_tag 'jquery.listbuilder.css' %>
+  <%= javascript_include_tag 'jquery-ui-listbuilder' %>
+  
+  <script type="text/javascript">
+  $(document).ready(function (){
+
+    /* TABS */
+    $("#tabs").tabs(); 	
+    showErrorTabs();
+  	
+    /* DATEPICKER */
+    $("#user_userdetails_attributes_birthdate").datetimepicker(
+     {
+      changeYear: true,
+      changeMonth: true,
+	    yearRange: '1910:2010',
+     }
+    );
+  
+    /* AUTOCOMPLETE AND LISTBUILDER */
+    $(" #user_aim_list ").listbuilder({autocomplete:{source: '/items/tag_suggestions.js?c=aims'}});
+    $(" #user_skill_list ").listbuilder({autocomplete:{source: '/items/tag_suggestions.js?c=skills'}});
+    $(" #user_interest_list ").listbuilder({autocomplete:{source: '/items/tag_suggestions.js?c=interests'}});
+    $(" #user_wish_list ").listbuilder({autocomplete:{source: '/items/tag_suggestions.js?c=wishes'}});
+  
+    /* STYLING */
+    $('.ui-listbuilder-input').addClass('ui-corner-all');
+      
+  });
+	</script>
+<% end %>
+
+<% semantic_form_for @user, :html => {:multipart => true} do |form| %>
+  <%= form.error_messages %>
+  <div id="tabs">  
+    <ul>
+        <li><a href="#interests"><%= t("form.userdetails.personality") %></a></li>
+        <li><a href="#personal"><%= t("form.userdetails.data") %></a></li>          
+        <li><a href="#location"><%= t("form.userdetails.location") %></a></li>      
+        <li><a href="#avatar"><%= t("form.userdetails.avatar") %></a></li>
+  	</ul>
+    <div id="interests">
+      <% form.inputs do %>
+          <%= form.input :aim_list, :as => :text, :required => false %>
+          <%= form.input :skill_list, :as => :text, :required => false %>
+          <%= form.input :interest_list, :as => :text, :required => false %>
+          <%= form.input :wish_list, :as => :text, :required => false %>
+      <% end %>
+    </div>
+    <div id="personal">  
+      <% form.inputs do %>
+        <% form.semantic_fields_for :userdetails do |userdetails_form| %>
+          <%= userdetails_form.input :firstname, :required => false, :label => I18n.t("formtastic.labels.userdetails.firstname") %>
+          <%= userdetails_form.input :lastname, :required => false, :label => I18n.t("formtastic.labels.userdetails.lastname") %>
+          <%= userdetails_form.input :birthdate, :as => :string, :required => false, :label => I18n.t("formtastic.labels.userdetails.birthdate") + "&nbsp;" + image_tag("icons/icon_event.png") %>    
+          <%= userdetails_form.input :occupation, :required => false, :label => I18n.t("formtastic.labels.userdetails.occupation") %>
+          <%= userdetails_form.input :company, :required => false, :label => I18n.t("formtastic.labels.userdetails.company") %>
+    <!--
+          <%= userdetails_form.input :language, :as => :select, :collection => I18n.available_locales, :include_blank => false, :required => false %>
+    -->
+        <% end %>
+      <% end %>
+    </div>
+    <div id="location"> 
+      <%= render :partial => "locations/nested_form_location", :locals => { :f => form, :belongs_to => "user" } %>
+    </div>
+    <div id="avatar"> 
+      <div class="image">
+          <p class="center"><%= image_tag smallThumb(@user) %></p>
+          <% form.semantic_fields_for :images do |image_form| %>
+            <%= image_form.input :imageable_id, :as => :hidden, :value => @imageable.id if @user.images.count == 0 %>
+            <%= image_form.input :imageable_type, :as => :hidden, :value => @imageable.class if @user.images.count == 0 %>
+            <div class="options center">
+              <%= link_to_remove_fields  image_tag(("icons/icon_delete.png"), :alt => t("remove"), :title => t("remove")), image_form if @user.images.count != 0 %>
+            </div>
+            <%= render 'share/image_fields', :f => image_form %>
+          <% end %> 
+      </div>
+    </div>
+  </div>  
+  <% form.buttons do %>
+    <br />
+    <%= form.submit t("save") %>
+  <% end %>
+<% end %>

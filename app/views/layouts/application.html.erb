@@ -1,0 +1,130 @@
+<% rendering_start = Time.now %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <%= stylesheet_link_tag "style", "formtastic", "formtastic_changes", "jquery.autocomplete", :cache => 'base' %>
+  <%= javascript_include_tag :defaults %> 
+  <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" %> 
+  <%= javascript_include_tag "jquery-ui-timepicker-addon.js" %>                                               
+  <%# javascript_include_tag "jquery.dataTables.js" %>
+  <%# stylesheet_link_tag "themes/base/ui.theme.css" %>   
+  <%= stylesheet_link_tag "themes/iwyg/jquery.ui.theme.css" %>  
+  <%= stylesheet_link_tag "themes/iwyg/jquery-ui-1.8.11.custom.css" %> 
+  <%= javascript_include_tag "i18n/jquery-ui-i18n.js" %>
+  <%= stylesheet_link_tag "themes/iwyg/agents/#{users_browser}" if File.exist?("public/stylesheets/themes/iwyg/agents/#{users_browser}.css") %>
+  
+  <script type="text/javascript">
+    $(document).ready(function (){    
+      /* localization of datetimepicker */
+      locale = '<%= t ("meta.locale") %>'; 
+      $.timepicker.setDefaults($.timepicker.regional[locale]);
+      $.datepicker.setDefaults($.datepicker.regional[locale]);
+      
+      $('#searchextended #from').datetimepicker({inline:true, stepMinute: 5});
+      $('#searchextended #till').datetimepicker({inline:true, stepMinute: 5});
+      $('.ui-datepicker').addClass('shadowed');  
+    });
+  </script>
+  
+  <%= javascript_include_tag "jquery.url" %>
+  <%# ajaxful_rating_style %>
+
+  <%= yield :head %>
+  
+  <script type="text/javascript">
+
+    /* Google Analytics */
+    
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2599953-14']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  
+  <title><%= @title %></title>
+</head>
+<body>
+<div id="container">
+  <div id="header">
+    <div id="logo">
+      <%= link_to image_tag("/images/iwyg_logo.png"), root_path %>
+    </div>
+    <%= render :partial => 'share/search' %>
+    <div id="mainnavigation">
+      <ul class="menu horizontal">
+        <li id="resources"><%= link_to_unless_current t("menu.main.resources"), items_path %>
+          <ul class="submenu ui-corner-all shadowed">
+            <li><%= link_to t("resources.goods"), items_path("search[item_type_id_equals]" => 1) %></li>
+            <li><%= link_to t("resources.services"), items_path("search[item_type_id_equals]" => 2) %></li>  
+            <li><%= link_to t("resources.ideas"), items_path("search[item_type_id_equals]" => 3) %></li>
+            <li><%= link_to t("resources.transports"), items_path("search[item_type_id_equals]" => 4) %></li>
+            <li><%= link_to t("resources.sharingpoints"), items_path("search[item_type_id_equals]" => 5) %></li>
+          </ul>
+        </li>
+        <li><%= link_to_unless_current t("menu.main.members"), users_path %></li>
+<!--        
+        <li><%= link_to_unless_current t("menu.main.about"), :controller => "page", :action => "about" %></li>
+        <% if user_signed_in? %>
+          <li><%= link_to_unless_current t("menu.main.help"), :controller => "page", :action => "help" %></li>
+        <% end %>
+-->
+      </ul>
+    </div>
+    <%= render :partial => 'share/topnavigation' %>
+  </div>
+  <% if flash[:notice] -%>
+    <div class="notice ui-corner-all">
+      <div class="exit"><a href="#"><img src="/images/icons/icon_delete.png" /></a></div>
+      <%= flash[:notice] %>
+    </div>
+  <% end -%>
+  <% if flash[:error] -%>
+    <div class="error ui-corner-all">
+      <div class="exit"><a href="#"><img src="/images/icons/icon_delete.png" /></a></div>
+      <%= flash[:error] %>
+    </div>
+  <% end -%>
+  <div id="content">
+    <%= @geolocation %>
+    <%= yield(:content) or yield %>
+  </div>
+  
+  <div id="footerwrap">
+    <div id="weed"> 
+    </div>
+  </div>
+  <div id="footer">
+    <!--
+    <% rendering_stop = Time.now %>
+    <% rendering_time = rendering_stop - rendering_start %>
+    <%= "Rendered in #{rendering_time} seconds" %>
+    -->
+    <div id="footernavigation">
+      <h4>Languages</h4>
+      <ul id="languages">
+       <% I18n.available_locales.each do |locale| %>
+         <% unless locale == :locale %>
+          <li><%= link_to image_tag(
+            "flags/#{locale}.png", 
+            :alt => I18n.t("meta.language_name", :locale => locale.to_sym),
+            :title => I18n.t("meta.language_name", :locale => locale.to_sym)
+            ),
+            locale_url(request.request_uri, locale) 
+          %></li>
+         <% end %>
+       <% end %>
+       </ul>
+    </div>
+  </div>
+</div>
+<% if ENV["RAILS_ENV"] == "development" %>
+  <%= debug(params) %>
+<% end %>
+</body>
+</html>

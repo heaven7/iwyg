@@ -1,0 +1,17 @@
+/* TAGS */
+
+# autocomplete of tags in item-form
+.ac_results {
+  width:100px !important;
+}
+.ac_input {
+  width:100px !important;
+}
+.ac_loading {
+  backgournd:green;
+}
+#item_tag_list {
+  display:block;
+}
+
+

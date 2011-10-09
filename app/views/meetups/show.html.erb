@@ -1,0 +1,42 @@
+<div class="centered ">
+  <%= render :partial => "usermenu", :locals => { :meetup => @meetup} %>
+</div>
+<h2><%= @meetup.title %></h2>
+<% if @meetup.locations.size > 0 %>
+  <div class="sub2cols">
+    <div class="subcol1">
+      <% if @meetup.events.first and @meetup.events.first.from %>
+        <div class="box ui-corner-all">
+          <% if @meetup.events.first.till.blank? %>  
+            <p class="font-smaller">
+              <b><%= t("when") %></b><br />
+              <%= @meetup.events.first.from %>
+            </p>
+          <% else %>
+            <p class="font-smaller">
+              <b><%= t("when") %></b><br /> 
+              <%= t("from") %> <%= @meetup.events.first.from %><br />
+              <%= t("till") %> <%= @meetup.events.first.till %>
+            </p>
+          <% end %>
+        </div>
+      <% end %>
+      <p><%= @meetup.description %></p>    
+    </div>
+    <div class="subcol2">
+      <% content_for :head do %>   
+       <%= GMap.header(:hl=> params[:locale]) if @map %>
+       <%= @map.to_html if @map %>
+      <% end %>
+      <%= render "share/map" %>
+      <h4><%= render :partial => "locations/location", :locals => { :location => @meetup.locations.first } %></h4>
+    </div>
+  </div>
+<% end %>
+<div class="clear"></div>
+<h2><%= t("meetup.participant", :count => @meetup.users.count) %></h2>
+<ul class="users-list">
+  <% @meetup.users.each do |user| %>
+    <li class="users-list-item"><%= render :partial => "share/usertiny", :locals => { :user => user } %></li>  
+  <% end %>
+</ul>

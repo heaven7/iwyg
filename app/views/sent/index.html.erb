@@ -1,0 +1,20 @@
+<table>
+  <% for message in @messages %>
+    <% if not message.custom.deleted %>
+      <tr>
+        <td><%=h message.recipients.map(&:login).to_sentence %></td>
+        <td>  
+          <% if message.read %>
+            <%= link_to h(message.subject), sent_path(message) %>
+          <% else %>
+           <%= link_to content_tag(:strong, message.subject), sent_path(message) %>
+          <% end %> 
+        </td>
+        <td><%= distance_of_time_in_words(message.created_at, Time.now) %> <%= t("ago") %></td>
+        <td><%= link_to image_tag("icons/icon_delete.png", :alt => t("remove"), :title => t("remove")), sent_path(message), :method => :delete %></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
+
+<%= will_paginate @messages %>

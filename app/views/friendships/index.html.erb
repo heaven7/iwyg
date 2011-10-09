@@ -1,0 +1,9 @@
+<% if @user %>
+  <% if logged_in? and current_user == @user and (@user.friendships.pending or @user.inverse_friendships.pending) %>
+    <%= render :partial => "friendship", :collection => @user.friendships.pending %>
+    <%= render :partial => "friendship", :collection => @user.inverse_friendships.pending %>
+  <% end %>
+  <%= render :partial => "users/user", :collection => @user.friends, :as => :user %>
+  <%= render :partial => "users/user", :collection => @user.inverse_friends %>
+<% end %> 
+

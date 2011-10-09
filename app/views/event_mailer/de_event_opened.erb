@@ -1,0 +1,15 @@
+Hallo <%= @receiver.login %>,
+<br />
+<br />
+<%= @sender.login %> hat ein Termin f&uuml;r '<a href="<%= @resource_url %>"><%= @resource_title %></a>' vorgeschlagen:
+<br />
+Begin: <%= @event.from %>
+<br />
+Ende: <%= @event.till %>
+<br />
+<br />
+Du kannst den Termin <a href="<%= @receiver_events_url %>">akzeptieren oder ablehnen</a>.
+<br />
+<br />
+Dein<br />
+IWYG-Team

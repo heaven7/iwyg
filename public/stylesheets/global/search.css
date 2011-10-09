@@ -1,0 +1,113 @@
+/* Search */
+#search {
+  position:relative;
+  left:8%;
+  text-align:left;
+  padding-top:2em;
+}
+
+#search input, 
+#search select {
+  border:1px solid #949b8f;
+  color:#4d514a;
+  font-size:100%;
+  font-family:"Georgia", serif;
+}
+#search input {
+  padding-left:2px;
+}
+#search option{
+  background:#EDEFDF;
+
+}
+
+#advanced_search {
+  display:none; // if javascript is disabled
+}
+#search #searchform {
+  float:left;
+  position:relative;
+  margin-right:0.5em;
+}
+#search #searchform #search_title_like_any,
+#search #searchform #nil_class_title_like_any {
+  position:relative;
+  top:-8px;
+  padding:6px 6px 6px 4px; 
+  margin-right:1em;
+}
+#search #searchextended {
+  position: absolute;
+  z-index:1;
+  width:320px;
+  background:#D8E0D0 none repeat scroll 0 0;
+  border:1px solid #A1AA9D;
+  margin-top:1em;
+  padding:0.5em;
+  font-size:90%;
+  display:none;
+}
+#search #searchextended table td{
+  vertical-align:center;
+}
+#search #searchextended input,
+#search #searchextended select {
+  font-size:90%;
+  font-family:"Arial", sans-serif;
+}
+#search #searchextended #search_measure_id_equals {
+  width:88px;
+  
+}
+#search #searchform #nil_class_submit,
+#search #searchform #search_submit {
+position:absolute;
+right:-40px;
+top:0;
+}
+#search #searchmenu {
+    font-size: 70%;
+    left: -1em;
+    position: relative;
+    top: 3.8em;
+}
+
+#search #searchmenu ul li  {
+  line-height:1.2em;
+}
+
+#search #searchmenu a {
+  text-decoration:underline;
+}
+
+#search #searchmenu a:hover {
+  text-decoration:none;
+}
+
+
+#search input, 
+#search select {
+  background:#EDEFDF none repeat scroll 0 0;
+  border:2px solid #949b8f;
+  color:#4d514a;
+  font-size:120%;
+  font-family:"Georgia", serif;
+}
+#search input {
+  padding-left:3px;
+}
+#search #search_string {
+  height:20px;
+  position:relative;
+  top:-1px;
+}
+#search option{
+  background:#EDEFDF;
+
+}
+
+/* jQueryUI Datepicker */
+.ui-datepicker {
+  position:relative;
+  z-index:999;
+} 

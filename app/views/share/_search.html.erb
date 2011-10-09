@@ -1,0 +1,38 @@
+<div id="search">
+  <div id="searchform">
+  <% form_for $search, :url => items_path, :method => "get" do |f| %>
+    
+    <%= f.text_field :title_like_any  %> 
+            
+    <div id="searchextended" class="ui-corner-all">
+      <h3 class="bold">Search Options</h3>
+      <table>
+        <tr>
+          <td><%= t("resources.available") %><br /> (<%= t("from") %> - <%= t("till") %>)</td>
+          <td class="row-big">
+            <%= f.text_field :from_gte, :id => "from", :size => 8 %> - 
+            <%= f.text_field :till_lte, :id => "till", :size => 8 %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= t("resources.amount") %></td>
+          <td class="row-big">
+            <%= f.text_field :amount_equals, :id => "amount", :size => 8 %> &nbsp; 
+            <%= f.collection_select :measure_id_equals, @measures, "id", "title", :include_blank => true %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= t("searchIn") %></td>
+          <td class="row-big">
+            <%= f.collection_select :item_type_id_equals, @itemtypes, :id, :localized_title, :include_blank => true %>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <%= f.submit "Go", :name => nil %>
+  <% end %>
+  </div>
+  <div id="searchmenu">
+      <a href="#" id="advanced_search" class="icon-arrow-down"><%= t("options") %></a>
+  </div>
+</div>
