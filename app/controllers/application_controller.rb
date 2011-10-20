@@ -1,14 +1,14 @@
+# encoding: utf-8
 # Filters added to this controller apply to all controllers in the application.
 # Likewise, all the methods added will be available for all controllers.
+
+
 
 class ApplicationController < ActionController::Base
   helper :all
 
   protect_from_forgery
-    
-  #include AuthenticatedSystem
-  
-  
+     
 
   before_filter :set_locale, :measures, :itemtypes, :itemstatuses
   
@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   $priority_countries = [:DE, :AT, :CH] 
 
   # Scrub sensitive parameters from your log
-  filter_parameter_logging :password
+  config.filter_parameters :password
   
   # Return true if a parameter corresponding to the given symbol was posted.
   def param_posted?(sym)
@@ -68,6 +68,11 @@ class ApplicationController < ActionController::Base
   end
   
   private
+  
+  # Overwriting the sign_out redirect path method
+  def after_sign_out_path_for(resource_or_scope)
+    root_path
+  end
   
   def set_locale
     # if params[:locale] is nil then I18n.default_locale will be used
@@ -130,7 +135,7 @@ class ApplicationController < ActionController::Base
   protected
   
   def measures
-    @measures ||= Measure.find(:all)
+    @measures ||= Measure.all
   end 
   
   def itemtypes

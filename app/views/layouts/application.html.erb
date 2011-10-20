@@ -1,9 +1,11 @@
 <% rendering_start = Time.now %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<!DOCTYPE html>
+<html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <%= stylesheet_link_tag "style", "formtastic", "formtastic_changes", "jquery.autocomplete", :cache => 'base' %>
+  <!--[if IE 6]><%= stylesheet_link_tag 'formtastic_ie6' %><![endif]-->
+  <!--[if IE 7]><%= stylesheet_link_tag 'formtastic_ie7' %><![endif]-->
   <%= javascript_include_tag :defaults %> 
   <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" %> 
   <%= javascript_include_tag "jquery-ui-timepicker-addon.js" %>                                               
@@ -60,7 +62,7 @@
       <ul class="menu horizontal">
         <li id="resources"><%= link_to_unless_current t("menu.main.resources"), items_path %>
           <ul class="submenu ui-corner-all shadowed">
-            <li><%= link_to t("resources.goods"), items_path("search[item_type_id_equals]" => 1) %></li>
+            <li><%= link_to t("resources.goods").html_safe, items_path("search[item_type_id_equals]" => 1) %></li>
             <li><%= link_to t("resources.services"), items_path("search[item_type_id_equals]" => 2) %></li>  
             <li><%= link_to t("resources.ideas"), items_path("search[item_type_id_equals]" => 3) %></li>
             <li><%= link_to t("resources.transports"), items_path("search[item_type_id_equals]" => 4) %></li>
@@ -78,16 +80,16 @@
     </div>
     <%= render :partial => 'share/topnavigation' %>
   </div>
-  <% if flash[:notice] -%>
+  <% if flash[:notice] || notice -%>
     <div class="notice ui-corner-all">
       <div class="exit"><a href="#"><img src="/images/icons/icon_delete.png" /></a></div>
-      <%= flash[:notice] %>
+      <%= flash[:notice] || notice %>
     </div>
   <% end -%>
-  <% if flash[:error] -%>
+  <% if flash[:error] || alert -%>
     <div class="error ui-corner-all">
       <div class="exit"><a href="#"><img src="/images/icons/icon_delete.png" /></a></div>
-      <%= flash[:error] %>
+      <%= flash[:error] || alert %>
     </div>
   <% end -%>
   <div id="content">
@@ -115,7 +117,7 @@
             :alt => I18n.t("meta.language_name", :locale => locale.to_sym),
             :title => I18n.t("meta.language_name", :locale => locale.to_sym)
             ),
-            locale_url(request.request_uri, locale) 
+            locale_url(request.fullpath, locale) 
           %></li>
          <% end %>
        <% end %>

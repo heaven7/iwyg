@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
 
-  # :token_authenticatable, :lockable, :timeoutable, :confirmable and :activatable
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
-  
+  # :token_authenticatable, :lockable, :timeoutable, :encryptable, :confirmable, :encryptor => :restful_authentication_sha1 and :activatable
+  devise :database_authenticatable, :registerable, :rememberable #, :confirmable, :recoverable, :trackable, :validatable
+
   before_create :build_user
 
 
@@ -61,24 +61,25 @@ class User < ActiveRecord::Base
   
   
   # Virtual attribute for the unencrypted password
-  attr_accessor :password
+  # attr_accessor :password
 
-  validates_presence_of     :login, :email
-  validates_presence_of     :password,                   :if => :password_required?
-  validates_presence_of     :password_confirmation,      :if => :password_required?
-  validates_length_of       :password, :within => 4..40, :if => :password_required?
-  validates_confirmation_of :password,                   :if => :password_required?
-  validates_length_of       :login,    :within => 3..40
-  validates_length_of       :email,    :within => 3..100
-  validates_uniqueness_of   :login, :email, :case_sensitive => false
-  validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :message => :invalid
+  #validates_presence_of     :login, :email
+  #validates_presence_of     :password                   
+  #validates_presence_of     :password_confirmation      
+  #validates_length_of       :password, :within => 4..40
+  #validates_confirmation_of :password                 
+  #validates_length_of       :login,    :within => 3..40
+  #validates_length_of       :email,    :within => 3..100
+  #validates_uniqueness_of   :login, :email, :case_sensitive => false
+  #validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :message => :invalid
    
   
   attr_accessible :login, :email, :password, :password_confirmation, 
                   :interest_list, :wish_list, :aim_list, :skill_list, 
                   :userdetails_attributes, :images, :images_attributes, 
                   :location_attributes, :meeting_ids,
-                  :occupation, :company, :birthdate, :lastname, :firstname
+                  :occupation, :company, :birthdate, :lastname, :firstname,
+                  :remember_me
                   
   
   # autocomplete for aims, wishes, interests and skills

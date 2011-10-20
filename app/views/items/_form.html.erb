@@ -88,9 +88,11 @@
     <% end %>
     </div> 
     <div id="how_much" class="tab_content">
-    <% f.inputs do %>
+    <%= f.inputs do %>
       <%= f.input :amount, :required => false, :input_html => {:class => "short"}, :as => :numeric %>
-      <%= f.input :measure, :as => :select, :required => false %>
+      <%= f.semantic_fields_for :measure do |measure_form| %>
+        <%= measure_form.input :measure, :as => :select, :required => false %>
+      <% end %>
       <li><hr class="divider" /></li>
     <% end %>
     </div>

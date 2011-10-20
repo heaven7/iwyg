@@ -1,14 +1,15 @@
 <span class="font-smaller">
   <%= t("sortBy") %> 
-  <%= render :partial => "orderElement", :locals => { :key => :title, 
+  <%# render :partial => "orderElement", :locals => { :key => :title, 
                                                       :label => t("order.title")
                                                     } 
   %>
-  <%= render :partial => "orderElement", :locals => { :key => :created_at, 
+  <%# sort_link @items :title %>
+  <%# render :partial => "orderElement", :locals => { :key => :created_at, 
                                                       :label => t("order.date")
                                                     } 
   %>
-  <%= render :partial => "orderElement", :locals => { :key => :location_city,
+  <%# render :partial => "orderElement", :locals => { :key => :location_city,
                                                       :label =>  t("order.location")
                                                     } 
   %>

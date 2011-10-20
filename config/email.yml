@@ -1,0 +1,16 @@
+development:
+  :address: mail.heavenseven.net
+  :port: 587
+  :domain: www.heavenseven.net
+  :authentication: plain
+  :user_name: iwyg+heavenseven.net
+  :password: r1NmhzzisQw9   
+  :enable_starttls_auto: false
+production:
+  :address: mail.heavenseven.net
+  :port: 587
+  :domain: www.heavenseven.net
+  :authentication: plain
+  :user_name: iwyg+heavenseven.net
+  :password: r1NmhzzisQw9 
+  :enable_starttls_auto: true

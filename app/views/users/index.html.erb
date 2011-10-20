@@ -9,16 +9,16 @@
       <% if @tag || @tagtype %>
         <span class="font-smaller">
           <%= t("sortBy") %> 
-          <%= sort_link @usersearch, :by => :login, :as => t("order.user"), :params => { @tagtype => @tag } %>
+          <%= sort_link @usersearch, :login, :label => t("order.user"), :params => { @tagtype => @tag } %>
           , 
-          <%= sort_link @usersearch, :by => :location_city, :params => { @tagtype => @tag }, :as => t("order.location") %>
+          <%= sort_link @usersearch, :location_city, :params => { @tagtype => @tag }, :label => t("order.location") %>
         </span>
       <% else %>
         <span class="font-smaller">
           <%= t("sortBy") %> 
-          <%= sort_link @usersearch, :by => :login, :as => t("order.user") %>
+          <%= sort_link @usersearch, :login, :label => t("order.user") %>
           , 
-          <%= sort_link @usersearch, :by => :location_city, :as => t("order.location") %>
+          <%= sort_link @usersearch, :location_city, :label => t("order.location") %>
         </span>
       <% end %>
     <% end %>

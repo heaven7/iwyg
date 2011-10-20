@@ -1,10 +1,11 @@
 class DeviseCreateUsers < ActiveRecord::Migration
   def self.up
-    drop_table :users
+    #drop_table :users
     create_table(:users) do |t|          
       
       t.string :login
-      t.database_authenticatable :null => false 
+      t.database_authenticatable 
+      t.encryptable
       t.confirmable
       t.recoverable
       t.rememberable

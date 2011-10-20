@@ -1,1 +1,0 @@
-DataMapper.auto_migrate!

@@ -1,20 +1,20 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{activemodel}
+  s.name = "activemodel"
   s.version = "3.0.9"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["David Heinemeier Hansson"]
-  s.date = %q{2011-06-16}
-  s.description = %q{A toolkit for building modeling frameworks like Active Record and Active Resource. Rich support for attributes, callbacks, validations, observers, serialization, internationalization, and testing.}
-  s.email = %q{david@loudthinking.com}
-  s.homepage = %q{http://www.rubyonrails.org}
+  s.date = "2011-06-16"
+  s.description = "A toolkit for building modeling frameworks like Active Record and Active Resource. Rich support for attributes, callbacks, validations, observers, serialization, internationalization, and testing."
+  s.email = "david@loudthinking.com"
+  s.homepage = "http://www.rubyonrails.org"
   s.require_paths = ["lib"]
   s.required_ruby_version = Gem::Requirement.new(">= 1.8.7")
-  s.rubyforge_project = %q{activemodel}
-  s.rubygems_version = %q{1.7.2}
-  s.summary = %q{A toolkit for building modeling frameworks (part of Rails).}
+  s.rubyforge_project = "activemodel"
+  s.rubygems_version = "1.8.11"
+  s.summary = "A toolkit for building modeling frameworks (part of Rails)."
 
   if s.respond_to? :specification_version then
     s.specification_version = 3

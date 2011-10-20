@@ -78,16 +78,16 @@ class Item < ActiveRecord::Base
     scope.item_type_id_equals(params[:search][:item_type_id_equals].to_i) if not params[:search][:item_type_id_equals].blank?
     scope.title_like_any(params[:search][:title_like_any]) if not params[:search][:title_like_any].blank?
     scope.user_id_equals(params[:search][:user_id]) if not params[:search][:user_id].blank?
-    order = params[:search][:order]
-    if order
-       parts = order.split("_")
-       direction = parts[0] == "ascend" ? "ASC" : "DESC"
-       if parts[3]
-         scope.order = "#{parts[2]}_#{parts[3]} #{direction}"
-       elsif parts[2]
-        scope.order = "#{parts[2]} #{direction}"
-       end
-    end
+   # if params[:search][:order]
+   #    order = params[:search][:order]
+   #    parts = order.split("_")
+   #    direction = parts[0] == "ascend" ? "ASC" : "DESC"
+   #    if parts[3]
+   #      scope.order = "#{parts[2]}_#{parts[3]} #{direction}"
+   #    elsif parts[2]
+   #     scope.order = "#{parts[2]} #{direction}"
+   #    end
+   # end
     return scope
   end
   

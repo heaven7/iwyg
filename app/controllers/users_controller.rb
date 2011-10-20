@@ -83,6 +83,16 @@ class UsersController < InheritedResources::Base
     # redirect_to ('users')
     redirect_to :controller => "users", :action => "show", :id => current_user.id
   end
+  
+  def confirm
+    self.current_user = params[:confirmation_token].blank? ? false : User.find_by_activation_code(params[:confirmation_token])
+    if logged_in? && !current_user.active?
+      current_user.activate
+      flash[:notice] = t("flash.users.activate.notice")
+    end
+    # redirect_to ('users')
+    redirect_to :controller => "users", :action => "show", :id => current_user.id
+  end
  
   private
     

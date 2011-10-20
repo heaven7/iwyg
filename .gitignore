@@ -5,7 +5,8 @@ log/development.log
 log/*
 tmp/*
 public/system/*
-Thumbs.db        
+nbproject/*        
 vendor/*
 vendor/bundle/*
 Gemfile.lock
+/nbproject/private/

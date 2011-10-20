@@ -1,6 +1,6 @@
 <div id="search">
   <div id="searchform">
-  <% form_for $search, :url => items_path, :method => "get" do |f| %>
+  <%= form_for $search, :url => items_path, :method => "get" do |f| %>
     
     <%= f.text_field :title_like_any  %> 
             

@@ -11,11 +11,8 @@ Iwyg::Application.configure do
 
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
-  config.action_view.debug_rjs             = true
+  # config.action_view.debug_rjs             = true
   config.action_controller.perform_caching = false
-
-  # Don't care if the mailer can't send
-  config.action_mailer.raise_delivery_errors = false
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
@@ -26,15 +23,19 @@ Iwyg::Application.configure do
   # devise 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   
-    # Actionmailer
-  config.action_mailer.smtp_settings = {
-      :address => "mail.heavenseven.net",
-      :port => 587,
-      :domain => "www.heavenseven.net",
-      :user_name => "iwyg+heavenseven.net",
-      :password => "r1NmhzzisQw9",
-      :authentication => :plain
-   }
+  # actionmailer
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+
+  #config.action_mailer.smtp_settings = {
+  #    :address => "mail.heavenseven.net",
+  #    :port => 587,
+  #    :domain => "www.heavenseven.net",
+  #    :user_name => "iwyg+heavenseven.net",
+  #    :password => "r1NmhzzisQw9",
+  #    :authentication => :plain
+  # }
    
   # application configuration
   HOST = "http://localhost:3000"

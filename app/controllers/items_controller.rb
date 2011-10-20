@@ -40,9 +40,11 @@ class ItemsController < InheritedResources::Base
         @searchItemType = "Resource"
       end
      
-      prepare_search
-      @items = $scope.paginate( :page => params[:page], :per_page => ITEMS_PER_PAGE )
-      @items_count = $scope.count
+      #prepare_search
+      #@items = $scope.paginate( :page => params[:page], :per_page => ITEMS_PER_PAGE )
+      #@items_count = $scope.count
+      @search = Item.search(params[:search])
+      @items = @search.paginate( :page => params[:page], :per_page => ITEMS_PER_PAGE )
       @searcher ||= current_user.id = nil if current_user
       @keywords = params[:search][:title_like_any].to_s.split if not params[:search][:title_like_any].blank?
       # save search      

@@ -1,21 +1,21 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{actionpack}
+  s.name = "actionpack"
   s.version = "3.0.9"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["David Heinemeier Hansson"]
-  s.date = %q{2011-06-16}
-  s.description = %q{Web apps on Rails. Simple, battle-tested conventions for building and testing MVC web applications. Works with any Rack-compatible server.}
-  s.email = %q{david@loudthinking.com}
-  s.homepage = %q{http://www.rubyonrails.org}
+  s.date = "2011-06-16"
+  s.description = "Web apps on Rails. Simple, battle-tested conventions for building and testing MVC web applications. Works with any Rack-compatible server."
+  s.email = "david@loudthinking.com"
+  s.homepage = "http://www.rubyonrails.org"
   s.require_paths = ["lib"]
   s.required_ruby_version = Gem::Requirement.new(">= 1.8.7")
   s.requirements = ["none"]
-  s.rubyforge_project = %q{actionpack}
-  s.rubygems_version = %q{1.7.2}
-  s.summary = %q{Web-flow and rendering framework putting the VC in MVC (part of Rails).}
+  s.rubyforge_project = "actionpack"
+  s.rubygems_version = "1.8.11"
+  s.summary = "Web-flow and rendering framework putting the VC in MVC (part of Rails)."
 
   if s.respond_to? :specification_version then
     s.specification_version = 3

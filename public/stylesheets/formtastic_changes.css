@@ -20,6 +20,11 @@ form.formtastic fieldset ol li p.inline-hints { color:#333; }
 }
 form.formtastic input, form.formtastic textarea, form.formtastic select { padding:0.5em; }
 
+form.formtastic .input {
+  width: 100%;
+}
+
+
 form.formtastic fieldset ol li.password input,
 form.formtastic fieldset ol li.text textarea,
 form.formtastic fieldset ol li.string input {
@@ -44,14 +49,13 @@ form.formtastic fieldset fieldset legend {
   top:33px;
 }
 
+.locations_attribute_country label
 form.formtastic fieldset .label  {
   background:none;
   border:none;
-  padding:0;
-  margin:0;
-  margin:-1.4em 0 0;
-  padding-left:7.4em;
-  display:block;
+  padding: 0.2em;
+  width: 23% !important;
+  text-align:right;
 }                              
 form.formtastic fieldset ol li label {
   padding-top: 0;

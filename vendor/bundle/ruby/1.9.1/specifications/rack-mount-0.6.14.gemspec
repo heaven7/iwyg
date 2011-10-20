@@ -1,20 +1,19 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{rack-mount}
+  s.name = "rack-mount"
   s.version = "0.6.14"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Joshua Peek"]
-  s.date = %q{2011-03-23}
-  s.description = %q{    A stackable dynamic tree based Rack router.
-}
-  s.email = %q{josh@joshpeek.com}
-  s.homepage = %q{https://github.com/josh/rack-mount}
+  s.date = "2011-03-23"
+  s.description = "    A stackable dynamic tree based Rack router.\n"
+  s.email = "josh@joshpeek.com"
+  s.homepage = "https://github.com/josh/rack-mount"
   s.require_paths = ["lib"]
-  s.rubyforge_project = %q{rack-mount}
-  s.rubygems_version = %q{1.7.2}
-  s.summary = %q{Stackable dynamic tree based Rack router}
+  s.rubyforge_project = "rack-mount"
+  s.rubygems_version = "1.8.11"
+  s.summary = "Stackable dynamic tree based Rack router"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
