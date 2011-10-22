@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
   # :token_authenticatable, :lockable, :timeoutable, :encryptable, :confirmable, :encryptor => :restful_authentication_sha1 and :activatable
-  devise :database_authenticatable, :registerable, :rememberable #, :confirmable, :recoverable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, :rememberable, :rpx_connectable #, :confirmable, :recoverable, :trackable, :validatable
 
   before_create :build_user
 
@@ -60,8 +60,7 @@ class User < ActiveRecord::Base
   delegate :given, :taken, :to => :accounts
   
   
-  # Virtual attribute for the unencrypted password
-  # attr_accessor :password
+
 
   #validates_presence_of     :login, :email
   #validates_presence_of     :password                   
@@ -72,8 +71,14 @@ class User < ActiveRecord::Base
   #validates_length_of       :email,    :within => 3..100
   #validates_uniqueness_of   :login, :email, :case_sensitive => false
   #validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :message => :invalid
-   
   
+  # Virtual attribute for the unencrypted password
+  # attr_accessor :password
+   
+  # Virtual attribute for authenticating by either username or email
+  # This is in addition to a real persisted field like 'username'
+  attr_accessor :username
+
   attr_accessible :login, :email, :password, :password_confirmation, 
                   :interest_list, :wish_list, :aim_list, :skill_list, 
                   :userdetails_attributes, :images, :images_attributes, 
@@ -81,7 +86,6 @@ class User < ActiveRecord::Base
                   :occupation, :company, :birthdate, :lastname, :firstname,
                   :remember_me
                   
-  
   # autocomplete for aims, wishes, interests and skills
   def aim_list_name
     self.aim_list if aim_list
@@ -102,6 +106,12 @@ class User < ActiveRecord::Base
 
 
   protected
+  
+  def self.find_for_database_authentication(warden_conditions)
+     conditions = warden_conditions.dup
+     username = conditions.delete(:username)
+     where(conditions).where(["lower(login) = :value OR lower(email) = :value", { :value => username.downcase }]).first
+   end
   
   def self.random
     if (c = count) != 0

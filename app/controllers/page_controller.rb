@@ -1,7 +1,11 @@
 class PageController < InheritedResources::Base
   layout 'application'
   def index
-    redirect_to profile_path(current_user.login) if logged_in?
+    if logged_in? and !current_user.login.empty?
+      redirect_to profile_path(current_user.login) 
+    elsif logged_in?
+      redirect_to users_path(current_user)
+    end
   end
 
   def help

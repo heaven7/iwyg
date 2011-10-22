@@ -107,6 +107,7 @@ form.formtastic fieldset.buttons {
   padding-left:40%;
   font-weight:bold;
   padding-bottom:1em;
+  width:60%;
 }
 
 .formtastic .date ol li select {

@@ -4,7 +4,9 @@ Devise.setup do |config|
 
   # Configure the class responsible to send e-mails.
   config.mailer = "Devise::Mailer"
-
+  config.rpx_application_name = 'iwyg'
+  RPXNow.api_key = "0a967b4b80d7389269d6f4e929b624e4e3dfc8b0"
+  
   # Configure the e-mail address which will be shown in DeviseMailer.
   config.mailer_sender = "iwyg@heavenseven.net"
 
@@ -14,7 +16,7 @@ Devise.setup do |config|
   # authenticating an user, both parameters are required. Remember that those
   # parameters are used only when authenticating and not when retrieving from
   # session. If you need permissions, you should implement that in a before filter.
-  config.authentication_keys = [ :login ]
+  config.authentication_keys = [ :username ]
 
   # Tell if authentication through request.params is enabled. True by default.
   # config.params_authenticatable = true
@@ -23,7 +25,7 @@ Devise.setup do |config|
   # config.http_authenticatable = true
 
   # The realm used in Http Basic Authentication
-  # config.http_authentication_realm = "Application"
+  # config.http_authentication_realm = "Iwyg"
 
   # ==> Configuration for :database_authenticatable
   # Invoke `rake secret` and use the printed value to setup a pepper to generate
@@ -43,11 +45,11 @@ Devise.setup do |config|
   # ==> Configuration for :confirmable
   # The time you want give to your user to confirm his account. During this time
   # he will be able to access your application without confirming. Default is nil.
-  config.confirm_within = 30.days
+  # config.confirm_within = 30.days
 
   # ==> Configuration for :rememberable
   # The time the user will be remembered without asking for credentials again.
-  # config.remember_for = 2.weeks
+  config.remember_for = 2.weeks
 
   # ==> Configuration for :validatable
   # Range for password length
@@ -59,7 +61,7 @@ Devise.setup do |config|
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
   # time the user will be asked for credentials again.
-  config.timeout_in = 10.minutes
+  config.timeout_in = 20.minutes
 
   # ==> Configuration for :lockable
   # Defines which strategy will be used to lock an account.
@@ -83,7 +85,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :token_authenticatable
   # Defines name of the authentication token params key
-  config.token_authentication_key = :auth_token
+  #config.token_authentication_key = :auth_token
 
   # ==> General configuration
   # Load and configure the ORM. Supports :active_record (default), :mongoid

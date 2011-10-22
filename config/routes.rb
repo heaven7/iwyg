@@ -15,8 +15,10 @@ Iwyg::Application.routes.draw do
   resources :locations
 
   resources :searches
+  
     
-  resources :pages
+  resources :pages                                                 
+  match "/profile/:login" => 'users#show', :login => :login, :as => :profile
   
   resources :item_attatchments 
 
@@ -33,14 +35,14 @@ Iwyg::Application.routes.draw do
     end
   end
   
-
-    
+  
   devise_for :users 
   devise_scope :user do
-      get "login", :to => "devise/sessions#new"
+      get "login", :to => "devise/sessions#new" 
+      get "sign_out", :to => "devise/sessions#destroy"
       get "logout", :to => "devise/sessions#destroy"
       get "signup", :to => "devise/registrations#new"
-  end
+  end  
 
   
   resources :users do
@@ -98,7 +100,6 @@ Iwyg::Application.routes.draw do
     end
   end
 
-  match '/profile/:login', :to => 'users#show', :login => :login, :as => :profile
   match 'page/about', :to => 'page#about'                                      
   match 'page/help', :to => 'page#help'
   

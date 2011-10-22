@@ -16,8 +16,7 @@ group :development do
 end
 
 
-#gem 'warbler'
-#gem "thinking-sphinx", :require => 'thinking_sphinx', :git => "git://github.com/freelancing-god/thinking-sphinx.git", :branch => "rails3"
+gem 'devise_rpx_connectable'
 gem 'jquery-rails', '>= 1.0.12'
 #gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'rails3-jquery-autocomplete'

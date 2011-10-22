@@ -1,16 +1,17 @@
   <div id="topnavigation">
     <% if logged_in? and current_user %>
-    <div id="profile_dropdown">
-      <%= link_to (image_tag(microThumb(current_user)) + '&nbsp;'.html_safe + current_user.login), profile_path(current_user.login), :id => "profile_link" %>
-    </div> 
-    <ul class="profile menu">
-      <li><%= link_to t("topnavigation.profile"), profile_path(current_user.login)%></li>
-      <li><%= nav_link t('topnavigation.mailbox'), "/mailbox" %></li>
-      <li><%= link_to t("topnavigation.logout"), "/logout/", :method => :delete %></li>
+      <div id="profile_dropdown">
+        <%= link_to (image_tag(microThumb(current_user)) + '&nbsp;'.html_safe + current_user.login), profile_path(current_user.login), :id => "profile_link" %>
+      </div> 
+      <ul class="profile menu">
+        <li><%= link_to t("topnavigation.profile"), profile_path(current_user.login)%></li>
+        <li><%= nav_link t('topnavigation.mailbox'), "/mailbox" %></li>
+        <li><%= link_to t("topnavigation.logout"), destroy_user_session_path, :method => :delete %></li>
     <% else %>
-    <ul class="menu horizontal">
-      <li><%= link_to t("topnavigation.register"), new_user_registration_path %></li>      
-      <li>&nbsp;&#124;&nbsp;<%= link_to t("topnavigation.login"), new_user_session_path %></li>
+      <ul class="menu horizontal">          
+        <li><%= link_to_rpx "Sign in", user_session_url %></li>
+        <li><%= link_to t("topnavigation.register"), new_user_registration_path %></li>      
+        <li>&nbsp;&#124;&nbsp;<%= link_to t("topnavigation.login"), new_user_session_path %></li>
     <% end %>
-    </ul>    
+      </ul>    
   </div>

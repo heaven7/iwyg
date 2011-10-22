@@ -128,5 +128,6 @@
 <% if ENV["RAILS_ENV"] == "development" %>
   <%= debug(params) %>
 <% end %>
+<%= javascript_include_rpx(user_session_url) %>
 </body>
 </html>
