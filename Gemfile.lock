@@ -33,6 +33,7 @@ GEM
     arel (2.0.10)
     bcrypt-ruby (3.0.1-x86-mingw32)
     builder (2.1.2)
+    cgi_multipart_eof_fix (2.5.0)
     cocaine (0.2.0)
     devise (1.4.8)
       bcrypt-ruby (~> 3.0)
@@ -45,6 +46,7 @@ GEM
       abstract (>= 1.0.0)
     formtastic (2.0.2)
       rails (~> 3.0)
+    gem_plugin (0.2.3)
     geocoder (1.0.4)
     has_scope (0.5.1)
     hpricot (0.8.4)
@@ -67,6 +69,9 @@ GEM
       activesupport (~> 3.0.2)
       arel (~> 2.0.2)
     mime-types (1.16)
+    mongrel (1.1.5-x86-mingw32)
+      cgi_multipart_eof_fix (>= 2.4)
+      gem_plugin (>= 0.2.3)
     mysql2 (0.2.6-x86-mingw32)
     orm_adapter (0.0.5)
     paperclip (2.4.4)
@@ -129,6 +134,7 @@ DEPENDENCIES
   inherited_resources
   jquery-rails (>= 1.0.12)
   meta_search
+  mongrel
   mysql2
   paperclip
   rails (= 3.0.8)
