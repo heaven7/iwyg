@@ -1,3 +1,6 @@
+require 'yaml'
+YAML::ENGINE.yamler= 'syck'
+
 Iwyg::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 

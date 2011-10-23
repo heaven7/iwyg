@@ -8,21 +8,21 @@ gem 'rails', '3.0.8'
 
 group :production do
   gem 'hpricot'
+  gem 'mongrel'
+  gem 'mysql2', '0.2.7'
 end
 
 group :development do 
   gem 'hpricot' 
-  #gem 'mongrel' #, '>= 1.2.0.pre2'
+  #gem 'mongrel' #, '>= 1.2.0.pre2'                                 
+  gem 'mysql2', '0.2.7'
 end
-
 
 gem 'devise_rpx_connectable'
 gem 'jquery-rails', '>= 1.0.12'
 #gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'rails3-jquery-autocomplete'
-gem 'devise' #, :git => 'git://github.com/plataformatec/devise.git' 
-#gem 'mysql2', '0.2.7'
-gem 'mysql2' #, '0.2.13'  
+gem 'devise' #, :git => 'git://github.com/plataformatec/devise.git'   
 gem 'formtastic', '~> 2.0'
 gem 'geocoder'
 gem 'ym4r', '0.4.1'

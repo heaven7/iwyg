@@ -36,10 +36,8 @@ Iwyg::Application.routes.draw do
   end
   
   
-  devise_for :users 
-  devise_scope :user do
+  devise_for :users  do  
       get "login", :to => "devise/sessions#new" 
-      get "sign_out", :to => "devise/sessions#destroy"
       get "logout", :to => "devise/sessions#destroy"
       get "signup", :to => "devise/registrations#new"
   end  

@@ -32,5 +32,5 @@ production:
   database: heaven7_iwyg
   username: heaven7_iwyg
   password: c34g6f8hj1
-  socket: /tmp/mysql.sock
+  #socket: /tmp/mysql.sock
   port: 3306
