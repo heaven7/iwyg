@@ -42,6 +42,9 @@ Iwyg::Application.routes.draw do
       get "signup", :to => "devise/registrations#new"
   end  
 
+  devise_scope :user do
+    get "/logout" => "devise/sessions#destroy"
+  end
   
   resources :users do
      resources :items, :transfers, :images, :pings, :accounts, :comments, :friendships, :events, :rates, :messages, :meetups

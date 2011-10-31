@@ -6,7 +6,7 @@
       <ul class="profile menu">
         <li><%= link_to t("topnavigation.profile"), profile_path(current_user.login)%></li>
         <li><%= nav_link t('topnavigation.mailbox'), "/mailbox" %></li>
-        <li><%= link_to t("topnavigation.logout"), logout_path, :method => :delete %></li>
+        <li><%= link_to t("topnavigation.logout"), "/logout" %></li>
     <% else %>
       <ul class="menu horizontal">          
         <li><%= link_to_rpx "Sign in", user_session_url %></li>

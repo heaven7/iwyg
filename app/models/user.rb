@@ -79,7 +79,7 @@ class User < ActiveRecord::Base
   # This is in addition to a real persisted field like 'username'
   attr_accessor :username
 
-  attr_accessible :login, :email, :password, :password_confirmation, 
+  attr_accessible :login, :email, :username, :password, :password_confirmation, 
                   :interest_list, :wish_list, :aim_list, :skill_list, 
                   :userdetails_attributes, :images, :images_attributes, 
                   :location_attributes, :meeting_ids,
