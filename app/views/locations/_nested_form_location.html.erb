@@ -9,7 +9,7 @@
     <%= location_form.input :address, :required => false, :label => t("formtastic.labels.location.address") %>
     <%= location_form.input :city, :required => false, :label => t("formtastic.labels.location.city") %>
     <%= location_form.input :zip, :required => false, :input_html => {:class => "short"}, :label => t("formtastic.labels.location.zip") %>
-    <li>
+    <li class="string input optional stringish">
       <label><%= t ("formtastic.labels.location.country") %></label>
       <%= location_form.localized_country_select :country, [], :include_blank => '' %>
     </li>

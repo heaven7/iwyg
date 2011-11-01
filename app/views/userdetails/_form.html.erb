@@ -35,10 +35,10 @@
   <%= form.error_messages %>
   <div id="tabs">  
     <ul>
-        <li><a href="#interests"><%= t("form.userdetails.personality") %></a></li>
-        <li><a href="#personal"><%= t("form.userdetails.data") %></a></li>          
-        <li><a href="#location"><%= t("form.userdetails.location") %></a></li>      
-        <li><a href="#avatar"><%= t("form.userdetails.avatar") %></a></li>
+        <li><a href="#interests"><%= t("form.userdetails.personality").html_safe %></a></li>
+        <li><a href="#personal"><%= t("form.userdetails.data").html_safe %></a></li>          
+        <li><a href="#location"><%= t("form.userdetails.location").html_safe %></a></li>      
+        <li><a href="#avatar"><%= t("form.userdetails.avatar").html_safe %></a></li>
   	</ul>
     <div id="interests">
       <% form.inputs do %>

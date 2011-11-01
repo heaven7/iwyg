@@ -8,6 +8,10 @@
 # See the documentation for class_attribute in ActiveSupport for more information.
 # --------------------------------------------------------------------------------------------------
 
+
+# Escaping hints and labels
+Formtastic::FormBuilder.escape_html_entities_in_hints_and_labels = false
+
 # Set the default text field size when input is a string. Default is nil.
 # Formtastic::FormBuilder.default_text_field_size = 50
 

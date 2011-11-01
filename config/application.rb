@@ -15,7 +15,6 @@ module Iwyg
     
     # The user observer goes inside the Rails::Initializer block
     config.active_record.observers = :user_observer, :ping_observer, :transfer_observer, :comment_observer, :event_observer
-    #config.filter_parameters += [:password]
   end
 end
 

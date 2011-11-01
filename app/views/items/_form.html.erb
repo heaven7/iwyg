@@ -65,12 +65,12 @@
   <%= f.error_messages %>
   <div id="tabs">
     <ul>
-  		<li><a href="#what"><%= t("form.resource.what") %></a></li>
-      <li><a href="#how_much"><%= t("form.resource.howMuch") %></a></li>
-  		<li><a href="#location"><%= t("form.resource.where") %></a></li>
-  		<li><a href="#when"><%= t("form.resource.when") %></a></li>
-  		<li><a href="#images"><%= t("form.resource.images") %></a></li>
-  		<li><a href="#attachments"><%= t("form.resource.attachments") %></a></li>
+  		<li><a href="#what"><%= t("form.resource.what").html_safe %></a></li>
+      <li><a href="#how_much"><%= t("form.resource.howMuch").html_safe %></a></li>
+  		<li><a href="#location"><%= t("form.resource.where").html_safe %></a></li>
+  		<li><a href="#when"><%= t("form.resource.when").html_safe %></a></li>
+  		<li><a href="#images"><%= t("form.resource.images").html_safe %></a></li>
+  		<li><a href="#attachments"><%= t("form.resource.attachments").html_safe %></a></li>
   	</ul>
   	<div id="what" class="tab_content ">
     <% f.inputs do %>
@@ -120,7 +120,7 @@
       <% c = -1 %>
       <li>
         <div class="button new">
-          <%= link_to_add_fields t("images.new"), f, :images %>
+          <%= link_to_add_fields t("images.new").html_safe, f, :images %>
         </div>
       </li> 
       <% f.semantic_fields_for :images do |image_form| %>
@@ -143,7 +143,7 @@
       <% f.inputs do %>  
         <% d = -1 %>  
         <li><div class="button new">
-           <%= link_to_add_fields t("item_attachments.new"), f, :item_attachments %>
+           <%= link_to_add_fields t("item_attachments.new").html_safe, f, :item_attachments %>
           </div>
         </li>  
         <% f.semantic_fields_for :item_attachments do |attachment_form| %>
