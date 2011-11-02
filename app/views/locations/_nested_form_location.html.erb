@@ -3,7 +3,7 @@
  <%= @map.to_html if @map %>
 <% end %>
 <%= render "share/map" %>
-<% f.inputs do %>
+<%= f.inputs do %>
   <% f.semantic_fields_for :location do |location_form| %>
     
     <%= location_form.input :address, :required => false, :label => t("formtastic.labels.location.address") %>

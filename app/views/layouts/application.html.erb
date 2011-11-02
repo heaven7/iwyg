@@ -7,7 +7,8 @@
   <!--[if IE 6]><%= stylesheet_link_tag 'formtastic_ie6' %><![endif]-->
   <!--[if IE 7]><%= stylesheet_link_tag 'formtastic_ie7' %><![endif]-->
   <%= javascript_include_tag :defaults %> 
-  <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" %> 
+  <%# javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" %> 
+  <%= javascript_include_tag "jquery.ui.min.js" %> 
   <%= javascript_include_tag "jquery-ui-timepicker-addon.js" %>                                               
   <%# javascript_include_tag "jquery.dataTables.js" %>
   <%# stylesheet_link_tag "themes/base/ui.theme.css" %>   
@@ -83,13 +84,13 @@
   <% if flash[:notice] || notice -%>
     <div class="notice ui-corner-all">
       <div class="exit"><a href="#"><img src="/images/icons/icon_delete.png" /></a></div>
-      <%= flash[:notice] || notice %>
+      <%= flash[:notice].html_safe || notice.html_safe %>
     </div>
   <% end -%>
   <% if flash[:error] || alert -%>
     <div class="error ui-corner-all">
       <div class="exit"><a href="#"><img src="/images/icons/icon_delete.png" /></a></div>
-      <%= flash[:error] || alert %>
+      <%= flash[:error].html_safe || alert.html_safe %>
     </div>
   <% end -%>
   <div id="content">
