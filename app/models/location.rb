@@ -4,7 +4,7 @@ class Location < ActiveRecord::Base
   
   belongs_to :locatable, :polymorphic => true 
   geocoded_by :address
-  after_validation :geocode
+  after_validation :geocode, :if => :address_changed?
    
     
   acts_as_taggable_on :tags
