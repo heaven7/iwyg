@@ -77,7 +77,7 @@
             <%= image_form.input :imageable_id, :as => :hidden, :value => @imageable.id if @user.images.count == 0 %>
             <%= image_form.input :imageable_type, :as => :hidden, :value => @imageable.class if @user.images.count == 0 %>
             <div class="options center">
-              <%= link_to_remove_fields  image_tag(("icons/icon_delete.png"), :alt => t("remove"), :title => t("remove")), image_form if @user.images.count != 0 %>
+              <%= link_to_remove_fields  image_tag(("icons/icon_delete.png"), :alt => t("remove").html_safe, :title => t("remove").html_safe), image_form if @user.images.count != 0 %>
             </div>
             <%= render 'share/image_fields', :f => image_form %>
           <% end %> 
