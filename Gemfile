@@ -9,15 +9,14 @@ gem 'rails', '3.0.8'
 group :production do
   gem 'hpricot'
   gem 'mongrel'
-  gem 'mysql2' #, '0.2.7'
 end
 
 group :development do 
   gem 'hpricot' 
-  #gem 'mongrel' #, '>= 1.2.0.pre2'                                 
-  gem 'mysql2'
+  #gem 'mongrel' #, '>= 1.2.0.pre2'     
 end
-
+   
+gem 'mysql2', '0.2.7'
 gem 'devise_rpx_connectable'
 gem 'jquery-rails', '>= 1.0.12'
 #gem 'bcrypt-ruby', :require => 'bcrypt'
