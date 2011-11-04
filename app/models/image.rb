@@ -6,7 +6,8 @@ class Image < ActiveRecord::Base
                                          :big => "500x500#"},
                             :default_url => 'global/avatar_dummy_profile.png'
   # for paperclip (polymorphic)
-  acts_as_polymorphic_paperclip 
+  # rails 2: acts_as_polymorphic_paperclip
+  belongs_to :imageable, :polymorphic => true  
  # before_post_process :image?
 
   belongs_to :imageable, :polymorphic => true
