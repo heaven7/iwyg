@@ -6,8 +6,8 @@ class ItemsController < InheritedResources::Base
   respond_to :html, :xml, :js, :json
   before_filter :authenticate_user!, :only => [:new, :edit, :create]
   helper :users, :transfers
-  auto_complete_for :item, :title
-  auto_complete_for :tag, :name
+  #auto_complete_for :item, :title
+  #auto_complete_for :tag, :name
   
   has_scope :on_hold
   has_scope :accepted 

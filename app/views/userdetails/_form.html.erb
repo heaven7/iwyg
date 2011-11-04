@@ -46,7 +46,7 @@
         <li><a href="#avatar"><%= t("form.userdetails.avatar").html_safe %></a></li>
   	</ul>
     <div id="interests">
-      <% form.inputs do %>
+      <%= form.inputs do %>
           <%= form.input :aim_list, :as => :text, :required => false %>
           <%= form.input :skill_list, :as => :text, :required => false %>
           <%= form.input :interest_list, :as => :text, :required => false %>
@@ -54,7 +54,7 @@
       <% end %>
     </div>
     <div id="personal">  
-      <% form.inputs do %>
+      <%= form.inputs do %>
         <% form.semantic_fields_for :userdetails do |userdetails_form| %>
           <%= userdetails_form.input :firstname, :required => false, :label => I18n.t("formtastic.labels.userdetails.firstname") %>
           <%= userdetails_form.input :lastname, :required => false, :label => I18n.t("formtastic.labels.userdetails.lastname") %>

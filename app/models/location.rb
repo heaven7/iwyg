@@ -3,7 +3,7 @@ class Location < ActiveRecord::Base
                   :location, :created_at, :updated_at, :lng, :lat, :state
   
   belongs_to :locatable, :polymorphic => true 
-  geocoded_by :address
+  geocoded_by :address, :latitude  => :lat, :longitude => :lng
   after_validation :geocode, :if => :address_changed?
    
     

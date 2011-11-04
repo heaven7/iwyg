@@ -158,7 +158,7 @@
                 <%= render 'item_attachment_fields', :f => attachment_form %>
                 <div class="options">
                  <%= link_to_function image_tag(("icons/icon_folder_edit.png"), :alt => t("edit"), :title => t("edit")), "edit_field(this)" %> 
-                 <%= link_to_remove_fields image_tag(("icons/icon_folder_remove.png"), :alt => t("remove"), :title => t("remove")), attachment_form %> 
+                 <%= link_to_remove_fields image_tag(("icons/icon_folder_remove.png"), :alt => t("remove").html_safe, :title => t("remove").html_safe), attachment_form %> 
                 </div>
               </div>     
             <% end %>
