@@ -4,6 +4,7 @@ Thumbs.db
 log/development.log
 log/*
 tmp/*
+rdoc/*
 public/system/*
 nbproject/*       
 vendor/bundle/*

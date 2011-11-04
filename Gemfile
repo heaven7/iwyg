@@ -16,6 +16,7 @@ group :development do
   #gem 'mongrel' #, '>= 1.2.0.pre2'     
 end
    
+gem 'rdoc'   
 gem 'mysql2', '0.2.7'
 gem 'devise_rpx_connectable'
 gem 'jquery-rails', '>= 1.0.12'
