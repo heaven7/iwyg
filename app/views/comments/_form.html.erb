@@ -1,4 +1,4 @@
-<% form_for ([commentable, Comment.new]) do |f| %>
+<%= form_for ([commentable, Comment.new]) do |f| %>
   <%= f.error_messages %>
   <%= f.hidden_field :commentable_id, :value => commentable.id %>
   <%= f.hidden_field :commentable_type, :value => commentable.class %>

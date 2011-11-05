@@ -1,1 +1,1 @@
-<%= t("resources.#{is_needed?(item)}") %> <%= t("by") + " " %> <%= link_to owner.login, profile_path(owner.login) %>
+<%= t("resources.#{is_needed?(item)}").html_safe %> <%= t("by").html_safe + " " %> <%= link_to owner.login.html_safe, profile_path(owner.login) %>

@@ -282,6 +282,12 @@ en:
     new: "New Event"
     action: "%{owner} meets up with %{pinger} because of: %{title}"
     status: "Event wurde %{status} von %{user}"
+    
+  ## item
+  item:
+    related:
+      need: "They need this"
+      offer: "This might help"  
 
   ## meetup
   

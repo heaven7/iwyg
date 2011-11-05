@@ -84,6 +84,8 @@ class ApplicationController < ActionController::Base
     I18n.locale = (current_user.userdetails.language if logged_in?) || set_locale
   end
 
+
+  # DEPREACHED
   def getLocationOnMap(location, title, imagepath)
   
     if !location.lat and !location.lng

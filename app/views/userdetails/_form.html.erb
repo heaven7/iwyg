@@ -20,14 +20,11 @@
   
     /* AUTOCOMPLETE AND LISTBUILDER */
     $(" #user_aim_list ").listbuilder({delimiter: ",", autocomplete:{source: '/items/tag_suggestions.js?c=aims'}});
+   // $("#user_aim_list").tokenInput("/items/tag_suggestions.js?c=aims", { crossDomain: false });
     $(" #user_skill_list ").listbuilder({autocomplete:{source: '/items/tag_suggestions.js?c=skills'}});
     $(" #user_interest_list ").listbuilder({autocomplete:{source: '/items/tag_suggestions.js?c=interests'}});
     $(" #user_wish_list ").listbuilder({autocomplete:{source: '/items/tag_suggestions.js?c=wishes'}});
-    $(".ui-listbuilder-input").addClass("noEnterSubmit");
-    $(".noEnterSubmit").keypress(function(e){
-        if ( e.which == 13 ) return false;
-    //    if ( e.which == 13 ) e.preventDefault();
-    });
+    
   
     /* STYLING */
     $('.ui-listbuilder-input').addClass('ui-corner-all');
@@ -47,7 +44,7 @@
   	</ul>
     <div id="interests">
       <%= form.inputs do %>
-          <%= form.input :aim_list, :as => :text, :required => false %>
+          <%= form.input :aim_list, :required => false %>
           <%= form.input :skill_list, :as => :text, :required => false %>
           <%= form.input :interest_list, :as => :text, :required => false %>
           <%= form.input :wish_list, :as => :text, :required => false %>
@@ -56,11 +53,11 @@
     <div id="personal">  
       <%= form.inputs do %>
         <% form.semantic_fields_for :userdetails do |userdetails_form| %>
-          <%= userdetails_form.input :firstname, :required => false, :label => I18n.t("formtastic.labels.userdetails.firstname") %>
-          <%= userdetails_form.input :lastname, :required => false, :label => I18n.t("formtastic.labels.userdetails.lastname") %>
+          <%= userdetails_form.input :firstname, :required => false %>
+          <%= userdetails_form.input :lastname, :required => false %>
           <%= userdetails_form.input :birthdate, :as => :string, :required => false, :label => I18n.t("formtastic.labels.userdetails.birthdate") + "&nbsp;" + image_tag("icons/icon_event.png") %>    
-          <%= userdetails_form.input :occupation, :required => false, :label => I18n.t("formtastic.labels.userdetails.occupation") %>
-          <%= userdetails_form.input :company, :required => false, :label => I18n.t("formtastic.labels.userdetails.company") %>
+          <%= userdetails_form.input :occupation, :required => false %>
+          <%= userdetails_form.input :company, :required => false %>
     <!--
           <%= userdetails_form.input :language, :as => :select, :collection => I18n.available_locales, :include_blank => false, :required => false %>
     -->

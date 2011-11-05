@@ -26,11 +26,13 @@ TRANSFERS_PER_PAGE = 10
 PINGS_PER_PAGE = 10
 
 # Default date/time format
-#ActiveSupport::CoreExtensions::Date::Conversions::DATE_FORMATS.merge!(:default => "%B %d, %Y")
-#ActiveSupport::CoreExtensions::Time::Conversions::DATE_FORMATS.merge!(:default => "%B %d, %Y %H:%m",
+# date.formats(:default=> "%B %d, %Y")
+# ActiveSupport::CoreExtensions::Date::Conversions::DATE_FORMATS.merge!(:default => "%B %d, %Y")
+# ActiveSupport::CoreExtensions::Time::Conversions::DATE_FORMATS.merge!(:default => "%B %d, %Y %H:%m",
 #                                                                      :weekday => "%A: %B %d, %Y")
 
-# Time::DATE_FORMATS[:mailbox] = "%A, %B %d, %Y"
+Time::DATE_FORMATS[:mailbox] = "%A, %B %d, %Y"
+Time::DATE_FORMATS[:default] = "%B %d, %Y"
 
 # hirb
 if $0 == 'irb'

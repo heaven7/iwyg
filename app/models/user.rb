@@ -86,7 +86,10 @@ class User < ActiveRecord::Base
                   :userdetails_attributes, :images, :images_attributes, 
                   :location_attributes, :meeting_ids,
                   :occupation, :company, :birthdate, :lastname, :firstname,
-                  :remember_me
+                  :remember_me,
+                  :aim_tokens, :skill_tokens, :interest_tokens, :wish_tokens
+
+  attr_reader     :aim_tokens, :skill_tokens, :interest_tokens, :wish_tokens
                   
   # autocomplete for aims, wishes, interests and skills
   def aim_list_name

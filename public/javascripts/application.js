@@ -38,6 +38,13 @@ $(document).ready(function (){
         $(this).find('.usermenu').hide();
       }
     );
+    
+    // Listbuilder in forms
+    $(".ui-listbuilder-input").addClass("noEnterSubmit");
+    $(".noEnterSubmit").keypress(function(e){
+        if ( e.which == 13 ) return false;
+    //    if ( e.which == 13 ) e.preventDefault();
+    });
 }); 
 
 // Add and remove fields

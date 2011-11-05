@@ -74,10 +74,11 @@ form.formtastic .date ol {
 .formtastic .short {
   width:120px !important;
 }
-.formtastic .inputs .inline-hints  {
+.formtastic .inputs p.inline-hints  {
   color:#899286;
   font-size:80%;
   padding:0.5em;
+  padding-top:0;
   clear:both; 
 }
 .formtastic .inputs .inline-errors {

@@ -77,7 +77,7 @@
     <h3><%= @items_related_title %> (<%= @items_related_inverse.size %>)</h3>
     <ul style="clear:both;">
       <% for item in @items_related_inverse do %>
-        <%= render :partial => "itempreview", :locals => { :item => item } %>
+        <%= render :partial => "itempreview", :locals => { :item => item, :mainitem => @item } %>
       <% end %>
     </ul>
   <% end %>

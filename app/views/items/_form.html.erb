@@ -73,50 +73,41 @@
   		<li><a href="#attachments"><%= t("form.resource.attachments").html_safe %></a></li>
   	</ul>
   	<div id="what" class="tab_content ">
-    <% f.inputs do %>
+    <%= f.inputs do %>
       <%= f.input :user_id, :as => :hidden, :required => false, :value => current_user.id %>
       <%= f.input :need, :as => :select, :label => t("form.resource.i"), :include_blank => false, :collection => [[t("form.resource.need"), true], [t("form.resource.have"), false]] %>
       <%= f.input :item_type_id, :as => :select, :label => t("form.resource.a"), :collection => @itemTypes, :include_blank => true %>
       <%= f.input :multiple, :required => false %>
-      <li><hr class="divider" /></li>
+      <hr class="divider" />
       <li><%= f.input :title %></li>
       <li id="item_tag_list_input">
        <%= f.input :tag_list, :required => false %>
       </li>
       <%= f.input :description, :required => false %>
-      <li><hr class="divider" /></li>     
+      <hr class="divider" />     
     <% end %>
     </div> 
     <div id="how_much" class="tab_content">
-    <%= f.inputs do %>
-      <%= f.input :amount, :required => false, :input_html => {:class => "short"}, :as => :numeric %>
-      <%= f.semantic_fields_for :measure do |measure_form| %>
-        <%= measure_form.input :measure, :as => :select, :required => false %>
+      <%= f.inputs do %>
+        <%= f.input :amount, :required => false, :input_html => {:class => "short"}, :as => :numeric %>
+        <%= f.semantic_fields_for :measure do |measure_form| %>
+          <%= measure_form.input :measure, :collection => @measures, :required => false %>
+        <% end %>
+        <hr class="divider" />
       <% end %>
-      <li><hr class="divider" /></li>
-    <% end %>
     </div>
     <div id="location">
-    <%= render :partial => "locations/nested_form", :locals => { :f => f, :belongs_to => "item" } %>
-    <hr class="divider" />
+      <%= render :partial => "locations/nested_form", :locals => { :f => f, :belongs_to => "item" } %>
+      <hr class="divider" />
     </div>
     <div id="when" class="tab_content">
-      <% f.inputs do %>
+       <%= f.inputs do %>
         <%= render :partial => "events/nested_form", :locals => { :f => f, :belongs_to => "meetup" } %>
-        <hr class="divider" />
-       <% end %>
+       <% end %>                                                                                       
+      <hr class="divider" />
      </div>
-  <!-- old event implementation
-    <div id="when" class="tab_content"> 
-    <% f.inputs  :class => "date inputs" do %>
-      <%= f.input :from, :label => t("from"), :as => :string, :required => false, :wrapper_html => { :id => "date_from", :class => "hasDatepicker" } %>
-      <%= f.input :till, :label => t("till"), :as => :string, :required => false, :wrapper_html => { :id => "date_till", :class => "hasDatepicker" } %>
-      <li><hr class="divider" /></li>
-    <% end %>
-    </div>
-  -->
     <div id="images" class="tab_content">
-    <% f.inputs do %>
+    <%= f.inputs do %>
       <% c = -1 %>
       <li>
         <div class="button new">
@@ -129,18 +120,18 @@
         %>
         <div class="image center ui-corner-all">
           <%= link_to image_tag(image.url("small")), image.url("big") if image %>
-          <%= render 'share/image_fields', :f => image_form %>
+          <%# render 'share/image_fields', :f => image_form %>
           <div class="options">
             <%= link_to_function image_tag(("icons/icon_image_edit.png"), :alt => t("edit"), :title => t("edit")), "edit_field(this)" if c < @item.images.count %>
-            <%= link_to_remove_fields  image_tag(("icons/icon_image_remove.png"), :alt => t("remove"), :title => t("remove")), image_form if c < @item.images.count %>
+            <%= link_to_remove_fields image_tag(("icons/icon_image_remove.png"), :alt => t("remove"), :title => t("remove")), image_form if c < @item.images.count %>
           </div>
         </div>
       <% end %>
-      <li><hr class="divider" /></li>
-    <% end %>
+    <% end %>  
+      <hr class="divider" />
     </div>
     <div id="attachments" class="tab_content"> 
-      <% f.inputs do %>  
+      <%= f.inputs do %>  
         <% d = -1 %>  
         <li><div class="button new">
            <%= link_to_add_fields t("item_attachments.new").html_safe, f, :item_attachments %>
@@ -164,8 +155,8 @@
             <% end %>
           <% end %>
         <% end %>
-       <li><hr class="divider" /></li>
-      <% end %>
+      <% end %>  
+       <hr class="divider" />
   </div>
   <% f.buttons do %>
     <%= f.commit_button :label => t("save") %>

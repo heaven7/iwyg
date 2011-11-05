@@ -113,10 +113,10 @@ class ItemsController < InheritedResources::Base
     # related resources
     if @item.need == true
       @items_related_inverse = Item.offer.tagged_with(@item.tags.join(', '))
-      @items_related_title = "This might help"
+      @items_related_title = I18n.t("item.related.offer").html_safe
     else
       @items_related_inverse = Item.need.tagged_with(@item.tags.join(', '))
-      @items_related_title = "They need this"
+      @items_related_title = I18n.t("item.related.need").html_safe
     end
     
     @pings = @item.pings
@@ -124,7 +124,7 @@ class ItemsController < InheritedResources::Base
     @user = User.find(@item.user_id)
     @events = @item.events
     @location = @item.locations.first || @item.owner.location
-    getLocation(@item) if @location.lat and @location.lng
+    # getLocation(@item) if @location.lat and @location.lng
     @resource = @item
     getItemTypes
   end
@@ -146,7 +146,7 @@ class ItemsController < InheritedResources::Base
     @item = current_user.items.find(params[:id], :include => [:locations, :events])    
     @location = @item.locations.first || @item.locations.build
     @event = @item.events.first || @item.events.build
-    getLocation(@item) if @location
+    # getLocation(@item) if @location
     @user = User.find(@item.user_id)
     getItemTypes
   end

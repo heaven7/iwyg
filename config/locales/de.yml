@@ -196,7 +196,7 @@ de:
   duration: "Dauer"
   to: "bis"
   by: "von"
-  distance: "Distanz"
+  distance: "Entfernung"
   submit: "Abschicken"
   save: "Speichern"
   tags: "Tags"
@@ -282,6 +282,12 @@ de:
     new: "Neuer Event"
     action: "%{owner} trifft sich mit %{pinger}: %{title}"  
     status: "Event wurde %{status} von %{user}"
+    
+  ## item
+  item:
+    related:
+      need: "Die brauchen das"
+      offer: "Das k&ouml;nnte helfen"  
     
   ## meetup
   
@@ -641,18 +647,18 @@ de:
         firstname: "Vorname"
         lastname: "Nachname"
         birthdate: "Geburtstag"
-        occupation: "Beruf"
+        occupation: "Beruf(ung)"
         company: "Firma"
         language : "Sprache"
     hints:
       item:
         multiple: "ben&ouml;tigst du diese Ressource mehrmals oder regelm&auml;&szlig;ig? /<br />bietest Du diese Ressource mehrmals oder  regelm&auml;&szlig;ig an?"
-        #tag_list: "Getrennt durch Komma or Enter."
+        tag_list: "Getrennt durch Enter."
       user:
-        #aim_list: "What is your heart burning for...?"
-        #skill_list: "What can you do easily and without effort?"
-        #interest_list: "What makes your eyes lighten up?"
-        #wish_list: "What are your dreams?"
+        aim_list: "Was m&ouml;chtest Du gerne erreichen? Wof&uuml;r brennt Dein Herz?"
+        skill_list: "In was bist Du gut? Was tust Du gerne?"
+        interest_list: "Wo liegen Deine Interessen?"
+        wish_list: "Was w&uuml;nscht Du Dir? F&uuml;r Dich, f&uuml;r andere?"
       event:
         from: "klicke auf das Feld um den Kalender zu sehen." 
         till: "klicke auf das Feld um den Kalender zu sehen." 

@@ -31,7 +31,7 @@ class UserdetailsController < InheritedResources::Base
   def edit
     @user = current_user
     @userdetails = @user.userdetails
-    getLocationOnMap(@user.location, I18n.t("resources.location"), "/images/icons/icon_user.png") if @user.location
+    # getLocationOnMap(@user.location, I18n.t("resources.location"), "/images/icons/icon_user.png") if @user.location
     if @user.images.size == 0
       @imageable = find_imageable
       @image = @user.images.build
