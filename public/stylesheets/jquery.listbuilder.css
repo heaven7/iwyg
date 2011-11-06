@@ -14,8 +14,17 @@ div.ui-state-active {display:none !important;}
 
 .ui-listbuilder {
   position: relative;
-  left: 26%;
-}                
+  left: 26%;      
+  min-height:20px; 
+     
+}  
+.ui-listbuilder .ui-listbuilder-items {
+  margin-bottom:0;  
+  padding-bottom:0;   
+  height:30px;
+  min-height: 50px;
+  height: auto;  
+}              
 .ui-listbuilder .ui-listbuilder-item-input,
 .ui-listbuilder .ui-autocomplete-input {
   clear: left;

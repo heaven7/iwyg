@@ -32,7 +32,11 @@
      
     /* AUTOCOMPLETE & LISTBUILDER */
     $( "#item_tag_list" ).listbuilder({autocomplete:{source: '/items/tag_suggestions.js'}});
-
+    $(".ui-listbuilder-input").addClass("noEnterSubmit");
+    $(".noEnterSubmit").keypress(function(e){
+        if ( e.which == 13 ) return false;
+    //    if ( e.which == 13 ) e.preventDefault();
+    });
  
     /* IMAGES */
     $('.image .file').hide();
@@ -93,8 +97,8 @@
         <%= f.semantic_fields_for :measure do |measure_form| %>
           <%= measure_form.input :measure, :collection => @measures, :required => false %>
         <% end %>
-        <hr class="divider" />
       <% end %>
+      <hr class="divider" />
     </div>
     <div id="location">
       <%= render :partial => "locations/nested_form", :locals => { :f => f, :belongs_to => "item" } %>

@@ -1,3 +1,9 @@
 form.formtastic fieldset.buttons {
   width:60%;
 }
+form.formtastic fieldset ol li fieldset ol {
+    float: left;
+    margin: 0;
+    padding: 0 0 0 7%;
+    width: 74%;
+}

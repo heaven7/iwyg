@@ -24,7 +24,11 @@
     $(" #user_skill_list ").listbuilder({autocomplete:{source: '/items/tag_suggestions.js?c=skills'}});
     $(" #user_interest_list ").listbuilder({autocomplete:{source: '/items/tag_suggestions.js?c=interests'}});
     $(" #user_wish_list ").listbuilder({autocomplete:{source: '/items/tag_suggestions.js?c=wishes'}});
-    
+    $(".ui-listbuilder-input").addClass("noEnterSubmit");
+    $(".noEnterSubmit").keypress(function(e){
+        if ( e.which == 13 ) return false;
+    //    if ( e.which == 13 ) e.preventDefault();
+    });
   
     /* STYLING */
     $('.ui-listbuilder-input').addClass('ui-corner-all');

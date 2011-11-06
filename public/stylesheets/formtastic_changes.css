@@ -60,10 +60,7 @@ form.formtastic fieldset .label  {
 form.formtastic fieldset ol li label {
   padding-top: 0;
 }
-form.formtastic fieldset ol li fieldset ol {
-  margin:0;
-  width:25%;
-}
+
 form.formtastic .date ol {
   margin-left:0.5em;
 }
