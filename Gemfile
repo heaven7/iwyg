@@ -36,8 +36,7 @@ gem 'paperclip'
 gem 'meta_search'
 
 gem 'routing-filter', '0.2.3'
-gem 'will_paginate', '~> 3.0.2'
-#gem 'thoughtbot-paperclip', '2.3.1'
+gem 'will_paginate', :git => 'git://github.com/mislav/will_paginate.git', :branch => 'rails3'
 gem 'validates_timeliness' #, '2.3.2'
 
 
