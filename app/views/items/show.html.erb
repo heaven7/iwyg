@@ -4,9 +4,9 @@
 <% end %>
 <div class="centered"><%= render :partial => "usermenu", :locals => {:item => @item} %></div>
 <div id="col1">
-  <h1><%=h @item.title %></h1>
-  <%= render :partial => "share/images", :locals => {:images => @item.images} %>
+  <h1><%=h @item.title %></h1>         
   <%= render :partial => "items/itemtype", :locals => { :item => @item } %>
+  <%= render :partial => "share/images", :locals => {:images => @item.images} %>
   <% if @item.status %>
     <p class="left box ui-corner-all font-small">
       <% if @item.transfer %>
@@ -33,12 +33,12 @@
          @end = Time.now 
       %>
       <% if @item.from %>    
-         <span><%= t("resources.from") %> <%=h @item.from.to_date %></span>
+         <span><%= t("resources.from") %> <%= l @item.froms.to_date %></span>
          <% @begin = @item.from %>
       <% end %>
       
       <% if @item.till %>    
-         <span><%= t("resources.till") %> <%=h @item.till.to_date %></span>
+         <span><%= t("resources.till") %> <%= l @item.till.to_date %></span>
          <% @end = @item.till %>
       <% end %>
     <br />
@@ -86,9 +86,9 @@
     <ul class="font-smaller box ui-corner-all">
       <% for event in @events do %>
         <li>
-          <%= render :partial => "events/eventaction", :locals => { :event => event } %><br />
-          <%= t("start") %>: <%= event.from %><br />
-          <%= t("end") %>: <%= event.till %><br />
+          <%= render :partial => "events/eventaction", :locals => { :event => event } %>
+          <%= t("start") %>: <%= l event.from, :format => :short %><br />
+          <%= t("end") %>: <%= l event.till, :format => :short %><br />
         </li>
       <% end %>
     </ul>
