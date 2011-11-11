@@ -1,3 +1,3 @@
 SetEnv GEM_HOME /home/heaven7/ruby/gems
 PassengerEnabled On
-PassengerAppRoot /home/heaven7/railsapp/
+PassengerAppRoot /home/heaven7/rails_apps/iwyg_stage
