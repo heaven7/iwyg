@@ -8,7 +8,6 @@ gem 'rails', '3.0.9'
 
 group :production, :stage do
   gem 'hpricot'
-  gem 'mongrel'
 end
 
 group :development do 
@@ -38,6 +37,7 @@ gem 'routing-filter', '0.2.3'
 gem 'will_paginate', '~> 3.0.2'
 #gem 'thoughtbot-paperclip', '2.3.1'
 gem 'validates_timeliness' #, '2.3.2'
-gem 'mysql2', '< 0.3' 
+gem 'mysql2', '< 0.3'
+gem 'mongrel' 
 
 
