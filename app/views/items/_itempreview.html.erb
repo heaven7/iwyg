@@ -1,11 +1,11 @@
 <li class="box ui-corner-all"> 
-  <p class="font-small">
-    <%= link_to item.owner.login, profile_path(item.owner) %><br />
-    <%= image_tag "icons/icon_#{item.itemtype.downcase}.png", :title => item.localized_itemtype, :alt => item.localized_itemtype %>&nbsp;
-    <%= link_to shorten(item.title, 22), item_path(item) %>
+  <p class="font-smaller">
+    <%= image_tag "icons/icon_#{item.itemtype.downcase}.png", :title => item.localized_itemtype, :alt => item.localized_itemtype %>&nbsp; <%= link_to shorten(item.title, 22), item_path(item) %><br />
+    <%= link_to item.owner.login, profile_path(item.owner) %>
+    
     <br />
-    <p><%= item.locations.first.city %></p>        
-   <!-- <%= t("distance") %>: <%= "%.0f" % mainitem.locations.first.distance_from([item.locations.first.lat,item.locations.first.lng]) %> km -->
+    <%= item.locations.first.city %>        
+    <span class="font-smaller">(<%= t("distance") %>: <%= "%.0f" % mainitem.locations.first.distance_from([item.locations.first.lat,item.locations.first.lng]) %> km)</span>
    <br />
     <%= distance_of_time_in_words(item.created_at, Time.now) %> <%= t("ago") %>
   </p>
