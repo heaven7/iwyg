@@ -17,8 +17,6 @@ group :development do
 end
    
 gem 'rdoc'   
-gem 'mysql2', '0.2.7'
-gem 'devise_rpx_connectable'
 gem 'jquery-rails', '>= 1.0.12'
 #gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'rails3-jquery-autocomplete'
@@ -39,5 +37,6 @@ gem 'routing-filter', '0.2.3'
 gem 'will_paginate', '~> 3.0.2'
 #gem 'thoughtbot-paperclip', '2.3.1'
 gem 'validates_timeliness' #, '2.3.2'
+gem 'mysql2', '< 0.3' 
 
 
