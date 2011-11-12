@@ -17,7 +17,7 @@ group :development do
 end
    
 gem 'rdoc'   
-gem 'mysql2' #, '0.2.7'
+gem 'mysql2', '0.2.7'
 gem 'devise_rpx_connectable'
 gem 'jquery-rails', '>= 1.0.12'
 #gem 'bcrypt-ruby', :require => 'bcrypt'
