@@ -6,7 +6,7 @@ gem 'rails', '3.0.9'
 
 #gem 'rdoc-data'
 
-group :production do
+group :production, :stage do
   gem 'hpricot'
   gem 'mongrel'
 end
