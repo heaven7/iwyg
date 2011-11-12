@@ -2,7 +2,7 @@ source :rubygems
 # source 'http://gems.github.com'
 # source 'http://gemcutter.org'
 
-gem 'rails', '3.0.8'
+gem 'rails', '3.0.9'
 
 #gem 'rdoc-data'
 
@@ -17,7 +17,7 @@ group :development do
 end
    
 gem 'rdoc'   
-gem 'mysql2'# , '0.2.7'
+gem 'mysql2' #, '0.2.7'
 gem 'devise_rpx_connectable'
 gem 'jquery-rails', '>= 1.0.12'
 #gem 'bcrypt-ruby', :require => 'bcrypt'
