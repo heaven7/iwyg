@@ -2,7 +2,7 @@ source :rubygems
 # source 'http://gems.github.com'
 # source 'http://gemcutter.org'
 
-gem 'rails', '3.0.9'
+gem 'rails', '3.0.10'
 
 #gem 'rdoc-data'
 
@@ -12,10 +12,9 @@ end
 
 group :development do 
   gem 'hpricot' 
-  #gem 'mongrel' #, '>= 1.2.0.pre2'
 end
    
-gem 'rdoc'   
+# gem 'rdoc'   
 gem 'jquery-rails', '>= 1.0.12'
 #gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'rails3-jquery-autocomplete'
@@ -37,7 +36,7 @@ gem 'routing-filter', '0.2.3'
 gem 'will_paginate', '~> 3.0.2'
 #gem 'thoughtbot-paperclip', '2.3.1'
 gem 'validates_timeliness' #, '2.3.2'
-gem 'mysql2', '< 0.3'
-gem 'mongrel' 
+gem 'mysql2', '0.2.6'
+gem 'mongrel', '>= 1.2.0.pre2'
 
 
