@@ -25,7 +25,7 @@ class ItemsController < InheritedResources::Base
   def index
     @geolocation = session[:geo_location] 
     @finder = find_something
-    if params[:user_id] && params[:user_id].to_i == current_user.id.to_i
+    if params[:user_id] && current_user && params[:user_id].to_i == current_user.id.to_i
       @userSubtitle = "i"
     else
       @userSubtitle = "user"

@@ -13,6 +13,9 @@ module Iwyg
     #config.time_zone = 'UTC'
     config.encoding = 'utf-8' 
     
+    # Custom directories with classes and modules you want to be autoloadable.    
+    config.autoload_paths += %W(#{config.root}/lib)
+    
     # The user observer goes inside the Rails::Initializer block
     config.active_record.observers = :user_observer, :ping_observer, :transfer_observer, :comment_observer, :event_observer
   end
