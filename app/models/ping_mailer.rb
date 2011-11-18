@@ -36,7 +36,7 @@ class PingMailer < ActionMailer::Localized
   end    
   
   protected
-  def setup_email(mail)
+  def setup_email(mail) 
     from        "#{REPLY_EMAIL}"
     subject     mail[:subject]
     sent_on     Time.now
