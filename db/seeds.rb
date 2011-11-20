@@ -5,3 +5,15 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+pingstatuses = Status.create(
+  [
+    { :title => "opened",
+      :description => "status for pings & transfers"},
+    { :title => "accepted",
+      :description => "status for pings & transfers"},
+    { :title => "declined",
+      :description => "status for pings & transfers"},
+    { :title => "closed",
+      :description => "status for pings & transfers"},
+  ]
+)
