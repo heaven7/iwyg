@@ -19,7 +19,7 @@
           <%= render :partial => "share/usermicro", :locals => { :user => pingerOf(ping) } %>          
           <div class="info font-smaller">
             <%= distance_of_time_in_words(ping.created_at, Time.now) %> <%= t("ago") %><br />
-            <p class="<%=h statusTitle(ping) %>"><%= t(statusTitle(ping)) %></p> 
+            <p class="<%=h statusTitle(ping) %>"><%= t(statusTitle(ping)).html_safe %></p> 
           </div>
           <%= simple_format(ping.body, :class => "font-smaller") %>
           <% if @item.itemtype == "Good" %>
