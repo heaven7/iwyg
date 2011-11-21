@@ -26,6 +26,7 @@ form.formtastic .input {
 
 
 form.formtastic fieldset ol li.password input,
+form.formtastic fieldset .inputs #user_email,
 form.formtastic fieldset ol li.text textarea,
 form.formtastic fieldset ol li.string input {
   width:56.5%;
@@ -67,6 +68,14 @@ form.formtastic .date ol {
 
 .formtastic .inputs {
 	padding-top:1em;
+  padding-bottom: 0em;
+  width: 100%;
+  margin-bottom: 0;
+}                     
+.formtastic .buttons {
+  width: 100%;            
+	padding-top:0.5em;
+  background: transparent;
 }
 .formtastic .short {
   width:120px !important;

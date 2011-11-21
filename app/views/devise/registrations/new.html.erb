@@ -1,21 +1,19 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource_name, resource, :url => registration_path(resource_name)) do |f| %>
+<h1><%= t("title.register") %></h1>
+<% semantic_form_for @user, :html => {:class => "formular shadowed ui-corner-all"} do |f| %>
   <%= f.error_messages %>
-  
-  <p><%= f.label :login %></p>
-  <p><%= f.text_field :login %></p>
-  
-  <p><%= f.label :email %></p>
-  <p><%= f.text_field :email %></p>
+  <% f.inputs do %>
+    <%= f.input :login, :label => t("register.label.login") %>
+    <%= f.input :email, :label => t("register.label.email") %>
+    <%= f.input :password, :label => t("register.label.password") %>
+    <%= f.input :password_confirmation, :label => t("register.label.confirmPassword") %>
+    <p><abbr>*</abbr> <%= t("register.mandatoryFields") %></p>
+  <% end %>
 
-  <p><%= f.label :password %></p>
-  <p><%= f.password_field :password %></p>
-
-  <p><%= f.label :password_confirmation %></p>
-  <p><%= f.password_field :password_confirmation %></p>
-
-  <p><%= f.submit "Sign up" %></p>
+  <% f.buttons do %>
+    <%= f.submit t("register.signup") %>
+  <% end %>
 <% end %>
-
 <%= render :partial => "devise/shared/links" %>
+  
+
+
