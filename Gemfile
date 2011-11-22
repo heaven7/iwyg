@@ -31,7 +31,6 @@ gem 'inherited_resources'
 gem 'has_scope'
 gem 'paperclip'
 gem 'meta_search'
-
 gem 'routing-filter', '0.2.3'
 gem 'will_paginate', '~> 3.0.2'
 #gem 'thoughtbot-paperclip', '2.3.1'

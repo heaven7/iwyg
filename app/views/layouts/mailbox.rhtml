@@ -1,4 +1,3 @@
-<% inside_layout 'application' do -%>
 <h2><%=h t("title.mailbox" )%></h2>
 <div class="button new">
   <%= link_to t("mailbox.newMessage"), new_sent_path %>
@@ -19,4 +18,4 @@
     <%= yield %>
   </div>   
 </div>
-<% end %>
+<%= parent_layout 'application' %>

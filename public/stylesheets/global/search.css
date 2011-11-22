@@ -29,6 +29,7 @@
   position:relative;
   margin-right:0.5em;
 }
+#search #searchform #search_title_contains,
 #search #searchform #search_title_like_any,
 #search #searchform #nil_class_title_like_any {
   position:relative;

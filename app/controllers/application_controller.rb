@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   #geocode_ip_address
   
   # GLOBALS
-  $search = ''
+  $search
   $priority_countries = [:DE, :AT, :CH] 
 
   # Scrub sensitive parameters from your log

@@ -12,15 +12,10 @@ class UsersController < InheritedResources::Base
   # has_scope :all_friends
 
   def index
-     if params[:search]
-      prepare_search                                  
-      @usersearch = User.search(params[:search]) 
-      @users, @users_count = $scope.paginate(:page => params[:page]), $scope.count       
-    else
-      @usersearch = User.search(params[:search])
-      @users = @usersearch.paginate(:page => params[:page])
-      @users_count = @usersearch.count 
-    end
+    @usersearch = User.search(params[:search])
+    @users = @usersearch.paginate(:page => params[:page])
+    @users_count = @usersearch.count 
+
     
     if params[:aim]
       @tag = params[:aim]

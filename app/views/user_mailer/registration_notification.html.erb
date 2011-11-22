@@ -6,9 +6,9 @@
   </head>
   <body>
   <% if I18n.locale.to_s == "de" %>
-    <h1>Willkommen zu IWYG, <%= @user.login %></h1>
+    <h2>Willkommen <%= @user.login %></h2>
     <p>
-      Du hast Dich erfolgreich registriert.<br/>
+      Du hast Dich erfolgreich bei www.iwyg.net registriert.<br/>
     </p>
     <p>
       Logg' Dich hier ein: <%= @url %>.
@@ -17,9 +17,9 @@
   <% end %>                    
                                              
   <% if I18n.locale.to_s == "en" %>
-     <h1>Welcome to IWYG, <%= @user.login %></h1>
+     <h2>Welcome <%= @user.login %></h2>
     <p>
-      You have successfully signed up to iwyg.net.<br/>
+      You have successfully signed up to www.iwyg.net.<br/>
     </p>
     <p>
       To login to the site, just follow this link: <%= @url %>.

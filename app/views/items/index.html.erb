@@ -1,7 +1,6 @@
 <% content_for :head do %>
   <%= javascript_include_tag 'items' %>
 <% end %>
-
 <% if @user %>
   <% if @user == current_user %>
     <div class="button new">
@@ -11,7 +10,7 @@
 <% end %>
 <% if params[:search] %>
   <% if @keywords %>
-    <ul class="vertical keywords font-smaller">
+    <ul class="vertical keywords font-smaller block">
     <% @keywords.each do |keyword|  %>
       <li>'<%= keyword %>' was searched in <%= @searchItemType %>s <b><%= search_count(keyword) %></b> times</li>
     <% end %>

@@ -44,9 +44,10 @@ class ItemsController < InheritedResources::Base
       #@items = $scope.paginate( :page => params[:page], :per_page => ITEMS_PER_PAGE )
       #@items_count = $scope.count
       @search = Item.search(params[:search])
+      @search.order ||= :ascend_by_distance
       @items = @search.paginate( :page => params[:page], :per_page => ITEMS_PER_PAGE )
       @searcher ||= current_user.id = nil if current_user
-      @keywords = params[:search][:title_like_any].to_s.split if not params[:search][:title_like_any].blank?
+      @keywords = params[:search][:title_contains].to_s.split if not params[:search][:title_contains].blank?
       # save search      
 #      for keyword in @keywords
 #       Search.create(:keyword => keyword, :user_id => @searcher)
@@ -60,6 +61,7 @@ class ItemsController < InheritedResources::Base
         index!
       end
     elsif params[:tag] && params[:search]
+      # search by tag and search params
       @tag = params[:tag]
       @tagtype = "tag"
       @searchItemType = "Resource"
@@ -70,6 +72,7 @@ class ItemsController < InheritedResources::Base
       @items_count = @items.size  
     
     elsif params[:tag]
+      # search by tag
       @tag = params[:tag]
       @tagtype = "tag"
       @searchItemType = "Resource"
