@@ -39,19 +39,29 @@ class ItemsController < InheritedResources::Base
       else
         @searchItemType = "Resource"
       end
-     
-      #prepare_search
-      #@items = $scope.paginate( :page => params[:page], :per_page => ITEMS_PER_PAGE )
-      #@items_count = $scope.count
+      
+      if not params[:search][:title_contains].blank?     
+        @keywords = params[:search][:title_contains].to_s.split
+        @keyword_items = []
+        @keywords.each do |keyword|
+          @keyword_items << Item.where( :title =~ "%#{keyword}%" )  
+        end
+        
+        @searcher ||= current_user.id = nil if current_user
+        # save search      
+  #      for keyword in @keywords
+  #       Search.create(:keyword => keyword, :user_id => @searcher)
+  #      end 
+      end
+      
       @search = Item.search(params[:search])
+      #@test = Item.where(@title_keywords.to_sym) if !@title_keywords.blank?
+      #@search = @search.merge(@keyword_items)
       @search.order ||= :ascend_by_distance
+      @search_sql = @search.to_sql
       @items = @search.paginate( :page => params[:page], :per_page => ITEMS_PER_PAGE )
-      @searcher ||= current_user.id = nil if current_user
-      @keywords = params[:search][:title_contains].to_s.split if not params[:search][:title_contains].blank?
-      # save search      
-#      for keyword in @keywords
-#       Search.create(:keyword => keyword, :user_id => @searcher)
-#      end 
+      @items_count = @items.count
+      
       if params[:user_id] || params[:search][:user_id]
         @user = User.find(params[:user_id] || params[:search][:user_id]) 
         render :layout => 'userarea'      

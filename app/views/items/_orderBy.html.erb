@@ -1,10 +1,10 @@
-<span class="font-smaller">
+<span>
   <%= t("sortBy") %> 
   <%# render :partial => "orderElement", :locals => { :key => :title, 
                                                       :label => t("order.title")
                                                     } 
   %>
-  <%# sort_link @items :title %>
+  <%= sort_link @search, 'title', t("order.title") %>
   <%# render :partial => "orderElement", :locals => { :key => :created_at, 
                                                       :label => t("order.date")
                                                     } 

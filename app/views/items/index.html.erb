@@ -7,24 +7,24 @@
       <%= link_to t("resource.new"), new_item_path %>
     </div>
   <% end %>
+<% end %>               
+<% if params[:search] || @items_count %><div class="content-order-panel status-bar ui-corner-all font-smaller"><% end %>
+<p><%= @search_sql %></p>
+<% if @items_count %>
+  <span><%= t((@searchItemType.downcase), :count => @items_count) %> <%= t("found") if !params[:user_id] %></span>  
+  <%= render :partial => "share/tags", :locals => {:tags => @tags, :tagtype => @tagtype} if @tags || @tagtype %>
+  <%= render :partial => "share/panel_spacer" %>
+  <%= render :partial => "orderBy" if params[:search] %>
 <% end %>
+<%= render :partial => "share/panel_spacer" %>
 <% if params[:search] %>
   <% if @keywords %>
-    <ul class="vertical keywords font-smaller block">
     <% @keywords.each do |keyword|  %>
-      <li>'<%= keyword %>' was searched in <%= @searchItemType %>s <b><%= search_count(keyword) %></b> times</li>
+      <span><span class="keyword"><%= keyword %></span> was searched in <%= @searchItemType %>s <b><%= search_count(keyword) %></b> times</span>
     <% end %>
-    </ul>
   <% end %>
 <% end %>
-
-<% if @items_count %>
-<div class="content-order-panel box-light-grey ui-corner-all">
-    <span class="font-smaller"><%= t((@searchItemType.downcase), :count => @items_count) %> <%= t("found") if !params[:user_id] %> &#164;</span>  
-    <%= render :partial => "share/tags", :locals => {:tags => @tags, :tagtype => @tagtype} if @tags or @tagtype %>
-    <%= render :partial => "orderBy" %>
-</div>
-<% end %>
+<% if params[:search] || @items_count %></div><% end %>
 
 <% if @user and !params[:search] %> 
 

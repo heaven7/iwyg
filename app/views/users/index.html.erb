@@ -1,5 +1,5 @@
 <% if collection %>        
-  <div class="content-order-panel box-light-grey ui-corner-all">
+  <div class="content-order-panel status-bar ui-corner-all">
     <% if @users_count > 0 %>
         <span class="font-smaller"><%= t("user", :count => @users_count) %> <%= t("found") %></span>
         <%= render :partial => "share/tags", :locals => {:tags => @tags, :tagtype => @tagtype} %>

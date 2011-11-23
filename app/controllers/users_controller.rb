@@ -15,7 +15,7 @@ class UsersController < InheritedResources::Base
     @usersearch = User.search(params[:search])
     @users = @usersearch.paginate(:page => params[:page])
     @users_count = @usersearch.count 
-
+    @keywords = params[:search][:title_contains].to_s.split if params[:search] and not params[:search][:title_contains].blank?
     
     if params[:aim]
       @tag = params[:aim]

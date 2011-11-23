@@ -154,7 +154,7 @@ table td {
 
 /* boxes */
 
-.box-light-grey,
+.status-bar,
 .box {
   padding:0.5em;
   margin-bottom:8px;
@@ -163,7 +163,7 @@ table td {
 .box {
   border:1px solid #848c82;
 }
-.box-light-grey {
+.status-bar {
   border:1px solid #d8e0d0;
   background: #b8c2b3;
 }
