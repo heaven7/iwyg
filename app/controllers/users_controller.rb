@@ -12,9 +12,10 @@ class UsersController < InheritedResources::Base
   # has_scope :all_friends
 
   def index
+    params[:search] = params[:q]
     @usersearch = User.search(params[:search])
-    @users = @usersearch.paginate(:page => params[:page])
-    @users_count = @usersearch.count 
+    @users = @usersearch.result(:distict => true).paginate(:page => params[:page])
+    @users_count = @usersearch.result.count 
     @keywords = params[:search][:title_contains].to_s.split if params[:search] and not params[:search][:title_contains].blank?
     
     if params[:aim]

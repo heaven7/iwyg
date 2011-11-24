@@ -23,6 +23,7 @@ class ItemsController < InheritedResources::Base
   has_scope :sharingpoint
 
   def index
+    params[:search] = params[:q]
     @geolocation = session[:geo_location] 
     @finder = find_something
     if params[:user_id] && current_user && params[:user_id].to_i == current_user.id.to_i
@@ -40,12 +41,18 @@ class ItemsController < InheritedResources::Base
         @searchItemType = "Resource"
       end
       
-      if not params[:search][:title_contains].blank?     
+      if not params[:search][:title_cont].blank?     
         @keywords = params[:search][:title_contains].to_s.split
-        @keyword_items = []
+        @keyword_items = ""
         @keywords.each do |keyword|
-          @keyword_items << Item.where( :title =~ "%#{keyword}%" )  
+          if @keywords.last == keyword then
+            @keyword_items += "(:title =~ '%#{keyword}%' )"  
+          else
+            @keyword_items += "(:title =~ '%#{keyword}%' ) | "  
+          end
         end
+        params[:search][:title_contains] = eval(@keyword_items)
+        
         
         @searcher ||= current_user.id = nil if current_user
         # save search      
@@ -54,12 +61,9 @@ class ItemsController < InheritedResources::Base
   #      end 
       end
       
-      @search = Item.search(params[:search])
-      #@test = Item.where(@title_keywords.to_sym) if !@title_keywords.blank?
-      #@search = @search.merge(@keyword_items)
-      @search.order ||= :ascend_by_distance
-      @search_sql = @search.to_sql
-      @items = @search.paginate( :page => params[:page], :per_page => ITEMS_PER_PAGE )
+      $search = Item.search(params[:search])
+      #$search.sort ||= :ascend_by_distance
+      @items = $search.result(:distinct => true).paginate( :page => params[:page], :per_page => ITEMS_PER_PAGE )
       @items_count = @items.count
       
       if params[:user_id] || params[:search][:user_id]
@@ -95,7 +99,7 @@ class ItemsController < InheritedResources::Base
       # normal listing
       @searchItemType = "Resource"
       $search = Item.scoped(:order => "created_at DESC", :include => [:images] ).search(params[:search])
-      @items = $search.paginate(
+      @items = $search.result.paginate(
         :page => params[:page],
         :per_page => ITEMS_PER_PAGE,
         :order => "created_at DESC",
@@ -114,7 +118,7 @@ class ItemsController < InheritedResources::Base
     
         render :layout => 'userarea'
       end
-      @items_count = $search.count
+      @items_count = $search.result.count
 
     end
     

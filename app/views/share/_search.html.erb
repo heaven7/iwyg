@@ -1,42 +1,38 @@
 <div id="search">                              
   <div id="searchform">
-  <%= form_tag items_path, :method => :get do %>
-    <% if params[:controller] == "users" %>
-      <%= text_field_tag "search[login_contains]"  %>
-    <% else %>
-      <%= text_field_tag "search[title_contains]"  %>
+    <%= search_form_for $search do |f| %>
+      <%= f.text_field :title_cont  %>
       <div id="searchextended" class="ui-corner-all">
         <h3 class="bold"><%= t("searchOptions").html_safe %></h3>
         <table>
           <tr>
             <td class="font-small"><%= t("resources.available").html_safe %><br /> (<%= t("from") %> - <%= t("till") %>)</td>
             <td class="row-big">
-              <%= text_field_tag "search[from_gte]", '', {:id => "from", :size => 8} %> -
-              <%= text_field_tag "search[till_lte]", '', {:id => "till", :size => 8} %>
+              <%= f.text_field :from_gt, {:id => "from", :size => 8} %> -
+              <%= f.text_field :till_lt, {:id => "till", :size => 8} %>
             </td>
           </tr>
           <tr>
             <td class="font-small"><%= t("resources.amount") %></td>
             <td class="row-big">
-              <%= text_field_tag "search[amount_equals]", '', {:id => "amount", :size => 8} %> &nbsp;
-              <%= select_tag("search[measure_id_equals]", options_from_collection_for_select(@measures, :id, :title), :include_blank => true) %>
+              <%= f.text_field :amount_eq, {:id => "amount", :size => 8} %> &nbsp;
+              <%= f.collection_select :measure_id_eq, @measures, :id, :title, :include_blank => true %>
+              <%# select_tag("search[measure_id_equals]", options_from_collection_for_select(@measures, :id, :title), :include_blank => true) %>
             </td>
           </tr>
           <tr>
             <td class="font-small"><%= t("searchIn") %></td>
             <td class="row-big">
-              <%= select_tag( "search[item_type_id_equals]", options_from_collection_for_select(@itemtypes, :id, :localized_title), :include_blank => true) %>
+              <%= f.collection_select :item_type_id_eq, @itemtypes, :id, :localized_title, :include_blank => true %>
+              <%# select_tag( :search[item_type].contains, options_from_collection_for_select(@itemtypes, :id, :localized_title), :include_blank => true) %>
             </td>
           </tr>
         </table>
       </div>
-    <% end %>
-  <%= submit_tag "Go", :name => nil %>
+    <%= submit_tag "Go", :name => nil %>
   <% end %>
   </div>                                     
-  <% if params[:controller] == "items" %>
-    <div id="searchmenu">
-      <a href="#" id="advanced_search" class="icon-arrow-down"><%= t("options") %></a>
-    </div>                                 
-  <% end %>
+  <div id="searchmenu">
+    <a href="#" id="advanced_search" class="icon-arrow-down"><%= t("options") %></a>
+  </div>                                 
 </div> 
