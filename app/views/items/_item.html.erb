@@ -16,7 +16,5 @@
       <p class="font-small"><%=h shorten(item.description) if item.description %></p>
     </div>
   <% end %>
-<!--
-  <p class="item-owner"><%= link_to image_tag(microThumb(item.owner)), profile_path(item.owner.login), :title => item.owner.login %></p>
--->
+  <p class="font-smaller"><%= distance_of_time_in_words(item.created_at, Time.now) %> <%= t("ago") %></p>
 </div>

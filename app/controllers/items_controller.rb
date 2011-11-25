@@ -23,7 +23,7 @@ class ItemsController < InheritedResources::Base
   has_scope :sharingpoint
 
   def index
-    params[:search] = params[:q]
+    params[:search] = params[:q] if params[:q]
     @geolocation = session[:geo_location] 
     @finder = find_something
     if params[:user_id] && current_user && params[:user_id].to_i == current_user.id.to_i
@@ -35,8 +35,8 @@ class ItemsController < InheritedResources::Base
     
     # search by itemType
     if params[:search] and !params[:tag]
-      if not params[:search][:item_type_id_equals].blank?
-        @searchItemType = ItemType.find(params[:search][:item_type_id_equals]).title.to_s
+      if not params[:search][:item_type_id_eq].blank?
+        @searchItemType = ItemType.find(params[:search][:item_type_id_eq]).title.to_s
       else
         @searchItemType = "Resource"
       end
@@ -62,7 +62,7 @@ class ItemsController < InheritedResources::Base
       end
       
       $search = Item.search(params[:search])
-      #$search.sort ||= :ascend_by_distance
+      $search.sorts ||= :ascend_by_created_at
       @items = $search.result(:distinct => true).paginate( :page => params[:page], :per_page => ITEMS_PER_PAGE )
       @items_count = @items.count
       

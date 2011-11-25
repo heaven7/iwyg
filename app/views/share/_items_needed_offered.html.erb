@@ -11,14 +11,14 @@
       <% if params[:user_id] %>
         <%= link_to  image_tag(("icons/icon_" + itemType.title).downcase + ".png") + t( itemType.title.downcase, :count => resources[itemType.title.downcase.to_sym][action].size ).html_safe, 
             user_items_path( @user, 
-                             "search[item_type_id_equals]" => itemType.id, 
-                             "search[need_equals]" => need, 
-                             "search[user_id_equals]" => @user.id )
+                             "search[item_type_id_eq]" => itemType.id, 
+                             "search[need_eq]" => need, 
+                             "search[user_id_eq]" => @user.id )
         %>
       <% else %>
         <%= link_to image_tag(("icons/icon_" + itemType.title).downcase + ".png") + t( itemType.title.downcase, :count => resources[itemType.title.downcase.to_sym][action].size ).html_safe, 
-            items_path( "search[item_type_id_equals]" => itemType.id,
-                        "search[need_equals]" => need )
+            items_path( "search[item_type_id_eq]" => itemType.id,
+                        "search[need_eq]" => need )
         %>
       <% end %>
     </li>
