@@ -1,0 +1,17 @@
+<span>
+  <%= t("sortBy") %> 
+  <%= render :partial => "share/sortlink", :locals => {
+      :search => @usersearch,
+      :field => 'login',
+      :title => t("order.user"),
+      :params => {@tagtype => @tag}
+    }
+  %>
+  <%= render :partial => "share/sortlink", :locals => {
+      :search => @usersearch,
+      :field => 'location_city',
+      :title => t("order.location"),
+      :params => {@tagtype => @tag}
+    }
+  %>
+</span>

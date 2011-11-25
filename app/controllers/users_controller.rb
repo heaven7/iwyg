@@ -85,7 +85,7 @@ class UsersController < InheritedResources::Base
    
   def taggedUsers(tag)
     @usersearch = User.tagged_with(tag).search(params[:search])
-    @users, @users_count = @usersearch.all.paginate(:page => params[:page]), @usersearch.count
+    @users, @users_count = @usersearch.result.paginate(:page => params[:page]), @usersearch.result.count
   end
    
   def collection 

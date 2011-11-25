@@ -9,18 +9,20 @@
   <% end %>
 <% end %>               
 <% if params[:search] || @items_count %><div class="content-order-panel status-bar ui-corner-all font-smaller"><% end %>
-<p><%= @search_sql %></p>
 <% if @items_count %>
-  <span><%= t((@searchItemType.downcase), :count => @items_count) %> <%= t("found") if !params[:user_id] %></span>  
-  <%= render :partial => "share/tags", :locals => {:tags => @tags, :tagtype => @tagtype} if @tags || @tagtype %>
+  <span><%= t((@searchItemType.downcase), :count => @items_count) %> <%= t("found") if !params[:user_id] %></span> 
+  <% if @tags || @tagtype %>  
+    <%= render :partial => "share/panel_spacer" %>
+    <%= render :partial => "share/tags", :locals => {:tags => @tags, :tagtype => @tagtype} %>
+  <% end %>                                                                                  
   <%= render :partial => "share/panel_spacer" %>
-  <%= render :partial => "orderBy" if params[:search] %>
+  <%= render :partial => "orderBy" %>
 <% end %>
-<%= render :partial => "share/panel_spacer" %>
 <% if params[:search] %>
   <% if @keywords %>
     <% @keywords.each do |keyword|  %>
-      <span><span class="keyword"><%= keyword %></span> was searched in <%= @searchItemType %>s <b><%= search_count(keyword) %></b> times</span>
+      <%= render :partial => "share/panel_spacer" %>
+      <%= render :partial => "share/keyword", :locals => { :keyword => keyword, :searchItemType => @searchItemType } %>
     <% end %>
   <% end %>
 <% end %>

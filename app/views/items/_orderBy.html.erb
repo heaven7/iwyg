@@ -1,16 +1,21 @@
 <span>
   <%= t("sortBy") %> 
-  <%# render :partial => "orderElement", :locals => { :key => :title, 
-                                                      :label => t("order.title")
-                                                    } 
+  <%= render :partial => "share/sortlink", :locals => {
+      :search => $search,
+      :field => 'title',
+      :title => t("order.title")
+    }
   %>
-  <%= sort_link $search, 'title', t("order.title") %>
-  <%# render :partial => "orderElement", :locals => { :key => :created_at, 
-                                                      :label => t("order.date")
-                                                    } 
+  <%= render :partial => "share/sortlink", :locals => {
+      :search => $search,
+      :field => 'created_at',
+      :title => t("order.date")
+    }
   %>
-  <%# render :partial => "orderElement", :locals => { :key => :location_city,
-                                                      :label =>  t("order.location")
-                                                    } 
+  <%= render :partial => "share/sortlink", :locals => {
+      :search => $search,
+      :field => 'location_city',
+      :title => t("order.location")
+    }
   %>
 </span>

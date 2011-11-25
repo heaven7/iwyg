@@ -42,7 +42,7 @@ class ItemsController < InheritedResources::Base
       end
       
       if not params[:search][:title_cont].blank?     
-        @keywords = params[:search][:title_contains].to_s.split
+        @keywords = params[:search][:title_cont].to_s.split
         @keyword_items = ""
         @keywords.each do |keyword|
           if @keywords.last == keyword then
@@ -56,9 +56,9 @@ class ItemsController < InheritedResources::Base
         
         @searcher ||= current_user.id = nil if current_user
         # save search      
-  #      for keyword in @keywords
-  #       Search.create(:keyword => keyword, :user_id => @searcher)
-  #      end 
+        for keyword in @keywords
+         Search.create(:keyword => keyword, :user_id => @searcher)
+        end 
       end
       
       $search = Item.search(params[:search])
@@ -79,7 +79,7 @@ class ItemsController < InheritedResources::Base
       @tag = params[:tag]
       @tagtype = "tag"
       @searchItemType = "Resource"
-      @items = Item.search(params[:search]).tagged_with(@tag).paginate(
+      @items = Item.tagged_with(@tag).search(params[:search]).result.paginate(
         :page => params[:page],
         :per_page => ITEMS_PER_PAGE
       )

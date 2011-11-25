@@ -1,28 +1,25 @@
 <% if collection %>        
-  <div class="content-order-panel status-bar ui-corner-all">
+  <div class="content-order-panel status-bar ui-corner-all font-smaller">
     <% if @users_count > 0 %>
-        <span class="font-smaller"><%= t("user", :count => @users_count) %> <%= t("found") %></span>
-        <%= render :partial => "share/tags", :locals => {:tags => @tags, :tagtype => @tagtype} %>
-    <% end %>
+      <span>
+        <%= t("user", :count => @users_count) %> <%= t("found") %>
+        <% if @tags || @tagtype %>
+          <%= render :partial => "share/panel_spacer" %>
+          <%= render :partial => "/share/tags", :locals => {:tags => @tags, :tagtype => @tagtype} %> 
+        <% end %>
+      </span>
+   <% end %>
 
     <% if @usersearch  %>
+      <%= render :partial => "/share/panel_spacer" %>
       <% if @tag || @tagtype %>
-        <span class="font-smaller">
-          <%= t("sortBy") %> 
-          <%= sort_link @usersearch, :login, :label => t("order.user"), :params => { @tagtype => @tag } %>
-          , 
-          <%= sort_link @usersearch, :location_city, :params => { @tagtype => @tag }, :label => t("order.location") %>
-        </span>
+          <%= render :partial => "orderByWithTag" %> 
       <% else %>
-        <span class="font-smaller">
-          <%= t("sortBy") %> 
-          <%= sort_link @usersearch, :login, :label => t("order.user") %>
-          , 
-          <%= sort_link @usersearch, :location_city, :label => t("order.location") %>
-        </span>
+          <%= render :partial => "orderBy" %> 
       <% end %>
     <% end %>
   </div>
+  
   <div class="center"><%= will_paginate collection %></div>
   <%= render :partial => "user", :collection => collection %>
   <div class="center"><%= will_paginate collection %></div>
