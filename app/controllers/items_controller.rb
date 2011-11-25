@@ -90,7 +90,7 @@ class ItemsController < InheritedResources::Base
       @tag = params[:tag]
       @tagtype = "tag"
       @searchItemType = "Resource"
-      @items = Item.tagged_with(@tag).search(params[:search]).all.paginate(
+      @items = Item.tagged_with(@tag).search(params[:search]).result.paginate(
         :page => params[:page],
         :per_page => ITEMS_PER_PAGE
       )
