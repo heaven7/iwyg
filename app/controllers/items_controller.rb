@@ -57,7 +57,7 @@ class ItemsController < InheritedResources::Base
         @searcher ||= current_user.id = nil if current_user
         # save search      
         for keyword in @keywords
-         Search.create(:keyword => keyword, :user_id => @searcher)
+         Search.create(:keyword => keyword, :user_id => @searcher, :ip => request.env['REMOTE_ADDR'])
         end 
       end
       
@@ -72,7 +72,7 @@ class ItemsController < InheritedResources::Base
         $search = @user.items.search(params[:search]) 
       else
         $search = Item.search(params[:search])
-        index!
+      #  index!
       end
     elsif params[:tag] && params[:search]
       # search by tag and search params
@@ -122,6 +122,11 @@ class ItemsController < InheritedResources::Base
 
     end
     
+  end
+  
+  def search
+    index
+    render :index
   end
   
   def show

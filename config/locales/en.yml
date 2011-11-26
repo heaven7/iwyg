@@ -169,7 +169,7 @@ en:
   sortBy: "Sort by"
   searchIn: "Search in"
   searchOptions: "Search options"
-  searchedIn: "<b>%{item}</b> was searched in '%{itemType}s' <b>%{count}</b> times"
+  searchedIn: "<b>%{item}</b> was searched <b>%{count}</b> times"
   help: "Help"
   about: "About"
   options: "Options"

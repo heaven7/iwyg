@@ -1,8 +1,5 @@
 # encoding: utf-8
 
-#require 'yaml'
-#YAML::ENGINE.yamler= 'syck'
-
 Iwyg::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
@@ -45,6 +42,8 @@ Iwyg::Application.configure do
   # application configuration
   HOST = "http://localhost:3000"
   REPLY_EMAIL = "iwyg@heavenseven.net" 
-  Paperclip.options[:command_path] = "D:/Programme/ImageMagick-6.6.3-Q16"
+  # Paperclip.options[:command_path] = "D:/Programme/ImageMagick-6.6.3-Q16"
+  Paperclip.options[:command_path] = "C:/Program Files/ImageMagick-6.7.3-Q16"
+  
 end
 

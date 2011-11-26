@@ -22,7 +22,7 @@ module UsersHelper
   private
   
   def getUserImage(user, size)
-    if user.images.first
+    if user && user.images.first
       user.images.first.image.url(size)
     else
       "global/avatar_dummy_#{size}.png"

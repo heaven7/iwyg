@@ -7,7 +7,7 @@
       <%= link_to t("resource.new"), new_item_path %>
     </div>
   <% end %>
-<% end %>               
+<% end %>             
 <% if params[:search] || @items_count %><div class="content-order-panel status-bar ui-corner-all font-smaller"><% end %>
 <% if @items_count %>
   <span><%= t((@searchItemType.downcase), :count => @items_count) %> <%= t("found") if !params[:user_id] %></span> 

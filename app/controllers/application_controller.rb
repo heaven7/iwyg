@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   helper :all
 
   protect_from_forgery
-     
+  protect_from_forgery :secret => "123456789012345678901234567890iwyg0815"   
 
   before_filter :set_locale, :measures, :itemtypes, :itemstatuses
   

@@ -1,7 +1,7 @@
 class SentController < InheritedResources::Base
 
   layout 'mailbox'
-  before_filter :login_required
+  before_filter :authenticate_user!
 
   def index
     @messages = current_user.sent_messages.paginate :per_page => 10, :page => params[:page], :order => "created_at DESC"

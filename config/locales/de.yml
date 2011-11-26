@@ -168,7 +168,7 @@ de:
   remove: "l&ouml;schen"
   sortBy: "Sortieren nach"
   searchIn: "Suchen in"    
-  searchedIn: "<b>%{item}</b> wurde <b>%{count}</b> mal in '%{itemType}n' gesucht"
+  searchedIn: "<b>%{item}</b> wurde <b>%{count}</b> mal gesucht"
   searchOptions: "Suchoptionen"
   
   help: "Hilfe"

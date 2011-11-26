@@ -55,6 +55,7 @@ Iwyg::Application.routes.draw do
      end
      collection do
        get 'aim_suggestions'
+       match 'search' => 'users#search', :via => [:get, :post], :as => :search
      end
   end 
   
@@ -90,6 +91,7 @@ Iwyg::Application.routes.draw do
    end
    collection do
     get 'tag_suggestions' 
+    match 'search' => 'items#search', :via => [:get, :post], :as => :search
    end
   end
 

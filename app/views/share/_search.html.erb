@@ -1,6 +1,6 @@
 <div id="search">                              
   <div id="searchform">
-    <%= search_form_for $search do |f| %>
+    <%= search_form_for $search, :url => search_items_path, :html => {:method => :post} do |f| %>
       <%= f.text_field :title_cont  %>
       <div id="searchextended" class="ui-corner-all">
         <h3 class="bold"><%= t("searchOptions").html_safe %></h3>

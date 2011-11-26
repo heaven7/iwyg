@@ -36,6 +36,11 @@ class UsersController < InheritedResources::Base
     index!
   end
   
+  def search
+    index
+    render :index
+  end
+  
   def show
     if params[:login]
       @user = User.find_by_login(params[:login])

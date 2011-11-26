@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
            :foreign_key => "user_id",
            :conditions => {:need => true}                     
   has_many :images, :as => :imageable, :dependent => :destroy
-  accepts_nested_attributes_for :images, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
+  accepts_nested_attributes_for :images, :allow_destroy => true, :reject_if => lambda { |a| a[:image].blank? }
   has_many :pings,
            :source => "Ping",
            :foreign_key => :user_id

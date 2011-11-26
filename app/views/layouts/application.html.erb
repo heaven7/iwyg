@@ -68,7 +68,7 @@
             <li><%= link_to t("resources.sharingpoints"), items_path("search[item_type_id_eq]" => 5) %></li>
           </ul>
         </li>
-        <li><%= link_to_unless_current t("menu.main.members"), users_path %></li>
+        <li><%= link_to t("menu.main.members"), users_path %></li>
 <!--        
         <li><%# link_to_unless_current t("menu.main.about"), :controller => "page", :action => "about" %></li>
         <% if user_signed_in? %>
