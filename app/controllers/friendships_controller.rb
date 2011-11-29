@@ -9,6 +9,8 @@ class FriendshipsController < InheritedResources::Base
   
   def index
     @user = User.find(params[:user_id])
+    @active_menuitem_l1 = I18n.t "menu.user.friends" 
+    @active_menuitem_l1_link = user_friendships_path  
   end
   
 

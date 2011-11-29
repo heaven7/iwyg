@@ -115,23 +115,28 @@ de:
   good:
     one: "1 Gut"
     other: "%{count} G&uuml;ter"
-    singular: "Gut"
+    singular: "Gut"             
+    plural: "G&uuml;ter"
   service:
     one: "1 Dienst"
     other: "%{count} Dienste"
     singular: "Dienst"
+    plural: "Dienste"
   transport:
     one: "1 Transport"
     other: "%{count} Transporte"
     singular: "Transport"
+    plural: "Transporte"
   idea:
     one: "1 Idee"
     other: "%{count} Ideen"
     singular: "Idee"
+    plural: "Ideen"
   sharingpoint:
     one: "1 Sammelstelle"
     other: "%{count} Sammelstellen"
     singular: "Sammelstelle"
+    plural: "Sammelstellen"
   user:
     one: "1 User"
     other: "%{count} User"

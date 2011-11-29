@@ -34,7 +34,7 @@ class ItemsController < InheritedResources::Base
     @itemTypes = ItemType.all
     
     # search by itemType
-    if params[:search] and !params[:tag]
+    if params[:search] and !params[:tag]   
       if not params[:search][:item_type_id_eq].blank?
         @searchItemType = ItemType.find(params[:search][:item_type_id_eq]).title.to_s
       else
@@ -63,24 +63,32 @@ class ItemsController < InheritedResources::Base
       
       $search = Item.search(params[:search])
       $search.sorts ||= :ascend_by_created_at
-      @items = $search.result(:distinct => true).paginate( :page => params[:page], :per_page => ITEMS_PER_PAGE )
+      @items = $search.result(:distinct => true).paginate( 
+        :page => params[:page],
+        :order => "created_at DESC", 
+        :per_page => ITEMS_PER_PAGE 
+      )
       @items_count = @items.count
       
-      if params[:user_id] || params[:search][:user_id]
-        @user = User.find(params[:user_id] || params[:search][:user_id]) 
-        render :layout => 'userarea'      
+      if params[:user_id] || params[:search][:user_id_eq]
+        @user = User.find(params[:user_id] || params[:search][:user_id_eq])       
         $search = @user.items.search(params[:search]) 
+        @active_menuitem_l1 = I18n.t "menu.main.resources"
+        @active_menuitem_l1_link = user_items_path         
+        @active_menuitem_l2 = @searchItemType.downcase          
+        render :layout => 'userarea'
       else
         $search = Item.search(params[:search])
       #  index!
       end
-    elsif params[:tag] && params[:search]
+    elsif params[:tag] && params[:search]       
       # search by tag and search params
       @tag = params[:tag]
       @tagtype = "tag"
       @searchItemType = "Resource"
       @items = Item.tagged_with(@tag).search(params[:search]).result.paginate(
         :page => params[:page],
+        :order => "created_at DESC",
         :per_page => ITEMS_PER_PAGE
       )
       @items_count = @items.size  
@@ -92,13 +100,15 @@ class ItemsController < InheritedResources::Base
       @searchItemType = "Resource"
       @items = Item.tagged_with(@tag).search(params[:search]).result.paginate(
         :page => params[:page],
-        :per_page => ITEMS_PER_PAGE
+        :per_page => ITEMS_PER_PAGE,
+        :order => "created_at DESC"
       )
       @items_count = @items.size      
     else
       # normal listing
       @searchItemType = "Resource"
-      $search = Item.scoped(:order => "created_at DESC", :include => [:images] ).search(params[:search])
+      #$search = Item.scoped(:order => "created_at DESC", :include => [:images] ).search(params[:search])
+      $search = Item.search(params[:search])
       @items = $search.result.paginate(
         :page => params[:page],
         :per_page => ITEMS_PER_PAGE,
@@ -107,7 +117,9 @@ class ItemsController < InheritedResources::Base
       )
       if @finder
         @user = User.find(params[:user_id])
-
+        @active_menuitem_l1 = I18n.t "menu.main.resources"   
+        @active_menuitem_l1_link = user_items_path
+        
         @items_offered = @user.items.offer
         @items_needed = @user.items.need
         @items_taken =  @user.items_taken

@@ -16,5 +16,8 @@
       <p class="font-small"><%=h shorten(item.description) if item.description %></p>
     </div>
   <% end %>
-  <p class="font-smaller"><%= distance_of_time_in_words(item.created_at, Time.now) %> <%= t("ago") %></p>
+  <div class="item-bottom">
+    <span class="left"><%= link_to_unless_current image_tag(microThumb(item.owner), :title => item.owner.login), profile_path(item.owner.login) %></span>
+    <span class="font-smaller right"><%= distance_of_time_in_words(item.created_at, Time.now) %> <%= t("ago") %></span>
+  </div>
 </div>

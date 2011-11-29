@@ -115,23 +115,28 @@ en:
   good:
     one: "1 Good"
     other: "%{count} Goods"
-    singular: "Good"
+    singular: "Good"       
+    plural: "Goods"
   service:
     one: "1 Service"
     other: "%{count} Services"
     singular: "Service"
+    plural: "Services"
   transport:
     one: "1 Transport"
     other: "%{count} Transports"
     singular: "Transport"
+    plural: "Transports"
   idea:
     one: "1 Idea"
     other: "%{count} Ideas"
     singular: "Idea"
+    plural: "Ideas"
   sharingpoint:
     one: "1 Sharingpoint"
     other: "%{count} Sharingpoints"
     singular: "Sharingpoint"
+    plural: "Sharingpoints"
   user:
     one: "1 User"
     other: "%{count} Users"

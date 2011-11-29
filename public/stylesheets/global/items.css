@@ -14,3 +14,8 @@
   left: 65px;
   top: 2px;
 }
+
+.item-bottom {
+  text-align:left;
+  font-size:85%;
+}

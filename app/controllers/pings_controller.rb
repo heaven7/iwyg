@@ -21,6 +21,8 @@ class PingsController < InheritedResources::Base
         :per_page => PINGS_PER_PAGE,
         :order => "created_at DESC"
       )
+      @active_menuitem_l1 = I18n.t "menu.user.pings" 
+      @active_menuitem_l1_link = user_pings_path  
       @inverse_pings = Array.new
       @user.items.each do |i|
         @inverse_pings << i.pings

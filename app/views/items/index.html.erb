@@ -10,10 +10,10 @@
 <% end %>             
 <% if params[:search] || @items_count %><div class="content-order-panel status-bar ui-corner-all font-smaller"><% end %>
 <% if @items_count %>
-  <span><%= t((@searchItemType.downcase), :count => @items_count) %> <%= t("found") if !params[:user_id] %></span> 
+    <%= render :partial => "share/search/searchedItemType" %>
   <% if @tags || @tagtype %>  
     <%= render :partial => "share/panel_spacer" %>
-    <%= render :partial => "share/tags", :locals => {:tags => @tags, :tagtype => @tagtype} %>
+    <%= render :partial => "share/search/tags", :locals => {:tags => @tags, :tagtype => @tagtype} %>
   <% end %>                                                                                  
   <%= render :partial => "share/panel_spacer" %>
   <%= render :partial => "orderBy" %>
@@ -22,7 +22,7 @@
   <% if @keywords %>
     <% @keywords.each do |keyword|  %>
       <%= render :partial => "share/panel_spacer" %>
-      <%= render :partial => "share/keyword", :locals => { :keyword => keyword, :searchItemType => @searchItemType } %>
+      <%= render :partial => "share/search/keyword", :locals => { :keyword => keyword, :searchItemType => @searchItemType } %>
     <% end %>
   <% end %>
 <% end %>

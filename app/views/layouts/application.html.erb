@@ -56,16 +56,16 @@
     <div id="logo">
       <%= link_to image_tag("/images/iwyg_logo.png"), root_path %>
     </div>
-    <%= render :partial => 'share/search', :locals => { :search => @search } %>
+    <%= render :partial => 'share/search/search', :locals => { :search => @search } %>
     <div id="mainnavigation">
       <ul class="menu horizontal">
         <li id="resources"><%= link_to t("menu.main.resources"), items_path %>
           <ul class="submenu ui-corner-all shadowed">
-            <li><%= link_to t("resources.goods").html_safe, items_path("search[item_type_id_eq]" => 1) %></li>
-            <li><%= link_to t("resources.services"), items_path("search[item_type_id_eq]" => 2) %></li>  
-            <li><%= link_to t("resources.ideas"), items_path("search[item_type_id_eq]" => 3) %></li>
-            <li><%= link_to t("resources.transports"), items_path("search[item_type_id_eq]" => 4) %></li>
-            <li><%= link_to t("resources.sharingpoints"), items_path("search[item_type_id_eq]" => 5) %></li>
+            <li><%= link_to t("resources.goods").html_safe, items_path("q[item_type_id_eq]" => 1) %></li>
+            <li><%= link_to t("resources.services"), items_path("q[item_type_id_eq]" => 2) %></li>  
+            <li><%= link_to t("resources.ideas"), items_path("q[item_type_id_eq]" => 3) %></li>
+            <li><%= link_to t("resources.transports"), items_path("q[item_type_id_eq]" => 4) %></li>
+            <li><%= link_to t("resources.sharingpoints"), items_path("q[item_type_id_eq]" => 5) %></li>
           </ul>
         </li>
         <li><%= link_to t("menu.main.members"), users_path %></li>
