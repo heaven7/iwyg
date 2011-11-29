@@ -1,6 +1,12 @@
 <div id="search">                              
   <div id="searchform">
     <%= search_form_for $search, :url => search_items_path, :html => {:method => :post} do |f| %>
+      <% if params[:q] && params[:q][:need_eq] %>
+        <%= f.select :need_eq, options_for_select([[ t("title.resources.iNeed"), 0], [t("title.resources.iHave"), 1]], :selected => params[:q][:need_eq]) %> 
+      <% else %>
+        <%= f.select :need_eq, options_for_select([[ t("title.resources.iNeed"), 0], [t("title.resources.iHave"), 1]]) %> 
+      <% end %>
+      
       <%= f.text_field :title_cont  %>
       <div id="searchextended" class="ui-corner-all">
         <h3 class="bold"><%= t("searchOptions").html_safe %></h3>
