@@ -3,7 +3,7 @@
 class User < ActiveRecord::Base
 
   # :token_authenticatable, :lockable, :timeoutable, :encryptable, :confirmable, :encryptor => :restful_authentication_sha1 and :activatable
-  devise :database_authenticatable, :registerable, :rememberable, :rpx_connectable #, :confirmable, :recoverable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, :rememberable, :rpx_connectable, :recoverable, :trackable #, :confirmable, :recoverable, :trackable, :validatable
 
   before_create :build_user
 

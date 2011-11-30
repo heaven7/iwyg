@@ -22,7 +22,7 @@ fieldset {
 }
 .login {
   width: 450px;
-  
+  margin-top: 4em;
 }
 .required {
   font-family:"Georgia", serif;

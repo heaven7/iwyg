@@ -74,12 +74,15 @@
     <%= render "share/map" %>
   <% end %> 
   <% if @items_related_inverse.size > 0 && @item.tags.size > 0 %>
-    <h3><%= @items_related_title %> (<%= @items_related_inverse.size %>)</h3>
-    <ul style="clear:both;">
-      <% for item in @items_related_inverse do %>
-        <%= render :partial => "itempreview", :locals => { :item => item, :mainitem => @item } %>
-      <% end %>
-    </ul>
+    <div id="items-related">
+      <h3><%= @items_related_title %> (<%= @items_related_inverse.size %>)</h3>
+      <ul>
+        <% for item in @items_related_inverse do %>
+          <%= render :partial => "itemrelated", :locals => { :item => item, :mainitem => @item } %>
+        <% end %>
+      </ul>
+      <div class="clear"></div>
+    </div>
   <% end %>
   <% if @events.size > 0 %>
     <h3>Events (<%= @events.size %>)</h3>
