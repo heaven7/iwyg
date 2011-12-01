@@ -15,7 +15,7 @@ group :development do
 end
    
 # gem 'rdoc'   
-gem 'jquery-rails', '>= 1.0.12'
+gem 'jquery-rails' #, '>= 1.0.12'
 #gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'rails3-jquery-autocomplete'
 gem 'devise' #, :git => 'git://github.com/plataformatec/devise.git'   
@@ -24,6 +24,7 @@ gem 'formtastic', '~> 2.0'
 gem 'geocoder'
 #gem 'geokit'
 #gem 'ym4r', '0.4.1'
+gem 'gmaps4rails'
 gem 'ajaxful_rating', '2.2.8.2'
 #gem 'acts-as-taggable-on', '2.0.6'
 gem "acts-as-taggable-on", '2.0.0.rc1'

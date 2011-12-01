@@ -46,12 +46,6 @@
       <%= distance_of_time_in_words(@begin, @end) %>
     </p>
   <% end %>
-  <% if logged_in? and not @location.country.blank? %>
-    <p>
-     <%= t("resources.locatedIn") %>:
-     <%= render :partial => "locations/location", :locals => {:location => @location} if @location %>
-    </p>
-  <% end %>
  
   <% if @item.description %>
     <p><%= @item.description %></p>
@@ -68,10 +62,11 @@
   </div>
   <%= render :partial => "share/pings", :locals => {:pings => @item.pings, :pingable => @item} %>
 </div>
-<div id="col2">
-  <% if logged_in? and @map %>
-    <h3><%= t("resources.location") %></h3>
-    <%= render "share/map" %>
+<div id="col2"> 
+  <% if logged_in? and ( @location && !@locations_json.blank? ) %>
+    <h3><%= t("resources.location") %></h3> 
+    <%= render :partial => "locations/location", :locals => {:location => @location} %>
+    <%= render :partial => "share/map", :locals => { :locations => @locations_json } %>
   <% end %> 
   <% if @items_related_inverse.size > 0 && @item.tags.size > 0 %>
     <div id="items-related">

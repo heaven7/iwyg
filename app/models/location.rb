@@ -6,7 +6,7 @@ class Location < ActiveRecord::Base
   geocoded_by :address, :latitude  => :lat, :longitude => :lng, :units => :km
   after_validation :geocode, :if => :address_changed?
    
-    
+  acts_as_gmappable :lat => "lat", :lng => "lng"  
   acts_as_taggable_on :tags
     
     
@@ -15,6 +15,11 @@ class Location < ActiveRecord::Base
   
   def self.address
     [address, city, zip, country].compact.join(', ')
+  end
+  
+  def gmaps4rails_address
+  #describe how to retrieve the address from your model, if you use directly a db column, you can dry your code, see wiki
+    "#{self.address}, #{self.city}, #{self.zip}, #{self.country}" 
   end
   
 end

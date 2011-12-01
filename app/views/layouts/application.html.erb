@@ -121,12 +121,15 @@
          <% end %>
        <% end %>
        </ul>
+       <! -- gmaps4rails -->
+       <%= yield :scripts %>
     </div>
   </div>
 </div>
 <% if ENV["RAILS_ENV"] == "development" %>
   <%= debug(params) %>
-<% end %>
+<% end %>                   
+<! -- devise_rpx -->
 <%= javascript_include_rpx(user_session_url) %>
 </body>
 </html>
