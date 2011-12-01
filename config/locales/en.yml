@@ -132,6 +132,16 @@ en:
     other: "%{count} Ideas"
     singular: "Idea"
     plural: "Ideas"
+  knowledge:
+    one: "1 Knowledge"
+    other: "%{count} Knowledge"
+    singular: "Knowledge"
+    plural: "Knowledge"
+  skill:
+    one: "1 Skill"
+    other: "%{count} Skills"
+    singular: "Skill"
+    plural: "Skills"
   sharingpoint:
     one: "1 Sharingpoint"
     other: "%{count} Sharingpoints"

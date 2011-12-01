@@ -16,15 +16,19 @@ class Item < ActiveRecord::Base
   scope :offered, :conditions => {:status => 2} 
   scope :requested, :conditions => {:status => 3} 
   scope :on_transfer, :conditions => {:status => 4}
+  
   scope :multiple, :conditions => {:multiple => 1}
   scope :need, :conditions => {:need => 1}
-  scope :offer, :conditions => {:need => 0}
-  scope :good, :conditions => {:item_type_id => 1}
-  scope :service, :conditions => {:item_type_id => 2}  
-  scope :idea, :conditions => {:item_type_id => 3}
-  scope :transport, :conditions => {:item_type_id => 4}
-  scope :sharingpoint, :conditions => {:item_type_id => 5}
-  scope :on_transfer, :conditions => { :status => 4 }
+  scope :offer, :conditions => {:need => 0}  
+  
+  scope :good, :conditions => {:item_type_id => 1}       
+  scope :transport, :conditions => {:item_type_id => 2}
+  scope :service, :conditions => {:item_type_id => 3}    
+  scope :sharingpoint, :conditions => {:item_type_id => 4}
+  scope :idea, :conditions => {:item_type_id => 5}
+  scope :knowledge, :conditions => {:item_type_id => 5}
+  score :skill, :conditions => {:item_type_id => 6}
+  
   scope :location_city, :conditions => { :title => "test"}
   
   # has_many
@@ -123,22 +127,30 @@ class Item < ActiveRecord::Base
   
   def good?
     self.item_type_id == 1
-  end
+  end 
   
-  def service?
+  def transport?
     self.item_type_id == 2
   end
   
-  def idea?
+  def service?
     self.item_type_id == 3
   end
   
-  def transport?
+  def sharingpoint?
     self.item_type_id == 4
   end
-    
-  def sharingpoint?
+  
+  def idea?
     self.item_type_id == 5
+  end
+  
+  def knowledge?
+    self.item_type_id == 5
+  end
+    
+  def skill?
+    self.item_type_id == 6
   end
   
   def itemtype

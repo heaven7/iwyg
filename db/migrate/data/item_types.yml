@@ -1,16 +1,19 @@
 good:
   id: 1
   title: good
-service:
-  id: 2
-  title: service
-idea:
-  id: 3
-  title: idea
 transport:
-  id: 4
+  id: 2
   title: transport
+service:
+  id: 3
+  title: service
 sharingpoint:
-  id: 5
+  id: 4
   title: sharingpoint
+knowledge:
+  id: 5
+  title: knowledge
+skill:
+  id: 6
+  title: skill
   

@@ -132,6 +132,16 @@ de:
     other: "%{count} Ideen"
     singular: "Idee"
     plural: "Ideen"
+  knowledge:
+    one: "1 Wissen"
+    other: "%{count} Wissen"
+    singular: "Wissen"
+    plural: "Wissen" 
+  skill:
+    one: "1 F&auml;higkeit"
+    other: "%{count} F&auml;higkeiten"
+    singular: "F&auml;higkeit"
+    plural: "F&auml;higkeiten" 
   sharingpoint:
     one: "1 Sammelstelle"
     other: "%{count} Sammelstellen"
