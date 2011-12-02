@@ -27,7 +27,7 @@ class Item < ActiveRecord::Base
   scope :sharingpoint, :conditions => {:item_type_id => 4}
   scope :idea, :conditions => {:item_type_id => 5}
   scope :knowledge, :conditions => {:item_type_id => 5}
-  score :skill, :conditions => {:item_type_id => 6}
+  scope :skill, :conditions => {:item_type_id => 6}
   
   scope :location_city, :conditions => { :title => "test"}
   
