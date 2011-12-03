@@ -20,6 +20,10 @@ fieldset {
 .formular {
   border:1px solid #969e93;
 }
+.registration {
+  width: 80%;
+  margin:0px auto;
+}
 .login {
   width: 450px;
   margin-top: 4em;

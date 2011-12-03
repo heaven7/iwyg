@@ -685,45 +685,45 @@ en:
    
   ## activerecord
   
-  activerecord:
-    errors:
-      template:
-        header:
-          one:    "1 error prohibited this %{model} from being saved"
-          other:  "%{count} errors prohibited this %{model} from being saved"
-        # The variable :count is also available
-        body: "Oops, something went wrong here."
-      messages:
-        inclusion: "is not included in the list"
-        exclusion: "is reserved"
-        invalid: "is invalid"
-        confirmation: "doesn't match confirmation"
-        accepted: "must be accepted"
-        empty: "can't be empty"
-        blank: "can't be blank"
-        too_long: "is too long (maximum is %{count} characters)"
-        too_short: "is too short (minimum is %{count} characters)"
-        wrong_length: "is the wrong length (should be %{count} characters)"
-        taken: "has already been taken"
-        not_a_number: "is not a number"
-        not_an_integer: "must be an integer"
-        greater_than: "must be greater than %{count}"
-        greater_than_or_equal_to: "must be greater than or equal to %{count}"
-        equal_to: "must be equal to %{count}"
-        less_than: "must be less than %{count}"
-        less_than_or_equal_to: "must be less than or equal to %{count}"
-        odd: "must be odd"
-        even: "must be even"
-        record_invalid: "Validation failed: %{errors}"
-        invalid_date: "is not a valid date"
-        invalid_time: "is not a valid time"
-        invalid_datetime: "is not a valid datetime"
-        is_at: "must be at %{restriction}"
-        before: "must be before %{restriction}"
-        on_or_before: "must be on or before %{restriction}"
-        after: "must be after %{restriction}"
-        on_or_after: "must be on or after %{restriction}"
-        between: "must be between %{earliest} and %{latest}"
+  #activerecord:
+  errors:
+    template:
+      header:
+        one:    "1 error prohibited this %{model} from being saved"
+        other:  "%{count} errors prohibited this %{model} from being saved"
+      # The variable :count is also available
+      body: "Oops, something went wrong here."
+    messages:
+      inclusion: "is not included in the list"
+      exclusion: "is reserved"
+      invalid: "is invalid"
+      confirmation: "doesn't match confirmation"
+      accepted: "must be accepted"
+      empty: "can't be empty"
+      blank: "can't be blank"
+      too_long: "is too long (maximum is %{count} characters)"
+      too_short: "is too short (minimum is %{count} characters)"
+      wrong_length: "is the wrong length (should be %{count} characters)"
+      taken: "has already been taken"
+      not_a_number: "is not a number"
+      not_an_integer: "must be an integer"
+      greater_than: "must be greater than %{count}"
+      greater_than_or_equal_to: "must be greater than or equal to %{count}"
+      equal_to: "must be equal to %{count}"
+      less_than: "must be less than %{count}"
+      less_than_or_equal_to: "must be less than or equal to %{count}"
+      odd: "must be odd"
+      even: "must be even"
+      record_invalid: "Validation failed: %{errors}"
+      invalid_date: "is not a valid date"
+      invalid_time: "is not a valid time"
+      invalid_datetime: "is not a valid datetime"
+      is_at: "must be at %{restriction}"
+      before: "must be before %{restriction}"
+      on_or_before: "must be on or before %{restriction}"
+      after: "must be after %{restriction}"
+      on_or_after: "must be on or after %{restriction}"
+      between: "must be between %{earliest} and %{latest}"
         
   ## misc
   

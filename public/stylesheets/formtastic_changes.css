@@ -26,7 +26,7 @@ form.formtastic .input {
 
 
 form.formtastic fieldset ol li.password input,
-form.formtastic fieldset .inputs #user_email,
+form.formtastic fieldset.inputs #user_email,
 form.formtastic fieldset ol li.text textarea,
 form.formtastic fieldset ol li.string input {
   width:56.5%;
