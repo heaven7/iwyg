@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111125185442) do
+ActiveRecord::Schema.define(:version => 20111204034610) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -134,6 +134,7 @@ ActiveRecord::Schema.define(:version => 20111125185442) do
     t.decimal  "lng",            :precision => 15, :scale => 12
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "gmaps"
   end
 
   create_table "measures", :force => true do |t|

@@ -1,7 +1,7 @@
 class Item < ActiveRecord::Base
 
   
-  attr_accessible :locatable_type, :locatable_id, :title, :amount, :measure_id,
+  attr_accessible :locatable_type, :locatable_id, :title, :amount, :measure_id, :measure,
                   :description, :item_type_id, :need, :from, :till, :user_id, 
                   :locations_attributes, :images_attributes, :events_attributes, 
                   :item_attachments_attributes, :tag_list, :_delete, :status, :multiple

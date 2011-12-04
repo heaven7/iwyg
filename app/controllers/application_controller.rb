@@ -143,6 +143,7 @@ class ApplicationController < ActionController::Base
   
   def itemtypes
     @itemtypes ||= ItemType.find(:all)
+    @itemtypes
   end 
   
   def itemstatuses

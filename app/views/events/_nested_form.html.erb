@@ -1,4 +1,4 @@
-<% content_for :head do %>   
+<%= content_for :head do %>   
    <script type="text/javascript">
   $(document).ready(function (){
 
@@ -9,8 +9,8 @@
   </script>
 <% end %>
 
-<% f.inputs do %>
-  <% f.semantic_fields_for :events do |event_form| %> 
+<%= f.inputs do %>
+  <%= f.semantic_fields_for :events do |event_form| %> 
     <%= event_form.input :eventable_id, :as => :hidden, :value => @eventable_id if @eventable_id %>
     <%= event_form.input :eventable_type, :as => :hidden, :value => @eventable_type if @eventable_type %> 
     <%= event_form.input :from, 
@@ -27,5 +27,5 @@
       :label      => (t("formtastic.labels.event.till") + "&nbsp;" + image_tag("icons/icon_event.png"))
     %>
   <% end %>
- <% end %>
+<% end %>
 

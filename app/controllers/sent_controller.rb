@@ -1,5 +1,6 @@
 class SentController < InheritedResources::Base
-
+  respond_to :html, :js
+  
   layout 'mailbox'
   before_filter :authenticate_user!
 

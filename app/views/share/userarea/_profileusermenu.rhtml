@@ -1,6 +1,6 @@
 <% if user_signed_in? and user.login != current_user.login %>
   <ul class="font-smaller button">
     <li><%= link_to t("menu.user.addToFriends"), friendships_path(:friend_id => user), :method => :post if !is_friend?(user) %></li>
-    <li><%= link_to t("menu.user.sendMessage"), new_sent_path(:to => user.id) %></li>
+    <li><%= link_to t("menu.user.sendMessage"), new_sent_path(:to => user.id), :rel => "modalbox", :remote => true %></li>
   </ul>
 <% end %>

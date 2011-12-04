@@ -2,7 +2,7 @@
  <%= GMap.header(:hl=> params[:locale]) if @map %>
  <%= @map.to_html if @map %>
 <% end %>
-<%= render "share/map" %>
+<%= render "share/map" if @location && @map %>
 <%= f.inputs do %>
   <%= f.semantic_fields_for :locations do |location_form| %>
     <%= location_form.input :address, :required => false, :label => t("formtastic.labels.location.address") %>

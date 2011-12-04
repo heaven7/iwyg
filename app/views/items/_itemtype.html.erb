@@ -2,5 +2,5 @@
   <%= image_tag "/images/icons/icon_#{@item.itemtype}.png" %>
 </span>
 <span>
-  <%=h item.localized_itemtype %>
+  <%= item.localized_itemtype.html_safe %>
 </span>
