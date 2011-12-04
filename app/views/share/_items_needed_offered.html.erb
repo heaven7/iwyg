@@ -8,18 +8,31 @@
           action = :offered
         end
       %>
+      <% count = resources[itemType.title.downcase.to_sym][action].size %>
       <% if params[:user_id] %>
-        <%= link_to  image_tag(("icons/icon_" + itemType.title).downcase + ".png") + t( itemType.title.downcase, :count => resources[itemType.title.downcase.to_sym][action].size ).html_safe, 
-            user_items_path( @user, 
-                             "q[item_type_id_eq]" => itemType.id, 
-                             "q[need_eq]" => need, 
-                             "q[user_id_eq]" => @user.id )
-        %>
+        <% if count.to_i == 1 %>
+          <%= link_to  image_tag(("icons/icon_" + itemType.title).downcase + ".png") + t( itemType.title.downcase, :count => count ).html_safe,
+             resources[itemType.title.downcase.to_sym][action].first 
+          %>  
+        <% else %>
+          <%= link_to  image_tag(("icons/icon_" + itemType.title).downcase + ".png") + t( itemType.title.downcase, :count => count ).html_safe, 
+              user_items_path( @user, 
+                               "q[item_type_id_eq]" => itemType.id, 
+                               "q[need_eq]" => need, 
+                               "q[user_id_eq]" => @user.id )
+          %>
+        <% end %>
       <% else %>
-        <%= link_to image_tag(("icons/icon_" + itemType.title).downcase + ".png") + t( itemType.title.downcase, :count => resources[itemType.title.downcase.to_sym][action].size ).html_safe, 
-            items_path( "q[item_type_id_eq]" => itemType.id,
-                        "q[need_eq]" => need )
-        %>
+        <% if count.to_i == 1 %>
+          <%= link_to  image_tag(("icons/icon_" + itemType.title).downcase + ".png") + t( itemType.title.downcase, :count => count ).html_safe,
+             resources[itemType.title.downcase.to_sym][action].first 
+          %>  
+        <% else %>
+          <%= link_to image_tag(("icons/icon_" + itemType.title).downcase + ".png") + t( itemType.title.downcase, :count => count ).html_safe, 
+              items_path( "q[item_type_id_eq]" => itemType.id,
+                          "q[need_eq]" => need )
+          %>  
+        <% end %>
       <% end %>
     </li>
   <% end %>

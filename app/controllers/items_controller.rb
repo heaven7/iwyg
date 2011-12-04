@@ -266,27 +266,6 @@ class ItemsController < InheritedResources::Base
   
   def getLocation(item)
     @locations_json = item.locations.to_gmaps4rails
- 
-  
-    #if item.locations.first and item.locations.first.lat and item.locations.first.lng
-    #  @map = GMap.new("map")
-    #  @map.control_init(:large_map => true,:map_type => false)
-    #  @map.icon_global_init(
-    #    GIcon.new(
-    #      :image => "/images/icons/icon_#{ItemType.find(item.item_type_id).title}.png",
-    #      :info_window_anchor => GPoint.new(9,2),
-    #      :icon_anchor => GPoint.new(7,7)
-    #    ),
-    #    "icon"
-    #  )
-    #  icon = Variable.new("icon")
-    #  @itemlocation = GMarker.new([@location.lat,@location.lng], 
-    #    :icon => icon,
-    #    :title => "#{item.title}", 
-    #    :info_window => "<h2>#{item.title}</h2>#{item.locations.first.city}, #{item.locations.first.country}")
-    #  @map.overlay_init(@itemlocation)
-    #  @map.center_zoom_init([@location.lat,@location.lng], 14)
-    #end
   end
   
   def getItemTypes
