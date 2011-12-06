@@ -22,11 +22,26 @@ fieldset {
 }
 .registration {
   width: 80%;
-  margin:0px auto;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  margin-top:1em;
 }
-.login {
-  width: 450px;
+
+.inputs p {
+  font-size:80%;
+  padding: 0.3em;
+}
+
+.loginform {
+  width: 500px;  
+  margin-left:auto !important;
+  margin-right:auto !important;
   margin-top: 4em;
+}
+.registration .links li,
+.loginform .links li {
+  padding:0.5em;  
+  font-size:80%;
 }
 .required {
   font-family:"Georgia", serif;

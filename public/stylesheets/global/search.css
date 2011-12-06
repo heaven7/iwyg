@@ -68,9 +68,9 @@ top:0;
 }
 #search #searchmenu {
     font-size: 70%;
-    left: -1em;
+    left: -5em;
     position: relative;
-    top: 3.8em;
+    top: 4.5em;
 }
 
 #search #searchmenu ul li  {

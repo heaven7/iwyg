@@ -1,6 +1,8 @@
 class CommentsController < InheritedResources::Base
   layout 'application'
-  respond_to :html, :xml, :json
+  respond_to :html, :xml
+  respond_to :js, :only => :create
+  
   belongs_to :commentable, :polymorphic => true
   
   
@@ -33,14 +35,8 @@ class CommentsController < InheritedResources::Base
   
   def create
     @commentable = find_commentable
-    @comment = @commentable.comments.build(params[:comment])
-  
-    if @comment.save
-      flash[:notice] = "Comment saved."
-      redirect_to [@commentable, @comments]
-    else
-      render :action => 'new'
-    end
+    @comment = @commentable.comments.create(params[:comment])
+    @comments = @commentable.comments
   end
   
   def update

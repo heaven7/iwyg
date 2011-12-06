@@ -33,15 +33,15 @@ class CommentObserver < ActiveRecord::Observer
     
     @owner = User.find(@resource.user_id)
     
-    UserMailer.deliver_comment(
-      :resource => @resource,
-      :resource_url => @resource_url,
-      :title => @title,
-      :comment => comment,
-      :commenter => @commenter,
-      :commenter_url => "#{@host}/users/#{@commenter.id}",
-      :owner   => @owner,      
-      :subject => @subject
-    ) 
+   # UserMailer.deliver_comment(
+   #   :resource => @resource,
+   #   :resource_url => @resource_url,
+   #   :title => @title,
+   #   :comment => comment,
+   #   :commenter => @commenter,
+   #   :commenter_url => "#{@host}/users/#{@commenter.id}",
+   #   :owner   => @owner,      
+   #   :subject => @subject
+   # ) 
   end
 end

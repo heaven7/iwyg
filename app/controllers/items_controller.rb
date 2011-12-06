@@ -182,7 +182,7 @@ class ItemsController < InheritedResources::Base
     @item = current_user.items.find(params[:id], :include => [:locations, :events])    
     @location = @item.locations.first || @item.locations.build
     @event = @item.events.first || @item.events.build
-    # getLocation(@item) if @location
+    getLocation(@item) if @location.lat and @location.lng
     @user = User.find(@item.user_id)
     getItemTypes
   end

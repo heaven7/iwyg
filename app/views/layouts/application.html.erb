@@ -82,18 +82,16 @@
   </div>
   <% if flash[:notice] || notice -%>
     <div class="notice ui-corner-all">
-      <div class="exit"><a href="#"><img src="/images/icons/icon_delete.png" /></a></div>
       <%= flash[:notice].html_safe || notice.html_safe %>
     </div>
   <% end -%>
   <% if flash[:error] || alert -%>
     <div class="error ui-corner-all">
-      <div class="exit"><a href="#"><img src="/images/icons/icon_delete.png" /></a></div>
-      <%= flash[:error].html_safe || alert.html_safe %>
+      <%= flash[:error] || alert %>
     </div>
   <% end -%>
+  
   <div id="content">
-    <%# @geolocation %>
     <%=  yield %>
   </div>
   

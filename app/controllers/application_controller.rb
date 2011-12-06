@@ -67,6 +67,10 @@ class ApplicationController < ActionController::Base
     user_signed_in?
   end
   
+  def login_required
+     authenticate_user!
+  end
+  
   private
   
   # Overwriting the sign_out redirect path method
@@ -85,7 +89,7 @@ class ApplicationController < ActionController::Base
   end
 
 
-  # DEPREACHED
+  # DEPREACHED  - begin
   def getLocationOnMap(location, title, imagepath)
   
     if !location.lat and !location.lng
@@ -125,6 +129,7 @@ class ApplicationController < ActionController::Base
       getLocationOnMap(locations, title, imagepath)
     end
   end
+  # DEPREACHED  - end
   
   def find_model
     params.each do |name, value|

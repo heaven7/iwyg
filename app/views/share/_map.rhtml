@@ -1,4 +1,5 @@
 <div class="map box ui-corner-all center" style="width:400px;">
-  <%= gmaps("map_options" => { "detect_location" => true, "center_longitude" => 180, "center_on_user" => false , "auto_adjust" => true, "zoom" => 15, "auto_zoom" => false},"markers" => { "data" => locations }) %>
+  <%= gmaps("map_options" => { "detect_location" => true, "center_longitude" => 180, "center_on_user" => false , "auto_adjust" => true, "zoom" => 15, "auto_zoom" => false}, 
+      "markers" => { "data" => locations }) %>
   <%# @map.div(:width => 400, :height => 300) %>
 </div>

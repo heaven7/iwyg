@@ -1,5 +1,9 @@
 /* Application JavaScript Code */
 
+jQuery.ajaxSetup({
+  'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
+})
+
 $(document).ready(function (){
       
     // Searchform (extended)
@@ -27,6 +31,12 @@ $(document).ready(function (){
     $('.exit').find('a').click(function () {
       $(this).parent().parent().hide('slide', {direction: 'up'}, 500);
     }); 
+    
+    // Comments
+    $('#new_comment').submit(function () {
+       $.post($(this).attr("action"), $(this).serialize(), null, "script");
+       return false;
+    });             
    
     // User Menue
     $('div.list-item .usermenu').hide();
@@ -39,7 +49,7 @@ $(document).ready(function (){
       }
     );
     
-    // colorbox
+    // Colorbox
     $('a[rel=modalbox]').live('click', function() {
       $(this).colorbox();
       return false;
@@ -64,45 +74,6 @@ function add_fields(link, association, content) {
 function edit_field(link) {
   $(link).parent().parent().find('li').toggle();
 }
-
-// remote methods
-var request = function(options) {
-  $.ajax($.extend({ url : options.url, type : 'get' }, options));
-  return false;
-};
-
-// remote links handler
-$('a[data-remote=true]').live('click', function() {
-  return request({ url : this.href });
-});
-
-// remote forms handler
-$('form[data-remote=true]').live('submit', function() {
-  return request({ url : this.action, type : this.method, data : $(this).serialize() });
-});
-
-$(function (){
-$('a.ajax').click(function() {
-    var url = this.href;
-    var dialog = $('<div style="display:none"></div>').appendTo('body');
-    // load remote content
-    dialog.load(
-        url, 
-        {}, // omit this param object to issue a GET request instead a POST request, otherwise you may provide post parameters within the object
-        function (responseText, textStatus, XMLHttpRequest) {
-            dialog.dialog({
-                // add a close listener to prevent adding multiple divs to the document
-                close: function(event, ui) {
-                    // remove div with all data and events
-                    dialog.remove();
-                }
-            });
-        }
-    );
-    //prevent the browser to follow the link
-    return false;
-});
-    });
 
 // errorTabs: Mark tabs as error if inputfields are invalid
 function showErrorTabs() {     

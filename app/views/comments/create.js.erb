@@ -1,0 +1,3 @@
+$('#comments-count h3').html('<%= "#{t('comments.comments')} (#{@comments.count})" %>');
+$('#comments').prepend('<%= escape_javascript(render(:partial => "comment", :locals => {:comment => @comment})) %>').show(300);
+$('#new_comment')[0].reset();

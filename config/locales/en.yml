@@ -99,7 +99,9 @@ en:
   register:
     required: "register"
     mandatoryFields: "Mandatory fields"
-    signup: "Sign Up"
+    signup: "Sign Up" 
+    signin: "Login"
+    forgotpassword: "Forgot password?"
     label:
       login: "Username"
       email: "Email"
@@ -441,7 +443,14 @@ en:
         notice: "Successfully updated image." 
       destroy:
         notice: "Successfully destroyed image."  
-        
+    comments:
+      create:
+        notice: "Comment saved."
+      update:
+        notice: "Successfully updated comment." 
+      destroy:
+        notice: "Successfully destroyed comment."
+                    
   ##  menu  
   
   menu:

@@ -1,7 +1,7 @@
 <li class="box ui-corner-all"> 
   <p class="font-smaller">
     <%= image_tag "icons/icon_#{item.itemtype.downcase}.png", :title => item.localized_itemtype, :alt => item.localized_itemtype %>&nbsp; <%= link_to shorten(item.title, 22), item_path(item) %><br />
-    <%= link_to item.owner.login, profile_path(item.owner) %>
+    <%= link_to item.owner.login, profile_path(item.owner.login) %>
     <br />
     <% if logged_in? && item.locations.first && mainitem.locations.first %>
       <%= item.locations.first.city %>        

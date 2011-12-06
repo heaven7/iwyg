@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>Id</th> 
     <th>Body</th>
     <th>Commentable</th>
     <th>Commentable type</th>
@@ -11,16 +12,17 @@
 
 <% @comments.each do |comment| %>
   <tr>
+    <td><%=h comment.id %></td>
     <td><%=h comment.body %></td>
     <td><%=h comment.commentable_id %></td>
     <td><%=h comment.commentable_type %></td>
     <td><%=h comment.published %></td>
     <td><%=h comment.published_at %></td>
-    <td><%= link_to 'Show', comment %></td>
-    <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-    <td><%= link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%# link_to 'Show', polymorphic_path(@commentable, comment) %></td>
+    <td><%# link_to 'Edit', edit_comment_path(comment) %></td>
+    <td><%# link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 <br />
-<%= render :partial => "comments/form" %>
+<%# render :partial => "comments/form" %>

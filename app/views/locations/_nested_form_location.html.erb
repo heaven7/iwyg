@@ -1,8 +1,4 @@
-<% content_for :head do %>   
- <%= GMap.header(:hl=> params[:locale]) if @map %>
- <%= @map.to_html if @map %>
-<% end %>
-<%= render "share/map" %>
+<%= render :partial => "share/map", :locals => { :locations => @locations_json } if @locations_json %>
 <%= f.inputs do %>
   <% f.semantic_fields_for :location do |location_form| %>
     

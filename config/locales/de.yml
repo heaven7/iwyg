@@ -100,6 +100,8 @@ de:
     required: "ben&ouml;tigt"
     mandatoryFields: "Pflichtfelder"
     signup: "Anmelden"
+    signin: "Einloggen"
+    forgotpassword: "Passwort vergessen?"
     label:
       login: "Username"
       email: "Email"
@@ -441,6 +443,13 @@ de:
         notice: "Erfolgreich Bild ge&auml;ndert." 
       destroy:
         notice: "Erfolgreich Bild gel&ouml,scht."    
+    comments:
+      create:
+        notice: "Kommentar erfolgreich erstellt."
+      update:
+        notice: "Kommentar erfolgreich ge&auml;ndert." 
+      destroy:
+        notice: "Kommentar erfolgreich gel&ouml,scht."    
         
   ## menu
   

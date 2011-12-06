@@ -20,7 +20,7 @@ module Iwyg
     config.action_view.javascript_expansions = { :defaults => %w(jquery jquery-ui application jquery_ujs ) } 
     
     # The user observer goes inside the Rails::Initializer block
-    config.active_record.observers = :user_observer, :ping_observer, :transfer_observer, :comment_observer, :event_observer
+    config.active_record.observers = :user_observer, :ping_observer #, :transfer_observer, :comment_observer, :event_observer
   end
 end
 
