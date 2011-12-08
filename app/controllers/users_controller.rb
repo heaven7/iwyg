@@ -50,7 +50,7 @@ class UsersController < InheritedResources::Base
       @user = User.find(params[:id], :include => [:location, :userdetails, :pings])
     end
     if @user
-      @user.location ||= Location.new()
+     # @user.location ||= Location.new()
       @user.userdetails ||= Userdetails.new 
       @itemTypes = ItemType.all
       #@user.avatar ||= Avatar.new 

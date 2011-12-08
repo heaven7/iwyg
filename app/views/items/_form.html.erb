@@ -80,7 +80,8 @@
     <%= f.inputs do %>
       <%= f.input :user_id, :as => :hidden, :required => false, :value => current_user.id %>
       <%= f.input :need, :as => :select, :label => t("form.resource.i"), :include_blank => false, :collection => [[t("form.resource.need"), true], [t("form.resource.have"), false]] %>
-      <%= f.input :item_type_id, :as => :select, :label => t("form.resource.a"), :collection => options_for_select(ItemType.all.map { |i| [I18n.t("#{i.title}.singular").to_s.html_safe ,i.id ] } ), :include_blank => true %>
+      <%# f.input :item_type_id, :as => :select, :label => t("form.resource.a"), :collection => options_for_select(ItemType.all.map { |i| [I18n.t("#{i.title}.singular").to_s.html_safe ,i.id ] } ), :include_blank => true %>
+      <%= f.input :item_type_id, :as => :select, :label => t("form.resource.a"), :collection => ItemType.all.collect { |i| [I18n.t("#{i.title}.singular").to_s.html_safe ,i.id ] }, :include_blank => true  %>
       <%= f.input :multiple, :required => false %>
       <hr class="divider" />
       <li><%= f.input :title %></li>

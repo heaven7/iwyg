@@ -1,4 +1,4 @@
-<% form_for ([pingable, Ping.new]) do |f| %>
+<%= form_for ([pingable, Ping.new]) do |f| %>
   <%= f.error_messages %>
   <%= f.hidden_field :pingable_id, :value => pingable.id %>
   <%= f.hidden_field :pingable_type, :value => pingable.class %>
