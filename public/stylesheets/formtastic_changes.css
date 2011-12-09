@@ -17,6 +17,10 @@ form.formtastic fieldset ol li p.inline-hints { color:#333; }
     text-align: left;
     padding-left: 1em;
 }
+.formtastic .choices-group {
+  width: 100%;
+  padding-left: 10em;
+}
 .formtastic .inputs .hidden {
   display:none;
 }

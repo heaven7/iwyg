@@ -29,6 +29,7 @@ class MeetupsController < InheritedResources::Base
       @thing = @class.find(@eventable_id)
     end
     @user = current_user
+    @users = User.all
     @meetup = Meetup.new
     @meetup.locations.build 
     @meetup.events.build

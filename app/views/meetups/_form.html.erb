@@ -57,8 +57,8 @@
      </div>
      <div id="who"> 
        <% f.inputs do %> 
-        <%= f.input :users, :as => :check_boxes, :collection => User.all %>
-        <% end %>     
+        <%= f.input :users, :as => :check_boxes, :collection => @users.collect { |u| ["#{image_tag(tinyThumb(u), :alt => u.login, :title => u.login)}<br />#{u.login}".html_safe, u.id] } %>
+       <% end %>     
      </div>    
    </div>
   <% f.buttons do %>
