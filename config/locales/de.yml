@@ -89,7 +89,7 @@ de:
     label:
       login: "Username"
       password: "Passwort"
-      forgotPassword: "Passwort / Username vergessen?"
+      forgotPassword: "Passwort vergessen?"
       submit: "Einloggen"
       remember: "Eingeloggt bleiben"
       register: "Hier registrieren"
@@ -107,6 +107,12 @@ de:
       email: "Email"
       password: "Passwort"
       confirmPassword: "Passwort wiederholen"
+      
+  ## change password
+  
+  password:
+    change: "Passwort &auml;ndern"
+    change_submit: "Neues Passwort erstellen"    
     
   ## resources
             
@@ -207,7 +213,7 @@ de:
     one: "Ding"
     other: "Dinge"
   found: "gefunden"
-  send: "senden"
+  send: "Senden"
   from: "von"
   till: "bis"
   start: "Beginn"

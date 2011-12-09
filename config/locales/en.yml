@@ -107,7 +107,13 @@ en:
       email: "Email"
       password: "Password"
       confirmPassword: "Confirm password"
-   
+
+  ## change password
+  
+  password:
+    change: "Change your password"
+    change_submit: "Change my password"    
+       
   ## resources 
        
   resource:
@@ -206,7 +212,7 @@ en:
     one: "Thing"
     other: "Things"
   found: "found"
-  send: "send"
+  send: "Send"
   from: "from"
   till: "till"
   start: "Start"

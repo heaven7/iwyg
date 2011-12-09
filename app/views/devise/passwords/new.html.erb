@@ -1,12 +1,14 @@
-<h2>Forgot your password?</h2>
-
-<%= form_for(resource_name, resource, :url => password_path(resource_name)) do |f| %>
-  <%= f.error_messages %>
-
-  <p><%= f.label :email %></p>
-  <p><%= f.text_field :email %></p>
-
-  <p><%= f.submit "Send me reset password instructions" %></p>
-<% end %>
-
-<%= render :partial => "devise/shared/links" %>
+<div class="forgot_password">
+  <h1><%= t("login.label.forgotPassword") %></h1>
+  <%= semantic_form_for(resource_name, resource, :url => password_path(resource_name), :html => { :class => "formular shadowed ui-corner-all" }) do |f| %>
+    <%= render "share/error_messages", :target => resource %>
+    <%= f.inputs do %>
+      <%= f.input :email %>
+    <% end %>
+    
+    <%= f.buttons do %>
+      <%= f.submit t("send") %>
+    <% end %>
+  <% end %>
+  <%= render :partial => "devise/shared/links" %>
+</div>

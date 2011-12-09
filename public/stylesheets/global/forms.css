@@ -20,7 +20,9 @@ fieldset {
 .formular {
   border:1px solid #969e93;
 }
-.registration {
+.registration,
+.change_password,
+.forgot_password {
   width: 80%;
   margin-left:auto !important;
   margin-right:auto !important;
@@ -39,7 +41,9 @@ fieldset {
   margin-top: 4em;
 }
 .registration .links li,
-.loginform .links li {
+.loginform .links li,
+.change_password .links li,
+.forgot_password .links li {
   padding:0.5em;  
   font-size:80%;
 }
