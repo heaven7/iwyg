@@ -13,7 +13,8 @@ end
 group :development do 
   gem 'hpricot' 
 end
-   
+
+gem 'json_pure', '1.6.1'   
 # gem 'rdoc'   
 gem 'jquery-rails' #, '>= 1.0.12'
 #gem 'bcrypt-ruby', :require => 'bcrypt'
