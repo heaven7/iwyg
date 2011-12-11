@@ -62,11 +62,12 @@
       <ul class="menu horizontal">
         <li id="resources"><%= link_to t("menu.main.resources"), items_path %>
           <ul class="submenu ui-corner-all shadowed">
-            <li><%= link_to t("resources.goods").html_safe, items_path("q[item_type_id_eq]" => 1) %></li>
-            <li><%= link_to t("resources.services"), items_path("q[item_type_id_eq]" => 2) %></li>  
-            <li><%= link_to t("resources.ideas"), items_path("q[item_type_id_eq]" => 3) %></li>
-            <li><%= link_to t("resources.transports"), items_path("q[item_type_id_eq]" => 4) %></li>
-            <li><%= link_to t("resources.sharingpoints"), items_path("q[item_type_id_eq]" => 5) %></li>
+            <li><%= link_to t("good.plural").html_safe, items_path("q[item_type_id_eq]" => 1) %></li> 
+            <li><%= link_to t("transport.plural").html_safe, items_path("q[item_type_id_eq]" => 2) %></li>
+            <li><%= link_to t("service.plural").html_safe, items_path("q[item_type_id_eq]" => 3) %></li> 
+            <li><%= link_to t("sharingpoint.plural").html_safe, items_path("q[item_type_id_eq]" => 4) %></li> 
+            <li><%= link_to t("knowledge.plural").html_safe, items_path("q[item_type_id_eq]" => 5) %></li>   
+            <li><%= link_to t("skill.plural").html_safe, items_path("q[item_type_id_eq]" => 6) %></li>
           </ul>
         </li>
         <li><%= link_to t("menu.main.members"), users_path %></li>

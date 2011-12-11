@@ -12,6 +12,8 @@
 }
 #comments .comment {
   background:#EDEFDF;
+  border: 1px solid #E5EABB !important;
+  border: 1px inset;
   padding:0.5em;
   clear:both;
   min-height:75px;

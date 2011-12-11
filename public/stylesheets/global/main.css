@@ -162,6 +162,7 @@ table td {
 }
 .box {
   border:1px solid #848c82;
+  border: 1px inset;
 }
 .status-bar {
   border:1px solid #d8e0d0;

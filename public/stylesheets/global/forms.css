@@ -124,6 +124,20 @@ textarea:focus,
   border:1px solid #b5e095;
   
 }
+input:hover,
+select:hover, 
+file:hover, 
+textarea:hover,
+.inputfield:hover {
+  cursor: pointer;
+}
+input:focus,
+select:focus, 
+file:focus, 
+textarea:focus,
+.inputfield:focus {
+  cursor: text;
+}
 textarea {
   height:5em;
   width:20em;
