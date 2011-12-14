@@ -4,7 +4,9 @@ Iwyg::Application.routes.draw do
   
   filter :locale
   
-  resources :meetups
+  resources :meetups do
+    resources :users
+  end
   
   resources :events
   

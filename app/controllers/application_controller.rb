@@ -120,14 +120,8 @@ class ApplicationController < ActionController::Base
     end
   end 
   
-  def getLocationsOnMap(locations, title, imagepath)
-    if locations.kind_of?(Array)  
-      locations.each do |location|
-        getLocationOnMap(location, title, imagepath)
-      end 
-    else 
-      getLocationOnMap(locations, title, imagepath)
-    end
+  def getLocationsOnMap(object)
+    @locations_json = object.locations.to_gmaps4rails
   end
   # DEPREACHED  - end
   

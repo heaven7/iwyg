@@ -55,7 +55,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8baf80', end
 #topnavigation .horizontal a {
   text-decoration:none;
   padding:0.5em;
-  border:1px solid #9fc690;
+  text-shadow: 0 -1px 1px white;
 }
 
 #topnavigation .horizontal a:hover,

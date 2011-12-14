@@ -1,5 +1,5 @@
 <% semantic_form_for ([@locatable, @location]), :html => {:class => "shadowed"} do |f| %>
-  <%= f.error_messages %>
+  <%= render "share/error_messages", :target => @location %>
   <% f.inputs do %>
     <%= f.input :locatable_id, :value => @locatable.id, :as => :hidden %>
     <%= f.input :locatable_type, :value => @locatable.class, :as => :hidden %>

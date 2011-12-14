@@ -38,7 +38,7 @@
 <% end %>
 
 <%= semantic_form_for @user, :html => {:multipart => true} do |form| %>
-  <%= form.error_messages %>
+  <%= render "share/error_messages", :target => @user %>
   <div id="tabs">  
     <ul>
         <li><a href="#interests"><%= t("form.userdetails.personality").html_safe %></a></li>

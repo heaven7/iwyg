@@ -1,5 +1,10 @@
 <% if target.errors.any? %>  
 <div id="errorExplanation" class="errorExplanation">  
   <p><%= t("errors.template.body").html_safe %></p>
+    <ul>
+  <% target.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
 </div>  
 <% end %>  

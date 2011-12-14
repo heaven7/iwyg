@@ -12,6 +12,9 @@ class User < ActiveRecord::Base
   acts_as_taggable_on :interests, :wishs, :skills, :aims
   acts_as_tagger
   
+  #belongs_to
+  belongs_to :meetups
+  
   # has_many
   has_many :events
   accepts_nested_attributes_for :events, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
@@ -84,7 +87,7 @@ class User < ActiveRecord::Base
   attr_accessible :login, :email, :username, :password, :password_confirmation, 
                   :interest_list, :wish_list, :aim_list, :skill_list, 
                   :userdetails_attributes, :images, :images_attributes, 
-                  :location_attributes, :meeting_ids,
+                  :location_attributes, :meeting_ids, :meetup_ids,
                   :occupation, :company, :birthdate, :lastname, :firstname,
                   :remember_me,
                   :aim_tokens, :skill_tokens, :interest_tokens, :wish_tokens
@@ -108,7 +111,6 @@ class User < ActiveRecord::Base
   def build_user
     folders.build(:title => "Inbox") # message folder
   end
-
 
   protected
   

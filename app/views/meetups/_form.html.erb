@@ -19,8 +19,8 @@
 	</script>
 <% end %>
 
-<% semantic_form_for @meetup, :method => "get"   do |f| %>
-  <%= f.error_messages %>
+<%= semantic_form_for @meetup, :method => "get"   do |f| %>
+  <%= render "share/error_messages", :target => @meetup %>
   <div id="tabs">  
     <ul>
         <li><a href="#what"><%= t("what") %></a></li>
@@ -29,7 +29,7 @@
         <li><a href="#who"><%= t("who") %></a></li>
   	</ul>
      <div id="what">
-       <% f.inputs do %>
+       <%= f.inputs do %>
         <%= f.input :owner_id, :as => :hidden, :value => current_user.id %> 
         <%= f.input :ownertype, :as => :hidden, :value => "User" %> 
         <%= f.input :title %>
@@ -44,24 +44,24 @@
        <% end %>
      </div>
      <div id="where">
-       <% f.inputs do %>
+       <%= f.inputs do %>
         <%= render :partial => "locations/nested_form", :locals => { :f => f, :belongs_to => "meetup" } %>
-       
        <% end %>
      
      </div>
      <div id="when">
-         <% f.inputs do %>
+         <%= f.inputs do %>
         <%= render :partial => "events/nested_form", :locals => { :f => f, :belongs_to => "meetup" } %>
        <% end %>
      </div>
      <div id="who"> 
-       <% f.inputs do %> 
-        <%= f.input :users, :as => :check_boxes, :collection => @users.collect { |u| ["#{image_tag(tinyThumb(u), :alt => u.login, :title => u.login)}<br />#{u.login}".html_safe, u.id] } %>
-       <% end %>     
+       <%= f.inputs do %> 
+        <%= f.input :users, :collection => @users.map { |u| ["#{image_tag(tinyThumb(u), :alt => u.login, :title => u.login)}<br />#{u.login}".html_safe, u.id] }, :as => :check_boxes %>
+        <%# f.input :users, :as => :check_boxes, :collection => @users %>
+      <% end %>     
      </div>    
    </div>
-  <% f.buttons do %>
+  <%= f.buttons do %>
     <br />
     <%= f.submit t("save") %>
   <% end %>

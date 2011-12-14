@@ -651,7 +651,9 @@ en:
   formtastic: 
     labels:
       meetup:
-        title: "Title"  
+        title: "Title"
+        description: "Description" 
+        users: "Participants"    
       item:
         title: "Title"  
         description: "Description"

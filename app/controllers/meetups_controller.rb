@@ -14,8 +14,12 @@ class MeetupsController < InheritedResources::Base
   
   def show
     @user = current_user 
-    @meetup = @user.meetups.find(params[:id])
-    getLocationsOnMap(@meetup.locations, @meetup.title, "/images/icons/icon_meetup.png")
+    if params[:user_id]
+      @meetup = @user.meetups.find(params[:id], :conditions => { :foreign_key => "owner_id"})
+    else
+      @meetup = Meetup.find(params[:id])
+    end
+    getLocationsOnMap(@meetup)
     show!
   end  
   
@@ -29,19 +33,26 @@ class MeetupsController < InheritedResources::Base
       @thing = @class.find(@eventable_id)
     end
     @user = current_user
-    @users = User.all
     @meetup = Meetup.new
+    @users = User.all
     @meetup.locations.build 
     @meetup.events.build
   end
   
   def create
-    @user = current_user       
+    @user = current_user 
     @eventable = find_model
     @meetup = Meetup.new(params[:meetup])
+    @users = User.all
     @meetup.locations.build if @meetup.locations.size == 0 
     @meetup.events.build if @meetup.events.size == 0
-    create!
+   # create!
+   
+    if @meetup.save
+      redirect_to @meetup
+    else
+      render :action => 'new'
+    end
   end
   
   def edit
@@ -50,13 +61,12 @@ class MeetupsController < InheritedResources::Base
     @eventable_id = params[:id]
     @eventable = find_model
     @meetup = Meetup.find(params[:id])
-    
+    @users = User.all
     if @meetup.locations.size == 0       
       @locatable = find_model
       @location = @meetup.locations.build
     else                          
-      @location = @meetup.locations.first
-      getLocationsOnMap(@location, I18n.t("resources.location"), "/images/icons/icon_meetup.png")
+      getLocationsOnMap(@meetup)
     end
     
     if @meetup.events.size == 0
@@ -77,6 +87,10 @@ class MeetupsController < InheritedResources::Base
 
   
   private
+  
+  def getLocationsOnMap(object)
+    @locations_json = object.locations.to_gmaps4rails
+  end 
   
   def conditional_layout
     case action_name
