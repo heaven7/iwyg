@@ -1,1 +1,1 @@
-<%= link_to h(image_tag(microThumb(user)) + "&nbsp;" + user.login), profile_path(user.login) %>
+<%= link_to (image_tag(microThumb(user)) + "&nbsp;".html_safe + user.login), profile_path(user.login) %>

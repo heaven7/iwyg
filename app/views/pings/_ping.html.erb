@@ -2,7 +2,7 @@
 <tr class="ping">
   <td>
     <%= render :partial => "share/usermicro_flat", :locals => { :user => ping.owner } %>
-  <td><%= link_to ping.pingedOn?, ping_path(ping) %></td> 
+  <td><%= link_to ping.pingedOn?.html_safe, ping_path(ping) %></td> 
   <td><%=h distance_of_time_in_words(ping.accepted_at || ping.created_at, Time.now) %> <%= t("ago") %></td>
   <td><span class="font-smaller <%= ping.statusTitle %>"><%= t(statusTitle(ping)).html_safe %></span></td>   
   <td>

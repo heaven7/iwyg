@@ -16,11 +16,7 @@ class PingsController < InheritedResources::Base
     @pingable = find_pingable
     if @pingable.class.to_s == "User"
       @user = User.find(params[:user_id])
-      @pings = @user.pings.paginate(
-        :page => params[:page],
-        :per_page => PINGS_PER_PAGE,
-        :order => "created_at DESC"
-      )
+      @pings = @user.pings
       @active_menuitem_l1 = I18n.t "menu.user.pings" 
       @active_menuitem_l1_link = user_pings_path  
       @inverse_pings = Array.new
@@ -30,7 +26,11 @@ class PingsController < InheritedResources::Base
       
       @pings_all = @pings
       @pings_all << @inverse_pings
-      @pings_all.flatten!  
+      @pings_all = @pings_all.paginate(
+        :page => params[:page],
+        :per_page => PINGS_PER_PAGE,
+        :order => "created_at DESC"
+      )  
       
     elsif @pingable.class.to_s == "Item"
       @user = current_user

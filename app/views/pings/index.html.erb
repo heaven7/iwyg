@@ -10,6 +10,6 @@
 <% elsif @item %>
   <h3><%= t("title.pings.of") %> <%=h @item.title %></h3>
 <% end %>
-<% paginated_section @pings_all do %>
+<%= paginated_section @pings_all do %>
   <%= render :partial => "pingtable", :locals => { :collection => @pings_all } if @pings_all.size > 0 %>
 <% end %>
