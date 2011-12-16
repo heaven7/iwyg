@@ -9,10 +9,10 @@ class User < ActiveRecord::Base
 
 
   # ajaxful_rater # has_many :rates
-  acts_as_taggable_on :interests, :wishs, :skills, :aims
+  acts_as_taggable_on :interests, :wishs, :aims
   acts_as_tagger
   
-  #belongs_to
+  # belongs_to
   belongs_to :meetups
   
   # has_many

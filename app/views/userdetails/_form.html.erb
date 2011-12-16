@@ -20,8 +20,8 @@
   
     /* AUTOCOMPLETE AND LISTBUILDER */
     $(" #user_aim_list ").listbuilder({delimiter: ",", autocomplete:{source: '/items/tag_suggestions.js?c=aims'}});
-   // $("#user_aim_list").tokenInput("/items/tag_suggestions.js?c=aims", { crossDomain: false });
-    $(" #user_skill_list ").listbuilder({autocomplete:{source: '/items/tag_suggestions.js?c=skills'}});
+    // $("#user_aim_list").tokenInput("/items/tag_suggestions.js?c=aims", { crossDomain: false });
+    // $(" #user_skill_list ").listbuilder({autocomplete:{source: '/items/tag_suggestions.js?c=skills'}});
     $(" #user_interest_list ").listbuilder({autocomplete:{source: '/items/tag_suggestions.js?c=interests'}});
     $(" #user_wish_list ").listbuilder({autocomplete:{source: '/items/tag_suggestions.js?c=wishes'}});
     $(".ui-listbuilder-input").addClass("noEnterSubmit");
@@ -49,7 +49,6 @@
     <div id="interests">
       <%= form.inputs do %>
           <%= form.input :aim_list, :required => false %>
-          <%= form.input :skill_list, :as => :text, :required => false %>
           <%= form.input :interest_list, :as => :text, :required => false %>
           <%= form.input :wish_list, :as => :text, :required => false %>
       <% end %>

@@ -6,20 +6,15 @@
 <% if @user %>
   <div class="sub2cols">
     <div class="subcol1">
-      <h2><%= t("user.skills").html_safe %></h2>
-      <div class="block ui-corner-all">
-        <% for tag in @user.skill_list %>
-          <%= link_to tag, users_path({:skill => tag}) %>
-        <% end %>
-      </div>
+      
+    </div>
+    <div class="subcol2">
       <h2><%= t("user.aims").html_safe %></h2>
       <div class="block ui-corner-all">
         <% for tag in @user.aim_list %>
           <%= link_to tag, users_path({:aim => tag}) %>
         <% end %>
       </div>
-    </div>
-    <div class="subcol2">
       <h2><%= t("user.interests").html_safe %></h2>
       <div class="block ui-corner-all">  
         <% for tag in @user.interest_list %>

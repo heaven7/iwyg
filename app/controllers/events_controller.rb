@@ -101,7 +101,8 @@ class EventsController < InheritedResources::Base
   
   def conditional_layout
     case action_name
-      when "new", "edit", "create", "show", "index" : if params[:user_id] then "userarea" else "application" end
+      when "new", "edit", "create", "show", "index" then
+        if params[:user_id] then "userarea" else "application" end
       else "application"
     end
   end

@@ -5,8 +5,7 @@
     </div>
     <div id="description" class="font-smaller">
       <%= link_to t("resource", :count => user.items.size), user_items_path(user) %><br />
-      <%= link_to t("ping", :count => user.pings.not_closed.size), user_pings_path(user) %><br />
-      <%= link_to t("transfer", :count => user.transfers.size), user_transfers_path(user) if logged_in? %>
+      <%= link_to t("ping", :count => user.pings.not_closed.size), user_pings_path(user) %>
       <hr class="divider" />
       <%= link_to t("things.taken", :count => user.accounts.taken.size), user_items_path(user) %><br />
       <%= link_to t("things.given", :count => user.accounts.given.size), user_items_path(user) %>

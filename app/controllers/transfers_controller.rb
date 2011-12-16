@@ -386,7 +386,8 @@ class TransfersController < InheritedResources::Base
     
   def conditional_layout
     case action_name
-      when  "show", "new", "create" : "application"
+      when  "show", "new", "create" then
+        "application"
       when "index"
         if @user then "userarea"
         else "application" end

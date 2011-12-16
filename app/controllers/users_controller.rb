@@ -27,9 +27,6 @@ class UsersController < InheritedResources::Base
     elsif params[:interest]
       @tag = params[:interest]
       @tagtype = "interest"
-    elsif params[:skill]
-      @tag = params[:skill]
-      @tagtype = "skill"
     end
     taggedUsers(@tag) if @tag
     
