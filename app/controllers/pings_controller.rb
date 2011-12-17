@@ -1,3 +1,4 @@
+require 'will_paginate/array'
 class PingsController < InheritedResources::Base
   
   layout :conditional_layout
@@ -21,16 +22,15 @@ class PingsController < InheritedResources::Base
       @active_menuitem_l1_link = user_pings_path  
       @inverse_pings = Array.new
       @user.items.each do |i|
-        @inverse_pings << i.pings
+        @inverse_pings << i.pings if i.pings.size > 0
       end 
       
-      @pings_all = @pings
-      @pings_all << @inverse_pings
-      @pings_all = @pings_all.paginate(
+      @pings_all = @pings + @inverse_pings
+      @pings_all = @pings_all.flatten.uniq.paginate(
         :page => params[:page],
         :per_page => PINGS_PER_PAGE,
         :order => "created_at DESC"
-      )  
+      )    
       
     elsif @pingable.class.to_s == "Item"
       @user = current_user

@@ -1,4 +1,4 @@
-<% if ping and !is_closed?(ping) %>
+<% if ping and ping.not_closed? %>
 <tr class="ping">
   <td>
     <%= render :partial => "share/usermicro_flat", :locals => { :user => ping.owner } %>

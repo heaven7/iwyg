@@ -700,7 +700,12 @@ en:
     location: "Location"
     title: "Title"  
     user: "Username"
-    joined: "Date"  
+    joined: "Date"
+    
+  ## will_paginate
+  will_paginate:
+     next_label: ">>"
+     previous_label: "<<"
    
   ## activerecord
   

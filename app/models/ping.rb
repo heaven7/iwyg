@@ -31,6 +31,10 @@ class Ping < ActiveRecord::Base
     self.status == 4
   end
   
+  def not_closed?
+    self.status < 4
+  end
+  
   def item
     Item.find(self.pingable_id) if self.pingable_type == "Item"
   end

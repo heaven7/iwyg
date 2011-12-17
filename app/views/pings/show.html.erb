@@ -1,6 +1,6 @@
 <div id="col1" class="ping">
   <h1>
-    <%= t("ping.of") %> <%= @ping.pingedOn? %> 
+    <%= t("ping.of") %> <%= @ping.pingedOn?.html_safe %> 
   </h1>
   <p class="right box ui-corner-all font-small <%= statusTitle(@ping) %>">
     <%= t "ping.table.status" %>: <%= t statusTitle(@ping) %>
