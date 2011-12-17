@@ -14,6 +14,10 @@ group :development do
   gem 'hpricot' 
 end
 
+group :stage do
+  gem 'geokit'
+end
+
 gem 'json_pure', '1.6.1'   
 # gem 'rdoc'   
 gem 'jquery-rails' #, '>= 1.0.12'
@@ -23,7 +27,6 @@ gem 'devise' #, :git => 'git://github.com/plataformatec/devise.git'
 gem 'devise_rpx_connectable'
 gem 'formtastic', '~> 2.0'
 gem 'geocoder'
-#gem 'geokit'
 #gem 'ym4r', '0.4.1'
 gem 'gmaps4rails'
 gem 'ajaxful_rating', '2.2.8.2'

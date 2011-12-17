@@ -35,8 +35,11 @@ class UserdetailsController < InheritedResources::Base
       @imageable = find_imageable
       @image = @user.images.build
     end
-    @location = @user.location  
-    getLocation(@location) if @location.lat and @location.lng
+    if @user.location and @user.location.lat and @user.location.lng
+      getLocation(@user.location)
+    else
+      @user.location = Location.new
+    end
   end
 
   # POST /userdetails

@@ -57,7 +57,7 @@
      <div id="who"> 
        <%= f.inputs do %> 
         <%= f.input :users, :collection => @users.map { |u| ["#{image_tag(tinyThumb(u), :alt => u.login, :title => u.login)}<br />#{u.login}".html_safe, u.id] }, :as => :check_boxes %>
-        <%# f.input :users, :as => :check_boxes, :collection => @users %>
+        <%# f.input :users %>
       <% end %>     
      </div>    
    </div>
