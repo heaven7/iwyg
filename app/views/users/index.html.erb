@@ -5,7 +5,7 @@
         <%= t("user", :count => @users_count) %> <%= t("found") %>
         <% if @tags || @tagtype %>
           <%= render :partial => "share/panel_spacer" %>
-          <%= render :partial => "/share/tags", :locals => {:tags => @tags, :tagtype => @tagtype} %> 
+          <%= render :partial => "/share/search/tags", :locals => {:tags => @tags, :tagtype => @tagtype} %> 
         <% end %>
       </span>
    <% end %>

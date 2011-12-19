@@ -6,7 +6,12 @@
 <% if @user %>
   <div class="sub2cols">
     <div class="subcol1">
-      
+      <!--
+       <%= link_to "Delete User", 
+          {:action => "destroy", :id => @user},
+          :confirm => t("confirm_delete").html_safe,
+          :method => :delete %>
+      -->
     </div>
     <div class="subcol2">
       <h2><%= t("user.aims").html_safe %></h2>

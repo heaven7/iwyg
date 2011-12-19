@@ -1,10 +1,10 @@
 <% if ping and ping.not_closed? %>
-<tr class="ping">
+<tr class="ping font-smaller">
   <td>
-    <%= render :partial => "share/usermicro_flat", :locals => { :user => ping.owner } %>
+    <%= render :partial => "share/usermicro", :locals => { :user => ping.owner } %>
   <td><%= link_to ping.pingedOn?.html_safe, ping_path(ping) %></td> 
   <td><%=h distance_of_time_in_words(ping.accepted_at || ping.created_at, Time.now) %> <%= t("ago") %></td>
-  <td><span class="font-smaller <%= ping.statusTitle %>"><%= t(statusTitle(ping)).html_safe %></span></td>   
+  <td><span class="<%= ping.statusTitle %>"><%= t(statusTitle(ping)).html_safe %></span></td>   
   <td>
     <%= render :partial => "pings/pingmenu", :locals => { :ping => ping} %>
   </td>

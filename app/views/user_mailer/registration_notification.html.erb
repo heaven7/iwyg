@@ -1,31 +1,29 @@
-
 <!DOCTYPE html>
 <html>
   <head>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-  <% if I18n.locale.to_s == "de" %>
-    <h2>Willkommen <%= @user.login %></h2>
-    <p>
-      Du hast Dich erfolgreich bei www.iwyg.net registriert.<br/>
-    </p>
-    <p>
-      Logg' Dich hier ein: <%= @url %>.
-    </p>
-    <p>Danke, dass Du dabei bist und hab' noch einen sch&ouml;nen Tag!</p>  
-  <% end %>                    
-                                             
-  <% if I18n.locale.to_s == "en" %>
-     <h2>Welcome <%= @user.login %></h2>
-    <p>
-      You have successfully signed up to www.iwyg.net.<br/>
-    </p>
-    <p>
-      To login to the site, just follow this link: <%= @url %>.
-    </p>
-    <p>Thanks for joining and have a great day!</p>  
-  <% end %>
-  
+    <% if I18n.locale.to_s == "de" %>
+      <h2>Willkommen <%= @user.login %></h2>
+      <p>
+        Du hast Dich erfolgreich bei www.iwyg.net registriert.<br/>
+      </p>
+      <p>
+        Logg' Dich hier ein: <%= @url %>.
+      </p>
+      <p>Danke, dass Du dabei bist und hab' noch einen sch&ouml;nen Tag!</p>  
+    <% end %>                    
+
+    <% if I18n.locale.to_s == "en" %>
+       <h2>Welcome <%= @user.login %></h2>
+      <p>
+        You have successfully signed up to www.iwyg.net.<br/>
+      </p>
+      <p>
+        To login to the site, just follow this link: <%= @url %>.
+      </p>
+      <p>Thanks for joining and have a great day!</p>  
+    <% end %>
   </body>
-</html>
+</head>

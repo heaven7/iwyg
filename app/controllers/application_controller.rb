@@ -119,11 +119,12 @@ class ApplicationController < ActionController::Base
       @map.center_zoom_init([location.lat,location.lng], 14)
     end
   end 
+  # DEPREACHED  - end
+  
   
   def getLocationsOnMap(object)
     @locations_json = object.locations.to_gmaps4rails
   end
-  # DEPREACHED  - end
   
   def find_model
     params.each do |name, value|

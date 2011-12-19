@@ -7,7 +7,6 @@ class User < ActiveRecord::Base
 
   before_create :build_user
 
-
   # ajaxful_rater # has_many :rates
   acts_as_taggable_on :interests, :wishs, :aims
   acts_as_tagger
@@ -54,7 +53,7 @@ class User < ActiveRecord::Base
   has_many :meetups, :through => :meetings
     
   # has_one
-  #has_one :avatar, :as => :imageable
+  has_one :custom, :as => :customable
   has_one :location, :as => :locatable
   accepts_nested_attributes_for :location, :reject_if => lambda { |a| a[:address].blank? }, :allow_destroy => true
   has_one :userdetails
@@ -110,7 +109,10 @@ class User < ActiveRecord::Base
 
   def build_user
     folders.build(:title => "Inbox") # message folder
+    self.custom = Custom.new # customization for user
+    self.location = Location.new
   end
+  
 
   protected
   
@@ -125,7 +127,7 @@ class User < ActiveRecord::Base
       find(:first, :offset =>rand(c))
     end
   end
-    
+  
   #search
   def self.prepare_search_scopes(params = {})
     scope = self.search(params[:search])   

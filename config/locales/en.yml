@@ -644,9 +644,10 @@ en:
       title: "Title"
     userdetails:
       personality: "Personality"
-      data: "Persondata" 
+      data: "Person" 
       location: "Location"
       avatar: "Profilepicture"
+      configuration: "Configuration"
 
   formtastic: 
     labels:

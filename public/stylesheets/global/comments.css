@@ -1,8 +1,8 @@
 /* COMMENTS */
 
 #comment_body {
-  width:98%;
-  height:60px;
+  width:70%;
+  height:20px;
   clear:both;
 }
 #comment_submit {
@@ -37,4 +37,27 @@
   opacity:0.5;
   -moz-opacity:0.5;
   font-size:8pt;
+}
+
+#comment-form fieldset {
+    background: none;
+    margin:0;
+    padding:0;
+}
+#comment-form .inputs {
+    float: left;
+}
+#comment-form .buttons {
+    width:12%;
+    
+}
+#comment-form #comment_submit {
+    font-size:80%;
+    border: 1px outset;
+}
+#comment-form #comment_submit:hover {
+    cursor: pointer;
+}
+#comment-form #comment_submit:active {
+     border: 1px inset;
 }
