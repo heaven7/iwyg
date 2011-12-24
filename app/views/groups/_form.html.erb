@@ -13,7 +13,8 @@
   <div id="tabs">  
     <ul>
         <li><a href="#what"><%= t("what") %></a></li>
-        <li><a href="#where"><%= t("where") %></a></li>     
+        <li><a href="#where"><%= t("where") %></a></li>
+        <li><a href="#attachments"><%= t("menu.user.resources") %></a></li>      
     </ul>
     <div id="what">
       <%= f.inputs do %>
@@ -26,9 +27,13 @@
        <%= f.inputs do %>
         <%= render :partial => "locations/nested_form", :locals => { :f => f, :belongs_to => "group" } %>
        <% end %>
-     </div>
+    </div>
+    <div id="attachments" class="tab_content">
+      <%= render :partial => "items/item_attachments", :locals => { :object => @group, :f => f } %>
+      <hr class="divider" />
+    </div>
   </div>
   <%= f.buttons do %>
-    <%= f.commit_button %>
+    <%= f.submit t("save") %>
   <% end %>
 <% end %>

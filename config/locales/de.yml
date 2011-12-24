@@ -517,6 +517,7 @@ de:
     duration: "Dauer" 
     locatedIn: "Standort"
     location: "Standort"
+    attach: "Ressource hinzuf&uuml;gen"
     attachedResources: "Hinzugef&uuml;gte Ressourcen"
     notPingableOnTransfer: "Ressourcen mit Status 'Transfer' k&ouml;nnen nicht gepingt werden."
   

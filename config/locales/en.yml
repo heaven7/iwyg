@@ -517,6 +517,7 @@ en:
     duration: "Duration"
     locatedIn: "Located in"
     location: "Location"
+    attach: "Attach Resource"
     attachedResources: "Attached resources"
     notPingableOnTransfer: "Resources beeing on Transfer cannot be pinged."
   

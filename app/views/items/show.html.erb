@@ -52,9 +52,9 @@
   <% end %>
   <% if @item.item_attachments.count > 0 %>
     <div class="attachments">
-    <p class="font-smaller"><%= t("resources.attachedResources") %> (<%= @item.item_attachments.count %>)</p>
+    <p class="font-smaller"><%= t("resources.attachedResources").html_safe %> (<%= @item.item_attachments.count %>)</p>
     <% @item.item_attachments.each do |attachment| %>
-      <p class="font-smaller"><%= link_to image_tag(attachment.item.images.first.image.url("tiny")), item_path(attachment.item) if attachment.item && attachment.item.images %>
+      <p class="font-smaller"><%= link_to image_tag(attachment.item.images.first.image.url("tiny")), item_path(attachment.item) if attachment.item && attachment.item.images && attachment.item.images.first %>
       <%= link_to attachment.item.title, item_path(attachment.item) if attachment.item %></p>
     <% end %> 
     </div>

@@ -1,0 +1,29 @@
+<%= f.inputs do %>  
+    <% d = -1 %>  
+    <li>
+      <div class="button new">
+        <%= link_to_add_fields t("item_attachments.new").html_safe, f, :item_attachments %>
+      </div>
+    </li>  
+    <%= f.semantic_fields_for :item_attachments do |attachment_form| %>
+      <% 
+        d += 1
+        if object.item_attachments and d < object.item_attachments.count
+          resource = object.class.find(object.item_attachments[d].attachment_id) if object.item_attachments[d].attachment_id
+      %>
+        <% if resource %>
+          <div class="attachment">  
+            <p class="attached_item">
+                <%= resource.title %>
+                <%# (image_tag(resource.images.first.image.url("small"), :title => resource.title, :alt => resource.title)) if resource.images && resource.images.first || resource.title %>
+            </p>
+            <%= render 'share/item_attachment_fields', :f => attachment_form %>
+            <div class="options">
+             <%= link_to_function image_tag(("icons/icon_folder_edit.png"), :alt => t("edit").html_safe, :title => t("edit").html_safe), "edit_field(this)" %> 
+             <%= link_to_remove_fields image_tag(("icons/icon_folder_remove.png"), :alt => t("remove").html_safe, :title => t("remove").html_safe), attachment_form %> 
+            </div>
+          </div>     
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>  

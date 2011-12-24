@@ -1,6 +1,7 @@
 class ItemAttachment < ActiveRecord::Base
 
   belongs_to :item
+  belongs_to :group
   belongs_to :attachment, :class_name => "Item", :foreign_key => :attachment_id
   
   def item
