@@ -307,7 +307,13 @@ de:
     new: "Neuer Event"
     action: "%{owner} trifft sich mit %{pinger}: %{title}"  
     status: "Event wurde %{status} von %{user}"
-    
+ 
+ ## group
+  group:
+    one: "1 Gruppe"
+    other: "%{count} Gruppen"
+    new: "Neue Gruppe"
+     
   ## item
   item:
     related:
@@ -463,11 +469,13 @@ de:
     main:
       resources: "Ressourcen"
       members: "Mitglieder"
+      groups: "Gruppen"
       help: "Hilfe"
       about: "&Uuml;ber uns"
     user:
       profile: "Profil"
       resources: "Ressourcen"
+      groups: "Gruppen"
       pings: "Pings"
       events: "Events"
       meetups: "Treffpunkte"
@@ -562,6 +570,8 @@ de:
     editUserdetails: "&Auml;ndere dein Profil"
     editResource: "&Auml;ndere deine Ressource"
     newResource: "Neue Ressource"
+    editGroup: "&Auml;ndere deine Gruppe"
+    newGroup: "Neue Gruppe"
     editEvent: "Event &auml;ndern"
     newEvent: "Neuer Event"
     meetups: "Treffpunkte"

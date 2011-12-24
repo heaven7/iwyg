@@ -1,0 +1,30 @@
+<% if @user %>
+  <% if @user == current_user %>
+    <div class="button new">
+      <%= link_to t("group.new"), new_user_group_path %>
+    </div>
+  <% end %>
+<% end %>             
+<% if @groups and @groups.size > 0 %>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @groups.each do |group| %>
+  <tr>
+    <td><%= group.title %></td>
+    <td><%= group.description %></td>
+    <td><%= group.user_id %></td>
+    <td><%= link_to 'Show', group %></td>
+    <td><%= link_to 'Edit', edit_group_path(group) %></td>
+    <td><%= link_to 'Destroy', group, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<% end %>

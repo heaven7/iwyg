@@ -27,7 +27,7 @@
         <li><a href="#where"><%= t("where") %></a></li>          
         <li><a href="#when"><%= t("when") %></a></li>      
         <li><a href="#who"><%= t("who") %></a></li>
-  	</ul>
+    </ul>
      <div id="what">
        <%= f.inputs do %>
         <%= f.input :owner_id, :as => :hidden, :value => current_user.id %> 
@@ -47,7 +47,6 @@
        <%= f.inputs do %>
         <%= render :partial => "locations/nested_form", :locals => { :f => f, :belongs_to => "meetup" } %>
        <% end %>
-     
      </div>
      <div id="when">
          <%= f.inputs do %>

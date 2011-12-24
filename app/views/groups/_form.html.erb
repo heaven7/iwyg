@@ -1,0 +1,34 @@
+<% content_for :head do %> 
+<script type="text/javascript">
+  $(document).ready(function (){
+  
+        /* TABS */
+        $("#tabs").tabs();
+        showErrorTabs();
+    });
+</script>
+<% end %>
+<%= semantic_form_for @group do |f| %>
+  <%= render "share/error_messages", :target => @group %>  
+  <div id="tabs">  
+    <ul>
+        <li><a href="#what"><%= t("what") %></a></li>
+        <li><a href="#where"><%= t("where") %></a></li>     
+    </ul>
+    <div id="what">
+      <%= f.inputs do %>
+        <%= f.input :user_id, :as => :hidden, :value => @user.id %>
+        <%= f.input :title %>
+        <%= f.input :description %>
+      <% end %>
+    </div>
+    <div id="where">
+       <%= f.inputs do %>
+        <%= render :partial => "locations/nested_form", :locals => { :f => f, :belongs_to => "group" } %>
+       <% end %>
+     </div>
+  </div>
+  <%= f.buttons do %>
+    <%= f.commit_button %>
+  <% end %>
+<% end %>

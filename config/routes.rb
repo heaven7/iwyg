@@ -4,6 +4,7 @@ Iwyg::Application.routes.draw do
   
   filter :locale
   
+  
   resources :meetups do
     resources :users
   end
@@ -17,8 +18,7 @@ Iwyg::Application.routes.draw do
   resources :locations
 
   resources :searches
-  
-    
+      
   resources :pages                                                 
   match "/profile/:login" => 'users#show', :login => :login, :as => :profile
   
@@ -29,7 +29,6 @@ Iwyg::Application.routes.draw do
   resources :transfer_options
   
   resources :sent
-
 
   resources :friendships do
     member do
@@ -49,7 +48,7 @@ Iwyg::Application.routes.draw do
   end
   
   resources :users do
-     resources :items, :transfers, :images, :pings, :accounts, :comments, :friendships, :events, :rates, :messages, :meetups
+     resources :items, :transfers, :images, :pings, :accounts, :comments, :friendships, :events, :rates, :messages, :meetups, :groups
      resource :location
      resource :userdetails
      member do
@@ -61,7 +60,10 @@ Iwyg::Application.routes.draw do
      end
   end 
   
-  
+  resources :groups do
+    resources :users
+  end
+
   resources :messages do
    member do
     get 'reply'

@@ -38,7 +38,7 @@ class UserdetailsController < InheritedResources::Base
     if @user.location and @user.location.lat and @user.location.lng
       getLocation(@user.location)
     else
-      @user.location = Location.new
+     # @user.location = Location.new
     end
   end
 

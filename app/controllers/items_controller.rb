@@ -170,6 +170,8 @@ class ItemsController < InheritedResources::Base
     @item = Item.new
     @user = current_user
     
+    @active_menuitem_l1 = I18n.t "menu.main.resources"   
+    @active_menuitem_l1_link = user_items_path
     @item.locations.build
     @item.events.build
     # @item.images.build

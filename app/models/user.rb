@@ -3,7 +3,7 @@
 class User < ActiveRecord::Base
 
   # :token_authenticatable, :lockable, :timeoutable, :encryptable, :confirmable, :encryptor => :restful_authentication_sha1 and :activatable
-  devise :database_authenticatable, :registerable, :rememberable, :rpx_connectable, :recoverable, :trackable #, :confirmable, :recoverable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, :rememberable #, :rpx_connectable, :recoverable, :trackable, :confirmable, :recoverable, :trackable, :validatable
 
   before_create :build_user
 
@@ -51,6 +51,7 @@ class User < ActiveRecord::Base
   has_many :comments, :as => :commentable
   has_many :meetings
   has_many :meetups, :through => :meetings
+  has_many :groups
     
   # has_one
   has_one :custom, :as => :customable
@@ -67,10 +68,10 @@ class User < ActiveRecord::Base
 
 
   validates_presence_of     :login, :email
-  validates_presence_of     :password                   
-  validates_presence_of     :password_confirmation      
-  validates_length_of       :password, :within => 4..40
-  validates_confirmation_of :password                 
+  validates_presence_of     :password, :if => :password                   
+  validates_presence_of     :password_confirmation, :if => :password      
+  validates_length_of       :password, :within => 4..40, :if => :password
+  validates_confirmation_of :password, :if => :password                 
   validates_length_of       :login,    :within => 3..40
   validates_length_of       :email,    :within => 3..100
   validates_uniqueness_of   :login, :email, :case_sensitive => false

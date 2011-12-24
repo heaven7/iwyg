@@ -33,6 +33,8 @@ class MeetupsController < InheritedResources::Base
       @thing = @class.find(@eventable_id)
     end
     @user = current_user
+    @active_menuitem_l1 = I18n.t "menu.user.meetups" 
+    @active_menuitem_l1_link = polymorphic_path([@user, :meetups])
     @meetup = Meetup.new
     @users = User.all
     @meetup.locations.build 
