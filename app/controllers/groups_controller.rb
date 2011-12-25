@@ -1,6 +1,9 @@
 class GroupsController < InheritedResources::Base
+  protect_from_forgery :except => [:tag_suggestions]
 
   layout :conditional_layout
+  respond_to :html, :xml, :js, :json
+  before_filter :authenticate_user!, :only => [:new, :edit, :create]
   
   def index
     if params[:user_id]
@@ -32,7 +35,15 @@ class GroupsController < InheritedResources::Base
   def edit
     @user = current_user
     @group = Group.find(params[:id])
+    @active_menuitem_l1 = I18n.t "menu.main.groups"
+    @active_menuitem_l1_link = user_groups_path
   end
+
+  def tag_suggestions
+    @tags = Group.tag_counts_on("tags").find(:all, :conditions => ["name LIKE ?", "%#{params[:term]}%"], :limit=> params[:limit] || 5)
+    render  :json => @tags.join(',').split(',')
+  end
+
 
   protected
 

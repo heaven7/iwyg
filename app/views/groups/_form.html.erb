@@ -1,12 +1,25 @@
 <% content_for :head do %> 
-<script type="text/javascript">
+ <%= stylesheet_link_tag 'jquery.listbuilder.css' %>
+ <%= javascript_include_tag 'jquery-ui-listbuilder' %>
+  
+ <script type="text/javascript">
   $(document).ready(function (){
   
-        /* TABS */
-        $("#tabs").tabs();
-        showErrorTabs();
+    /* TABS */
+    $("#tabs").tabs();
+    showErrorTabs();
+        
+    /* AUTOCOMPLETE AND LISTBUILDER */
+    $(" #group_tag_list ").listbuilder({autocomplete:{source: '/groups/tag_suggestions.js'}});
+    $(".ui-listbuilder-input").addClass("noEnterSubmit");
+    $(".noEnterSubmit").keypress(function(e){
+        if ( e.which == 13 ) return false;
+    //    if ( e.which == 13 ) e.preventDefault();
     });
-</script>
+    $('.ui-listbuilder-input').addClass('ui-corner-all');
+  
+  });
+ </script>
 <% end %>
 <%= semantic_form_for @group do |f| %>
   <%= render "share/error_messages", :target => @group %>  
@@ -21,6 +34,7 @@
         <%= f.input :user_id, :as => :hidden, :value => @user.id %>
         <%= f.input :title %>
         <%= f.input :description %>
+        <%= f.input :tag_list %>
       <% end %>
     </div>
     <div id="where">
@@ -30,7 +44,6 @@
     </div>
     <div id="attachments" class="tab_content">
       <%= render :partial => "items/item_attachments", :locals => { :object => @group, :f => f } %>
-      <hr class="divider" />
     </div>
   </div>
   <%= f.buttons do %>

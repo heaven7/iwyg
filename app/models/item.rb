@@ -29,7 +29,6 @@ class Item < ActiveRecord::Base
   scope :knowledge, :conditions => {:item_type_id => 5}
   scope :skill, :conditions => {:item_type_id => 6}
   
-  scope :location_city, :conditions => { :title => "test"}
   
   # has_many
   has_many :events, :as => :eventable

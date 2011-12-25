@@ -1,0 +1,8 @@
+<%= f.input :attachment_id, 
+            :as => :select,
+            :label => I18n.t("resources.attach"), 
+            :collection => current_user.items, 
+            :hint => "Select a resource you want to attach.",
+            :input_html => {:class => "ui-corner-all"},
+            :required => false
+%>

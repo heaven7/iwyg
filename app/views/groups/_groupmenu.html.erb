@@ -1,4 +1,4 @@
 <ul>
-  <li class="button"><%= link_to 'Edit', edit_group_path(group) %></li>
+  <li class="button"><%= link_to 'Edit', edit_polymorphic_path([@user, group]) %></li>
   <li class="button"><%= link_to 'Destroy', group, :confirm => 'Are you sure?', :method => :delete  %></li>
 </ul>
