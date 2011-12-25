@@ -80,9 +80,8 @@ box-shadow: 0px 2px 15px 1px #757b81;
 #logo {
   float: left;
   position:relative;
-  left:4%;
-  padding: 1.5em;
-  padding-right:0;
+  left:7.5%;
+  top:10px;
   z-index: 99;
 }
 

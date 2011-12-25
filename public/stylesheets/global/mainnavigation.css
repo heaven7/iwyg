@@ -1,21 +1,21 @@
 /* Mainnavigation */
 
 #mainnavigation {
-    color: #794D4D;
-    font-size: 140%;
+    color: white;
+    font-size: 150%;
     font-weight: bold;
-    height: 30px;
-    left: 58%;
+    left: 4%;
     position: relative;
+    top:0px;
     text-align: left;
-    top: -76px;
+  text-shadow: 1px 0px 1px #794D4D;
+filter: dropshadow(color=#794D4D, offx=1, offy=0);
 }
+
 #mainnavigation a {
-  color:white;
+  color: #969E93;
   font-weight:bold;
   text-decoration:none;
-  text-shadow: 1px 0px 1px #CBD6D4;
-filter: dropshadow(color=#CBD6D4, offx=1, offy=0);
 }
 #mainnavigation li {
   padding:0.5em;
@@ -25,7 +25,7 @@ filter: dropshadow(color=#CBD6D4, offx=1, offy=0);
   cursor:hand;
 }
 #mainnavigation a:hover {
-  text-decoration:underline;  
+  color: white;  
 }
 #mainnavigation .menu .submenu {
   position:absolute;

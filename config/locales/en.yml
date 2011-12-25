@@ -673,6 +673,10 @@ en:
         amount: "Amount"
         measure: "Measure" 
         tag_list: "Tags"
+      group:
+        title: "Title"  
+        description: "Description"
+        tag_list: "Tags"
       event:
         from: "from"
         till: "till"

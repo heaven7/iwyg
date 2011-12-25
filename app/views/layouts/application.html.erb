@@ -58,27 +58,7 @@
       <%= link_to image_tag("/images/iwyg_logo.png"), root_path %>
     </div>
     <%= render :partial => 'share/search/search', :locals => { :search => @search } %>
-    <div id="mainnavigation">
-      <ul class="menu horizontal">
-        <li id="resources"><%= link_to t("menu.main.resources"), items_path %>
-          <ul class="submenu ui-corner-all shadowed">
-            <li><%= link_to t("good.plural").html_safe, items_path("q[item_type_id_eq]" => 1) %></li> 
-            <li><%= link_to t("transport.plural").html_safe, items_path("q[item_type_id_eq]" => 2) %></li>
-            <li><%= link_to t("service.plural").html_safe, items_path("q[item_type_id_eq]" => 3) %></li> 
-            <li><%= link_to t("sharingpoint.plural").html_safe, items_path("q[item_type_id_eq]" => 4) %></li> 
-            <li><%= link_to t("knowledge.plural").html_safe, items_path("q[item_type_id_eq]" => 5) %></li>   
-            <li><%= link_to t("skill.plural").html_safe, items_path("q[item_type_id_eq]" => 6) %></li>
-          </ul>
-        </li>
-        <li><%= link_to t("menu.main.members"), users_path %></li>
-<!--        
-        <li><%# link_to_unless_current t("menu.main.about"), :controller => "page", :action => "about" %></li>
-        <% if user_signed_in? %>
-          <li><%# link_to_unless_current t("menu.main.help"), :controller => "page", :action => "help" %></li>
-        <% end %>
--->
-      </ul>
-    </div>
+    
     <%= render :partial => 'share/topnavigation' %>
   </div>
   <% if flash[:notice] || notice -%>
@@ -91,7 +71,29 @@
       <%= flash[:error] || alert %>
     </div>
   <% end -%>
-  
+  <div id="mainnavigation">
+      <ul class="menu horizontal">
+        <li id="resources"><%= link_to_unless_current t("menu.main.resources"), items_path %>
+          <ul class="submenu ui-corner-all shadowed">
+            <li><%= link_to t("good.plural").html_safe, items_path("q[item_type_id_eq]" => 1) %></li> 
+            <li><%= link_to t("transport.plural").html_safe, items_path("q[item_type_id_eq]" => 2) %></li>
+            <li><%= link_to t("service.plural").html_safe, items_path("q[item_type_id_eq]" => 3) %></li> 
+            <li><%= link_to t("sharingpoint.plural").html_safe, items_path("q[item_type_id_eq]" => 4) %></li> 
+            <li><%= link_to t("knowledge.plural").html_safe, items_path("q[item_type_id_eq]" => 5) %></li>   
+            <li><%= link_to t("skill.plural").html_safe, items_path("q[item_type_id_eq]" => 6) %></li>
+          </ul>
+        </li>
+        <li><%= link_to_unless_current t("menu.main.members"), users_path %></li>
+        <li><%= link_to_unless_current t("menu.main.groups"), groups_path %></li>
+        <li><%# link_to_unless_current t("menu.main.projects"), projects_path %></li>
+<!--        
+        <li><%# link_to_unless_current t("menu.main.about"), :controller => "page", :action => "about" %></li>
+        <% if user_signed_in? %>
+          <li><%# link_to_unless_current t("menu.main.help"), :controller => "page", :action => "help" %></li>
+        <% end %>
+-->
+      </ul>
+    </div>
   <div id="content">
     <%=  yield %>
   </div>

@@ -524,7 +524,7 @@ de:
   ## item attachments
   
   item_attachments:
-    new: "Anhang hinzuf&uuml;gen"
+    new: "Ressource hinzuf&uuml;gen"
   
   ## images
   
@@ -672,6 +672,10 @@ de:
         multiple: "mehrmals verwendbar?"
         amount: "Anzahl"
         measure: "Einheit" 
+        tag_list: "Tags"
+      group:
+        title: "Titel"
+        description: "Beschreibung"
         tag_list: "Tags"
       event:
         from: "von"

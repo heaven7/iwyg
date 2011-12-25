@@ -1,7 +1,7 @@
 /* Search */
 #search {
   position:relative;
-  left:8%;
+  left:13%;
   text-align:left;
   padding-top:2em;
 }
@@ -15,7 +15,7 @@
 }
 
 #advanced_search {
-  display:none; // if javascript is disabled
+  display:none; /* if javascript is disabled */
 }
 #search #searchform {
   float:left;

@@ -17,7 +17,7 @@ class GroupsController < InheritedResources::Base
       @active_menuitem_l1_link = user_groups_path
       render :layout => 'userarea'
     else
-      @groups = Group.all.paginate(
+      @groups = Group.paginate(
         :page => params[:page],
         :per_page => PINGS_PER_PAGE,
         :order => "created_at DESC"
