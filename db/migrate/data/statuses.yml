@@ -1,0 +1,13 @@
+opened:
+  id: 1
+  title: opened
+accepted:
+  id: 2
+  title: accepted
+declined:
+  id: 3
+  title: declined
+closed:
+  id: 4
+  title: closed
+  
