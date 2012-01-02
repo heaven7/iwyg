@@ -1,4 +1,6 @@
 <ul>
-  <li class="button"><%= link_to 'Edit', edit_polymorphic_path([@user, group]) %></li>
-  <li class="button"><%= link_to 'Destroy', group, :confirm => 'Are you sure?', :method => :delete  %></li>
+  <% if group.owner? and group.owner == current_user %>
+    <li class="button"><%= link_to 'Edit', edit_polymorphic_path([@user, group]) %></li>
+    <li class="button"><%= link_to 'Destroy', group, :confirm => 'Are you sure?', :method => :delete  %></li>
+  <% end %>
 </ul>

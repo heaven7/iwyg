@@ -10,6 +10,7 @@ Iwyg::Application.routes.draw do
   end
   
   resources :events
+
   
   resources :userdetails
 

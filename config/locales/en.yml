@@ -535,7 +535,13 @@ en:
   events:
     ressource: "Ressource"
     description: "Description"
-  
+
+  ## groups
+  groups:
+    ressource: "Ressource"
+    description: "Description"
+    holder: "Holder"
+
   ## friendships
   
   friendships:

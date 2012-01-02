@@ -1,4 +1,4 @@
 <tr class="ping font-smaller">
     <td><%= link_to group.title, group %></td>
-    <td><%= render :partial => "groupmenu", :locals => { :group => group} %></td>
+    <td><%= render :partial => "groupmenu", :locals => { :group => group} if logged_in? %></td>
 </tr>

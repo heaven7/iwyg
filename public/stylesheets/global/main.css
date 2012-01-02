@@ -124,6 +124,8 @@ table td {
 }
 .bordered {
   border: 1px solid #B8C2B3;
+  -moz-border: 1px solid #B8C2B3;
+  -webkit-border: 1px solid #B8C2B3;
   padding:0.5em;
   margin:0.5em;
 }  

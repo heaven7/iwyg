@@ -123,7 +123,7 @@ class ApplicationController < ActionController::Base
   
   
   def getLocationsOnMap(object)
-  #  @locations_json = object.locations.to_gmaps4rails
+    @locations_json = object.locations.to_gmaps4rails
   end
   
   def find_model

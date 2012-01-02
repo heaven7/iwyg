@@ -6,6 +6,8 @@ class GroupsController < InheritedResources::Base
   before_filter :authenticate_user!, :only => [:new, :edit, :create]
   
   def index
+    params[:search] = params[:q] if params[:q]
+    
     if params[:user_id]
       @user = current_user
       @groups = @user.groups.paginate(
@@ -16,6 +18,16 @@ class GroupsController < InheritedResources::Base
       @active_menuitem_l1 = I18n.t "menu.main.groups"
       @active_menuitem_l1_link = user_groups_path
       render :layout => 'userarea'
+    elsif params[:tag]
+      # search by tag
+      @tag = params[:tag]
+      @tagtype = "tag"
+      @groups = Group.tagged_with(@tag).search(params[:search]).result.paginate(
+        :page => params[:page],
+        :per_page => ITEMS_PER_PAGE,
+        :order => "created_at DESC"
+      )
+      @groups_count = @groups.size
     else
       @groups = Group.paginate(
         :page => params[:page],
@@ -28,15 +40,24 @@ class GroupsController < InheritedResources::Base
   def new
     @user = current_user
     @group = Group.new
+    @group.locations.build
     @active_menuitem_l1 = I18n.t "menu.main.groups"
     @active_menuitem_l1_link = user_groups_path
   end
 
   def edit
     @user = current_user
-    @group = Group.find(params[:id])
+    @group = @user.groups.find(params[:id])
+    @location = @group.locations.first || @group.locations.build
     @active_menuitem_l1 = I18n.t "menu.main.groups"
-    @active_menuitem_l1_link = user_groups_path
+    #@active_menuitem_l1_link = user_groups_path
+  end
+
+  def show
+    @user = current_user
+    @group = @user.groups.find(params[:id])
+    @location = @group.locations.first
+    getLocationsOnMap(@group) if @location.lat and @location.lng
   end
 
   def tag_suggestions

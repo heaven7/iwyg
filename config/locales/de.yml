@@ -535,6 +535,12 @@ de:
   events:
     ressource: "Resource"
     description: "Beschreibung"
+
+  ## groups
+  groups:
+    ressource: "Resource"
+    description: "Beschreibung"
+    holder: "Verwalter"
   
   ## friendships
   

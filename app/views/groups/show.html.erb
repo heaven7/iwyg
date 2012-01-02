@@ -1,20 +1,27 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Title:</b>
-  <%= @group.title %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @group.description %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @group.user_id %>
-</p>
+<h1><%= @group.title.html_safe %></h1>
 
 
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
+<div class="sub2cols">
+  <div class="subcol1">
+    <p><%= @group.description.html_safe %></p>
+     <% if !@group.tags.empty? %>
+      <div class="box ui-corner-all tags">
+          <p class="font-smaller">
+        <%= t("tags") %>:
+        <% for tag in @group.tags %>
+            <span><%= link_to tag, :controller => :groups, :tag => tag.name %></span>
+          <% end %>
+        </p>
+      </div>
+      <% end %>
+  </div>
+  <div class="subcol2">
+    <h3><%= t("resources.location") %></h3>
+    <%= "#{@group.locations.first.lat}, #{@group.locations.first.lng}" %>
+    <%= render :partial => "locations/location", :locals => {:location => @group.locations.first} %>
+    <%= render :partial => "share/map", :locals => { :locations => @locations_json } %>
+  </div>
+</div>
+
+<h2><%= t("groups.holder") %></h2>
+<%= render :partial => "share/usertiny", :locals => { :user => @group.owner}  %>
