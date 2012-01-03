@@ -17,9 +17,9 @@
   </div>
   <div class="subcol2">
     <h3><%= t("resources.location") %></h3>
-    <%= "#{@group.locations.first.lat}, #{@group.locations.first.lng}" %>
-    <%= render :partial => "locations/location", :locals => {:location => @group.locations.first} %>
+    <%# "#{@group.locations.first.lat}, #{@group.locations.first.lng}" %>
     <%= render :partial => "share/map", :locals => { :locations => @locations_json } %>
+    <%= render :partial => "locations/location", :locals => {:location => @group.locations.first} %>
   </div>
 </div>
 

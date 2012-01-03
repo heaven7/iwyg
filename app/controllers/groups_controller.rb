@@ -60,6 +60,13 @@ class GroupsController < InheritedResources::Base
     getLocationsOnMap(@group) if @location.lat and @location.lng
   end
 
+  def create
+    @user = current_user
+    @active_menuitem_l1 = I18n.t "menu.main.groups"
+    @location = @group.locations.first || @user.groups.build
+    create!
+  end
+
   def tag_suggestions
     @tags = Group.tag_counts_on("tags").find(:all, :conditions => ["name LIKE ?", "%#{params[:term]}%"], :limit=> params[:limit] || 5)
     render  :json => @tags.join(',').split(',')
@@ -70,7 +77,7 @@ class GroupsController < InheritedResources::Base
 
   def conditional_layout
     case action_name
-      when "new", "edit" then "userarea"
+      when "new", "edit", "create", "update" then "userarea"
       else "application"
     end
   end

@@ -27,6 +27,7 @@
     <ul>
         <li><a href="#what"><%= t("what") %></a></li>
         <li><a href="#where"><%= t("where") %></a></li>
+        <li><a href="#images"><%= t("form.resource.images") %></a></li>
         <li><a href="#attachments"><%= t("menu.user.resources") %></a></li>      
     </ul>
     <div id="what">
@@ -41,6 +42,29 @@
        <%= f.inputs do %>
         <%= render :partial => "locations/nested_form", :locals => { :f => f, :belongs_to => "group" } %>
        <% end %>
+    </div>
+    <div id="images" class="tab_content">
+    <%= f.inputs do %>
+      <% c = -1 %>
+      <li>
+        <div class="button new">
+          <%= link_to_add_fields t("images.new").html_safe, f, :images %>
+        </div>
+      </li>
+      <%= f.semantic_fields_for :images do |image_form| %>
+        <%  c+= 1
+          image = nil || @group.images[c].image if !@group.images[c].image.url.include? "missing"
+        %>
+        <div class="image center ui-corner-all">
+          <%= link_to image_tag(image.url("small")), image.url("big") if image %>
+          <%# render 'share/image_fields', :f => image_form %>
+          <div class="options">
+            <%= link_to_function image_tag(("icons/icon_image_edit.png"), :alt => t("edit"), :title => t("edit")), "edit_field(this)" if c < @group.images.count %>
+            <%= link_to_remove_fields image_tag(("icons/icon_image_remove.png"), :alt => t("remove"), :title => t("remove")), image_form if c < @group.images.count %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
     </div>
     <div id="attachments" class="tab_content">
       <%= render :partial => "items/item_attachments", :locals => { :object => @group, :f => f } %>
