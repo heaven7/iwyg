@@ -1,4 +1,4 @@
-# encoding: utf-8
+  # encoding: utf-8
 
 Iwyg::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
@@ -29,21 +29,11 @@ Iwyg::Application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-
-  #config.action_mailer.smtp_settings = {
-  #    :address => "mail.heavenseven.net",
-  #    :port => 587,
-  #    :domain => "www.heavenseven.net",
-  #    :user_name => "iwyg+heavenseven.net",
-  #    :password => "r1NmhzzisQw9",
-  #    :authentication => :plain
-  # }
    
   # application configuration
   HOST = "http://localhost:3000"
   REPLY_EMAIL = "iwyg@heavenseven.net" 
   # Paperclip.options[:command_path] = "D:/Programme/ImageMagick-6.6.3-Q16"
-  Paperclip.options[:command_path] = "C:/Program Files/ImageMagick-6.7.3-Q16"
-  
+  Paperclip.options[:command_path] = "C:/Program Files/ImageMagick-6.7.4-4/magick"
 end
 

@@ -78,7 +78,7 @@
           
         <div class="transferoption" id="option1">
           <h3><%= t("transfer.option.good.one") %></h3>
-          <% if @sharingpoints.size > 0 %>
+          <% if @sharingpoints && @sharingpoints.size > 0 %>
             <%= f.input :sharingpoint_select, :as => :select, :collection  => @sharingpoints, :label => "", :input_html => { :onchange => "setReceiverId(this.value);" } %>
           <% else %>
             <%= t("transfer.noSharingpointInRoute") %><br />
@@ -87,9 +87,9 @@
         
         <div class="transferoption" id="option2">
           <h3><%= t("transfer.option.good.two") %></h3>
-          <% if @friends.size > 0 %>
+          <% if @friends && @friends.size > 0 %>
            <%= f.input :friends_select, :as => :select, :collection  => @friends, :label => "", :input_html => { :onchange => "setReceiverId(this.value);" } %>
-          <% elsif @users.size > 0 %>
+          <% elsif @users && @users.size > 0 %>
            <%= t("transfer.noFriendsInRoute") %><br />
            <%= f.input :user_select, :as => :select, :collection  => @users, :label => "", :input_html => { :onchange => "setReceiverId(this.value);" }  %>
           <% end %>

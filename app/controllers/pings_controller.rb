@@ -26,10 +26,10 @@ class PingsController < InheritedResources::Base
       end 
       
       @pings_all = @pings + @inverse_pings
-      @pings_all = @pings_all.flatten.uniq.paginate(
+      #@pings_all = @pings_all.flatten.uniq.sort_by { |ping| ping.created_at }
+      @pings_all = @pings_all.paginate(
         :page => params[:page],
-        :per_page => PINGS_PER_PAGE,
-        :order => "created_at DESC"
+        :per_page => PINGS_PER_PAGE
       )    
       
     elsif @pingable.class.to_s == "Item"

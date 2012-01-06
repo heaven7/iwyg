@@ -18,10 +18,10 @@
   <% if @ping.accepted_at %>
     <p class="font-smaller"><%= t("accepted_at") %> <%=h @ping.accepted_at %></p>
   <% end %>
-  <% if @ping.status == 1 and holder?(@ping.pingable_id, @ping.pingable_type) %>
-    <span class="button"><%= link_to t("accept"), accept_ping_path(@ping), :method => :put %></span>
-    <span class="button"><%= link_to t("decline"), decline_ping_path(@ping), :method => :put %></span>
-  <% end %>
+  <hr class="divider" />
+  <%= link_to @ping.pingedOn?.html_safe, @ping.item %><br/>
+  <p class="font-smaller"><%= t("#{@ping.item.itemtype.html_safe}.singular") %> <%= t("by") %> <%= render :partial => "share/usertiny", :locals => { :user => @ping.item.owner } %>
+  </p>
   <%= render :partial => "pings/pingmenu", :locals => { :ping => @ping} %>
 </div>
 <div id="col2">

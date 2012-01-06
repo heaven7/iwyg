@@ -13,16 +13,16 @@ class Location < ActiveRecord::Base
   #validates_presence_of :locatable_id, :locatable_type, :address, :city, :state, :country, :zip, :lat, :lng
   #validates_presence_of :address, :city, :country
   
-  def self.address
+  #def self.address
+  #  [address, city, zip, country].compact.join(', ')
+  #end
+  
+  def gmaps4rails_address
     [address, city, zip, country].compact.join(', ')
   end
   
-  def gmaps4rails_address
-    self.address
+  def gmaps4rails_infowindow
+     "<h4>#{city}</h4>" << "<h4>#{country}</h4>"
   end
-  
-  #def gmaps4rails_infowindow
-  #   "<h4>#{city}</h4>" << "<h4>#{address}</h4>"
-  #end
   
 end

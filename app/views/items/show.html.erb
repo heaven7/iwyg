@@ -85,8 +85,8 @@
       <% for event in @events do %>
         <li>
           <%= render :partial => "events/eventaction", :locals => { :event => event } %>
-          <%= t("start") %>: <%= l event.from, :format => :short %><br />
-          <%= t("end") %>: <%= l event.till, :format => :short %><br />
+          <%= t("start") %>: <%= l event.from, :format => :short if event.from %><br />
+          <%= t("end") %>: <%= l event.till, :format => :short if event.till %><br />
         </li>
       <% end %>
     </ul>

@@ -85,10 +85,9 @@ class TransfersController < InheritedResources::Base
   
   
   def new
-    @transferable = find_transferable
+#    @transferable = find_transferable
     @transferable_type = params[:transferable_type].to_s
-    initMap
-    
+
     case @transferable_type
     when "Item"
       @item = Item.find(params[:transferable_id])
@@ -97,11 +96,11 @@ class TransfersController < InheritedResources::Base
       if @item.need?
         @pinger = current_user 
         @user = @item.owner
-        buildRoute(@map, @pinger, @item)
+    #    buildRoute(@map, @pinger, @item)
       else
         @pinger = User.find(params[:pinger])
         @user = current_user
-        buildRoute(@map, @item, @pinger)
+    #    buildRoute(@map, @item, @pinger)
       end
       
       # get Transferoptions
@@ -114,7 +113,7 @@ class TransfersController < InheritedResources::Base
         when "sharingpoint"
       end
       
-      setupMap(@item, @pinger)
+      #setupMap(@item, @pinger)
       
     when "User"  
     end 
@@ -290,8 +289,8 @@ class TransfersController < InheritedResources::Base
   end
   
   def initMap
-    @map = GMap.new("map")
-    @map.control_init(:large_map => true,:map_type => true)  
+    #@map = GMap.new("map")
+    #@map.control_init(:large_map => true,:map_type => true)
   end
   
   def setupMap(item, pinger)
@@ -299,9 +298,9 @@ class TransfersController < InheritedResources::Base
     @users = Array.new
     @friends = Array.new
     @sharingpoints = Array.new
-    startpoint = [item.location.lat,item.location.lng]
-    endpoint = [pinger.location.lat, pinger.location.lng]
-    midpoint = item.location.midpoint_to(pinger.location)
+    startpoint = [item.locations.first.lat,item.locations.first.lng]
+    endpoint = [pinger.locations.first.lat, pinger.locations.first.lng]
+    midpoint = item.locations.first.midpoint_to(pinger.location)
    # locations = Location.find(:all, :bounds =>[startpoint, endpoint]) if startpoint && endpoint
     locations = Location.find(:all, :origin => midpoint)
     if locations && locations.size > 0

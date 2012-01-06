@@ -98,62 +98,54 @@ module PingsHelper
   def pingoptions(ping)
     if ping.pingable_type == "Item"
       item = Item.find(ping.pingable_id)
-      
-      case ping.statusTitle.to_s
-      
+      pingstatus = ping.statusTitle.to_s
+
+      # depending on the pingstatus, options are available
+      # for the user
+      case pingstatus
+
       when "opened"
-        
+
         if item.owner == current_user
-          link_to t("ping.accept"), accept_ping_path(ping), :method => :put 
+          link_to t("ping.accept"), accept_ping_path(ping), :method => :put
         end
-        
+
       when "accepted"
-        
+
         if item.owner == current_user
-          if item.need?
-            
-            case item.itemtype.downcase.to_s
-            when "good"
-              link_to t("ping.setTransfer"), new_polymorphic_path([current_user, Transfer.new], 
-                :pinger => current_user, 
-                :transferable_type => ping.pingable_type, 
-                :transferable_id => ping.pingable_id)  if item.multiple or !Transfer.exists?
-            else
-              link_to t("ping.setMeetup"), new_polymorphic_path([current_user, Meetup.new], 
-                "event[ping]" => ping.id, 
-                "event[eventable_type]" => ping.pingable_type, 
-                "event[eventable_id]" => ping.pingable_id) if item.multiple or !Meetup.exists?
-            end
-            
-          else # !item.need? of owner
-            
-            case item.itemtype.downcase.to_s
-            when "good"
-              link_to t("ping.setTransfer"), new_polymorphic_path([current_user, Transfer.new], 
-                :pinger => ping.user_id, 
-                :transferable_type => ping.pingable_type, 
-                :transferable_id => ping.pingable_id) if item.multiple or !Transfer.exists? 
-            else
-              link_to t("ping.setMeetup"), new_polymorphic_path([current_user, Meetup.new], 
-                "event[ping]" => ping.id, 
-                "event[eventable_type]" => ping.pingable_type, 
-                "event[eventable_id]" => ping.pingable_id) if item.multiple or !Meetup.exists?
-            end
-            
-          end         
-        else # item.owner != current_user
-        
-          if item.need?
-          else
+          if !item.need?
+            setItemAcceptedOptions(item, ping)
           end
-      
+        else # item.owner != current_user
+          if item.need?
+            setItemAcceptedOptions(item, ping)
+          end
         end
-        
+
       when "declined"
-      
       when "closed"
-      
       end
+
+    elsif ping.pingable_type == "Group"
     end
+  end
+
+  protected
+
+  def setItemAcceptedOptions(item, ping)
+
+    case item.itemtype.downcase.to_s
+    when "good"
+      link_to t("ping.setTransfer"), new_polymorphic_path([current_user, Transfer.new],
+        :pinger => current_user,
+        :transferable_type => ping.pingable_type,
+        :transferable_id => ping.pingable_id) if !Transfer.exists?(ping.pingable_id, ping.pingable_type, current_user.id)
+    else
+      link_to t("ping.setMeetup"), new_polymorphic_path([current_user, Meetup.new],
+        "event[ping]" => ping.id,
+        "event[eventable_type]" => ping.pingable_type,
+        "event[eventable_id]" => ping.pingable_id)
+    end
+    
   end
 end

@@ -18,7 +18,10 @@ class Meetup < ActiveRecord::Base
   # validates_inclusion_of :user_ids, :in => %w( current_user.id ), :message => "Add yourself to Memberslist"
   # validates :title, :presence => true
   #validates :participant_ids, :numericality => true
-  
+
+  def self.exists?(owner_id, ownertype)
+    not find_by_owner_id_and_ownertype(owner_id, ownertype).nil?
+  end
   
   def owner
     User.find(self.owner_id)
