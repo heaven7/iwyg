@@ -96,37 +96,39 @@ module PingsHelper
   end
   
   def pingoptions(ping)
-    if ping.pingable_type == "Item"
-      item = Item.find(ping.pingable_id)
-      pingstatus = ping.statusTitle.to_s
+    if logged_in?
+      if ping.pingable_type == "Item"
+        item = Item.find(ping.pingable_id)
+        pingstatus = ping.statusTitle.to_s
 
-      # depending on the pingstatus, options are available
-      # for the user
-      case pingstatus
+        # depending on the pingstatus, options are available
+        # for the user
+        case pingstatus
 
-      when "opened"
+        when "opened"
 
-        if item.owner == current_user
-          link_to t("ping.accept"), accept_ping_path(ping), :method => :put
+          if item.owner == current_user
+            link_to t("ping.accept"), accept_ping_path(ping), :method => :put
+          end
+
+        when "accepted"
+
+          if item.owner == current_user
+            if !item.need?
+              setItemAcceptedOptions(item, ping)
+            end
+          else # item.owner != current_user
+            if item.need?
+              setItemAcceptedOptions(item, ping)
+            end
+          end
+
+        when "declined"
+        when "closed"
         end
 
-      when "accepted"
-
-        if item.owner == current_user
-          if !item.need?
-            setItemAcceptedOptions(item, ping)
-          end
-        else # item.owner != current_user
-          if item.need?
-            setItemAcceptedOptions(item, ping)
-          end
-        end
-
-      when "declined"
-      when "closed"
+      elsif ping.pingable_type == "Group"
       end
-
-    elsif ping.pingable_type == "Group"
     end
   end
 

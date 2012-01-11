@@ -313,6 +313,7 @@ ActiveRecord::Schema.define(:version => 20111224211508) do
     t.datetime "locked_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
     t.string   "rpx_identifier"
   end
 

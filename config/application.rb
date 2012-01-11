@@ -12,6 +12,7 @@ module Iwyg
     config.plugins = [:all]
     #config.time_zone = 'UTC'
     config.encoding = 'utf-8' 
+    I18n.available_locales = [:de, :en]
     
     # Custom directories with classes and modules you want to be autoloadable.    
     config.autoload_paths += %W(#{config.root}/lib)
@@ -27,9 +28,9 @@ end
 # application configuration
 DB_STRING_MAX_LENGTH = 255
 HTML_TEXT_FIELD_SIZE = 30
-ITEMS_PER_PAGE = 25
-TRANSFERS_PER_PAGE = 10
-PINGS_PER_PAGE = 10
+ITEMS_PER_PAGE = 30
+TRANSFERS_PER_PAGE = 30
+PINGS_PER_PAGE = 30
 
 # Default date/time format
 # date.formats(:default=> "%B %d, %Y")

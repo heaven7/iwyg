@@ -17,7 +17,7 @@ module ApplicationHelper
   		shortened = string[0, count]
   		splitted = shortened.split(/\s/)
   		words = splitted.length
-  		splitted[0, words-1].join(" ") + ' ...'
+  		splitted[0, words-1].join(" ") + '...'
   	else 
   		string
   	end

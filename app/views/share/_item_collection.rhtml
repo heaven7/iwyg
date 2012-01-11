@@ -1,14 +1,4 @@
 <% if collection %>
   <div class="clearfix"></div>
-  <%= will_paginate collection, 
-     :prev_label => image_tag(
-        "icons/icon_arrow_left.png",
-        :alt => "&laquo; " + t("previous"),
-        :title => "&laquo; " + t("previous")
-     ),
-     :next_label => image_tag(
-        "icons/icon_arrow_right.png",
-        :alt => t("next") + " &raquo;",
-        :title => t("next") + " &raquo;"
-     )  %>
+  <%= will_paginate collection %>
 <% end %>

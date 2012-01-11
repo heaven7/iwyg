@@ -728,6 +728,7 @@ en:
   will_paginate:
      next_label: ">>"
      previous_label: "<<"
+     page_gap: "..."
    
   ## activerecord
   

@@ -19,19 +19,15 @@ group :stage do
 end
 
 gem 'json_pure', '1.6.1'   
-# gem 'rdoc'   
 gem 'jquery-rails' #, '>= 1.0.12'
-#gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'rails3-jquery-autocomplete'
 gem 'devise' #, :git => 'git://github.com/plataformatec/devise.git'   
 gem 'devise_rpx_connectable'
 gem 'formtastic', '~> 2.0'
 gem 'geocoder'
-#gem 'ym4r', '0.4.1'
 gem 'gmaps4rails'
 gem 'ajaxful_rating', '2.2.8.2'
-#gem 'acts-as-taggable-on', '2.0.6'
-gem "acts-as-taggable-on", '2.0.0.rc1'
+gem 'acts-as-taggable-on', '~> 2.2.2'
 gem 'inherited_resources'
 gem 'has_scope'
 gem 'paperclip'
@@ -39,10 +35,17 @@ gem 'paperclip'
 gem 'meta_where'
 gem "ransack"
 gem 'routing-filter', '0.2.3'
-gem 'will_paginate', '~> 3.0.2'
-#gem 'thoughtbot-paperclip', '2.3.1'
+gem 'will_paginate', '~> 3.0'
 gem 'validates_timeliness' #, '2.3.2'
 gem 'mysql2', '0.2.6'
 gem 'mongrel', '>= 1.2.0.pre2'
 
+gem "rspec-rails", :group => [:test, :development]
+group :test do
+  gem "factory_girl_rails"
+  gem "capybara"
+  gem "guard-rspec"
+  gem "populator"
+  gem "faker"
+end
 
