@@ -51,6 +51,8 @@
   height:100px;
   line-height:1em;
   font-size:100%;
+  overflow:hidden;
+  margin-bottom:0.5em;
 }
 .list-item .created-at {
   bottom:0;
@@ -108,6 +110,9 @@
 }
 .list .opened {
   background:#c6cbbb;
+}
+.list .closed {
+  display:none;
 }
 
 .list .ping  {

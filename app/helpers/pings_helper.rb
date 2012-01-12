@@ -96,9 +96,9 @@ module PingsHelper
   end
   
   def pingoptions(ping)
-    if logged_in?
+    item = Item.find(ping.pingable_id)
+    if logged_in? && ( current_user == ping.owner || current_user == item.owner)
       if ping.pingable_type == "Item"
-        item = Item.find(ping.pingable_id)
         pingstatus = ping.statusTitle.to_s
 
         # depending on the pingstatus, options are available

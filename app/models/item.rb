@@ -43,7 +43,7 @@ class Item < ActiveRecord::Base
   has_many :item_attachments, :dependent => :destroy
   accepts_nested_attributes_for :item_attachments, :allow_destroy => true, :reject_if => proc { |attrs| attrs[:attachment_id].blank? } 
   has_many :pings, :as => :pingable, :dependent => :destroy   
-
+  has_many :inverse_pings, :source => "Ping", :foreign_key => :pingable_id, :conditions => 'pingable_type = Item'
   
   # has_one
   has_one :item_type
