@@ -31,15 +31,14 @@
   margin-right:1em;
 }
 #search #searchextended {
-  position: absolute;
+  position: relative;
   z-index:1;
   width:320px;
+  left: 50%;
   background:#D8E0D0 none repeat scroll 0 0;
   border:1px solid #A1AA9D;
   margin-top:1em;
   padding:0.5em;
-  font-size:90%;
-  display:none;
 }
 #search #searchextended table td{
   vertical-align:center;

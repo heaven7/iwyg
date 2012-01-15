@@ -5,7 +5,7 @@ jQuery.ajaxSetup({
 })
 
 $(document).ready(function (){
-      
+
     // Searchform (extended)
     $('#advanced_search').show();
     $('#container').click(function() {
@@ -21,10 +21,13 @@ $(document).ready(function (){
     $('fieldset').find('textarea').addClass('ui-corner-all');
     $('fieldset').find('textarea').addClass('ui-corner-all');
     
-    $('#searchform #searchextended').hide();
-    $('#advanced_search').click(function (event) {
-      event.stopPropagation();
-      $(this).parent().parent().find('#searchextended').toggle('slide', { direction: 'down' }, 500);
+    $('#advanced_search').click(function () {
+      headerWidth = $('#header').css("height");
+      if (headerWidth == "110px") {
+        $('#header').css("height", "310px");
+      } else {
+        $('#header').css("height", "110px");
+      }
     });
 
     // Buttons

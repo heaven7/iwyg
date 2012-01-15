@@ -18,7 +18,7 @@ module Iwyg
     config.autoload_paths += %W(#{config.root}/lib)
     
     # Loading Js-Files automatically
-    config.action_view.javascript_expansions = { :defaults => %w(jquery jquery-ui application jquery_ujs ) } 
+    config.action_view.javascript_expansions = { :defaults => %w(jquery jquery-ui jquery_ujs ) } 
     
     # The user observer goes inside the Rails::Initializer block
     config.active_record.observers = :user_observer, :ping_observer #, :transfer_observer, :comment_observer, :event_observer
