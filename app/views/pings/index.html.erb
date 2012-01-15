@@ -13,8 +13,3 @@
 <%= paginated_section @pings_all do %>
   <%= render :partial => "pingtable", :locals => { :collection => @pings_all } if @pings_all.size > 0 %>
 <% end %>
-
-
-<%# paginated_section @inverse_pings do %>
-  <%# render :partial => "pingtable", :locals => { :collection => @inverse_pings } if @inverse_pings.size > 0 %>
-<%# end %>

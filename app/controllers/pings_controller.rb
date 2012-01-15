@@ -17,14 +17,16 @@ class PingsController < InheritedResources::Base
     @pingable = find_pingable
     if @pingable.class.to_s == "User"
       @user = User.find(params[:user_id])
-      @pings = @user.pings
+      @pings = @user.pings.scoped
       @active_menuitem_l1 = I18n.t "menu.user.pings" 
       @active_menuitem_l1_link = user_pings_path  
-      @inverse_pings = Array.new
-      @user.items.each do |i|
-        @inverse_pings << i.pings if i.pings.size > 0
+      @inverse_pings = @user.items.map do |i|
+        if i.pings.size > 0
+          i.pings.first
+        else
+          i.pings.first
+        end
       end 
-      
       @pings_all = @pings + @inverse_pings
       @pings_count = @pings_all.size
       #@pings_all = @pings_all.flatten.uniq.sort_by { |ping| ping.created_at }

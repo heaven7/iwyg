@@ -12,7 +12,7 @@
       <p>
         Logg' Dich hier ein: <%= @url %>.
       </p>
-      <p>Danke, dass Du dabei bist und hab' noch einen sch&ouml;nen Tag!</p>  
+      <%= raw("<p>Danke, dass Du dabei bist und hab' noch einen sch&ouml;nen Tag!</p>") %>
     <% end %>                    
 
     <% if I18n.locale.to_s == "en" %>

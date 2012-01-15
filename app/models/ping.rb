@@ -53,11 +53,17 @@ class Ping < ActiveRecord::Base
   end
   
   def owner
-    User.find(self.user_id)
+    if User.exists?(self.user_id)
+      User.find(self.user_id)
+    end
   end
   
   def owner?
-    self.owner == @current_user
+    if self.owner
+      true
+    else
+      false
+    end
   end
   
   def pingedOn?

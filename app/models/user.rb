@@ -93,7 +93,11 @@ class User < ActiveRecord::Base
                   :aim_tokens, :skill_tokens, :interest_tokens, :wish_tokens
 
   attr_reader     :aim_tokens, :skill_tokens, :interest_tokens, :wish_tokens
-                  
+
+  def exists?(id)
+    not User.find_by_id(id).nil?
+  end
+
   # autocomplete for aims, wishes, interests and skills
   def aim_list_name
     self.aim_list if aim_list

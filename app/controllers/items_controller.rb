@@ -106,7 +106,7 @@ class ItemsController < InheritedResources::Base
       # normal listing
       @searchItemType = "Resource"
       #$search = Item.scoped(:order => "created_at DESC", :include => [:images] ).search(params[:search])
-      $search = Item.search(params[:search])
+      $search = Item.search(params[:search], :indlude => [:comments, :images, :pings])
       @items = $search.result.paginate(
         :page => params[:page],
         :per_page => ITEMS_PER_PAGE,

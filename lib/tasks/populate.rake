@@ -4,7 +4,7 @@ namespace :db do
     require 'populator'
     require 'faker'
     # Faker::Config.locale = :de
-    [User, Userdetails, Location, Item, Ping].each(&:delete_all)
+    [User, Userdetails, Location, Item, Ping, Group].each(&:delete_all)
 
     User.populate 10 do |user|
       user.login    = Populator.words(1)
@@ -26,6 +26,13 @@ namespace :db do
         location.locatable_type = "User"
         location.locatable_id = user.id
         location.user_id = user.id
+      end
+
+      Group.populate 1 do |group|
+        group.user_id = user.id
+        group.title = Populator.words(1..3)
+        group.description = Populator.sentences(1..3)
+        group.created_at  = 2.years.ago...Time.now
       end
 
       Item.populate 10 do |item|

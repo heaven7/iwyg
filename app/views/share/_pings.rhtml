@@ -16,7 +16,15 @@
     <% pings.each do |ping| %>  
       <div class="ping ui-corner-all <%=h ping.statusTitle %>">    
         <% if ping && ping.statusTitle != "closed" %>
-          <%= render :partial => "share/usermicro", :locals => { :user => pingerOf(ping) } %>          
+          <% if ping.owner? %>
+            <%= render :partial => "share/usermicro", :locals => { :user => pingerOf(ping) } %>
+          <% else %>
+            <div class="mircro-user-thumb bordered font-smaller center ui-corner-all">
+              <img src="/images/global/avatar_dummy_micro.png" />
+              <br>
+              former member
+            </div>
+          <% end %>
           <div class="info font-smaller">
             <%= distance_of_time_in_words(ping.created_at, Time.now) %> <%= t("ago") %><br />
             <p class="<%=h statusTitle(ping) %>"><%= t(statusTitle(ping)).html_safe %></p> 

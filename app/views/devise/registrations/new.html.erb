@@ -5,8 +5,8 @@
     <% f.inputs do %>
       <%= f.input :login, :label => t("register.label.login") %>
       <%= f.input :email, :label => t("register.label.email") %>
-      <%= f.input :password, :label => t("register.label.password") %>
-      <%= f.input :password_confirmation, :label => t("register.label.confirmPassword") %>
+      <%= f.input :password, :label => t("register.label.password"), :required => true %>
+      <%= f.input :password_confirmation, :label => t("register.label.confirmPassword"), :required => true %>
       <p><abbr>*</abbr> <%= t("register.mandatoryFields") %></p>
     <% end %>
   

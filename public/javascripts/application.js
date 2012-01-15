@@ -24,7 +24,7 @@ $(document).ready(function (){
     $('#searchform #searchextended').hide();
     $('#advanced_search').click(function (event) {
       event.stopPropagation();
-      $(this).parent().parent().find('#searchextended').toggle('slide', { direction: 'up' }, 500);
+      $(this).parent().parent().find('#searchextended').toggle('slide', { direction: 'down' }, 500);
     });
 
     // Buttons
