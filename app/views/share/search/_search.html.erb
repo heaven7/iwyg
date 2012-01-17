@@ -8,18 +8,18 @@
       <% end %>
       
       <%= f.text_field :title_cont  %>
-      <div id="searchextendeder" class="ui-corner-all">
-        <h3 class="bold"><%= t("searchOptions").html_safe %></h3>
+      <div id="searchextended" class="ui-corner-all">
+        <h3 class="bold"></h3>
         <table>
           <tr>
-            <td class="font-small"><%= t("resources.available").html_safe %><br /> (<%= t("from") %> - <%= t("till") %>)</td>
+            <td class="label"><%= t("resources.available").html_safe %><br /> (<%= t("from") %> - <%= t("till") %>)</td>
             <td class="row-big">
-              <%= f.text_field :from_gt, {:id => "from", :size => 8} %> -
+              <%= f.text_field :from_gt, {:id => "from", :size => 8} %><span class="label"> - </span>
               <%= f.text_field :till_lt, {:id => "till", :size => 8} %>
             </td>
           </tr>
           <tr>
-            <td class="font-small"><%= t("resources.amount") %></td>
+            <td class="label"><%= t("resources.amount") %></td>
             <td class="row-big">
               <%= f.text_field :amount_eq, {:id => "amount", :size => 8} %> &nbsp;
               <%= f.collection_select :measure_id_eq, @measures, :id, :title, :include_blank => true %>
@@ -27,7 +27,7 @@
             </td>
           </tr>
           <tr>
-            <td class="font-small"><%= t("searchIn") %></td>
+            <td class="label"><%= t("searchIn") %></td>
             <td class="row-big">
               <%= f.collection_select :item_type_id_eq, @itemtypes, :id, :localized_title, :include_blank => true %>
               <%# select_tag( :search[item_type].contains, options_from_collection_for_select(@itemtypes, :id, :localized_title), :include_blank => true) %>
@@ -35,7 +35,7 @@
           </tr>
         </table>
       </div>
-    <%= submit_tag "Go", :name => nil %>
+    <input src="/images/icons/icon_magnifier.png" id="submit-search" type="image" value="Go" class="ui-corner-all" />
   <% end %>
   </div>                                     
   <div id="searchmenu">

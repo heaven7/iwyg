@@ -8,9 +8,6 @@ $(document).ready(function (){
 
     // Searchform (extended)
     $('#advanced_search').show();
-    $('#container').click(function() {
-     $('#searchform #searchextended').hide();
-    });
     $('#searchform').click(function(event){
        event.stopPropagation();
     });
@@ -24,9 +21,13 @@ $(document).ready(function (){
     $('#advanced_search').click(function () {
       headerWidth = $('#header').css("height");
       if (headerWidth == "110px") {
-        $('#header').css("height", "310px");
+        $('#header').animate({height: '310px'}, 400);
+        $('#submit-search').css("top", "143px");
       } else {
-        $('#header').css("height", "110px");
+        $('#header').animate({height: '110px'}, 400);
+        $('#submit-search').animate({opacity: '0'}, 0);
+        $('#submit-search').css("top", "10px");
+        $('#submit-search').animate({ opacity: '1' }, { duration: 600, easing: 'linear' } );
       }
     });
 

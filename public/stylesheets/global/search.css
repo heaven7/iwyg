@@ -22,6 +22,12 @@
   position:relative;
   margin-right:0.5em;
 }
+#search #submit-search {
+    position: absolute;
+    top: 10px;
+    left: 102%;
+}
+
 #search #searchform #search_title_contains,
 #search #searchform #search_title_like_any,
 #search #searchform #nil_class_title_like_any {
@@ -31,24 +37,33 @@
   margin-right:1em;
 }
 #search #searchextended {
-  position: relative;
-  z-index:1;
-  width:320px;
-  left: 50%;
-  background:#D8E0D0 none repeat scroll 0 0;
-  border:1px solid #A1AA9D;
   margin-top:1em;
   padding:0.5em;
+  padding-left:8.5em;
+  text-decoration: none;
+  padding: 0.5em;
 }
-#search #searchextended table td{
-  vertical-align:center;
+#search #searchextended table .label {
+  vertical-align: top;
+  font-family: 'Georgia', serif;
+  font-size:1.4em;
+  color:white;
+  text-shadow: 0 -1px 1px white;
+  -webkit-text-stroke: 1px rgba(0,0,0,0.4);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgba(0, 0, 0, 0.199219);
+}
+#search #searchextended table tr {
+  height:57px;
 }
 #search #searchextended input,
 #search #searchextended select {
-  font-size:90%;
-  font-family:"Arial", sans-serif;
+  font-size:1.0em;
 }
-#search #searchextended #search_measure_id_equals {
+#search #searchextended select {
+ /* border:none; */
+}
+#search #searchextended #q_measure_id_eq {
   width:88px;
   
 }
