@@ -20,7 +20,7 @@
   <% end %>
   <hr class="divider" />
   <%= link_to @ping.pingedOn?.html_safe, @ping.item %><br/>
-  <p class="font-smaller"><%= t("#{@ping.item.itemtype.html_safe}.singular") %> <%= t("by") %> <%= render :partial => "share/usertiny", :locals => { :user => @ping.item.owner } %>
+  <p class="font-smaller"><%= t("#{@ping.item.itemtype}.singular").html_safe %> <%= t("by") %> <%= render :partial => "share/usertiny", :locals => { :user => @ping.item.owner } %>
   </p>
   <%= render :partial => "pings/pingmenu", :locals => { :ping => @ping} %>
 </div>

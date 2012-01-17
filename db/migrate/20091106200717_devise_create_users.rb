@@ -1,6 +1,6 @@
 class DeviseCreateUsers < ActiveRecord::Migration
   def self.up
-    drop_table :users
+    drop_table :users if self.table_exists?("users")
     create_table(:users) do |t|          
       
       t.string :login
@@ -22,6 +22,10 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
   def self.down
     drop_table :users
+  end
+
+  def self.table_exists?(name)
+    ActiveRecord::Base.connection.tables.include?(name)
   end
   
 end

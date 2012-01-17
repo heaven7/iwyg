@@ -20,20 +20,23 @@ class PingsController < InheritedResources::Base
       @pings = @user.pings.scoped
       @active_menuitem_l1 = I18n.t "menu.user.pings" 
       @active_menuitem_l1_link = user_pings_path  
-      @inverse_pings = @user.items.map do |i|
-        if i.pings.size > 0
-          i.pings.first
-        else
-          i.pings.first
+      @user.items.map do |i|
+        @inverse_pings = i.pings.each do |p|
+          p
         end
-      end 
+      end
+      @inverse_pings = @inverse_pings.paginate(
+        :page => params[:page],
+        :per_page => PINGS_PER_PAGE
+      ) 
       @pings_all = @pings + @inverse_pings
       @pings_count = @pings_all.size
       #@pings_all = @pings_all.flatten.uniq.sort_by { |ping| ping.created_at }
       @pings_all = @pings_all.paginate(
         :page => params[:page],
-        :per_page => PINGS_PER_PAGE
-      ) 
+        :per_page => PINGS_PER_PAGE,
+        :order => "created_at DESC"
+      )
       
     elsif @pingable.class.to_s == "Item"
       @user = current_user

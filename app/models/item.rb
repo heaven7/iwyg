@@ -2,9 +2,9 @@ class Item < ActiveRecord::Base
 
   
   attr_accessible :locatable_type, :locatable_id, :title, :amount, :measure_id, :measure,
-                  :description, :item_type_id, :need, :from, :till, :user_id, 
-                  :locations_attributes, :images_attributes, :events_attributes, 
-                  :item_attachments_attributes, :tag_list, :_delete, :status, :multiple
+    :description, :item_type_id, :need, :from, :till, :user_id,
+    :locations_attributes, :images_attributes, :events_attributes,
+    :item_attachments_attributes, :tag_list, :_delete, :status, :multiple
   
   # ajaxful_rateable :stars => 5, :dimensions => [:quality, :delivery]
   
@@ -81,16 +81,16 @@ class Item < ActiveRecord::Base
     scope.item_type_id_equals(params[:search][:item_type_id_equals].to_i) if not params[:search][:item_type_id_equals].blank?
     scope.title_like_any(params[:search][:title_like_any]) if not params[:search][:title_like_any].blank?
     scope.user_id_equals(params[:search][:user_id]) if not params[:search][:user_id].blank?
-   # if params[:search][:order]
-   #    order = params[:search][:order]
-   #    parts = order.split("_")
-   #    direction = parts[0] == "ascend" ? "ASC" : "DESC"
-   #    if parts[3]
-   #      scope.order = "#{parts[2]}_#{parts[3]} #{direction}"
-   #    elsif parts[2]
-   #     scope.order = "#{parts[2]} #{direction}"
-   #    end
-   # end
+    # if params[:search][:order]
+    #    order = params[:search][:order]
+    #    parts = order.split("_")
+    #    direction = parts[0] == "ascend" ? "ASC" : "DESC"
+    #    if parts[3]
+    #      scope.order = "#{parts[2]}_#{parts[3]} #{direction}"
+    #    elsif parts[2]
+    #     scope.order = "#{parts[2]} #{direction}"
+    #    end
+    # end
     return scope
   end
   

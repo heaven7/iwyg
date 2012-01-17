@@ -3,19 +3,19 @@
  * 
  * @author Christian Grlica
  * @copyright 2011 by Heavenseven, www.heavenseven.net 
- */
+*/
 @import url(global/main.css);
 @import url(extensions.css);
 
 /* Container */
 #container {
-  padding:0em;
-  text-align:center;
-  position:relative;
-  z-index:1;
+    padding:0em;
+    text-align:center;
+    position:relative;
+    z-index:1;
 }
 /* Header */
- 
+
 #header {
     background: none repeat scroll 0 0 #0B0D14;
     background: #237e87; /* Old browsers */
@@ -43,118 +43,118 @@
 }
 
 #header p, #header h1, #header h2 {
-	padding:.4em 1.5em 0 1.5em;
-	margin:0;
+    padding:.4em 1.5em 0 1.5em;
+    margin:0;
 }
 #header #languages {
-  padding:0;
-  margin:0;
-  position:absolute;
-  right:2.1em;
-  top:6em;
-  font-size:80%;
+    padding:0;
+    margin:0;
+    position:absolute;
+    right:2.1em;
+    top:6em;
+    font-size:80%;
 }
 
 #header #languages a {
-  text-decoration:none;
+    text-decoration:none;
 }
- 
+
 #header #languages li {
-  float:left;
-  padding-left:0.3em;
-  padding-right:0.3em;
+    float:left;
+    padding-left:0.3em;
+    padding-right:0.3em;
 }
 
 /* Columns */
 #col1, #col2 {
-  position:relative;
-  width:48%;
-  padding:0.5em;
+    position:relative;
+    width:48%;
+    padding:0.5em;
 }
 #col1 {
-  float:left;
+    float:left;
 }
 #col2 {
-  float:left;
+    float:left;
 }
 /* Logo */
 #logo {
-  float: left;
-  position:relative;
-  left:7.5%;
-  top:12px;
-  z-index: 99;
+    float: left;
+    position:relative;
+    left:7.5%;
+    top:12px;
+    z-index: 99;
 }
 
 /* Content  */
 #content {
-  background:transparent url(../images/content_bg.png);
-  border:1px solid #d6daca;
-  -moz-border-radius:16px;
-  -webkit-border-radius:16px;
-  border-radius:16px 16px;
-  
-  color:#3f1504;
-  height:auto !important;
-  min-height:700px;
-  margin:0 auto 0 4%;
-  padding:0.5em;
-  text-align:left;
-  width:90%;
-  float:left;
+    background:transparent url(../images/content_bg.png);
+    border:1px solid #d6daca;
+    -moz-border-radius:16px;
+    -webkit-border-radius:16px;
+    border-radius:16px 16px;
+
+    color:#3f1504;
+    height:auto !important;
+    min-height:700px;
+    margin:0 auto 0 4%;
+    padding:0.5em;
+    text-align:left;
+    width:90%;
+    float:left;
 }
 /* Mailbox */
 #mailbox {
 }
 #mailbox .messagebody {
-  padding:0.5em;
-  border:1px solid #cbcec0;
-  background: #eaede3;
-  height:250px;
+    padding:0.5em;
+    border:1px solid #cbcec0;
+    background: #eaede3;
+    height:250px;
 }
 #new-message {
-  padding:0.5em;
-  padding-left:1.5em;
-  background: #d6daca url(../images/icons/icon_message_add.png) 4px 10px no-repeat;
-  border:1px solid #d6daca;
+    padding:0.5em;
+    padding-left:1.5em;
+    background: #d6daca url(../images/icons/icon_message_add.png) 4px 10px no-repeat;
+    border:1px solid #d6daca;
 }
 a#new-message:hover {
-  background: #d6f4ca url(../images/icons/icon_message_add.png) 4px 10px no-repeat;
+    background: #d6f4ca url(../images/icons/icon_message_add.png) 4px 10px no-repeat;
 }
 /* Footer  */
 #footer {
-	clear:both;
-	position:relative;
-	width:100%;
-	height:150px;
-	margin:0pt auto;
-	font-size:80%;
-	color:#794D4D;
-	line-height:1em!important;
-	text-align:left;
-	background:#9eb87c;
+    clear:both;
+    position:relative;
+    width:100%;
+    height:150px;
+    margin:0pt auto;
+    font-size:80%;
+    color:#794D4D;
+    line-height:1em!important;
+    text-align:left;
+    background:#9eb87c;
 }
 #footer {
-	padding:.5em;
+    padding:.5em;
 }
 #footer #footernavigation {
-	width:1000px;
-	margin: 0px auto;
-	display:block;
+    width:1000px;
+    margin: 0px auto;
+    display:block;
 }
 #footer a {
-	color:#5c5e5f;
+    color:#5c5e5f;
 }
 
 #footerwrap {
-  clear:left;
-  z-index:100;
+    clear:left;
+    z-index:100;
 }
 
 #weed {
-  background:transparent url(../images/global/bg_footer.png) repeat-x scroll 0 6px;
-  height:20px;
-  margin-top:0.5em;
-  padding:0 10px 9px;
-  text-align:center;
+    background:transparent url(../images/global/bg_footer.png) repeat-x scroll 0 6px;
+    height:20px;
+    margin-top:0.5em;
+    padding:0 10px 9px;
+    text-align:center;
 }

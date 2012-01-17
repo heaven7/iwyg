@@ -9,7 +9,7 @@ class Ping < ActiveRecord::Base
   scope :accepted, :conditions => { :status => 2 }
   scope :declined, :conditions => { :status => 3 }
   scope :closed, :conditions => { :status => 4 }
-
+  scope :created_at_desc, order("pings.created_at DESC")
           
   def exists?
    not Ping.find_by_pingable_id_and_pingable_type_and_user_id(self.pingable_id, self.pingable_type, self.user_id).nil?

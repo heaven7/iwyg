@@ -8,13 +8,37 @@
   <%= render :partial => "items/itemtype", :locals => { :item => @item } %>
   <%= render :partial => "share/images", :locals => {:images => @item.images} %>
   <% if @item.status %>
-    <p class="left box ui-corner-all font-small">
+    <div class="left box ui-corner-all font-small">
       <% if @item.transfer %>
         <span class="float-right"><%= t("resources.status") %>: <%= link_to t(@item.itemstatus), transfer_path(@item.transfer) %></span>
       <% else %>
         <span><%= t("resources.status") %>: <%= render :partial => "items/itemstatus_with_users", :locals => { :item => @item, :owner => @item.owner  } %></span>
       <% end %>
-    </p>
+      <% if @item.from || @item.till %>
+        <br /><br />
+        <p class="font-small">
+          <%= t("resources.available").html_safe %>:
+          <%
+             @begin = @item.created_at
+             @end = Time.now
+          %>
+          <% if @item.from %>
+             <span><%= t("resources.from") %> <%= l @item.from.to_date %></span>
+             <% @begin = @item.from %>
+          <% end %>
+
+          <% if @item.till %>
+             <span><%= t("resources.till") %> <%= l @item.till.to_date %></span>
+             <% @end = @item.till %>
+          <% end %>
+          <% if @begin and @end %>
+            <br />
+            <%= t("resources.duration") %>:
+            <%= distance_of_time_in_words(@begin, @end) %>
+         <% end %>
+        </p>
+      <% end %>
+    </div>
   <% end %>
  <div class="box ui-corner-all tags">
   <% if !@item.tags.empty? %>
@@ -25,27 +49,7 @@
       <% end %>
     </p>
   <% end %>
-  <% if @item.from || @item.till %>
-    <p class="font-small">
-      <%= t("resources.available") %>:
-      <%  
-         @begin = @item.created_at
-         @end = Time.now 
-      %>
-      <% if @item.from %>    
-         <span><%= t("resources.from") %> <%= l @item.froms.to_date %></span>
-         <% @begin = @item.from %>
-      <% end %>
-      
-      <% if @item.till %>    
-         <span><%= t("resources.till") %> <%= l @item.till.to_date %></span>
-         <% @end = @item.till %>
-      <% end %>
-    <br />
-      <%= t("resources.duration") %>:
-      <%= distance_of_time_in_words(@begin, @end) %>
-    </p>
-  <% end %>
+  
  
   <% if @item.description %>
     <p><%= @item.description %></p>

@@ -41,6 +41,8 @@ namespace :db do
         item.description = Populator.paragraphs(1..3)
         item.item_type_id = 1..6
         item.multiple = [0, 1]
+        item.from = 2.years.ago...Time.now
+        item.till = Time.now...2.years.since
         item.need = [0, 1]
         item.status = 1..4
         item.amount = 1..100
