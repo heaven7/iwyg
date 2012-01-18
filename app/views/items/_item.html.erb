@@ -6,7 +6,7 @@
   <div class="item-status">
     <%= render :partial => "items/itemstatus", :locals => { :item => item } %>    
   </div>
-  <p class="font-small"><%= link_to shorten(item.title, 18), item  if item.title %></p>
+  <p class="font-small"><%= link_to shorten(item.title, 18), item, :title => item.title  if item.title %></p>
   <% if item.images.first %>
     <div class="image-big ui-corner-all">
       <%= link_to image_tag(item.images.first.image.url(:small)), item, :title => item.title, :class => "ui-corner-all" %>

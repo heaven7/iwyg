@@ -16,12 +16,14 @@
       <% end %>
   </div>
   <div class="subcol2">
-    <h3><%= t("resources.location") %></h3>
-    <%# "#{@group.locations.first.lat}, #{@group.locations.first.lng}" %>
-    <%= render :partial => "share/map", :locals => { :locations => @locations_json } %>
-    <%= render :partial => "locations/location", :locals => {:location => @group.locations.first} %>
+    <% if @group.locations.first %>
+      <h3><%= t("resources.location") %></h3>
+      <%# "#{@group.locations.first.lat}, #{@group.locations.first.lng}" %>
+      <%= render :partial => "share/map", :locals => { :locations => @locations_json } %>
+      <%= render :partial => "locations/location", :locals => {:location => @group.locations.first} %>
+    <% end %>
   </div>
 </div>
-
+<div class="clearfix" ></div>
 <h2><%= t("groups.holder") %></h2>
 <%= render :partial => "share/usertiny", :locals => { :user => @group.owner}  %>

@@ -9,7 +9,7 @@ class GroupsController < InheritedResources::Base
     params[:search] = params[:q] if params[:q]
     
     if params[:user_id]
-      @user = current_user
+      @user = User.find(params[:user_id])
       @groups = @user.groups.paginate(
         :page => params[:page],
         :per_page => PINGS_PER_PAGE,
@@ -54,8 +54,8 @@ class GroupsController < InheritedResources::Base
   end
 
   def show
-    @user = current_user
     if params[:user_id]
+      @user = User.find(params[:user_id])
       @group = @user.groups.find(params[:id])
     else
       @group = Group.find(params[:id])
