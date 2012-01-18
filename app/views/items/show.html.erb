@@ -72,11 +72,11 @@
     <%= render :partial => "locations/location", :locals => {:location => @location} %>
     <%= render :partial => "share/map", :locals => { :locations => @locations_json } %>
   <% end %> 
-  <% if @items_related_inverse.size > 0 && @item.tags.size > 0 %>
+  <% if @items_related.size > 0 && @item.tags.size > 0 %>
     <div id="items-related">
-      <h3><%= @items_related_title %> (<%= @items_related_inverse.size %>)</h3>
+      <h3><%= @items_related_title %> (<%= @items_related.size %>)</h3>
       <ul>
-        <% for item in @items_related_inverse do %>
+        <% for item in @items_related do %>
           <%= render :partial => "itemrelated", :locals => { :item => item, :mainitem => @item } %>
         <% end %>
       </ul>

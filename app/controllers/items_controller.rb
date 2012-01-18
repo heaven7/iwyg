@@ -141,19 +141,27 @@ class ItemsController < InheritedResources::Base
   
   def show
     @item = Item.find(params[:id], :include => [:images, :pings, :comments, :locations, :events, :tags, :item_attachments])
-    @user = current_user    
+    @user = current_user
+
     # related resources
+   # @items_related_titled_same = Array.new
+    @titleParts = @item.title.split(" ")
+
     if @item.need == true
-      @items_related_tagged_same = Item.offer.tagged_with(@item.tags.join(', '))
-      @items_related_titled_same = Item.offer.where(:title =~ @item.title)
+      @items_related_tagged_same = Item.offer.tagged_with(@item.tags.join(', ')).where(:item_type_id => @item.item_type_id)
+      @titleParts.each do |part|
+          @items_related_titled_same = Item.offer.where(:title.matches => "%#{part}%") if part.length.to_i >= 5
+      end
       @items_related_inverse = @items_related_tagged_same + @items_related_titled_same           
       @items_related_title = I18n.t("item.related.offer").html_safe
     else
-      @items_related_inverse = Item.need.tagged_with(@item.tags.join(', ')) 
-      @items_related_inverse = Item.need.where(:title =~ @item.title)
+      @items_related_tagged_same = Item.need.tagged_with(@item.tags.join(', ')).where(:item_type_id => @item.item_type_id)
+      @titleParts.each do |part|
+        @items_related_titled_same = Item.need.where(:title.matches => "%#{part}%") if part.length.to_i >= 5
+      end
       @items_related_title = I18n.t("item.related.need").html_safe
     end
-    # @items_related_inverse.flatten!
+    @items_related = @items_related_tagged_same + @items_related_titled_same
     
     @pings = @item.pings
     @comments = @item.comments.find(:all, :order => "created_at DESC")

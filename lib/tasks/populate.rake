@@ -4,16 +4,19 @@ namespace :db do
     require 'populator'
     require 'faker'
     # Faker::Config.locale = :de
-    [User, Userdetails, Location, Item, Ping, Group].each(&:delete_all)
+    # Tag = ActsAsTaggableOn::Tag
+    Tag = ActsAsTaggableOn::Tag
+    Tagging = ActsAsTaggableOn::Tagging
+    [User, Userdetails, Location, Item, Ping, Group, Tag, Tagging].each(&:delete_all)
 
     User.populate 10 do |user|
-      user.login    = Populator.words(1)
+      user.login    = Faker::Name.first_name
       user.email   = Faker::Internet.email
       
       Userdetails.populate 1 do |userdetails|
         userdetails.user_id = user.id
-        userdetails.firstname  = Faker::Name.name
-        userdetails.lastname  = Faker::Name.name
+        userdetails.firstname  = Faker::Name.first_name
+        userdetails.lastname  = Faker::Name.last_name
         userdetails.birthdate = 70.years.ago...Time.now
         userdetails.created_at  = 2.years.ago...Time.now
       end
@@ -27,6 +30,38 @@ namespace :db do
         location.locatable_id = user.id
         location.user_id = user.id
       end
+
+      Tag.populate 1 do |tag|
+        tag.name = Populator.words(1)
+        tagging = Tagging.new
+        tagging.tag_id = Random.new.rand(1..30)
+        tagging.taggable_type = "User"
+        tagging.taggable_id = user.id
+        tagging.context = 'interests'
+        tagging.save
+      end
+
+      Tag.populate 1 do |tag|
+        tag.name = Populator.words(1)
+        tagging = Tagging.new
+        tagging.tag_id = Random.new.rand(1..30)
+        tagging.taggable_type = "User"
+        tagging.taggable_id = user.id
+        tagging.context = 'wishs'
+        tagging.save
+      end
+
+      Tag.populate 1 do |tag|
+        tag.name = Populator.words(1)
+        tagging = Tagging.new
+        tagging.tag_id = Random.new.rand(1..30)
+        tagging.taggable_type = "User"
+        tagging.taggable_id = user.id
+        tagging.context = 'aims'
+        tagging.save
+      end
+#      ActiveRecord::Base.connection.insert_fixture(tagging, "Taggings")
+      
 
       Group.populate 1 do |group|
         group.user_id = user.id
@@ -47,7 +82,18 @@ namespace :db do
         item.status = 1..4
         item.amount = 1..100
         item.measure_id = 1..7
-      end
+
+        Tag.populate 1 do |tag|
+          tag.name = Populator.words(1)
+          tagging = Tagging.new
+          tagging.tag_id = Random.new.rand(1..30)
+          tagging.taggable_type = "Item"
+          tagging.taggable_id = item.id
+          tagging.context = 'tags'
+          tagging.save
+        end
+        
+      end # item end
     end # end user
 
     Ping.populate 100 do |ping|

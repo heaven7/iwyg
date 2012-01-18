@@ -17,9 +17,9 @@ class Item < ActiveRecord::Base
   scope :requested, :conditions => {:status => 3} 
   scope :on_transfer, :conditions => {:status => 4}
   
-  scope :multiple, :conditions => {:multiple => 1}
-  scope :need, :conditions => {:need => 1}
-  scope :offer, :conditions => {:need => 0}  
+  scope :multiple, :conditions => {:multiple => true}
+  scope :need, :conditions => {:need => true}
+  scope :offer, :conditions => {:need => false}
   
   scope :good, :conditions => {:item_type_id => 1}       
   scope :transport, :conditions => {:item_type_id => 2}
