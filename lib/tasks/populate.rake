@@ -31,6 +31,7 @@ namespace :db do
         location.user_id = user.id
       end
 
+      # users interests
       Tag.populate 1 do |tag|
         tag.name = Populator.words(1)
         tagging = Tagging.new
@@ -41,6 +42,7 @@ namespace :db do
         tagging.save
       end
 
+      # users wishes
       Tag.populate 1 do |tag|
         tag.name = Populator.words(1)
         tagging = Tagging.new
@@ -51,6 +53,7 @@ namespace :db do
         tagging.save
       end
 
+      # users aims
       Tag.populate 1 do |tag|
         tag.name = Populator.words(1)
         tagging = Tagging.new
@@ -60,9 +63,7 @@ namespace :db do
         tagging.context = 'aims'
         tagging.save
       end
-#      ActiveRecord::Base.connection.insert_fixture(tagging, "Taggings")
       
-
       Group.populate 1 do |group|
         group.user_id = user.id
         group.title = Populator.words(1..3)

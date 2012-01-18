@@ -55,9 +55,13 @@ class GroupsController < InheritedResources::Base
 
   def show
     @user = current_user
-    @group = @user.groups.find(params[:id])
-    @location = @group.locations.first
-    getLocationsOnMap(@group) if @location.lat and @location.lng
+    if params[:user_id]
+      @group = @user.groups.find(params[:id])
+    else
+      @group = Group.find(params[:id])
+    end
+    @location = @group.locations.first if @group.locations && @group.locations.first
+    getLocationsOnMap(@group) if @location and not @location.lat.nil? and not @location.lng.nil?
   end
 
   def create
