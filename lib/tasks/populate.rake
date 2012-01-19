@@ -7,7 +7,7 @@ namespace :db do
     # Tag = ActsAsTaggableOn::Tag
     Tag = ActsAsTaggableOn::Tag
     Tagging = ActsAsTaggableOn::Tagging
-    [User, Userdetails, Location, Item, Ping, Group, Tag, Tagging].each(&:delete_all)
+    [User, Userdetails, Location, Item, Ping, Group, Tag, Tagging, ItemAttachment].each(&:delete_all)
 
     User.populate 10 do |user|
       user.login    = Faker::Name.first_name
@@ -66,13 +66,6 @@ namespace :db do
         tagging.context = 'aims'
         tagging.save
       end
-      
-      Group.populate 1 do |group|
-        group.user_id = user.id
-        group.title = Populator.words(1..3)
-        group.description = Populator.sentences(1..3)
-        group.created_at  = 2.years.ago...Time.now
-      end
 
       Item.populate 10 do |item|
         item.user_id = user.id
@@ -109,8 +102,50 @@ namespace :db do
           location.locatable_id = item.id
           location.user_id = user.id
         end
+
+        ItemAttachment.populate 1..5 do |item_attachment|
+          item_attachment.item_id = item.id
+          item_attachment.attachment_id = 1..100
+        end
         
       end # item end
+
+      Group.populate 1 do |group|
+        group.user_id = user.id
+        group.title = Populator.words(1..3)
+        group.description = Populator.sentences(1..3)
+        group.created_at  = 2.years.ago...Time.now
+
+        Location.populate 1 do |location|
+          location.address = Faker::Address.street_address
+          location.city    = Faker::Address.city
+          location.country = Faker::Address.country
+          location.zip     = Faker::Address.zip_code
+          location.lat     = Faker::Address.latitude
+          location.lng     = Faker::Address.longitude
+          location.gmaps   = true
+          location.locatable_type = "Group"
+          location.locatable_id = group.id
+          location.user_id = user.id
+        end
+
+        Tag.populate 1 do |tag|
+          tag.name = Populator.words(1)
+          tagging = Tagging.new
+          tagging.tag_id = Random.new.rand(1..10)
+          tagging.taggable_type = "Group"
+          tagging.taggable_id = group.id
+          tagging.context = 'tags'
+          tagging.save
+        end
+
+        ItemAttachment.populate 1..5 do |item_attachment|
+          item_attachment.group_id = group.id
+          item_attachment.attachment_id = 1..100
+        end
+
+      end
+
     end # end user
 
     Ping.populate 100 do |ping|

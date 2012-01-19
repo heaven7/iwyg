@@ -41,28 +41,11 @@
     </div>
   <% end %>
  <div class="box ui-corner-all tags">
-  <% if !@item.tags.empty? %>
-    <p class="font-smaller">
-    <%= t("tags") %>:
-    <% for tag in @item.tags %>
-        <span><%= link_to tag, :controller => :items, :tag => tag.name %></span>
-      <% end %>
-    </p>
-  <% end %>
-  
- 
+  <%= render :partial => "share/tags", :locals => { :tags => @item.tags } %>
   <% if @item.description %>
     <p><%= @item.description %></p>
   <% end %>
-  <% if @item.item_attachments.count > 0 %>
-    <div class="attachments">
-    <p class="font-smaller"><%= t("resources.attachedResources").html_safe %> (<%= @item.item_attachments.count %>)</p>
-    <% @item.item_attachments.each do |attachment| %>
-      <p class="font-smaller"><%= link_to image_tag(attachment.item.images.first.image.url("tiny")), item_path(attachment.item) if attachment.item && attachment.item.images && attachment.item.images.first %>
-      <%= link_to attachment.item.title, item_path(attachment.item) if attachment.item %></p>
-    <% end %> 
-    </div>
-  <% end %>
+  <%= render :partial => "share/item_attachments", :locals => { :object => @item } %>
   </div>
   <%= render :partial => "share/pings", :locals => {:pings => @item.pings, :pingable => @item} %>
 </div>

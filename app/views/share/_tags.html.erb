@@ -1,0 +1,8 @@
+<% if !tags.empty? %>
+  <p class="font-smaller">
+  <%= t("tags") %>:
+  <% for tag in tags %>
+      <span><%= link_to tag, :controller => :items, :tag => tag.name %></span>
+    <% end %>
+  </p>
+<% end %>

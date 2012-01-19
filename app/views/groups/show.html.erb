@@ -1,22 +1,14 @@
 <h1><%= @group.title.html_safe %></h1>
-
-
 <div class="sub2cols">
   <div class="subcol1">
-    <p><%= @group.description.html_safe %></p>
-     <% if !@group.tags.empty? %>
-      <div class="box ui-corner-all tags">
-          <p class="font-smaller">
-        <%= t("tags") %>:
-        <% for tag in @group.tags %>
-            <span><%= link_to tag, :controller => :groups, :tag => tag.name %></span>
-          <% end %>
-        </p>
+      <div class="box ui-corner-all">
+        <%= render :partial => "share/tags", :locals => { :tags => @group.tags } %>
+        <p><%= @group.description.html_safe %></p>
+        <%= render :partial => "share/item_attachments", :locals => { :object => @group } %>
       </div>
-      <% end %>
   </div>
   <div class="subcol2">
-    <% if @group.locations.first %>
+    <% if logged_in? and @group.locations.first %>
       <h3><%= t("resources.location") %></h3>
       <%# "#{@group.locations.first.lat}, #{@group.locations.first.lng}" %>
       <%= render :partial => "share/map", :locals => { :locations => @locations_json } %>
