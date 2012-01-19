@@ -26,6 +26,9 @@ namespace :db do
         location.city    = Faker::Address.city
         location.country = Faker::Address.country
         location.zip     = Faker::Address.zip_code
+        location.lat     = Faker::Address.latitude
+        location.lng     = Faker::Address.longitude
+        location.gmaps   = true
         location.locatable_type = "User"
         location.locatable_id = user.id
         location.user_id = user.id
@@ -92,6 +95,19 @@ namespace :db do
           tagging.taggable_id = item.id
           tagging.context = 'tags'
           tagging.save
+        end
+
+        Location.populate 1 do |location|
+          location.address = Faker::Address.street_address
+          location.city    = Faker::Address.city
+          location.country = Faker::Address.country
+          location.zip     = Faker::Address.zip_code
+          location.lat     = Faker::Address.latitude
+          location.lng     = Faker::Address.longitude
+          location.gmaps   = true
+          location.locatable_type = "Item"
+          location.locatable_id = item.id
+          location.user_id = user.id
         end
         
       end # item end
