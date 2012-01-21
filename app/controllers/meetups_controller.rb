@@ -74,7 +74,7 @@ class MeetupsController < InheritedResources::Base
     else 
       @event = @meetup.events.first
     end
-    edit! 
+    edit!
   end
   
   

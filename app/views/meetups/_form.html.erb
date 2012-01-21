@@ -6,8 +6,14 @@
       $("#tabs").tabs(); 	
       showErrorTabs();
       
+      <% if params[:item] && params[:item][:attachable_id] %>
+        /* preselect pinged resource (item) */
+        id = <%= params[:item][:attachable_id] %>;
+        $('#attachments .field-add').click();
+        $('#attachments select').val(id);
+      <% end %>
+
       /* Current User and Pinger is participating by default */
-      
       $("#meetup_user_ids_<%= current_user.id %>").attr("checked", "checked");
       <% if @ping %>
         $("#meetup_user_ids_<%= @ping.owner.id %>").attr("checked", "checked"); 
@@ -27,6 +33,7 @@
         <li><a href="#where"><%= t("where") %></a></li>          
         <li><a href="#when"><%= t("when") %></a></li>      
         <li><a href="#who"><%= t("who") %></a></li>
+        <li><a href="#attachments"><%= t("menu.user.resources") %></a></li> 
     </ul>
      <div id="what">
        <%= f.inputs do %>
@@ -34,14 +41,6 @@
         <%= f.input :ownertype, :as => :hidden, :value => "User" %> 
         <%= f.input :title %>
         <%= f.input :description, :label => I18n.t("formtastic.labels.meetup.description") %>
-        <% if @item %>
-          <hr class="divider" />
-          <%= f.input "item_attachments_attributes][0][attachment_id]", :as => :hidden, :value => @item.id %>
-          <li>
-            <label><%= t @item.itemtype, :count => 1 if @item.itemtype %></label>
-            <%= link_to @item.title, @item %>
-          </li>
-        <% end %>
        <% end %>
      </div>
      <div id="where">
@@ -59,7 +58,10 @@
         <%= f.input :users, :collection => @users.map { |u| ["#{image_tag(tinyThumb(u), :alt => u.login, :title => u.login)}<br />#{u.login}".html_safe, u.id] }, :as => :check_boxes %>
         <%# f.input :users %>
       <% end %>     
-     </div>    
+     </div>
+    <div id="attachments" class="tab_content">
+      <%= render :partial => "items/item_attachments", :locals => { :object => @meetup, :f => f } %>
+    </div>
    </div>
   <%= f.buttons do %>
     <br />

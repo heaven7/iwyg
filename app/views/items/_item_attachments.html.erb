@@ -9,7 +9,7 @@
       <% 
         d += 1
         if object.item_attachments and d < object.item_attachments.count
-          resource = object.class.find(object.item_attachments[d].attachment_id) if object.item_attachments[d].attachment_id
+          resource = Item.find(object.item_attachments[d].attachment_id) if object.item_attachments[d].attachment_id
       %>
         <% if resource %>
           <div class="attachment">  
