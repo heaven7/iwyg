@@ -52,7 +52,7 @@ class ItemsController < InheritedResources::Base
         params[:search][:title_contains] = eval(@keyword_items)
         
         
-        @searcher ||= current_user.id = nil if current_user
+        @searcher ||= current_user.id if current_user
         # save search      
         for keyword in @keywords
          Search.create(:keyword => keyword, :user_id => @searcher, :ip => request.env['REMOTE_ADDR'])

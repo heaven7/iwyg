@@ -34,11 +34,12 @@
         <%= f.input :ownertype, :as => :hidden, :value => "User" %> 
         <%= f.input :title %>
         <%= f.input :description, :label => I18n.t("formtastic.labels.meetup.description") %>
-        <% if @thing %>
-          <li><hr /></li>
+        <% if @item %>
+          <hr class="divider" />
+          <%= f.input "item_attachments_attributes][0][attachment_id]", :as => :hidden, :value => @item.id %>
           <li>
-            <label><%= t @thing.itemtype, :count => 1 if @thing.itemtype %></label>
-            <%= link_to @thing.title, @thing %>
+            <label><%= t @item.itemtype, :count => 1 if @item.itemtype %></label>
+            <%= link_to @item.title, @item %>
           </li>
         <% end %>
        <% end %>

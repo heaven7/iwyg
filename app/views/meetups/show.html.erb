@@ -2,7 +2,6 @@
   <%= render :partial => "usermenu", :locals => { :meetup => @meetup} %>
 </div>
 <h2><%= @meetup.title %></h2>
-<p><%= @meetup.description %></p>  
 <% if @meetup.locations.size > 0 && @locations_json %>
   <div class="sub2cols">
     <div class="subcol1">
@@ -21,7 +20,11 @@
             </p>
           <% end %>
         </div>
-      <% end %>  
+        <% end %>
+        <div class="box ui-corner-all">
+          <p><%= @meetup.description %></p>
+          <%= render :partial => "share/item_attachments", :locals => { :object => @meetup } %>
+        </div>
     </div>
     <div class="subcol2">
       <%= render :partial => "share/map", :locals => { :locations => @locations_json } if @locations_json %>

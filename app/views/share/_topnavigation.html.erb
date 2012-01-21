@@ -5,7 +5,7 @@
       </div> 
       <ul class="profile menu">
         <li><%= link_to t("topnavigation.profile"), profile_path(current_user.login)%></li>
-        <li><%= link_to t("topnavigation.resources"), polymorphic_path([current_user, :items]) %></li>
+        <li><%= link_to t("topnavigation.resources"), polymorphic_path([current_user, "items"]) %></li>
         <li><%= nav_link t('topnavigation.mailbox'), "/mailbox" %></li>
         <li><%= link_to t("topnavigation.logout"), "/logout" %></li>
     <% else %>

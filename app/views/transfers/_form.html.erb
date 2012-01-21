@@ -1,6 +1,4 @@
 <% content_for(:head) do %>
-   <%= GMap.header(:hl=> params[:locale]) if @map %>
-   <%= @map.to_html if @map %>
    <script type="text/javascript">
     $(document).ready(function (){
     

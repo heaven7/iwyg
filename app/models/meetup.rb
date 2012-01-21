@@ -1,17 +1,20 @@
 class Meetup < ActiveRecord::Base
-  attr_accessible :title, :description, :events, :events_attributes, :eventable_id, :eventable_type, :locations, :locations_attributes, :owner_id, :ownertype, :user_ids  
+  attr_accessible :title, :description,
+                  :events, :events_attributes, :eventable_id, :eventable_type,
+                  :locations, :locations_attributes,
+                  :owner_id, :ownertype,
+                  :user_ids, :item_attachments, :item_attachments_attributes
 
      
   belongs_to :owner, :class_name => 'User', :foreign_key => "owner_id"
-  has_many :locations, :as => :locatable
+  has_many :locations, :as => :locatable, :dependent => :destroy
   accepts_nested_attributes_for :locations, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }  
-  has_many :events, :as => :eventable
+  has_many :events, :as => :eventable, :dependent => :destroy
   accepts_nested_attributes_for :events, :allow_destroy => true  
   has_many :meetings
   has_many :users, :through => :meetings
-  
-  #has_many :item_attachments, :dependent => :destroy
-  #accepts_nested_attributes_for :item_attachments, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } } 
+  has_many :item_attachments, :dependent => :destroy
+  accepts_nested_attributes_for :item_attachments, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } } 
 
     
   # validates_numericality_of :participant_ids

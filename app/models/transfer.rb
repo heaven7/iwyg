@@ -9,8 +9,8 @@ class Transfer < ActiveRecord::Base
 
 #  acts_as_taggable_on :tags
   
-  attr_accessible :receiver, :transferable_id, :transferable_type
-  attr_accessible :pinger, :receiverable_type, :receiverable_id
+  attr_accessible :receiver, :transferable_id, :transferable_type,
+                  :pinger, :receiverable_type, :receiverable_id
   attr_accessor :transferoptions, :friends_select, :user_select, :sharingpoint_select
   
  # validates_presence_of :transferoptions, :receiverable_type, :receiverable_id

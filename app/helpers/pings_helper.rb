@@ -136,18 +136,24 @@ module PingsHelper
 
   def setItemAcceptedOptions(item, ping)
 
-    case item.itemtype.downcase.to_s
-    when "good"
-      link_to t("ping.setTransfer"), new_polymorphic_path([current_user, Transfer.new],
-        :pinger => current_user,
-        :transferable_type => ping.pingable_type,
-        :transferable_id => ping.pingable_id) if !Transfer.exists?(ping.pingable_id, ping.pingable_type, current_user.id)
-    else
-      link_to t("ping.setMeetup"), new_polymorphic_path([current_user, Meetup.new],
-        "event[ping]" => ping.id,
-        "event[eventable_type]" => ping.pingable_type,
-        "event[eventable_id]" => ping.pingable_id)
-    end
+    link_to t("ping.setMeetup"), new_polymorphic_path([current_user, Meetup.new],
+      "item[ping]" => ping.id,
+      "item[attachable_id]" => ping.pingable_id)
+
+    # Transfers will be removed...
+
+    #case item.itemtype.downcase.to_s
+    #when "good"
+    #  link_to t("ping.setTransfer"), new_polymorphic_path([current_user, Transfer.new],
+    #    :pinger => current_user,
+    #    :transferable_type => ping.pingable_type,
+    #    :transferable_id => ping.pingable_id) if !Transfer.exists?(ping.pingable_id, ping.pingable_type, current_user.id)
+    #else
+    #  link_to t("ping.setMeetup"), new_polymorphic_path([current_user, Meetup.new],
+    #    "event[ping]" => ping.id,
+    #    "event[eventable_type]" => ping.pingable_type,
+    #    "event[eventable_id]" => ping.pingable_id)
+    #end
     
   end
 end

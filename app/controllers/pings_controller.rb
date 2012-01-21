@@ -25,13 +25,16 @@ class PingsController < InheritedResources::Base
           p
         end
       end
-      @inverse_pings = @inverse_pings.paginate(
-        :page => params[:page],
-        :per_page => PINGS_PER_PAGE
-      ) 
-      @pings_all = @pings + @inverse_pings
+      if @inverse_pings
+        @inverse_pings = @inverse_pings.paginate(
+          :page => params[:page],
+          :per_page => PINGS_PER_PAGE
+        ) if @inverse_pings
+        @pings_all = @pings + @inverse_pings
+      else
+        @pings_all = @pings
+      end
       @pings_count = @pings_all.size
-      #@pings_all = @pings_all.flatten.uniq.sort_by { |ping| ping.created_at }
       @pings_all = @pings_all.paginate(
         :page => params[:page],
         :per_page => PINGS_PER_PAGE,

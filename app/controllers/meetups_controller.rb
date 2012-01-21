@@ -25,12 +25,10 @@ class MeetupsController < InheritedResources::Base
   
   
   def new
-    if params[:event]
-      @eventable_id = params[:event][:eventable_id]
-      @eventable_type = params[:event][:eventable_type]
-      @ping = Ping.find(params[:event][:ping])
-      @class = Kernel.const_get(@eventable_type) # get the classname out of a string
-      @thing = @class.find(@eventable_id)
+    if params[:item]
+      @attachable_id = params[:item][:attachable_id]
+      @ping = Ping.find(params[:item][:ping])
+      @item = Item.find(@attachable_id)
     end
     @user = current_user
     @active_menuitem_l1 = I18n.t "menu.user.meetups" 
