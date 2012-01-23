@@ -43,8 +43,9 @@ gem 'mysql2', '0.2.6'
 gem 'mongrel', '>= 1.2.0.pre2'
 
 gem "rspec-rails", :group => [:test, :development]
+
+gem "factory_girl_rails", '1.6.0'
 group :test do
-  gem "factory_girl_rails"
   gem "capybara"
   gem "guard-rspec"
   gem "populator"
