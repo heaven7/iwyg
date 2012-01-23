@@ -41,6 +41,7 @@ gem 'will_paginate', '~> 3.0'
 gem 'validates_timeliness' #, '2.3.2'
 gem 'mysql2', '0.2.6'
 gem 'mongrel', '>= 1.2.0.pre2'
+gem 'roadie'
 
 gem "rspec-rails", :group => [:test, :development]
 

@@ -1,5 +1,6 @@
 class UserMailer < ActionMailer::Base
   default :from => REPLY_EMAIL
+  default :css => :mailer
   default :charset => "UTF-8"
 
   def registration_notification(user)

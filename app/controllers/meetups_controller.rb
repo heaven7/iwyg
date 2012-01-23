@@ -6,8 +6,8 @@ class MeetupsController < InheritedResources::Base
   
   def index 
     @user = current_user
-    @meetups = @user.meetups if @user 
-    @active_menuitem_l1 = I18n.t "menu.user.meetups" 
+    @meetups = @user.meetups if @user
+    @active_menuitem_l1 = I18n.t "menu.user.meetups"
     @active_menuitem_l1_link = polymorphic_path([@user, :meetups])
     index!
   end
