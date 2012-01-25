@@ -1,0 +1,15 @@
+<%= form_for Ping.new do |f| %>
+  <%= f.error_messages %>
+  <%= f.hidden_field :pingable_id, :value => params[:user_id] %>
+  <%= f.hidden_field :pingable_type, :value => "User" %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+
+  <%= f.hidden_field :followuser, :value => true %>
+  
+  <p>
+    <%= f.text_area :body, :class => "ui-corner-all" %>
+  </p>
+  <p>
+    <%= f.submit "follow", :class => "ui-corner-all" %>
+  </p>
+<% end %>
