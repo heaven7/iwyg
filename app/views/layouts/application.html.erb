@@ -128,7 +128,7 @@
     </div>
   </div>
 </div>
-<% if ENV["RAILS_ENV"] == "development" %>
+<% if ENV["RAILS_ENV"] != "production" %>
   <%= debug(params) %>
 <% end %>                   
 <! -- devise_rpx -->

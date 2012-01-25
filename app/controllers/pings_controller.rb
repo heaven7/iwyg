@@ -123,11 +123,6 @@ class PingsController < InheritedResources::Base
     else
       render :action => 'new'
     end
-
-
-    if params[:ping][:followuser]
-      current_user.follow(User.where( :id => params[:user_id]))
-    end
   end
   
   def update

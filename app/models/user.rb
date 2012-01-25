@@ -2,6 +2,9 @@
 
 class User < ActiveRecord::Base
 
+  extend FriendlyId
+  friendly_id :login
+
   # :token_authenticatable, :lockable, :timeoutable, :encryptable, :confirmable, :encryptor => :restful_authentication_sha1 and :activatable
   devise :database_authenticatable, :registerable, :rememberable #, :rpx_connectable, :recoverable, :trackable, :confirmable, :recoverable, :trackable, :validatable
 
