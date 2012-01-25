@@ -2,7 +2,8 @@ class Ping < ActiveRecord::Base
   belongs_to :pingable, :polymorphic => true
   has_many :comments, :as => :commentable
 
-  attr_accessible :body, :user_id, :pingable_type, :pingable_id, :status, :created_at, :updated_at, :accepted_at, :status
+  attr_accessible :body, :user_id, :pingable_type, :pingable_id, :status, 
+                  :created_at, :updated_at, :accepted_at, :status, :follow
 
   scope :open, :conditions => { :status => 1 }
   scope :not_closed, :conditions => "status < 4"

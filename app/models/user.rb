@@ -11,6 +11,9 @@ class User < ActiveRecord::Base
   acts_as_taggable_on :interests, :wishs, :aims
   acts_as_tagger
   
+  acts_as_follower
+  acts_as_followable
+
   # belongs_to
   belongs_to :meetups
   

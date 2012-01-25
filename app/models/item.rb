@@ -10,6 +10,8 @@ class Item < ActiveRecord::Base
   
   belongs_to :user
   acts_as_taggable_on :tags
+
+  acts_as_followable
   
   # scopes
   scope :on_hold, :conditions => {:status => 1} 
