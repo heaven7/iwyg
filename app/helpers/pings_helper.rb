@@ -97,9 +97,10 @@ module PingsHelper
   
   def pingoptions(ping)
     item = Item.find(ping.pingable_id)
-    if logged_in? && ( current_user == ping.owner || current_user == item.owner)
+    #if logged_in? and ( current_user == ping.owner || current_user == item.owner)
+    if logged_in?
+      pingstatus = ping.statusTitle.to_s
       if ping.pingable_type == "Item"
-        pingstatus = ping.statusTitle.to_s
 
         # depending on the pingstatus, options are available
         # for the user
@@ -127,7 +128,15 @@ module PingsHelper
         when "closed"
         end
 
-      elsif ping.pingable_type == "Group"
+      elsif ping.pingable_type == "User"
+        case pingstatus
+
+        when "opened"
+          if ping.user == current_user
+            link_to t("ping.accept"), accept_ping_path(ping), :method => :put
+          end
+        end
+
       end
     end
   end

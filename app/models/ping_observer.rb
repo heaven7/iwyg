@@ -19,9 +19,13 @@ class PingObserver < ActiveRecord::Observer
     @subject = "IWYG PingMailer"
     
     if @action == "opened"
-    
+       if @resource.class.to_s == "User"
+         @title = @resource.login
+       else
+         @title = @resource.title
+       end
        @message = I18n.translate("#{@notifyOn}.#{@action}", 
-              :resource_title => @resource.title, 
+              :resource_title => @title,
               :pinger => @pinger.login
        )
               

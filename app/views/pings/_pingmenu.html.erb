@@ -1,7 +1,11 @@
 <ul>
   <li class="button"><%= pingoptions(ping) %></li>
 
-  <% if ping.open? and ping.item.owner == current_user %>
+  <% if ping.open? and ping.item and ping.item.owner == current_user %>
+    <li class="button"><%= link_to t("ping.decline"), decline_ping_path(ping), :method => :put %></li>
+  <% end %>
+
+  <% if ping.open? and ping.user and ping.user == current_user %>
     <li class="button"><%= link_to t("ping.decline"), decline_ping_path(ping), :method => :put %></li>
   <% end %>
 </ul>

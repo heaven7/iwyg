@@ -11,6 +11,10 @@ class Ping < ActiveRecord::Base
   scope :declined, :conditions => { :status => 3 }
   scope :closed, :conditions => { :status => 4 }
   scope :created_at_desc, order("pings.created_at DESC")
+
+  scope :user, where("pingable_type = ?", "User")
+  scope :group, where("pingable_type = ?", "Group")
+  scope :project, where("pingable_type = ?", "Project")
           
   def exists?
    not Ping.find_by_pingable_id_and_pingable_type_and_user_id(self.pingable_id, self.pingable_type, self.user_id).nil?
@@ -38,6 +42,18 @@ class Ping < ActiveRecord::Base
   
   def item
     Item.find(self.pingable_id) if self.pingable_type == "Item"
+  end
+
+  def user
+    User.find(self.pingable_id) if self.pingable_type == "User"
+  end
+
+  def group
+    Group.find(self.pingable_id) if self.pingable_type == "Group"
+  end
+
+  def project
+    Project.find(self.pingable_id) if self.pingable_type == "Project"
   end
   
   def statusTitle
@@ -75,6 +91,10 @@ class Ping < ActiveRecord::Base
       itemtype = ItemType.find(item.item_type_id).title
       image = "<img src=\"/images/icons/icon_#{itemtype}.png\" title=\"#{itemtype.humanize}\"/>"
       title = item.title
+    when "User"
+      user = User.find(pingable_id)
+      image = "<img src=\"/images/icons/icon_user.png\" title=\"#{user.login}\"/>"
+      title = user.login
     when "Transfer"
       transfer = Transfer.find(pingable_id)
       image = "<img src=\"/images/icons/icon_transfer.png\" title =\"Transfer\" />"

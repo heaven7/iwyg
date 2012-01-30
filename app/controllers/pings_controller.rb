@@ -17,13 +17,16 @@ class PingsController < InheritedResources::Base
     @pingable = find_pingable
     if @pingable.class.to_s == "User"
       @user = User.find(params[:user_id])
-      @pings = @user.pings.scoped
+      @pings = @user.pings.where(:pingable_type == "Item").scoped
       @active_menuitem_l1 = I18n.t "menu.user.pings" 
       @active_menuitem_l1_link = user_pings_path  
       @user.items.map do |i|
         @inverse_pings = i.pings.each do |p|
           p
         end
+      end
+      @inverse_pings = Ping.user.each do |p|
+        p if p.pingable_id == current_user.id
       end
       if @inverse_pings
         @inverse_pings = @inverse_pings.paginate(
@@ -93,9 +96,15 @@ class PingsController < InheritedResources::Base
     @params = params[:ping]
     @params[:status] = 1
     @pingable = find_pingable
-    @ping = @pingable.pings.build(@params)
-    @resourceType = @pingable.class.to_s
-    @resource = @pingable.class.find(@ping.pingable_id)
+    if params[:ping][:followuser]
+      @ping = current_user.pings.build(@params)
+      @resourceType = "User"
+      @resource = User.find(params[:ping][:pingable_id])
+    else
+      @ping = @pingable.pings.build(@params)
+      @resourceType = @pingable.class.to_s
+      @resource = @pingable.class.find(@ping.pingable_id)
+    end
     
     if @resourceType == "User"
       @owner = @resource
