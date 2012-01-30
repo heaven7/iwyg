@@ -4,7 +4,9 @@ Hallo <%= @user.login %>,
 <br />
 <br />
 Besuche das Profil von <a href="<%= @user_url %>" ><%= @holder.login %></a>.<br />
+<% if @resource.class.to_s == "Item" %>
 Ressource: <a href="<%= @resource_url %>" ><%= @resource.title %></a> von <%= @holder.login %>.
+<% end %>
 <br />
 <br />
 Dein

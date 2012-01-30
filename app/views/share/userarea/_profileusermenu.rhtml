@@ -2,7 +2,6 @@
   <ul class="font-smaller button">
     <li><%= link_to t("menu.user.addToFriends"), friendships_path(:friend_id => user), :method => :post if !is_friend?(user) %></li>
     <li><%= link_to t("menu.user.sendMessage"), new_sent_path(:to => user.id) %></li>
-    <li><%= link_to "Follow", new_ping_path(:follow => user.id), :remote => true %></li>
+    <li><%= link_to "Follow", new_ping_path(:follow => user.id), :remote => true, :id => "followlink" %></li>
   </ul>
-<div id="ping_form"></div>
 <% end %>

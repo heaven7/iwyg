@@ -44,9 +44,13 @@ class PingObserver < ActiveRecord::Observer
       ) 
       
     else
-    
+       if @resource.class.to_s == "User"
+         @title = @resource.login
+       else
+         @title = @resource.title
+       end
        @message = I18n.translate("#{@notifyOn}.#{@action}", 
-              :resource_title => @resource.title,
+              :resource_title => @title,
               :user => @user
        )
        

@@ -5,7 +5,7 @@ class PingsController < InheritedResources::Base
   respond_to :html #, :xml, :json
   helper :items, :users
   belongs_to :pingable, :polymorphic => true
-  before_filter :login_required, :only => [:new, :edit]
+  before_filter :login_required
   
   has_scope :open
   has_scope :non_open
@@ -15,28 +15,25 @@ class PingsController < InheritedResources::Base
 
   def index
     @pingable = find_pingable
+
+    # listing of users pings and others pinged on users resources
     if @pingable.class.to_s == "User"
       @user = User.find(params[:user_id])
-      @pings = @user.pings.where(:pingable_type == "Item").scoped
-      @active_menuitem_l1 = I18n.t "menu.user.pings" 
-      @active_menuitem_l1_link = user_pings_path  
+      @pings_all = @user.pings
+      @active_menuitem_l1 = I18n.t "menu.user.pings"
+      @active_menuitem_l1_link = user_pings_path
+      
       @user.items.map do |i|
         @inverse_pings = i.pings.each do |p|
           p
         end
       end
-      @inverse_pings = Ping.user.each do |p|
-        p if p.pingable_id == current_user.id
+      @pings_on_user = Ping.user.each do |p|
+        p
       end
-      if @inverse_pings
-        @inverse_pings = @inverse_pings.paginate(
-          :page => params[:page],
-          :per_page => PINGS_PER_PAGE
-        ) if @inverse_pings
-        @pings_all = @pings + @inverse_pings
-      else
-        @pings_all = @pings
-      end
+
+      @pings_all += @inverse_pings if @inverse_pings
+      @pings_all += @pings_on_user if @pings_on_user
       @pings_count = @pings_all.size
       @pings_all = @pings_all.paginate(
         :page => params[:page],
@@ -45,14 +42,14 @@ class PingsController < InheritedResources::Base
       )
       
     elsif @pingable.class.to_s == "Item"
-      @user = current_user
       @item = Item.find(params[:item_id])
       @pings = @item.pings
-      @pings.paginate(
+      @pings_all = @pings.paginate(
          :page => params[:page],
         :per_page => PINGS_PER_PAGE,
         :order => "created_at DESC"
-      )    
+      )
+      render :layout => 'application'
     else
       @pings = Ping.find(:all, :order => "pings.created_at DESC" )
       @pings.paginate(
@@ -119,13 +116,12 @@ class PingsController < InheritedResources::Base
         flash[:error] = t("flash.pings.create.error.pingown", :resourceType => @resourceType) 
       end
       redirect_to(@resource)    
-    elsif @resourceType == "Transfer"
-      @ping.save
-      flash[:notice] = t("flash.pings.create.notice")
-      redirect_to [@resource]
-    elsif @ping.exists? and not @resource.multiple
+    elsif @ping.exists? and @resourceType == "User"
+      flash[:error] = t("flash.pings.create.error.pingedAlready", :type => "User")
+      redirect_to(@resource)
+    elsif @ping.exists? and @resourceType == "Item" and not @resource.multiple
       flash[:error] = t("flash.pings.create.error.pingedAlready", :type => @resource.localized_itemtype)
-      redirect_to(@resource)    
+      redirect_to(@resource)
     elsif @ping.save
       flash[:notice] = t("flash.pings.create.notice")
       redirect_to [@resource]
@@ -158,35 +154,15 @@ class PingsController < InheritedResources::Base
     @ping = Ping.find(params[:id])
     @pingable = @ping.pingable_type
     @resource = @pingable.classify.constantize.find(@ping.pingable_id)
-    @user = User.find(@ping.user_id)
-    @holder = User.find(@resource.user_id)
-    
-    if current_user.id == @resource.user_id
-      if @ping.status.to_i == 2 and  @resource.multiple == false
-        flash[:error] = t("flash.pings.accept.error.alreadyAccepted") 
-      else
-        # set ping to status accepted and close other pings of item
-        # the resource itself will have status: requested or offered
-        if @ping.update_attributes('status' => 2, 'accepted_at' => Time.now)
-          if @pingable == "Item" and @resource.need? 
-            @resource.update_attributes('status' => 3)
-          else
-            @resource.update_attributes('status' => 2)
-          end 
-          if @resource.multiple == false
-            # close other pings on that resource
-            @resource.pings.each do |ping|
-              if (ping.status.to_i == 1 and @pingable == "Item" ) 
-                ping.update_attributes('status' => 4)
-              end
-            end
-          end
-          flash[:notice] = t("flash.pings.accept.notice")
-        end
-      end
-    else
-      flash[:error] = t("flash.pings.accept.error.notAllowed")
+    case @pingable
+    when "Item"
+      acceptPingOnItem(@ping)
+    when "User"
+      acceptPingOnUser(@ping)
+    when "Group"
+    when "Project"
     end
+      
     redirect_to(@resource)
   end
   
@@ -214,6 +190,51 @@ class PingsController < InheritedResources::Base
   end
  
   private
+
+  # set ping to status accepted and close other pings of resource (item)
+  # unless it is multiple
+  # the resource itself will have status: requested or offered
+  def acceptPingOnItem(ping)
+    @ping = ping
+    @resource = Item.find(@ping.pingable_id)
+    if current_user.id == @resource.user_id
+      if @ping.status.to_i == 2 and  @resource.multiple == false
+        flash[:error] = t("flash.pings.accept.error.alreadyAccepted")
+      else
+        if @ping.update_attributes('status' => 2, 'accepted_at' => Time.now)
+          if @resource.need?
+            @resource.update_attributes('status' => 3)
+          else
+            @resource.update_attributes('status' => 2)
+          end
+          if @resource.multiple == false
+            # close other pings on that resource
+            @resource.pings.each do |ping|
+              if (ping.status.to_i == 1 and @pingable == "Item" )
+                ping.update_attributes('status' => 4)
+              end
+            end
+          end
+          flash[:notice] = t("flash.pings.accept.notice")
+        end
+      end
+    else
+      flash[:error] = t("flash.pings.accept.error.notAllowed")
+    end
+  end
+
+  # by accepting current_user let ping.owner follow him
+  def acceptPingOnUser(ping)
+    @user = User.find(ping.pingable_id)
+    if current_user == @user
+      if ping.update_attributes('status' => 2, 'accepted_at' => Time.now)
+        ping.owner.follow(@user)
+        flash[:notice] = t("flash.pings.accept.notice")
+      end
+    else
+      flash[:error] = t("flash.pings.accept.error.notAllowed")
+    end
+  end
 
   def find_pingable
     params.each do |name, value|

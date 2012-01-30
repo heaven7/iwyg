@@ -8,7 +8,7 @@
 <% if @user %>  
   <h2><%= t("title.pings.ofUser") %> (<%= @pings_count %>)</h2>
 <% elsif @item %>
-  <h3><%= t("title.pings.of") %> <%=h @item.title %></h3>
+  <h2><%= t("title.pings.of") %> <%= link_to @item.title, @item %></h2>
 <% end %>
 <%= paginated_section @pings_all do %>
   <%= render :partial => "pingtable", :locals => { :collection => @pings_all } if @pings_all.size > 0 %>
