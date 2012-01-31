@@ -1,5 +1,7 @@
 Iwyg::Application.routes.draw do
 
+  resources :actions
+
   root :to => "page#index"
   
   filter :locale

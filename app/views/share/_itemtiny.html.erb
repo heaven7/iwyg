@@ -1,0 +1,5 @@
+<div class="tiny-user-thumb bordered font-smaller center ui-corner-all">
+  <%= link_to_unless_current image_tag(tinyThumb(item), :alt => item.title, :title => item.title), item %>
+  <br />
+  <%= link_to item.title, item %>
+</div>

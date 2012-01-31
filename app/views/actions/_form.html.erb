@@ -1,0 +1,12 @@
+<%= semantic_form_for @action do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :watchable_id %>
+    <%= f.input :watchable_type %>
+    <%= f.input :type %>
+    <%= f.input :user_id %>
+  <% end %>
+
+  <%= f.buttons do %>
+    <%= f.commit_button %>
+  <% end %>
+<% end %>

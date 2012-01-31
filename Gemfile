@@ -44,6 +44,7 @@ gem 'validates_timeliness' #, '2.3.2'
 gem 'roadie'
 gem "acts_as_follower"
 gem "friendly_id", "~> 4.0.0"
+gem "acts_as_audited", "2.0.0"
 
 gem "rspec-rails", :group => [:test, :development]
 

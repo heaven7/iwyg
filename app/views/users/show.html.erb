@@ -12,6 +12,29 @@
           :confirm => t("confirm_delete").html_safe,
           :method => :delete %>
       -->
+      <div id="dashboard">
+        <h2>Dashboard</h2>
+        <div class="block ui-corner-all">
+          <div id="users-followers">
+            <span>Followers (<%= @followers.size %>)</span>
+            <% @followers.each do |follower| %>
+              <%= render :partial => "share/usertiny", :locals => { :user => follower } %>
+            <% end %>
+          </div>
+          <div id="users-followings">
+            <span>is following (<%= @followings.size %>)</span>
+            <% @followings.each do |following| %>
+              <%=
+                 if following.class.to_s == "User"
+                  render :partial => "share/usertiny", :locals => { :user => following }
+                 elsif following.class.to_s == "Item"
+                  render :partial => "share/itemtiny", :locals => { :item => following } 
+                 end
+              %>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="subcol2">
       <h2><%= t("user.aims").html_safe %></h2>

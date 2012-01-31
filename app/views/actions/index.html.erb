@@ -1,0 +1,29 @@
+<h1>Listing actions</h1>
+
+<table>
+  <tr>
+    <th>Watchable</th>
+    <th>Watchable type</th>
+    <th>Type</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @actions.each do |action| %>
+  <tr>
+    <td><%= action.watchable_id %></td>
+    <td><%= action.watchable_type %></td>
+    <td><%= action.type %></td>
+    <td><%= action.user_id %></td>
+    <td><%= link_to 'Show', action %></td>
+    <td><%= link_to 'Edit', edit_action_path(action) %></td>
+    <td><%= link_to 'Destroy', action, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Action', new_action_path %>
