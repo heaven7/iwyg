@@ -61,6 +61,9 @@ Iwyg::Application.routes.draw do
   
   resources :groups do
     resources :users
+    member do
+      put 'follow'
+    end
     collection do
       get 'tag_suggestions'
       match 'search' => 'groups#search', :via => [:get, :post], :as => :search

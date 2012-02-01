@@ -31,7 +31,9 @@
                  if following.class.to_s == "User"
                   render :partial => "share/usertiny", :locals => { :user => following }
                  elsif following.class.to_s == "Item"
-                  render :partial => "share/itemtiny", :locals => { :item => following } 
+                  render :partial => "share/itemtiny", :locals => { :item => following }
+                 elsif following.class.to_s == "Group"
+                  render :partial => "share/grouptiny", :locals => { :group => following }
                  end
               %></li>
             <% end %>

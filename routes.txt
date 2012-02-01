@@ -1,3 +1,10 @@
+                   actions GET      /actions(.:format)                                   {:action=>"index", :controller=>"actions"}
+                           POST     /actions(.:format)                                   {:action=>"create", :controller=>"actions"}
+                new_action GET      /actions/new(.:format)                               {:action=>"new", :controller=>"actions"}
+               edit_action GET      /actions/:id/edit(.:format)                          {:action=>"edit", :controller=>"actions"}
+                    action GET      /actions/:id(.:format)                               {:action=>"show", :controller=>"actions"}
+                           PUT      /actions/:id(.:format)                               {:action=>"update", :controller=>"actions"}
+                           DELETE   /actions/:id(.:format)                               {:action=>"destroy", :controller=>"actions"}
                       root          /(.:format)                                          {:controller=>"page", :action=>"index"}
               meetup_users GET      /meetups/:meetup_id/users(.:format)                  {:action=>"index", :controller=>"users"}
                            POST     /meetups/:meetup_id/users(.:format)                  {:action=>"create", :controller=>"users"}
@@ -55,7 +62,6 @@
                       page GET      /pages/:id(.:format)                                 {:action=>"show", :controller=>"pages"}
                            PUT      /pages/:id(.:format)                                 {:action=>"update", :controller=>"pages"}
                            DELETE   /pages/:id(.:format)                                 {:action=>"destroy", :controller=>"pages"}
-                   profile          /profile/:login(.:format)                            {:login=>:login, :controller=>"users", :action=>"show"}
          item_attatchments GET      /item_attatchments(.:format)                         {:action=>"index", :controller=>"item_attatchments"}
                            POST     /item_attatchments(.:format)                         {:action=>"create", :controller=>"item_attatchments"}
       new_item_attatchment GET      /item_attatchments/new(.:format)                     {:action=>"new", :controller=>"item_attatchments"}
@@ -70,13 +76,6 @@
                      image GET      /images/:id(.:format)                                {:action=>"show", :controller=>"images"}
                            PUT      /images/:id(.:format)                                {:action=>"update", :controller=>"images"}
                            DELETE   /images/:id(.:format)                                {:action=>"destroy", :controller=>"images"}
-          transfer_options GET      /transfer_options(.:format)                          {:action=>"index", :controller=>"transfer_options"}
-                           POST     /transfer_options(.:format)                          {:action=>"create", :controller=>"transfer_options"}
-       new_transfer_option GET      /transfer_options/new(.:format)                      {:action=>"new", :controller=>"transfer_options"}
-      edit_transfer_option GET      /transfer_options/:id/edit(.:format)                 {:action=>"edit", :controller=>"transfer_options"}
-           transfer_option GET      /transfer_options/:id(.:format)                      {:action=>"show", :controller=>"transfer_options"}
-                           PUT      /transfer_options/:id(.:format)                      {:action=>"update", :controller=>"transfer_options"}
-                           DELETE   /transfer_options/:id(.:format)                      {:action=>"destroy", :controller=>"transfer_options"}
                 sent_index GET      /sent(.:format)                                      {:action=>"index", :controller=>"sent"}
                            POST     /sent(.:format)                                      {:action=>"create", :controller=>"sent"}
                   new_sent GET      /sent/new(.:format)                                  {:action=>"new", :controller=>"sent"}
@@ -218,6 +217,7 @@
                 group_user GET      /groups/:group_id/users/:id(.:format)                {:action=>"show", :controller=>"users"}
                            PUT      /groups/:group_id/users/:id(.:format)                {:action=>"update", :controller=>"users"}
                            DELETE   /groups/:group_id/users/:id(.:format)                {:action=>"destroy", :controller=>"users"}
+              follow_group PUT      /groups/:id/follow(.:format)                         {:action=>"follow", :controller=>"groups"}
     tag_suggestions_groups GET      /groups/tag_suggestions(.:format)                    {:action=>"tag_suggestions", :controller=>"groups"}
              search_groups GET|POST /groups/search(.:format)                             {:action=>"search", :controller=>"groups"}
                     groups GET      /groups(.:format)                                    {:action=>"index", :controller=>"groups"}
@@ -309,6 +309,7 @@ edit_item_item_attatchment GET      /items/:item_id/item_attatchments/:id/edit(.
                            PUT      /items/:item_id/location(.:format)                   {:action=>"update", :controller=>"locations"}
                            DELETE   /items/:item_id/location(.:format)                   {:action=>"destroy", :controller=>"locations"}
                  rate_item POST     /items/:id/rate(.:format)                            {:action=>"rate", :controller=>"items"}
+               follow_item PUT      /items/:id/follow(.:format)                          {:action=>"follow", :controller=>"items"}
      tag_suggestions_items GET      /items/tag_suggestions(.:format)                     {:action=>"tag_suggestions", :controller=>"items"}
               search_items GET|POST /items/search(.:format)                              {:action=>"search", :controller=>"items"}
                      items GET      /items(.:format)                                     {:action=>"index", :controller=>"items"}
@@ -318,29 +319,7 @@ edit_item_item_attatchment GET      /items/:item_id/item_attatchments/:id/edit(.
                       item GET      /items/:id(.:format)                                 {:action=>"show", :controller=>"items"}
                            PUT      /items/:id(.:format)                                 {:action=>"update", :controller=>"items"}
                            DELETE   /items/:id(.:format)                                 {:action=>"destroy", :controller=>"items"}
-            transfer_pings GET      /transfers/:transfer_id/pings(.:format)              {:action=>"index", :controller=>"pings"}
-                           POST     /transfers/:transfer_id/pings(.:format)              {:action=>"create", :controller=>"pings"}
-         new_transfer_ping GET      /transfers/:transfer_id/pings/new(.:format)          {:action=>"new", :controller=>"pings"}
-        edit_transfer_ping GET      /transfers/:transfer_id/pings/:id/edit(.:format)     {:action=>"edit", :controller=>"pings"}
-             transfer_ping GET      /transfers/:transfer_id/pings/:id(.:format)          {:action=>"show", :controller=>"pings"}
-                           PUT      /transfers/:transfer_id/pings/:id(.:format)          {:action=>"update", :controller=>"pings"}
-                           DELETE   /transfers/:transfer_id/pings/:id(.:format)          {:action=>"destroy", :controller=>"pings"}
-         transfer_comments GET      /transfers/:transfer_id/comments(.:format)           {:action=>"index", :controller=>"comments"}
-                           POST     /transfers/:transfer_id/comments(.:format)           {:action=>"create", :controller=>"comments"}
-      new_transfer_comment GET      /transfers/:transfer_id/comments/new(.:format)       {:action=>"new", :controller=>"comments"}
-     edit_transfer_comment GET      /transfers/:transfer_id/comments/:id/edit(.:format)  {:action=>"edit", :controller=>"comments"}
-          transfer_comment GET      /transfers/:transfer_id/comments/:id(.:format)       {:action=>"show", :controller=>"comments"}
-                           PUT      /transfers/:transfer_id/comments/:id(.:format)       {:action=>"update", :controller=>"comments"}
-                           DELETE   /transfers/:transfer_id/comments/:id(.:format)       {:action=>"destroy", :controller=>"comments"}
-           accept_transfer PUT      /transfers/:id/accept(.:format)                      {:action=>"accept", :controller=>"transfers"}
-          decline_transfer PUT      /transfers/:id/decline(.:format)                     {:action=>"decline", :controller=>"transfers"}
-                 transfers GET      /transfers(.:format)                                 {:action=>"index", :controller=>"transfers"}
-                           POST     /transfers(.:format)                                 {:action=>"create", :controller=>"transfers"}
-              new_transfer GET      /transfers/new(.:format)                             {:action=>"new", :controller=>"transfers"}
-             edit_transfer GET      /transfers/:id/edit(.:format)                        {:action=>"edit", :controller=>"transfers"}
-                  transfer GET      /transfers/:id(.:format)                             {:action=>"show", :controller=>"transfers"}
-                           PUT      /transfers/:id(.:format)                             {:action=>"update", :controller=>"transfers"}
-                           DELETE   /transfers/:id(.:format)                             {:action=>"destroy", :controller=>"transfers"}
                 page_about          /page/about(.:format)                                {:controller=>"page", :action=>"about"}
                  page_help          /page/help(.:format)                                 {:controller=>"page", :action=>"help"}
+                   profile          /profile/:login(.:format)                            {:login=>:login, :controller=>"users", :action=>"show"}
                                     /signup(.:format)                                    {:action=>"new", :controller=>"devise/session"}

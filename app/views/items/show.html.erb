@@ -2,7 +2,6 @@
  <%= GMap.header(:hl=> params[:locale]) if @map %>
  <%= @map.to_html if @map %>
 <% end %>
-<div class="centered"><%= render :partial => "usermenu", :locals => {:item => @item} %></div>
 <div id="col1">
   <h1><%=h @item.title %></h1>         
   <%= render :partial => "items/itemtype", :locals => { :item => @item } %>

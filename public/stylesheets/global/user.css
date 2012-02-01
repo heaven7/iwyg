@@ -12,6 +12,7 @@
 #users-followers,
 #users-followings {
     height:120px;
+    clear:left;
 }
 .mircro-user-thumb {
   width: 40px;

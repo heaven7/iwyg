@@ -407,7 +407,7 @@ en:
         notice: "Successfully updated resource."
       follow:
           error:
-            alreadyFollowing: "You already following this resource."
+            alreadyFollowing: "You already follow this resource."
           notice: "Successfully following."
     pings:
       create:
@@ -466,7 +466,12 @@ en:
         notice: "Successfully updated comment." 
       destroy:
         notice: "Successfully destroyed comment."
-                    
+    groups:
+       follow:
+          error:
+            alreadyFollowing: "You already follow this group."
+          notice: "Successfully following."
+          
   ##  menu  
   
   menu:
@@ -525,7 +530,9 @@ en:
     attachedResources: "Attached resources"
     notPingableOnTransfer: "Resources beeing on Transfer cannot be pinged."
     alreadyPingedOrResourceIsMultiple: "You already pinged this or this resource isn't for multiple use."
-    multiple: "Resource ist mulitple useable / multiple needed"
+    multiple:
+      needed: "Resource is multiple needed"
+      offered: "Resource is multiple useable"
 
   ## item attachments
   

@@ -466,7 +466,11 @@ de:
         notice: "Kommentar erfolgreich ge&auml;ndert." 
       destroy:
         notice: "Kommentar erfolgreich gel&ouml,scht."    
-        
+    groups:
+       follow:
+          error:
+            alreadyFollowing: "Du folgst der Gruppe bereits."
+          notice: "Erfolgreich gefolgt."
   ## menu
   
   menu:
@@ -525,8 +529,9 @@ de:
     attachedResources: "Hinzugef&uuml;gte Ressourcen"
     notPingableOnTransfer: "Ressourcen mit Status 'Transfer' k&ouml;nnen nicht gepingt werden."
     alreadyPingedOrResourceIsMultiple: "Du hast diese Ressource schon angepingt oder sie ist nicht mehrfach verwendbar."
-    multiple: "Ressource ist mehrfach verwendbar / wird mehrfach ben&ouml;tigt"
-
+    multiple:
+      needed: "Ressource wird mehrfach ben&ouml;tigt"
+      offered: "Ressource ist mehrfach verwendbar"
   ## item attachments
   
   item_attachments:

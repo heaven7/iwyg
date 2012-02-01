@@ -1,0 +1,7 @@
+<div class="tiny-user-thumb bordered font-smaller center ui-corner-all">
+  <% if group.images && group.images.first %>
+    <%= link_to image_tag(tinyThumb(group), :alt => group.title, :title => group.title), group %>
+    <br />
+  <% end %>
+  <%= link_to shorten(group.title, 10), group, :title => group.title %>
+</div>

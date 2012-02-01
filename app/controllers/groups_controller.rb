@@ -67,8 +67,20 @@ class GroupsController < InheritedResources::Base
   def create
     @user = current_user
     @active_menuitem_l1 = I18n.t "menu.main.groups"
-    @location = @group.locations.first || @user.groups.build
+    @location = Location.new(params[:locations_attributes]) if params[:locations_attributes]
     create!
+  end
+
+  def follow
+    @group = Group.find(params[:id])
+    if current_user.following?(@group)
+      flash[:notice] = t("flash.groups.follow.error.alreadyFollowing")
+    else
+      current_user.follow(@group)
+      flash[:notice] = t("flash.groups.follow.notice")
+    end
+
+    redirect_to(@group)
   end
 
   def tag_suggestions

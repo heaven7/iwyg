@@ -7,7 +7,13 @@
   </span>
   <% if @item.multiple? %>
     <span>
-      <%= image_tag('/images/icons/icon_item_multiple.png', :alt => t("resources.multiple").html_safe, :title => t("resources.multiple").html_safe) %>
+      <%=
+          if @item.need?
+            image_tag('/images/icons/icon_item_multiple.png', :alt => t("resources.multiple.needed").html_safe, :title => t("resources.multiple.needed").html_safe)
+          else
+            image_tag('/images/icons/icon_item_multiple.png', :alt => t("resources.multiple.offered").html_safe, :title => t("resources.multiple.offered").html_safe)
+          end
+      %>
     </span>
   <% end %>
 </div>
