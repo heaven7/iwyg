@@ -1,9 +1,9 @@
 <% if logged_in? and @user != current_user %>
 <div class="pingarea font-smaller">
- <% if (@transfer && @transfer.status != 4) || @resource.status != 4 %>
+ <% if !current_user.pinged?(@resource) || @resource.multiple?  %>
     <%= render :partial => "pings/form", :locals => {:pingable => pingable} %>
  <% else %>
-  <%= t("resources.notPingableOnTransfer") %>
+  <%= t("resources.alreadyPingedOrResourceIsMultiple") %>
  <% end %>
 </div>
 <% elsif not logged_in? %>

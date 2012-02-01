@@ -15,23 +15,27 @@
       <div id="dashboard">
         <h2>Dashboard</h2>
         <div class="block ui-corner-all">
-          <div id="users-followers">
+          <div id="users-followers" class="user">
             <span>Followers (<%= @followers.size %>)</span>
+            <ul>
             <% @followers.each do |follower| %>
-              <%= render :partial => "share/usertiny", :locals => { :user => follower } %>
+              <li><%= render :partial => "share/usertiny", :locals => { :user => follower } %></li>
             <% end %>
+            </ul>
           </div>
-          <div id="users-followings">
+          <div id="users-followings" class="user">
             <span>is following (<%= @followings.size %>)</span>
+            <ul>
             <% @followings.each do |following| %>
-              <%=
+              <li><%=
                  if following.class.to_s == "User"
                   render :partial => "share/usertiny", :locals => { :user => following }
                  elsif following.class.to_s == "Item"
                   render :partial => "share/itemtiny", :locals => { :item => following } 
                  end
-              %>
+              %></li>
             <% end %>
+            </ul>
           </div>
         </div>
       </div>

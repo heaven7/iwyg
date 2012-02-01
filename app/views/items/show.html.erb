@@ -6,6 +6,7 @@
 <div id="col1">
   <h1><%=h @item.title %></h1>         
   <%= render :partial => "items/itemtype", :locals => { :item => @item } %>
+  <%= render :partial => "items/itemmenu", :locals => { :item => @item } %>
   <%= render :partial => "share/images", :locals => {:images => @item.images} %>
   <% if @item.status %>
     <div class="left box ui-corner-all font-small">

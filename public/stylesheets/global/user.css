@@ -6,7 +6,13 @@
 .user ul {
   margin:0;
 }
-
+.user ul li {
+    float:left;
+}
+#users-followers,
+#users-followings {
+    height:120px;
+}
 .mircro-user-thumb {
   width: 40px;
   overflow: hidden;

@@ -228,6 +228,18 @@ class ItemsController < InheritedResources::Base
     @item.destroy
     redirect_to @user
   end
+
+  def follow
+    @item = Item.find(params[:id])
+    if current_user.following?(@item)
+      flash[:notice] = t("flash.items.follow.error.alreadyFollowing")
+    else
+      current_user.follow(@item)
+      flash[:notice] = t("flash.items.follow.notice")
+    end
+    
+    redirect_to(@item)
+  end
   
   def rate
     @item = Item.find(params[:id])

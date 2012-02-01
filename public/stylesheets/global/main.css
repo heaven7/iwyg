@@ -177,7 +177,7 @@ table td {
   border:1px solid #B8C2B3;
   background:#D8E0D0;
   padding:0.5em;
-  width:280px;
+  width:90%;
 }
 /* messages */
 .notice, .error {

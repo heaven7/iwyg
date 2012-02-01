@@ -125,6 +125,14 @@ class User < ActiveRecord::Base
     self.custom = Custom.new # customization for user
     self.location = Location.new
   end
+
+  def pinged?(resource)
+    Ping.new(
+      :pingable_type => resource.class.to_s,
+      :pingable_id => resource.id,
+      :user_id => self.id
+    ).exists?
+  end
   
 
   protected

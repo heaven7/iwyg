@@ -235,7 +235,7 @@ en:
   created_at: "created on"
   updated_at: "updated on"
   accepted_at: "accepted on"
-  
+  follow: "follow"
   ## links
   
   link:
@@ -405,6 +405,10 @@ en:
         error: "Resource could not be created."
       update:
         notice: "Successfully updated resource."
+      follow:
+          error:
+            alreadyFollowing: "You already following this resource."
+          notice: "Successfully following."
     pings:
       create:
         error:
@@ -520,7 +524,9 @@ en:
     attach: "Attach Resource"
     attachedResources: "Attached resources"
     notPingableOnTransfer: "Resources beeing on Transfer cannot be pinged."
-  
+    alreadyPingedOrResourceIsMultiple: "You already pinged this or this resource isn't for multiple use."
+    multiple: "Resource ist mulitple useable / multiple needed"
+
   ## item attachments
   
   item_attachments:

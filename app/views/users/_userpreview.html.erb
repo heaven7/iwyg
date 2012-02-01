@@ -3,28 +3,21 @@
     <span class="description shadowed ui-corner-all">
       <%= render :partial => "share/usermicro", :locals => { :user => user } %>
       <% if user.aims.size > 0 %>
-        <b><%= t("user.aimsTo") %></b>:
+        <b><%= t("user.aimsTo").html_safe %></b>:
         <% for aim in user.aims %>
           <%= link_to aim, users_path(:aim => aim.name) %>
         <% end %>
         <br />
       <% end %>
-      <% if user.skills.size > 0 %>
-        <b><%= t("user.canDo") %></b>:
-        <% for skill in user.skills %>
-          <%= link_to skill, users_path(:skill => skill.name) %>
-        <% end %>
-        <br />
-      <% end %>
       <% if user.wishs.size > 0 %>
-        <b><%= t("user.wishesTo") %></b>:
+        <b><%= t("user.wishesTo").html_safe %></b>:
         <% for wish in user.wishs %>
           <%= link_to wish, users_path(:wish => wish.name) %>
         <% end %>
         <br />
       <% end %>
       <% if user.interests.size > 0 %>
-        <b><%= t("user.interestedIn") %></b>:
+        <b><%= t("user.interestedIn").html_safe %></b>:
         <% for interest in user.interests %>
           <%= link_to interest, users_path(:interest => interest.name) %>
         <% end %>

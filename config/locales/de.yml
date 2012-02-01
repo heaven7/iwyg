@@ -236,7 +236,7 @@ de:
   created_at: "erstellt am"
   updated_at: "ge&auml;ndert am"
   accepted_at: "akzeptiert am"
-
+  follow: "folgen"
   ## links
 
   link:
@@ -404,7 +404,11 @@ de:
         notice: "Ressource erfolgreich erstellt."
         error: "Ressource konnte nicht erstellt werden."
       update:
-        notice: "Erfolgreich Ressource ge&auml;ndert." 
+        notice: "Erfolgreich Ressource ge&auml;ndert."
+      follow:
+          error:
+            alreadyFollowing: "Du folgst der Ressource bereits."
+          notice: "Erfolgreich gefolgt."
     pings:
       create:
         error:
@@ -520,7 +524,9 @@ de:
     attach: "Ressource hinzuf&uuml;gen"
     attachedResources: "Hinzugef&uuml;gte Ressourcen"
     notPingableOnTransfer: "Ressourcen mit Status 'Transfer' k&ouml;nnen nicht gepingt werden."
-  
+    alreadyPingedOrResourceIsMultiple: "Du hast diese Ressource schon angepingt oder sie ist nicht mehrfach verwendbar."
+    multiple: "Ressource ist mehrfach verwendbar / wird mehrfach ben&ouml;tigt"
+
   ## item attachments
   
   item_attachments:

@@ -1,0 +1,3 @@
+<ul class="font-smaller button">
+  <li><%= link_to t("follow"), follow_item_path, :method => :put if not current_user.following?(item) %></li>
+</ul>

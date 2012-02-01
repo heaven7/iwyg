@@ -93,6 +93,7 @@ Iwyg::Application.routes.draw do
    resource :location
    member do
     post 'rate'
+    put 'follow'
    end
    collection do
     get 'tag_suggestions' 

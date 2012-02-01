@@ -1,6 +1,6 @@
 <% if user_signed_in? and user.login != current_user.login %>
   <ul class="font-smaller button">
     <li><%= link_to t("menu.user.sendMessage"), new_sent_path(:to => user.id) %></li>
-    <li><%= link_to "Follow", new_ping_path(:follow => user.id), :remote => true, :id => "followlink" if not current_user.following?(user) %></li>
+    <li><%= link_to t("follow"), new_ping_path(:follow => user.id), :remote => true, :id => "followlink" if not current_user.following?(user) %></li>
   </ul>
 <% end %>
