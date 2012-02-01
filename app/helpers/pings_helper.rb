@@ -118,9 +118,9 @@ module PingsHelper
             if !item.need?
               setItemAcceptedOptions(item, ping)
             end
-          else # item.owner != current_user
+          elsif item.owner != current_user
             if item.need?
-              setItemAcceptedOptions(item, ping)
+              setItemAcceptedOptions(item, ping) if ping.owner == current_user
             end
           end
 

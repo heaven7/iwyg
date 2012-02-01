@@ -5,7 +5,8 @@ class Meetup < ActiveRecord::Base
                   :owner_id, :ownertype,
                   :user_ids, :item_attachments, :item_attachments_attributes
 
-     
+  acts_as_followable
+
   belongs_to :owner, :class_name => 'User', :foreign_key => "owner_id"
   has_many :locations, :as => :locatable, :dependent => :destroy
   accepts_nested_attributes_for :locations, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }  

@@ -28,12 +28,13 @@ class PingsController < InheritedResources::Base
           p
         end
       end
-      @pings_on_user = Ping.user.each do |p|
-        p
-      end
+     @pings_on_user = Ping.user.each do |p|
+        p if p.owner == @user || p.pingable_id == current_user.id
+     end
 
       @pings_all += @inverse_pings if @inverse_pings
       @pings_all += @pings_on_user if @pings_on_user
+      @pings_all = @pings_all.uniq
       @pings_count = @pings_all.size
       @pings_all = @pings_all.paginate(
         :page => params[:page],
