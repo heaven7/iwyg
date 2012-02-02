@@ -159,7 +159,7 @@ class PingsController < InheritedResources::Base
     when "Item"
       acceptPingOnItem(@ping)
     when "User"
-      acceptPingOnUser(@ping)
+      #acceptPingOnUser(@ping)
     when "Group"
     when "Project"
     end

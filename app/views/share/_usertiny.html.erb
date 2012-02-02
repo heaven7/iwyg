@@ -1,5 +1,5 @@
 <div class="tiny-user-thumb bordered font-smaller center ui-corner-all">
-  <%= link_to_unless_current image_tag(tinyThumb(user), :alt => user.login, :title => user.login), profile_path(user.login) %>
+  <%= link_to image_tag(tinyThumb(user), :alt => user.login, :title => user.login), user %>
   <br />
-  <%= link_to user.login, profile_path(user.login) %>
+  <%= link_to user.login, user %>
 </div>

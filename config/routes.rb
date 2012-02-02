@@ -52,6 +52,7 @@ Iwyg::Application.routes.draw do
      resource :userdetails
      member do
        post 'rate'
+       put 'follow'
      end
      collection do
        get 'aim_suggestions'
@@ -119,7 +120,7 @@ Iwyg::Application.routes.draw do
   match 'page/about', :to => 'page#about'                                      
   match 'page/help', :to => 'page#help'
 
-  match "/profile/:login" => 'users#show', :login => :login, :as => :profile
+#  match "/profile/:login" => 'users#show', :login => :login, :as => :profile
   match 'signup', :to => 'devise/session#new'
     
 end

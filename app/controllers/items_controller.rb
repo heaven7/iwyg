@@ -235,7 +235,7 @@ class ItemsController < InheritedResources::Base
       flash[:notice] = t("flash.items.follow.error.alreadyFollowing")
     else
       current_user.follow(@item)
-      flash[:notice] = t("flash.items.follow.notice")
+      flash[:notice] = t("flash.items.follow.notice", :title => @item.title)
     end
     
     redirect_to(@item)

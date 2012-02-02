@@ -77,7 +77,7 @@ class GroupsController < InheritedResources::Base
       flash[:notice] = t("flash.groups.follow.error.alreadyFollowing")
     else
       current_user.follow(@group)
-      flash[:notice] = t("flash.groups.follow.notice")
+      flash[:notice] = t("flash.groups.follow.notice", :title => @group.title)
     end
 
     redirect_to(@group)

@@ -75,6 +75,18 @@ class UsersController < InheritedResources::Base
     # redirect_to ('users')
     redirect_to :controller => "users", :action => "show", :id => current_user.id
   end
+
+  def follow
+    @user = User.find(params[:id])
+    if current_user.following?(@user)
+      flash[:notice] = t("flash.users.follow.error.alreadyFollowing")
+    else
+      current_user.follow(@user)
+      flash[:notice] = t("flash.users.follow.notice", :title => @user.login)
+    end
+
+    redirect_to(@user)
+  end
  
   private
     

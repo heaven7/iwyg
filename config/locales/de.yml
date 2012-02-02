@@ -236,7 +236,7 @@ de:
   created_at: "erstellt am"
   updated_at: "ge&auml;ndert am"
   accepted_at: "akzeptiert am"
-  follow: "folgen"
+  follow: "Folgen"
   ## links
 
   link:
@@ -396,6 +396,10 @@ de:
         notice: "Profil erfolgreich aktiviert!"
       update:
         notice: "Profil erfolgreich ge&auml;ndert."
+      follow:
+          error:
+            alreadyFollowing: "Du folgst dem User bereits."
+          notice: "Du folgst nun '%{title}'"
     userdetails:
       update:
         notice: "Personendaten erfolgreich ge&auml;ndert."
@@ -408,7 +412,7 @@ de:
       follow:
           error:
             alreadyFollowing: "Du folgst der Ressource bereits."
-          notice: "Erfolgreich gefolgt."
+          notice: "Du folgst nun der Ressource '%{title}'."
     pings:
       create:
         error:
@@ -470,7 +474,7 @@ de:
        follow:
           error:
             alreadyFollowing: "Du folgst der Gruppe bereits."
-          notice: "Erfolgreich gefolgt."
+          notice: "Du folgst nun der Gruppe '%{title}'."
   ## menu
   
   menu:
@@ -618,6 +622,7 @@ de:
   topnavigation:
     mailbox: "Mailbox"
     profile: "Profil"
+    resources: "Ressourcen"
     register: "Registrieren"
     login: "Login"
     logout: "Logout"

@@ -201,6 +201,7 @@
                            PUT      /users/:user_id/userdetails(.:format)                {:action=>"update", :controller=>"userdetails"}
                            DELETE   /users/:user_id/userdetails(.:format)                {:action=>"destroy", :controller=>"userdetails"}
                  rate_user POST     /users/:id/rate(.:format)                            {:action=>"rate", :controller=>"users"}
+               follow_user PUT      /users/:id/follow(.:format)                          {:action=>"follow", :controller=>"users"}
      aim_suggestions_users GET      /users/aim_suggestions(.:format)                     {:action=>"aim_suggestions", :controller=>"users"}
               search_users GET|POST /users/search(.:format)                              {:action=>"search", :controller=>"users"}
                      users GET      /users(.:format)                                     {:action=>"index", :controller=>"users"}

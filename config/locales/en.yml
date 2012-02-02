@@ -396,6 +396,10 @@ en:
         notice: "Signup complete!" 
       update:
         notice: "User was successfully updated."
+      follow:
+          error:
+            alreadyFollowing: "You are following this user already."
+          notice: "You are following '%{title}'"
     userdetails:
       update:
         notice: "Userdetails was successfully updated."
@@ -407,8 +411,8 @@ en:
         notice: "Successfully updated resource."
       follow:
           error:
-            alreadyFollowing: "You already follow this resource."
-          notice: "Successfully following."
+            alreadyFollowing: "You are already following this resource."
+          notice: "You are following resource '%{title}'."
     pings:
       create:
         error:
@@ -470,7 +474,7 @@ en:
        follow:
           error:
             alreadyFollowing: "You already follow this group."
-          notice: "Successfully following."
+          notice: "You are following group '%{title}'."
           
   ##  menu  
   
@@ -620,6 +624,7 @@ en:
   topnavigation:
     mailbox: "Mailbox"
     profile: "My Profile"
+    resources: "Resources"
     register: "Register"
     login: "Login"
     logout: "Logout"  
