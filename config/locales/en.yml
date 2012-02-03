@@ -236,6 +236,16 @@ en:
   updated_at: "updated on"
   accepted_at: "accepted on"
   follow: "follow"
+  hasUpdated: "has updated"
+  hasUpdatedAGroup: "has updated a group"
+  hasUpdatedALocation: "has updated a location"
+  hasUpdatedtheUserdetails: "has updated her/his userdetails"
+  hasCreated: "has created"
+  hasCreatedALocation: "has saved a location"
+  hasCreatedAGroup: "has created a group"
+  hasDeleted: "has deleted"
+  activity: "Activity"
+
   ## links
   
   link:
@@ -498,6 +508,8 @@ en:
       friends: "Friends"
       editLocation: "Edit Location"
       editUserdetails: "Edit Personal Data"
+      followings: "follows"
+      followers: "is followed by"
   
   ## userarea
   

@@ -111,20 +111,6 @@
                  user_item GET      /users/:user_id/items/:id(.:format)                  {:action=>"show", :controller=>"items"}
                            PUT      /users/:user_id/items/:id(.:format)                  {:action=>"update", :controller=>"items"}
                            DELETE   /users/:user_id/items/:id(.:format)                  {:action=>"destroy", :controller=>"items"}
-            user_transfers GET      /users/:user_id/transfers(.:format)                  {:action=>"index", :controller=>"transfers"}
-                           POST     /users/:user_id/transfers(.:format)                  {:action=>"create", :controller=>"transfers"}
-         new_user_transfer GET      /users/:user_id/transfers/new(.:format)              {:action=>"new", :controller=>"transfers"}
-        edit_user_transfer GET      /users/:user_id/transfers/:id/edit(.:format)         {:action=>"edit", :controller=>"transfers"}
-             user_transfer GET      /users/:user_id/transfers/:id(.:format)              {:action=>"show", :controller=>"transfers"}
-                           PUT      /users/:user_id/transfers/:id(.:format)              {:action=>"update", :controller=>"transfers"}
-                           DELETE   /users/:user_id/transfers/:id(.:format)              {:action=>"destroy", :controller=>"transfers"}
-               user_images GET      /users/:user_id/images(.:format)                     {:action=>"index", :controller=>"images"}
-                           POST     /users/:user_id/images(.:format)                     {:action=>"create", :controller=>"images"}
-            new_user_image GET      /users/:user_id/images/new(.:format)                 {:action=>"new", :controller=>"images"}
-           edit_user_image GET      /users/:user_id/images/:id/edit(.:format)            {:action=>"edit", :controller=>"images"}
-                user_image GET      /users/:user_id/images/:id(.:format)                 {:action=>"show", :controller=>"images"}
-                           PUT      /users/:user_id/images/:id(.:format)                 {:action=>"update", :controller=>"images"}
-                           DELETE   /users/:user_id/images/:id(.:format)                 {:action=>"destroy", :controller=>"images"}
                 user_pings GET      /users/:user_id/pings(.:format)                      {:action=>"index", :controller=>"pings"}
                            POST     /users/:user_id/pings(.:format)                      {:action=>"create", :controller=>"pings"}
              new_user_ping GET      /users/:user_id/pings/new(.:format)                  {:action=>"new", :controller=>"pings"}
@@ -132,6 +118,20 @@
                  user_ping GET      /users/:user_id/pings/:id(.:format)                  {:action=>"show", :controller=>"pings"}
                            PUT      /users/:user_id/pings/:id(.:format)                  {:action=>"update", :controller=>"pings"}
                            DELETE   /users/:user_id/pings/:id(.:format)                  {:action=>"destroy", :controller=>"pings"}
+               user_groups GET      /users/:user_id/groups(.:format)                     {:action=>"index", :controller=>"groups"}
+                           POST     /users/:user_id/groups(.:format)                     {:action=>"create", :controller=>"groups"}
+            new_user_group GET      /users/:user_id/groups/new(.:format)                 {:action=>"new", :controller=>"groups"}
+           edit_user_group GET      /users/:user_id/groups/:id/edit(.:format)            {:action=>"edit", :controller=>"groups"}
+                user_group GET      /users/:user_id/groups/:id(.:format)                 {:action=>"show", :controller=>"groups"}
+                           PUT      /users/:user_id/groups/:id(.:format)                 {:action=>"update", :controller=>"groups"}
+                           DELETE   /users/:user_id/groups/:id(.:format)                 {:action=>"destroy", :controller=>"groups"}
+               user_images GET      /users/:user_id/images(.:format)                     {:action=>"index", :controller=>"images"}
+                           POST     /users/:user_id/images(.:format)                     {:action=>"create", :controller=>"images"}
+            new_user_image GET      /users/:user_id/images/new(.:format)                 {:action=>"new", :controller=>"images"}
+           edit_user_image GET      /users/:user_id/images/:id/edit(.:format)            {:action=>"edit", :controller=>"images"}
+                user_image GET      /users/:user_id/images/:id(.:format)                 {:action=>"show", :controller=>"images"}
+                           PUT      /users/:user_id/images/:id(.:format)                 {:action=>"update", :controller=>"images"}
+                           DELETE   /users/:user_id/images/:id(.:format)                 {:action=>"destroy", :controller=>"images"}
              user_accounts GET      /users/:user_id/accounts(.:format)                   {:action=>"index", :controller=>"accounts"}
                            POST     /users/:user_id/accounts(.:format)                   {:action=>"create", :controller=>"accounts"}
           new_user_account GET      /users/:user_id/accounts/new(.:format)               {:action=>"new", :controller=>"accounts"}
@@ -181,13 +181,6 @@
                user_meetup GET      /users/:user_id/meetups/:id(.:format)                {:action=>"show", :controller=>"meetups"}
                            PUT      /users/:user_id/meetups/:id(.:format)                {:action=>"update", :controller=>"meetups"}
                            DELETE   /users/:user_id/meetups/:id(.:format)                {:action=>"destroy", :controller=>"meetups"}
-               user_groups GET      /users/:user_id/groups(.:format)                     {:action=>"index", :controller=>"groups"}
-                           POST     /users/:user_id/groups(.:format)                     {:action=>"create", :controller=>"groups"}
-            new_user_group GET      /users/:user_id/groups/new(.:format)                 {:action=>"new", :controller=>"groups"}
-           edit_user_group GET      /users/:user_id/groups/:id/edit(.:format)            {:action=>"edit", :controller=>"groups"}
-                user_group GET      /users/:user_id/groups/:id(.:format)                 {:action=>"show", :controller=>"groups"}
-                           PUT      /users/:user_id/groups/:id(.:format)                 {:action=>"update", :controller=>"groups"}
-                           DELETE   /users/:user_id/groups/:id(.:format)                 {:action=>"destroy", :controller=>"groups"}
              user_location POST     /users/:user_id/location(.:format)                   {:action=>"create", :controller=>"locations"}
          new_user_location GET      /users/:user_id/location/new(.:format)               {:action=>"new", :controller=>"locations"}
         edit_user_location GET      /users/:user_id/location/edit(.:format)              {:action=>"edit", :controller=>"locations"}
@@ -202,6 +195,8 @@
                            DELETE   /users/:user_id/userdetails(.:format)                {:action=>"destroy", :controller=>"userdetails"}
                  rate_user POST     /users/:id/rate(.:format)                            {:action=>"rate", :controller=>"users"}
                follow_user PUT      /users/:id/follow(.:format)                          {:action=>"follow", :controller=>"users"}
+           followings_user GET      /users/:id/followings(.:format)                      {:action=>"followings", :controller=>"users"}
+            followers_user GET      /users/:id/followers(.:format)                       {:action=>"followers", :controller=>"users"}
      aim_suggestions_users GET      /users/aim_suggestions(.:format)                     {:action=>"aim_suggestions", :controller=>"users"}
               search_users GET|POST /users/search(.:format)                              {:action=>"search", :controller=>"users"}
                      users GET      /users(.:format)                                     {:action=>"index", :controller=>"users"}
@@ -322,5 +317,4 @@ edit_item_item_attatchment GET      /items/:item_id/item_attatchments/:id/edit(.
                            DELETE   /items/:id(.:format)                                 {:action=>"destroy", :controller=>"items"}
                 page_about          /page/about(.:format)                                {:controller=>"page", :action=>"about"}
                  page_help          /page/help(.:format)                                 {:controller=>"page", :action=>"help"}
-                   profile          /profile/:login(.:format)                            {:login=>:login, :controller=>"users", :action=>"show"}
                                     /signup(.:format)                                    {:action=>"new", :controller=>"devise/session"}

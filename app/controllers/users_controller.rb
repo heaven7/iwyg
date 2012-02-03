@@ -105,7 +105,21 @@ class UsersController < InheritedResources::Base
 
     redirect_to(@user)
   end
- 
+
+  def followings
+    @user = User.find(params[:id])
+    @active_menuitem_l1 = I18n.t "menu.user.followings"
+    @active_menuitem_l1_link = followings_user_path
+    @followings = @user.all_following
+  end
+
+  def followers
+    @user = User.find(params[:id])
+    @active_menuitem_l1 = I18n.t "menu.user.followers"
+    @active_menuitem_l1_link = followers_user_path
+    @followers = @user.followers
+  end
+
   private
     
   def prepare_search

@@ -1,7 +1,5 @@
 Iwyg::Application.routes.draw do
 
-  resources :actions
-
   root :to => "page#index"
   
   filter :locale
@@ -47,12 +45,14 @@ Iwyg::Application.routes.draw do
   end
   
   resources :users do
-     resources :items, :transfers, :images, :pings, :accounts, :comments, :friendships, :events, :rates, :messages, :meetups, :groups
+     resources :items, :pings, :groups, :images, :accounts, :comments, :friendships, :events, :rates, :messages, :meetups
      resource :location
      resource :userdetails
      member do
        post 'rate'
        put 'follow'
+       get 'followings'
+       get 'followers'
      end
      collection do
        get 'aim_suggestions'

@@ -225,8 +225,8 @@ de:
   submit: "Abschicken"
   save: "Speichern"
   tags: "Tags"
-  needs: "braucht das"
-  offers: "hat das"
+  needs: "braucht"
+  offers: "bietet an"
   accept: "Akzeptieren"
   decline: "Ablehnen"
   accepted: "akzeptiert"
@@ -237,6 +237,16 @@ de:
   updated_at: "ge&auml;ndert am"
   accepted_at: "akzeptiert am"
   follow: "Folgen"
+  hasUpdated: "hat ge&auml;ndert"
+  hasUpdatedAGroup: "hat eine Gruppe ge&auml;ndert"
+  hasUpdatedALocation: "hat einen Ort ge&auml;ndert"
+  hasUpdatedtheUserdetails: "hat ihre/seine Userdaten ge&auml;ndert"
+  hasCreated: "hat erstellt"
+  hasCreatedAGroup: "hat eine Gruppe erstellt"
+  hasCreatedALocation: "hat einen Ort gespeichert"
+  hasDeleted: "hat gel&ouml;scht"
+  activity: "Aktivit&auml;ten"
+
   ## links
 
   link:
@@ -497,6 +507,8 @@ de:
       friends: "Freunde"
       editLocation: "Standort &auml;ndern"
       editUserdetails: "Personendaten &auml;ndern"
+      followings: "folgt"
+      followers: "wird gefolgt von"
   
   ## userarea
   

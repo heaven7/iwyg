@@ -1,0 +1,5 @@
+<ul>
+<% @followers.each do |follower| %>
+  <li><%= render :partial => "share/usertiny", :locals => { :user => follower } %></li>
+<% end %>
+</ul>

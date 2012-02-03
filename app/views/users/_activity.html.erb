@@ -1,0 +1,50 @@
+<ul>
+  <% audits.each do |audit| %>
+    <li>
+    <% if audit.class.to_s == "Audit" %>
+      <div class="right date font-smaller"><%=h distance_of_time_in_words(audit.created_at, Time.now) %> <%= t("ago") %> </div>
+      <div class="action font-small">
+        <%= render :partial => "share/usermicro_flat", :locals => { :user => User.find(audit.user_id) } %>
+        <%= case audit.auditable_type.to_s
+            when "Item"
+              item = Item.find(audit.auditable_id)
+              case audit.action
+              when "create"
+                if item.need?
+                  link_to(t("needs").html_safe + " " + item.title, item)
+                else
+                  link_to(t("offers").html_safe + " " + item.title, item)
+                end
+              when "update"
+                link_to(t("hasUpdated").html_safe + " " + item.title, item)
+              end
+
+            when "Userdetails"
+              t("hasUpdatedtheUserdetails").html_safe
+            when "Group"
+              group = Group.find(audit.auditable_id)
+              case audit.action
+              when "create"
+                link_to(t("hasCreatedAGroup").html_safe + ": " + group.title, group)
+              when "update"
+                link_to(t("hasUpdatedAGroup").html_safe + ": " + group.title, group)
+              end
+            when "Project"
+            when "Location"
+              location = Location.find(audit.auditable_id)
+              resource = location.locatable_type.constantize.find(location.locatable_id)
+              case audit.action
+              when "create"
+                link_to(t("hasCreatedALocation").html_safe + ": "+ resource.title, resource)
+              when "update"
+                link_to(t("hasUpdatedALocation").html_safe + ": "+ resource.title, resource)
+              end
+            else
+              "what else to say: " + audit.auditable_type.to_s
+            end
+        %>
+      </div>
+    <% end %>
+    </li>
+  <% end %>
+</ul>

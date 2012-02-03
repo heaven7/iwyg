@@ -2,6 +2,8 @@
   <div class="button edit">
     <%= link_to t("userarea.edit.profile").html_safe, edit_polymorphic_path([@user, "userdetails"]) %>
   </div>
+<% else %>
+    <%= render :partial => "share/userarea/profileusermenu", :locals => { :user => @user } %>
 <% end %>
 <% if @user %>
   <div class="sub2cols">
@@ -12,46 +14,15 @@
           :confirm => t("confirm_delete").html_safe,
           :method => :delete %>
       -->
-      <div id="dashboard">
-        <h2>Dashboard</h2>
+      <div id="activity">
+        <h2><%= t("activity").html_safe %></h2>
         <div class="block ui-corner-all">
-          <div id="users-followers" class="user">
-            <span>Followers (<%= @followers.size %>)</span>
-            <ul>
-            <% @followers.each do |follower| %>
-              <li><%= render :partial => "share/usertiny", :locals => { :user => follower } %></li>
-            <% end %>
-            </ul>
-          </div>
-          <div id="users-followings" class="user">
-            <span>is following (<%= @followings.size %>)</span>
-            <ul>
-            <% @followings.each do |following| %>
-              <li><%=
-                 if following.class.to_s == "User"
-                  render :partial => "share/usertiny", :locals => { :user => following }
-                 elsif following.class.to_s == "Item"
-                  render :partial => "share/itemtiny", :locals => { :item => following }
-                 elsif following.class.to_s == "Group"
-                  render :partial => "share/grouptiny", :locals => { :group => following }
-                 end
-              %></li>
-            <% end %>
-            </ul>
-          </div>
-          <div class="clearfix"></div>
-        </div>
-      </div>
-      <div id="audits">
-        <h2>Activity (<%= @audits.count %>)</h2>
-        <div class="block ui-corner-all">
-          <ul>
-            <% @audits.each do |audit| %>
-              <% if audit.class.to_s == "Audit" %>
-                <%= audit.created_at %> <%= User.find(audit.user_id).login %> has <%= audit.action %>  <%= audit.auditable_type %><br />
-              <% end %>
-            <% end %>
-          </ul>
+            <span><%= @user.login %></span>
+            <span><%= link_to t("menu.user.followings"), followings_user_path %> (<%= @followings.size %>)</span>
+            <span><%= t("and") %></span>
+            <span><%= link_to t("menu.user.followers"), followers_user_path %> (<%= @followers.size %>)</span>
+            <hr class="divider" />
+            <%= render :partial => "activity", :locals => { :audits => @audits } %>
         </div>
       </div>
     </div>

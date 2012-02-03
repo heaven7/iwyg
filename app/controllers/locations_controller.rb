@@ -28,7 +28,12 @@ class LocationsController < InheritedResources::Base
   
   def show
     @locatable = find_locatable
-    @location = @locatable.location
+    if @locatable
+      @location = @locatable.location
+    else
+      @location = Location.find(params[:id])
+      render :layout => "application"
+    end
   end
   
   def create
