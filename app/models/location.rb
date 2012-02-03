@@ -8,8 +8,8 @@ class Location < ActiveRecord::Base
    
   acts_as_gmappable :lat => "lat", :lng => "lng", :validation => false
   acts_as_taggable_on :tags
-    
-    
+  acts_as_audited
+  
   #validates_presence_of :locatable_id, :locatable_type, :address, :city, :state, :country, :zip, :lat, :lng
   #validates_presence_of :address, :city, :country
   
@@ -22,7 +22,7 @@ class Location < ActiveRecord::Base
   end
   
   def gmaps4rails_infowindow
-     "<h4>#{city}</h4>" << "<h4>#{country}</h4>"
+     "<h2>#{city}</h2>" << "<h4>#{country}</h4>"
   end
   
 end

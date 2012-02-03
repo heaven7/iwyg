@@ -34,7 +34,7 @@ class PingsController < InheritedResources::Base
 
       @pings_all += @inverse_pings if @inverse_pings
       @pings_all += @pings_on_user if @pings_on_user
-      @pings_all = @pings_all.uniq
+      @pings_all = @pings_all.sort_by(&:created_at).reverse.uniq
       @pings_count = @pings_all.size
       @pings_all = @pings_all.paginate(
         :page => params[:page],

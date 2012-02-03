@@ -6,9 +6,9 @@ class Group < ActiveRecord::Base
 
     belongs_to :user
 
-
     acts_as_followable
     acts_as_taggable_on :tags
+    acts_as_audited
 
     has_many :users
     has_many :locations, :as => :locatable, :dependent => :destroy

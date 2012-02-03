@@ -3,4 +3,6 @@ class Userdetails < ActiveRecord::Base
                    :occupation, :company, :birthdate, :lastname, :firstname
   belongs_to :user
   has_associated_audits
+  acts_as_audited
+
 end

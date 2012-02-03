@@ -39,9 +39,7 @@ class UsersController < InheritedResources::Base
   end
   
   def show
-    if params[:login]
-      @user = User.find_by_login(params[:login])
-    elsif params[:user_id]
+    if params[:user_id]
       @user = User.find(params[:user_id], :include => [:location, :userdetails, :pings])
     else
       @user = User.find(params[:id], :include => [:location, :userdetails, :pings])
@@ -51,6 +49,26 @@ class UsersController < InheritedResources::Base
       @itemTypes = ItemType.all
       @followings = @user.all_following
       @followers = @user.followers
+
+      if current_user == @user
+        @inverse_audits = Array.new
+        @followings.each do |following|
+          case following.class.to_s
+          when "User"
+            @inverse_audits << Audit.where( :user_id => following.id ).all
+          when "Item"
+            @inverse_audits << Audit.where( :auditable_id => following.id ).all
+          end
+        end
+        if @inverse_audits.size > 0
+          @audits = Audit.where( :user_id => @user.id)  + @inverse_audits.flatten!
+        else
+          @audits = Audit.where( :user_id => @user.id)
+        end
+      else
+        @audits = Audit.where( :user_id => @user.id)
+      end
+      @audits = @audits.sort_by(&:created_at).reverse
     end
   end
 

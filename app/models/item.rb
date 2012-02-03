@@ -12,6 +12,7 @@ class Item < ActiveRecord::Base
 
   acts_as_taggable_on :tags
   acts_as_followable
+  has_associated_audits
   acts_as_audited
   
   # scopes

@@ -39,6 +39,19 @@
             <% end %>
             </ul>
           </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+      <div id="audits">
+        <h2>Activity (<%= @audits.count %>)</h2>
+        <div class="block ui-corner-all">
+          <ul>
+            <% @audits.each do |audit| %>
+              <% if audit.class.to_s == "Audit" %>
+                <%= audit.created_at %> <%= User.find(audit.user_id).login %> has <%= audit.action %>  <%= audit.auditable_type %><br />
+              <% end %>
+            <% end %>
+          </ul>
         </div>
       </div>
     </div>
