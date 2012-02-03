@@ -1,9 +1,4 @@
 # encoding: utf-8
-# Filters added to this controller apply to all controllers in the application.
-# Likewise, all the methods added will be available for all controllers.
-
-
-
 class ApplicationController < ActionController::Base
   helper :all
 
@@ -11,7 +6,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery :secret => "123456789012345678901234567890iwyg0815"   
 
   before_filter :set_locale, :measures, :itemtypes, :itemstatuses
-  
+
+ # audit User, Item, Group, :only => [:create, :update]
+
   layout 'application'
 
   #geocode_ip_address

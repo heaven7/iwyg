@@ -7,7 +7,7 @@
   <div id="userarea" class="subcol2">
   
     <h1 class="username">
-      <%=h link_to @user.login, profile_path(@user.login) %>
+      <%=h link_to @user.login, @user %>
       <% if @active_menuitem_l1 %>
         &raquo; <%= link_to @active_menuitem_l1, @active_menuitem_l1_link %>
       <% end %>

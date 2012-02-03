@@ -1,7 +1,7 @@
 <% if user %>
   <div class="mircro-user-thumb bordered font-smaller center ui-corner-all">
-    <%= link_to_unless_current image_tag(microThumb(user), :alt => user.login, :title => user.login), profile_path(user.login) %>
+    <%= link_to_unless_current image_tag(microThumb(user), :alt => user.login, :title => user.login), user %>
     <br />
-    <%= link_to user.login, profile_path(user.login) %>
+    <%= link_to user.login, user %>
   </div>
 <% end %>

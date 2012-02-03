@@ -9,9 +9,10 @@ class Item < ActiveRecord::Base
   # ajaxful_rateable :stars => 5, :dimensions => [:quality, :delivery]
   
   belongs_to :user
-  acts_as_taggable_on :tags
 
+  acts_as_taggable_on :tags
   acts_as_followable
+  acts_as_audited
   
   # scopes
   scope :on_hold, :conditions => {:status => 1} 

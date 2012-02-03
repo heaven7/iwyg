@@ -7,7 +7,7 @@
     <%= t "ping.table.status" %>: <%= t(statusTitle(@ping)).html_safe %>
   </p>
   <p class="font-smaller">
-      <%= t("by") %> <%= link_to pingerOf(@ping).login, profile_path(pingerOf(@ping).login) %>
+      <%= t("by") %> <%= link_to pingerOf(@ping).login, pingerOf(@ping) %>
   </p>
 
   <em class="ping body">

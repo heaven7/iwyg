@@ -1,5 +1,5 @@
 <div class="user list-item ui-corner-all">
-  <div class="image ui-corner-all"><%= link_to image_tag( tinyThumb(user), :alt => user.login, :title => user.login ), profile_path(user.login) %></div>
+  <div class="image ui-corner-all"><%= link_to image_tag( tinyThumb(user), :alt => user.login, :title => user.login ), user %></div>
     <div class="font-small left">
       <%=h user.login %><br />
     </div>
