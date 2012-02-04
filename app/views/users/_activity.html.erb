@@ -6,17 +6,18 @@
       <div class="action font-small">
         <%= render :partial => "share/usermicro_flat", :locals => { :user => User.find(audit.user_id) } %>
         <%= case audit.auditable_type.to_s
+
             when "Item"
               item = Item.find(audit.auditable_id)
               case audit.action
               when "create"
                 if item.need?
-                  link_to(t("needs").html_safe + " " + item.title, item)
+                  link_to(t("hasCreatedANeed", :title => item.title).html_safe, item)
                 else
-                  link_to(t("offers").html_safe + " " + item.title, item)
+                  link_to(t("hasCreatedAnOffer", :title => item.title).html_safe, item)
                 end
               when "update"
-                link_to(t("hasUpdated").html_safe + " " + item.title, item)
+                link_to(t("hasUpdatedAnItem", :title => item.title).html_safe, item)
               end
 
             when "Userdetails"
@@ -25,19 +26,41 @@
               group = Group.find(audit.auditable_id)
               case audit.action
               when "create"
-                link_to(t("hasCreatedAGroup").html_safe + ": " + group.title, group)
+                link_to(t("hasCreatedAGroup", :title => group.title).html_safe, group)
               when "update"
-                link_to(t("hasUpdatedAGroup").html_safe + ": " + group.title, group)
+                link_to(t("hasUpdatedAGroup", :title => group.title).html_safe, group)
               end
-            when "Project"
             when "Location"
               location = Location.find(audit.auditable_id)
               resource = location.locatable_type.constantize.find(location.locatable_id)
               case audit.action
               when "create"
-                link_to(t("hasCreatedALocation").html_safe + ": "+ resource.title, resource)
+                link_to(t("hasCreatedALocation", :title => resource.title).html_safe, resource)
               when "update"
-                link_to(t("hasUpdatedALocation").html_safe + ": "+ resource.title, resource)
+                link_to(t("hasUpdatedALocation", :title => resource.title).html_safe, resource)
+              end
+            when "Ping"
+              ping = Ping.find(audit.auditable_id)
+              resource = ping.pingable_type.constantize.find(ping.pingable_id) # if ping.pingable_type.to_s == "Item"
+              case audit.action
+              when "create"
+                link_to(t("hasPingedOn", :title => resource.title).html_safe, resource)
+              when "update"
+                case ping.status.to_s
+                when "accepted"
+                   link_to(t("usersPingedIsAccepted", :title => resource.title).html_safe, resource)
+                when "declined"
+                   link_to(t("usersPingedIsDeclined", :title => resource.title).html_safe, resource)
+                when "closed"
+                   link_to(t("usersPingedIsClosed", :title => resource.title).html_safe, resource)
+                end
+              end
+            when "Comment"
+              comment = Comment.find(audit.auditable_id)
+              resource = comment.commentable_type.constantize.find(comment.commentable_id)
+              case audit.action
+              when "create"
+                link_to(t("hasCommentedOn", :title => resource.title), resource)
               end
             else
               "what else to say: " + audit.auditable_type.to_s

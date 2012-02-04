@@ -6,6 +6,8 @@ class Meetup < ActiveRecord::Base
                   :user_ids, :item_attachments, :item_attachments_attributes
 
   acts_as_followable
+  has_associated_audits
+  acts_as_audited
 
   belongs_to :owner, :class_name => 'User', :foreign_key => "owner_id"
   has_many :locations, :as => :locatable, :dependent => :destroy

@@ -21,15 +21,6 @@ ActiveRecord::Schema.define(:version => 20120130234744) do
     t.integer  "item_id"
   end
 
-  create_table "actions", :force => true do |t|
-    t.integer  "watchable_id"
-    t.string   "watchable_type"
-    t.string   "type"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "audits", :force => true do |t|
     t.integer  "auditable_id"
     t.string   "auditable_type"

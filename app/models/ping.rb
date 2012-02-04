@@ -5,6 +5,11 @@ class Ping < ActiveRecord::Base
   attr_accessible :body, :user_id, :pingable_type, :pingable_id, :status, 
                   :created_at, :updated_at, :accepted_at, :status, :follow
 
+
+  acts_as_followable
+  has_associated_audits
+  acts_as_audited
+
   scope :open, :conditions => { :status => 1 }
   scope :not_closed, :conditions => "status < 4"
   scope :accepted, :conditions => { :status => 2 }
