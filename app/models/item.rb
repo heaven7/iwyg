@@ -1,6 +1,8 @@
 class Item < ActiveRecord::Base
 
-  
+  extend FriendlyId
+  friendly_id :title
+
   attr_accessible :locatable_type, :locatable_id, :title, :amount, :measure_id, :measure,
     :description, :item_type_id, :need, :from, :till, :user_id,
     :locations_attributes, :images_attributes, :events_attributes,

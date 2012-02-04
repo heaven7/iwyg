@@ -1,13 +1,15 @@
 # encoding: utf-8
 class ApplicationController < ActionController::Base
+
+  #rescue_from ActiveRecord::RecordNotFound, :with => :not_found
+  #rescue_from ActiveRecord::StatementInvalid, :with => :not_found
+
   helper :all
 
   protect_from_forgery
   protect_from_forgery :secret => "123456789012345678901234567890iwyg0815"   
 
   before_filter :set_locale, :measures, :itemtypes, :itemstatuses
-
- # audit User, Item, Group, :only => [:create, :update]
 
   layout 'application'
 
@@ -33,7 +35,10 @@ class ApplicationController < ActionController::Base
   def geocode
       ip
   end
-  
+
+  def not_found
+   render "public/404.html", status => 404, :layout => false
+  end
   
   def getNeedsAndOffers(scope, itemTypes)
     @resources_needed = Hash.new
@@ -136,6 +141,10 @@ class ApplicationController < ActionController::Base
   end
   
   protected
+
+  #def local_request?
+  #  true
+  #end
   
   def measures
     @measures ||= Measure.all

@@ -194,7 +194,7 @@ class PingsController < InheritedResources::Base
 
   # set ping to status accepted and close other pings of resource (item)
   # unless it is multiple
-  # the resource itself will have status: requested or offered
+  # deprecated: the resource itself will have status: requested or offered
   def acceptPingOnItem(ping)
     @ping = ping
     @resource = Item.find(@ping.pingable_id)
@@ -203,11 +203,12 @@ class PingsController < InheritedResources::Base
         flash[:error] = t("flash.pings.accept.error.alreadyAccepted")
       else
         if @ping.update_attributes('status' => 2, 'accepted_at' => Time.now)
-          if @resource.need?
-            @resource.update_attributes('status' => 3)
-          else
-            @resource.update_attributes('status' => 2)
-          end
+          # deprecated
+          # if @resource.need?
+          #   @resource.update_attributes('status' => 3)
+          # else
+          #   @resource.update_attributes('status' => 2)
+          # end
           if @resource.multiple == false
             # close other pings on that resource
             @resource.pings.each do |ping|

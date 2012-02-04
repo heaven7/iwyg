@@ -2,7 +2,6 @@
   <% audits.each do |audit| %>
     <li>
     <% if audit.class.to_s == "Audit" %>
-      <div class="right date font-smaller"><%=h distance_of_time_in_words(audit.created_at, Time.now) %> <%= t("ago") %> </div>
       <div class="action font-small">
         <%= render :partial => "share/usermicro_flat", :locals => { :user => User.find(audit.user_id) } %>
         <%= case audit.auditable_type.to_s
@@ -44,16 +43,24 @@
               resource = ping.pingable_type.constantize.find(ping.pingable_id) # if ping.pingable_type.to_s == "Item"
               case audit.action
               when "create"
-                link_to(t("hasPingedOn", :title => resource.title).html_safe, resource)
+                link_to(t("hasPingedOn", :title => resource.title).html_safe, ping)
               when "update"
-                case ping.status.to_s
+                case ping.statusTitle
                 when "accepted"
-                   link_to(t("usersPingedIsAccepted", :title => resource.title).html_safe, resource)
+                   link_to(t("usersPingIsAccepted", :title => resource.title).html_safe, ping)
                 when "declined"
-                   link_to(t("usersPingedIsDeclined", :title => resource.title).html_safe, resource)
+                   link_to(t("usersPingIsDeclined", :title => resource.title).html_safe, ping)
                 when "closed"
-                   link_to(t("usersPingedIsClosed", :title => resource.title).html_safe, resource)
+                   link_to(t("usersPingIsClosed", :title => resource.title).html_safe, ping)
                 end
+              end
+            when "Meetup"
+              meetup = Meetup.find(audit.auditable_id)
+              case audit.action
+              when "create"
+                link_to(t("hasCreatedAMeetup", :title => meetup.title).html_safe, meetup)
+              when "update"
+                link_to(t("hasUpdatedAMeetup", :title => meetup.title).html_safe, meetup)
               end
             when "Comment"
               comment = Comment.find(audit.auditable_id)
@@ -66,6 +73,7 @@
               "what else to say: " + audit.auditable_type.to_s
             end
         %>
+        <span class="date"><%=h distance_of_time_in_words(audit.created_at, Time.now) %> <%= t("ago") %></span>
       </div>
     <% end %>
     </li>

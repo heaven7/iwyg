@@ -1,4 +1,8 @@
 class Group < ActiveRecord::Base
+
+    extend FriendlyId
+    friendly_id :title
+
     attr_accessible :user_id, :user_ids, :title, :description, :tag_list, :tag_tokens, :locations, :images, :users,
                     :locations_attributes, :images_attributes
 

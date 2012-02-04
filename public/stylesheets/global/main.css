@@ -122,6 +122,12 @@ table td {
 .right {
   text-align:right;
 }
+.date {
+  opacity:0.5;
+  -moz-opacity:0.5;
+  -webkit-opacity:0.5;
+  font-size:8pt;
+}
 .bordered {
   border: 1px solid #B8C2B3;
   -moz-border: 1px solid #B8C2B3;

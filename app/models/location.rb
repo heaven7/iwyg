@@ -18,7 +18,7 @@ class Location < ActiveRecord::Base
   #end
   
   def gmaps4rails_address
-    [address, city, zip, country].compact.join(', ') if not address.empty? or not city.empty? or not zip.empty? or not country.empty?
+    [address, city, zip, country].compact.join(', ') if not address.nil? or not city.nil? or not zip.nil? or not country.nil?
   end
   
   def gmaps4rails_infowindow

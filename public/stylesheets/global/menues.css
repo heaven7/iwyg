@@ -85,10 +85,10 @@
 .pagination a {
   padding:0.5em;
   height:40px;
-  min-width:40px;
-  -moz-border-radius: 2px 2px 2px 2px;
-  -webkit-border-radius: 2px 2px 2px 2px;
-  border-radius: 2px 2px 2px 2px;
+  width:40px;
+  -moz-border-radius: 4px 4px 4px 4px;
+  -webkit-border-radius: 4px 4px 4px 4px;
+  border-radius: 4px 4px 4px 4px;
   border: 1px solid #B8C2B3;
   -moz-border: 1px solid #B8C2B3;
   -webkit-border: 1px solid #B8C2B3;
