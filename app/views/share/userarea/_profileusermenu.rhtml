@@ -1,6 +1,6 @@
 <% if user_signed_in? and user.login != current_user.login %>
   <ul class="font-smaller button horizontal">
-    <li class="button"><%= link_to t("menu.user.sendMessage"), new_sent_path(:to => user.id) %></li>
+    <li class="button"><%= link_to t("menu.user.sendMessage"), new_sent_path(:to => user.id), :remote => true, :rel => "modalbox" %></li>
     <% if not current_user.following?(user) %>
       <li class="button"><%= link_to t("follow"), follow_user_path, :method => :put %></li>
     <% end %>

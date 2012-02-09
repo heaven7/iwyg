@@ -19,12 +19,15 @@ class Message < ActiveRecord::Base
   
   def prepare_copies
     return if to.blank?
-    
-    to.each do |recipient|
-      recipient = User.find(recipient)  
-      m = message_copies.build(:recipient => recipient, :folder => recipient.inbox)
-      m.custom = Custom.new
-    end
+    recipient = to
+    recipient = User.find(recipient)
+    m = message_copies.build(:recipient => recipient, :folder => recipient.inbox)
+    m.custom = Custom.new
+#    to.each do |recipient|
+#      recipient = User.find(recipient)
+#      m = message_copies.build(:recipient => recipient, :folder => recipient.inbox)
+#      m.custom = Custom.new
+#    end
     true
   end
 end

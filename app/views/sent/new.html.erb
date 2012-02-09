@@ -1,24 +1,3 @@
 <div id="new_message">
-  <%= semantic_form_for :message, :url => {:controller => "sent", :action => "create"}, :remote => true do |f| %>
-    <%= f.error_messages %>
-    
-    <%= f.inputs do %>
-     <li>
-        <% if params[:to] %>
-        <label><%= t("mailbox.to") %></label><%= User.find(params[:to]).login %>
-          <%= f.input :to, :value => params[:to], :as => :hidden %>
-        <% else %>
-          <label><%= t("mailbox.to") %></label>
-          <select name="message[to][]">
-            <%= options_from_collection_for_select(current_user.friends + current_user.inverse_friends, :id, :login, @message.to) %>
-          </select>
-        <% end %>
-      </li>
-      <%= f.input :subject, :label => t("mailbox.subject") %>
-      <%= f.input :body, :as => :text, :label => t("mailbox.body")  %>
-    <% end %>
-    <%= f.buttons do %>
-      <%= f.submit t("submit") %>
-    <% end %>
-  <% end %>
+  <%= render :partial => "form" %>
 </div>

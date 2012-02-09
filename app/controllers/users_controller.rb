@@ -39,6 +39,7 @@ class UsersController < InheritedResources::Base
   end
   
   def show
+    @message = current_user.sent_messages.build
     if params[:user_id]
       @user = User.find(params[:user_id], :include => [:location, :userdetails, :pings])
     else

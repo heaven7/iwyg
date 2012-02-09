@@ -1,5 +1,5 @@
 class SentController < InheritedResources::Base
-  respond_to :html, :js
+  respond_to :html , :js
   
   layout 'mailbox'
   before_filter :authenticate_user!
@@ -15,6 +15,13 @@ class SentController < InheritedResources::Base
 
   def new
     @message = current_user.sent_messages.build
+   # render :layout => false
+    respond_to do |format|
+      format.html
+      format.js do
+        render :layout => false
+      end
+    end
   end
   
   def create
@@ -22,7 +29,7 @@ class SentController < InheritedResources::Base
     @message.custom = Custom.new
     if @message.save
       flash[:notice] = "Message sent."
-      redirect_to :action => "index"
+      render :layout => false and return
     else
       render :action => "new"
     end
