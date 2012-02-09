@@ -116,6 +116,9 @@ table td {
   text-align:center;
   margin:0px auto;
 }
+.hidden {
+    display:none;
+}
 .left {
   text-align:left;
 }

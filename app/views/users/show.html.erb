@@ -1,9 +1,25 @@
+<%= content_for :head do %>
+  <script type="text/javascript">
+    $(document).ready(function (){
+      $('#new_message').hide();
+      $('#send_message').click(function (event) {
+        $('#new_message').slideToggle();
+        event.preventDefault();
+      });
+    });
+  </script>
+<% end %>
+
 <% if user_signed_in? and @user == current_user %>
   <div class="button edit">
     <%= link_to t("userarea.edit.profile").html_safe, edit_polymorphic_path([@user, "userdetails"]) %>
   </div>
 <% else %>
     <%= render :partial => "share/userarea/profileusermenu", :locals => { :user => @user } %>
+    <div class="clearfix"></div>
+    <div id="new_message" style="display:none;">
+    <%= render :partial => "sent/form" %>
+  </div>
 <% end %>
 <% if @user %>
   <div class="sub2cols">

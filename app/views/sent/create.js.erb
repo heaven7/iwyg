@@ -1,1 +1,10 @@
-parent.$.fn.colorbox.close();
+<% if @message.errors.any? -%>
+  $('#flash_notice').hide(300);
+  $('#flash_error').hide(300);
+  $("#message_errors").html("Fehler!");
+  $("#message_errors").slideToggle();
+<% else -%>
+  $("#flash_notice").html("<%= escape_javascript(flash[:notice])%>");
+  $("#flash_notice").slideToggle();
+  $('#new_message').slideToggle();
+<% end -%>

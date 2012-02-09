@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <%= stylesheet_link_tag "style", "token-input", "formtastic", "formtastic_changes", "jquery.autocomplete", :cache => 'base' %>
   <!--[if IE 6]><%= stylesheet_link_tag 'formtastic_ie6' %><![endif]-->
   <!--[if IE 7]><%= stylesheet_link_tag 'formtastic_ie7' %><![endif]-->
@@ -61,16 +61,12 @@
     
     <%= render :partial => 'share/topnavigation' %>
   </div>
-  <% if flash[:notice] || notice -%>
-    <div class="notice ui-corner-all">
-      <%= flash[:notice].html_safe || notice.html_safe %>
-    </div>
-  <% end -%>
-  <% if flash[:error] || alert -%>
-    <div class="error ui-corner-all">
-      <%= flash[:error] || alert %>
-    </div>
-  <% end -%>
+  <div class="notice ui-corner-all hidden" id="flash_notice">
+    <%= flash[:notice].html_safe || notice.html_safe if flash[:notice] || alert %>
+  </div>
+  <div class="error ui-corner-all hidden" id="flash_error">
+    <%= flash[:error] || alert if flash[:error] || alert %>
+  </div>
   <div id="mainnavigation">
       <ul class="menu horizontal">
         <li id="resources"><%= link_to_unless_current t("menu.main.resources"), items_path %>
