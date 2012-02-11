@@ -453,19 +453,20 @@ form.formtastic input, form.formtastic textarea, form.formtastic select {
 -webkit-rtl-ordering: logical;
 -webkit-user-select: text;
 }
-form.formtastic input[type="submit"] {
+form.formtastic input[type="submit"], .submit {
   border: 2px outset; 
   border-top: 3px;
   background:#EDEFDF;
+  width: 200px;
      
 }
-form.formtastic input[type="submit"]:hover {
+form.formtastic input[type="submit"]:hover, .submit:hover {
   border: 2px outset; 
   border-top: 3px;
   background:white;
      
 }
-form.formtastic input[type="submit"]:active {
+form.formtastic input[type="submit"]:active, .submit:active {
   border: 1px inset;  
 }
 form.formtastic .input {
@@ -520,9 +521,11 @@ form.formtastic .date ol {
   width: 100%;
   margin-bottom: 0;
 }                     
-.formtastic .buttons {
+.formtastic .buttons,
+.formtastic .actions {
+
   width: 100%;            
-	padding-top:0.5em;
+  padding-top:0.5em;
   margin:0;
   background: transparent;
 }
@@ -559,7 +562,8 @@ form.formtastic .date ol {
 .formtastic .inputs .error select {  
   border:2px solid #AA111A; 
 }
-form.formtastic fieldset.buttons {
+form.formtastic fieldset.buttons,
+form.formtastic fieldset.actions {
   padding-left:40%;
   font-weight:bold;
   padding-bottom:1em;

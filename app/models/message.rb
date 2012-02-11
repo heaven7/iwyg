@@ -11,7 +11,7 @@ class Message < ActiveRecord::Base
   attr_accessor  :to # array of people to send to
   attr_accessible :subject, :body, :to, :read
   
-  validates_presence_of :subject, :to
+  validates_presence_of :body, :to
 
   def build_custom 
     self.custom = Custom.new

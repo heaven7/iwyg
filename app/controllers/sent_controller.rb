@@ -43,6 +43,9 @@ class SentController < InheritedResources::Base
     else
       render :action => 'new'
     end
+    @message.errors.full_messages.each do |error|
+      puts error
+    end
   end
   
   def destroy
