@@ -9,6 +9,9 @@
     $("#tabs").tabs();
     showErrorTabs();
 
+    /* VALIDATION */
+    $('#new_item').railsAjaxValidation();
+
     /* DATEPICKER */ 	
   	$("#item_from").datetimepicker({
       changeYear: true
@@ -61,7 +64,7 @@
 });
 </script>
 <% end %>
-<%= semantic_form_for @item, :html => {:multipart => true} do |f| %>
+<%= semantic_form_for @item, :html => {:multipart => true}, :validate => true do |f| %>
   <%= render "share/error_messages", :target => @item %>
   <div id="tabs">
     <ul>

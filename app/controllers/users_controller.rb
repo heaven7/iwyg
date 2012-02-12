@@ -5,7 +5,7 @@ class UsersController < InheritedResources::Base
   layout :conditional_layout
   respond_to :html, :xml, :json, :js
   helper :items, :pings, :friendships, :userdetails
-  before_filter :authenticate_application_user!, :only => [:edit]
+  before_filter :authenticate_user!, :execpt => [:index]
 
   auto_complete_for :aim_list, :name
   
@@ -39,7 +39,7 @@ class UsersController < InheritedResources::Base
   end
   
   def show
-    @message = current_user.sent_messages.build
+    @message = current_user.sent_messages.build if logged_in?
     if params[:user_id]
       @user = User.find(params[:user_id], :include => [:location, :userdetails, :pings])
     else
@@ -49,7 +49,9 @@ class UsersController < InheritedResources::Base
       @user.userdetails ||= Userdetails.new
       @itemTypes = ItemType.all
       @followings = @user.all_following
+      @followings_count = @followings.count
       @followers = @user.followers
+      @followers_count = @followers.count
 
       if current_user == @user
         @inverse_audits = Array.new
@@ -107,6 +109,26 @@ class UsersController < InheritedResources::Base
     redirect_to(@user)
   end
 
+  def block
+    @follower = User.find(params[:id])
+    if current_user.block(@follower)
+      flash[:notice] = "You successfully blocked '#{@follower.login}'"
+    else
+      flash[:error] = "Something went wrong while blocking '#{@follower.login}'"
+    end
+    redirect_to followers_user_path(current_user)
+  end
+
+  def unblock
+    @follower = User.find(params[:id])
+    if current_user.unblock(@follower)
+      flash[:notice] = "You successfully blocked '#{@follower.login}'"
+    else
+      flash[:error] = "Something went wrong while blocking '#{@follower.login}'"
+    end
+    redirect_to followers_user_path(current_user)
+  end
+
   def followings
     @user = User.find(params[:id])
     @active_menuitem_l1 = I18n.t "menu.user.followings"
@@ -119,6 +141,7 @@ class UsersController < InheritedResources::Base
     @active_menuitem_l1 = I18n.t "menu.user.followers"
     @active_menuitem_l1_link = followers_user_path
     @followers = @user.followers
+   # @blocked_users = @user.blocked_followers
   end
 
   private

@@ -62,12 +62,16 @@
     
     <%= render :partial => 'share/topnavigation' %>
   </div>
-  <div class="notice ui-corner-all hidden" id="flash_notice">
-    <%= flash[:notice].html_safe || notice.html_safe if flash[:notice] || alert %>
-  </div>
-  <div class="error ui-corner-all hidden" id="flash_error">
-    <%= flash[:error] || alert if flash[:error] || alert %>
-  </div>
+  <% if (not flash[:notice].blank?) || (not notice.blank?) %>
+    <div class="notice ui-corner-all" id="flash_notice">
+      <%= flash[:notice].html_safe || notice.html_safe %>
+    </div>
+  <% end %>
+  <% if (not flash[:error].blank?) || (not alert.blank?) %>
+    <div class="error ui-corner-all" id="flash_error">
+      <%= flash[:error] || alert.html_safe %>
+    </div>
+  <% end %>
   <div id="mainnavigation">
       <ul class="menu horizontal">
         <li id="resources"><%= link_to_unless_current t("menu.main.resources"), items_path %>

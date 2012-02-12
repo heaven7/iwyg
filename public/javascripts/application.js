@@ -6,10 +6,6 @@ jQuery.ajaxSetup({
 
 $(document).ready(function (){
 
-    // flashes
-    $('#flash_notice').hide();
-    $('#flash_error').hide();
-
     // Searchform (extended)
     $('#advanced_search').show();
     $('#searchform').click(function(event){
