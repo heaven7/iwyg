@@ -112,9 +112,9 @@ class UsersController < InheritedResources::Base
   def block
     @follower = User.find(params[:id])
     if current_user.block(@follower)
-      flash[:notice] = "You successfully blocked '#{@follower.login}'"
+      flash[:notice] = t("flash.users.block.notice", :title => @follower.login)
     else
-      flash[:error] = "Something went wrong while blocking '#{@follower.login}'"
+      flash[:error] = t("flash.users.block.error", :title => @follower.login)
     end
     redirect_to followers_user_path(current_user)
   end
@@ -127,9 +127,9 @@ class UsersController < InheritedResources::Base
         :followable_type => "User",
     })
     if @follow.update_attributes(:blocked => 0)
-      flash[:notice] = "You successfully unblocked '#{@follower.login}'"
+      flash[:notice] = t("flash.users.unblock.notice", :title => @follower.login)
     else
-      flash[:error] = "Something went wrong while unblocking '#{@follower.login}'"
+      flash[:error] = t("flash.users.unblock.error", :title => @follower.login)
     end
     redirect_to followers_user_path(current_user)
   end

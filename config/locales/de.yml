@@ -237,12 +237,16 @@ de:
   updated_at: "ge&auml;ndert am"
   accepted_at: "akzeptiert am"
   follow: "Folgen"
+  block: "Blockieren"
+  unblock: "Blockierung aufheben"
+  blockedUsers: "geblockte User"
   hasUpdated: "hat ge&auml;ndert"
   hasUpdatedAMeetup: "hat den Treffpunkt '%{title}' ge&auml;ndert"
   hasUpdatedAnItem: "hat '%{title}' ge&auml;ndert"
   hasUpdatedAGroup: "hat die Gruppe '%{title}' ge&auml;ndert"
   hasUpdatedALocation: "hat den Ort f&uuml;r '%{title}' ge&auml;ndert"
   hasUpdatedtheUserdetails: "hat ihre/seine Userdaten ge&auml;ndert"
+  hasJoinedTheCommunity: "ist Iwyg beigetreten."
   hasCreated: "hat erstellt"
   hasCreatedAMeetup: "hat den Treffpunkt '%{title}' er&ouml;ffnet"
   hasCreatedANeed: "braucht '%{title}'"
@@ -420,6 +424,12 @@ de:
           error:
             alreadyFollowing: "Du folgst dem User bereits."
           notice: "Du folgst nun '%{title}'"
+      block:
+          notice: "Du hast '%{title}' erfolgreich geblockt."
+          error: "Konnte '%{title}' nicht blocken."
+      unblock:
+          notice: "Du blockst '%{title}' nicht mehr."
+          error: "Irgendwas ging schief, den Block von '%{title}' aufzuheben."
     userdetails:
       update:
         notice: "Personendaten erfolgreich ge&auml;ndert."

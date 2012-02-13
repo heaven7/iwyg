@@ -236,12 +236,16 @@ en:
   updated_at: "updated on"
   accepted_at: "accepted on"
   follow: "follow"
+  block: "Block"
+  unblock: "Unblock"
+  blockedUsers: "Blocked Users"
   hasUpdated: "has updated"
   hasUpdatedAMeetup: "has updated the meetup '%{title}'"
   hasUpdatedAnItem: "has updated '%{title}'"
   hasUpdatedAGroup: "has updated the group '%{title}'"
   hasUpdatedALocation: "has updated the location of '%{title}'"
   hasUpdatedtheUserdetails: "has updated her/his userdetails"
+  hasJoinedTheCommunity: "has joined Iwyg."
   hasCreated: "has created"
   hasCreatedAMeetup: "has opened the meetup '%{title}'"
   hasCreatedANeed: "needs '%{title}'"
@@ -420,6 +424,12 @@ en:
           error:
             alreadyFollowing: "You are following this user already."
           notice: "You are following '%{title}'"
+      block:
+          notice: "You successfully blocked '%{title}'"
+          error: "Something went wrong while blocking '%{title}'"
+      unblock:
+          notice: "You successfully unblocked '%{title}'"
+          error: "Something went wrong while unblocking '%{title}'"
     userdetails:
       update:
         notice: "Userdetails was successfully updated."
