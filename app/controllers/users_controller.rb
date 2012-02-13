@@ -121,10 +121,15 @@ class UsersController < InheritedResources::Base
 
   def unblock
     @follower = User.find(params[:id])
-    if current_user.unblock(@follower)
-      flash[:notice] = "You successfully blocked '#{@follower.login}'"
+    @follow = Follow.find(:first, :conditions => {
+        :follower_id => @follower.id,
+        :followable_id => current_user.id,
+        :followable_type => "User",
+    })
+    if @follow.update_attributes(:blocked => 0)
+      flash[:notice] = "You successfully unblocked '#{@follower.login}'"
     else
-      flash[:error] = "Something went wrong while blocking '#{@follower.login}'"
+      flash[:error] = "Something went wrong while unblocking '#{@follower.login}'"
     end
     redirect_to followers_user_path(current_user)
   end
@@ -141,7 +146,7 @@ class UsersController < InheritedResources::Base
     @active_menuitem_l1 = I18n.t "menu.user.followers"
     @active_menuitem_l1_link = followers_user_path
     @followers = @user.followers
-   # @blocked_users = @user.blocked_followers
+    @blocked_users = @user.blocks
   end
 
   private

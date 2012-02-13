@@ -2,22 +2,23 @@
 <% @followers.each do |follower| %>
   <li>
     <%= render :partial => "share/usertiny", :locals => { :user => follower } %>
-    <ul>
-      <li>
+    <ul class="font-smaller center">
+      <li class="button">
         <%= link_to "Block", block_user_path(follower), :method => :put %>
       </li>
     </ul>
   </li>
 <% end %>
 </ul>
-<% if current_user == @user and @blocked_users  %>
+<% if current_user == @user and @blocked_users and @blocked_users.size > 0  %>
+  <h3>Blocked Users</h3>
   <ul>
     <% @blocked_users.each do |blocked_user| %>
       <li>
         <%= render :partial => "share/usertiny", :locals => { :user => blocked_user } %>
-        <ul>
-          <li>
-            <%= link_to "Block", unblock_user_path(blocked_user), :method => :put %>
+        <ul class="font-smaller center">
+          <li class="button">
+            <%= link_to "Unblock", unblock_user_path(blocked_user), :method => :put %>
           </li>
         </ul>
       </li>
