@@ -75,7 +75,7 @@
   </div>
   
 <% else %>
-    <%= render :partial => "share/item_collection", :locals => {:collection => collection} %>
+    <%= render :partial => "share/list_pagination", :locals => {:collection => collection} %>
     <%= render :partial => "item", :collection => collection %>
-    <%= render :partial => "share/item_collection", :locals => {:collection => collection} %>
+    <%= render :partial => "share/list_pagination", :locals => {:collection => collection} %>
 <% end %>

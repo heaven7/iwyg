@@ -12,11 +12,12 @@
         $('#attachments .field-add').click();
         $('#attachments select').val(id);
       <% end %>
-
-      /* Current User and Pinger is participating by default */
-      $("#meetup_user_ids_<%= current_user.id %>").attr("checked", "checked");
-      <% if @ping %>
-        $("#meetup_user_ids_<%= @ping.owner.id %>").attr("checked", "checked"); 
+      <% if params[:action] == "new" %>
+        /* Current User and Pinger is participating by default */
+        $("#meetup_user_ids_<%= current_user.id %>").attr("checked", "checked");
+        <% if @ping %>
+          $("#meetup_user_ids_<%= @ping.owner.id %>").attr("checked", "checked");
+        <% end %>
       <% end %>
       /* hide additional location fields */
       $("#meetup_locations_attributes_1_address_input, #meetup_locations_attributes_1_city_input, #meetup_locations_attributes_1_zip_input, #meetup_locations_attributes_1_country").hide();
@@ -24,7 +25,6 @@
     });
 	</script>
 <% end %>
-
 <%= semantic_form_for @meetup, :method => "get"   do |f| %>
   <%= render "share/error_messages", :target => @meetup %>
   <div id="tabs">  
@@ -55,8 +55,7 @@
      </div>
      <div id="who"> 
        <%= f.inputs do %> 
-        <%= f.input :users, :collection => @users.map { |u| ["#{image_tag(tinyThumb(u), :alt => u.login, :title => u.login)}<br />#{u.login}".html_safe, u.id] }, :as => :check_boxes %>
-        <%# f.input :users %>
+        <%= f.input :users, :as => :check_boxes, :member_label => Proc.new { |u| "#{image_tag(tinyThumb(u), :alt => u.login, :title => u.login)}<br />#{u.login}".html_safe } %>
       <% end %>     
      </div>
     <div id="attachments" class="tab_content">

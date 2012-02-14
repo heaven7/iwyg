@@ -337,7 +337,9 @@ de:
     one: "1 Gruppe"
     other: "%{count} Gruppen"
     new: "Neue Gruppe"
-     
+    participant:
+      one: "1 Teilnehmer"
+      other: "%{count} Teilnehmer"
   ## item
   item:
     related:

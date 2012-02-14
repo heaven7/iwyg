@@ -329,13 +329,16 @@ en:
     other: "%{count} Events"
     new: "New Event"
     action: "%{owner} meets up with %{pinger} because of: %{title}"
-    status: "Event wurde %{status} von %{user}"
+    status: "Event is %{status} by %{user}"
 
   ## group
   group:
-    one: "1 Gruppe"
-    other: "%{count} Gruppen"
-    new: "Neue Gruppe"
+    one: "1 Group"
+    other: "%{count} Groups"
+    new: "New Group"
+    participant:
+      one: "1 Participant"
+      other: "%{count} Participants"
     
   ## item
   item:

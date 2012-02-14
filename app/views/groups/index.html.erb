@@ -6,7 +6,6 @@
   <% end %>
 <% end %>             
 <% if @groups and @groups.size > 0 %>
-    <%= paginated_section @groups do %>
-      <%= render :partial => "grouptable", :locals => { :collection => @groups } if @groups.size > 0 %>
-    <% end %>
+  <%= render :partial => "share/list_pagination", :locals => {:collection => collection} %>
+  <%= render :partial => "group", :collection => collection %>
 <% end %>

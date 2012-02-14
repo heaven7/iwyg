@@ -2,16 +2,18 @@
 <%= render :partial => "groupmenu", :locals => { :group => @group } %>
 <div class="sub2cols">
   <div class="subcol1">
-      <div class="box ui-corner-all">
-        <%= render :partial => "share/tags", :locals => { :tags => @group.tags } %>
-        <p><%= @group.description.html_safe %></p>
-        <%= render :partial => "share/item_attachments", :locals => { :object => @group } %>
-      </div>
+      <%= @group.images.first.image.url if @group.images.first %>
+      <% if @group.tags.size > 0 or not @group.description.empty? %>
+        <div class="box ui-corner-all">
+          <%= render :partial => "share/tags", :locals => { :tags => @group.tags } %>
+          <p><%= @group.description.html_safe %></p>
+          <%= render :partial => "share/item_attachments", :locals => { :object => @group } %>
+        </div>
+      <% end %>
   </div>
   <div class="subcol2">
-    <% if logged_in? and @group.locations.first %>
+    <% if logged_in? and @group.locations.first and @group.locations.first.lat and @group.locations.first.lng %>
       <h3><%= t("resources.location") %></h3>
-      <%# "#{@group.locations.first.lat}, #{@group.locations.first.lng}" %>
       <%= render :partial => "share/map", :locals => { :locations => @locations_json } %>
       <%= render :partial => "locations/location", :locals => {:location => @group.locations.first} %>
     <% end %>
@@ -20,3 +22,12 @@
 <div class="clearfix" ></div>
 <h2><%= t("groups.holder") %></h2>
 <%= render :partial => "share/usertiny", :locals => { :user => @group.owner}  %>
+<div class="clear"></div>
+<% if @group.users && @group.users.count > 0 %>
+  <h2><%= t("group.participant", :count => @group.users.count) %></h2>
+  <ul class="users-list">
+    <% @group.users.each do |user| %>
+      <li class="users-list-item"><%= render :partial => "share/usertiny", :locals => { :user => user } %></li>
+    <% end %>
+  </ul>
+<% end %>

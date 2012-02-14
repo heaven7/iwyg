@@ -36,7 +36,7 @@ gem 'client_side_validations'
 
 gem 'devise' #, :git => 'git://github.com/plataformatec/devise.git'   
 gem 'devise_rpx_connectable'
-gem 'formtastic', '2.1.0.beta1'
+gem 'formtastic' #, '2.1.0.beta1'
 gem 'geocoder'
 gem 'gmaps4rails'
 gem 'ajaxful_rating', '2.2.8.2'

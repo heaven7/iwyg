@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120130234744) do
+ActiveRecord::Schema.define(:version => 20120213201233) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(:version => 20120130234744) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "item_id"
+  end
+
+  create_table "actions", :force => true do |t|
+    t.integer  "watchable_id"
+    t.string   "watchable_type"
+    t.string   "type"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "audits", :force => true do |t|
@@ -113,6 +122,16 @@ ActiveRecord::Schema.define(:version => 20120130234744) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "groups_users", :id => false, :force => true do |t|
+    t.integer  "group_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "groups_users", ["group_id", "user_id"], :name => "index_groups_users_on_group_id_and_user_id"
+  add_index "groups_users", ["user_id", "group_id"], :name => "index_groups_users_on_user_id_and_group_id"
 
   create_table "images", :force => true do |t|
     t.integer  "imageable_id"

@@ -5,7 +5,7 @@ class UsersController < InheritedResources::Base
   layout :conditional_layout
   respond_to :html, :xml, :json, :js
   helper :items, :pings, :friendships, :userdetails
-  before_filter :authenticate_user!, :execpt => [:index]
+  before_filter :authenticate_user!, :execpt => [:index, :show]
 
   auto_complete_for :aim_list, :name
   

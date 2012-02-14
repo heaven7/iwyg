@@ -48,18 +48,18 @@ class GroupsController < InheritedResources::Base
   def edit
     @user = current_user
     @group = @user.groups.find(params[:id])
-    @location = @group.locations.first || @group.locations.build
+    #@location = @group.locations.first || @group.locations.build
     @active_menuitem_l1 = I18n.t "menu.main.groups"
     #@active_menuitem_l1_link = user_groups_path
   end
 
   def show
+    @group = Group.find(params[:id])
     if params[:user_id]
       @user = User.find(params[:user_id])
       @group = @user.groups.find(params[:id])
     else
-      @group = Group.find(params[:id])
-    end
+    end    
     @location = @group.locations.first if @group.locations && @group.locations.first
     getLocationsOnMap(@group) if @location and not @location.lat.nil? and not @location.lng.nil?
   end
@@ -68,6 +68,7 @@ class GroupsController < InheritedResources::Base
     @user = current_user
     @active_menuitem_l1 = I18n.t "menu.main.groups"
     @location = Location.new(params[:locations_attributes]) if params[:locations_attributes]
+    @image = Image.new(params[:images_attributes]) if params[:images_attributes]
     create!
   end
 

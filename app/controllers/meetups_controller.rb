@@ -5,11 +5,16 @@ class MeetupsController < InheritedResources::Base
 #  before_filter :login_required
   
   def index 
-    @user = current_user
-    @meetups = @user.meetups if @user
-    @active_menuitem_l1 = I18n.t "menu.user.meetups"
-    @active_menuitem_l1_link = polymorphic_path([@user, :meetups])
-    index!
+    @user = User.find(params[:user_id]) if params[:user_id]
+    if @user
+      @meetups = @user.meetups
+      @active_menuitem_l1 = I18n.t "menu.user.meetups"
+      @active_menuitem_l1_link = polymorphic_path([@user, :meetups])
+      render :layout => "userarea"
+    else
+      @meetups = Meetup.all
+      index!
+    end
   end
   
   def show
@@ -44,7 +49,7 @@ class MeetupsController < InheritedResources::Base
     @eventable = find_model
     @meetup = Meetup.new(params[:meetup])
     @users = User.all
-    @meetup.locations.build if @meetup.locations.size == 0 
+    @meetup.locations.build if not @meetup.locations.size == 0
     @meetup.events.build if @meetup.events.size == 0
    # create!
    
@@ -94,7 +99,7 @@ class MeetupsController < InheritedResources::Base
   
   def conditional_layout
     case action_name
-      when "index" then "userarea"
+      when "index" then "application"
       else "userarea"
     end
   end

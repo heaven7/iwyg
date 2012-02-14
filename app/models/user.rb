@@ -18,9 +18,6 @@ class User < ActiveRecord::Base
   acts_as_followable
 
   acts_as_audited :except => [:password]
-
-  # belongs_to
-  belongs_to :meetups
   
   # has_many
   has_many :events
@@ -57,8 +54,10 @@ class User < ActiveRecord::Base
            :foreign_key => :user_id
   has_many :transfers, :class_name => "Transfer", :foreign_key => "user_id"
   has_many :comments, :as => :commentable
-  has_many :meetings
+  has_many :meetings, :dependent => :destroy
+  belongs_to :meetups
   has_many :meetups, :through => :meetings
+  belongs_to :groups
   has_many :groups
     
   # has_one

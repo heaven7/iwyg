@@ -27,6 +27,7 @@ class Meetup < ActiveRecord::Base
   # validates_numericality_of :participant_ids
   # validates_inclusion_of :user_ids, :in => %w( current_user.id ), :message => "Add yourself to Memberslist"
   validates :title, :presence => true
+  
   #validates :participant_ids, :numericality => true
 
   def self.exists?(owner_id, ownertype)
