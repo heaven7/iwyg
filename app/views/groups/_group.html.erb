@@ -1,5 +1,5 @@
 <div class="list-item ui-corner-all">
-  <%= render :partial => "groups/groupmenu", :locals => {:group => group} if logged_in? and group.owner == current_user %>
+  <%= render :partial => "share/list-item/usermenu", :locals => {:model => group} if logged_in? and group.owner == current_user %>
   <div class="item-members-count font-smaller">
     <%= image_tag "icons/icon_group.png", :alt => group.title, :title => group.title %> (<%= group.users.size %>)
   </div>

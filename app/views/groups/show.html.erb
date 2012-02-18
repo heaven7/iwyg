@@ -2,7 +2,7 @@
 <%= render :partial => "groupmenu", :locals => { :group => @group } %>
 <div class="sub2cols">
   <div class="subcol1">
-      <%= @group.images.first.image.url if @group.images.first %>
+      <%= @group.images.first.inspect if @group.images.first %>
       <% if @group.tags.size > 0 or not @group.description.empty? %>
         <div class="box ui-corner-all">
           <%= render :partial => "share/tags", :locals => { :tags => @group.tags } %>

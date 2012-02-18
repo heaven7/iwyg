@@ -63,7 +63,7 @@ Iwyg::Application.routes.draw do
   end 
   
   resources :groups do
-    resources :users
+    resources :users, :images
     member do
       put 'follow'
     end

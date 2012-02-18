@@ -3,14 +3,15 @@ class Group < ActiveRecord::Base
     extend FriendlyId
     friendly_id :title
 
-    attr_accessible :user_id, :user_ids, :title, :description, :tag_list, :tag_tokens, :locations, :images, :users,
+    attr_accessible :user_id, :user_ids, :title, :description, :tag_list, :tag_tokens, :locations, :users,
                     :locations_attributes, :images_attributes
 
     attr_reader :tag_tokens
 
-    #belongs_to :user
-    #has_many :users
-    has_and_belongs_to_many :users
+    belongs_to :user
+    has_many :groupings
+    has_many :users, :through => :groupings
+  #has_and_belongs_to_many :users
     
     acts_as_followable
     acts_as_taggable_on :tags
@@ -19,7 +20,7 @@ class Group < ActiveRecord::Base
     has_many :locations, :as => :locatable, :dependent => :destroy
     accepts_nested_attributes_for :locations, :allow_destroy => true, :reject_if => proc { |attrs| attrs.blank? }
     has_many :images, :as => :imageable, :dependent => :destroy
-    accepts_nested_attributes_for :images, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }  
+    accepts_nested_attributes_for :images, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
     has_many :item_attachments, :dependent => :destroy
     accepts_nested_attributes_for :item_attachments, :allow_destroy => true, :reject_if => proc { |attrs| attrs[:attachment_id].blank? }
 

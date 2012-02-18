@@ -1,4 +1,5 @@
 .DS_STORE
+.project
 Thumbs.db
 .bundle/
 log/development.log

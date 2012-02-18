@@ -13,7 +13,7 @@ class ImagesController < InheritedResources::Base
     if @imageable
       @images = @imageable.images
     else
-      @images = Image.all
+      @images = current_user.images
     end
   end
   
@@ -48,7 +48,8 @@ class ImagesController < InheritedResources::Base
     if @image.save
       flash[:notice] =  t("flash.images.create.notice")
       if @imageable
-        redirect_to [@imageable, @images]
+        #redirect_to [@imageable, @images]
+        redirect_to :id => nil
       else
         redirect_to [current_user, @images]
       end

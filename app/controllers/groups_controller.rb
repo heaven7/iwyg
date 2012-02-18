@@ -40,14 +40,18 @@ class GroupsController < InheritedResources::Base
   def new
     @user = current_user
     @group = Group.new
-    @group.locations.build
+#    @group.locations.build
     @active_menuitem_l1 = I18n.t "menu.main.groups"
     @active_menuitem_l1_link = user_groups_path
   end
 
   def edit
     @user = current_user
-    @group = @user.groups.find(params[:id])
+    @group = Group.find(params[:id])
+#    if @group.images.size == 0
+#      @imageable = find_model
+#      @image = @group.images.build
+#    end
     #@location = @group.locations.first || @group.locations.build
     @active_menuitem_l1 = I18n.t "menu.main.groups"
     #@active_menuitem_l1_link = user_groups_path
@@ -68,7 +72,7 @@ class GroupsController < InheritedResources::Base
     @user = current_user
     @active_menuitem_l1 = I18n.t "menu.main.groups"
     @location = Location.new(params[:locations_attributes]) if params[:locations_attributes]
-    @image = Image.new(params[:images_attributes]) if params[:images_attributes]
+    # @image = Image.new(params[:images_attributes]) if params[:images_attributes]
     create!
   end
 
