@@ -1,0 +1,61 @@
+controller:
+	- add title to views (maybe generic...)
+
+search:
+	- by tags
+mailer:
+	- design & translate mailings (user, pings, comments, transfers,...)
+
+populate db:
+	- meetups
+
+audits:
+	- manage deleted resources, groups, ...
+
+items:
+	- show: images should appear in slidebox or so and lightbox
+	- make file-attachments?
+
+follow:
+	- item- group-, projectowners gets notified if someone follows them
+	- manage to block items, ...
+messages:
+	-users get notified when message was sent to user
+
+friendly_id:
+	- no spaces in browserurls
+
+footer:
+	- languagemenu layout
+	- footer concept
+pings:
+	- make pings sortable by date, user, text,...
+	- pingform should be ajaxed
+
+locations:
+	- calculation of address is wrong
+
+meetups:
+	- participants must be spec. usergroup (friends, followers)
+	- validations on create / update (preselected items in forms)
+	- locations aren't safed properly...
+
+mailbox:
+	- user selection group (follower) should be a textfield with
+	  autocompletion 
+
+userarea:
+	- sending messages inside of a ajax-layer of mailform
+
+groups:
+	- adding images not working...?!?
+	- using pings for attenting to a group or anything similar and easy...
+
+projects:
+	- setup scaffold for projects and tasks
+	- with title, desc, images, locations, resources, comments on tasks
+
+masseinheiten: 
+	- metrics <--> dimensionable <--> item
+	- einheiten so (�hnlich) wie folgt aufbauen:
+	  http://www.einheiten-umrechnen.de/

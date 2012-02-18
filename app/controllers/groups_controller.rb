@@ -58,12 +58,15 @@ class GroupsController < InheritedResources::Base
   end
 
   def show
-    @group = Group.find(params[:id])
     if params[:user_id]
       @user = User.find(params[:user_id])
       @group = @user.groups.find(params[:id])
     else
-    end    
+      @group = Group.find(params[:id])
+    end 
+    if request.path != group_path(@group)
+      redirect_to @group, status: :moved_permanently
+    end   
     @location = @group.locations.first if @group.locations && @group.locations.first
     getLocationsOnMap(@group) if @location and not @location.lat.nil? and not @location.lng.nil?
   end
