@@ -1,11 +1,7 @@
 <p>
+  <%= image_tag(@image.image.url.to_s) %>
+</p>
+<p>
   <%=h @image.image_file_name %>
 </p>
-
-<p>
-  <%=h @image.image.url %>
-</p>
-
-
-<%= link_to 'Edit', edit_images_path(@image) %> |
-<%= link_to 'Back', images_path %>
+<%= @image.inspect %>

@@ -63,6 +63,7 @@ $(document).ready(function (){
 }); 
 
 // Add and remove fields
+
 function remove_fields(link) {  
   $(link).prev('input[type=hidden]').attr('value','1');  
   $(link).parent().parent().hide();  
@@ -72,7 +73,7 @@ function remove_fields(link) {
 
 function add_fields(link, association, content) {  
   var new_id = new Date().getTime();  
-  var regexp = new RegExp('new_' + association, 'g');  
+  var regexp = new RegExp('new_' + association, 'g');
   $(link).parent().before(content.replace(regexp, new_id));  
 }  
 

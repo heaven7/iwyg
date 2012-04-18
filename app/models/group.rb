@@ -4,7 +4,7 @@ class Group < ActiveRecord::Base
     friendly_id :title, use: [:slugged, :history]
 
     attr_accessible :user_id, :user_ids, :title, :description, :tag_list, :tag_tokens, :locations, :users,
-                    :locations_attributes, :images_attributes
+                    :images_attributes, :locations_attributes, :image_file_name, :image_content_type, :image_file_size
 
     attr_reader :tag_tokens
 
@@ -20,7 +20,7 @@ class Group < ActiveRecord::Base
     has_many :locations, :as => :locatable, :dependent => :destroy
     accepts_nested_attributes_for :locations, :allow_destroy => true, :reject_if => proc { |attrs| attrs.blank? }
     has_many :images, :as => :imageable, :dependent => :destroy
-    accepts_nested_attributes_for :images, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
+    accepts_nested_attributes_for :images, :allow_destroy => true#, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
     has_many :item_attachments, :dependent => :destroy
     accepts_nested_attributes_for :item_attachments, :allow_destroy => true, :reject_if => proc { |attrs| attrs[:attachment_id].blank? }
 

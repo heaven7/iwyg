@@ -1,4 +1,9 @@
 class Image < ActiveRecord::Base
+  
+  attr_accessible :image, :imageable_id, :imageable_type,
+                  :image_file_name, :image_content_type, :image_file_size,
+                  :created_at, :image_updated_at, :updated_at
+
   has_attached_file :image, :styles => { :micro => "25x25#", 
                                          :tiny => "50x50#", 
                                          :small => "150x150#", 
@@ -6,14 +11,11 @@ class Image < ActiveRecord::Base
                                          :big => "500x500#"},
                             :default_url => 'global/avatar_dummy_profile.png'
 
-  attr_accessible :image, :imageable_id, :imageable_type, 
-                  :image_file_name, :image_content_type, :image_file_size,
-                  :created_at, :image_updated_at, :updated_at
 
   # for paperclip (polymorphic)
   # rails 2: acts_as_polymorphic_paperclip
   belongs_to :imageable, :polymorphic => true  
- # before_post_process :image?
+  before_post_process :image?
   
 #  validates_attachment_presence :image
   validates_attachment_size :image, :less_than => 2.megabytes

@@ -3,7 +3,7 @@
     <li>
     <% if audit.class.to_s == "Audit" %>
       <div class="action font-small">
-        <%= render :partial => "share/usermicro_flat", :locals => { :user => User.find(audit.user_id) } %>
+        <%= render :partial => "share/usermicro_flat", :locals => { :user => User.find(audit.user_id) } if audit.user_id %>
         <%= case audit.auditable_type.to_s
 
             when "Item"

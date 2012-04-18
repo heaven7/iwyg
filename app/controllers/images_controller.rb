@@ -34,8 +34,7 @@ class ImagesController < InheritedResources::Base
   
   def show
     @user = current_user
-    @imageable = find_imageable
-    @image = Images.find(params[:id])
+    @image = Image.find(params[:id])
   end
   
   def create

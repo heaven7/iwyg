@@ -21,7 +21,7 @@
   });
  </script>
 <% end %>
-<%= semantic_form_for @group do |f| %>
+<%= semantic_form_for @group, :html => {:multipart => true} do |f| %>
   <%= render "share/error_messages", :target => @group %>  
   <div id="tabs">  
     <ul>

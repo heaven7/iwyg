@@ -44,18 +44,16 @@ mailbox:
 	- user selection group (follower) should be a textfield with
 	  autocompletion 
 
-userarea:
-	- sending messages inside of a ajax-layer of mailform
 
 groups:
 	- adding images not working...?!?
 	- using pings for attenting to a group or anything similar and easy...
 
-projects:
-	- setup scaffold for projects and tasks
-	- with title, desc, images, locations, resources, comments on tasks
+#projects:
+#	- setup scaffold for projects and tasks
+#	- with title, desc, images, locations, resources, comments on tasks
 
-masseinheiten: 
-	- metrics <--> dimensionable <--> item
-	- einheiten so (�hnlich) wie folgt aufbauen:
-	  http://www.einheiten-umrechnen.de/
+#masseinheiten: 
+#	- metrics <--> dimensionable <--> item
+#	- einheiten so (�hnlich) wie folgt aufbauen:
+#	  http://www.einheiten-umrechnen.de/

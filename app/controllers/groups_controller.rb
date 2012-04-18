@@ -40,7 +40,7 @@ class GroupsController < InheritedResources::Base
   def new
     @user = current_user
     @group = Group.new
-#    @group.locations.build
+    #    @group.locations.build
     @active_menuitem_l1 = I18n.t "menu.main.groups"
     @active_menuitem_l1_link = user_groups_path
   end
@@ -48,10 +48,10 @@ class GroupsController < InheritedResources::Base
   def edit
     @user = current_user
     @group = Group.find(params[:id])
-#    if @group.images.size == 0
-#      @imageable = find_model
-#      @image = @group.images.build
-#    end
+    #    if @group.images.size == 0
+    #      @imageable = find_model
+    #      @image = @group.images.build
+    #    end
     #@location = @group.locations.first || @group.locations.build
     @active_menuitem_l1 = I18n.t "menu.main.groups"
     #@active_menuitem_l1_link = user_groups_path
@@ -75,8 +75,19 @@ class GroupsController < InheritedResources::Base
     @user = current_user
     @active_menuitem_l1 = I18n.t "menu.main.groups"
     @location = Location.new(params[:locations_attributes]) if params[:locations_attributes]
-    # @image = Image.new(params[:images_attributes]) if params[:images_attributes]
+    @image = Image.new(params[:images_attributes]) if params[:images_attributes]
     create!
+  end
+
+  def update
+    @group = Group.find(params[:id])
+    # gropu.images = Image.new(params[:group][:images_attributes])
+    if @group.update_attributes(params[:group])
+      flash[:notice] = t("flash.groups.update.notice")
+      redirect_to @group
+    else
+      render :action => 'edit'
+    end
   end
 
   def follow
@@ -101,8 +112,8 @@ class GroupsController < InheritedResources::Base
 
   def conditional_layout
     case action_name
-      when "new", "edit", "create", "update" then "userarea"
-      else "application"
+    when "new", "edit", "create", "update" then "userarea"
+    else "application"
     end
   end
 
