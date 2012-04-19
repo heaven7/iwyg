@@ -56,7 +56,7 @@ class User < ActiveRecord::Base
   has_many :comments, :as => :commentable
   has_many :meetings, :dependent => :destroy
   belongs_to :meetups
-  has_many :meetups, :through => :meetings
+  has_many :meetups, :through => :meetings, :dependent => :destroy
   belongs_to :groups
   has_many :groupings, :dependent => :destroy
     

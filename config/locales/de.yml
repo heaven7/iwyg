@@ -503,10 +503,13 @@ de:
       destroy:
         notice: "Kommentar erfolgreich gel&ouml,scht."    
     groups:
+       update:
+         notice: "Erfolgreich Gruppe ge&auml;ndert."
        follow:
           error:
             alreadyFollowing: "Du folgst der Gruppe bereits."
           notice: "Du folgst nun der Gruppe '%{title}'."
+
   ## menu
   
   menu:

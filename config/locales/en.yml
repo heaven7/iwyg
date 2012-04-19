@@ -504,6 +504,8 @@ en:
       destroy:
         notice: "Successfully destroyed comment."
     groups:
+       update:
+         notice: "Successfully updated group."
        follow:
           error:
             alreadyFollowing: "You already follow this group."

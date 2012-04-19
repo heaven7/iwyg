@@ -10,11 +10,14 @@ class GroupsController < InheritedResources::Base
     
     if params[:user_id]
       @user = User.find(params[:user_id])
-      @groups = @user.groups.paginate(
-        :page => params[:page],
-        :per_page => PINGS_PER_PAGE,
-        :order => "created_at DESC"
-      )    
+      
+      if @user.groups and @user.groups.size > 0
+        @groups = @user.groups.paginate(
+          :page => params[:page],
+          :per_page => PINGS_PER_PAGE,
+          :order => "created_at DESC"
+        )
+      end
       @active_menuitem_l1 = I18n.t "menu.main.groups"
       @active_menuitem_l1_link = user_groups_path
       render :layout => 'userarea'
@@ -40,7 +43,7 @@ class GroupsController < InheritedResources::Base
   def new
     @user = current_user
     @group = Group.new
-    #    @group.locations.build
+    @group.locations.build
     @active_menuitem_l1 = I18n.t "menu.main.groups"
     @active_menuitem_l1_link = user_groups_path
   end
