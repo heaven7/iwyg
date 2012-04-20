@@ -1,4 +1,4 @@
-controller:
+﻿controller:
 	- add title to views (maybe generic...)
 
 search:
@@ -36,6 +36,9 @@ locations:
 	- calculation of address is wrong
 
 meetups:
+	- ! after creating a meetup, attending members should get notified, if 
+	  they want to accept this meeting and wanna attend. !
+
 	- participants must be spec. usergroup (friends, followers)
 	- validations on create / update (preselected items in forms)
 	- locations aren't safed properly...
@@ -46,7 +49,6 @@ mailbox:
 
 
 groups:
-	- adding images not working...?!?
 	- using pings for attenting to a group or anything similar and easy...
 
 #projects:

@@ -32,7 +32,7 @@ class ItemsController < InheritedResources::Base
     @itemTypes = ItemType.all
     
     # search by itemType
-    if params[:search] and !params[:tag]   
+    if params[:search] and !params[:search][:tag]
       if not params[:search][:item_type_id_eq].blank?
         @searchItemType = ItemType.find(params[:search][:item_type_id_eq]).title.to_s
       else
@@ -79,21 +79,9 @@ class ItemsController < InheritedResources::Base
         $search = Item.search(params[:search])
       #  index!
       end
-    elsif params[:tag] && params[:search]       
-      # search by tag and search params
-      @tag = params[:tag]
-      @tagtype = "tag"
-      @searchItemType = "Resource"
-      @items = Item.tagged_with(@tag).search(params[:search]).result.paginate(
-        :page => params[:page],
-        :order => "created_at DESC",
-        :per_page => ITEMS_PER_PAGE
-      )
-      @items_count = @items.size  
-    
-    elsif params[:tag]
+    elsif params[:search] && params[:search][:tag]
       # search by tag
-      @tag = params[:tag]
+      @tag = params[:search][:tag]
       @tagtype = "tag"
       @searchItemType = "Resource"
       @items = Item.tagged_with(@tag).search(params[:search]).result.paginate(
