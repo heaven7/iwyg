@@ -58,7 +58,8 @@ class User < ActiveRecord::Base
   belongs_to :meetups
   has_many :meetups, :through => :meetings, :dependent => :destroy, :include => [:events], :order => "events.from desc"
   belongs_to :groups
-  has_many :groupings, :dependent => :destroy
+  has_many :groups
+  # has_many :groupings, :dependent => :destroy
     
   # has_one
   has_one :custom, :as => :customable

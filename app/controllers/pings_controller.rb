@@ -51,6 +51,16 @@ class PingsController < InheritedResources::Base
         :order => "created_at DESC"
       )
       render :layout => 'application'
+
+    elsif @pingable.class.to_s == "Group"
+      @group = Group.find(params[:group_id])
+      @pings = @group.pings
+      @pings_all = @pings.paginate(
+         :page => params[:page],
+        :per_page => PINGS_PER_PAGE,
+        :order => "created_at DESC"
+      )
+      render :layout => 'application'
     else
       @pings = Ping.find(:all, :order => "pings.created_at DESC" )
       @pings.paginate(
@@ -93,14 +103,16 @@ class PingsController < InheritedResources::Base
   def create
     @params = params[:ping]
     @params[:status] = 1
-    @pingable = find_pingable
+    @pingable = find_model
+
+    # following users
     if params[:ping][:followuser]
       @ping = current_user.pings.build(@params)
       @resourceType = "User"
       @resource = User.find(params[:ping][:pingable_id])
     else
       @ping = @pingable.pings.build(@params)
-      @resourceType = @pingable.class.to_s
+      @resourceType = @pingable.class.to_s || @ping.pingable_type.to_s
       @resource = @pingable.class.find(@ping.pingable_id)
     end
     
@@ -114,7 +126,7 @@ class PingsController < InheritedResources::Base
       if @resourceType == "User"
         flash[:error] = t("flash.pings.create.error.pingself") 
       else
-        flash[:error] = t("flash.pings.create.error.pingown", :resourceType => @resourceType) 
+        flash[:error] = t("flash.pings.create.error.pingown", :resourceType => I18n.t("#{@resourceType.downcase}.singular"))
       end
       redirect_to(@resource)    
     elsif @ping.exists? and @resourceType == "User"

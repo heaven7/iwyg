@@ -292,11 +292,11 @@ de:
         accepted: "%{user.login} hat deinen Ping akzeptiert."
         declined: "%{user.login} hat deinen Ping  abgelehnt."
         closed: "Dein Ping auf '%{resource_title}' wurde geschlossen."
-      transfer: 
-        opened: "%{pinger} hat deinen Transfer: '%{resource_title}' angepingt."
-        accepted: "Dein Ping auf Transfer: '%{resource_title}' wurde akzeptiert."
-        declined: "Dein Ping auf Transfer: '%{resource_title}' wurde abgelehnt."
-        closed: "Dein Ping auf Transfer: '%{resource_title}' wurde geschlossen."
+      group:
+        opened: "%{pinger} hat deine Gruppe: '%{resource_title}' angepingt."
+        accepted: "Dein Ping auf Gruppe: '%{resource_title}' wurde akzeptiert."
+        declined: "Dein Ping auf Gruppe: '%{resource_title}' wurde abgelehnt."
+        closed: "Dein Ping auf Gruppe: '%{resource_title}' wurde geschlossen."
       item:
         good:
           opened: "%{pinger} hat dein Gut: '%{resource_title}' angepingt."
@@ -336,6 +336,8 @@ de:
   group:
     one: "1 Gruppe"
     other: "%{count} Gruppen"
+    singular: "Gruppe"
+    plural: "Gruppen"
     new: "Neue Gruppe"
     participant:
       one: "1 Teilnehmer"
@@ -448,8 +450,8 @@ de:
     pings:
       create:
         error:
-          pingself: "Du kannst dich selbst nicht pingen!"
-          pingown: "Du kannst %{@resourceType} nicht pingen!"
+          pingself: "Du kannst dich selbst nicht anpingen!"
+          pingown: "Du kannst %{resourceType} nicht anpingen!"
           pingedAlready: "Du hast schon diese(n) %{type} angepingt!"
         notice: "Ping erfolgreich gesendet."
       update:

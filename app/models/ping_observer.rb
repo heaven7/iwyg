@@ -84,10 +84,9 @@ class PingObserver < ActiveRecord::Observer
       when "User" then
         @id = @resource.id
         @notifyOn = "ping.notifyOn.user"
-      when "Transfer" then
+      when "Group" then
         @id = @resource.user_id
-        @resource = Item.find(@resource.transferable_id)
-        @notifyOn = "ping.notifyOn.transfer"
+        @notifyOn = "ping.notifyOn.group"
       when "Item" then
         @itemType = ItemType.find(@resource.item_type_id.to_i).title.downcase
         @id = @resource.user_id   

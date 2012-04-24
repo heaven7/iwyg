@@ -100,10 +100,10 @@ class Ping < ActiveRecord::Base
       user = User.find(pingable_id)
       image = "<img src=\"/images/icons/icon_user.png\" title=\"#{user.login}\"/>"
       title = user.login
-    when "Transfer"
-      transfer = Transfer.find(pingable_id)
-      image = "<img src=\"/images/icons/icon_transfer.png\" title =\"Transfer\" />"
-      title = Item.find(transfer.transferable_id).title
+    when "Group"
+      group = Group.find(pingable_id)
+      title = group.title
+      image = "<img src=\"/images/icons/icon_group.png\" title =\"#{title}\" />"
     end
     image + "&nbsp;" + title
   end

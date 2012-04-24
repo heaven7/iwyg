@@ -291,11 +291,11 @@ en:
         accepted: "%{user.login} has accepted your ping."
         declined: "%{user.login} has declined your ping."
         closed: "Your ping on %{resource_title} has been closed."
-      transfer: 
-        opened: "%{pinger} has pinged your transfer (of %{resource_title})."
-        accepted: "Your ping on transfer: '%{resource_title}' has been accepted."
-        declined: "Your ping on transfer: '%{resource_title}' has been declined."
-        closed: "Your ping on transfer: '%{resource_title}' has been closed."
+      group:
+        opened: "%{pinger} has pinged your group (of %{resource_title})."
+        accepted: "Your ping on group: '%{resource_title}' has been accepted."
+        declined: "Your ping on group: '%{resource_title}' has been declined."
+        closed: "Your ping on group: '%{resource_title}' has been closed."
       item:
         good:
           opened: "%{pinger} has pinged your good: '%{resource_title}'."
@@ -335,6 +335,8 @@ en:
   group:
     one: "1 Group"
     other: "%{count} Groups"
+    singular: "Group"
+    plural: "Groups"
     new: "New Group"
     participant:
       one: "1 Participant"
@@ -450,7 +452,7 @@ en:
       create:
         error:
           pingself: "You cannot ping yourself!"
-          pingown: "You cannot ping your own %{@resourceType}!"
+          pingown: "You cannot ping your own %{resourceType}!"
           pingedAlready: "You already have sent a ping to this %{type}!"
         notice: "Ping was successfully sent."
       update:

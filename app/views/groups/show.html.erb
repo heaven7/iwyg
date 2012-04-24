@@ -1,5 +1,8 @@
 <h1><%= @group.title.html_safe %></h1>
 <%= render :partial => "groupmenu", :locals => { :group => @group } %>
+<% if logged_in? and not @group.attended?(current_user) %>
+    <%= render :partial => "pings/form", :locals => {:pingable => @group} %>
+<% end %>
 <div class="sub2cols">
   <div class="subcol1">
       <%= render :partial => "share/images", :locals => {:images => @group.images} %>
