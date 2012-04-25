@@ -276,6 +276,7 @@ de:
     of: "Ping auf"
     transfer: "Diesen Transfer pingen"
     accept: "Akzeptieren"
+    acceptMember: "Mitglied aufnehmen"
     decline: "Ablehnen"
     setTransfer: "Transfer starten"
     setAppointment: "Termin ausmachen"
@@ -462,7 +463,8 @@ de:
         error:
           alreadyAccepted: "Dieser Ping ist schon akzeptiert!"     
           notAllowed: "Du darfst diesen Ping nicht akzeptieren!" 
-        notice: "Ping wurde akzeptiert!" 
+        notice: "Ping wurde akzeptiert!"
+        membership: "Mitglied aufgenommen."
       decline:
         error:
           alreadyDeclined: "Dieser Ping ist schon abgelehnt!" 
@@ -595,6 +597,7 @@ de:
     ressource: "Resource"
     description: "Beschreibung"
     holder: "Verwalter"
+    memberships: "Mitglied von"
   
   ## friendships
   

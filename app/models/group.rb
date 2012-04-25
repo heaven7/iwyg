@@ -40,11 +40,8 @@ class Group < ActiveRecord::Base
     end
   end
 
-  def attended?(user)
-    self.pings.each do |ping|
-      return true if ping.owner == user
-    end
-    return false
+  def member?(user)
+    self.users.include?(user)
   end
 
   def self.title

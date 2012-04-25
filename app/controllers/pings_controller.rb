@@ -16,24 +16,36 @@ class PingsController < InheritedResources::Base
   def index
     @pingable = find_pingable
 
-    # listing of users pings and others pinged on users resources
+    
     if @pingable.class.to_s == "User"
       @user = User.find(params[:user_id])
       @pings_all = @user.pings
       @active_menuitem_l1 = I18n.t "menu.user.pings"
       @active_menuitem_l1_link = user_pings_path
-      
+
+      # listing of users pings and others pinged on users resources
       @user.items.map do |i|
         @inverse_pings = i.pings.each do |p|
           p
         end
       end
-     @pings_on_user = Ping.user.each do |p|
+
+      # attending and invited users of groups
+      @user.groups.map do |i|
+        @pings_on_groups = i.pings.each do |p|
+          p
+        end
+      end
+     
+      # other users pinged on current one
+      @pings_on_user = Ping.user.each do |p|
         p if p.owner == @user || p.pingable_id == current_user.id
-     end
+      end
 
       @pings_all += @inverse_pings if @inverse_pings
+      @pings_all += @pings_on_groups if @pings_on_groups
       @pings_all += @pings_on_user if @pings_on_user
+      
       @pings_all = @pings_all.sort_by(&:created_at).reverse.uniq
       @pings_count = @pings_all.size
       @pings_all = @pings_all.paginate(
@@ -46,7 +58,7 @@ class PingsController < InheritedResources::Base
       @item = Item.find(params[:item_id])
       @pings = @item.pings
       @pings_all = @pings.paginate(
-         :page => params[:page],
+        :page => params[:page],
         :per_page => PINGS_PER_PAGE,
         :order => "created_at DESC"
       )
@@ -55,8 +67,9 @@ class PingsController < InheritedResources::Base
     elsif @pingable.class.to_s == "Group"
       @group = Group.find(params[:group_id])
       @pings = @group.pings
+     
       @pings_all = @pings.paginate(
-         :page => params[:page],
+        :page => params[:page],
         :per_page => PINGS_PER_PAGE,
         :order => "created_at DESC"
       )
@@ -64,7 +77,7 @@ class PingsController < InheritedResources::Base
     else
       @pings = Ping.find(:all, :order => "pings.created_at DESC" )
       @pings.paginate(
-         :page => params[:page],
+        :page => params[:page],
         :per_page => PINGS_PER_PAGE,
         :order => "created_at DESC"
       )   
@@ -173,6 +186,7 @@ class PingsController < InheritedResources::Base
     when "User"
       #acceptPingOnUser(@ping)
     when "Group"
+      acceptPingOnGroup(@ping)
     when "Project"
     end
       
@@ -237,6 +251,25 @@ class PingsController < InheritedResources::Base
     end
   end
 
+  # accepts membership to a group
+  # adds user to memberlist of the group
+  def acceptPingOnGroup(ping)
+    @ping = ping
+    @resource = Group.find(@ping.pingable_id)
+    @members = @resource.users
+    if current_user.id == @resource.user_id
+      if @ping.status.to_i == 2
+        flash[:error] = t("flash.pings.accept.error.alreadyAccepted")
+      else
+        if @ping.update_attributes('status' => 2, 'accepted_at' => Time.now) and @resource.users << @ping.owner
+          flash[:notice] = t("flash.pings.accept.membership")
+        end
+      end
+    else
+      flash[:error] = t("flash.pings.accept.error.notAllowed")
+    end
+  end
+
   # by accepting current_user let ping.owner follow him
   def acceptPingOnUser(ping)
     @user = User.find(ping.pingable_id)
@@ -263,8 +296,8 @@ class PingsController < InheritedResources::Base
     
   def conditional_layout
     case action_name
-      when "new", "create" then "application"
-      else "userarea"
+    when "new", "create" then "application"
+    else "userarea"
     end
   end
   

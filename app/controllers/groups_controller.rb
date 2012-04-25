@@ -18,6 +18,12 @@ class GroupsController < InheritedResources::Base
           :order => "created_at DESC"
         )
       end
+      # get all groups with membership of current_user
+      @memberships = Array.new
+      Group.all do |group|
+        members = group.users
+        @memberships << group if group.users.include?(@user)
+      end
       @active_menuitem_l1 = I18n.t "menu.main.groups"
       @active_menuitem_l1_link = user_groups_path
       render :layout => 'userarea'

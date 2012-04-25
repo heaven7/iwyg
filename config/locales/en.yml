@@ -275,6 +275,7 @@ en:
     of: "Ping of"
     transfer: "Apply for this transfer (make a ping)"
     accept: "Accept"
+    acceptMember: "Accept member"
     decline: "Decline"
     setTransfer: "Set Transfer"
     setAppointment: "Set Appointment"
@@ -463,7 +464,8 @@ en:
         error:
           alreadyAccepted: "This ping is accepted already!"     
           notAllowed: "You are not allowed to accept!" 
-        notice: "Ping is accepted!" 
+        notice: "Ping is accepted!"
+        membership: "Mitglied aufgenommen."
       decline:
         error:
           alreadyDeclined: "This ping is declined already!" 
@@ -597,6 +599,7 @@ en:
     ressource: "Ressource"
     description: "Description"
     holder: "Holder"
+    memberships: "Memberships"
 
   ## friendships
   

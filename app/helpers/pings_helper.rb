@@ -128,6 +128,16 @@ module PingsHelper
         when "closed"
         end
 
+      elsif ping.pingable_type == "Group"
+        group = Group.find(ping.pingable_id)
+        case pingstatus
+
+        when "opened"
+          if group.owner == current_user
+            link_to t("ping.acceptMember"), accept_ping_path(ping), :method => :put
+          end
+        end
+
       elsif ping.pingable_type == "User"
         case pingstatus
 
