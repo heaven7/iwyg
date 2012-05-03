@@ -26,6 +26,7 @@
     position: absolute;
     top: 10px;
     left: 102%;
+    width: 21px;
 }
 
 #search #searchform #search_title_contains,

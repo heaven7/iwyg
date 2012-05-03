@@ -1,49 +1,41 @@
 <% content_for :head do %>   
   <%= stylesheet_link_tag 'jquery.listbuilder.css' %>
   <%= javascript_include_tag 'jquery-ui-listbuilder' %>
-  
+
   <script type="text/javascript">
-  $(document).ready(function (){
+    $(document).ready(function (){
   
-    /* TABS */
-    $("#tabs").tabs();
-    showErrorTabs();
+      /* TABS */
+      $("#tabs").tabs();
+      showErrorTabs();
 
-    /* VALIDATION */
-    $('#new_item').railsAjaxValidation();
+      /* VALIDATION */
+      // $('#new_item').railsAjaxValidation();
 
-    /* DATEPICKER */ 	
-  	$("#item_from").datetimepicker({
-      changeYear: true
-     });
-  	$("#item_till").datetimepicker({
-      changeYear: true
-     });
+      /* LOCATION */
+      var address = $("#item_location_attributes_address").attr('value');
+      var city =  $("#item_location_attributes_address").attr('value');
+      $("#self_location:checkbox").click(function () {
+        checked = $(this).attr('checked')
+        if (!checked) {
+          $("#item_location_attributes_address").attr('value','');
+          $("#item_location_attributes_city").attr('value','');
+          $("#item_location_attributes_country").find("option:first").attr('value','');
+          $("#item_location_attributes_country").find("option:first").html('');
+        }
+      });
      
-    /* LOCATION */
-    var address = $("#item_location_attributes_address").attr('value');
-    var city =  $("#item_location_attributes_address").attr('value');
-    $("#self_location:checkbox").click(function () {
-      checked = $(this).attr('checked')
-      if (!checked) {
-        $("#item_location_attributes_address").attr('value','');
-        $("#item_location_attributes_city").attr('value','');
-        $("#item_location_attributes_country").find("option:first").attr('value','');
-        $("#item_location_attributes_country").find("option:first").html('');
-      }
-    });
-     
-    /* AUTOCOMPLETE & LISTBUILDER */
-    $( "#item_tag_list" ).listbuilder({autocomplete:{source: '/items/tag_suggestions.js'}});
-    $(".ui-listbuilder-input").addClass("noEnterSubmit");
-    $(".noEnterSubmit").keypress(function(e){
+      /* AUTOCOMPLETE & LISTBUILDER */
+      $( "#item_tag_list" ).listbuilder({autocomplete:{source: '/items/tag_suggestions.js'}});
+      $(".ui-listbuilder-input").addClass("noEnterSubmit");
+      $(".noEnterSubmit").keypress(function(e){
         if ( e.which == 13 ) return false;
-    //    if ( e.which == 13 ) e.preventDefault();
-    });
+        //    if ( e.which == 13 ) e.preventDefault();
+      });
  
-    /* IMAGES */
-    $('.image .file').hide();
-    /*
+      /* IMAGES */
+      $('.image .file').hide();
+      /*
     $('.image .options').hide();
     $('.image').hover(
       function () {
@@ -53,94 +45,86 @@
         $(this).find('.options').hide();
       }
     );
-    */
+       */
   
-    /* ATTACHMENTS */
-    $('.attachment .select').hide();
+      /* ATTACHMENTS */
+      $('.attachment .select').hide();
     
-    /* Add Styles */
-    $('.ui-listbuilder-input').addClass('ui-corner-all');
+      /* Add Styles */
+      $('.ui-listbuilder-input').addClass('ui-corner-all');
   
-});
-</script>
+    });
+  </script>
 <% end %>
 <%= semantic_form_for @item, :html => {:multipart => true}, :validate => true do |f| %>
   <%= render "share/error_messages", :target => @item %>
   <div id="tabs">
     <ul>
-  		<li><a href="#what"><%= t("form.resource.what").html_safe %></a></li>
+      <li><a href="#what"><%= t("form.resource.what").html_safe %></a></li>
       <li><a href="#how_much"><%= t("form.resource.howMuch").html_safe %></a></li>
-  		<li><a href="#location"><%= t("form.resource.where").html_safe %></a></li>
-  		<li><a href="#when"><%= t("form.resource.when").html_safe %></a></li>
-  		<li><a href="#images"><%= t("form.resource.images").html_safe %></a></li>
-                <li><a href="#attachments"><%= t("form.resource.attachments").html_safe %></a></li>
-  	</ul>
-  	<div id="what" class="tab_content ">
-    <%= f.inputs do %>
-      <%= f.input :user_id, :as => :hidden, :required => false, :value => current_user.id %>
-      <%= f.input :need, :as => :select, :label => t("form.resource.i"), :include_blank => false, :collection => [[t("form.resource.need"), true], [t("form.resource.have"), false]] %>
-      <%# f.input :item_type_id, :as => :select, :label => t("form.resource.a"), :collection => options_for_select(ItemType.all.map { |i| [I18n.t("#{i.title}.singular").to_s.html_safe ,i.id ] } ), :include_blank => true %>
-      <%= f.input :item_type_id, :as => :select, :label => t("form.resource.a"), :collection => ItemType.all.collect { |i| [I18n.t("#{i.title}.singular").to_s.html_safe ,i.id ] }, :include_blank => true  %>
-      <%= f.input :multiple, :required => false %>
-      <hr class="divider" />
-      <li><%= f.input :title %></li>
-      <li id="item_tag_list_input">
-       <%= f.input :tag_list, :required => false %>
-      </li>
-      <%= f.input :description, :required => false %>
-      <hr class="divider" />     
-    <% end %>
-    </div> 
+      <li><a href="#location"><%= t("form.resource.where").html_safe %></a></li>
+      <li><a href="#when"><%= t("form.resource.when").html_safe %></a></li>
+      <li><a href="#images"><%= t("form.resource.images").html_safe %></a></li>
+      <li><a href="#attachments"><%= t("form.resource.attachments").html_safe %></a></li>
+    </ul>
+    <div id="what" class="tab_content ">
+      <%= f.inputs do %>
+        <%= f.input :user_id, :as => :hidden, :required => false, :value => current_user.id %>
+        <%= f.input :need, :as => :select, :label => t("form.resource.i"), :include_blank => false, :collection => [[t("form.resource.need"), true], [t("form.resource.have"), false]] %>
+    <%# f.input :item_type_id, :as => :select, :label => t("form.resource.a"), :collection => options_for_select(ItemType.all.map { |i| [I18n.t("#{i.title}.singular").to_s.html_safe ,i.id ] } ), :include_blank => true %>
+        <%= f.input :item_type_id, :as => :select, :label => t("form.resource.a"), :collection => ItemType.all.collect { |i| [I18n.t("#{i.title}.singular").to_s.html_safe ,i.id ] }, :include_blank => true  %>
+        <%= f.input :multiple, :required => false %>
+        <hr class="divider" />
+        <li><%= f.input :title %></li>
+        <li id="item_tag_list_input">
+          <%= f.input :tag_list, :required => false %>
+        </li>
+        <%= f.input :description, :required => false %>
+      <% end %>
+    </div>
     <div id="how_much" class="tab_content">
       <%= f.inputs do %>
         <%= f.input :amount, :required => false, :input_html => {:class => "short"}, :as => :number %>
-        <%# f.semantic_fields_for :measure do |measure_form| %>
-          <%= f.input :measure_id, :as => :select, :label => t("formtastic.labels.item.measure"), :collection => @measures, :required => false %>
-        <%# end %>
+    <%# f.semantic_fields_for :measure do |measure_form| %>
+        <%= f.input :measure_id, :as => :select, :label => t("formtastic.labels.item.measure"), :collection => @measures, :required => false %>
+    <%# end %>
       <% end %>
-      <hr class="divider" />
     </div>
     <div id="location">
       <%= render :partial => "locations/nested_form", :locals => { :f => f, :belongs_to => "item" } %>
-      <hr class="divider" />
     </div>
     <div id="when" class="tab_content">
-       <%= f.inputs do %>
+      <%= f.inputs do %>
         <%= render :partial => "events/nested_form", :locals => { :f => f, :belongs_to => "meetup" } %>
-       <% end %>                                                                                       
-      <hr class="divider" />
-     </div>
+      <% end %>
+    </div>
     <div id="images" class="tab_content">
-    <%= f.inputs do %>
-      <% c = -1 %>
-      <li>
+      <%= f.inputs do %>
+        <% c = -1 %>
         <div class="button new">
           <%= link_to_add_fields t("images.new").html_safe, f, :images %>
         </div>
-      </li> 
-      <%= f.semantic_fields_for :images do |image_form| %>
-        <%  c+= 1
+        <%= f.semantic_fields_for :images do |image_form| %>
+          <%  c+= 1
           image = nil || @item.images[c].image if !@item.images[c].image.url.include? "missing"
         %>
-        <div class="image center ui-corner-all">
-          <%= link_to image_tag(image.url("small")), image.url("big") if image %>
-          <%# render 'share/image_fields', :f => image_form %>
-          <div class="options">
-            <%= link_to_function image_tag(("icons/icon_image_edit.png"), :alt => t("edit"), :title => t("edit")), "edit_field(this)" if c < @item.images.count %>
-            <%= link_to_remove_fields image_tag(("icons/icon_image_remove.png"), :alt => t("remove"), :title => t("remove")), image_form if c < @item.images.count %>
+          <div class="image center ui-corner-all">
+            <%= link_to image_tag(image.url("small")), image.url("big") if image %>
+            <%# render 'share/image_fields', :f => image_form %>
+            <div class="options">
+              <%= link_to_function image_tag(("icons/icon_image_edit.png"), :alt => t("edit"), :title => t("edit")), "edit_field(this)" if c < @item.images.count %>
+              <%= link_to_remove_fields image_tag(("icons/icon_image_remove.png"), :alt => t("remove"), :title => t("remove")), image_form if c < @item.images.count %>
+            </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
-    <% end %>  
-      <hr class="divider" />
     </div>
     <div id="attachments" class="tab_content">
       <%= render :partial => "items/item_attachments", :locals => { :object => @item, :f => f } %>
-      <hr class="divider" />
     </div>
   </div>
   <%= f.buttons do %>
     <%= f.commit_button :label => t("save") %>
   <% end %>
-  </div>  
+  </div>
 <% end %>

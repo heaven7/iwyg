@@ -77,6 +77,9 @@ form.formtastic .date fieldset legend span{
   padding-top:0.2em;
 }
 
+form.formtastic fieldset ol fieldset ol {
+    padding: 7% !important;
+}
 form.formtastic fieldset fieldset legend {
   background:none repeat scroll 0 0 transparent;
   border:medium none;

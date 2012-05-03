@@ -1,10 +1,8 @@
 <%= f.inputs do %>  
     <% d = -1 %>  
-    <li>
       <div class="button new">
         <%= link_to_add_fields t("item_attachments.new").html_safe, f, :item_attachments %>
       </div>
-    </li>  
     <%= f.semantic_fields_for :item_attachments do |attachment_form| %>
       <% 
         d += 1
