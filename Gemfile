@@ -1,4 +1,4 @@
-require 'rake/dsl_definition'
+# require 'rake/dsl_definition'
 
 source :rubygems
 # source 'http://gems.github.com'
