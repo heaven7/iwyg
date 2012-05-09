@@ -2,7 +2,7 @@ class MeetupsController < InheritedResources::Base
 
   layout :conditional_layout
   respond_to :html, :xml, :json
-#  before_filter :login_required
+  #  before_filter :login_required
   
   def index 
     @user = User.find(params[:user_id]) if params[:user_id]
@@ -30,18 +30,23 @@ class MeetupsController < InheritedResources::Base
   
   
   def new
-    if params[:item]
-      @attachable_id = params[:item][:attachable_id]
-      @ping = Ping.find(params[:item][:ping])
-      @item = Item.find(@attachable_id)
-    end
+
     @user = current_user
     @active_menuitem_l1 = I18n.t "menu.user.meetups" 
     @active_menuitem_l1_link = polymorphic_path([@user, :meetups])
     @meetup = Meetup.new
-    @users = User.all
     @meetup.locations.build 
     @meetup.events.build
+
+    if params[:item]
+      @attachable_id = params[:item][:attachable_id]
+      @ping = Ping.find(params[:item][:ping])
+      @item = Item.find(@attachable_id)
+      @meetup.users = Array[current_user, @ping.owner]
+    else
+      @meetup.users = @user.followers
+      @meetup.users << @user.following_users
+    end
   end
   
   def create
@@ -51,7 +56,7 @@ class MeetupsController < InheritedResources::Base
     @users = User.all
     @meetup.locations.build if not @meetup.locations.size == 0
     @meetup.events.build if @meetup.events.size == 0
-   # create!
+    # create!
    
     if @meetup.save
       redirect_to @meetup
@@ -99,9 +104,9 @@ class MeetupsController < InheritedResources::Base
   
   def conditional_layout
     case action_name
-      when "index" then "application"
-      else "userarea"
+    when "index" then "application"
+    else "userarea"
     end
   end
 
- end
+end

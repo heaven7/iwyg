@@ -20,12 +20,12 @@ $(document).ready(function (){
     
     $('#advanced_search').click(function (event) {
       event.preventDefault();
-      headerWidth = $('#header').css("height");
-      if (headerWidth == "110px") {
+      headerHeight = $('#header').css("height");
+      if (headerHeight == "110px") {
         $('#header').animate({height: '310px'}, 400);
         $('#submit-search').css("top", "140px");
       } else {
-        $('#header').animate({height: '106px'}, 400);
+        $('#header').animate({height: '110px'}, 400);
         $('#submit-search').animate({opacity: '0'}, 0);
         $('#submit-search').css("top", "10px");
         $('#submit-search').animate({opacity: '1'}, {duration: 600, easing: 'linear'} );

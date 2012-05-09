@@ -1,4 +1,8 @@
-﻿controller:
+﻿customization (!):
+	- add Custom-Model to items, meetups,... for visibility and deletion
+
+
+controller:
 	- add title to views (maybe generic...)
 
 search:
