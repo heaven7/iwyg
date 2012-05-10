@@ -731,7 +731,8 @@ en:
       meetup:
         title: "Title"
         description: "Description" 
-        users: "Participants"    
+        users: "Participants"
+        invite_users: "Invite users"
       item:
         title: "Title"  
         description: "Description"

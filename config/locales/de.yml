@@ -730,6 +730,7 @@ de:
         title: "Titel"
         description: "Beschreibung"
         users: "Teilnehmer"  
+        invite_users: "Teilnehmer einladen"
       item:
         title: "Titel"
         description: "Beschreibung"

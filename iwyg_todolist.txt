@@ -1,8 +1,4 @@
-﻿customization (!):
-	- add Custom-Model to items, meetups,... for visibility and deletion
-
-
-controller:
+﻿controller:
 	- add title to views (maybe generic...)
 
 search:
@@ -53,7 +49,9 @@ mailbox:
 
 
 groups:
-	- using pings for attenting to a group or anything similar and easy...
+	- using pings for making invitations of a group to a user or anything similar and easy...
+
+
 
 #projects:
 #	- setup scaffold for projects and tasks
