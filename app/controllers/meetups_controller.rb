@@ -25,6 +25,10 @@ class MeetupsController < InheritedResources::Base
       @meetup = Meetup.find(params[:id])
     end
     getLocationsOnMap(@meetup)
+    @active_menuitem_l1 = I18n.t "menu.main.meetups"
+    @active_menuitem_l1_link = polymorphic_path([@user, :meetups])
+    @active_menuitem_l2 = @meetup.title
+    @active_menuitem_l2_link = user_meetup_path(@meetup)
     show!
   end  
   

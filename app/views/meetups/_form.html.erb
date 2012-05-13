@@ -55,7 +55,7 @@
         <%= link_to t("formtastic.labels.meetup.invite_users"), "#" %>
       </div>
       <%= f.inputs do %>
-        <%= f.input :users, :as => :check_boxes, :collection => @meetup.users, :member_label => Proc.new { |u| "#{image_tag(tinyThumb(u), :alt => u.login, :title => u.login)}<br />#{u.login}".html_safe } %>
+        <%= f.input :users, :as => :check_boxes, :collection => @meetup.users, :member_label => Proc.new { |u| "#{render :partial => "share/usertiny", :locals => { :user => u }}".html_safe } %>
       <% end %>
     </div>
     <div id="attachments" class="tab_content">

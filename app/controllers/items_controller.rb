@@ -73,7 +73,8 @@ class ItemsController < InheritedResources::Base
         $search = @user.items.search(params[:search]) 
         @active_menuitem_l1 = I18n.t "menu.main.resources"
         @active_menuitem_l1_link = user_items_path         
-        @active_menuitem_l2 = @searchItemType.downcase          
+        @active_menuitem_l2 = @searchItemType.downcase
+        @active_menuitem_l2_link = user_items_path("q" => params[:q])
         render :layout => 'userarea'
       else
         $search = Item.search(params[:search])

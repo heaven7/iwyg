@@ -1,4 +1,8 @@
-﻿controller:
+﻿add customizations:
+	- for deletion, visibility
+
+
+controller:
 	- add title to views (maybe generic...)
 
 search:
@@ -21,7 +25,8 @@ follow:
 	- manage to block items, ...
 messages:
 	-users get notified when message was sent to user
-
+	 => message_observer
+ 
 friendly_id:
 	- no spaces in browserurls
 
@@ -50,7 +55,7 @@ mailbox:
 
 groups:
 	- using pings for making invitations of a group to a user or anything similar and easy...
-
+	- group_observer to send pings to invited users, also via mail
 
 
 #projects:

@@ -524,6 +524,7 @@ en:
       groups: "Groups"
       help: "Help"
       about: "About"
+      meetups: "Meetups"
     user:
       profile: "Profile"
       resources: "Resources"

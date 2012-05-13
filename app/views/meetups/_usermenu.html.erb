@@ -1,10 +1,9 @@
 <% if meetup.owner == current_user %>
-    <ul class="horizontal usermenu ui-corner-all">
-      <li><%= link_to image_tag("icons/icon_edit.png", :title => t("edit"), :alt => t("edit")), edit_meetup_path(meetup) %></li>
-      <li><%= link_to image_tag("icons/icon_delete.png", :title => t("delete"), :alt => t("delete")), 
+    <div class="button">
+      <%= link_to t("edit").html_safe, edit_meetup_path(meetup) %>
+      <%= link_to t("delete").html_safe,
           {:action => "destroy", :id => meetup},
           :confirm => t("confirm_delete"),
           :method => :delete %>
-      </li>
-    </ul>
+    </div>
 <% end %>
