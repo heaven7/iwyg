@@ -20,6 +20,7 @@ group :stage do
   gem 'geokit'
 end
 
+gem 'roadie'
 gem 'mysql2', '0.2.6'
 gem 'mongrel', '>= 1.2.0.pre2'
 gem 'inherited_resources'
