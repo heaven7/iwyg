@@ -21,6 +21,7 @@ group :stage do
 end
 
 gem 'roadie'
+gem 'sqlite3-ruby'
 gem 'mysql2', '0.2.6'
 gem 'mongrel', '>= 1.2.0.pre2'
 gem 'inherited_resources'
@@ -37,7 +38,7 @@ gem 'client_side_validations'
 
 gem 'devise' #, :git => 'git://github.com/plataformatec/devise.git'   
 gem 'devise_rpx_connectable'
-gem 'formtastic' #, '2.1.0.beta1'
+gem 'formtastic', '2.1.0.beta1'
 gem 'geocoder'
 gem 'gmaps4rails'
 gem 'ajaxful_rating', '2.2.8.2'
@@ -56,7 +57,7 @@ gem "acts_as_audited", "2.0.0"
 #group :test do
 #  gem "capybara"
 #  gem "guard-rspec"
-#  gem "populator"
-#  gem "faker"
+  gem "populator"
+  gem "faker"
 #end
 
