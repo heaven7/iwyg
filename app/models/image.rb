@@ -16,6 +16,8 @@ class Image < ActiveRecord::Base
   # rails 2: acts_as_polymorphic_paperclip
   belongs_to :imageable, :polymorphic => true  
   before_post_process :image?
+
+  has_one :custom, :as => :customable
   
 #  validates_attachment_presence :image
   validates_attachment_size :image, :less_than => 2.megabytes

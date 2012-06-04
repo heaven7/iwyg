@@ -55,6 +55,7 @@ class Item < ActiveRecord::Base
   has_one :item_type
   has_one :item_status, :as => :status
   has_one :measure
+  has_one :custom, :as => :customable
   
   # delegations
   delegate :city, :lat, :lng, :to => :locations

@@ -8,15 +8,14 @@ class Group < ActiveRecord::Base
 
   attr_reader :tag_tokens
 
-  belongs_to :user
-  has_many :groupings
-  has_many :users, :through => :groupings
-  #has_and_belongs_to_many :users
-    
   acts_as_followable
   acts_as_taggable_on :tags
   acts_as_audited
 
+  belongs_to :user
+  has_many :groupings
+  has_many :users, :through => :groupings
+  #has_and_belongs_to_many :users
   has_many :locations, :as => :locatable, :dependent => :destroy
   accepts_nested_attributes_for :locations, :allow_destroy => true, :reject_if => proc { |attrs| attrs.blank? }
   has_many :images, :as => :imageable, :dependent => :destroy
@@ -25,7 +24,9 @@ class Group < ActiveRecord::Base
   accepts_nested_attributes_for :item_attachments, :allow_destroy => true, :reject_if => proc { |attrs| attrs[:attachment_id].blank? }
   has_many :pings, :as => :pingable, :dependent => :destroy
   has_many :inverse_pings, :source => "Ping", :foreign_key => :pingable_id, :conditions => 'pingable_type = Group'
-  
+
+  has_one :custom, :as => :customable
+
   validates :title, :presence => true
 
   def owner

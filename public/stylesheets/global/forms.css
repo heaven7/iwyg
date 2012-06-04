@@ -28,7 +28,9 @@ fieldset {
   margin-right:auto !important;
   margin-top:1em;
 }
-
+.registration form#new_user .inputs {
+    padding-top: 1em;
+}
 .inputs p {
   font-size:80%;
   padding: 0.3em;

@@ -5,6 +5,9 @@
 controller:
 	- add title to views (maybe generic...)
 
+comments:
+	- messaging on commenting objects
+
 search:
 	- by tags
 mailer:

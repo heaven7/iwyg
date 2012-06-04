@@ -10,9 +10,9 @@ namespace :db do
     [User, Userdetails, Location, Item, Ping, Group, Tag, Tagging, ItemAttachment].each(&:delete_all)
 
     User.populate 10 do |user|
-      user.login    = Faker::Name.first_name
-      user.email   = Faker::Internet.email
-      
+      user.login              = Faker::Internet.user_name
+      user.email              = Faker::Internet.email
+      # user.encrypted_password =
       Userdetails.populate 1 do |userdetails|
         userdetails.user_id = user.id
         userdetails.firstname  = Faker::Name.first_name

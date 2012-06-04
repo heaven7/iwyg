@@ -23,7 +23,8 @@ class Meetup < ActiveRecord::Base
   has_many :item_attachments, :foreign_key => "meetup_id", :dependent => :destroy
   accepts_nested_attributes_for :item_attachments, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } } 
 
-    
+  has_one :custom, :as => :customable
+
   # validates_numericality_of :participant_ids
   # validates_inclusion_of :user_ids, :in => %w( current_user.id ), :message => "Add yourself to Memberslist"
   validates :title, :presence => true
