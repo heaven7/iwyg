@@ -35,7 +35,7 @@ production:
   adapter: mysql2
   encoding: utf8
   database: heaven7_iwyg
-  username: heaven7_iwyg
-  password: c34g6f8hj1
+  username: root
+  password: 
   #socket: /tmp/mysql.sock
   port: 3306
