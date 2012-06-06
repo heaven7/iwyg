@@ -47,5 +47,10 @@ Iwyg::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
   
-  config.action_mailer.default_url_options = { :host => 'iwygstage.heavenseven.net' }
+  # devise 
+  config.action_mailer.default_url_options = { :host => 'ec2-107-21-100-209.compute-1.amazonaws.com' }
+  
+  # application configuration
+  HOST = "http://ec2-107-21-100-209.compute-1.amazonaws.com"
+  REPLY_EMAIL = "iwyg@heavenseven.net" 
 end
