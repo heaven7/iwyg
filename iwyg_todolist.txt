@@ -62,8 +62,8 @@ groups:
 
 
 #projects:
-#	- setup scaffold for projects and tasks
-#	- with title, desc, images, locations, resources, comments on tasks
+#	- setup scaffold for projects and tasks (tickets)
+#	- with title, desc, images, locations, resources, comments on tasks (tickets)
 
 #masseinheiten: 
 #	- metrics <--> dimensionable <--> item

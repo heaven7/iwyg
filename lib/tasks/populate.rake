@@ -12,7 +12,7 @@ namespace :db do
     User.populate 10 do |user|
       user.login              = Faker::Internet.user_name
       user.email              = Faker::Internet.email
-      # user.encrypted_password =
+      user.encrypted_password = "$2a$04$x0SnRTBGBc7nL1ei34Ah2OmWmuJTaHzTmzcEtYimZ5yvLtnTXTblC"
       Userdetails.populate 1 do |userdetails|
         userdetails.user_id = user.id
         userdetails.firstname  = Faker::Name.first_name

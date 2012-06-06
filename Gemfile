@@ -20,6 +20,7 @@ group :stage do
   gem 'geokit'
 end
 
+gem 'redis'
 gem 'roadie'
 gem 'sqlite3-ruby'
 gem 'mysql2', '0.2.6'
