@@ -2,6 +2,7 @@ class Item < ActiveRecord::Base
 
   extend FriendlyId
   friendly_id :title
+  before_create :build_item
 
   attr_accessible :locatable_type, :locatable_id, :title, :amount, :measure_id, :measure,
     :description, :item_type_id, :need, :from, :till, :user_id,
@@ -99,6 +100,10 @@ class Item < ActiveRecord::Base
     #    end
     # end
     return scope
+  end
+
+  def build_item
+    self.custom = Custom.new
   end
   
   def tag_list_name

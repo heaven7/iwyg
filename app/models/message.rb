@@ -3,7 +3,7 @@ class Message < ActiveRecord::Base
   has_many :message_copies
   has_many :recipients, :through => :message_copies
   has_one :custom, :as => :customable
-  before_create :prepare_copies, :build_custom
+  before_create :prepare_copies, :build_message
   
   delegate :deleted, :to => :custom
   scope :undeleted, :conditions => { :deleted => nil }
@@ -13,7 +13,7 @@ class Message < ActiveRecord::Base
   
   validates_presence_of :body, :to
 
-  def build_custom 
+  def build_message
     self.custom = Custom.new
   end
   
@@ -22,7 +22,7 @@ class Message < ActiveRecord::Base
     recipient = to
     recipient = User.find(recipient)
     m = message_copies.build(:recipient => recipient, :folder => recipient.inbox)
-    m.custom = Custom.new
+#    m.custom = Custom.new
 #    to.each do |recipient|
 #      recipient = User.find(recipient)
 #      m = message_copies.build(:recipient => recipient, :folder => recipient.inbox)
