@@ -100,11 +100,7 @@ class MeetupsController < InheritedResources::Base
   
 
   
-  private
-  
-  def getLocationsOnMap(object)
-    @locations_json = object.locations.to_gmaps4rails
-  end 
+  private 
   
   def conditional_layout
     case action_name

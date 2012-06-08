@@ -6,7 +6,11 @@ source :rubygems
 
 gem 'rails', '3.0.10'
 
-#gem 'rdoc-data'
+#group :assets do
+#  gem 'sass-rails',   '~> 3.1.5.rc.2'
+#  gem 'coffee-rails', '~> 3.1.1'
+#  gem 'uglifier', '>= 1.0.3'
+#end
 
 group :production, :stage do
   gem 'hpricot'
@@ -41,7 +45,7 @@ gem 'devise' #, :git => 'git://github.com/plataformatec/devise.git'
 gem 'devise_rpx_connectable'
 gem 'formtastic', '2.1.0.beta1'
 gem 'geocoder'
-gem 'gmaps4rails'
+gem 'gmaps4rails', '1.4.8'
 gem 'ajaxful_rating', '2.2.8.2'
 gem 'acts-as-taggable-on', '~> 2.2.2'
 gem 'paperclip'

@@ -17,6 +17,7 @@
   <%= stylesheet_link_tag "themes/iwyg/jquery-ui-1.8.11.custom.css" %> 
   <%= javascript_include_tag "i18n/jquery-ui-i18n.js" %>
   <%= stylesheet_link_tag "themes/iwyg/agents/#{users_browser}" if File.exist?("public/stylesheets/themes/iwyg/agents/#{users_browser}.css") %>
+  <%# stylesheet_link_tag 'gmaps4rails' %>
   <%= csrf_meta_tag %>
   
   <script type="text/javascript">
@@ -32,7 +33,7 @@
     });
   </script>
   
-  <%= javascript_include_tag "jquery.url" %>
+  <%# javascript_include_tag "jquery.url" %>
   <%= yield :head %>
   
   <script type="text/javascript">
@@ -133,6 +134,6 @@
   <%= debug(params) %>
 <% end %>                   
 <! -- devise_rpx -->
-<%= javascript_include_rpx(user_session_url) %>
+<%# javascript_include_rpx(user_session_url) %>
 </body>
 </html>
