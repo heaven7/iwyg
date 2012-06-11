@@ -16,20 +16,13 @@ test:
   password: 
 
   
-stage:
+production:
   adapter: mysql2
   encoding: utf8
   database: heaven7_iwyg_stage
   username: heaven7_iwyg
   password: c34g6f8hj1
-  socket: /tmp/mysql.sock
+  # socket: /tmp/mysql.sock
   port: 3306
 
-production:
-  adapter: mysql2
-  encoding: utf8
-  database: heaven7_iwyg
-  username: root
-  password: 
-  #socket: /tmp/mysql.sock
-  port: 3306
+
