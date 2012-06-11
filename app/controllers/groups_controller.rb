@@ -73,9 +73,9 @@ class GroupsController < InheritedResources::Base
     else
       @group = Group.find(params[:id])
     end 
-    if request.path != group_path(@group)
-      redirect_to @group, status: :moved_permanently
-    end   
+    #if request.path != group_path(@group)
+    #  redirect_to @group, status: :moved_permanently
+    #end
     @location = @group.locations.first if @group.locations && @group.locations.first
     getLocationsOnMap(@group) if @location and not @location.lat.nil? and not @location.lng.nil?
   end
