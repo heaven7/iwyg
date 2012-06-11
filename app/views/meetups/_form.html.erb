@@ -25,49 +25,109 @@
   });
   </script>
 <% end %>
-<%= semantic_form_for @meetup, :method => "get", :url => meetups_path("item[ping]" => params[:item][:ping], "item[attachable_id]" => params[:item][:attachable_id]) do |f| %>
-  <%= render "share/error_messages", :target => @meetup %>
-  <div id="tabs">
-    <ul>
-      <li><a href="#what"><%= t("what") %></a></li>
-      <li><a href="#where"><%= t("where") %></a></li>
-      <li><a href="#when"><%= t("when") %></a></li>
-      <li><a href="#who"><%= t("who") %></a></li>
-      <li><a href="#attachments"><%= t("menu.user.resources") %></a></li>
-    </ul>
-    <div id="what">
-      <%= f.inputs do %>
-        <%# f.input :item_ping, :as => :hidden, :value => params[:item][:ping] || @item_ping %>
-        <%= f.input :owner_id, :as => :hidden, :value => current_user.id %>
-        <%= f.input :ownertype, :as => :hidden, :value => "User" %>
-        <%= f.input :title %>
-        <%= f.input :description, :label => I18n.t("formtastic.labels.meetup.description") %>
-      <% end %>
-    </div>
-    <div id="where">
-      <%= f.inputs do %>
-        <%= render :partial => "locations/nested_form", :locals => { :f => f, :belongs_to => "meetup" } %>
-      <% end %>
-    </div>
-    <div id="when">
-      <%= f.inputs do %>
-        <%= render :partial => "events/nested_form", :locals => { :f => f, :belongs_to => "meetup" } %>
-      <% end %>
-    </div>
-    <div id="who">
-      <div class="button new">
-        <%= link_to t("formtastic.labels.meetup.invite_users"), "#" %>
+
+<% if params[:item] %>
+
+  <% semantic_form_for @meetup, :method => "get", :url => meetups_path("item[ping]" => params[:item][:ping], "item[attachable_id]" => params[:item][:attachable_id]) do |f| %>
+
+    <%= render "share/error_messages", :target => @meetup %>
+    <div id="tabs">
+      <ul>
+        <li><a href="#what"><%= t("what") %></a></li>
+        <li><a href="#where"><%= t("where") %></a></li>
+        <li><a href="#when"><%= t("when") %></a></li>
+        <li><a href="#who"><%= t("who") %></a></li>
+        <li><a href="#attachments"><%= t("menu.user.resources") %></a></li>
+      </ul>
+      <div id="what">
+        <%= f.inputs do %>
+          <% if params[:item] %>
+        <%# f.input "item[ping]", :as => :hidden, :value => params[:item][:ping] %>
+          <% end %>
+          <%= f.input :owner_id, :as => :hidden, :value => current_user.id %>
+          <%= f.input :ownertype, :as => :hidden, :value => "User" %>
+          <%= f.input :title %>
+          <%= f.input :description, :label => I18n.t("formtastic.labels.meetup.description") %>
+        <% end %>
       </div>
-      <%= f.inputs do %>
-        <%= f.input :users, :as => :check_boxes, :collection => @meetup.users, :member_label => Proc.new { |u| "#{render :partial => "share/usertiny", :locals => { :user => u }}".html_safe } %>
-      <% end %>
+      <div id="where">
+        <%= f.inputs do %>
+          <%= render :partial => "locations/nested_form", :locals => { :f => f, :belongs_to => "meetup" } %>
+        <% end %>
+      </div>
+      <div id="when">
+        <%= f.inputs do %>
+          <%= render :partial => "events/nested_form", :locals => { :f => f, :belongs_to => "meetup" } %>
+        <% end %>
+      </div>
+      <div id="who">
+        <div class="button new">
+          <%= link_to t("formtastic.labels.meetup.invite_users"), "#" %>
+        </div>
+        <%= f.inputs do %>
+          <%= f.input :users, :as => :check_boxes, :collection => @meetup.users, :member_label => Proc.new { |u| "#{render :partial => "share/usertiny", :locals => { :user => u }}".html_safe } %>
+        <% end %>
+      </div>
+      <div id="attachments" class="tab_content">
+        <%= render :partial => "items/item_attachments", :locals => { :object => @meetup, :f => f } %>
+      </div>
     </div>
-    <div id="attachments" class="tab_content">
-      <%= render :partial => "items/item_attachments", :locals => { :object => @meetup, :f => f } %>
-    </div>
-  </div>
-  <%= f.buttons do %>
-    <br />
-    <%= f.submit t("save") %>
+    <%= f.buttons do %>
+      <br />
+      <%= f.submit t("save") %>
+    <% end %>
   <% end %>
+
+<% else %>
+
+ <%= semantic_form_for @meetup, :method => "get" do |f| %>
+
+    <%= render "share/error_messages", :target => @meetup %>
+    <div id="tabs">
+      <ul>
+        <li><a href="#what"><%= t("what") %></a></li>
+        <li><a href="#where"><%= t("where") %></a></li>
+        <li><a href="#when"><%= t("when") %></a></li>
+        <li><a href="#who"><%= t("who") %></a></li>
+        <li><a href="#attachments"><%= t("menu.user.resources") %></a></li>
+      </ul>
+      <div id="what">
+        <%= f.inputs do %>
+          <% if params[:item] %>
+        <%# f.input "item[ping]", :as => :hidden, :value => params[:item][:ping] %>
+          <% end %>
+          <%= f.input :owner_id, :as => :hidden, :value => current_user.id %>
+          <%= f.input :ownertype, :as => :hidden, :value => "User" %>
+          <%= f.input :title %>
+          <%= f.input :description, :label => I18n.t("formtastic.labels.meetup.description") %>
+        <% end %>
+      </div>
+      <div id="where">
+        <%= f.inputs do %>
+          <%= render :partial => "locations/nested_form", :locals => { :f => f, :belongs_to => "meetup" } %>
+        <% end %>
+      </div>
+      <div id="when">
+        <%= f.inputs do %>
+          <%= render :partial => "events/nested_form", :locals => { :f => f, :belongs_to => "meetup" } %>
+        <% end %>
+      </div>
+      <div id="who">
+        <div class="button new">
+          <%= link_to t("formtastic.labels.meetup.invite_users"), "#" %>
+        </div>
+        <%= f.inputs do %>
+          <%= f.input :users, :as => :check_boxes, :collection => @meetup.users, :member_label => Proc.new { |u| "#{render :partial => "share/usertiny", :locals => { :user => u }}".html_safe } %>
+        <% end %>
+      </div>
+      <div id="attachments" class="tab_content">
+        <%= render :partial => "items/item_attachments", :locals => { :object => @meetup, :f => f } %>
+      </div>
+    </div>
+    <%= f.buttons do %>
+      <br />
+      <%= f.submit t("save") %>
+    <% end %>
+  <% end %>
+
 <% end %>
