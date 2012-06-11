@@ -699,7 +699,8 @@ en:
         declined: " has declined your ping."
         closed: " has closed your ping."
         opened: " has send a ping to you."
-  
+    meetup:
+      invitation: "%{user} has invited you to meet."
   ## forms
     
   form:

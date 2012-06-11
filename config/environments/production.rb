@@ -52,5 +52,5 @@ Iwyg::Application.configure do
   
   # application configuration
   HOST = "http://ec2-107-21-100-209.compute-1.amazonaws.com"
-  REPLY_EMAIL = "iwyg@heavenseven.net" 
+  REPLY_EMAIL = "IWYG <iwyg@heavenseven.net>"
 end

@@ -15,7 +15,7 @@
       <th><%= t("who") %></th>
       <th></th>
     </tr>
-  <% @meetups.each do |meetup| %>
+    <% @meetups.each do |meetup| %>
       <tr>
         <td><%= meetup.locations.first.city if meetup.locations.size > 0 %></td>
         <td><%= meetup.events.size > 0 ? meetup.events.first.from : t("unknown") %></td>
@@ -23,6 +23,6 @@
         <td><%= link_to t("meetup.participant", :count => meetup.users.count), meetup, :title => meetup.title %></td>
         <td><%= render :partial => "usermenu", :locals => { :meetup => meetup} %></td>
       </tr>
-  <% end %>
+    <% end %>
   </table>
 <% end %>

@@ -1,3 +1,12 @@
+<% content_for :head do %>
+  <script type="text/javascript">
+
+    $(document).ready(function (){
+       $('#user_username').focus();
+    });
+  </script>
+<% end %>
+
 <fieldset class="formular login shadowed ui-corner-all">
   <br/>
   <%= form_for(:user, :url => user_session_path) do |f| -%>
@@ -12,7 +21,7 @@
     </p>
     <br />
     <p><%= f.check_box :remember_me %><%= f.label t("login.label.remember") %></p>
-    
+
     <div class="formbutton"><%= submit_tag t("login.label.submit") %></div>
   <% end -%>
 </fieldset>

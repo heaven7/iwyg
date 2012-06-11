@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    Hallo <%= @user.login %>,
+    <br />
+    Du wurdest von <%= @owner.login %> zu einem <a href="<%=h @meetup_url %>">Treffen</a> eingeladen
+    <br />
+    <br />
+    Dein
+    <br />
+    IWYG-Team
+  </body>
+</head>

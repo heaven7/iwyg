@@ -2,8 +2,7 @@
     Document   : mailer
     Created on : 23.01.2012, 17:22:20
     Author     : christian
-    Description:
-        Purpose of the stylesheet follows.
+    Description: Stylesheet of sending html emails.
 */
 
 /* 
@@ -12,6 +11,8 @@
 */
 
 body {
-    background: green;
+    background: white;
+    font-family: Georgia, serif;
+    font-size: 12px;
 }
 

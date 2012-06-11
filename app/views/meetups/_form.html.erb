@@ -15,6 +15,9 @@
   <% if params[:action] == "new" and !params[:item] %>
       /* blank memberlist */
       $("#who .choices-group").find("input ").removeAttr("checked");
+  <% elsif params[:action] == "create" and params[:item] %>
+      /* unhide members */
+      $("#who .choices-group").find("div").removeClass("ui-tabs-hide");
   <% end %>
     /* hide additional location fields */
     $("#meetup_locations_attributes_1_address_input, #meetup_locations_attributes_1_city_input, #meetup_locations_attributes_1_zip_input, #meetup_locations_attributes_1_country").hide();
@@ -22,7 +25,7 @@
   });
   </script>
 <% end %>
-<%= semantic_form_for @meetup, :method => "get"   do |f| %>
+<%= semantic_form_for @meetup, :method => "get", :url => meetups_path("item[ping]" => params[:item][:ping], "item[attachable_id]" => params[:item][:attachable_id]) do |f| %>
   <%= render "share/error_messages", :target => @meetup %>
   <div id="tabs">
     <ul>
@@ -34,6 +37,7 @@
     </ul>
     <div id="what">
       <%= f.inputs do %>
+        <%# f.input :item_ping, :as => :hidden, :value => params[:item][:ping] || @item_ping %>
         <%= f.input :owner_id, :as => :hidden, :value => current_user.id %>
         <%= f.input :ownertype, :as => :hidden, :value => "User" %>
         <%= f.input :title %>

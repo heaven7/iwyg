@@ -32,7 +32,7 @@ Iwyg::Application.configure do
    
   # application configuration
   HOST = "http://localhost:3000"
-  REPLY_EMAIL = "iwyg@heavenseven.net" 
+  REPLY_EMAIL = "IWYG <iwyg@heavenseven.net>"
   # Paperclip.options[:command_path] = "D:/Programme/ImageMagick-6.6.3-Q16"
   Paperclip.options[:command_path] = "E:/Program Files/ImageMagick-6.7.4-Q16"
 end

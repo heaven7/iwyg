@@ -34,7 +34,7 @@ gem 'has_scope'
 gem 'meta_where'
 gem "ransack"
 gem 'routing-filter', '0.2.3'
-gem "friendly_id", "~> 4.0.0"
+gem "friendly_id", "4.0"
 
 gem 'json_pure', '1.6.1'   
 gem 'jquery-rails' #, '>= 1.0.12'

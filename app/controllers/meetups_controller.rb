@@ -57,11 +57,20 @@ class MeetupsController < InheritedResources::Base
     @user = current_user 
     @eventable = find_model
     @meetup = Meetup.new(params[:meetup])
-    @users = User.all
-    @meetup.locations.build if not @meetup.locations.size == 0
+    @item_ping = params[:item][:ping] if params[:item][:ping]
+    if params[:item]
+      @attachable_id = params[:item][:attachable_id]
+      @ping = Ping.find(params[:item][:ping])
+      @item = Item.find(@attachable_id)
+      @meetup.users = Array[current_user, @ping.owner]
+    else
+      @meetup.users = @user.followers
+      @meetup.users << @user.following_users
+    end
+
+    @meetup.locations.build if @meetup.locations.size == 0
     @meetup.events.build if @meetup.events.size == 0
-    # create!
-   
+
     if @meetup.save
       redirect_to @meetup
     else

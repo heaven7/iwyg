@@ -8,6 +8,8 @@ class Meetup < ActiveRecord::Base
                   :locations, :locations_attributes,
                   :owner_id, :ownertype,
                   :user_ids, :item_attachments, :item_attachments_attributes
+                
+  attr_accessor :item_ping
 
   acts_as_followable
   has_associated_audits
@@ -20,6 +22,7 @@ class Meetup < ActiveRecord::Base
   accepts_nested_attributes_for :events, :allow_destroy => true  
   has_many :meetings
   has_many :users, :through => :meetings
+  has_many :pings
   has_many :item_attachments, :foreign_key => "meetup_id", :dependent => :destroy
   accepts_nested_attributes_for :item_attachments, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } } 
 
