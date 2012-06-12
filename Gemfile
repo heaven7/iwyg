@@ -13,11 +13,11 @@ gem 'rails', '3.0.10'
 #end
 
 group :production, :stage do
-  gem 'hpricot'
+#  gem 'hpricot'
 end
 
 group :development do 
-  gem 'hpricot' 
+#  gem 'hpricot'
 end
 
 group :stage do
@@ -56,13 +56,13 @@ gem 'roadie'
 gem "acts_as_follower"
 gem "acts_as_audited", "2.0.0"
 
-#gem "rspec-rails", :group => [:test, :development]
 
-#gem "factory_girl_rails", '1.6.0'
-#group :test do
+group :test do
 #  gem "capybara"
 #  gem "guard-rspec"
+  gem "factory_girl_rails", '1.6.0'
+  gem "rspec-rails"
   gem "populator"
   gem "faker"
-#end
+end
 
