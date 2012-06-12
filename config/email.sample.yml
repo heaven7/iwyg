@@ -1,0 +1,21 @@
+development:
+  :address: smtp.gmail.com
+  :port: 587
+  :authentication: 'plain'
+  :user_name: 'username@gmail.com'
+  :password: 'secret'
+  :enable_starttls_auto: true
+test:
+  :address: smtp.gmail.com
+  :port: 587
+  :authentication: 'plain'
+  :user_name: 'username@gmail.com'
+  :password: 'secret'
+  :enable_starttls_auto: true
+production:
+  :address: smtp.gmail.com
+  :port: 587
+  :authentication: 'plain'
+  :user_name: 'username@gmail.com'
+  :password: 'secret'
+  :enable_starttls_auto: true

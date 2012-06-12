@@ -11,3 +11,5 @@ nbproject/*
 vendor/bundle/*
 Gemfile.lock
 /nbproject/private/
+config/database.yml
+config/email.yml
