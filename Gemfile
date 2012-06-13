@@ -13,7 +13,7 @@ gem 'rails', '3.0.10'
 #end
 
 group :production, :stage do
-  #  gem 'hpricot'
+  gem 'mysql2' #, '0.2.6'
 end
 
 group :development do 
@@ -23,7 +23,6 @@ end
 
 gem 'redis'
 gem 'sqlite3-ruby'
-gem 'mysql2', '0.2.6'
 gem 'inherited_resources'
 gem 'has_scope'
 gem 'meta_where'
