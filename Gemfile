@@ -13,29 +13,24 @@ gem 'rails', '3.0.10'
 #end
 
 group :production, :stage do
-#  gem 'hpricot'
+  #  gem 'hpricot'
 end
 
 group :development do 
-#  gem 'hpricot'
-end
-
-group :stage do
-  gem 'geokit'
+  gem 'hpricot'
+  gem 'mongrel', '>= 1.2.0.pre2'
 end
 
 gem 'redis'
-gem 'roadie'
 gem 'sqlite3-ruby'
 gem 'mysql2', '0.2.6'
-gem 'mongrel', '>= 1.2.0.pre2'
 gem 'inherited_resources'
 gem 'has_scope'
 gem 'meta_where'
 gem "ransack"
 gem 'routing-filter', '0.2.3'
 gem "friendly_id", "4.0"
-
+gem "paper_trail"
 gem 'json_pure', '1.6.1'   
 gem 'jquery-rails' #, '>= 1.0.12'
 gem 'rails3-jquery-autocomplete'
@@ -54,12 +49,12 @@ gem 'will_paginate', '~> 3.0'
 gem 'validates_timeliness' #, '2.3.2'
 gem 'roadie'
 gem "acts_as_follower"
-gem "acts_as_audited", "2.0.0"
-
+gem "acts_as_audited", "~> 2.1.0"
+gem "rails3_acts_as_paranoid"
 
 group :test do
-#  gem "capybara"
-#  gem "guard-rspec"
+  #  gem "capybara"
+  #  gem "guard-rspec"
   gem "factory_girl_rails", '1.6.0'
   gem "rspec-rails"
   gem "populator"

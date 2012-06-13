@@ -355,10 +355,12 @@ en:
     one: "1 Meetup"
     other: "%{count} Meetups"
     new: "New Meetup"
-    participant:
-      one: "1 Participant"
-      other: "%{count} Participants"
-    
+    participants:
+      one: "1 participant"
+      other: "%{count} participants"
+    invited_participants:
+      one: "1 invited participant"
+      other: "%{count} invited participants"
          
   ## transfer
   
@@ -734,7 +736,8 @@ en:
         title: "Title"
         description: "Description" 
         users: "Participants"
-        invite_users: "Invite users"
+        invited_users: "Invite participants"
+        invite_users: "Add users"
       item:
         title: "Title"  
         description: "Description"

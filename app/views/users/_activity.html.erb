@@ -1,91 +1,92 @@
 <ul>
   <% audits.each do |audit| %>
     <li>
-    <% if audit.class.to_s == "Audit" %>
-      <div class="action font-small">
-        <%= render :partial => "share/usermicro_flat", :locals => { :user => User.find(audit.user_id) } if audit.user_id %>
-        <%= case audit.auditable_type.to_s
+      <% if audit.class.to_s == "Audit" %>
+        <div class="action font-small">
+          <%= render :partial => "share/usermicro_flat", :locals => { :user => User.find(audit.user_id) } if audit.user_id %>
+          <%= case audit.auditable_type.to_s
 
-            when "Item"
-              item = Item.find(audit.auditable_id)
-              case audit.action
-              when "create"
-                if item.need?
-                  link_to(t("hasCreatedANeed", :title => item.title).html_safe, item)
-                else
-                  link_to(t("hasCreatedAnOffer", :title => item.title).html_safe, item)
-                end
-              when "update"
-                link_to(t("hasUpdatedAnItem", :title => item.title).html_safe, item)
+          when "Item"
+            item = Item.find(audit.auditable_id)
+            case audit.action
+            when "create"
+              if item.need?
+                link_to(t("hasCreatedANeed", :title => item.title).html_safe, item)
+              else
+                link_to(t("hasCreatedAnOffer", :title => item.title).html_safe, item)
               end
-
-            when "Userdetails"
-              case audit.action
-              when "create"
-                t("hasJoinedTheCommunity").html_safe
-              when "update"
-                t("hasUpdatedtheUserdetails").html_safe
-              end
-
-            when "Group"
-              group = Group.find(audit.auditable_id)
-              case audit.action
-              when "create"
-                link_to(t("hasCreatedAGroup", :title => group.title).html_safe, group)
-              when "update"
-                link_to(t("hasUpdatedAGroup", :title => group.title).html_safe, group)
-              end
-
-            when "Location"
-              location = Location.find(audit.auditable_id)
-              resource = location.locatable_type.constantize.find(location.locatable_id)
-              case audit.action
-              when "create"
-                link_to(t("hasCreatedALocation", :title => resource.title).html_safe, resource)
-              when "update"
-                link_to(t("hasUpdatedALocation", :title => resource.title).html_safe, resource)
-              end
-
-            when "Ping"
-              ping = Ping.find(audit.auditable_id)
-              resource = ping.pingable_type.constantize.find(ping.pingable_id) # if ping.pingable_type.to_s == "Item"
-              case audit.action
-              when "create"
-                link_to(t("hasPingedOn", :title => resource.title).html_safe, ping)
-              when "update"
-                case ping.statusTitle
-                when "accepted"
-                   link_to(t("usersPingIsAccepted", :title => resource.title).html_safe, ping)
-                when "declined"
-                   link_to(t("usersPingIsDeclined", :title => resource.title).html_safe, ping)
-                when "closed"
-                   link_to(t("usersPingIsClosed", :title => resource.title).html_safe, ping)
-                end
-              end
-
-            when "Meetup"
-              meetup = Meetup.find(audit.auditable_id)
-              case audit.action
-              when "create"
-                link_to(t("hasCreatedAMeetup", :title => meetup.title).html_safe, meetup)
-              when "update"
-                link_to(t("hasUpdatedAMeetup", :title => meetup.title).html_safe, meetup)
-              end
-
-            when "Comment"
-              comment = Comment.find(audit.auditable_id)
-              resource = comment.commentable_type.constantize.find(comment.commentable_id)
-              case audit.action
-              when "create"
-                link_to(t("hasCommentedOn", :title => resource.title), resource)
-              end
-            else
-              "what else to say: " + audit.auditable_type.to_s
+            when "update"
+              link_to(t("hasUpdatedAnItem", :title => item.title).html_safe, item)
             end
+
+          when "Userdetails"
+            case audit.action
+            when "create"
+              t("hasJoinedTheCommunity").html_safe
+            when "update"
+              t("hasUpdatedtheUserdetails").html_safe
+            end
+
+          when "Group"
+            group = Group.find(audit.auditable_id)
+            case audit.action
+            when "create"
+              link_to(t("hasCreatedAGroup", :title => group.title).html_safe, group)
+            when "update"
+              link_to(t("hasUpdatedAGroup", :title => group.title).html_safe, group)
+            end
+
+          when "Location"
+            location = Location.find(audit.auditable_id)
+            resource = location.locatable_type.constantize.find(location.locatable_id)
+            case audit.action
+            when "create"
+              link_to(t("hasCreatedALocation", :title => resource.title).html_safe, resource)
+            when "update"
+              link_to(t("hasUpdatedALocation", :title => resource.title).html_safe, resource)
+            end
+
+          when "Ping"
+            ping = Ping.find(audit.auditable_id)
+            resource = ping.pingable_type.constantize.find(ping.pingable_id) # if ping.pingable_type.to_s == "Item"
+            case audit.action
+            when "create"
+              link_to(t("hasPingedOn", :title => resource.title).html_safe, ping)
+            when "update"
+              case ping.statusTitle
+              when "accepted"
+                link_to(t("usersPingIsAccepted", :title => resource.title).html_safe, ping)
+              when "declined"
+                link_to(t("usersPingIsDeclined", :title => resource.title).html_safe, ping)
+              when "closed"
+                link_to(t("usersPingIsClosed", :title => resource.title).html_safe, ping)
+              end
+            end
+
+          when "Meetup"
+            meetup = Meetup.with_deleted.where(:id => audit.auditable_id).first
+            case audit.action
+            when "create"
+              link_to(t("hasCreatedAMeetup", :title => meetup.title).html_safe, meetup)
+            when "update"
+              link_to(t("hasUpdatedAMeetup", :title => meetup.title).html_safe, meetup)
+            when "destroy"
+              link_to(t("hasDestroyedAMeetup", :title => meetup.title).html_safe, meetup)
+            end
+          when "Comment"
+            comment = Comment.find(audit.auditable_id)
+            resource = comment.commentable_type.constantize.find(comment.commentable_id)
+            case audit.action
+            when "create"
+              link_to(t("hasCommentedOn", :title => resource.title), resource)
+            end
+          else
+            "what else to say: " + audit.auditable_type.to_s
+          end
         %>
-        <span class="date"><%=h distance_of_time_in_words(audit.created_at, Time.now) %> <%= t("ago") %></span>
-      </div>
-    <% end %>
+          <span class="date"><%=h distance_of_time_in_words(audit.created_at, Time.now) %> <%= t("ago") %></span>
+        </div>
+      <% end %>
     </li>
   <% end %>
 </ul>

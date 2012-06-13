@@ -355,9 +355,12 @@ de:
     one: "1 Treffpunkt"
     other: "%{count} Treffpunkte"
     new: "Neuer Treffpunkt"
-    participant:
+    participants:
       one: "1 Teilnehmer"
       other: "%{count} Teilnehmer"
+    invited_participants:
+      one: "1 eingeladener Teilnehmer"
+      other: "%{count} eingeladende Teilnehmer"
   
   ## transfer
   
@@ -732,8 +735,9 @@ de:
       meetup:
         title: "Titel"
         description: "Beschreibung"
-        users: "Teilnehmer"  
-        invite_users: "Teilnehmer einladen"
+        users: "Teilnehmer"
+        invited_users: "Teilnehmer einladen"
+        invite_users: "Teilnehmer hinzuf&uuml;gen"
       item:
         title: "Titel"
         description: "Beschreibung"

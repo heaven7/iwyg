@@ -90,7 +90,7 @@ form.formtastic fieldset ol li fieldset ol li { padding:0; border:0; }
 /* meetup form */
 #who .choices .choices-group {
     width: 80%;
-    margin-left: 6em;
+    margin-left: 11em;
 }
 
 .locations_attribute_country label

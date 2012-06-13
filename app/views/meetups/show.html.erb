@@ -7,24 +7,24 @@
     <div class="subcol1">
       <% if @meetup.events.first and @meetup.events.first.from %>
         <div class="box ui-corner-all">
-          <% if @meetup.events.first.till.blank? %>  
+          <% if @meetup.events.first.till.blank? %>
             <p class="font-smaller">
               <b><%= t("when") %></b><br />
               <%= @meetup.events.first.from %>
             </p>
           <% else %>
             <p class="font-smaller">
-              <b><%= t("when") %></b><br /> 
+              <b><%= t("when") %></b><br />
               <%= t("from") %> <%= @meetup.events.first.from %><br />
               <%= t("till") %> <%= @meetup.events.first.till %>
             </p>
           <% end %>
         </div>
-        <% end %>
-        <div class="box ui-corner-all">
-          <p><%= @meetup.description %></p>
-          <%= render :partial => "share/item_attachments", :locals => { :object => @meetup } %>
-        </div>
+      <% end %>
+      <div class="box ui-corner-all">
+        <p><%= @meetup.description %></p>
+        <%= render :partial => "share/item_attachments", :locals => { :object => @meetup } %>
+      </div>
     </div>
     <div class="subcol2">
       <%= render :partial => "share/map", :locals => { :locations => @locations_json } if @locations_json %>
@@ -34,10 +34,19 @@
 <% end %>
 <div class="clear"></div>
 <% if @meetup.users && @meetup.users.count > 0 %>
-  <h2><%= t("meetup.participant", :count => @meetup.users.count) %></h2>
-  <ul class="users-list"> 
+  <h2><%= t("meetup.participants", :count => @meetup.users.count) %></h2>
+  <ul class="users-list">
     <% @meetup.users.each do |user| %>
-      <li class="users-list-item"><%= render :partial => "share/usertiny", :locals => { :user => user } %></li>  
+      <li class="users-list-item"><%= render :partial => "share/usertiny", :locals => { :user => user } %></li>
+    <% end %>
+  </ul>
+<% end %>
+<div class="clear"></div>
+<% if @meetup.invited_users && @meetup.invited_users.count > 0 %>
+  <h2><%= t("meetup.invited_participants", :count => @meetup.invited_users.count) %></h2>
+  <ul class="users-list">
+    <% @meetup.invited_users.each do |user| %>
+      <li class="users-list-item"><%= render :partial => "share/usertiny", :locals => { :user => user } %></li>
     <% end %>
   </ul>
 <% end %>

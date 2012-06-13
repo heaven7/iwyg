@@ -7,14 +7,16 @@ class Meetup < ActiveRecord::Base
                   :events, :events_attributes, :eventable_id, :eventable_type,
                   :locations, :locations_attributes,
                   :owner_id, :ownertype,
-                  :user_ids, :item_attachments, :item_attachments_attributes
+                  :user_ids, :invited_user_ids, :item_attachments, :item_attachments_attributes
                 
   attr_accessor :item_ping
 
+  has_paper_trail
   acts_as_followable
+  acts_as_paranoid
   has_associated_audits
   acts_as_audited
-
+  
   belongs_to :owner, :class_name => 'User', :foreign_key => "owner_id"
   has_many :locations, :as => :locatable, :dependent => :destroy
   accepts_nested_attributes_for :locations, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }  
@@ -22,7 +24,7 @@ class Meetup < ActiveRecord::Base
   accepts_nested_attributes_for :events, :allow_destroy => true  
   has_many :meetings
   has_many :users, :through => :meetings
-  has_many :pings
+  has_many :invited_users, :through => :meetings, :class_name => "User", :source => :user
   has_many :item_attachments, :foreign_key => "meetup_id", :dependent => :destroy
   accepts_nested_attributes_for :item_attachments, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } } 
 

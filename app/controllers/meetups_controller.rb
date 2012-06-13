@@ -42,31 +42,15 @@ class MeetupsController < InheritedResources::Base
     @meetup.locations.build 
     @meetup.events.build
 
-    if params[:item]
-      @attachable_id = params[:item][:attachable_id]
-      @ping = Ping.find(params[:item][:ping])
-      @item = Item.find(@attachable_id)
-      @meetup.users = Array[current_user, @ping.owner]
-    else
-      @meetup.users = @user.followers
-      @meetup.users << @user.following_users
-    end
+    meetupUsers
   end
   
   def create
     @user = current_user 
     @eventable = find_model
     @meetup = Meetup.new(params[:meetup])
-    @item_ping = params[:item][:ping] if params[:item][:ping]
-    if params[:item]
-      @attachable_id = params[:item][:attachable_id]
-      @ping = Ping.find(params[:item][:ping])
-      @item = Item.find(@attachable_id)
-      @meetup.users = Array[current_user, @ping.owner]
-    else
-      @meetup.users = @user.followers
-      @meetup.users << @user.following_users
-    end
+    
+   # meetupUsers
 
     @meetup.locations.build if @meetup.locations.size == 0
     @meetup.events.build if @meetup.events.size == 0
@@ -109,7 +93,21 @@ class MeetupsController < InheritedResources::Base
   
 
   
-  private 
+  private
+
+  def meetupUsers
+    if params[:item]
+      @attachable_id = params[:item][:attachable_id]
+      @ping = Ping.find(params[:item][:ping])
+      @item = Item.find(@attachable_id)
+      @meetup.users = Array[current_user]
+      @meetup.invited_users = Array[@ping.owner]
+    else
+      #@meetup.users = Array[current_user]
+      @meetup.invited_users = @user.followers
+      @meetup.invited_users << @user.following_users
+    end
+  end
   
   def conditional_layout
     case action_name

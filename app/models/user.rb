@@ -17,7 +17,8 @@ class User < ActiveRecord::Base
   acts_as_follower
   acts_as_followable
 
-  acts_as_audited :except => [:password]
+  has_associated_audits
+  acts_as_audited :associated_with => :meetup, :except => [:password]
   
   # has_many
   has_many :events
@@ -56,8 +57,8 @@ class User < ActiveRecord::Base
   has_many :comments, :as => :commentable
   has_many :meetings, :dependent => :destroy
   belongs_to :meetups
-  # has_many :meetups, :through => :meetings, :dependent => :destroy, :include => [:events], :order => "events.from desc"
-  has_many :meetups, :through => :meetings, :dependent => :destroy
+  has_many :meetups, :through => :meetings, :dependent => :destroy, :include => [:events], :order => "events.from desc"
+  #has_many :meetups, :through => :meetings, :dependent => :destroy
   belongs_to :groups
   has_many :groups
   # has_many :groupings, :dependent => :destroy

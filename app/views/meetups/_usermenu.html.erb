@@ -3,7 +3,7 @@
       <%= link_to t("edit").html_safe, edit_meetup_path(meetup) %>
       <%= link_to t("delete").html_safe,
           {:action => "destroy", :id => meetup},
-          :confirm => t("confirm_delete"),
+          :confirm => t("confirm_delete").html_safe,
           :method => :delete %>
     </div>
 <% end %>
