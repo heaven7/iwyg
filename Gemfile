@@ -13,7 +13,7 @@ gem 'rails', '3.0.10'
 #end
 
 group :production, :stage do
-  gem 'mysql2' #, '0.2.6'
+  gem 'mysql2' , '0.2.18'
 end
 
 group :development do 
