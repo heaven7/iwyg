@@ -17,10 +17,10 @@ group :production, :stage do
 end
 
 group :development do 
-  gem 'hpricot'
   gem 'mongrel', '>= 1.2.0.pre2'
 end
 
+gem 'hpricot'
 gem 'redis'
 gem 'sqlite3-ruby'
 gem 'inherited_resources'
