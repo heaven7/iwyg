@@ -62,12 +62,10 @@
       </div>
       <div id="who">
         <div class="button new">
-          <%# link_to t("formtastic.labels.meetup.invite_users").html_safe, "#" %>
+        <%# link_to t("formtastic.labels.meetup.invite_users").html_safe, "#" %>
         </div>
         <%= f.inputs do %>
           <%= f.input :users, :as => :check_boxes, :collection => @meetup.users, :member_label => Proc.new { |u| "#{render :partial => "share/usertiny_unlinked", :locals => { :user => u }}".html_safe } %>
-          <hr class="divider" />
-          <%= f.input :invited_users, :as => :check_boxes, :collection => @meetup.invited_users, :member_label => Proc.new { |u| "#{render :partial => "share/usertiny_unlinked", :locals => { :user => u }}".html_safe } %>
         <% end %>
       </div>
       <div id="attachments" class="tab_content">
@@ -116,12 +114,10 @@
       </div>
       <div id="who">
         <div class="button new">
-          <%# link_to t("formtastic.labels.meetup.invite_users").html_safe, "#" %>
+        <%= link_to t("formtastic.labels.meetup.invite_users").html_safe, "#" %>
         </div>
         <%= f.inputs do %>
-          <%= f.input :users, :as => :check_boxes, :collection => @meetup.users, :member_label => Proc.new { |u| "#{render :partial => "share/usertiny_unlinked", :locals => { :user => u }}".html_safe } %>
-          <hr class="divider" />
-          <%= f.input :invited_users, :as => :check_boxes, :collection => @meetup.invited_users, :member_label => Proc.new { |u| "#{render :partial => "share/usertiny_unlinked", :locals => { :user => u }}".html_safe } %>
+          <%# f.input :users, :as => :check_boxes, :collection => @meetup.users, :member_label => Proc.new { |u| "#{render :partial => "share/usertiny_unlinked", :locals => { :user => u }}".html_safe } %>
         <% end %>
       </div>
       <div id="attachments" class="tab_content">

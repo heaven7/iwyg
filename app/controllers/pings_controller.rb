@@ -187,8 +187,6 @@ class PingsController < InheritedResources::Base
       #acceptPingOnUser(@ping)
     when "Group"
       acceptPingOnGroup(@ping)
-    when "Meetup"
-      acceptPingOnMeetup(@ping)
     when "Project"
     end
       
@@ -258,25 +256,6 @@ class PingsController < InheritedResources::Base
   def acceptPingOnGroup(ping)
     @ping = ping
     @resource = Group.find(@ping.pingable_id)
-    @members = @resource.users
-    if current_user.id == @resource.user_id
-      if @ping.status.to_i == 2
-        flash[:error] = t("flash.pings.accept.error.alreadyAccepted")
-      else
-        if @ping.update_attributes('status' => 2, 'accepted_at' => Time.now) and @resource.users << @ping.owner
-          flash[:notice] = t("flash.pings.accept.membership")
-        end
-      end
-    else
-      flash[:error] = t("flash.pings.accept.error.notAllowed")
-    end
-  end
-
-  # accepts membership to a meetup
-  # adds user to memberlist of a meetup
-  def acceptPingOnMeetup(ping)
-    @ping = ping
-    @resource = Meetup.find(@ping.pingable_id)
     @members = @resource.users
     if current_user.id == @resource.user_id
       if @ping.status.to_i == 2

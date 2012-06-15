@@ -1,9 +1,11 @@
-<% if meetup.owner == current_user %>
-    <div class="button">
-      <%= link_to t("edit").html_safe, edit_meetup_path(meetup) %>
-      <%= link_to t("delete").html_safe,
-          {:action => "destroy", :id => meetup},
-          :confirm => t("confirm_delete").html_safe,
-          :method => :delete %>
-    </div>
-<% end %>
+<div class="button">
+  <% if meetup.owner == current_user %>
+    <%= link_to t("edit").html_safe, edit_meetup_path(meetup) %>
+    <%= link_to t("delete").html_safe,
+      {:action => "destroy", :id => meetup},
+      :confirm => t("confirm_delete").html_safe,
+      :method => :delete %>
+
+  <% end %>
+  <%= @acceptlink %>
+</div>

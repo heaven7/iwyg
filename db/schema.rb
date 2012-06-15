@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120613195126) do
+ActiveRecord::Schema.define(:version => 20120615152528) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -218,6 +218,10 @@ ActiveRecord::Schema.define(:version => 20120613195126) do
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "accepted"
+    t.datetime "accepted_at"
+    t.boolean  "invited"
+    t.datetime "invited_at"
   end
 
   create_table "meetups", :force => true do |t|

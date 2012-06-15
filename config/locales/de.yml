@@ -253,6 +253,7 @@ de:
   hasCreatedAnOffer: "bietet '%{title}' an"
   hasCreatedAGroup: "hat die Gruppe '%{title}' er&oumlffnet"
   hasCreatedALocation: "hat den Ort f&uuml;r '%{title}' gespeichert"
+  hasDestroyedAMeetup: "hat den Treffpunkt '%{title}' gel&ouml;scht"
   hasPingedOn: "hat '%{title}' angepingt"
   usersPingIsAccepted: "akzeptiert Ping auf '%{title}'"
   usersPingIsDeclined: "lehnt Ping auf '%{title}' ab"
@@ -355,12 +356,10 @@ de:
     one: "1 Treffpunkt"
     other: "%{count} Treffpunkte"
     new: "Neuer Treffpunkt"
+    accept: "Einladung akzeptieren"
     participants:
       one: "1 Teilnehmer"
       other: "%{count} Teilnehmer"
-    invited_participants:
-      one: "1 eingeladener Teilnehmer"
-      other: "%{count} eingeladende Teilnehmer"
   
   ## transfer
   
@@ -404,7 +403,7 @@ de:
     friendships:
       create:
         notice: "Freundschaft erfolgreich gebildet."
-        error: "Es war nicht m�glich die Freundschaft aufzubauen (technisch...)"
+        error: "Es war nicht m&ouml;glich die Freundschaft aufzubauen (technisch...)"
       destroy:
         notice: "Freundschaft gel&ouml;st."
       accept:
@@ -495,6 +494,8 @@ de:
         notice: "Erfolgreich Treffpunkt ge&auml;ndert." 
       destroy:
         notice: "Erfolgreich Treffpunkt gel&ouml;scht."
+      accept:
+        notice: "Treffen erfolgreich akzeptiert."
     images:
       create:
         notice: "Bild gespeichert."
