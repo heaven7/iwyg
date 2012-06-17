@@ -1,17 +1,15 @@
 class Meetup < ActiveRecord::Base
   
-  #extend FriendlyId
-  #friendly_id :title
+  extend FriendlyId
+  friendly_id :title
 
   attr_accessible :title, :description,
-                  :events, :events_attributes, :eventable_id, :eventable_type,
-                  :locations, :locations_attributes,
-                  :owner_id, :ownertype,
-                  :user_ids, :invited_user_ids, :item_attachments, :item_attachments_attributes
+    :events, :events_attributes, :eventable_id, :eventable_type,
+    :locations, :locations_attributes,
+    :owner_id, :ownertype,
+    :user_ids, :invited_user_ids, :item_attachments, :item_attachments_attributes
                 
-  attr_accessor :item_ping
-
-  has_paper_trail
+ # has_paper_trail
   acts_as_followable
   acts_as_paranoid
   has_associated_audits
@@ -22,9 +20,9 @@ class Meetup < ActiveRecord::Base
   accepts_nested_attributes_for :locations, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }  
   has_many :events, :as => :eventable, :dependent => :destroy
   accepts_nested_attributes_for :events, :allow_destroy => true  
-  has_many :meetings
+  has_many :meetings, :dependent => :destroy
   has_many :users, :through => :meetings
-  has_many :invited_users, :through => :meetings, :class_name => "User", :source => :user
+  has_many :accepted_users, :through => :meetings, :conditions => "accepted_at > 0", :source => :user
   has_many :item_attachments, :foreign_key => "meetup_id", :dependent => :destroy
   accepts_nested_attributes_for :item_attachments, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } } 
 
@@ -46,6 +44,10 @@ class Meetup < ActiveRecord::Base
   
   def reject_events(attributed)
     attributes['from'].blank?
+  end
+
+  def find_by_meeting_user(user)
+    Meeting.joins(:meetup).where(:meetings => {:user_id => user.id}).first
   end
   
 end

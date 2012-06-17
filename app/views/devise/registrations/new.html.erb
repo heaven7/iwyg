@@ -1,6 +1,6 @@
 <div class="registration">
   <h1><%= t("title.register") %></h1>
-  <% semantic_form_for @user, :html => {:class => "formular shadowed ui-corner-all"} do |f| %>
+  <%= semantic_form_for @user, :html => {:class => "formular shadowed ui-corner-all"} do |f| %>
     <%= render "share/error_messages", :target => @user %>
     <% f.inputs do %>
       <%= f.input :login, :label => t("register.label.login") %>

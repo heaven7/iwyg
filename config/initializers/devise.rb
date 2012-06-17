@@ -13,7 +13,7 @@ Devise.setup do |config|
   config.sign_out_via = :delete
   
   # Configure the e-mail address which will be shown in DeviseMailer.
-  config.mailer_sender = "iwyg@heavenseven.net"
+  config.mailer_sender = REPLY_EMAIL
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating an user. By default is

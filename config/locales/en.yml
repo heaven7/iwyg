@@ -252,6 +252,7 @@ en:
   hasCreatedAnOffer: "offers '%{title}'"
   hasCreatedALocation: "has set the location for '%{title}'"
   hasCreatedAGroup: "has created the group '%{title}'"
+  hasDestroyedAMeetup: "has deleted the meetup '%{title}'"
   hasPingedOn: "has pinged on '%{title}'"
   usersPingIsAccepted: "accepted Ping on '%{title}'"
   usersPingIsDeclined: "declined Ping on '%{title}'"
@@ -355,13 +356,11 @@ en:
     one: "1 Meetup"
     other: "%{count} Meetups"
     new: "New Meetup"
+    accept: "Accept meetup"
     participants:
       one: "1 participant"
       other: "%{count} participants"
-    invited_participants:
-      one: "1 invited participant"
-      other: "%{count} invited participants"
-         
+    onlyFollowersAvailableToAdd: "You can only add followers or users you are following."
   ## transfer
   
   transfer:
@@ -494,7 +493,9 @@ en:
       update:
         notice: "Successfully updated meetup." 
       destroy:
-        notice: "Successfully destroyed meetup."  
+        notice: "Successfully destroyed meetup."
+      accept:
+        notice: "Successfully accepted meetup."
     images:
       create:
         notice: "Image saved."

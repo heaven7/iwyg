@@ -29,6 +29,11 @@ class MeetupsController < InheritedResources::Base
     @active_menuitem_l1_link = polymorphic_path([@user, :meetups])
     @active_menuitem_l2 = @meetup.title
     @active_menuitem_l2_link = user_meetup_path(@meetup)
+
+    @meeting = @meetup.find_by_meeting_user(current_user)
+    if !@meeting.accepted_already? and @meetup.owner != current_user
+      @acceptlink = self.class.helpers.link_to I18n.t("meetup.accept"), accept_meeting_path(@meeting), :method => :put
+    end
     show!
   end  
   
@@ -49,8 +54,6 @@ class MeetupsController < InheritedResources::Base
     @user = current_user 
     @eventable = find_model
     @meetup = Meetup.new(params[:meetup])
-    
-   # meetupUsers
 
     @meetup.locations.build if @meetup.locations.size == 0
     @meetup.events.build if @meetup.events.size == 0
@@ -75,6 +78,8 @@ class MeetupsController < InheritedResources::Base
     else                          
       getLocationsOnMap(@meetup)
     end
+
+    meetupUsers
     
     if @meetup.events.size == 0
       @event = @meetup.events.build
@@ -84,14 +89,18 @@ class MeetupsController < InheritedResources::Base
     edit!
   end
   
-  
-  
   def update  
     @user = current_user
     update!
   end
   
+  def accept
 
+  end
+
+  def decline
+
+  end
   
   private
 
@@ -100,12 +109,10 @@ class MeetupsController < InheritedResources::Base
       @attachable_id = params[:item][:attachable_id]
       @ping = Ping.find(params[:item][:ping])
       @item = Item.find(@attachable_id)
-      @meetup.users = Array[current_user]
-      @meetup.invited_users = Array[@ping.owner]
+      @meetup.users = Array[@ping.owner]
     else
-      #@meetup.users = Array[current_user]
-      @meetup.invited_users = @user.followers
-      @meetup.invited_users << @user.following_users
+      @meetup.users = @user.followers
+      @meetup.users << @user.following_users
     end
   end
   

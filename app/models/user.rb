@@ -2,13 +2,23 @@
 
 class User < ActiveRecord::Base
 
+
+  attr_accessible :login, :email, :username, :password, :password_confirmation,
+                  :interest_list, :wish_list, :aim_list, :skill_list,
+                  :userdetails_attributes, :images, :images_attributes,
+                  :location_attributes, :meeting_ids, :meetup_ids,
+                  :occupation, :company, :birthdate, :lastname, :firstname,
+                  :remember_me,
+                  :aim_tokens, :skill_tokens, :interest_tokens, :wish_tokens
+
+
   extend FriendlyId
   friendly_id :login
 
   # :token_authenticatable, :lockable, :timeoutable, :encryptable, :confirmable, :encryptor => :restful_authentication_sha1 and :activatable
-  devise :database_authenticatable, :registerable, :rememberable #, :rpx_connectable, :recoverable, :trackable, :confirmable, :recoverable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, :rememberable #, :encryptable, :encryptor => :bcrypt, :authentication_keys => [:username], :rpx_connectable, :recoverable, :trackable, :confirmable, :recoverable, :trackable, :validatable
 
-  before_create :build_user
+  after_validation :build_user
 
   # ajaxful_rater # has_many :rates
   acts_as_taggable_on :interests, :wishs, :aims
@@ -56,10 +66,11 @@ class User < ActiveRecord::Base
   has_many :transfers, :class_name => "Transfer", :foreign_key => "user_id"
   has_many :comments, :as => :commentable
   has_many :meetings, :dependent => :destroy
-  belongs_to :meetups
-  has_many :meetups, :through => :meetings, :dependent => :destroy, :include => [:events], :order => "events.from desc"
-  #has_many :meetups, :through => :meetings, :dependent => :destroy
-  belongs_to :groups
+  # belongs_to :meetups
+  has_many :meetups, :through => :meetings, :dependent => :destroy, :include => [:events] #, :order => "events.from desc"
+  # has_many :meetups, :through => :meetings, :dependent => :destroy
+  has_one :meetup, :through => :meetings
+  # belongs_to :groups
   has_many :groups
   # has_many :groupings, :dependent => :destroy
     
@@ -93,14 +104,6 @@ class User < ActiveRecord::Base
   # Virtual attribute for authenticating by either username or email
   # This is in addition to a real persisted field like 'username'
   attr_accessor :username
-
-  attr_accessible :login, :email, :username, :password, :password_confirmation, 
-                  :interest_list, :wish_list, :aim_list, :skill_list, 
-                  :userdetails_attributes, :images, :images_attributes, 
-                  :location_attributes, :meeting_ids, :meetup_ids,
-                  :occupation, :company, :birthdate, :lastname, :firstname,
-                  :remember_me,
-                  :aim_tokens, :skill_tokens, :interest_tokens, :wish_tokens
 
   attr_reader     :aim_tokens, :skill_tokens, :interest_tokens, :wish_tokens
 

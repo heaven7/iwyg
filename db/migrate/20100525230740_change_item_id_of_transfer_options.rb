@@ -5,7 +5,7 @@ class ChangeItemIdOfTransferOptions < ActiveRecord::Migration
   end
 
   def self.down
-    rename_column_column :item_type_id, :item_id
-    add_column :transfer_options, :transfer_id
+    rename_column :transfer_options, :item_type_id, :item_id
+    add_column :transfer_options, :transfer_id, :integer
   end
 end
