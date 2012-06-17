@@ -7,22 +7,22 @@
       showErrorTabs();
 
   <% if params[:item] && params[:item][:attachable_id] %>
-        /* preselect pinged resource (item) */
-        id = <%= params[:item][:attachable_id] %>;
-        $('#attachments .field-add').click();
-        $('#attachments select').val(id);
+      /* preselect pinged resource (item) */
+      id = <%= params[:item][:attachable_id] %>;
+      $('#attachments .field-add').click();
+      $('#attachments select').val(id);
   <% end %>
   <% if params[:action] == "new" and !params[:item] %>
-        /* blank memberlist */
-        $("#who .choices-group").find("input ").removeAttr("checked");
+      /* blank memberlist */
+      $("#who .choices-group").find("input ").removeAttr("checked");
   <% elsif params[:action] == "create" and params[:item] %>
-        /* unhide members */
-        $("#who .choices-group").find("div").removeClass("ui-tabs-hide");
+      /* unhide members */
+      $("#who .choices-group").find("div").removeClass("ui-tabs-hide");
   <% end %>
-      /* hide additional location fields */
-      $("#meetup_locations_attributes_1_address_input, #meetup_locations_attributes_1_city_input, #meetup_locations_attributes_1_zip_input, #meetup_locations_attributes_1_country").hide();
-      $("#meetup_locations_attributes_1_country").parent().find("label").hide();
-    });
+    /* hide additional location fields */
+    $("#meetup_locations_attributes_1_address_input, #meetup_locations_attributes_1_city_input, #meetup_locations_attributes_1_zip_input, #meetup_locations_attributes_1_country").hide();
+    $("#meetup_locations_attributes_1_country").parent().find("label").hide();
+  });
   </script>
 <% end %>
 
@@ -62,11 +62,7 @@
       </div>
       <div id="who">
         <div class="button new">
-<<<<<<< HEAD
     <%# link_to t("formtastic.labels.meetup.invite_users").html_safe, "#" %>
-=======
-        <%# link_to t("formtastic.labels.meetup.invite_users").html_safe, "#" %>
->>>>>>> 967ba42699543ae03ac162c0112bdece2ddc09c5
         </div>
         <%= f.inputs do %>
           <%= f.input :users, :as => :check_boxes, :collection => @meetup.users, :member_label => Proc.new { |u| "#{render :partial => "share/usertiny_unlinked", :locals => { :user => u }}".html_safe } %>
@@ -118,7 +114,6 @@
       </div>
       <div id="who">
         <div class="button new">
-<<<<<<< HEAD
     <%# link_to t("formtastic.labels.meetup.invite_users").html_safe, "#" %>
         </div>
         <%= f.inputs do %>
@@ -127,12 +122,6 @@
           <% else %>
             <%= t("meetup.onlyFollowersAvailableToAdd").html_safe %>
           <% end %>
-=======
-        <%= link_to t("formtastic.labels.meetup.invite_users").html_safe, "#" %>
-        </div>
-        <%= f.inputs do %>
-          <%# f.input :users, :as => :check_boxes, :collection => @meetup.users, :member_label => Proc.new { |u| "#{render :partial => "share/usertiny_unlinked", :locals => { :user => u }}".html_safe } %>
->>>>>>> 967ba42699543ae03ac162c0112bdece2ddc09c5
         <% end %>
       </div>
       <div id="attachments" class="tab_content">
