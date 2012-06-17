@@ -136,6 +136,11 @@ ActiveRecord::Schema.define(:version => 20120615152528) do
     t.string   "slug"
   end
 
+<<<<<<< HEAD
+=======
+  add_index "groups", ["slug"], :name => "index_groups_on_slug"
+
+>>>>>>> 967ba42699543ae03ac162c0112bdece2ddc09c5
   create_table "images", :force => true do |t|
     t.integer  "imageable_id"
     t.string   "imageable_type"
@@ -218,6 +223,11 @@ ActiveRecord::Schema.define(:version => 20120615152528) do
     t.datetime "updated_at"
     t.boolean  "accepted"
     t.datetime "accepted_at"
+<<<<<<< HEAD
+=======
+    t.boolean  "invited"
+    t.datetime "invited_at"
+>>>>>>> 967ba42699543ae03ac162c0112bdece2ddc09c5
   end
 
   create_table "meetups", :force => true do |t|
@@ -382,6 +392,10 @@ ActiveRecord::Schema.define(:version => 20120615152528) do
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+<<<<<<< HEAD
+=======
+  add_index "users", ["slug"], :name => "index_users_on_slug", :unique => true
+>>>>>>> 967ba42699543ae03ac162c0112bdece2ddc09c5
   add_index "users", ["unlock_token"], :name => "index_users_on_unlock_token", :unique => true
 
   create_table "versions", :force => true do |t|

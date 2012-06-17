@@ -1,7 +1,5 @@
 # encoding: utf-8
-
 class User < ActiveRecord::Base
-
 
   attr_accessible :login, :email, :username, :password, :password_confirmation,
                   :interest_list, :wish_list, :aim_list, :skill_list,

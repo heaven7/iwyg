@@ -8,7 +8,7 @@ class Meetup < ActiveRecord::Base
     :locations, :locations_attributes,
     :owner_id, :ownertype,
     :user_ids, :invited_user_ids, :item_attachments, :item_attachments_attributes
-                
+              
  # has_paper_trail
   acts_as_followable
   acts_as_paranoid

@@ -360,7 +360,11 @@ en:
     participants:
       one: "1 participant"
       other: "%{count} participants"
+<<<<<<< HEAD
     onlyFollowersAvailableToAdd: "You can only add followers or users you are following."
+=======
+         
+>>>>>>> 967ba42699543ae03ac162c0112bdece2ddc09c5
   ## transfer
   
   transfer:
