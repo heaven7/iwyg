@@ -7,14 +7,8 @@ Iwyg::Application.routes.draw do
   
   filter :locale
   
-  
   resources :meetups do
-<<<<<<< HEAD
-    # resources :users
-=======
     resources :users
-    resources :invited_users
->>>>>>> 967ba42699543ae03ac162c0112bdece2ddc09c5
   end
 
   resources :meetings do
@@ -25,7 +19,6 @@ Iwyg::Application.routes.draw do
   
   resources :events
 
-  
   resources :userdetails
 
   resources :mailbox
@@ -59,11 +52,8 @@ Iwyg::Application.routes.draw do
   end
   
   resources :users do
-<<<<<<< HEAD
     resources :items, :pings, :groups, :images, :accounts, :comments, :friendships, :events, :messages, :meetups
-=======
-    resources :items, :pings, :groups, :images, :accounts, :comments, :friendships, :events, :rates, :messages, :meetups
->>>>>>> 967ba42699543ae03ac162c0112bdece2ddc09c5
+
     resource :location
     resource :userdetails
     member do
@@ -141,10 +131,6 @@ Iwyg::Application.routes.draw do
   match 'page/help', :to => 'page#help'
 
   #  match "/profile/:login" => 'users#show', :login => :login, :as => :profile
-<<<<<<< HEAD
   # match 'signup', :to => 'devise/session#new'
-=======
-  match 'signup', :to => 'devise/session#new'
->>>>>>> 967ba42699543ae03ac162c0112bdece2ddc09c5
     
 end

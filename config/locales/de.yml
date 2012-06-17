@@ -360,11 +360,8 @@ de:
     participants:
       one: "1 Teilnehmer"
       other: "%{count} Teilnehmer"
-<<<<<<< HEAD
     onlyFollowersAvailableToAdd: "Du kannst nur Follower oder Benutzer die du folgst hinzuf&uuml;gen."
-=======
->>>>>>> 967ba42699543ae03ac162c0112bdece2ddc09c5
-  
+    
   ## transfer
   
   transfer:
