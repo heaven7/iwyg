@@ -246,7 +246,7 @@ de:
   hasUpdatedAGroup: "hat die Gruppe '%{title}' ge&auml;ndert"
   hasUpdatedALocation: "hat den Ort f&uuml;r '%{title}' ge&auml;ndert"
   hasUpdatedtheUserdetails: "hat ihre/seine Userdaten ge&auml;ndert"
-  hasJoinedTheCommunity: "ist Iwyg beigetreten."
+  hasJoinedTheCommunity: "ist iwyg beigetreten."
   hasCreated: "hat erstellt"
   hasCreatedAMeetup: "hat den Treffpunkt '%{title}' er&ouml;ffnet"
   hasCreatedANeed: "braucht '%{title}'"
