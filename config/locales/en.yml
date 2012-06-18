@@ -80,6 +80,10 @@ en:
       date: '%Y-%m-%d'
       time: '%H:%M:%S'
       datetime: '%Y-%m-%d %H:%M:%S'
+      
+  ## iwyg
+  iwyg:
+    title: "iwyg - the social go-happy-network"
 
   ## login
   

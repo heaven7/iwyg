@@ -81,6 +81,10 @@ de:
       time: '%H:%M:%S'
       datetime: '%d.%m.%Y %H:%M:%S'
 
+  ## iwyg
+  iwyg:
+    title: "iwyg - das soziale Go-Happy-Netzwerk"
+
   ## login
         
   login:
