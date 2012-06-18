@@ -1,5 +1,6 @@
 .DS_STORE
 .project
+.htaccess
 Thumbs.db
 .bundle/
 db/development.sqlite3

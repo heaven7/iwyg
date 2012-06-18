@@ -48,9 +48,9 @@ Iwyg::Application.configure do
   config.active_support.deprecation = :notify
   
   # devise 
-  config.action_mailer.default_url_options = { :host => 'ec2-107-21-100-209.compute-1.amazonaws.com' }
+  config.action_mailer.default_url_options = { :host => 'iwyg.net' }
   
   # application configuration
-  HOST = "http://ec2-107-21-100-209.compute-1.amazonaws.com"
+  HOST = "http://www.iwyg.net"
   REPLY_EMAIL = "IWYG <iwyg@heavenseven.net>"
 end
