@@ -165,7 +165,7 @@ class ItemsController < InheritedResources::Base
     @resource = @item
     getItemTypes
 
-    @qr = RQRCode::QRCode.new( request.url, :size => 4)
+    #@qr = RQRCode::QRCode.new( request.url, :size => 4)
     respond_to do |format|
       format.html
       format.png { render :qrcode => request.url }
