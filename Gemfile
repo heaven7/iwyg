@@ -20,6 +20,8 @@ group :development do
   gem 'mongrel', '>= 1.2.0.pre2'
 end
 
+gem 'rqrcode'
+# gem 'mini_magick'
 gem 'hpricot'
 gem 'redis'
 gem 'sqlite3-ruby'

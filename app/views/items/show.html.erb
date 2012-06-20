@@ -1,6 +1,6 @@
 <% content_for(:head) do %>
- <%= GMap.header(:hl=> params[:locale]) if @map %>
- <%= @map.to_html if @map %>
+  <%= GMap.header(:hl=> params[:locale]) if @map %>
+  <%= @map.to_html if @map %>
 <% end %>
 <div id="col1">
   <h1><%=h @item.title %></h1>         
@@ -19,65 +19,80 @@
         <p class="font-small">
           <%= t("resources.available").html_safe %>:
           <%
-             @begin = @item.created_at
-             @end = Time.now
-          %>
+          @begin = @item.created_at
+          @end = Time.now
+        %>
           <% if @item.from %>
-             <span><%= t("resources.from") %> <%= l @item.from.to_date %></span>
-             <% @begin = @item.from %>
+            <span><%= t("resources.from") %> <%= l @item.from.to_date %></span>
+            <% @begin = @item.from %>
           <% end %>
 
           <% if @item.till %>
-             <span><%= t("resources.till") %> <%= l @item.till.to_date %></span>
-             <% @end = @item.till %>
+            <span><%= t("resources.till") %> <%= l @item.till.to_date %></span>
+            <% @end = @item.till %>
           <% end %>
           <% if @begin and @end %>
             <br />
             <%= t("resources.duration") %>:
             <%= distance_of_time_in_words(@begin, @end) %>
-         <% end %>
+          <% end %>
         </p>
       <% end %>
     </div>
   <% end %>
- <div class="box ui-corner-all tags">
-  <%= render :partial => "share/tags", :locals => { :tags => @item.tags } %>
-  <% if @item.description %>
-    <p><%= @item.description %></p>
-  <% end %>
-  <%= render :partial => "share/item_attachments", :locals => { :object => @item } %>
+  <div class="box ui-corner-all tags">
+    <%= render :partial => "share/tags", :locals => { :tags => @item.tags } %>
+    <% if @item.description %>
+      <p><%= @item.description %></p>
+    <% end %>
+    <%= render :partial => "share/item_attachments", :locals => { :object => @item } %>
   </div>
   <%= render :partial => "share/pings", :locals => {:pings => @item.pings, :pingable => @item} %>
 </div>
 <div id="col2"> 
   <% if logged_in? and ( @location && !@locations_json.blank? ) %>
-    <h3><%= t("resources.location") %></h3> 
+    <h3><%= t("resources.location") %></h3>
     <%= render :partial => "locations/location", :locals => {:location => @location} %>
     <%= render :partial => "share/map", :locals => { :locations => @locations_json } %>
-  <% end %> 
+  <% end %>
   <% if @items_related.size > 0 && @item.tags.size > 0 %>
     <div id="items-related">
       <h3><%= @items_related_title %> (<%= @items_related.size %>)</h3>
       <ul>
         <% for item in @items_related do %>
-          <%= render :partial => "itemrelated", :locals => { :item => item, :mainitem => @item } %>
-        <% end %>
-      </ul>
-      <div class="clear"></div>
-    </div>
-  <% end %>
-  <% if @events.size > 0 %>
-    <h3>Events (<%= @events.size %>)</h3>
-    <ul class="font-smaller box ui-corner-all">
-      <% for event in @events do %>
-        <li>
-          <%= render :partial => "events/eventaction", :locals => { :event => event } %>
-          <%= t("start") %>: <%= l event.from, :format => :short if event.from %><br />
-          <%= t("end") %>: <%= l event.till, :format => :short if event.till %><br />
-        </li>
+            <%= render :partial => "itemrelated", :locals => { :item => item, :mainitem => @item } %>
+          <% end %>
+        </ul>
+        <div class="clear"></div>
+      </div>
+    <% end %>
+    <% if @events.size > 0 %>
+      <h3>Events (<%= @events.size %>)</h3>
+      <ul class="font-smaller box ui-corner-all">
+        <% for event in @events do %>
+            <li>
+              <%= render :partial => "events/eventaction", :locals => { :event => event } %>
+              <%= t("start") %>: <%= l event.from, :format => :short if event.from %><br />
+              <%= t("end") %>: <%= l event.till, :format => :short if event.till %><br />
+            </li>
+          <% end %>
+        </ul>
       <% end %>
-    </ul>
-  <% end %>
-  <%= render :partial => "share/comments", :locals => {:commentable => @item, :comments => @comments} %>
-</div>
-<div class="clearfix"></div>
+      <% if @qr %>
+        <table class="qr">
+          <% @qr.modules.each_index do |x| %>
+            <tr>
+              <% @qr.modules.each_index do |y| %>
+                <% if @qr.dark?(x,y) %>
+                  <td class="black"/>
+                <% else %>
+                  <td class="white"/>
+                <% end %>
+              <% end %>
+            </tr>
+          <% end %>
+        </table>
+      <% end %>
+      <%= render :partial => "share/comments", :locals => {:commentable => @item, :comments => @comments} %>
+    </div>
+    <div class="clearfix"></div>

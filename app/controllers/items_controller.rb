@@ -164,6 +164,12 @@ class ItemsController < InheritedResources::Base
     getLocation(@item) if @location.lat and @location.lng
     @resource = @item
     getItemTypes
+
+    @qr = RQRCode::QRCode.new( request.url, :size => 4)
+    respond_to do |format|
+      format.html
+      format.png { render :qrcode => request.url }
+    end
   end
   
   def new
