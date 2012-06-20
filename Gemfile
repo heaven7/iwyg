@@ -21,6 +21,7 @@ group :development do
 end
 
 gem 'rqrcode'
+gem 'geokit'
 # gem 'mini_magick'
 gem 'hpricot'
 gem 'redis'
