@@ -1,6 +1,18 @@
 <% content_for(:head) do %>
-  <%= GMap.header(:hl=> params[:locale]) if @map %>
-  <%= @map.to_html if @map %>
+  <%# GMap.header(:hl=> params[:locale]) if @map %>
+  <%# @map.to_html if @map %>
+  <script type="text/javascript" src="/javascripts/jquery.qrcode.js"></script>
+  <script type="text/javascript" src="/javascripts/qrcode.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function (){
+      $('#qrcode').qrcode({
+        width: 128,
+        height: 128,
+        text    : "<%= request.url %>"
+      });
+      //alert("huhuu");
+    });
+  </script>
 <% end %>
 <div id="col1">
   <h1><%=h @item.title %></h1>         
@@ -53,7 +65,11 @@
   <% if logged_in? and ( @location && !@locations_json.blank? ) %>
     <h3><%= t("resources.location") %></h3>
     <%= render :partial => "locations/location", :locals => {:location => @location} %>
-    <%= render :partial => "share/map", :locals => { :locations => @locations_json } %>
+    <div class="box ui-corner-all">
+      <%= render :partial => "share/map", :locals => { :locations => @locations_json } %>
+      <div id="qrcode">
+      </div>
+    </div>
   <% end %>
   <% if @items_related.size > 0 && @item.tags.size > 0 %>
     <div id="items-related">
@@ -77,21 +93,6 @@
             </li>
           <% end %>
         </ul>
-      <% end %>
-      <% if @qr %>
-        <table class="qr">
-          <% @qr.modules.each_index do |x| %>
-            <tr>
-              <% @qr.modules.each_index do |y| %>
-                <% if @qr.dark?(x,y) %>
-                  <td class="black"/>
-                <% else %>
-                  <td class="white"/>
-                <% end %>
-              <% end %>
-            </tr>
-          <% end %>
-        </table>
       <% end %>
       <%= render :partial => "share/comments", :locals => {:commentable => @item, :comments => @comments} %>
     </div>
