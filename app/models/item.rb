@@ -14,6 +14,7 @@ class Item < ActiveRecord::Base
   belongs_to :user
 
   acts_as_taggable_on :tags
+  acts_as_paranoid
   acts_as_followable
   has_associated_audits
   acts_as_audited

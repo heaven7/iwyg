@@ -9,6 +9,7 @@ class Group < ActiveRecord::Base
   attr_reader :tag_tokens
 
   acts_as_followable
+  acts_as_paranoid
   acts_as_taggable_on :tags
   acts_as_audited
 

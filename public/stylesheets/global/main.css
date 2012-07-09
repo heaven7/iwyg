@@ -55,6 +55,21 @@ form {
   padding-top:0.5em;
   padding-bottom:0.5em;
 }
+cite {
+    /*  „  “ ‚  ‘       */
+    quotes:  "\201E" "\201C" "\201A " "\2018";
+    /*  “  ” ‘  ’       */
+    /*quotes: "\201C" "\201D" "\2018" "\2019";*/
+    font-style: normal;
+}
+
+cite:before {
+    content: open-quote;
+}
+
+cite:after {
+    content: close-quote;
+}
 h1, h2, h3, h4, h5, h6 {
 	font-family:"Georigia";
 	font-style:italic;

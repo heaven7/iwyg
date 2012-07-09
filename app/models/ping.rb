@@ -9,6 +9,7 @@ class Ping < ActiveRecord::Base
   acts_as_followable
   has_associated_audits
   acts_as_audited
+  acts_as_paranoid
 
   scope :open, :conditions => { :status => 1 }
   scope :not_closed, :conditions => "status < 4"

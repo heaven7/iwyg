@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120615152528) do
+ActiveRecord::Schema.define(:version => 20120621113534) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(:version => 20120615152528) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.datetime "deleted_at"
   end
 
   create_table "customs", :force => true do |t|
@@ -134,6 +135,7 @@ ActiveRecord::Schema.define(:version => 20120615152528) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
+    t.datetime "deleted_at"
   end
 
   create_table "images", :force => true do |t|
@@ -185,6 +187,7 @@ ActiveRecord::Schema.define(:version => 20120615152528) do
     t.float    "amount"
     t.integer  "measure_id"
     t.integer  "status",       :default => 1
+    t.datetime "deleted_at"
   end
 
   create_table "locations", :force => true do |t|
@@ -263,6 +266,7 @@ ActiveRecord::Schema.define(:version => 20120615152528) do
     t.text     "body"
     t.integer  "associated_id"
     t.string   "associated_type"
+    t.datetime "deleted_at"
   end
 
   create_table "rates", :force => true do |t|

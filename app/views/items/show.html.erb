@@ -61,16 +61,16 @@
   </div>
   <%= render :partial => "share/pings", :locals => {:pings => @item.pings, :pingable => @item} %>
 </div>
-<div id="col2"> 
-  <% if logged_in? and ( @location && !@locations_json.blank? ) %>
-    <h3><%= t("resources.location") %></h3>
-    <%= render :partial => "locations/location", :locals => {:location => @location} %>
-    <div class="box ui-corner-all">
+<div id="col2">
+  <div class="box ui-corner-all">
+    <% if logged_in? and ( @location && !@locations_json.blank? ) %>
+      <%= render :partial => "locations/location", :locals => {:location => @location} %>
       <%= render :partial => "share/map", :locals => { :locations => @locations_json } %>
-      <div id="qrcode">
-      </div>
+    <% end %>
+    <div id="qrcode">
     </div>
-  <% end %>
+  </div>
+  <div class="clear"></div>
   <% if @items_related.size > 0 && @item.tags.size > 0 %>
     <div id="items-related">
       <h3><%= @items_related_title %> (<%= @items_related.size %>)</h3>

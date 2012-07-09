@@ -249,7 +249,7 @@ en:
   hasUpdatedAGroup: "has updated the group '%{title}'"
   hasUpdatedALocation: "has updated the location of '%{title}'"
   hasUpdatedtheUserdetails: "has updated her/his userdetails"
-  hasJoinedTheCommunity: "has joined Iwyg."
+  hasJoinedTheCommunity: "has joined iwyg."
   hasCreated: "has created"
   hasCreatedAMeetup: "has opened the meetup '%{title}'"
   hasCreatedANeed: "needs '%{title}'"

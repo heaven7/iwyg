@@ -1,1 +1,5 @@
-<%= gmaps4rails(locations) %>
+<%# gmaps4rails(locations) %>
+<%= gmaps({
+    "map_options" => {"auto_adjust" => false, "center_on_user" => true, "auto_zoom" => false, "zoom" => 1, "detect_location" => true},
+    "markers" => {"data" => locations}
+}) %>
