@@ -1,7 +1,7 @@
 class Item < ActiveRecord::Base
 
   extend FriendlyId
-  friendly_id :title
+  friendly_id :title, :use => :slugged
   before_create :build_item
 
   attr_accessible :locatable_type, :locatable_id, :title, :amount, :measure_id, :measure,

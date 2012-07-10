@@ -5,6 +5,12 @@
  * @copyright 2011 by Heavenseven, www.heavenseven.net 
 */
 
+/* LOCATION */
+
+.location {
+    height: 200px;
+}
+
 /* QR */
 #qrcode {
     width: 128px;
