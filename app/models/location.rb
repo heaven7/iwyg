@@ -11,11 +11,11 @@ class Location < ActiveRecord::Base
   
   def gmaps4rails_address
     # [address, city, zip, country].compact.join(', ') if not address.nil? or not city.nil? or not zip.nil? or not country.nil?
-    self.address
+    address
   end
   
   def gmaps4rails_infowindow
-     "<h2>#{city}</h2>" << "<h4>#{country}</h4>"
+     "<h2>#{address}</h2>"
   end
   
 end

@@ -8,7 +8,7 @@
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <%= f.text_area :body, :class => "ui-corner-all" %>
   <% end %>
-  <%= f.buttons do %>
+  <%= f.actions do %>
     <%= f.submit t("send"), :class => "ui-corner-all" %>
   <% end %>
 <% end %>
