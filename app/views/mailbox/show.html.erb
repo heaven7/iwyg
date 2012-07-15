@@ -1,6 +1,6 @@
 <table>
   <% for message in @messages %>
-    <% if not message.custom.deleted %>
+    <% if not message.deleted %>
       <tr>
         <td><%=h message.author.login %></td>
         <td>
