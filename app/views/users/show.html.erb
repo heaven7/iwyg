@@ -10,39 +10,41 @@
   </script>
 <% end %>
 
-<% if user_signed_in? and @user == current_user %>
-  <div class="button edit">
-    <%= link_to t("userarea.edit.profile").html_safe, edit_polymorphic_path([@user, "userdetails"]) %>
-  </div>
-<% else %>
-  <%= render :partial => "share/userarea/profileusermenu", :locals => { :user => @user } %>
-  <div class="clearfix"></div>
-  <div id="new_message" style="display:none;">
-  <%= render :partial => "sent/form" %>
-  </div>
+<% if user_signed_in? %>
+  <% if @user == current_user %>
+    <div class="button edit">
+      <%= link_to t("userarea.edit.profile").html_safe, edit_polymorphic_path([@user, "userdetails"]) %>
+    </div>
+  <% else %>
+    <%= render :partial => "share/userarea/profileusermenu", :locals => { :user => @user } %>
+    <div class="clearfix"></div>
+    <div id="new_message" style="display:none;">
+      <%= render :partial => "sent/form" %>
+    </div>
+  <% end %>
 <% end %>
 <% if @user %>
   <div class="sub2cols">
     <div class="subcol1">
       <!--
-       <%= link_to "Delete User", 
-          {:action => "destroy", :id => @user},
-          :confirm => t("confirm_delete").html_safe,
-          :method => :delete %>
+      <%= link_to "Delete User",
+        {:action => "destroy", :id => @user},
+        :confirm => t("confirm_delete").html_safe,
+        :method => :delete %>
       -->
       <div id="activity">
         <h2><%= t("activity").html_safe %></h2>
         <div class="block ui-corner-all">
-            <% if @followings and @followings_count %>
-              <span><%= @user.login %></span>
-              <span><%= link_to t("menu.user.followings"), followings_user_path %> (<%= @followings_count %>)</span>
-            <% end %>
-            <% if @followers and @followers_count %>
-              <span><%= t("and") %></span>
-              <span><%= link_to t("menu.user.followers"), followers_user_path %> (<%= @followers_count %>)</span>
-            <% end %>
-            <hr class="divider" />
-            <%= render :partial => "activity", :locals => { :audits => @audits } %>
+          <% if @followings and @followings_count %>
+            <span><%= @user.login %></span>
+            <span><%= link_to t("menu.user.followings"), followings_user_path %> (<%= @followings_count %>)</span>
+          <% end %>
+          <% if @followers and @followers_count %>
+            <span><%= t("and") %></span>
+            <span><%= link_to t("menu.user.followers"), followers_user_path %> (<%= @followers_count %>)</span>
+          <% end %>
+          <hr class="divider" />
+          <%= render :partial => "activity", :locals => { :audits => @audits } %>
         </div>
       </div>
     </div>
@@ -54,7 +56,7 @@
         <% end %>
       </div>
       <h2><%= t("user.interests").html_safe %></h2>
-      <div class="block ui-corner-all">  
+      <div class="block ui-corner-all">
         <% for tag in @user.interest_list %>
           <%= link_to tag, users_path({:interest => tag}) %>
         <% end %>
@@ -65,7 +67,7 @@
           <%= link_to tag, users_path({:wish => tag}) %>
         <% end %>
       </div>
-      
+
     </div>
   </div>
 <% end %>

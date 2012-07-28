@@ -4,13 +4,13 @@ source :rubygems
 # source 'http://gems.github.com'
 # source 'http://gemcutter.org'
 
-gem 'rails', '3.0.10'
+gem 'rails', '3.2.3'
 
-#group :assets do
-#  gem 'sass-rails',   '~> 3.1.5.rc.2'
-#  gem 'coffee-rails', '~> 3.1.1'
-#  gem 'uglifier', '>= 1.0.3'
-#end
+group :assets do
+  gem 'sass-rails', "~> 3.2.0"
+  gem 'coffee-rails', "~> 3.2.0"
+  gem 'uglifier'
+end
 
 group :production, :stage do
   gem 'mysql2' , '0.2.18'
@@ -26,9 +26,9 @@ gem 'redis'
 gem 'sqlite3-ruby'
 gem 'inherited_resources'
 gem 'has_scope'
-gem 'meta_where'
+gem "squeel" # if using rails 3.0.x use gem 'meta_where'
 gem "ransack"
-gem 'routing-filter', '0.2.3'
+gem 'routing-filter', '0.3.0'
 gem "friendly_id", "4.0"
 gem "paper_trail"
 gem 'json_pure', '1.6.1'   
@@ -36,7 +36,7 @@ gem 'jquery-rails' #, '>= 1.0.12'
 gem 'rails3-jquery-autocomplete'
 gem 'client_side_validations'
 
-gem 'devise' #, '2.0.0' # , :git => 'git://github.com/plataformatec/devise.git'
+gem 'devise', '2.0.0' # , :git => 'git://github.com/plataformatec/devise.git'
 gem 'devise_rpx_connectable'
 gem 'formtastic', '2.1.0.beta1'
 gem 'geocoder'
