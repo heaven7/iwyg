@@ -1,0 +1,16 @@
+/**
+ * Resource style definition.
+ * 
+ * @author Christian Grlica
+ * @copyright 2009 by Heavenseven, www.heavenseven.net 
+ */
+ 
+
+.request {
+
+}
+
+.accepted .box{
+  border:2px solid #E4A6A6;
+  background:#AA8F8F;
+}

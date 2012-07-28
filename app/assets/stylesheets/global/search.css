@@ -1,0 +1,122 @@
+/* Search */
+#search {
+    position:relative;
+    left:13%;
+    text-align:left;
+    padding-top:2em;
+}
+
+#search input {
+    padding-left:2px;
+}
+#search option{
+    background:#EDEFDF;
+
+}
+
+#advanced_search {
+    display:none; /* if javascript is disabled */
+}
+#search #searchform {
+    float:left;
+    position:relative;
+    margin-right:0.5em;
+}
+#search #submit-search {
+    position: absolute;
+    top: 10px;
+    left: 102%;
+    width: 21px;
+}
+
+#search #searchform #search_title_contains,
+#search #searchform #search_title_like_any,
+#search #searchform #nil_class_title_like_any {
+    position:relative;
+    top:-8px;
+    padding:6px 6px 6px 4px;
+    margin-right:1em;
+}
+#search #searchextended {
+    margin-top:1.5em;
+    padding:0.5em;
+    padding-left:8.5em;
+    text-decoration: none;
+    padding: 0.5em;
+}
+#search #searchextended table .label {
+    vertical-align: top;
+    font-family: 'Georgia', serif;
+    font-size:1.4em;
+    color:white;
+    text-shadow: 0 -1px 1px white;
+    -webkit-text-stroke: 1px rgba(0,0,0,0.4);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgba(0, 0, 0, 0.199219);
+}
+#search #searchextended table tr {
+    height:57px;
+}
+#search #searchextended input,
+#search #searchextended select {
+    font-size:1.0em;
+}
+#search #searchextended select {
+    /* border:none; */
+}
+#search #searchextended #q_measure_id_eq {
+    width:88px;
+
+}
+#search #searchform #nil_class_submit,
+#search #searchform #search_submit {
+    position:absolute;
+    right:-40px;
+    top:0;
+}
+#search #searchmenu {
+    font-size: 70%;
+    left: -5em;
+    position: relative;
+    top: 4.5em;
+}
+
+#search #searchmenu ul li  {
+    line-height:1.2em;
+}
+
+#search #searchmenu a {
+    text-decoration:underline;
+}
+
+#search #searchmenu a:hover {
+    text-decoration:none;
+}
+
+
+#search input, 
+#search select {
+    background:#EDEFDF none repeat scroll 0 0;
+    color:#4d514a;
+    font-size:120%;
+    font-family:"Georgia", serif;
+
+}
+#search input {
+    padding-left:3px;
+}
+#search #search_string {
+    height:20px;
+    position:relative;
+    top:-1px;
+}
+#search option{
+    background:#EDEFDF;
+
+}
+
+/* jQueryUI Datepicker */
+.ui-datepicker {
+    position:relative;
+    z-index:999;
+} 

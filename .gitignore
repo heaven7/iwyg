@@ -11,6 +11,7 @@ log/*
 tmp/*
 rdoc/*
 public/system/*
+public/assets/*
 public/.htaccess
 nbproject/*       
 vendor/bundle/*

@@ -1,0 +1,209 @@
+/**
+ * Form elements style definition.
+ * 
+ * @author Christian Grlica
+ * @copyright 2009 by Heavenseven, www.heavenseven.net 
+ */
+
+@import url(forms/resource.css);
+
+.inputs label img:hover,
+.commit input {
+  cursor: pointer;
+}
+
+fieldset {
+  font-family:"Georgia";
+  border:none;
+  background:#C1CCBD;
+}
+.formular {
+  border:1px solid #969e93;
+}
+.registration,
+.change_password,
+.forgot_password {
+  width: 80%;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  margin-top:1em;
+}
+.registration form#new_user .inputs {
+    padding-top: 1em;
+}
+.inputs p {
+  font-size:80%;
+  padding: 0.3em;
+}
+
+.loginform {
+  width: 500px;  
+  margin-left:auto !important;
+  margin-right:auto !important;
+  margin-top: 4em;
+}
+.registration .links li,
+.loginform .links li,
+.change_password .links li,
+.forgot_password .links li {
+  padding:0.5em;  
+  font-size:80%;
+}
+.required {
+  font-family:"Georgia", serif;
+  color:#793B33;
+  font-size:120%;
+}
+.item .errorExplanation ul {
+  display:block !important;
+}
+hr.divider {
+  border:none;
+  border-top:1px solid #A4B895;
+  border-bottom:1px solid #C8D4C3;
+  margin-bottom:1.8em;
+}
+legend {
+  background:#CCD5C9 none repeat scroll 0 0;
+  border:1px solid #A1AA9D;
+  border-bottom:1px solid #c1cdbc;
+  font-weight:bold;
+  padding:0.5em;
+  color:#905e5e;
+}
+#images .image {
+  padding:0.5em;
+  clear:both;
+}
+#images .image {
+  text-align:center;
+}
+#images .file {
+  text-align:left;
+}
+#images .file label {
+  text-align:right;
+}
+#attachments .attachment .options img,
+#images .image img {
+  padding:0.5em;
+}
+#attachments .attachment .attached_item {
+  padding:0.5em;
+  padding-left:12.5em;
+}
+#attachments .attachment .options {
+  padding-left:12.5em;
+}
+label {
+  display:block;
+  float:left;
+  margin-right:0.5em;
+  text-align:right;
+  white-space:nowrap;
+  width:30%;
+  color:#444343;
+}
+input, select, file, textarea, .inputfield {
+  background:#EDEFDF none repeat scroll 0 0;
+  border:1px solid #a4b895;
+  color:#72776E;
+  font-size:18px;
+  padding:0.3em;
+  font-weight:normal;
+}
+input:hover,
+select:hover, 
+file:hover, 
+textarea:hover,
+.inputfield:hover,
+input:focus,
+select:focus, 
+file:focus, 
+textarea:focus,
+.inputfield:focus{
+  background:white none repeat scroll 0 0;
+  border:1px solid #b5e095;
+  
+}
+input:hover,
+select:hover, 
+file:hover, 
+textarea:hover,
+.inputfield:hover {
+  cursor: pointer;
+}
+input:focus,
+select:focus, 
+file:focus, 
+textarea:focus,
+.inputfield:focus {
+  cursor: text;
+}
+textarea {
+  height:5em;
+  width:20em;
+}
+.inputfile {
+  font-size:80%;
+}
+.inputsmall {
+  width:6em;
+}
+.formbutton {
+  margin-top:0.5em;
+  padding-left:12.5em;
+  text-align:left;
+  
+}
+.formbutton input {
+  background:#b8cab6 none repeat scroll 0 0;
+  border-width:2px;
+  font-family:"Georgia";
+  font-style:italic;
+  cursor: pointer;
+}
+
+/* ERRORS */
+
+/* formerrors */
+
+.fieldWithErrors input,
+.fieldWithErrors select,
+.fieldWithErrors #resource_need_true,
+.fieldWithErrors #resource_need_false {
+  border:1px dotted red;
+  padding:5px;
+}
+
+
+/* errorExplanation */
+
+.errorExplanation {
+  font-family:Arial, sans-serif;
+  font-style:normal; 
+  margin-top:0.5em;
+  margin-bottom:0.5em;
+  padding:0.5em;
+}
+.errorExplanation h2 {
+  display:none;
+}
+
+.errorExplanation ul {
+  color:#991616;
+  display:none;
+}
+
+.errorExplanation p {
+  color:#A25C5C;
+  font-weight: bold;
+}
+
+/* resources */
+
+.formular #radioneed {
+  width:200px;
+  margin:0px auto;
+  text-align:center;
+}

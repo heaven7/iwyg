@@ -1,0 +1,15 @@
+<% form_for ([@commentable, Comment.new]) do |f| %>
+  <%= f.error_messages %>
+  <%= f.hidden_field :commentable_id, :value => @commentable.id %>
+  <%= f.hidden_field :commentable_type, :value => @commentable.class %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <p class="font-small">
+    Comment on : <%=h @commentable.class.to_s %>
+  </p>
+  <p>
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit 'Comment' %>
+  </p>
+<% end %>

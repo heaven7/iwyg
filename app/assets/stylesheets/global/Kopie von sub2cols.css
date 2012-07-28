@@ -1,0 +1,40 @@
+/**
+ * Sub2cols style definition.
+ * 
+ * @author Christian Grlica
+ * @copyright 2009 by Heavenseven, www.heavenseven.net 
+ */
+
+.sub2cols {
+  clear:both;
+  width:100%;
+  position:relative;
+}
+
+.sub2cols .subcol1 {
+  float:left;
+  width:49%;
+}
+
+.sub2cols .subcol2 {
+  width:49%;
+  min-height:20px;
+  float:left;
+}
+
+.sub2cols #userdescription {
+  width:160px;
+}
+.sub2cols #userarea {
+  width:75%;
+}
+.sub2cols #usermailbox {
+  width:160px;
+  min-height:450px;
+}
+.sub2cols #usermessages {
+  margin-left:10em;
+  padding-left:0.5em;
+  min-height:450px;
+  border-left:1px solid #cbcec0;
+}

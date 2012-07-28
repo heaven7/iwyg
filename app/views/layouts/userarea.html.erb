@@ -1,0 +1,24 @@
+<div class="sub2cols">
+  <div id="userdescription" class="subcol1">
+    <%= render :partial => "share/avatar", :locals => {:user => @user} %>
+    <%= render :partial => "share/userarea/usermenu", :locals => {:user => @user} %>
+  </div>
+  <div id="userarea" class="subcol2">
+  
+    <h1 class="username">
+      <%=h link_to @user.login, @user %>
+      <% if @active_menuitem_l1 %>
+        &raquo; <%= link_to @active_menuitem_l1, @active_menuitem_l1_link %>
+      <% end %>
+      <% if @active_menuitem_l2 %>
+
+        &raquo; <%= link_to t("#{@active_menuitem_l2}").html_safe, @active_menuitem_l2_link %>
+      <% end %>
+    </h1>
+    <%  if logged_in? && @user.location %>
+      <p><%= render :partial => "locations/location", :locals => {:location => @user.location} %></p>
+    <% end %>
+    <%= yield %>
+  </div>
+</div>
+<%= parent_layout 'application' %>
