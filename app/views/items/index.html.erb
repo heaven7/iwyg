@@ -34,42 +34,42 @@
 
   <div class="sub2cols">
     <div class="subcol1">
-      <% if @items_needed.size > 0 %>
+      <%# if @items_needed.size > 0 %>
         <h2><%= t("title.resources.#{@userSubtitle}Need", :user => @user.login) %> (<%= @items_needed.size %>)</h2>
         <div class="block ui-corner-all">
           <%= render :partial => "share/items_needed_offered", :locals => {:resources => @resources_needed, :itemTypes => @itemTypes, :need => 1 } %>
         </div> 
-      <% end %>
+      <%# end %>
     </div>
     
     <div class="subcol2">   
-      <% if @items_offered.size > 0 %>
+      <%# if @items_offered.size > 0 %>
         <h2><%= t("title.resources.#{@userSubtitle}Have", :user => @user.login) %> (<%= @items_offered.size %>)</h2>
         <div class="block ui-corner-all">
           <%= render :partial => "share/items_needed_offered", :locals => {:resources => @resources_offered, :itemTypes => @itemTypes, :need => 0 } %>
         </div>
-      <% end %>
+      <%# end %>
     </div>
     
   </div> 
   <div class="sub2cols">
   
     <div class="subcol1"> 
-      <% if @items_taken.size > 0 %>
+      <%# if @items_taken.size > 0 %>
        <h2><%= t("title.resources.#{@userSubtitle}HaveTaken", :user => @user.login) %> (<%= @items_taken.size %>)</h2>
         <div class="block ui-corner-all">
           <%= render :partial => "share/items_given_taken", :locals => {:resources => @resources_taken, :itemTypes => @itemTypes, :taken => 1 } %>
         </div>
-      <% end %>     
+      <%# end %>
     </div>
     
     <div class="subcol1">
-      <% if @items_given.size > 0 %>
+      <%# if @items_given.size > 0 %>
         <h2><%= t("title.resources.#{@userSubtitle}HaveGiven", :user => @user.login) %> (<%= @user.items_given.size %>)</h2>
         <div class="block ui-corner-all">
           <%= render :partial => "share/items_given_taken", :locals => {:resources => @resources_given, :itemTypes => @itemTypes, :taken => 0 } %>
         </div> 
-      <% end %>
+      <%# end %>
     </div>
     
   </div>
