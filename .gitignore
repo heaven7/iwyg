@@ -6,6 +6,7 @@ Thumbs.db
 .bundle/
 db/schema.rb
 db/development.sqlite3
+db/production.sqlite3
 db/test.sqlite3
 log/*
 tmp/*

@@ -124,7 +124,7 @@ class ApplicationController < ActionController::Base
       @map.center_zoom_init([location.lat,location.lng], 14)
     end
   end 
-  # DEPREACHED  - end
+  # DEPRECATED  - end
   
   
   def getLocationsOnMap(object)
