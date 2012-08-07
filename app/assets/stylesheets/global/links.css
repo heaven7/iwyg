@@ -54,19 +54,19 @@ li.button {
 .new a {
   padding:0.5em;
   padding-left:2em;
-  background:#EDEFDF url("../../images/icons/icon_button_add.png") 0px  1px no-repeat;
+  background:#EDEFDF url("/assets/icons/icon_button_add.png") 0px  1px no-repeat;
 }
 
 .new a:hover {
-  background:white url("../../images/icons/icon_button_add.png") 0px  1px no-repeat;
+  background:white url("/assets/icons/icon_button_add.png") 0px  1px no-repeat;
 }
 
 .edit a {
   padding:0.5em;
   padding-left:2em;
-  background:#EDEFDF url("../../images/icons/icon_button_edit.png") 9px  8px no-repeat;
+  background:#EDEFDF url("/assets/icons/icon_button_edit.png") 9px  8px no-repeat;
 }
 
 .edit a:hover {
-  background:white url("../../images/icons/icon_button_edit.png") 9px  8px no-repeat;
+  background:white url("/assets/icons/icon_button_edit.png") 9px  8px no-repeat;
 }

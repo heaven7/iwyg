@@ -65,7 +65,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8baf80', end
 
 #topnavigation #profile_link {
   border:1px solid transparent;
-  background:transparent url("../../images/icons/icon_arrow_down.png") center right no-repeat;
+  background:transparent url("/assets/icons/icon_arrow_down.png") center right no-repeat;
   padding-right: 1.2em;
 }
 
