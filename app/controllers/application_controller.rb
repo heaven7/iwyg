@@ -151,12 +151,11 @@ class ApplicationController < ActionController::Base
   end 
   
   def itemtypes
-    @itemtypes ||= ItemType.find(:all)
-    @itemtypes
+    @itemtypes ||= ItemType.all
   end 
   
   def itemstatuses
-    @itemstatuses ||= ItemStatus.find(:all)
+    @itemstatuses ||= ItemStatus.all
   end
   
   def ip
