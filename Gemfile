@@ -20,13 +20,16 @@ group :development do
   gem 'mongrel', '>= 1.2.0.pre2'
 end
 
+# gem 'iwyg_be'
+gem 'therubyracer', :platform => :ruby
+gem 'execjs'
 gem 'geokit'
 gem 'hpricot'
 gem 'redis'
 gem 'sqlite3-ruby'
 gem 'inherited_resources'
 gem 'has_scope'
-gem "squeel" # if using rails 3.0.x use gem 'meta_where'
+gem "squeel"
 gem "ransack"
 gem 'routing-filter', '0.3.0'
 gem "friendly_id", "4.0"
