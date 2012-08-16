@@ -13,7 +13,7 @@ group :assets do
 end
 
 group :production, :stage do
-  gem 'mysql2' , '0.2.18'
+  gem 'mysql2' #, '0.2.18'
 end
 
 group :development do 
@@ -56,7 +56,7 @@ gem "acts_as_audited", "~> 2.1.0"
 gem "rails3_acts_as_paranoid"
 
 group :test do
-  gem 'mysql2' , '0.2.18'
+  gem 'mysql2' #, '0.2.18'
   #  gem "capybara"
   #  gem "guard-rspec"
   gem "factory_girl_rails", '1.6.0'
