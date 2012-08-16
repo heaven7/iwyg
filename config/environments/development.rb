@@ -53,3 +53,5 @@ Iwyg::Application.configure do
   Paperclip.options[:command_path] = "E:/Program Files/ImageMagick-6.7.4-Q16"
 end
 
+
+

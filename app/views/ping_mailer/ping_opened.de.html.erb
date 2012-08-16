@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    Hallo <%= @holder.login %>,
+    <br />
+    <%= @message %>
+    <br />
+    <br />
+    Besuche das Profil von <%= link_to @user.login, @user_url %>.
+    <br />
+    <br />
+    Du kannst den Ping <a href="<%=h @ping_url %>">anschauen</a>, <a href="<%=h @holder_pings_url %>">akzeptieren oder ablehnen</a>.
+    <br />
+    <br />
+    Dein
+    <br />
+    IWYG-Team
+  </body>
+</head>

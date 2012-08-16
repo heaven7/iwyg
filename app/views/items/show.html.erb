@@ -1,8 +1,8 @@
 <% content_for(:head) do %>
   <%# GMap.header(:hl=> params[:locale]) if @map %>
   <%# @map.to_html if @map %>
-  <script type="text/javascript" src="/javascripts/jquery.qrcode.js"></script>
-  <script type="text/javascript" src="/javascripts/qrcode.js"></script>
+  <%= javascript_include_tag "/assets/jquery.qrcode.js" %>
+  <%= javascript_include_tag "/assets/qrcode.js" %>
   <script type="text/javascript">
     $(document).ready(function (){
       $('#qrcode').qrcode({

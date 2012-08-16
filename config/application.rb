@@ -40,7 +40,7 @@ module Iwyg
     # Loading Js-Files automatically
     config.action_view.javascript_expansions = { :defaults => %w(jquery jquery-ui jquery_ujs ) } 
     
-    # The user observer goes inside the Rails::Initializer block
+    # Observers
     config.active_record.observers = :user_observer, :ping_observer, :meetup_observer #, :transfer_observer, :comment_observer, :event_observer
   end
 end
@@ -54,6 +54,9 @@ USERS_PER_PAGE = 24
 GROUPS_PER_PAGE = 24
 TRANSFERS_PER_PAGE = 30
 PINGS_PER_PAGE = 30
+
+MAILER_CSS = :mailer
+MAILER_CHARSET = "UTF-8"
 
 # Default date/time format
 # date.formats(:default=> "%B %d, %Y")
