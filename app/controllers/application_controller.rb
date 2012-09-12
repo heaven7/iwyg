@@ -147,7 +147,7 @@ class ApplicationController < ActionController::Base
   #end
   
   def measures
-    @measures ||= Measure.all
+    @measures ||= Measure.find(:all)
   end 
   
   def itemtypes
