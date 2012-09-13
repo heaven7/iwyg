@@ -18,7 +18,7 @@ de:
       signed_in: 'Erfolgreich eingeloggt.'
       signed_out: 'Erfolgreich ausgeloggt.'
     passwords:
-      send_instructions: 'Du bekommst gleich eine Email von uns mit Informationen, wie Du Dein Passwort ändern kannst.'
+      send_instructions: 'Du bekommst gleich eine Email von uns mit Informationen, wie Du Dein Passwort &auml;ndern kannst.'
       updated: 'Dein Passwort wurde erfolgreich ge&auml;ndert. Du bist jetzt eingeloggt.'
     confirmations:
       send_instructions: 'Du erh&auml;lst in K&uuml;rze eine Email mit Informationen zum Best&auml;tigen Deines Accounts von uns.'
