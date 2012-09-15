@@ -48,7 +48,7 @@ Iwyg::Application.configure do
   config.active_support.deprecation = :notify
   
   # devise 
-  config.action_mailer.default_url_options = { :host => 'iwyg.net' }
+  config.action_mailer.default_url_options = { :host => 'www.iwyg.net' }
   
   # application configuration
   HOST = "http://www.iwyg.net"

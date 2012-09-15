@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   friendly_id :login
 
   # :token_authenticatable, :lockable, :timeoutable, :encryptable, :confirmable, :encryptor => :restful_authentication_sha1 and :activatable
-  devise :database_authenticatable, :registerable, :rememberable #, :encryptable, :encryptor => :bcrypt, :authentication_keys => [:username], :rpx_connectable, :recoverable, :trackable, :confirmable, :recoverable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, :rememberable, :recoverable #, :encryptable, :encryptor => :bcrypt, :authentication_keys => [:username], :rpx_connectable, :recoverable, :trackable, :confirmable, :recoverable, :trackable, :validatable
 
   after_validation :build_user
 
