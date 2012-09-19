@@ -22,20 +22,20 @@
             <td class="label"><%= t("resources.amount") %></td>
             <td class="row-big">
               <%= f.text_field :amount_eq, {:id => "amount", :size => 8} %> &nbsp;
-              <%= f.collection_select :measure_id_eq, @measures, :id, :title, :include_blank => true %>
+              <%= f.collection_select :measure_id_eq, @measures, :id, :title, :include_blank => true if @measures %>
               <%# select_tag("search[measure_id_equals]", options_from_collection_for_select(@measures, :id, :title), :include_blank => true) %>
             </td>
           </tr>
           <tr>
             <td class="label"><%= t("searchIn") %></td>
             <td class="row-big">
-              <%= f.collection_select :item_type_id_eq, @itemtypes, :id, :localized_title, :include_blank => true %>
+              <%= f.collection_select :item_type_id_eq, @itemtypes, :id, :localized_title, :include_blank => true if @itemtypes %>
               <%# select_tag( :search[item_type].contains, options_from_collection_for_select(@itemtypes, :id, :localized_title), :include_blank => true) %>
             </td>
           </tr>
         </table>
       </div>
-    <input src="/images/icons/icon_magnifier.png" id="submit-search" type="image" value="Go" class="ui-corner-all" />
+    <%= image_submit_tag "icons/icon_magnifier.png", :id => "submit-search", :value => "Go", :class => "ui-corner-all" %>
   <% end %>
   </div>                                     
   <div id="searchmenu">

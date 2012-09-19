@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    Hello <%= @user.login %>,
+    <br />
+    <%= @message %>
+    <br />
+    <br />
+    Visit profile of <a href="<%= @user_url %>" ><%= @holder.login %></a><br />
+    Resource: <a href="<%= @resource_url %>" ><%= @resource.title %></a> of <%= @holder.login %>.
+    <br />
+    <br />
+    Yours
+    <br />
+    IWYG
+  </body>
+</head>
