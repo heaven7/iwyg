@@ -18,7 +18,7 @@
   <%= render :partial => "share/userarea/profileusermenu", :locals => { :user => @user } %>
   <div class="clearfix"></div>
   <div id="new_message" style="display:none;">
-  <%= render :partial => "sent/form" %>
+  <%= render :partial => "sent/form" if logged_in? %>
   </div>
 <% end %>
 <% if @user %>

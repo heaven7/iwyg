@@ -12,7 +12,7 @@
       <% end %>
       <% if @active_menuitem_l2 %>
 
-        &raquo; <%= link_to t("#{@active_menuitem_l2}").html_safe, @active_menuitem_l2_link %>
+        &raquo; <%= link_to t("#{@active_menuitem_l2}.plural").html_safe, @active_menuitem_l2_link %>
       <% end %>
     </h1>
     <%  if logged_in? && @user.location %>
