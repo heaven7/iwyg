@@ -21,8 +21,8 @@ group :development do
 end
 
 # gem 'iwyg_be'
-gem 'eventmachine', '1.0.0.beta.2'
-gem 'thin'
+#gem 'eventmachine', '1.0.0.beta.2'
+#gem 'thin'
 gem 'therubyracer', :platform => :ruby
 gem 'execjs'
 gem 'geokit'
