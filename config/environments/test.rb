@@ -1,7 +1,16 @@
 # encoding: utf-8
 
 Iwyg::Application.configure do
-  # Settings specified here will take precedence over those in config/application.rb
+
+  # Allow pass debug_assets=true as a query parameter to load pages with unpackaged assets
+  config.assets.allow_debugging = true
+
+  # Configure static asset server for tests with Cache-Control for performance
+  config.serve_static_assets = true
+  config.static_cache_control = "public, max-age=3600"
+
+  # Allow pass debug_assets=true as a query parameter to load pages with unpackaged assets
+  config.assets.allow_debugging = true
 
   # In the development environment your application's code is reloaded on
   # every request.  This slows down response time but is perfect for development

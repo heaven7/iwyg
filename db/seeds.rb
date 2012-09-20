@@ -1,6 +1,6 @@
 require 'active_record/fixtures'                                       
 
-Fixtures.create_fixtures("#{Rails.root}/db/migrate/data", "item_types")  
-Fixtures.create_fixtures("#{Rails.root}/db/migrate/data", "item_statuses")
-Fixtures.create_fixtures("#{Rails.root}/db/migrate/data", "measures")   
-Fixtures.create_fixtures("#{Rails.root}/db/migrate/data", "statuses")   
+ActiveRecord::Fixtures.create_fixtures("#{Rails.root}/db/migrate/data", "item_types")
+ActiveRecord::Fixtures.create_fixtures("#{Rails.root}/db/migrate/data", "item_statuses")
+ActiveRecord::Fixtures.create_fixtures("#{Rails.root}/db/migrate/data", "measures")
+ActiveRecord::Fixtures.create_fixtures("#{Rails.root}/db/migrate/data", "statuses")

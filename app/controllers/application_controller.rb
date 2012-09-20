@@ -124,7 +124,7 @@ class ApplicationController < ActionController::Base
       @map.center_zoom_init([location.lat,location.lng], 14)
     end
   end 
-  # DEPREACHED  - end
+  # DEPRECATED  - end
   
   
   def getLocationsOnMap(object)
@@ -151,12 +151,11 @@ class ApplicationController < ActionController::Base
   end 
   
   def itemtypes
-    @itemtypes ||= ItemType.find(:all)
-    @itemtypes
+    @itemtypes ||= ItemType.all
   end 
   
   def itemstatuses
-    @itemstatuses ||= ItemStatus.find(:all)
+    @itemstatuses ||= ItemStatus.all
   end
   
   def ip

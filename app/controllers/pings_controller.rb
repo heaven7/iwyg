@@ -22,29 +22,27 @@ class PingsController < InheritedResources::Base
       @pings_all = @user.pings
       @active_menuitem_l1 = I18n.t "menu.user.pings"
       @active_menuitem_l1_link = user_pings_path
+      @inverse_pings = Array.new
+      @pings_on_groups = Array.new
 
-      # listing of users pings and others pinged on users resources
+      # listing of users pings and others pinged on user's resources
       @user.items.map do |i|
-        @inverse_pings = i.pings.each do |p|
-          p
+        i.pings.each do |p|
+          @inverse_pings << p
         end
       end
 
+      puts "inverse pings size: " + @inverse_pings.join("-")
+      
       # attending and invited users of groups
       @user.groups.map do |i|
-        @pings_on_groups = i.pings.each do |p|
-          p
+        i.pings.each do |p|
+          @pings_on_groups << p
         end
-      end
-     
-      # other users pinged on current one
-      @pings_on_user = Ping.user.each do |p|
-        p if p.owner == @user || p.pingable_id == current_user.id
       end
 
       @pings_all += @inverse_pings if @inverse_pings
       @pings_all += @pings_on_groups if @pings_on_groups
-      @pings_all += @pings_on_user if @pings_on_user
       
       @pings_all = @pings_all.sort_by(&:created_at).reverse.uniq
       @pings_count = @pings_all.size

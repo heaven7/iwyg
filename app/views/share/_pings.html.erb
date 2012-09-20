@@ -1,0 +1,44 @@
+<% if logged_in? and @user != current_user %>
+<div class="pingarea font-smaller">
+ <% if !current_user.pinged?(@resource) || @resource.multiple?  %>
+    <%= render :partial => "pings/form", :locals => {:pingable => pingable} %>
+ <%# else %>
+  <%# t("resources.alreadyPingedOrResourceIsMultiple") %>
+ <% end %>
+</div>
+<% elsif not logged_in? %>
+  <div class="button">
+    <%= link_to t("link.ping.loginToPing") , login_path %>
+  </div>
+<% end %>
+<% if pings.size > 0 %>
+  <div class="list">
+    <% pings.each do |ping| %>  
+      <div class="ping ui-corner-all <%=h ping.statusTitle %>">    
+        <% if ping && ping.statusTitle != "closed" %>
+          <% if ping.owner? %>
+            <%= render :partial => "share/usermicro", :locals => { :user => pingerOf(ping) } %>
+          <% else %>
+            <div class="mircro-user-thumb bordered font-smaller center ui-corner-all">
+              <img src="/assets/global/avatar_dummy_micro.png" />
+              <br>
+              former member
+            </div>
+          <% end %>
+          <div class="info font-smaller">
+            <%= distance_of_time_in_words(ping.created_at, Time.now) %> <%= t("ago") %><br />
+            <p class="<%=h statusTitle(ping) %>"><%= t(statusTitle(ping)).html_safe %></p> 
+          </div>
+          <%= simple_format(ping.body, :class => "font-smaller") %>
+          <% if @item.itemtype == "Good" %>
+            <p class="font-smaller"><%= transferStatus(@item, ping) %></p>
+          <% end %>
+          <% if @item.itemtype == "Service" %>
+            <p class="font-smaller"><%= eventStatus(@item, ping) %></p>
+          <% end %>
+          <%= render :partial => "pings/pingmenu", :locals => { :ping => ping} %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
