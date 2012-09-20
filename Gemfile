@@ -21,8 +21,8 @@ group :development do
 end
 
 # gem 'iwyg_be'
-#gem 'eventmachine', '1.0.0.beta.2'
-#gem 'thin'
+gem 'eventmachine', '1.0.0.beta.2'
+gem 'thin'
 gem 'therubyracer', :platform => :ruby
 gem 'execjs'
 gem 'geokit'
@@ -41,7 +41,7 @@ gem 'jquery-rails' #, '>= 1.0.12'
 gem 'rails3-jquery-autocomplete'
 gem 'client_side_validations'
 
-gem 'devise', '2.0.0' # , :git => 'git://github.com/plataformatec/devise.git'
+gem 'devise', '< 2.1' # , :git => 'git://github.com/plataformatec/devise.git'
 gem 'devise_rpx_connectable'
 gem 'formtastic', '2.1.0.beta1'
 gem 'geocoder'

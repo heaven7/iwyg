@@ -6,7 +6,7 @@ class Location < ActiveRecord::Base
   geocoded_by :address, :latitude  => :lat, :longitude => :lng, :units => :km
   after_validation :geocode, :if => :address_changed?
    
-  acts_as_gmappable :lat => "lat", :lng => "lng", :validation => false, :process_geocoding => false
+  acts_as_gmappable :lat => "lat", :lng => "lng", :validation => false #, :process_geocoding => true
   acts_as_taggable_on :tags
   
   def gmaps4rails_address

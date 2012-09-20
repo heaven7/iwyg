@@ -29,6 +29,7 @@ Iwyg::Application.configure do
 
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
+  config.log_level = :debug
   # config.action_view.debug_rjs             = true
   config.action_controller.perform_caching = false
 
@@ -51,6 +52,18 @@ Iwyg::Application.configure do
   REPLY_EMAIL = "IWYG <iwyg@heavenseven.net>"
   # Paperclip.options[:command_path] = "D:/Programme/ImageMagick-6.6.3-Q16"
   Paperclip.options[:command_path] = "E:/Program Files/ImageMagick-6.7.4-Q16"
+end
+
+class ActionDispatch::Request
+ def local?
+   true
+ end
+end
+
+class ActionDispatch::ShowExceptions
+  def local_request?(*args)
+    true
+  end
 end
 
 

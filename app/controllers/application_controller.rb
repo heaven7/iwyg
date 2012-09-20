@@ -141,10 +141,6 @@ class ApplicationController < ActionController::Base
   end
   
   protected
-
-  #def local_request?
-  #  true
-  #end
   
   def measures
     @measures ||= Measure.find(:all)
