@@ -7,7 +7,8 @@
   <%= stylesheet_link_tag "style", "token-input", "formtastic", "formtastic_changes", "jquery.autocomplete" %>
   <!--[if IE 6]><%= stylesheet_link_tag 'formtastic_ie6' %><![endif]-->
   <!--[if IE 7]><%= stylesheet_link_tag 'formtastic_ie7' %><![endif]-->
-  <%= stylesheet_link_tag "colorbox.css" %>
+  <%# stylesheet_link_tag "colorbox.css" %>
+  <%= stylesheet_link_tag "gmaps4rails.css" %>
   <%= stylesheet_link_tag "themes/iwyg/jquery.ui.theme.css" %>
   <%= stylesheet_link_tag "themes/iwyg/jquery-ui-1.8.11.custom.css" %>
   <%= stylesheet_link_tag "themes/iwyg/agents/#{users_browser}" if File.exist?("app/assets/stylesheets/themes/iwyg/agents/#{users_browser}.css") %>
@@ -19,8 +20,9 @@
   <%# javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" %> 
   <%= javascript_include_tag "jquery-ui-timepicker-addon.js" %>                                               
   <%= javascript_include_tag "jquery.tokeninput" %>
-  <%= javascript_include_tag "jquery.colorbox" %>
-  
+  <%# javascript_include_tag "jquery.colorbox" %>
+  <%= javascript_include_tag "gmaps4rails/gmaps4rails.base" %>
+  <%= javascript_include_tag "gmaps4rails/gmaps4rails.googlemaps" %>
 
   <%= csrf_meta_tag %>
   

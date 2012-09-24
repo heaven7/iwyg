@@ -364,7 +364,7 @@ de:
     participants:
       one: "1 Teilnehmer"
       other: "%{count} Teilnehmer"
-    onlyFollowersAvailableToAdd: "Du kannst nur Follower oder Benutzer die du folgst hinzuf&uuml;gen."
+    onlyFollowersAvailableToAdd: "Du kannst nur Follower oder Mitglieder, denen du folgst, hinzuf&uuml;gen."
     
   ## transfer
   

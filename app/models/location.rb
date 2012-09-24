@@ -4,14 +4,14 @@ class Location < ActiveRecord::Base
   
   belongs_to :locatable, :polymorphic => true 
   geocoded_by :address, :latitude  => :lat, :longitude => :lng, :units => :km
-  after_validation :geocode, :if => :address_changed?
+  after_validation :geocode# , :if => :address_changed?
    
-  acts_as_gmappable :lat => "lat", :lng => "lng", :validation => false #, :process_geocoding => true
+  acts_as_gmappable :lat => "lat", :lng => "lng", :validation => false, :process_geocoding => false
   acts_as_taggable_on :tags
   
   def gmaps4rails_address
-    # [address, city, zip, country].compact.join(', ') if not address.nil? or not city.nil? or not zip.nil? or not country.nil?
-    address
+    [address, city, zip, country].compact.join(', ') # if not address.nil? or not city.nil? or not zip.nil? or not country.nil?
+    # address
   end
   
   def gmaps4rails_infowindow
