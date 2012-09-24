@@ -65,7 +65,7 @@
     <div class="location">
       <% if logged_in? and ( @location && !@locations_json.blank? ) %>
         <%= render :partial => "locations/location", :locals => {:location => @location} %>
-
+	<%# "#{@locations_json.to_s}" %>
         <%= render :partial => "share/map", :locals => { :locations => @locations_json } %>
       <% end %>
     </div>
