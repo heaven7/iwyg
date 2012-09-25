@@ -25,7 +25,7 @@ end
 #gem 'thin'
 gem 'therubyracer', :platform => :ruby
 gem 'execjs'
-# gem 'geokit'
+gem 'geokit'
 gem 'hpricot'
 gem 'redis'
 gem 'sqlite3-ruby'
