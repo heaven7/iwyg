@@ -104,6 +104,9 @@ label {
   width:30%;
   color:#444343;
 }
+.login input {
+  width: 60%;
+}
 input, select, file, textarea, .inputfield {
   background:#EDEFDF none repeat scroll 0 0;
   border:1px solid #a4b895;

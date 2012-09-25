@@ -20,7 +20,7 @@
         <td><%= meetup.locations.first.city if meetup.locations.size > 0 %></td>
         <td><%= meetup.events.size > 0 ? meetup.events.first.from : t("unknown") %></td>
         <td><%=h link_to meetup.title, meetup, :title => meetup.title %></td>
-        <td><%= link_to t("meetup.participant", :count => meetup.users.count), meetup, :title => meetup.title %></td>
+        <td><%= link_to t("meetup.participants", :count => meetup.users.count), meetup, :title => meetup.title %></td>
         <td><%= render :partial => "usermenu", :locals => { :meetup => meetup} %></td>
       </tr>
     <% end %>

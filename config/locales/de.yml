@@ -201,18 +201,11 @@ de:
   help: "Hilfe"
   about: "&Uuml;ber uns"
   options: "Optionen"
-  confirm_delete: "Willst Du das wirklich l&ouml;schen?"
+  confirm_delete: "Wirklich, wirklich l&ouml;schen?"
   ago: "her"
   previous: "zur&uuml;ck"
   next: "vor"
   more: "mehr"
-  things: 
-    taken:
-      one: "1 Ding genommen"
-      other: "%{count} Dinge genommen"
-    given:
-      one: "1 Ding gegeben"
-      other: "%{count} Dinge gegeben"
   thing: 
     one: "Ding"
     other: "Dinge"
@@ -559,6 +552,12 @@ de:
    ## resources 
   
   resources:
+    taken:
+      one: "1 Ressource genommen"
+      other: "%{count} Ressourcen genommen"
+    given:
+      one: "1 Ressource gegeben"
+      other: "%{count} Ressourcen gegeben"
     goods: "G&uuml;ter"
     services: "Dienste"
     transports: "Transporte"

@@ -125,7 +125,7 @@
             :alt => I18n.t("meta.language_name", :locale => locale.to_sym),
             :title => I18n.t("meta.language_name", :locale => locale.to_sym)
             ),
-            locale_url(request.fullpath, locale) 
+	    "/#{locale}#{request.fullpath}"
           %></li>
          <% end %>
        <% end %>

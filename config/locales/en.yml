@@ -205,16 +205,6 @@ en:
   previous: "previous"
   next: "next"
   more: "more"
-  things: 
-    taken:
-      one: "1 thing taken"
-      other: "%{count} things taken"
-    given:
-      one: "1 thing given"
-      other: "%{count} things given"
-  thing: 
-    one: "Thing"
-    other: "Things"
   found: "found"
   send: "Send"
   from: "from"
@@ -559,6 +549,12 @@ en:
   ## resources
   
   resources:
+    taken:
+      one: "1 resource taken"
+      other: "%{count} resources taken"
+    given:
+      one: "1 resource given"
+      other: "%{count} resources given"
     goods: "Goods"
     services: "Services"
     transports: "Transports"

@@ -13,13 +13,13 @@ class ApplicationController < ActionController::Base
 
   layout 'application'
 
-  #geocode_ip_address
+  #geocode
   
   # GLOBALS
   $search = Item.search()
   $priority_countries = [:DE, :AT, :CH] 
 
-  # Scrub sensitive parameters from your log
+  # Scrub sensitive parameters from log
   config.filter_parameters :password
   
   # Return true if a parameter corresponding to the given symbol was posted.
@@ -27,17 +27,13 @@ class ApplicationController < ActionController::Base
     request.post? and params[sym]
   end
   
-  # Auto-geocode the user's ip address and store in the session.
-  def geokit
-    @geolocation = session[:geo_location]  # @location is a GeoLoc instance.
-  end
-    
+  # Auto-geocode the user's ip address and store it in session.
   def geocode
-      ip
+    @geolocation = session[:geo_location] = request.location
   end
 
   def not_found
-   render "public/404.html", status => 404, :layout => false
+  # render "public/404.html", status => 404, :layout => false
   end
   
   def getNeedsAndOffers(scope, itemTypes)
@@ -94,40 +90,7 @@ class ApplicationController < ActionController::Base
   end
 
 
-  # DEPRECATED  - begin
-  def getLocationOnMap(location, title, imagepath)
-  
-    if !location.lat and !location.lng
-       #geocode
-       #location.lat = @user_location.lat
-       #location.lng = @user_location.lng
-    end
-  
-    if location.lat and location.lng
-      @map = GMap.new("map")
-      @map.control_init(:large_map => true,:map_type => true)
-      @map.icon_global_init(
-        GIcon.new(
-          :image => imagepath,
-          :info_window_anchor => GPoint.new(9,2),
-          :icon_anchor => GPoint.new(7,7)
-        ),
-        "icon"
-      )
-      icon = Variable.new("icon")
-      @entitylocation = GMarker.new([location.lat,location.lng], 
-        :icon => icon,
-        :title => "#{title}", 
-        :info_window => "<h2>#{title}</h2>#{location.city}"
-      )
-      @map.overlay_init(@entitylocation)
-      @map.center_zoom_init([location.lat,location.lng], 14)
-    end
-  end 
-  # DEPRECATED  - end
-  
-  
-  def getLocationsOnMap(object)
+ def getLocationsOnMap(object)
     @locations_json = object.locations.to_gmaps4rails
   end
   

@@ -50,7 +50,7 @@ gem 'ajaxful_rating', '2.2.8.2'
 gem 'acts-as-taggable-on', '~> 2.2.2'
 gem 'paperclip'
 #gem 'meta_search'
-gem 'will_paginate', '~> 3.0'
+gem 'will_paginate', '3.0.3'
 gem 'validates_timeliness' #, '2.3.2'
 gem 'roadie'
 gem "acts_as_follower"
