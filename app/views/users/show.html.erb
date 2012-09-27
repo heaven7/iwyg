@@ -11,8 +11,11 @@
 <% end %>
 
 <% if user_signed_in? and @user == current_user %>
-  <div class="button edit">
-    <%= link_to t("userarea.edit.profile").html_safe, edit_polymorphic_path([@user, "userdetails"]) %>
+  <div class="button">
+    <%= link_to t("userarea.edit.profile").html_safe, edit_polymorphic_path([@user, "userdetails"]), :class => "edit" %>
+    <%= link_to "Preferences", "#", :class => "preferences" %>
+  </div>
+  <div class="button preferences">
   </div>
 <% else %>
   <%= render :partial => "share/userarea/profileusermenu", :locals => { :user => @user } %>

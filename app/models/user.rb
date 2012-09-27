@@ -124,7 +124,8 @@ class User < ActiveRecord::Base
   end
 
   def build_user
-    folders.build(:title => "Inbox") # message folder
+    # message folder
+    self.folder = Folder.new(:title => "Inbox") if not Folder.exists?(self)
     self.custom = Custom.new # customization for user
     self.location = Location.new
   end

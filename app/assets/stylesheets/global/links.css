@@ -61,12 +61,18 @@ li.button {
   background:white url("/assets/icons/icon_button_add.png") 0px  1px no-repeat;
 }
 
-.edit a {
+.edit {
   padding:0.5em;
   padding-left:2em;
-  background:#EDEFDF url("/assets/icons/icon_button_edit.png") 9px  8px no-repeat;
+  background-image: url("/assets/icons/icon_button_edit.png");
+  background-repeat: no-repeat;
 }
-
+.preferences {
+  padding:0.5em;
+  padding-left:2em;
+  background-image: url("/assets/icons/icon_button_preferences.png");
+  background-repeat: no-repeat;
+}
 .edit a:hover {
   background:white url("/assets/icons/icon_button_edit.png") 9px  8px no-repeat;
 }
