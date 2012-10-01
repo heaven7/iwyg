@@ -120,11 +120,11 @@ class User < ActiveRecord::Base
   
   # mailbox
   def inbox
-    folders.find_by_title("Inbox").first
+    self.folders.where(:title => "Inbox").order("id asc").first()
   end
 
   def build_user
-    folders.build(:title => "Inbox") # message folder
+    self.folders.build(:title => "Inbox") # message folder
     self.custom = Custom.new # customization for user
     self.location = Location.new
   end
