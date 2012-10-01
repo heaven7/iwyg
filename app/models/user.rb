@@ -120,7 +120,7 @@ class User < ActiveRecord::Base
   
   # mailbox
   def inbox
-    folders.find_by_title("Inbox")
+    folders.find_by_title("Inbox").first
   end
 
   def build_user
