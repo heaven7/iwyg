@@ -1,5 +1,6 @@
 Iwyg::Application.routes.draw do
 
+
   # mount IwygBe::Engine, :at => "/be"
   
   post "versions/:id/revert" => "versions#revert", :as => "revert_version"
@@ -55,6 +56,8 @@ Iwyg::Application.routes.draw do
     resources :items, :pings, :groups, :images, :accounts, :comments, :friendships, :events, :messages, :meetups
 
     resource :location
+
+    resources :user_preferences, :as => "settings"
     resource :userdetails
     member do
       post 'rate'
