@@ -1,11 +1,11 @@
 <h2><%=h t("title.mailbox" )%></h2>
-<div class="button new">
-  <%# link_to t("mailbox.newMessage"), new_sent_path %>
-</div>
 <div id="mailbox" class="ui-corner-all">
   <div class="subcol1">
     <div class="menu folder">
       <ul class="horizontal">
+	<li class="button new">
+	  <%= link_to t("mailbox.newMessage"), new_sent_path %>
+	</li>
         <% for folder in current_user.folders do %>
           <li class="button">
 		<%= link_to_unless_current t("mailbox.#{folder.title.downcase}"), mailbox_path(folder) %>
