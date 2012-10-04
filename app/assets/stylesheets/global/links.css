@@ -79,7 +79,7 @@ li.button {
   padding:0.5em;
   padding-left:2em;
   background-image: url("/assets/icons/icon_button_preferences.png");
-	background-position: 10px 10px;
+	background-position: 7px 8px;
   background-repeat: no-repeat;
 }
 .edit a:hover {
@@ -91,6 +91,6 @@ li.button {
 }
 .preferences a:hover {
   background-image: url("/assets/icons/icon_button_preferences.png");
-	background-position:  10px  10px;
+	background-position: 7px 8px;
 	background-repeat: no-repeat;
 }
