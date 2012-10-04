@@ -24,8 +24,9 @@ a:hover {
 li.button {
   display:inline;
 }
-.button a {
+.button {
   padding:0.2em;
+	margin:0.4em;
   border:1px solid #A4B895; 
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -44,7 +45,7 @@ li.button {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#edefdf', endColorstr='#d3d6ad',GradientType=0 ); /* IE6-9 */
 
 }
-.button a:hover {
+.button:hover {
   background:white none repeat scroll 0 0;
   border:1px solid #b5e095;
   text-decoration:none;
@@ -61,18 +62,29 @@ li.button {
   background:white url("/assets/icons/icon_button_add.png") 0px  1px no-repeat;
 }
 
-.edit {
+.edit a {
   padding:0.5em;
   padding-left:2em;
   background-image: url("/assets/icons/icon_button_edit.png");
+	background-position:  9px  8px;
   background-repeat: no-repeat;
 }
-.preferences {
+.preferences a {
   padding:0.5em;
   padding-left:2em;
   background-image: url("/assets/icons/icon_button_preferences.png");
+	background-position: 10px 10px;
   background-repeat: no-repeat;
 }
 .edit a:hover {
-  background:white url("/assets/icons/icon_button_edit.png") 9px  8px no-repeat;
+  padding:0.5em;
+  padding-left:2em;
+  background-image: url("/assets/icons/icon_button_edit.png");
+	background-position:  9px  8px;
+	background-repeat: no-repeat;
+}
+.preferences a:hover {
+  background-image: url("/assets/icons/icon_button_preferences.png");
+	background-position:  10px  10px;
+	background-repeat: no-repeat;
 }

@@ -197,6 +197,8 @@ en:
   searchIn: "Search in"
   searchOptions: "Search options"
   searchedIn: "<b>%{item}</b> was searched <b>%{count}</b> times"
+  preferences: "Preferences"
+  changepassword: "Change password"
   help: "Help"
   about: "About"
   options: "Options"

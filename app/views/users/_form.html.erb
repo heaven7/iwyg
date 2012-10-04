@@ -1,3 +1,4 @@
+<h2><%= t("preferences").html_safe %></h2>
 <%= semantic_form_for @user, :html => {:multipart => true, :class => "shadowed ui-corner-all"} do |f| %>
 	<%= render "share/error_messages", :target => @user %>
 	<%= f.inputs do %>
@@ -7,21 +8,21 @@
 		<div id="email">
 			<%= f.input :email %>
 		</div>	
+<!--
 		<div id="language">  
 			<%= f.semantic_fields_for :user_preferences do |preferences_form| %>    
 				<%= preferences_form.input :language %>
 				<%= preferences_form.input :active %>
 			<% end %>
 		</div>    
+-->
 	<% end %>
 
   <%= f.buttons do %>
-    <%= f.action :submit, :label => "Change data" %>
+    <%= f.action :submit, :label => t("save") %>
   <% end %>
 <% end %>
-
-
-
+<h2><%= t("changepassword").html_safe %></h2>
 <%= semantic_form_for @user, :html => {:multipart => true, :class => "shadowed ui-corner-all"} do |f| %>
 	<%= render "share/error_messages", :target => @user %>
 	<%= f.inputs do %>
@@ -32,6 +33,6 @@
 	<% end %>
 
   <%= f.buttons do %>
-    <%= f.action :submit, :label => "Change Password" %>
+    <%= f.action :submit, :label => t("changepassword").html_safe %>
   <% end %>
 <% end %>
