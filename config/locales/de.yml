@@ -729,12 +729,17 @@ de:
       have: "habe"
       a: "ein(e,en)"
       title: "Titel"
+    user:
+      preferences: "Einstellungen"
+      changepassword: "Passwort &auml;ndern"		    
     userdetails:
       personality: "Pers&ouml;nlichkeit"
       data: "Person"
       location: "Standort"
       avatar: "Profilbild"
-      configuration: "Einstellungen"
+      configuration: "Einstellungen"    
+    group:
+      members: "Teilnehmer"
       
   formtastic: 
     labels:
@@ -755,6 +760,7 @@ de:
         title: "Titel"
         description: "Beschreibung"
         tag_list: "Tags"
+        users: "Teilnehmer"
       event:
         from: "von"
         till: "bis"
@@ -771,7 +777,10 @@ de:
         interest_list: "Interessen"
         wish_list: "W&uuml;nsche" 
         firstname: "Vorname"
-      userdetails:
+        login: "Login"
+        email: "Email"
+        password: "Passwort"
+        password_confirmation: "Passwort wiederholen" 
         firstname: "Vorname"
         lastname: "Nachname"
         birthdate: "Geburtstag"

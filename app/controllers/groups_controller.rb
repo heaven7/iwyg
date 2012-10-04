@@ -52,6 +52,8 @@ class GroupsController < InheritedResources::Base
     @group.locations.build
     @active_menuitem_l1 = I18n.t "menu.main.groups"
     @active_menuitem_l1_link = user_groups_path
+
+		groupUsers
   end
 
   def edit
@@ -64,6 +66,8 @@ class GroupsController < InheritedResources::Base
     #@location = @group.locations.first || @group.locations.build
     @active_menuitem_l1 = I18n.t "menu.main.groups"
     #@active_menuitem_l1_link = user_groups_path
+
+		groupUsers
   end
 
   def show
@@ -119,6 +123,11 @@ class GroupsController < InheritedResources::Base
 
 
   protected
+
+	def groupUsers
+		@group.users = @user.followers
+    @group.users << @user.following_users
+	end
 
   def conditional_layout
     case action_name

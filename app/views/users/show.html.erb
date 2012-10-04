@@ -22,19 +22,15 @@
 <% else %>
   <%= render :partial => "share/userarea/profileusermenu", :locals => { :user => @user } %>
   <div class="clearfix"></div>
-  <div id="new_message" style="display:none;">
-  <%= render :partial => "sent/form" if logged_in? %>
-  </div>
+	<% if logged_in? %>
+		<div id="new_message" style="display:none;">
+		<%= render :partial => "sent/form" %>
+		</div>
+	<% end %>
 <% end %>
 <% if @user %>
   <div class="sub2cols">
     <div class="subcol1">
-      <!--
-      <%= link_to "Delete User",
-        {:action => "destroy", :id => @user},
-        :confirm => t("confirm_delete").html_safe,
-        :method => :delete %>
-      -->
       <div id="activity">
         <h2><%= t("activity").html_safe %></h2>
         <div class="block ui-corner-all">

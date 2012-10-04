@@ -727,12 +727,17 @@ en:
       have: "have"
       a: "a"
       title: "Title"
+    user:
+      preferences: "Preferences"
+      changepassword: "Change password"	
     userdetails:
       personality: "Personality"
       data: "Person" 
       location: "Location"
       avatar: "Profilepicture"
-      configuration: "Configuration"
+      configuration: "Configuration"    
+    group:
+      members: "Participants"
 
   formtastic: 
     labels:
@@ -753,6 +758,7 @@ en:
         title: "Title"  
         description: "Description"
         tag_list: "Tags"
+        users: "Participants"
       event:
         from: "from"
         till: "till"
@@ -768,6 +774,10 @@ en:
         skill_list: "Skills"
         interest_list: "Interests"
         wish_list: "Wishes"
+        login: "Login"
+        email: "Email"
+        password: "Password"
+        password_confirmation: "Confirm password" 
       userdetails:
         firstname: "Firstname"
         lastname: "Lastname"

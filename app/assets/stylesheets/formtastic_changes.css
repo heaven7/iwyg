@@ -20,35 +20,27 @@ form.formtastic fieldset ol li p.inline-hints { color:#333; }
 .formtastic .inputs .hidden {
     display:none;
 }
+.formtastic #members .inputs .choices-group {
+	margin-left: 7em;
+}
+
 form.formtastic input, form.formtastic textarea, form.formtastic select { 
     padding:0.5em;
-    border-top-width: 1px;
-    border-right-width: 1px;
-    border-bottom-width: 1px;
-    border-left-width: 1px;
-    border-top-style: inset;
-    border-right-style: inset;
-    border-bottom-style: inset;
-    border-left-style: inset;
-    border-color: initial;
-    -webkit-rtl-ordering: logical;
-    -webkit-user-select: text;
+    background:#EDEFDF none repeat scroll 0 0;
+	  border:1px solid #a4b895;
+
 }
 form.formtastic input[type="submit"], .submit {
-    border: 2px outset;
-    border-top: 3px;
     background:#EDEFDF;
+    border: 1px solid;
     width: 200px;
 
 }
 form.formtastic input[type="submit"]:hover, .submit:hover {
-    border: 2px outset;
-    border-top: 3px;
     background:white;
-
 }
 form.formtastic input[type="submit"]:active, .submit:active {
-    border: 1px inset;
+
 }
 form.formtastic .input {
     width: 100%;

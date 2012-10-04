@@ -147,9 +147,9 @@ table td {
   font-size:8pt;
 }
 .bordered {
-  border: 1px solid #B8C2B3;
-  -moz-border: 1px solid #B8C2B3;
-  -webkit-border: 1px solid #B8C2B3;
+  border: 1px solid transparent;
+  -moz-border: 1px solid transparent;
+  -webkit-border: 1px solid transparent;
   padding:0.5em;
   margin:0.5em;
 }  
@@ -188,8 +188,6 @@ table td {
   margin-top:8px;
 }
 .box {
-  border:1px solid #848c82;
-  border: 1px inset;
 }
 .status-bar {
   border:1px solid #d8e0d0;

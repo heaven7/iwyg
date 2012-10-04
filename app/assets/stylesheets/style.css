@@ -88,12 +88,12 @@
 
 /* Content  */
 #content {
-    background:transparent url(/assets/content_bg.png);
+/*    background:transparent url(/assets/content_bg.png);
     border:1px solid #d6daca;
     -moz-border-radius:16px;
     -webkit-border-radius:16px;
     border-radius:16px 16px;
-
+*/
     color:#3f1504;
     height:auto !important;
     min-height:700px;

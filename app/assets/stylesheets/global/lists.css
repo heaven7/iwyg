@@ -119,7 +119,6 @@
 .list .ping  {
     padding:0.5em;
     border: 1px solid #D6DACA;
-    border: 1px outset;
     margin-bottom: 0.5em;
 }
 .list .ping .info {

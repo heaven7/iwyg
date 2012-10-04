@@ -2,18 +2,16 @@
 
 #mainnavigation {
     color: white;
-    font-size: 150%;
+    font-size: 160%;
     font-weight: bold;
     left: 4%;
     position: relative;
     top:0px;
     text-align: left;
-  text-shadow: 1px 0px 1px #794D4D;
-filter: dropshadow(color=#794D4D, offx=1, offy=0);
 }
 
 #mainnavigation a {
-  color: #969E93;
+  color: #3F1504;
   font-weight:bold;
   text-decoration:none;
 }

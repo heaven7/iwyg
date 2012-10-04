@@ -9,7 +9,7 @@
   <%= render :partial => "share/list_pagination", :locals => {:collection => collection} %>
   <%= render :partial => "group", :collection => collection %>
 <% end %>
-<% if @user %>
+<% if @user and @user.groups.size > 0 %>
   <div class="clearfix"></div>
   <h2><%= t("groups.memberships") %></h2>
   <%= @memberships.size %>

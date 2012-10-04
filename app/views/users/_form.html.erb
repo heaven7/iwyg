@@ -1,38 +1,58 @@
-<h2><%= t("preferences").html_safe %></h2>
-<%= semantic_form_for @user, :html => {:multipart => true, :class => "shadowed ui-corner-all"} do |f| %>
-	<%= render "share/error_messages", :target => @user %>
-	<%= f.inputs do %>
-		<div id="username">
-			<%= f.input :login %>
-		</div>
-		<div id="email">
-			<%= f.input :email %>
-		</div>	
-<!--
-		<div id="language">  
-			<%= f.semantic_fields_for :user_preferences do |preferences_form| %>    
-				<%= preferences_form.input :language %>
-				<%= preferences_form.input :active %>
+<% content_for :head do %>   
+  <%= stylesheet_link_tag 'jquery.listbuilder.css' %>
+  <%= javascript_include_tag 'jquery-ui-listbuilder' %>
+  
+  <script type="text/javascript">
+  $(document).ready(function (){
+
+    /* TABS */
+    $("#tabs").tabs(); 
+		$('#tabs h2').hide();	
+    showErrorTabs();
+
+    /* STYLING */
+    $('.ui-listbuilder-input').addClass('ui-corner-all');
+      
+  });
+	</script>
+<% end %>
+<h2><%= t("preferences").html_safe %></h2>	
+<div id="tabs">  
+    <ul>
+      <li><a href="#preferences"><%= t("form.user.preferences").html_safe %></a></li>
+			<li><a href="#password"><%= t("form.user.changepassword").html_safe %></a></li>
+			
+		</ul>
+	<div id="preferences">
+		<h2><%= t("preferences").html_safe %></h2>	
+		<%= semantic_form_for @user, :html => {:multipart => true} do |f| %>
+			<%= render "share/error_messages", :target => @user %>
+				<%= f.inputs do %>
+				<%= f.input :login %>
+				<%= f.input :email %>
 			<% end %>
-		</div>    
--->
-	<% end %>
+			<%= f.buttons do %>
+			  <%= f.action :submit, :label => t("save") %>
+			<% end %>	
+		<% end %>
+      <!--
+      <%= link_to "Delete User",
+        {:action => "destroy", :id => @user},
+        :confirm => t("confirm_delete").html_safe,
+        :method => :delete %>
+      -->
+	</div>
+	<div id="password">
+		<%= semantic_form_for @user, :html => {:multipart => true} do |f| %>
+			<%= render "share/error_messages", :target => @user %>
+			<%= f.inputs do %>
+					<%= f.input :password %>
+					<%= f.input :password_confirmation %>
+			<% end %>
 
-  <%= f.buttons do %>
-    <%= f.action :submit, :label => t("save") %>
-  <% end %>
-<% end %>
-<h2><%= t("changepassword").html_safe %></h2>
-<%= semantic_form_for @user, :html => {:multipart => true, :class => "shadowed ui-corner-all"} do |f| %>
-	<%= render "share/error_messages", :target => @user %>
-	<%= f.inputs do %>
-		<div id="password">
-			<%= f.input :password %>
-			<%= f.input :password_confirmation %>
-		</div>
-	<% end %>
-
-  <%= f.buttons do %>
-    <%= f.action :submit, :label => t("changepassword").html_safe %>
-  <% end %>
-<% end %>
+			<%= f.buttons do %>
+				<%= f.action :submit, :label => t("changepassword").html_safe %>
+			<% end %>
+		<% end %>
+	</div>
+</div>

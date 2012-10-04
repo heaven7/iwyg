@@ -61,9 +61,9 @@
   <div id="tabs">
     <ul>
       <li><a href="#what"><%= t("form.resource.what").html_safe %></a></li>
-      <li><a href="#how_much"><%= t("form.resource.howMuch").html_safe %></a></li>
       <li><a href="#location"><%= t("form.resource.where").html_safe %></a></li>
       <li><a href="#when"><%= t("form.resource.when").html_safe %></a></li>
+      <li><a href="#how_much"><%= t("form.resource.howMuch").html_safe %></a></li>
       <li><a href="#images"><%= t("form.resource.images").html_safe %></a></li>
       <li><a href="#attachments"><%= t("form.resource.attachments").html_safe %></a></li>
     </ul>
@@ -124,7 +124,7 @@
     </div>
   </div>
   <%= f.buttons do %>
-    <%= f.commit_button :label => t("save") %>
+    <%= f.action :submit, :label => t("save") %>
   <% end %>
   </div>
 <% end %>

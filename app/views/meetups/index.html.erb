@@ -1,4 +1,3 @@
-<h2><%= t("title.meetups") %>(<%= @meetups.size %>)</h2>
 <% if @user %>
   <% if @user == current_user %>
     <div class="button new">
@@ -6,6 +5,7 @@
     </div>
   <% end %>
 <% end %>
+<h2><%= t("title.meetups") %>(<%= @meetups.size %>)</h2>
 <% if @meetups.size > 0 %>
   <table>
     <tr>

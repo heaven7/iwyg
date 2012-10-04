@@ -40,11 +40,11 @@
 <%= semantic_form_for @user, :html => {:multipart => true} do |form| %>
   <%= render "share/error_messages", :target => @user %>
   <div id="tabs">  
-    <ul>
+    <ul>   
+        <li><a href="#avatar"><%= t("form.userdetails.avatar").html_safe %></a></li>    
         <li><a href="#interests"><%= t("form.userdetails.personality").html_safe %></a></li>
         <li><a href="#personal"><%= t("form.userdetails.data").html_safe %></a></li>          
-        <li><a href="#location"><%= t("form.userdetails.location").html_safe %></a></li>      
-        <li><a href="#avatar"><%= t("form.userdetails.avatar").html_safe %></a></li>    
+        <li><a href="#location"><%= t("form.userdetails.location").html_safe %></a></li>   
       <!--  
         <li><a href="#configuration"><%= t("form.userdetails.configuration").html_safe %></a></li>
       -->

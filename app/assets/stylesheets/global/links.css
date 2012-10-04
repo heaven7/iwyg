@@ -43,7 +43,10 @@ li.button {
     background: -ms-linear-gradient(top,  #edefdf 0%,#d3d6ad 100%); /* IE10+ */
     background: linear-gradient(top,  #edefdf 0%,#d3d6ad 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#edefdf', endColorstr='#d3d6ad',GradientType=0 ); /* IE6-9 */
-
+}
+.button a {
+	text-align:center;
+	width: 150px;
 }
 .button:hover {
   background:white none repeat scroll 0 0;
@@ -51,11 +54,14 @@ li.button {
   text-decoration:none;
 }
 
-
+.new {
+	text-align:center;
+	max-width: 240px;
+  }
 .new a {
   padding:0.5em;
-  padding-left:2em;
-  background:#EDEFDF url("/assets/icons/icon_button_add.png") 0px  1px no-repeat;
+  padding-left:2.5em;
+  background: url("/assets/icons/icon_button_add.png") 0px  1px no-repeat;
 }
 
 .new a:hover {
