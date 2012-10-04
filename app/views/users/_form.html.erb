@@ -1,9 +1,37 @@
-<%= semantic_form_for @user, :html => {:class => "shadowed ui-corner-all"}  do |f| %>
-  <%= render "share/error_messages", :target => @user %>
-  <%= f.inputs do %>
-    <%= f.input :email %>
-  <% end %>
+<%= semantic_form_for @user, :html => {:multipart => true, :class => "shadowed ui-corner-all"} do |f| %>
+	<%= render "share/error_messages", :target => @user %>
+	<%= f.inputs do %>
+		<div id="username">
+			<%= f.input :login %>
+		</div>
+		<div id="email">
+			<%= f.input :email %>
+		</div>	
+		<div id="language">  
+			<%= f.semantic_fields_for :user_preferences do |preferences_form| %>    
+				<%= preferences_form.input :language %>
+				<%= preferences_form.input :active %>
+			<% end %>
+		</div>    
+	<% end %>
+
   <%= f.buttons do %>
-    <%= f.commit_button %>
+    <%= f.action :submit, :label => "Change data" %>
+  <% end %>
+<% end %>
+
+
+
+<%= semantic_form_for @user, :html => {:multipart => true, :class => "shadowed ui-corner-all"} do |f| %>
+	<%= render "share/error_messages", :target => @user %>
+	<%= f.inputs do %>
+		<div id="password">
+			<%= f.input :password %>
+			<%= f.input :password_confirmation %>
+		</div>
+	<% end %>
+
+  <%= f.buttons do %>
+    <%= f.action :submit, :label => "Change Password" %>
   <% end %>
 <% end %>

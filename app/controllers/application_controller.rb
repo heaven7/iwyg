@@ -90,7 +90,7 @@ class ApplicationController < ActionController::Base
   end
 
 
- def getLocationsOnMap(object)
+ 	def getLocationsOnMap(object)
     @locations_json = object.locations.to_gmaps4rails
   end
   
@@ -102,8 +102,10 @@ class ApplicationController < ActionController::Base
     end
     nil
   end
-  
+
+
   protected
+
   
   def measures
     @measures ||= Measure.find(:all)

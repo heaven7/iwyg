@@ -59,7 +59,6 @@ Iwyg::Application.routes.draw do
 
     resource :location
 
-    resources :user_preferences, :path => "settings", :as => "settings"
     resource :userdetails
     member do
       post 'rate'

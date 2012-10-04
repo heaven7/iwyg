@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
                   :location_attributes, :meeting_ids, :meetup_ids,
                   :occupation, :company, :birthdate, :lastname, :firstname,
                   :remember_me,
-                  :aim_tokens, :skill_tokens, :interest_tokens, :wish_tokens
+                  :aim_tokens, :skill_tokens, :interest_tokens, :wish_tokens,
+									:user_preferences_attributes
 
 
   extend FriendlyId
@@ -26,7 +27,7 @@ class User < ActiveRecord::Base
   acts_as_followable
 
   has_associated_audits
-  acts_as_audited #:associated_with => :meetup, :except => [:password]
+  # acts_as_audited #:associated_with => :meetup, :except => [:password]
   
   # has_many
   has_many :events
@@ -74,7 +75,9 @@ class User < ActiveRecord::Base
     
   # has_one
   has_one :custom, :as => :customable
+  accepts_nested_attributes_for :custom, :allow_destroy => true
   has_one :user_preferences
+  accepts_nested_attributes_for :user_preferences, :allow_destroy => true
   has_one :location, :as => :locatable
   accepts_nested_attributes_for :location, :reject_if => lambda { |a| a[:address].blank? }, :allow_destroy => true
   has_one :userdetails

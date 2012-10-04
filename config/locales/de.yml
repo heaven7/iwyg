@@ -197,8 +197,7 @@ de:
   searchIn: "Suchen in"    
   searchedIn: "<b>%{item}</b> wurde <b>%{count}</b> mal gesucht"
   searchOptions: "Suchoptionen"
-  
-  help: "Hilfe"
+	help: "Hilfe"
   about: "&Uuml;ber uns"
   options: "Optionen"
   confirm_delete: "Wirklich, wirklich l&ouml;schen?"
