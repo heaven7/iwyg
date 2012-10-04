@@ -4,7 +4,7 @@ source :rubygems
 # source 'http://gems.github.com'
 # source 'http://gemcutter.org'
 
-gem 'rails', '3.2.3'
+gem 'rails', '3.2.8'
 
 group :assets do
   gem 'sass-rails', "~> 3.2.0"
@@ -21,8 +21,8 @@ group :development do
 end
 
 # gem 'iwyg_be'
-#gem 'eventmachine', '1.0.0.beta.2'
-#gem 'thin'
+gem 'eventmachine', '1.0.0.beta.2'
+gem 'thin'
 gem 'therubyracer', :platform => :ruby
 gem 'execjs'
 gem 'geokit'

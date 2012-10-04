@@ -1,25 +1,25 @@
-<p id="notice"><%= notice %></p>
-
+<% if @user_preferences %>
 <p>
   <b>User:</b>
-  <%= @user_preference.user_id %>
+  <%= @user_preferences.user_id %>
 </p>
 
 <p>
   <b>Custom:</b>
-  <%= @user_preference.custom_id %>
+  <%= @user_preferences.custom_id %>
 </p>
 
 <p>
   <b>Language:</b>
-  <%= @user_preference.language %>
+  <%= @user_preferences.language %>
 </p>
 
 <p>
   <b>Active:</b>
-  <%= @user_preference.active %>
+  <%= @user_preferences.active %>
 </p>
 
 
-<%= link_to 'Edit', edit_user_preference_path(@user_preference) %> |
-<%= link_to 'Back', user_preferences_path %>
+<%= link_to 'Edit', edit_user_preference_path(@user_preferences) %> |
+<%= link_to 'Back', user_preferences_index_path %>
+<% end %>

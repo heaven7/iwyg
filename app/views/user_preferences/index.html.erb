@@ -13,17 +13,17 @@
 
 <% @user_preferences.each do |user_preference| %>
   <tr>
-    <td><%= user_preference.user_id %></td>
-    <td><%= user_preference.custom_id %></td>
-    <td><%= user_preference.language %></td>
-    <td><%= user_preference.active %></td>
-    <td><%= link_to 'Show', user_preference %></td>
-    <td><%= link_to 'Edit', edit_user_preference_path(user_preference) %></td>
-    <td><%= link_to 'Destroy', user_preference, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= user_preferences.user_id %></td>
+    <td><%= user_preferences.custom_id %></td>
+    <td><%= user_preferences.language %></td>
+    <td><%= user_preferences.active %></td>
+    <td><%= link_to 'Show', user_preferences %></td>
+    <td><%= link_to 'Edit', edit_user_preference_path(user_preferences) %></td>
+    <td><%= link_to 'Destroy', user_preferences, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New User preference', new_user_preference_path %>
+<%= link_to 'New User preferences', new_user_preference_path %>

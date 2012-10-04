@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :lockable, :timeoutable, :encryptable, :confirmable, :encryptor => :restful_authentication_sha1 and :activatable
   devise :database_authenticatable, :registerable, :rememberable, :recoverable #, :encryptable, :encryptor => :bcrypt, :authentication_keys => [:username], :rpx_connectable, :recoverable, :trackable, :confirmable, :recoverable, :trackable, :validatable
 
-  after_validation :build_user
+  after_create :build_user
 
   # ajaxful_rater # has_many :rates
   acts_as_taggable_on :interests, :wishs, :aims
@@ -74,6 +74,7 @@ class User < ActiveRecord::Base
     
   # has_one
   has_one :custom, :as => :customable
+  has_one :user_preferences
   has_one :location, :as => :locatable
   accepts_nested_attributes_for :location, :reject_if => lambda { |a| a[:address].blank? }, :allow_destroy => true
   has_one :userdetails
@@ -124,10 +125,10 @@ class User < ActiveRecord::Base
   end
 
   def build_user
-    # message folder
     self.folder = Folder.new(:title => "Inbox") if not Folder.exists?(self)
-    self.custom = Custom.new # customization for user
+    self.custom = Custom.new 
     self.location = Location.new
+    self.user_preferences = UserPreferences.new(:user_id => self.id)
   end
 
   def pinged?(resource)

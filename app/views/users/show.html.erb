@@ -13,7 +13,7 @@
 <% if user_signed_in? and @user == current_user %>
   <div class="button">
     <%= link_to t("userarea.edit.profile").html_safe, edit_polymorphic_path([@user, "userdetails"]), :class => "edit" %>
-    <%= link_to "Preferences", "#", :class => "preferences" %>
+    <%= link_to "Preferences", user_settings_path(@user), :class => "preferences" %>
   </div>
   <div class="button preferences">
   </div>

@@ -17,7 +17,7 @@ class UserPreferencesControllerTest < ActionController::TestCase
   end
 
   test "should create user_preference" do
-    assert_difference('UserPreference.count') do
+    assert_difference('UserPreferences.count') do
       post :create, user_preference: { active: @user_preference.active, custom_id: @user_preference.custom_id, language: @user_preference.language, user_id: @user_preference.user_id }
     end
 
@@ -40,10 +40,10 @@ class UserPreferencesControllerTest < ActionController::TestCase
   end
 
   test "should destroy user_preference" do
-    assert_difference('UserPreference.count', -1) do
+    assert_difference('UserPreferences.count', -1) do
       delete :destroy, id: @user_preference
     end
 
-    assert_redirected_to user_preferences_path
+    assert_redirected_to user_preferences_index_path
   end
 end

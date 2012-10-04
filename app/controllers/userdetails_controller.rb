@@ -6,9 +6,7 @@ class UserdetailsController < InheritedResources::Base
   before_filter :authenticate_user!, :exept => [:index, :show]
 
   def index
-    @user = User.find(params[:user_id])
-    @userdetails = @user.userdetails
-
+    render :action => "show"
   end
 
   # GET /userdetails/1
