@@ -1,0 +1,160 @@
+/**
+ * General style definition.
+ * 
+ * @author Christian Grlica
+ * @copyright 2011 by Heavenseven, www.heavenseven.net 
+*/
+@import url(global/main.css);
+@import url(extensions.css);
+
+/* Container */
+#container {
+    padding:0em;
+    text-align:center;
+    position:relative;
+    z-index:1;
+}
+/* Header */
+
+#header {
+    background: none repeat scroll 0 0 #0B0D14;
+    background: #237e87; /* Old browsers */
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzIzN2U4NyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM1YWI4ZGQiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(top,  #237e87 0%, #5ab8dd 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#237e87), color-stop(100%,#5ab8dd)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #237e87 0%,#5ab8dd 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #237e87 0%,#5ab8dd 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #237e87 0%,#5ab8dd 100%); /* IE10+ */
+    background: linear-gradient(top,  #237e87 0%,#5ab8dd 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#237e87', endColorstr='#5ab8dd',GradientType=0 ); /* IE6-8 */
+
+    -webkit-box-shadow: 0px 15px 1px 1px #757b81;
+    -moz-box-shadow: 0px 15px 1px 1px #757b81;
+    box-shadow: 0px 2px 15px 1px #757b81;
+
+    border-bottom: 1px solid #7FC2DB;
+    clear: both;
+    color: #555;
+    height: 110px;
+    text-align: left;
+    width: 100%;
+    overflow:hidden;
+}
+
+#header p, #header h1, #header h2 {
+    padding:.4em 1.5em 0 1.5em;
+    margin:0;
+}
+#header #languages {
+    padding:0;
+    margin:0;
+    position:absolute;
+    right:2.1em;
+    top:6em;
+    font-size:80%;
+}
+
+#header #languages a {
+    text-decoration:none;
+}
+
+#header #languages li {
+    float:left;
+    padding-left:0.3em;
+    padding-right:0.3em;
+}
+
+/* Columns */
+#col1, #col2 {
+    position:relative;
+    width:48%;
+    padding:0.5em;
+}
+#col1 {
+    float:left;
+}
+#col2 {
+    float:left;
+}
+/* Logo */
+#logo {
+    float: left;
+    position:relative;
+    left:7.5%;
+    top:12px;
+    z-index: 99;
+}
+
+/* Content  */
+#content {
+/*    background:transparent url(/assets/content_bg.png);
+    border:1px solid #d6daca;
+    -moz-border-radius:16px;
+    -webkit-border-radius:16px;
+    border-radius:16px 16px;
+*/
+    color:#3f1504;
+    height:auto !important;
+    min-height:700px;
+    margin:0 auto 0 4%;
+    padding:0.5em;
+    text-align:left;
+    width:90%;
+    float:left;
+}
+/* Mailbox */
+#mailbox {
+}
+#mailbox .messagebody {
+    padding:0.5em;
+    border:1px solid #cbcec0;
+    background: #eaede3;
+    height:250px;
+}
+#new-message {
+    padding:0.5em;
+    padding-left:1.5em;
+    background: #d6daca url(../images/icons/icon_message_add.png) 4px 10px no-repeat;
+    border:1px solid #d6daca;
+}
+a#new-message:hover {
+    background: #d6f4ca url(../images/icons/icon_message_add.png) 4px 10px no-repeat;
+}
+/* Footer  */
+#footer {
+    clear:both;
+    position:relative;
+    width:100%;
+    height:150px;
+    margin:0pt auto;
+    font-size:80%;
+    color:#794D4D;
+    line-height:1em!important;
+    text-align:left;
+    background:#9eb87c;
+}
+#footer {
+    padding:.5em;
+}
+#footer #footernavigation {
+    width:1000px;
+    margin: 0px auto;
+    display:block;
+}
+#footer a {
+    color:#5c5e5f;
+}
+
+#footerwrap {
+    clear:left;
+    z-index:100;
+}
+
+#weed {
+    background:transparent url(/assets/global/bg_footer.png) repeat-x scroll 0 6px;
+    height:20px;
+    margin-top:0.5em;
+    padding:0 10px 9px;
+    text-align:center;
+}

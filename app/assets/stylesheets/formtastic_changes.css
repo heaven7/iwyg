@@ -1,0 +1,171 @@
+/* -------------------------------------------------------------------------------------------------
+
+Load this stylesheet after formtastic.css in your layouts to override the CSS to suit your needs.
+This will allow you to update formtastic.css with new releases without clobbering your own changes.
+
+For example, to make the inline hint paragraphs a little darker in color than the standard #666:
+
+form.formtastic fieldset ol li p.inline-hints { color:#333; }
+
+--------------------------------------------------------------------------------------------------*/
+
+.formtastic {
+    margin:0;
+    padding:0;
+}
+.formtastic .check_boxes label {
+    text-align: left;
+    padding-left: 1em;
+}
+.formtastic .inputs .hidden {
+    display:none;
+}
+.formtastic #members .inputs .choices-group {
+	margin-left: 7em;
+}
+
+form.formtastic input, form.formtastic textarea, form.formtastic select { 
+    padding:0.5em;
+    background:#EDEFDF none repeat scroll 0 0;
+	  border:1px solid #a4b895;
+
+}
+form.formtastic input[type="submit"], .submit {
+    background:#EDEFDF;
+    border: 1px solid;
+    width: 200px;
+
+}
+form.formtastic input[type="submit"]:hover, .submit:hover {
+    background:white;
+}
+form.formtastic input[type="submit"]:active, .submit:active {
+
+}
+form.formtastic .input {
+    width: 100%;
+}
+
+
+form.formtastic fieldset ol li.password input,
+form.formtastic fieldset.inputs #user_email,
+form.formtastic fieldset ol li.text textarea,
+form.formtastic fieldset ol li.string input {
+    width:56.5%;
+}
+
+.formtastic .inputs ol li fieldset legend span,
+form.formtastic .date fieldset legend span{
+    display:block;
+    font-weight:normal;
+    text-align:right;
+    white-space:nowrap;
+    color:#444343;
+    width:25%;
+    padding-top:0.2em;
+}
+form.formtastic fieldset fieldset legend {
+    background:none repeat scroll 0 0 transparent;
+    border:medium none;
+    left:-24px;
+    top:33px;
+}
+
+/* NESTED FIELDSETS AND LEGENDS (radio, check boxes and date/time inputs use nested fieldsets)
+--------------------------------------------------------------------------------------------------*/
+form.formtastic fieldset ol li fieldset { position:relative; }
+form.formtastic fieldset ol li fieldset legend { position:absolute; width:25%; padding-top:0.1em; }
+form.formtastic fieldset ol li fieldset legend span { position:absolute; }
+form.formtastic fieldset ol li fieldset ol { float:left; margin:0; padding-left:7% !important; }
+form.formtastic fieldset ol li fieldset ol li { padding:0; border:0; }
+
+/* meetup form */
+#who .choices .choices-group {
+    width: 80%;
+    margin-left: 11em;
+}
+
+.locations_attribute_country label
+form.formtastic fieldset .label  {
+    background:none;
+    border:none;
+    padding: 0.2em;
+    width: 23% !important;
+    text-align:right;
+}                              
+form.formtastic fieldset ol li label {
+    padding-top: 0;
+}
+
+form.formtastic .date ol {
+    margin-left:0.5em;
+}
+
+.formtastic .inputs {
+    padding-bottom: 0em;
+    width: 100%;
+    margin-bottom: 0;
+}                     
+.formtastic .buttons,
+.formtastic .actions {
+
+    width: 100%;
+    padding-top:0.5em;
+    margin:0;
+    background: transparent;
+}
+.formtastic .short {
+    width:120px !important;
+}
+.formtastic .inputs p.inline-hints  {
+    color:#899286;
+    font-size:80%;
+    padding:0.5em;
+    padding-top:0;
+    clear:both;
+}
+.formtastic .inputs .inline-errors {
+    font-size:80%;
+    padding:0.5em;
+    padding-top:0;
+}
+.formtastic .inputs .error {
+    background:none !important;
+    border:none;
+    width:100%;
+}
+.formtastic .error-tab {  
+    border:1px solid #AA111A !important;
+    border-bottom:none;
+    background: #aa4949 !important;
+}
+.formtastic .error-tab a {
+    color: white !important;
+}
+.formtastic .inputs .error input,
+.formtastic .inputs .error textarea,
+.formtastic .inputs .error select {  
+    border:2px solid #AA111A;
+}
+form.formtastic fieldset.buttons,
+form.formtastic fieldset.actions {
+    padding-left:40%;
+    font-weight:bold;
+    padding-bottom:1em;
+    width:60%;
+}
+
+.formtastic .date ol li select {
+    display:inline;
+}
+
+form.formtastic fieldset ol li.numeric input {
+    width:56.5%;
+}
+
+form.formtastic abbr, form.formtastic acronym {
+    border:0 none;
+    font-variant:normal;
+    font-size:140%;
+    color:#c39191;
+}

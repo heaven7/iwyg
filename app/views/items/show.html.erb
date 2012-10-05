@@ -1,8 +1,8 @@
 <% content_for(:head) do %>
   <%# GMap.header(:hl=> params[:locale]) if @map %>
   <%# @map.to_html if @map %>
-  <script type="text/javascript" src="/javascripts/jquery.qrcode.js"></script>
-  <script type="text/javascript" src="/javascripts/qrcode.js"></script>
+  <%= javascript_include_tag "/assets/jquery.qrcode.js" %>
+  <%= javascript_include_tag "/assets/qrcode.js" %>
   <script type="text/javascript">
     $(document).ready(function (){
       $('#qrcode').qrcode({
@@ -14,8 +14,8 @@
   </script>
 <% end %>
 <div id="col1">
-  <h1><%=h @item.title %></h1>         
   <%= render :partial => "items/itemtype", :locals => { :item => @item } %>
+  <h1><%=h @item.title %></h1>         
   <%= render :partial => "items/itemmenu", :locals => { :item => @item } %>
   <%= render :partial => "share/images", :locals => {:images => @item.images} %>
   <% if @item.status %>
@@ -65,7 +65,7 @@
     <div class="location">
       <% if logged_in? and ( @location && !@locations_json.blank? ) %>
         <%= render :partial => "locations/location", :locals => {:location => @location} %>
-
+	<%# "#{@locations_json.to_s}" %>
         <%= render :partial => "share/map", :locals => { :locations => @locations_json } %>
       <% end %>
     </div>

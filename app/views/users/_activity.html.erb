@@ -26,7 +26,6 @@
             when "update"
               t("hasUpdatedtheUserdetails").html_safe
             end
-
           when "Group"
             group = Group.with_deleted.where(:id => audit.auditable_id).first
             case audit.action

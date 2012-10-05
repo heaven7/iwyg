@@ -1,4 +1,5 @@
 class UsersController < InheritedResources::Base
+	actions :index, :show, :new, :create, :update
 
   protect_from_forgery :except => [:tag_suggestions]
   
@@ -74,6 +75,10 @@ class UsersController < InheritedResources::Base
       @audits = @audits.sort_by(&:created_at).reverse
     end
   end
+
+	def edit 
+		@user = current_user
+	end
 
 
 

@@ -1,11 +1,13 @@
-<div class="button">
+<ul class="horizontal">
   <% if meetup.owner == current_user %>
-    <%= link_to t("edit").html_safe, edit_meetup_path(meetup) %>
-    <%= link_to t("delete").html_safe,
+    <li class="button"><%= link_to t("edit").html_safe, edit_meetup_path(meetup) %></li>
+    <li class="button">
+			<%= link_to t("delete").html_safe,
       {:action => "destroy", :id => meetup},
       :confirm => t("confirm_delete").html_safe,
       :method => :delete %>
+		</li>
 
   <% end %>
-  <%= @acceptlink %>
-</div>
+	<%= @acceptlink %>
+</ul>

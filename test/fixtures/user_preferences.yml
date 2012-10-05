@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  custom_id: 1
+  language: MyString
+  active: false
+
+two:
+  user_id: 1
+  custom_id: 1
+  language: MyString
+  active: false

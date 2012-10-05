@@ -1,6 +1,6 @@
 <div class="itemtype">
   <span class="image">
-    <%= image_tag "/images/icons/icon_#{@item.itemtype}.png" %>
+    <%= image_tag "/assets/icons/icon_#{@item.itemtype}.png" %>
   </span>
   <span>
     <%= item.localized_itemtype.html_safe %>
@@ -9,9 +9,9 @@
     <span>
       <%=
           if @item.need?
-            image_tag('/images/icons/icon_item_multiple.png', :alt => t("resources.multiple.needed").html_safe, :title => t("resources.multiple.needed").html_safe)
+            image_tag('/assets/icons/icon_item_multiple.png', :alt => t("resources.multiple.needed").html_safe, :title => t("resources.multiple.needed").html_safe)
           else
-            image_tag('/images/icons/icon_item_multiple.png', :alt => t("resources.multiple.offered").html_safe, :title => t("resources.multiple.offered").html_safe)
+            image_tag('/assets/icons/icon_item_multiple.png', :alt => t("resources.multiple.offered").html_safe, :title => t("resources.multiple.offered").html_safe)
           end
       %>
     </span>

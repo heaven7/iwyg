@@ -95,16 +95,16 @@ class Ping < ActiveRecord::Base
     when "Item"
       item = Item.find(pingable_id)
       itemtype = ItemType.find(item.item_type_id).title
-      image = "<img src=\"/images/icons/icon_#{itemtype}.png\" title=\"#{I18n.t("#{itemtype}.singular")}\"/>"
+      image = "<img src=\"/assets/icons/icon_#{itemtype}.png\" title=\"#{I18n.t("#{itemtype}.singular")}\"/>"
       title = item.title
     when "User"
       user = User.find(pingable_id)
-      image = "<img src=\"/images/icons/icon_user.png\" title=\"#{I18n.t("user.singular")}\"/>"
+      image = "<img src=\"/assets/icons/icon_user.png\" title=\"#{I18n.t("user.singular")}\"/>"
       title = user.login
     when "Group"
       group = Group.find(pingable_id)
       title = group.title
-      image = "<img src=\"/images/icons/icon_group.png\" title =\"#{I18n.t("group.singular")}\" />"
+      image = "<img src=\"/assets/icons/icon_group.png\" title =\"#{I18n.t("group.singular")}\" />"
     end
     image + "&nbsp;" + title
   end

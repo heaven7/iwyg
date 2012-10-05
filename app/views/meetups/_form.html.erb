@@ -28,7 +28,7 @@
 
 <% if params[:item] %>
 
-  <% semantic_form_for @meetup, :method => "get", :url => meetups_path("item[ping]" => params[:item][:ping], "item[attachable_id]" => params[:item][:attachable_id]) do |f| %>
+  <% semantic_form_for @meetup, :method => "post", :url => meetups_path("item[ping]" => params[:item][:ping], "item[attachable_id]" => params[:item][:attachable_id]) do |f| %>
 
     <%= render "share/error_messages", :target => @meetup %>
     <div id="tabs">
@@ -80,7 +80,7 @@
 
 <% else %>
 
-  <%= semantic_form_for @meetup, :method => "get" do |f| %>
+  <%= semantic_form_for @meetup do |f| %>
 
     <%= render "share/error_messages", :target => @meetup %>
     <div id="tabs">
@@ -113,9 +113,6 @@
         <% end %>
       </div>
       <div id="who">
-        <div class="button new">
-    <%# link_to t("formtastic.labels.meetup.invite_users").html_safe, "#" %>
-        </div>
         <%= f.inputs do %>
           <% if @meetup.users.size > 0 %>
             <%= f.input :users, :as => :check_boxes, :collection => @meetup.users, :member_label => Proc.new { |u| "#{render :partial => "share/usertiny_unlinked", :locals => { :user => u }}".html_safe } %>
@@ -130,7 +127,7 @@
     </div>
     <%= f.buttons do %>
       <br />
-      <%= f.submit t("save") %>
+    <%= f.action :submit, :label => t("save") %>
     <% end %>
   <% end %>
 

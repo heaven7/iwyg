@@ -197,22 +197,16 @@ de:
   searchIn: "Suchen in"    
   searchedIn: "<b>%{item}</b> wurde <b>%{count}</b> mal gesucht"
   searchOptions: "Suchoptionen"
-  
   help: "Hilfe"
+  preferences: "Einstellungen"
+  changepassword: "Passwort &auml;ndern"
   about: "&Uuml;ber uns"
   options: "Optionen"
-  confirm_delete: "Willst Du das wirklich l&ouml;schen?"
+  confirm_delete: "Wirklich, wirklich l&ouml;schen?"
   ago: "her"
   previous: "zur&uuml;ck"
   next: "vor"
   more: "mehr"
-  things: 
-    taken:
-      one: "1 Ding genommen"
-      other: "%{count} Dinge genommen"
-    given:
-      one: "1 Ding gegeben"
-      other: "%{count} Dinge gegeben"
   thing: 
     one: "Ding"
     other: "Dinge"
@@ -364,7 +358,7 @@ de:
     participants:
       one: "1 Teilnehmer"
       other: "%{count} Teilnehmer"
-    onlyFollowersAvailableToAdd: "Du kannst nur Follower oder Benutzer die du folgst hinzuf&uuml;gen."
+    onlyFollowersAvailableToAdd: "Du kannst nur Follower oder Mitglieder, denen du folgst, hinzuf&uuml;gen."
     
   ## transfer
   
@@ -559,6 +553,12 @@ de:
    ## resources 
   
   resources:
+    taken:
+      one: "1 Ressource genommen"
+      other: "%{count} Ressourcen genommen"
+    given:
+      one: "1 Ressource gegeben"
+      other: "%{count} Ressourcen gegeben"
     goods: "G&uuml;ter"
     services: "Dienste"
     transports: "Transporte"
@@ -729,12 +729,17 @@ de:
       have: "habe"
       a: "ein(e,en)"
       title: "Titel"
+    user:
+      preferences: "Einstellungen"
+      changepassword: "Passwort &auml;ndern"		    
     userdetails:
       personality: "Pers&ouml;nlichkeit"
       data: "Person"
       location: "Standort"
       avatar: "Profilbild"
-      configuration: "Einstellungen"
+      configuration: "Einstellungen"    
+    group:
+      members: "Teilnehmer"
       
   formtastic: 
     labels:
@@ -755,6 +760,7 @@ de:
         title: "Titel"
         description: "Beschreibung"
         tag_list: "Tags"
+        users: "Teilnehmer"
       event:
         from: "von"
         till: "bis"
@@ -771,7 +777,10 @@ de:
         interest_list: "Interessen"
         wish_list: "W&uuml;nsche" 
         firstname: "Vorname"
-      userdetails:
+        login: "Login"
+        email: "Email"
+        password: "Passwort"
+        password_confirmation: "Passwort wiederholen" 
         firstname: "Vorname"
         lastname: "Nachname"
         birthdate: "Geburtstag"

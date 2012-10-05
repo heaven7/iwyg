@@ -12,8 +12,12 @@ module ApplicationHelper
   		shortened = string[0, count]
   		splitted = shortened.split(/\s/)
   		words = splitted.length
-  		splitted[0, words-1].join(" ") + '...'
-  	else 
+		if words == 1
+			string
+		else
+	  		splitted[0, words-1].join(" ") + '...'
+		end  	
+	else 
   		string
   	end
   end
@@ -52,7 +56,9 @@ module ApplicationHelper
   
   # nested layouts
   def parent_layout(layout)
-    @_content_for[:layout] = self.output_buffer
+    # rails < 3.2
+    # @_content_for[:layout] = self.output_buffer
+    @view_flow.set(:layout,output_buffer)
     self.output_buffer = render(:file => "layouts/#{layout}")
   end
 

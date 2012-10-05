@@ -1,13 +1,13 @@
 <div class="user list-item ui-corner-all">
   <div class="image ui-corner-all"><%= link_to image_tag( tinyThumb(user), :alt => user.login, :title => user.login ), user %></div>
     <div class="font-small left">
-      <%=h user.login %><br />
+      <%= link_to user.login, user %><br />
     </div>
     <div id="description" class="font-smaller">
       <%= link_to t("resource", :count => user.items.size), user_items_path(user) %><br />
-      <%= link_to t("ping", :count => user.pings.not_closed.size), user_pings_path(user) %>
+      <%= link_to t("ping", :count => user.pings.not_closed.size), user_pings_path(user) if logged_in? %>
       <hr class="divider" />
-      <%= link_to t("things.taken", :count => user.accounts.taken.size), user_items_path(user) %><br />
-      <%= link_to t("things.given", :count => user.accounts.given.size), user_items_path(user) %>
+      <%= link_to t("resources.taken", :count => user.accounts.taken.size), user_items_path(user) %><br />
+      <%= link_to t("resources.given", :count => user.accounts.given.size), user_items_path(user) %>
     </div>
 </div>

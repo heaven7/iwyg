@@ -1,5 +1,10 @@
 Iwyg::Application.routes.draw do
 
+
+  resources :user_preferences
+
+  # mount IwygBe::Engine, :at => "/be"
+  
   post "versions/:id/revert" => "versions#revert", :as => "revert_version"
   resources :translations
 
@@ -41,20 +46,19 @@ Iwyg::Application.routes.draw do
     end
   end
   
-  devise_for :users  do  
-    get "login", :to => "devise/sessions#new"
-    get "logout", :to => "devise/sessions#destroy"
-    get "signup", :to => "devise/registrations#new"
-  end  
-
+ devise_for :users
+	
   devise_scope :user do
     get "/logout" => "devise/sessions#destroy"
+    get "/login", :to => "devise/sessions#new"
+    get "/signup", :to => "devise/registrations#new"
   end
   
   resources :users do
     resources :items, :pings, :groups, :images, :accounts, :comments, :friendships, :events, :messages, :meetups
 
     resource :location
+
     resource :userdetails
     member do
       post 'rate'

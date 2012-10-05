@@ -26,7 +26,7 @@
   <div id="tabs">  
     <ul>
         <li><a href="#what"><%= t("what") %></a></li>
-        <li><a href="#members"><%= t("members") %></a></li>
+        <li><a href="#members"><%= t("form.group.members") %></a></li>
         <li><a href="#where"><%= t("where") %></a></li>
         <li><a href="#images"><%= t("form.resource.images") %></a></li>
         <li><a href="#attachments"><%= t("menu.user.resources") %></a></li>      
@@ -41,7 +41,12 @@
     </div>
     <div id="members" class="tab_content">
        <%= f.inputs do %>
-         <%= f.input :users, :as => :check_boxes, :member_label => Proc.new { |u| "#{image_tag(tinyThumb(u), :alt => u.login, :title => u.login)}<br />#{u.login}".html_safe } %>
+
+					<% if @group.users.size > 0 %>
+            <%= f.input :users, :as => :check_boxes, :collection => @group.users, :member_label => Proc.new { |u| "#{render :partial => "share/usertiny_unlinked", :locals => { :user => u }}".html_safe } %>
+          <% else %>
+            <%= t("meetup.onlyFollowersAvailableToAdd").html_safe %>
+          <% end %>
        <% end %>
     </div>
     <div id="where" class="tab_content">
@@ -77,6 +82,6 @@
     </div>
   </div>
   <%= f.buttons do %>
-    <%= f.submit t("save") %>
+    <%= f.action :submit, :label => t("save") %>
   <% end %>
 <% end %>

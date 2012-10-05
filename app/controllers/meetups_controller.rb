@@ -7,7 +7,7 @@ class MeetupsController < InheritedResources::Base
   def index 
     @user = User.find(params[:user_id]) if params[:user_id]
     if @user
-      @meetups = @user.meetups
+      @meetups = Meetup.where(:owner_id => @user.id).all
       @active_menuitem_l1 = I18n.t "menu.user.meetups"
       @active_menuitem_l1_link = polymorphic_path([@user, :meetups])
       render :layout => "userarea"
@@ -31,7 +31,7 @@ class MeetupsController < InheritedResources::Base
     @active_menuitem_l2_link = user_meetup_path(@meetup)
 
     @meeting = @meetup.find_by_meeting_user(current_user)
-    if !@meeting.accepted_already? and @meetup.owner != current_user
+    if @meetup.owner != current_user and @meeting and !@meeting.accepted_already? 
       @acceptlink = self.class.helpers.link_to I18n.t("meetup.accept"), accept_meeting_path(@meeting), :method => :put
     end
     show!

@@ -10,8 +10,8 @@ class Location < ActiveRecord::Base
   acts_as_taggable_on :tags
   
   def gmaps4rails_address
-    # [address, city, zip, country].compact.join(', ') if not address.nil? or not city.nil? or not zip.nil? or not country.nil?
-    address
+    [address, city, zip, country].compact.join(', ') # if not address.nil? or not city.nil? or not zip.nil? or not country.nil?
+    # address
   end
   
   def gmaps4rails_infowindow

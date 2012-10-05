@@ -197,6 +197,8 @@ en:
   searchIn: "Search in"
   searchOptions: "Search options"
   searchedIn: "<b>%{item}</b> was searched <b>%{count}</b> times"
+  preferences: "Preferences"
+  changepassword: "Change password"
   help: "Help"
   about: "About"
   options: "Options"
@@ -205,16 +207,6 @@ en:
   previous: "previous"
   next: "next"
   more: "more"
-  things: 
-    taken:
-      one: "1 thing taken"
-      other: "%{count} things taken"
-    given:
-      one: "1 thing given"
-      other: "%{count} things given"
-  thing: 
-    one: "Thing"
-    other: "Things"
   found: "found"
   send: "Send"
   from: "from"
@@ -559,6 +551,12 @@ en:
   ## resources
   
   resources:
+    taken:
+      one: "1 resource taken"
+      other: "%{count} resources taken"
+    given:
+      one: "1 resource given"
+      other: "%{count} resources given"
     goods: "Goods"
     services: "Services"
     transports: "Transports"
@@ -729,12 +727,17 @@ en:
       have: "have"
       a: "a"
       title: "Title"
+    user:
+      preferences: "Preferences"
+      changepassword: "Change password"	
     userdetails:
       personality: "Personality"
       data: "Person" 
       location: "Location"
       avatar: "Profilepicture"
-      configuration: "Configuration"
+      configuration: "Configuration"    
+    group:
+      members: "Participants"
 
   formtastic: 
     labels:
@@ -755,6 +758,7 @@ en:
         title: "Title"  
         description: "Description"
         tag_list: "Tags"
+        users: "Participants"
       event:
         from: "from"
         till: "till"
@@ -770,6 +774,10 @@ en:
         skill_list: "Skills"
         interest_list: "Interests"
         wish_list: "Wishes"
+        login: "Login"
+        email: "Email"
+        password: "Password"
+        password_confirmation: "Confirm password" 
       userdetails:
         firstname: "Firstname"
         lastname: "Lastname"

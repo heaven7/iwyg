@@ -10,8 +10,8 @@ end
 
 class MeetupMailer < ActionMailer::Localized
   default :from => REPLY_EMAIL
-  default :css => :mailer
-  default :charset => "UTF-8"
+  default :css => MAILER_CSS
+  default :charset => MAILER_CHARSET
 
   def invitation(meetup, user, owner)
     @user = user

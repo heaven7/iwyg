@@ -2,6 +2,10 @@
 # four configuration values can also be set straight in your models.
 Devise.setup do |config|
 
+  config.case_insensitive_keys = []
+  config.use_salt_as_remember_token = true
+  config.reset_password_within = 24.hours
+
   # Configure the class responsible to send e-mails.
   config.mailer = "Devise::Mailer"
   

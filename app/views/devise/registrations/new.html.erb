@@ -2,7 +2,7 @@
   <h1><%= t("title.register") %></h1>
   <%= semantic_form_for @user, :html => {:class => "formular shadowed ui-corner-all"} do |f| %>
     <%= render "share/error_messages", :target => @user %>
-    <% f.inputs do %>
+    <%= f.inputs do %>
       <%= f.input :login, :label => t("register.label.login") %>
       <%= f.input :email, :label => t("register.label.email") %>
       <%= f.input :password, :label => t("register.label.password"), :required => true %>
@@ -10,7 +10,7 @@
       <p><abbr>*</abbr> <%= t("register.mandatoryFields") %></p>
     <% end %>
   
-    <% f.buttons do %>
+    <%= f.buttons do %>
       <%= f.submit t("register.signup") %>
     <% end %>
   <% end %>   
