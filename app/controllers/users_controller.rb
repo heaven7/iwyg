@@ -15,7 +15,7 @@ class UsersController < InheritedResources::Base
   def index
     params[:search] = params[:q]
     @usersearch = User.search(params[:search])
-    @users = @usersearch.result(:distict => true).paginate(:page => params[:page])
+    @users = @usersearch.result(:distict => true).paginate(:page => params[:page]).order('id DESC')
     @users_count = @usersearch.result.count 
     @keywords = params[:search][:title_contains].to_s.split if params[:search] and not params[:search][:title_contains].blank?
     
