@@ -124,7 +124,7 @@ class User < ActiveRecord::Base
   
   # mailbox
   def inbox
-    folders.find_by_title("Inbox")
+    self.folders.where(:title => "Inbox").order("id asc").first()
   end
 
   def build_user

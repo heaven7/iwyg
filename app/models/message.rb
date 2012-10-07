@@ -21,7 +21,7 @@ class Message < ActiveRecord::Base
     return if to.blank?
     recipient = to
     recipient = User.find(recipient)
-    m = message_copies.build(:recipient => recipient, :folder => recipient.inbox)
+    m = message_copies.build(:recipient => recipient, :folder => recipient.inbox, :created_at => Time.now)
     m.custom = Custom.new
     #to.each do |recipient|
     #  recipient = User.find(recipient)
