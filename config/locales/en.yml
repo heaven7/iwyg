@@ -730,12 +730,17 @@ en:
     user:
       preferences: "Preferences"
       changepassword: "Change password"	
+      useraccount: "Account"	
+      quitAccount: "Quit account"
     userdetails:
       personality: "Personality"
       data: "Person" 
       location: "Location"
       avatar: "Profilepicture"
-      configuration: "Configuration"    
+      configuration: "Configuration"  
+    user_preferences:
+      active: "Account activated"
+      deactivateAccount: "Deactivate account"  
     group:
       members: "Participants"
 
@@ -784,7 +789,9 @@ en:
         birthdate: "Birthdate"
         occupation: "Occupation"
         company: "Company"
-        language : "Language"
+        language: "Language"
+      user_preferences:
+        active: "Account activated"
     hints:
       item:
         multiple: "do you need this resource occasionally or regularly? /<br />do you offer this resource occasionally or regularly?" 

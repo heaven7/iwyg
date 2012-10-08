@@ -731,13 +731,18 @@ de:
       title: "Titel"
     user:
       preferences: "Einstellungen"
-      changepassword: "Passwort &auml;ndern"		    
+      changepassword: "Passwort &auml;ndern"		    	
+      useraccount: "Konto"		    	
+      quitAccount: "Konto l&ouml;schen"
     userdetails:
       personality: "Pers&ouml;nlichkeit"
       data: "Person"
       location: "Standort"
       avatar: "Profilbild"
       configuration: "Einstellungen"    
+    user_preferences:
+      active: "Konto aktiv"
+      deactivateAccount: "Konto deaktivieren"
     group:
       members: "Teilnehmer"
       
@@ -781,12 +786,15 @@ de:
         email: "Email"
         password: "Passwort"
         password_confirmation: "Passwort wiederholen" 
+      userdetails:
         firstname: "Vorname"
         lastname: "Nachname"
         birthdate: "Geburtstag"
         occupation: "Beruf(ung)"
         company: "Firma"
-        language : "Sprache"
+        language: "Sprache"
+      user_preferences:
+        active: "Konto aktiviert"
     hints:
       item:
         multiple: "ben&ouml;tigst du diese Ressource mehrmals oder regelm&auml;&szlig;ig? /<br />bietest Du diese Ressource mehrmals oder  regelm&auml;&szlig;ig an?"

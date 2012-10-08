@@ -10,6 +10,7 @@
 		$('#tabs h2').hide();	
     showErrorTabs();
 
+
     /* STYLING */
     $('.ui-listbuilder-input').addClass('ui-corner-all');
       
@@ -20,8 +21,8 @@
 <div id="tabs">  
     <ul>
       <li><a href="#preferences"><%= t("form.user.preferences").html_safe %></a></li>
-			<li><a href="#password"><%= t("form.user.changepassword").html_safe %></a></li>
-			
+			<li><a href="#password"><%= t("form.user.changepassword").html_safe %></a></li>			
+			<li><a href="#useraccount"><%= t("form.user.useraccount").html_safe %></a></li>
 		</ul>
 	<div id="preferences">
 		<h2><%= t("preferences").html_safe %></h2>	
@@ -31,16 +32,10 @@
 				<%= f.input :login %>
 				<%= f.input :email %>
 			<% end %>
-			<%= f.buttons do %>
+			<%= f.actions do %>
 			  <%= f.action :submit, :label => t("save") %>
 			<% end %>	
 		<% end %>
-      <!--
-      <%= link_to "Delete User",
-        {:action => "destroy", :id => @user},
-        :confirm => t("confirm_delete").html_safe,
-        :method => :delete %>
-      -->
 	</div>
 	<div id="password">
 		<%= semantic_form_for @user, :html => {:multipart => true} do |f| %>
@@ -50,9 +45,35 @@
 					<%= f.input :password_confirmation %>
 			<% end %>
 
-			<%= f.buttons do %>
+			<%= f.actions do %>
 				<%= f.action :submit, :label => t("changepassword").html_safe %>
 			<% end %>
 		<% end %>
+	</div>
+	<div id="useraccount">
+		<%= semantic_form_for @user, :html => {:multipart => true} do |f| %>
+			<%= semantic_fields_for :user_preferences do |user_preferences| %>
+				<li class="boolean input optional" id="user_preferences_active_input">
+					<input name="user_preferences[active]" type="hidden" value="0">
+					<label class="" for="user_preferences_active" name="user_preferences[active]"><%= t("form.user_preferences.deactivateAccount") %></label>
+					<input id="user_preferences_active" name="user_preferences[active]" type="checkbox">
+					<%= t("formtastic.labels.user_preferences.active") %>
+				</li>
+				<%= user_preferences.input :active, :as => :boolean %>
+				<li>&nbsp;</li>
+		    <li id="user_destroy_input">
+					<label class=" label" for="user_destroy">&nbsp;</label>
+					<%= link_to t("form.user.quitAccount").html_safe,
+										{:action => :destroy, :id => @user},
+										:confirm => t("confirm_delete").html_safe,
+										:method => :delete 
+									%>
+				</li>
+			<% end %>
+			<%= f.actions do %>
+				<%= f.action :submit, :label => t("save").html_safe %>
+			<% end %>
+		<% end %>
+		
 	</div>
 </div>

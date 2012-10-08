@@ -81,6 +81,11 @@ class UsersController < InheritedResources::Base
 	end
 
 
+	def destroy
+	  User.find(params[:id]).destroy
+	  flash[:notice] = t("flash.user.destroy.notice")
+    redirect_to root_path
+  end
 
   def activate
     self.current_user = params[:activation_code].blank? ? false : User.find_by_activation_code(params[:activation_code])

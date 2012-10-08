@@ -131,7 +131,7 @@ class User < ActiveRecord::Base
     folders.build(:title => "Inbox", :user_id => self.id) if not Folder.exists?(self)
     self.custom = Custom.new 
     self.location = Location.new
-    self.user_preferences = UserPreferences.new(:user_id => self.id)
+    self.user_preferences = UserPreferences.new(:user_id => self.id, :active => true)
   end
 
   def pinged?(resource)

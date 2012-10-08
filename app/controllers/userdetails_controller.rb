@@ -73,13 +73,6 @@ class UserdetailsController < InheritedResources::Base
     end
   end
 
-  # DELETE /userdetails/1
-  # DELETE /userdetails/1.xml
-  def destroy
-    @userdetails = Userdetails.find(params[:id])
-    @userdetails.destroy
-
-  end
   
   protected
 
