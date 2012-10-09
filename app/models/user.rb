@@ -14,10 +14,11 @@ class User < ActiveRecord::Base
   extend FriendlyId
   friendly_id :login
 
-  # :token_authenticatable, :lockable, :timeoutable, :encryptable, :confirmable, :encryptor => :restful_authentication_sha1 and :activatable
-  devise :database_authenticatable, :registerable, :rememberable, :recoverable, :trackable, :lockable, :lock_strategy => :failed_attempts, :unlock_strategy => :both #, :lockable#, :lock_strategy => :none, :unlock_strategy => :none #, :encryptable, :encryptor => :bcrypt, :authentication_keys => [:username], :rpx_connectable, :recoverable, :trackable, :confirmable, :validatable
+  devise :database_authenticatable, :registerable, :rememberable, :recoverable, :trackable, :lockable, :lock_strategy => :failed_attempts, :unlock_strategy => :both 
 
   after_create :build_user
+	
+	scope :active, where("is_active = ?", "1")
 
   # ajaxful_rater # has_many :rates
   acts_as_taggable_on :interests, :wishs, :aims
@@ -118,12 +119,17 @@ class User < ActiveRecord::Base
 	end
 	
 	def active_for_authentication?
-	  super and self.is_active?
+	  super and self.locked_at.nil?
   end
-
-	def activate(email) 
-		
+	
+	def unlock_access!
+		self.locked_at = nil
+		self.failed_attempts = 0 if respond_to?(:failed_attempts=)
+		self.unlock_token = nil  if respond_to?(:unlock_token=)
+		self.is_active = true
+		save(:validate => false)
 	end
+
   # autocomplete for aims, wishes, interests and skills
   def aim_list_name
     self.aim_list if aim_list

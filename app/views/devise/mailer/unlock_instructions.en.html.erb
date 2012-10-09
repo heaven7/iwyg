@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <p>Hello <%= @resource.email %>!</p>
+    <p>Your account has been deactivated by yourself or due to an excessive amount of unsuccessful sign in attempts.</p>
+		<p>Click the link below to unlock your account:</p>
+		<p><%= link_to 'Unlock my account', unlock_url(@resource, :unlock_token => @resource.unlock_token) %></p>
+    <p>Yours IWYG Team</p>
+  </body>
+</html>

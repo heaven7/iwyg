@@ -29,7 +29,7 @@ de:
       destroyed: 'Dein Account wurde gel&ouml;scht'
     unlocks:
       send_instructions: 'Du bekommst gleich eine Email von uns mit Informationen, wie Du Dein Passwort entsperren kannst.'
-      unlocked: 'Dein Account wurde erfolgreich entsperrt. Du bist bereits eingeloggt.'
+      unlocked: 'Dein Account wurde erfolgreich aktiviert.'
     mailer:
       confirmation_instructions: 'Account best&auml;tigen'
       reset_password_instructions: 'Passwort zur&uuml;cksetzen'

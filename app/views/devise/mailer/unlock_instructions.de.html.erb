@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+		<p>Hallo <%= @resource.email %>!</p>
+		<p>Dein Account wurde deaktiviert.</p>
+		<p>Entweder du selbst hast deinen Account deaktiviert oder jemand hat versucht dein Account zu hacken.</p>
+		<p>Klicke den untenstehenden Link, um deinen Account wieder zu aktivieren:</p>
+		<p><%= link_to 'Account aktivieren', unlock_url(@resource, :unlock_token => @resource.unlock_token) %>.</p>
+		<p>Dein IWYG Team</p>
+  </body>
+</html>

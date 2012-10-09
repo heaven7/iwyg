@@ -4,6 +4,6 @@ class UserObserver < ActiveRecord::Observer
   end
 
   def after_save(user)  
-    UserMailer.activation_instructions(user).deliver if not user.active_for_authentication?
+   # UserMailer.activation_instructions(user).deliver if not user.active_for_authentication?
   end
 end
