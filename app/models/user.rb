@@ -139,7 +139,7 @@ class User < ActiveRecord::Base
   end
 
   def build_user
-    folders.build(:title => "Inbox", :user_id => self.id) if not Folder.exists?(self)
+    self.folders.build(:title => "Inbox", :user_id => self.id) if not Folder.exists?(self)
     self.custom = Custom.new 
     self.location = Location.new
     self.user_preferences = UserPreferences.new(:user_id => self.id, :active => true)
