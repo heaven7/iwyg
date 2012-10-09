@@ -4,7 +4,6 @@ class CreateUserPreferences < ActiveRecord::Migration
       t.integer :user_id
       t.integer :custom_id
       t.string :language
-      t.boolean :active, :default => true
 
       t.timestamps
     end

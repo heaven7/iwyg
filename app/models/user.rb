@@ -8,14 +8,14 @@ class User < ActiveRecord::Base
                   :occupation, :company, :birthdate, :lastname, :firstname,
                   :remember_me,
                   :aim_tokens, :skill_tokens, :interest_tokens, :wish_tokens,
-									:user_preferences_attributes
+									:user_preferences_attributes, :is_active
 
 
   extend FriendlyId
   friendly_id :login
 
   # :token_authenticatable, :lockable, :timeoutable, :encryptable, :confirmable, :encryptor => :restful_authentication_sha1 and :activatable
-  devise :database_authenticatable, :registerable, :rememberable, :recoverable #, :encryptable, :encryptor => :bcrypt, :authentication_keys => [:username], :rpx_connectable, :recoverable, :trackable, :confirmable, :recoverable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, :rememberable, :recoverable, :trackable, :lockable, :lock_strategy => :failed_attempts, :unlock_strategy => :both #, :lockable#, :lock_strategy => :none, :unlock_strategy => :none #, :encryptable, :encryptor => :bcrypt, :authentication_keys => [:username], :rpx_connectable, :recoverable, :trackable, :confirmable, :validatable
 
   after_create :build_user
 
@@ -113,6 +113,17 @@ class User < ActiveRecord::Base
     not User.find_by_id(id).nil?
   end
 
+	def inactive_message
+		I18n.t("flash.users.deactivated.notice")
+	end
+	
+	def active_for_authentication?
+	  super and self.is_active?
+  end
+
+	def activate(email) 
+		
+	end
   # autocomplete for aims, wishes, interests and skills
   def aim_list_name
     self.aim_list if aim_list

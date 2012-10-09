@@ -6,7 +6,7 @@ class UserMailer < ActionMailer::Base
   def registration_notification(user)
     @user = user
     @url = "#{HOST}/users/sign_in"
-    email_with_name = "#{user.login} <#{user.email}>"
+    email_with_name = "#{@user.login} <#{@user.email}>"
     mail( :to => email_with_name, :subject => "IWYG Registration")
   end
 
@@ -17,6 +17,13 @@ class UserMailer < ActionMailer::Base
     @sent_on     = Time.now
     @body = user 
   end
+
+	def activation_instructions(user)
+		@user = user
+		@activation_url = user_unlock_url
+    email_with_name = "#{@user.login} <#{@user.email}>"
+		mail( :to => email_with_name, :subject => "IWYG account activation")
+	end
   
   protected
     def setup_email(user)

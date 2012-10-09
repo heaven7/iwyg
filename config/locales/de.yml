@@ -424,6 +424,8 @@ de:
         notice: "Erfolgreich registriert, vielen Dank!"
       activate:
         notice: "Profil erfolgreich aktiviert!"
+      deactivated:
+        notice: "Dieses Profil wurde deaktiviert!"
       update:
         notice: "Profil erfolgreich ge&auml;ndert."
       follow:

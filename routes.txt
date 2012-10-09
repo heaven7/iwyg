@@ -1,3 +1,10 @@
+          user_preferences GET      /user_preferences(.:format)                          user_preferences#index
+                           POST     /user_preferences(.:format)                          user_preferences#create
+       new_user_preference GET      /user_preferences/new(.:format)                      user_preferences#new
+      edit_user_preference GET      /user_preferences/:id/edit(.:format)                 user_preferences#edit
+           user_preference GET      /user_preferences/:id(.:format)                      user_preferences#show
+                           PUT      /user_preferences/:id(.:format)                      user_preferences#update
+                           DELETE   /user_preferences/:id(.:format)                      user_preferences#destroy
             revert_version POST     /versions/:id/revert(.:format)                       versions#revert
               translations GET      /translations(.:format)                              translations#index
                            POST     /translations(.:format)                              translations#create
@@ -113,6 +120,9 @@
     edit_user_registration GET      /users/edit(.:format)                                devise/registrations#edit
                            PUT      /users(.:format)                                     devise/registrations#update
                            DELETE   /users(.:format)                                     devise/registrations#destroy
+               user_unlock POST     /users/unlock(.:format)                              devise/unlocks#create
+           new_user_unlock GET      /users/unlock/new(.:format)                          devise/unlocks#new
+                           GET      /users/unlock(.:format)                              devise/unlocks#show
                     logout GET      /logout(.:format)                                    devise/sessions#destroy
                      login GET      /login(.:format)                                     devise/sessions#new
                     signup GET      /signup(.:format)                                    devise/registrations#new
@@ -192,13 +202,6 @@
                            GET      /users/:user_id/location(.:format)                   locations#show
                            PUT      /users/:user_id/location(.:format)                   locations#update
                            DELETE   /users/:user_id/location(.:format)                   locations#destroy
-             user_settings GET      /users/:user_id/user_preferences(.:format)           user_preferences#index
-                           POST     /users/:user_id/user_preferences(.:format)           user_preferences#create
-          new_user_setting GET      /users/:user_id/user_preferences/new(.:format)       user_preferences#new
-         edit_user_setting GET      /users/:user_id/user_preferences/:id/edit(.:format)  user_preferences#edit
-              user_setting GET      /users/:user_id/user_preferences/:id(.:format)       user_preferences#show
-                           PUT      /users/:user_id/user_preferences/:id(.:format)       user_preferences#update
-                           DELETE   /users/:user_id/user_preferences/:id(.:format)       user_preferences#destroy
           user_userdetails POST     /users/:user_id/userdetails(.:format)                userdetails#create
       new_user_userdetails GET      /users/:user_id/userdetails/new(.:format)            userdetails#new
      edit_user_userdetails GET      /users/:user_id/userdetails/edit(.:format)           userdetails#edit

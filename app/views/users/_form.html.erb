@@ -52,22 +52,16 @@
 	</div>
 	<div id="useraccount">
 		<%= semantic_form_for @user, :html => {:multipart => true} do |f| %>
-			<%= semantic_fields_for :user_preferences do |user_preferences| %>
-				<li class="boolean input optional" id="user_preferences_active_input">
-					<input name="user_preferences[active]" type="hidden" value="0">
-					<label class="" for="user_preferences_active" name="user_preferences[active]"><%= t("form.user_preferences.deactivateAccount") %></label>
-					<input id="user_preferences_active" name="user_preferences[active]" type="checkbox">
-					<%= t("formtastic.labels.user_preferences.active") %>
-				</li>
-				<%= user_preferences.input :active, :as => :boolean %>
-				<li>&nbsp;</li>
-		    <li id="user_destroy_input">
-					<label class=" label" for="user_destroy">&nbsp;</label>
+			<%= f.inputs do %>
+				<label><%= t("form.user_preferences.deactivateAccount") %></label>
+				<%= f.input :is_active, :as => :boolean, :member_label => t("formtastic.labels.user_preferences.active") %>
+					<label>&nbsp;</label>
+		    <li>
 					<%= link_to t("form.user.quitAccount").html_safe,
-										{:action => :destroy, :id => @user},
-										:confirm => t("confirm_delete").html_safe,
-										:method => :delete 
-									%>
+				    {:action => "destroy", :id => @user},
+				    :confirm => t("confirm_delete").html_safe,
+			      :method => :delete %>
+
 				</li>
 			<% end %>
 			<%= f.actions do %>
