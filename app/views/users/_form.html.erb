@@ -54,20 +54,27 @@
 		<%= semantic_form_for @user, :html => {:multipart => true} do |f| %>
 			<%= f.inputs do %>
 				<label><%= t("form.user_preferences.deactivateAccount") %></label>
-				<%= f.input :is_active, :as => :boolean, :member_label => t("formtastic.labels.user_preferences.active") %>
-					<label>&nbsp;</label>
-		    <li>
-					<%= link_to t("form.user.quitAccount").html_safe,
-				    {:action => "destroy", :id => @user},
-				    :confirm => t("confirm_delete").html_safe,
-			      :method => :delete %>
-
-				</li>
+				<%= f.input :is_active, :as => :boolean, :label => t("formtastic.labels.user_preferences.active") %>
 			<% end %>
 			<%= f.actions do %>
 				<%= f.action :submit, :label => t("save").html_safe %>
 			<% end %>
 		<% end %>
+
+		<%= semantic_form_for @user, :html => {:multipart => true} do |f| %>
+			<%= f.inputs do %>
+				<li>
+						<p class="inline-hints"><%= t("formtastic.hints.user.destroyed").html_safe %></p>
+						<label>&nbsp;</label>	
+						<%= link_to t("form.user.quitAccount").html_safe,
+						  {:action => "destroy", :id => @user},
+							{ :class => "button" },
+						  :confirm => t("confirm_delete").html_safe,
+					    :method => :delete %>
+					</li>
+			<% end %>
+		<% end %>
+
 		
 	</div>
 </div>

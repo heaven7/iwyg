@@ -20,6 +20,15 @@ fieldset {
 .formular {
   border:1px solid #969e93;
 }
+#useraccount #user_is_active_input label {
+  margin-left: 2.8em;
+  position: relative;
+  top: -17px;
+}
+#useraccount .button {
+	padding: 0.5em;
+	border: 2px solid red;
+}
 .registration,
 .change_password,
 .forgot_password {

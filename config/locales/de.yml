@@ -806,6 +806,8 @@ de:
         skill_list: "In was bist Du gut? Was tust Du gerne?"
         interest_list: "Wo liegen Deine Interessen?"
         wish_list: "Was w&uuml;nscht Du Dir? F&uuml;r Dich, f&uuml;r andere?"
+        is_active: "Wenn dein Account deaktiviert ist, sind deine Ressourcen, Kommentare und Pings f&uuml;r die anderen nicht mehr sichtbar. Du kannst deinen Account wieder aktivieren, in dem du den Aktivierungs-Link anklickst, den wir dir mit einer Email schicken."
+        destroyed: "Wenn du den 'Konto l&ouml;schen'-Button klickst, werden alle deine Daten unwiderruflich gel&ouml;scht! Das kann nicht r&uuml;ckg&auml;ngig gemacht werden, so &uuml;berlege dir, ob du dein Konto nicht deaktivieren m&ouml;chtest, falls du deine Daten zu einem sp&auml;teren Zeitpunkt noch brauchst."
       event:
         from: "klicke auf das Feld um den Kalender zu sehen." 
         till: "klicke auf das Feld um den Kalender zu sehen." 
