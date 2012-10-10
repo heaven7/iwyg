@@ -53,7 +53,7 @@
 	<div id="useraccount">
 		<%= semantic_form_for @user, :html => {:multipart => true} do |f| %>
 			<%= f.inputs do %>
-				<label><%= t("form.user_preferences.deactivateAccount") %></label>
+				<label>&nbsp;</label>
 				<%= f.input :is_active, :as => :boolean, :label => t("formtastic.labels.user_preferences.active") %>
 			<% end %>
 			<%= f.actions do %>
