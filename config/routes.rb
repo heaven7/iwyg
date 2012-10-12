@@ -1,9 +1,8 @@
 Iwyg::Application.routes.draw do
 
-
+	# mount IwygBe::Engine, :at => "/be"
+  
   resources :user_preferences
-
-  # mount IwygBe::Engine, :at => "/be"
   
   post "versions/:id/revert" => "versions#revert", :as => "revert_version"
   resources :translations
