@@ -49,9 +49,7 @@ class ItemsController < InheritedResources::Base
             @keyword_items += "(:title =~ '%#{keyword}%' ) | "  
           end
         end
-        params[:search][:title_contains] = eval(@keyword_items)
-        
-        
+				
         @searcher ||= current_user.id if current_user
         # save search      
         for keyword in @keywords
