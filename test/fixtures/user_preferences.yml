@@ -3,11 +3,9 @@
 one:
   user_id: 1
   custom_id: 1
-  language: MyString
-  active: false
+  language: en
 
 two:
-  user_id: 1
-  custom_id: 1
-  language: MyString
-  active: false
+  user_id: 2
+  custom_id: 2
+  language: de
