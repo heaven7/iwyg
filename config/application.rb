@@ -41,9 +41,24 @@ module Iwyg
     config.action_view.javascript_expansions = { :defaults => %w(jquery jquery-ui jquery_ujs ) } 
     
     # Observers
-    config.active_record.observers = :user_observer, :ping_observer, :meetup_observer, :comment_observer #, :transfer_observer, :event_observer
+    config.active_record.observers = :user_observer, :ping_observer, :meetup_observer, :comment_observer
+
+		# testing
+		config.generators do |g|
+			g.test_framework :rspec,
+				:fixtures => true,
+				:view_specs => false,
+				:helper_specs => false,
+				:routing_specs => false,
+				:controller_specs => true,
+				:request_specs => true
+			g.fixture_replacement :factory_girl, :dir => "spec/factories"
+		end
+
   end
 end
+
+
 
 # application configuration
 DB_STRING_MAX_LENGTH = 255
@@ -58,12 +73,7 @@ PINGS_PER_PAGE = 30
 MAILER_CSS = :mailer
 MAILER_CHARSET = "UTF-8"
 
-# Default date/time format
-# date.formats(:default=> "%B %d, %Y")
-# ActiveSupport::CoreExtensions::Date::Conversions::DATE_FORMATS.merge!(:default => "%B %d, %Y")
-# ActiveSupport::CoreExtensions::Time::Conversions::DATE_FORMATS.merge!(:default => "%B %d, %Y %H:%m",
-#                                                                      :weekday => "%A: %B %d, %Y")
-
+# default date/time format
 Time::DATE_FORMATS[:mailbox] = "%A, %B %d, %Y"
 Time::DATE_FORMATS[:default] = "%B %d, %Y"
 

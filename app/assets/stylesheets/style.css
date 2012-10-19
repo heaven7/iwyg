@@ -1,11 +1,13 @@
 /**
- * General style definition.
+ * General iwyg style definition.
  * 
- * @author Christian Grlica
- * @copyright 2011 by Heavenseven, www.heavenseven.net 
 */
 @import url(global/main.css);
 @import url(extensions.css);
+
+body {
+	font-family: 'Signika Negative', sans-serif;
+}
 
 /* Container */
 #container {

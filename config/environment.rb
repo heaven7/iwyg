@@ -10,3 +10,17 @@ require File.expand_path('../application', __FILE__)
 
 Iwyg::Application.initialize!
 #Encoding.default_internal = Encoding::UTF_8
+module Iwyg
+
+  class Application < Rails::Application
+    config.generators do |g|
+      g.test_framework  :rspec, :fixture_replacement => :factory_girl, :views => true, :helper => false
+      g.fixture_replacement :factory_girl, :dir => 'spec/factories'
+      g.stylesheets     false
+      g.javascripts     false
+      g.helper          false
+    end
+
+  end
+end
+
