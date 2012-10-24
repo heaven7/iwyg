@@ -82,6 +82,6 @@
     </div>
   </div>
   <%= f.actions do %>
-    <%= f.submit t("save") %>
+    <%= f.action :submit, :label => t("save").html_safe %>
   <% end %>
 <% end %>

@@ -74,7 +74,7 @@
     </div>
     <%= f.actions do %>
       <br />
-      <%= f.submit t("save") %>
+      <%= f.action :submit, :label => t("save").html_safe %>
     <% end %>
   <% end %>
 
@@ -127,7 +127,7 @@
     </div>
     <%= f.actions do %>
       <br />
-    <%= f.action :submit, :label => t("save") %>
+    <%= f.action :submit, :label => t("save").html_safe %>
     <% end %>
   <% end %>
 
