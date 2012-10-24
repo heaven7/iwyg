@@ -67,10 +67,12 @@
 						<p class="inline-hints"><%= t("formtastic.hints.user.destroyed").html_safe %></p>
 						<label>&nbsp;</label>	
 						<%= link_to t("form.user.quitAccount").html_safe,
-						  {:action => "destroy", :id => @user},
-							{ :class => "button" },
-						  :confirm => t("confirm_delete").html_safe,
-					    :method => :delete %>
+						 	users_path,
+							{ :confirm => t("confirm_delete").html_safe,
+					      :method => :delete,
+							  :class => "button"
+						  }
+					   %>
 					</li>
 			<% end %>
 		<% end %>
