@@ -54,6 +54,7 @@ describe User do
 
 		it "is the users inbox" do
 			@folder.user_id.should eq(@user.id)
+			@user.inbox
 		end
 		
 		it "is titled inbox" do
