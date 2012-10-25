@@ -3,7 +3,7 @@ require 'spec_helper'
 describe User do
 
 	before :all do
-		@user = FactoryGirl.build(:user)
+		@user = build(:user)
 	end 
 
 	subject { @user }
@@ -19,23 +19,23 @@ describe User do
 		@user.login.length.should be >= 3	
 	end
 
-	it "has a login length lt 40" do
+	it "has a login length <= 40" do
 		@user.login.length.should be <= 40 
-	end	
-	
-	it "has a password length gt 4" do
+	end
+
+	it "has a password length >= 4" do
 		 @user.password.length.should be >= 4 
 	end	
 
-	it "has a password length lt 40" do
+	it "has a password length <= 40" do
 		@user.password.length.should be <= 40
 	end
 
-	it "has a email length gt 3" do
+	it "has a email length >= 3" do
 		@user.email.length.should be >= 3
 	end
 
-	it "has a email length lt 100" do
+	it "has a email length <= 100" do
 		@user.email.length.should be <= 100
 	end
 
@@ -43,17 +43,22 @@ describe User do
 		@user.password.should eq(@user.password_confirmation)
 	end
 
-	it "has a id gt 0" do
+	it "has a id > 0" do
 		@user.id.should be > 0
 	end
 
-	describe "#inbox" do
+	describe "with an inbox" do
 		before :each do 
-			@inbox = Folder.new(:user_id => @user.id)
+			@folder = create(:folder, user_id: @user.id)
+		end
+
+		it "is the users inbox" do
+			@folder.user_id.should eq(@user.id)
 		end
 		
-		it "has an inbox" do
-			@inbox.user_id should eq(@user.id)
+		it "is titled inbox" do
+			@folder.title.should == "Inbox"
 		end
+
 	end
 end
