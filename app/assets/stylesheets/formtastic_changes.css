@@ -44,6 +44,7 @@ form.formtastic input[type="submit"]:active, .submit:active {
 }
 form.formtastic .input {
     width: 100%;
+		font-family: 'Signika Negative', sans-serif;
 }
 
 
