@@ -161,6 +161,7 @@ textarea {
 }
 .formbutton input {
   background:#b8cab6 none repeat scroll 0 0;
+	font-family: 'Signika Negative', sans-serif;
   border-width:2px;
   font-style:italic;
   cursor: pointer;
