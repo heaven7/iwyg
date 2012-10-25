@@ -81,8 +81,7 @@ class UsersController < InheritedResources::Base
 	end
 
 	def update
-		if params[:user][:is_active].to_i < 1
-			puts "test: " + params[:user][:is_active].to_s	
+		if params[:user][:is_active] && params[:user][:is_active].to_i < 1
 			current_user.lock_access!
 		end
 		update!

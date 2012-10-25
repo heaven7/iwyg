@@ -81,7 +81,7 @@
       <%= render :partial => "items/item_attachments", :locals => { :object => @group, :f => f } %>
     </div>
   </div>
-  <%= f.buttons do %>
-    <%= f.action :submit, :label => t("save") %>
+  <%= f.actions do %>
+    <%= f.action :submit, :label => t("save").html_safe %>
   <% end %>
 <% end %>

@@ -8,8 +8,8 @@
       <%= f.input :password, :label => t("register.label.password") %>
       <%= f.input :password_confirmation, :label => t("register.label.confirmPassword") %>
     <% end %>
-    <%= f.buttons do %>
-      <%= f.submit t("password.change_submit").html_safe %>
+    <%= f.actions do %>
+      <%= f.action :submit, :label => t("password.change_submit").html_safe %>
     <% end %>
   <% end %>
   

@@ -72,9 +72,9 @@
         <%= render :partial => "items/item_attachments", :locals => { :object => @meetup, :f => f } %>
       </div>
     </div>
-    <%= f.buttons do %>
+    <%= f.actions do %>
       <br />
-      <%= f.submit t("save") %>
+      <%= f.action :submit, :label => t("save").html_safe %>
     <% end %>
   <% end %>
 
@@ -125,9 +125,9 @@
         <%= render :partial => "items/item_attachments", :locals => { :object => @meetup, :f => f } %>
       </div>
     </div>
-    <%= f.buttons do %>
+    <%= f.actions do %>
       <br />
-    <%= f.action :submit, :label => t("save") %>
+    <%= f.action :submit, :label => t("save").html_safe %>
     <% end %>
   <% end %>
 
