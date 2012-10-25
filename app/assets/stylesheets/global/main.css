@@ -71,14 +71,13 @@ cite:after {
     content: close-quote;
 }
 h1, h2, h3, h4, h5, h6 {
-	font-family:"Georigia", serif;
 	font-style:italic;
 	font-weight:normal;
 	color: #0b0d14;
 }
 h1 {
 	font-size:190%;
-	font-weight:bold;
+	font-weight:300;
   margin-top:0em;
   margin-bottom:0em;
 }
