@@ -40,14 +40,15 @@
 #userarea #accordion {
   padding-top:0;
 }
-
+#userarea .subcol2 .block {
+	margin-bottom: 1em;
+}
 #userdescription {
 
 }
 
 #userdescription #avatar{
   padding:0.2em;
-  background:#abb6a8;
   text-align:center;
   
 }

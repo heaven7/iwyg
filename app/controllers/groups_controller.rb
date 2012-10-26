@@ -78,9 +78,9 @@ class GroupsController < InheritedResources::Base
       @group = Group.find(params[:id])
     end 
     # friendly_id outdated finder statuses
-    if request.path != group_path(@group)
-      return redirect_to @group, :status => :moved_permanently
-    end
+    #if request.path != group_path(@group)
+    #  return redirect_to @group, :status => :moved_permanently
+    #end
     @location = @group.locations.first if @group.locations && @group.locations.first
     getLocationsOnMap(@group) if @location and not @location.lat.nil? and not @location.lng.nil?
   end

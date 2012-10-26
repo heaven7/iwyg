@@ -25,7 +25,8 @@ module UsersHelper
     if user && user.images.first
       user.images.first.image.url(size)
     else
-      "global/avatar_dummy_#{size}.png"
+			counter = user.id.to_i % 6
+      "global/avatar_dummy_#{size}_#{counter}.png"
     end
   end
   
