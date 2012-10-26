@@ -522,7 +522,7 @@ en:
       resources: "Resources"
       members: "Members"
       groups: "Groups"
-      help: "Help"
+      info: "Info"
       about: "About"
       meetups: "Meetups"
     user:

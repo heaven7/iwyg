@@ -92,13 +92,7 @@
         </li>
         <li><%= link_to_unless_current t("menu.main.members"), users_path %></li>
         <li><%= link_to_unless_current t("menu.main.groups"), groups_path %></li>
-        <li><%# link_to_unless_current t("menu.main.projects"), projects_path %></li>
-<!--        
-        <li><%# link_to_unless_current t("menu.main.about"), :controller => "page", :action => "about" %></li>
-        <% if user_signed_in? %>
-          <li><%# link_to_unless_current t("menu.main.help"), :controller => "page", :action => "help" %></li>
-        <% end %>
--->
+        <li><%= link_to t("menu.main.info"), "http://info.iwyg.net" %></li>
       </ul>
     </div>
   <div id="content">

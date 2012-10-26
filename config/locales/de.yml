@@ -526,7 +526,7 @@ de:
       resources: "Ressourcen"
       members: "Mitglieder"
       groups: "Gruppen"
-      help: "Hilfe"
+      info: "Infos"
       about: "&Uuml;ber uns"
       meetups: "Treffpunkte"
     user:
