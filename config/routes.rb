@@ -39,13 +39,13 @@ Iwyg::Application.routes.draw do
  
   resources :sent
 
-  resources :friendships do
+  resources :groupings do
     member do
       put 'accept' 
     end
   end
-  
- 	devise_for :users
+ 	
+	devise_for :users
 	
   devise_scope :user do
     get "/logout" => "devise/sessions#destroy"
