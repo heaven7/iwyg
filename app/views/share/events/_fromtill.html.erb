@@ -1,0 +1,7 @@
+<% if !events.first.from.blank? and events.first.till.blank? %>
+    <%= l events.first.from %>
+<% elsif !events.first.from.blank? and !events.first.till.blank? %>
+    <%= l events.first.from.to_date %> - 
+		<%= l events.first.till.to_date %>
+<% end %>
+

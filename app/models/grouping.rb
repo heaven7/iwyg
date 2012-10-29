@@ -5,4 +5,8 @@ class Grouping < ActiveRecord::Base
 
   scope :pending, :conditions => "accepted_at is NULL"
   scope :accepted, :conditions => "accepted_at is NOT NULL"
+
+	def exists?
+		not Grouping.find_by_user_id_and_group_id(self.user_id, self.group_id).nil?
+	end
 end

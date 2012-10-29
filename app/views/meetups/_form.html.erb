@@ -28,7 +28,7 @@
 
 <% if params[:item] %>
 
-  <% semantic_form_for @meetup, :method => "post", :url => meetups_path("item[ping]" => params[:item][:ping], "item[attachable_id]" => params[:item][:attachable_id]) do |f| %>
+  <%= semantic_form_for @meetup, :method => "post", :url => meetups_path("item[ping]" => params[:item][:ping], "item[attachable_id]" => params[:item][:attachable_id]) do |f| %>
 
     <%= render "share/error_messages", :target => @meetup %>
     <div id="tabs">
@@ -42,10 +42,10 @@
       <div id="what">
         <%= f.inputs do %>
           <% if params[:item] %>
-        <%# f.input "item[ping]", :as => :hidden, :value => params[:item][:ping] %>
+        <%# f.input "item[ping]", :as => :hidden, :input_html => { :value => params[:item][:ping] } %>
           <% end %>
-          <%= f.input :owner_id, :as => :hidden, :value => current_user.id %>
-          <%= f.input :ownertype, :as => :hidden, :value => "User" %>
+          <%= f.input :owner_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+          <%= f.input :ownertype, :as => :hidden, :input_html => { :value => "User" } %>
           <%= f.input :title %>
           <%= f.input :description, :label => I18n.t("formtastic.labels.meetup.description") %>
         <% end %>
@@ -61,9 +61,9 @@
         <% end %>
       </div>
       <div id="who">
-        <div class="button new">
+        <!-- <div class="button new"> -->
     <%# link_to t("formtastic.labels.meetup.invite_users").html_safe, "#" %>
-        </div>
+       <!-- </div> -->
         <%= f.inputs do %>
           <%= f.input :users, :as => :check_boxes, :collection => @meetup.users, :member_label => Proc.new { |u| "#{render :partial => "share/usertiny_unlinked", :locals => { :user => u }}".html_safe } %>
         <% end %>
@@ -94,10 +94,10 @@
       <div id="what">
         <%= f.inputs do %>
           <% if params[:item] %>
-        <%# f.input "item[ping]", :as => :hidden, :value => params[:item][:ping] %>
+        <%# f.input "item[ping]", :as => :hidden, :input_html => { :value => params[:item][:ping] } %>
           <% end %>
-          <%= f.input :owner_id, :as => :hidden, :value => current_user.id %>
-          <%= f.input :ownertype, :as => :hidden, :value => "User" %>
+          <%= f.input :owner_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+          <%= f.input :ownertype, :as => :hidden, :input_html => { :value => "User" } %>
           <%= f.input :title %>
           <%= f.input :description, :label => I18n.t("formtastic.labels.meetup.description") %>
         <% end %>

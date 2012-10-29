@@ -6,7 +6,6 @@ class Event < ActiveRecord::Base
   attr_accessible :from, :till, :eventable_id, :eventable_type, :ping_id, :user_id, :description,
                   :created_at, :updated_at, :status
   
-  validates_presence_of :from, :if => :till
   validates_datetime :from, :on_or_after => lambda { Date.today }, :if => :from
   validates_datetime :till, :on_or_after => lambda { Date.today }, :if => :till
   validates_datetime :till, :on_or_after => lambda { :from }, :if => :from && :till

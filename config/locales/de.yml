@@ -769,7 +769,7 @@ de:
         tag_list: "Tags"
         users: "Teilnehmer"
       event:
-        from: "von"
+        from: "am / von"
         till: "bis"
         description: "Beschreibung"
       location:

@@ -19,7 +19,7 @@ class Ping < ActiveRecord::Base
   scope :created_at_desc, order("pings.created_at DESC")
 
   scope :user, where("pingable_type = ?", "User")
-  scope :group, where("pingable_type = ?", "Group")
+  #scope :group, where("pingable_type = ?", "Group")
   scope :project, where("pingable_type = ?", "Project")
           
   def exists?

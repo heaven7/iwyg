@@ -5,7 +5,7 @@
       <li class="button"><%= link_to t("delete").html_safe, group, :confirm => t("confirm_delete").html_safe, :method => :delete  %></li>
     <% else %>
       <li class="button"><%= link_to t("follow").html_safe, follow_group_path, :method => :put if not current_user.following?(group) %></li>
-			<li class="button"><%= link_to "Participate", groupings_path(:user_id => current_user), :method => :post %></li>
+			<li class="button"><%= link_to "Participate", groupings_path(:group_id => group), :method => :post %></li>
     <% end %>
   </ul>
 <div class="clear" ></div>

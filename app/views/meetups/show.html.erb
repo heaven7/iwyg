@@ -1,24 +1,17 @@
 <div class="centered ">
   <%= render :partial => "usermenu", :locals => { :meetup => @meetup} %>
 </div>
+<div class="clear"></div>
 <h2><%= @meetup.title %></h2>
 <% if @meetup.locations.size > 0 && @locations_json %>
   <div class="sub2cols">
     <div class="subcol1">
       <% if @meetup.events.first and @meetup.events.first.from %>
-        <div class="box ui-corner-all">
-          <% if @meetup.events.first.till.blank? %>
-            <p class="font-smaller">
-              <b><%= t("when") %></b><br />
-              <%= @meetup.events.first.from %>
-            </p>
-          <% else %>
-            <p class="font-smaller">
-              <b><%= t("when") %></b><br />
-              <%= t("from") %> <%= @meetup.events.first.from %><br />
-              <%= t("till") %> <%= @meetup.events.first.till %>
-            </p>
-          <% end %>
+        <div class="box ui-corner-all">					
+    			<b><%= t("when") %></b><br />
+  				<p class="font-smaller">
+          	<%= render :partial => "share/events/fromtill", :locals => { :events => @meetup.events } %>
+					</p>
         </div>
       <% end %>
       <div class="box ui-corner-all">
