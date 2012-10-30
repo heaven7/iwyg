@@ -10,7 +10,7 @@ class GroupingsController < InheritedResources::Base
   def create
 		@group = Group.find(params[:group_id])
     @user = current_user
-    @grouping = @group.groupings.build(:user_id => @user)
+    @grouping = @group.groupings.build(:user_id => @user.id)
     respond_to do |format|
       if !@grouping.exists? && @grouping.save
         flash[:notice] = t("flash.groupings.create.notice")
