@@ -1,0 +1,26 @@
+<%= content_for :head do %>
+  <script type="text/javascript">
+    $(document).ready(function (){
+      $('#message-form').railsAjaxValidation();
+    });
+  </script>
+<% end %>
+<%= semantic_form_for @message, :url => { :controller => "sent", :action => "create"}, :validate => true do |f| %>
+  <%= render "share/error_messages", :target => @message %>
+
+  <div id= "message_errors" style="display:none"></div>
+  <%= f.inputs do %>
+   <li>
+      <% if params[:to] %>
+        <%= f.input :to, :label => t("mailbox.to"), :input_html => { :value => params[:to] } %>
+      <% else %>
+        <%= f.input :to, :label => t("mailbox.to"), :input_html => { :value => params[:id] } %>
+        <% end %>
+    </li>
+    <%= f.input :subject, :required => false, :label => t("mailbox.subject") %>
+    <%= f.input :body, :as => :text, :label => t("mailbox.body")  %>
+  <% end %>
+  <%= f.actions do %>
+    <%= f.action :submit, :label => t("submit"), :button_html => { :class => "submit", :disable_with => "..." } %>
+  <% end %>
+<% end %>

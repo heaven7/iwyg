@@ -5,6 +5,7 @@ class MessagesController < InheritedResources::Base
   def show
     @user = current_user
     @message = @user.received_messages.find(params[:id])
+		#@message = Message.find(@message_copy.message.id)
     @message.update_attributes(:read => true) if @message.read.blank?
   end
   
@@ -12,10 +13,8 @@ class MessagesController < InheritedResources::Base
     @user = current_user
     @original = @user.received_messages.find(params[:id])
     
-    subject = @original.subject.sub(/^(Re: )?/, "Re: ")
-    body = @original.body.gsub(/^/, "> ")
-    @message = @user.sent_messages.build(:to => [@original.author.id], :subject => subject, :body => body)
-    render :template => "sent/new"
+    @message = @user.sent_messages.build(:to => [@original.author.id], :subject => @original.subject, :body => @original.body)
+    render :template => "sent/nojsform"
   end
   
   def forward

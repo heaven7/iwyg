@@ -3,7 +3,7 @@ class Message < ActiveRecord::Base
   has_many :message_copies
   has_many :recipients, :through => :message_copies
   has_one :custom, :as => :customable
-  before_create :prepare_copies
+  after_create :prepare_copies
 
   delegate :deleted, :to => :custom
   scope :undeleted, :conditions => { :deleted => nil }
@@ -21,8 +21,9 @@ class Message < ActiveRecord::Base
     return if to.blank?
     recipient = to
     recipient = User.find(recipient)
-    m = message_copies.build(:recipient => recipient, :folder => recipient.inbox, :created_at => Time.now)
+    m = MessageCopy.new(:recipient => recipient, :folder => recipient.inbox, :created_at => Time.now, :message_id => self.id)
     m.custom = Custom.new
+		m.save
     #to.each do |recipient|
     #  recipient = User.find(recipient)
     #  m = message_copies.build(:recipient => recipient, :folder => recipient.inbox)

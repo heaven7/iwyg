@@ -6,6 +6,6 @@ class MessageCopy < ActiveRecord::Base
   scope :undeleted, :conditions => { :deleted => nil }
   scope :unread, :conditions => { :read => false }
   delegate :deleted, :to => :custom
-  delegate   :author, :created_at, :subject, :body, :recipients, :to => :message
+  delegate :author, :subject, :body, :recipients, :to => :message
 
 end

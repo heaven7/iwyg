@@ -1,4 +1,4 @@
-<p><%= link_to t ("mailbox.reply"), reply_message_path(@message) %></p>
+<p><%= link_to t("mailbox.reply"), reply_message_path(@message) %></p>
 <h2><%=h @message.subject %></h2>
 <div class="messagehead font-small">
 <p><strong><%= t("mailbox.from") %>:</strong> <%=h @message.author.login %></p>
