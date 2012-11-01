@@ -12,10 +12,6 @@ class Message < ActiveRecord::Base
   attr_accessible :subject, :body, :to, :read
   
   validates_presence_of :body, :to
-
-  def build_message
-    self.custom = Custom.new
-  end
   
   def prepare_copies
     return if to.blank?

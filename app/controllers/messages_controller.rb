@@ -1,7 +1,7 @@
 class MessagesController < InheritedResources::Base
 
   layout 'mailbox'
- 
+
   def show
     @user = current_user
     @message = @user.received_messages.find(params[:id])

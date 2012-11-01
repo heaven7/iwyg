@@ -4,7 +4,7 @@ class MessageCopy < ActiveRecord::Base
   belongs_to :folder
   has_one :custom, :as => :customable
   scope :undeleted, :conditions => { :deleted => nil }
-  scope :unread, :conditions => { :read => false }
+  scope :unread, :conditions => { :read => nil }
   delegate :deleted, :to => :custom
   delegate :author, :subject, :body, :recipients, :to => :message
 

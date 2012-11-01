@@ -687,6 +687,7 @@ en:
     reply: "Reply"
     inbox: "Inbox"
     sent: "Sent"
+    messages: "Messages"
     newMessage: "New Message"
     subject: "Subject"
     body: "Text"
