@@ -91,7 +91,8 @@ class User < ActiveRecord::Base
   
 
 
-  validates_presence_of     :login, :email
+  validates :login, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true
   validates_presence_of     :password, :if => :password                   
   validates_presence_of     :password_confirmation, :if => :password      
   validates_length_of       :password, :within => 4..40, :if => :password
@@ -108,7 +109,7 @@ class User < ActiveRecord::Base
   # This is in addition to a real persisted field like 'username'
   attr_accessor :username
 
-  attr_reader     :aim_tokens, :skill_tokens, :interest_tokens, :wish_tokens
+  attr_reader :aim_tokens, :skill_tokens, :interest_tokens, :wish_tokens
 
   def exists?(id)
     not User.find_by_id(id).nil?

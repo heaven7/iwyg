@@ -15,7 +15,6 @@ class SentController < InheritedResources::Base
 
   def new
     @message = current_user.sent_messages.build
-   # render :layout => false
     respond_to do |format|
       format.html
       format.js do

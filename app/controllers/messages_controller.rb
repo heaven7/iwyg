@@ -5,7 +5,7 @@ class MessagesController < InheritedResources::Base
   def show
     @user = current_user
     @message = @user.received_messages.find(params[:id])
-		#@message = Message.find(@message_copy.message.id)
+		@author = @message.author.login
     @message.update_attributes(:read => true) if @message.read.blank?
   end
   

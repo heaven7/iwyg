@@ -42,7 +42,7 @@ Formtastic::FormBuilder.escape_html_entities_in_hints_and_labels = false
 
 # Set the way inline errors will be displayed.
 # Defaults to :sentence, valid options are :sentence, :list, :first and :none
-# Formtastic::FormBuilder.inline_errors = :sentence
+Formtastic::FormBuilder.inline_errors = :sentence
 # Formtastic uses the following classes as default for hints, inline_errors and error list
 
 # If you override the class here, please ensure to override it in your stylesheets as well
@@ -83,4 +83,4 @@ Formtastic::FormBuilder.escape_html_entities_in_hints_and_labels = false
 # You can opt-in to new HTML5 browser validations (for things like email and url inputs) by setting
 # this to false. Doing so will add a `novalidate` attribute to the `<form>` tag.
 # See http://diveintohtml5.org/forms.html#validation for more info.
-# Formtastic::FormBuilder.perform_browser_validations = true
+Formtastic::FormBuilder.perform_browser_validations = true

@@ -1,7 +1,7 @@
 <%= content_for :head do %>
   <script type="text/javascript">
     $(document).ready(function (){
-      $('#message-form').railsAjaxValidation();
+     // $('#message-form').railsAjaxValidation();
     });
   </script>
 <% end %>
@@ -14,7 +14,7 @@
       <% if params[:to] %>
         <%= f.input :to, :label => t("mailbox.to"), :input_html => { :value => params[:to] } %>
       <% else %>
-        <%= f.input :to, :label => t("mailbox.to"), :input_html => { :value => params[:id] } %>
+        <%= f.input :to, :label => t("mailbox.to"), :input_html => { :value => @author || params[:id] } %>
         <% end %>
     </li>
     <%= f.input :subject, :required => false, :label => t("mailbox.subject") %>

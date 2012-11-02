@@ -12,8 +12,10 @@ class Message < ActiveRecord::Base
   attr_accessible :subject, :body, :to, :read
   
   validates_presence_of :body, :to
+	validates :to, presence: true
+  validates :body, presence: true  
   
-  def prepare_copies
+	def prepare_copies
     return if to.blank?
     recipient = to
     recipient = User.find(recipient)

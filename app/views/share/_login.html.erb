@@ -9,7 +9,7 @@
 
 <fieldset class="formular login shadowed ui-corner-all">
   <br/>
-  <%= form_for(:user, :url => user_session_path) do |f| -%>
+  <%= form_for(@user, :as => :user, :url => session_path(:user)) do |f| -%>
     <p>
       <label for="login"><%= t("login.label.login") %></label>
       <%= f.text_field :username %>
