@@ -1,0 +1,10 @@
+<% if @message.errors.any? %>
+	$('#message_errors').show();
+	$('#message_errors').html("<%= escape_javascript(error_messages_for(@message).html_safe)%>");
+
+	<%= render :partial => "share/ujs/form_errors", :locals => { :object => @message, :type => "message" } %>
+
+<% else %>
+	$('#message_subject').attr('value', '');
+	$('#message_body').attr('value', '');
+<% end %>
