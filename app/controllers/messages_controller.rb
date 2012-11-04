@@ -2,6 +2,8 @@ class MessagesController < InheritedResources::Base
 
   layout 'mailbox'
 
+	respond_to :html, :js
+
   def show
     @user = current_user
     @message = @user.received_messages.find(params[:id])
@@ -12,9 +14,11 @@ class MessagesController < InheritedResources::Base
   def reply
     @user = current_user
     @original = @user.received_messages.find(params[:id])
-    
-    @message = @user.sent_messages.build(:to => [@original.author.id], :subject => @original.subject, :body => @original.body)
-    render :template => "sent/nojsform"
+    @message = @user.sent_messages.build(:to => [@original.author.login	], :subject => params[:message][:subject], :body => params[:message][:body] )
+		if @message.save
+		#	flash[:notice] = "Message replied"
+		end  
+		#  render :template => "sent/replyform"
   end
   
   def forward

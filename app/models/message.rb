@@ -11,15 +11,14 @@ class Message < ActiveRecord::Base
   attr_accessor  :to # array of people to send to
   attr_accessible :subject, :body, :to, :read
   
-  validates_presence_of :body, :to
-	validates :to, presence: true
-  validates :body, presence: true  
+  validates :to, presence: true
+	validates :body, presence: true  
   
 	def prepare_copies
     return if to.blank?
     recipient = to
-    recipient = User.find(recipient)
-    m = MessageCopy.new(:recipient => recipient, :folder => recipient.inbox, :created_at => Time.now, :message_id => self.id)
+    user = User.find(recipient).first
+    m = MessageCopy.new(:recipient => user, :folder => user.inbox, :created_at => Time.now, :message_id => self.id)
     m.custom = Custom.new
 		m.save
     #to.each do |recipient|

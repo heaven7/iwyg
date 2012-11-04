@@ -5,7 +5,7 @@
     });
   </script>
 <% end %>
-<%= semantic_form_for @message, :url => { :controller => "sent", :action => "create"}, :remote => true, :validate => true do |f| %>
+<%= semantic_form_for @message, :as => "message", :url => { :action => "reply", :id => @message.id }, :validate => true, :remote => true do |f| %>
   <%= render "share/error_messages", :target => @message %>
 
   <div id= "message_errors" style="display:none"></div>

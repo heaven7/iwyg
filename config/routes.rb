@@ -37,8 +37,6 @@ Iwyg::Application.routes.draw do
 
   resources :images
  
-  resources :sent
-
   resources :groupings do
     member do
       put 'accept' 
@@ -84,9 +82,11 @@ Iwyg::Application.routes.draw do
     end
   end
 
+  resources :sent
+
   resources :messages do
     member do
-      get 'reply'
+      put 'reply'
       put 'undelete'
     end
   end

@@ -90,13 +90,13 @@ class User < ActiveRecord::Base
   
   
 
-
+	# validations
   validates :login, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
-  validates_presence_of     :password, :if => :password                   
-  validates_presence_of     :password_confirmation, :if => :password      
+  validates :password, presence: true                  
+  validates :password_confirmation, presence: true   
   validates_length_of       :password, :within => 4..40, :if => :password
-  validates_confirmation_of :password, :if => :password                 
+  validates_confirmation_of :password                
   validates_length_of       :login,    :within => 3..40
   validates_length_of       :email,    :within => 3..100
   validates_uniqueness_of   :login, :email, :case_sensitive => false

@@ -5,6 +5,7 @@
 //= require gmaps4rails/gmaps4rails.googlemaps
 //= require rails.validations
 //= require rails.validations.formtastic
+//= require rails.validations.nested_form
 //= require_self
 
 jQuery.ajaxSetup({

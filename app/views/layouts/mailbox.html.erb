@@ -3,10 +3,9 @@
   <div id="usermailbox" class="subcol1">
     <div class="menu folder">
       <ul class="horizontal">
-        <% for folder in current_user.folders do %>
-          <li class="button"><%= link_to_unless_current t("mailbox.#{folder.title.downcase}"), mailbox_path(folder) %>       
-          </li>
-        <% end %>
+        <%# for folder in current_user.folders do %>
+          <li class="button"><%= link_to_unless_current t("mailbox.inbox"), mailbox_path(@user.inbox) %></li>
+        <%# end %>
         <li class="button"><%= nav_link t("mailbox.sent"), :sent %></li>
       </ul>
     </div>
