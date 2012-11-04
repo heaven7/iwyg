@@ -28,7 +28,7 @@
 
 <% if params[:item] %>
 
-  <%= semantic_form_for @meetup, :method => "post", :url => meetups_path("item[ping]" => params[:item][:ping], "item[attachable_id]" => params[:item][:attachable_id]) do |f| %>
+  <%= semantic_form_for @meetup, :method => "post", :url => meetups_path("item[ping]" => params[:item][:ping], "item[attachable_id]" => params[:item][:attachable_id]), :validate => true do |f| %>
 
     <%= render "share/error_messages", :target => @meetup %>
     <div id="tabs">
@@ -46,7 +46,7 @@
           <% end %>
           <%= f.input :owner_id, :as => :hidden, :input_html => { :value => current_user.id } %>
           <%= f.input :ownertype, :as => :hidden, :input_html => { :value => "User" } %>
-          <%= f.input :title %>
+          <%= f.input :title, :validate => true %>
           <%= f.input :description, :label => I18n.t("formtastic.labels.meetup.description") %>
         <% end %>
       </div>
@@ -80,7 +80,7 @@
 
 <% else %>
 
-  <%= semantic_form_for @meetup do |f| %>
+  <%= semantic_form_for @meetup, :validate => true do |f| %>
 
     <%= render "share/error_messages", :target => @meetup %>
     <div id="tabs">
@@ -98,7 +98,7 @@
           <% end %>
           <%= f.input :owner_id, :as => :hidden, :input_html => { :value => current_user.id } %>
           <%= f.input :ownertype, :as => :hidden, :input_html => { :value => "User" } %>
-          <%= f.input :title %>
+          <%= f.input :title, :validate => true %>
           <%= f.input :description, :label => I18n.t("formtastic.labels.meetup.description") %>
         <% end %>
       </div>

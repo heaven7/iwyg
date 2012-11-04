@@ -3,8 +3,10 @@
 //= require jquery_ujs
 //= require gmaps4rails/gmaps4rails.base
 //= require gmaps4rails/gmaps4rails.googlemaps
+//= require rails.validations
+//= require rails.validations.formtastic
+//= require rails.validations.nested_form
 //= require_self
-// require_tree .
 
 jQuery.ajaxSetup({
   'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}

@@ -15,7 +15,6 @@ class SentController < InheritedResources::Base
 
   def new
     @message = current_user.sent_messages.build
-   # render :layout => false
     respond_to do |format|
       format.html
       format.js do
@@ -37,14 +36,11 @@ class SentController < InheritedResources::Base
           format.js { render :layout => false }
         else
           format.html { redirect_to new_user_message_path(:current) }
-          format.js { render :layout => false }
+					format.js  { render :layout => false }
         end
       end
     else
       render :action => 'new'
-    end
-    @message.errors.full_messages.each do |error|
-      puts error
     end
   end
   

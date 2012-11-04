@@ -1,10 +1,3 @@
-/**
- * Sub2cols style definition.
- * 
- * @author Christian Grlica
- * @copyright 2009 by Heavenseven, www.heavenseven.net 
- */
-
 .sub2cols {
   clear:both;
   width:100%;
@@ -41,3 +34,7 @@
   min-height:450px;
   border-left:1px solid #cbcec0;
 }
+.sub2cols #usermessages {
+	width: 90%;
+}
+

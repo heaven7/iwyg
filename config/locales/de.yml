@@ -690,6 +690,7 @@ de:
     reply: "Antworten"
     inbox: "Posteingang"
     sent: "Postausgang"
+    messages: "Nachrichten"
     newMessage: "Neue Nachricht"
     subject: "Betreff"
     body: "Nachricht"

@@ -1,0 +1,24 @@
+// to hold the form element IDs
+var errorIDs = new Array();
+
+// to hold the error messages
+var errorMessages = new Array();
+
+// Loop through all the error objects to story as JS objects
+<% object.errors.each do |error_object| %>
+	  errorIDs.push("#<%= type %>_<%= error_object %>");
+<% end %>
+
+// Loop through all the error messages to store for use
+<% object.errors.full_messages.each do |msg| %>
+	  errorMessages.push("<%= msg %>");
+<% end %>
+
+// Attach the messages to the error form objects and show some visibles
+$.each(errorIDs, function(index, value) {
+	item = value;
+	$(item).parent().addClass("error");
+	// remove existing paragraphs
+	$(item).parent().find('.inline-errors').remove();
+	$(item).parent().append('<p class="inline-errors">' + errorMessages[index] + '</p>')
+});
