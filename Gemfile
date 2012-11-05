@@ -7,8 +7,8 @@ source :rubygems
 gem 'rails', '3.2.8'
 
 group :assets do
-  gem 'sass-rails', "~> 3.2.0"
-  gem 'coffee-rails', "~> 3.2.0"
+  gem 'sass-rails', '~> 3.2.0'
+  gem 'coffee-rails', '~> 3.2.0'
   gem 'uglifier'
 end
 
@@ -21,7 +21,7 @@ group :development do
 end
 
 # gem 'iwyg_be'
-gem "airbrake"
+gem 'airbrake'
 gem 'eventmachine', '1.0.0.beta.2'
 gem 'thin'
 gem 'therubyracer', :platform => :ruby
@@ -32,11 +32,11 @@ gem 'redis'
 gem 'sqlite3-ruby'
 gem 'inherited_resources'
 gem 'has_scope'
-gem "squeel"
-gem "ransack"
+gem 'squeel'
+gem 'ransack'
 gem 'routing-filter', '0.3.0'
-gem "friendly_id", "4.0"
-gem "paper_trail"
+gem 'friendly_id', '4.0'
+gem 'paper_trail'
 gem 'json_pure', '1.6.1'   
 gem 'jquery-rails' #, '>= 1.0.12'
 gem 'rails3-jquery-autocomplete'
@@ -55,9 +55,9 @@ gem 'paperclip'
 gem 'will_paginate', '3.0.3'
 gem 'validates_timeliness' #, '2.3.2'
 gem 'roadie'
-gem "acts_as_follower"
-gem "acts_as_audited", "~> 2.1.0"
-gem "rails3_acts_as_paranoid"
+gem 'acts_as_follower'
+gem 'acts_as_audited', '~> 2.1.0'
+gem 'rails3_acts_as_paranoid'
 
 group :development, :test do
   gem 'rspec-rails'
@@ -66,10 +66,11 @@ end
 
 group :test do
   gem 'mysql2' #, '0.2.18'
-  gem "capybara"
-  gem "guard-rspec"
-	gem "populator"
-  gem "faker"
+  gem 'capybara'
+	gem 'guard'  
+	gem 'guard-rspec'
+	gem 'populator'
+  gem 'faker'
   gem 'shoulda-matchers'
 end
 
