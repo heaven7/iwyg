@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   extend FriendlyId
   friendly_id :login
 
-  devise :database_authenticatable, :registerable, :rememberable, :recoverable, :trackable, :lockable, :lock_strategy => :failed_attempts, :unlock_strategy => :both 
+  devise :database_authenticatable, :registerable, :rememberable, :recoverable, :trackable, :lockable, :lock_strategy => :none, :unlock_strategy => :both 
 
 
   after_create :build_user
@@ -125,11 +125,27 @@ class User < ActiveRecord::Base
 	  super and self.locked_at.nil?
   end
 	
+	# override devise methods to enable / disable resources
 	def unlock_access!
 		self.locked_at = nil
 		self.failed_attempts = 0 if respond_to?(:failed_attempts=)
 		self.unlock_token = nil  if respond_to?(:unlock_token=)
 		self.is_active = true
+		self.items.each do |item|
+			item.custom.update_attribute(:enable, 1)
+		end
+		save(:validate => false)
+	end
+
+	def lock_access!
+		self.locked_at = Time.now.utc
+		self.unlock_token = self.class.unlock_token
+		self.is_active = false
+
+		self.items.each do |item|
+			item.custom.update_attribute(:enable, 0)
+		end
+		self.send_unlock_instructions
 		save(:validate => false)
 	end
 

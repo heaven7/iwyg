@@ -38,10 +38,11 @@
 		<% end %>
 	</div>
 	<div id="password">
+		
 		<%= semantic_form_for @user, :html => {:multipart => true} do |f| %>
 			<%= render "share/error_messages", :target => @user %>
 			<%= f.inputs do %>
-					<%= f.input :password %>
+					<%= f.input :password, :value => @user.password %>
 					<%= f.input :password_confirmation %>
 			<% end %>
 
@@ -66,7 +67,7 @@
 				<li>
 						<p class="inline-hints"><%= t("formtastic.hints.user.destroyed").html_safe %></p>
 						<label>&nbsp;</label>	
-						<%= link_to t("form.user.quitAccount").html_safe,
+							<%= link_to t("form.user.quitAccount").html_safe,
 						 	users_path,
 							{ :confirm => t("confirm_delete").html_safe,
 					      :method => :delete,

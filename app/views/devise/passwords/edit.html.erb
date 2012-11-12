@@ -1,6 +1,4 @@
-<div class="change_password">
-  <h1><%= t("password.change").html_safe %></h1>
-  
+<div class="change_password">  
   <%= semantic_form_for(resource, :url => password_path(resource_name), :html => { :method => :put, :class => "formular shadowed ui-corner-all" }) do |f| %>
     <%= render "share/error_messages", :target => resource %>
     <%= f.inputs do %>
@@ -13,5 +11,4 @@
     <% end %>
   <% end %>
   
-  <%= render :partial => "devise/shared/links" %>
 </div>
