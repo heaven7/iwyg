@@ -61,5 +61,9 @@ describe User do
 			@folder.title.should == "Inbox"
 		end
 
+	describe "lock account" do
+		
+	end
+
 	end
 end

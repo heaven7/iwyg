@@ -57,7 +57,7 @@ class ItemsController < InheritedResources::Base
         end 
       end
       
-      $search = Item.search(params[:search])
+      $search = Item.active.search(params[:search])
       $search.sorts ||= :ascend_by_created_at
       @items = $search.result(:distinct => true).paginate( 
         :page => params[:page],
@@ -83,7 +83,7 @@ class ItemsController < InheritedResources::Base
       @tag = params[:search][:tag]
       @tagtype = "tag"
       @searchItemType = "Resource"
-      @items = Item.tagged_with(@tag).search(params[:search]).result.paginate(
+      @items = Item.active.tagged_with(@tag).search(params[:search]).result.paginate(
         :page => params[:page],
         :per_page => ITEMS_PER_PAGE,
         :order => "created_at DESC"
@@ -93,7 +93,7 @@ class ItemsController < InheritedResources::Base
       # normal listing
       @searchItemType = "Resource"
       #$search = Item.scoped(:order => "created_at DESC", :include => [:images] ).search(params[:search])
-      $search = Item.search(params[:search], :indlude => [:comments, :images, :pings])
+      $search = Item.active.search(params[:search], :indlude => [:comments, :images, :pings])
       @items = $search.result.paginate(
         :page => params[:page],
         :per_page => ITEMS_PER_PAGE,

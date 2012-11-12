@@ -20,6 +20,7 @@ class Item < ActiveRecord::Base
   acts_as_audited
   
   # scopes
+	scope :active, proc { |item| joins(:user, :custom).where('customs.enable' => 1) }
   scope :on_hold, :conditions => {:status => 1} 
   scope :offered, :conditions => {:status => 2} 
   scope :requested, :conditions => {:status => 3} 
@@ -62,6 +63,7 @@ class Item < ActiveRecord::Base
   # delegations
   delegate :city, :lat, :lng, :to => :locations
   delegate :taken, :given, :to => :accounts
+	delegate :visible, :enable, :to => :custom
   # delegate :from, :till, :to => :events
   
   # validation
@@ -104,7 +106,7 @@ class Item < ActiveRecord::Base
   end
 
   def build_item
-    self.custom = Custom.new
+    self.custom = Custom.new(:enable => 1, :visible => 1)
   end
   
   def tag_list_name

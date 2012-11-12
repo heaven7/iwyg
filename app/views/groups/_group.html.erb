@@ -1,7 +1,7 @@
 <div class="list-item ui-corner-all">
   <%= render :partial => "share/list-item/usermenu", :locals => {:model => group} if logged_in? and group.owner == current_user %>
   <div class="item-members-count font-smaller">
-    <%= image_tag "icons/icon_group.png", :alt => group.title, :title => group.title %> (<%= group.users.size %>)
+    <%= image_tag "icons/icon_group.png", :alt => "#{group.title} (#{group.users.size})", :title => "#{group.title} (#{group.users.size})" %> (<%= group.users.size %>)
   </div>
   <p class="font-small"><%= link_to shorten(group.title, 18), group, :title => group.title  if group.title %></p>
   <% if group.images.first %>

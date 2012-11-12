@@ -16,9 +16,10 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable, :rememberable, :recoverable, :trackable, :lockable, :lock_strategy => :failed_attempts, :unlock_strategy => :both 
 
+
   after_create :build_user
 	
-	scope :active, where("is_active = ?", "1")
+	scope :active, where(:locked_at => nil)
 
   # ajaxful_rater # has_many :rates
   acts_as_taggable_on :interests, :wishs, :aims
@@ -87,6 +88,7 @@ class User < ActiveRecord::Base
 
   # deletagions
   delegate :given, :taken, :to => :accounts
+	delegate :visible, :enable, :to => :custom
   
   
 
@@ -147,7 +149,7 @@ class User < ActiveRecord::Base
 
   def build_user
     self.folders.build(:title => "Inbox", :user_id => self.id) if not Folder.exists?(self)
-    self.custom = Custom.new 
+    self.custom = Custom.new(:visible => 1, :enable => 1) 
     self.location = Location.new
     self.user_preferences = UserPreferences.new(:user_id => self.id)
   end
