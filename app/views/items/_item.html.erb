@@ -1,4 +1,3 @@
-<%= item.custom.visible_for.to_s %> 
 <div class="list-item <%=h item.itemtype.downcase if item.item_type_id? %> <%=h is_need?(item) %> ui-corner-all"> 
 	<%= render :partial => "share/list-item/usermenu", :locals => {:model => item} if logged_in? and item.owner == current_user %>
   <div class="item-type">
