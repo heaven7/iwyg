@@ -4,8 +4,8 @@ class CreateCustoms < ActiveRecord::Migration
       t.integer :customable_id
       t.string :customable_type
       t.boolean :delete
-      t.boolean :visible
-      t.boolean :enable
+      t.boolean :visible, :default => true
+      t.boolean :enable, :default => true
       t.string :background
 
       t.timestamps

@@ -423,7 +423,7 @@ en:
       activate:
         notice: "Signup complete!" 
       update:
-        notice: "User was successfully updated."
+        notice: "Profile successfully updated."
       follow:
           error:
             alreadyFollowing: "You are following this user already."

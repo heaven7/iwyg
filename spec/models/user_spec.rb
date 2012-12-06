@@ -7,11 +7,8 @@ describe User do
 	end 
 
 	subject { @user }
-	it "should be valid" do
-		@user.should be_valid
-	end
 
-	it "has a valid factory" do
+	it "should be valid" do
 		@user.should be_valid
 	end
 	
@@ -60,6 +57,5 @@ describe User do
 		it "is titled inbox" do
 			@folder.title.should == "Inbox"
 		end
-
 	end
 end

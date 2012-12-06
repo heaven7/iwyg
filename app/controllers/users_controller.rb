@@ -1,4 +1,5 @@
 class UsersController < InheritedResources::Base
+	load_and_authorize_resource
 	actions :index, :show, :new, :create, :update
 
   protect_from_forgery :except => [:tag_suggestions]
@@ -83,10 +84,11 @@ class UsersController < InheritedResources::Base
 	def update
 		if params[:user][:is_active] && params[:user][:is_active].to_i < 1
 			current_user.lock_access!
+			redirect_to root_path
+		else
+			update!
 		end
-		update!
 	end
-
 
 	def destroy
 	  User.find(params[:id]).destroy

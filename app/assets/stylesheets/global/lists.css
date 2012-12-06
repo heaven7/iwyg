@@ -21,7 +21,7 @@
 .list-item .image {
     float:left;
     margin-right:0.5em;
-    border:1px solid #999d99;
+    border:1px solid transparent;
     height:50px;
 }
 .list-item #description {
@@ -29,7 +29,6 @@
     text-align:left;
 }
 .list-item .image:hover {
-    border:1px solid #d0d9d0;
 }
 .list-item p {
     text-align:left;

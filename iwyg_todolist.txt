@@ -1,6 +1,23 @@
+posts:
+	- comments mit parent_id erweitern (tree hierarchie)
+	- postbar auf activities (eigene/ andere user)
+
+forum:
+	- mit posts
+
+faqs:
+	- Q: Woher weiß ich dass ich das wirklich brauche, um mich glücklich zu machen?
+	  A: Wenn du wirklich wissen möchtest, was du brauchst, dann stell dir selbst diese Frage!	
+	- users können antworten (posts) schreiben und kommentieren.
+
+questions:
+	- user hat eigene questions
+	- user können questions stellen
+
 ﻿add customizations:
 	- for deletion, visibility
-
+	- user design:
+		- change of background and font color
 
 controller:
 	- add title to views (maybe generic...)
