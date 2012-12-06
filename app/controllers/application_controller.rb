@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   protect_from_forgery :secret => "123456789012345678901234567890iwyg0815"   
 
-  before_filter :set_locale, :measures, :itemtypes, :itemstatuses
+  before_filter :set_locale, :measures, :itemtypes, :itemstatuses, :set_current_user
 
   layout 'application'
 
@@ -103,6 +103,9 @@ class ApplicationController < ActionController::Base
     nil
   end
 
+	def set_current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
 
   protected
 
@@ -122,9 +125,5 @@ class ApplicationController < ActionController::Base
   def ip
   #  @user_location ||= GeoKit::Geocoders::MultiGeocoder.geocode(request.remote_ip)
   end
-  
-  #def current_user
-  #  @current_user ||= User.find(session[:user_id])
-  #end
     
 end

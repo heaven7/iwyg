@@ -20,8 +20,9 @@ class Item < ActiveRecord::Base
   acts_as_audited
   
   # scopes
-	scope :active, proc { |item| joins(:user, :custom).where('customs.enable' => 1) }
-  scope :on_hold, :conditions => {:status => 1} 
+	scope :enable, proc { |item| joins(:user, :custom).where('customs.enable' => 1) }
+	scope :visible, proc { |item| joins(:user, :custom).where('customs.visible' => 1) }
+	scope :on_hold, :conditions => {:status => 1} 
   scope :offered, :conditions => {:status => 2} 
   scope :requested, :conditions => {:status => 3} 
   scope :on_transfer, :conditions => {:status => 4}
@@ -106,9 +107,37 @@ class Item < ActiveRecord::Base
   end
 
   def build_item
-    self.custom = Custom.new(:enable => 1, :visible => 1)
+    self.custom = Custom.new(:enable => 1, :visible => 1, :visible_for => "all")
   end
   
+	def can_be_read_by?(user)
+		p = self.custom.visible_for
+		if p == "all"
+	 		return true
+		else
+			if user
+				user = @current_user
+				user_ids = p['user_ids']
+				group_ids = p['group_ids']
+
+				# is current_user listed in user permissions		
+				if user_ids.include?(user)
+					return true 
+				end
+
+				# is current_user a groupmember of group permissions
+				#group_ids.each do |group|
+				#	@group = Group.find(group)
+				#	if user.is_groupmember?(group)
+				# 		return true 
+				#	end
+				#end		
+				#return false
+			end
+			return true
+		end
+	end
+
   def tag_list_name
     self.tag_list if tag_list
   end

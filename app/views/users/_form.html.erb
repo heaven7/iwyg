@@ -33,7 +33,7 @@
 				<%= f.input :email %>
 			<% end %>
 			<%= f.actions do %>
-			  <%= f.action :submit, :label => t("save").html_safe %>
+			  <%= f.action :submit, :label => t("save").html_safe, :button_html => {:id => "submit_preferences"} %>
 			<% end %>	
 		<% end %>
 	</div>
@@ -47,7 +47,7 @@
 			<% end %>
 
 			<%= f.actions do %>
-				<%= f.action :submit, :label => t("changepassword").html_safe %>
+				<%= f.action :submit, :label => t("changepassword").html_safe, :button_html => {:id => "submit_password"} %>
 			<% end %>
 		<% end %>
 	</div>
@@ -58,7 +58,7 @@
 				<%= f.input :is_active, :as => :boolean, :label => t("formtastic.labels.user_preferences.active") %>
 			<% end %>
 			<%= f.actions do %>
-				<%= f.action :submit, :label => t("save").html_safe %>
+				<%= f.action :submit, :label => t("save").html_safe, :button_html => {:id => "submit_useraccount"} %>
 			<% end %>
 		<% end %>
 
