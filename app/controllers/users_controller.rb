@@ -1,5 +1,5 @@
 class UsersController < InheritedResources::Base
-	load_and_authorize_resource
+	#load_and_authorize_resource
 	actions :index, :show, :new, :create, :update
 
   protect_from_forgery :except => [:tag_suggestions]
