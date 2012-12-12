@@ -339,7 +339,8 @@ en:
     participant:
       one: "1 Participant"
       other: "%{count} Participants"
-    
+    participate: "Participate"    
+
   ## item
   item:
     related:

@@ -342,6 +342,8 @@ de:
     participant:
       one: "1 Teilnehmer"
       other: "%{count} Teilnehmer"
+    participate: "Teilnehmen"
+
   ## item
   item:
     related:
