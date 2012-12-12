@@ -77,6 +77,9 @@ class GroupsController < InheritedResources::Base
     else
       @group = Group.find(params[:id])
     end 
+		@members_pending = @group.members_pending
+		@members = @group.members
+
     # friendly_id outdated finder statuses
     #if request.path != group_path(@group)
     #  return redirect_to @group, :status => :moved_permanently

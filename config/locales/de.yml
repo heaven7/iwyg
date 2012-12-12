@@ -342,6 +342,8 @@ de:
     participant:
       one: "1 Teilnehmer"
       other: "%{count} Teilnehmer"
+    participate: "Teilnehmen"
+
   ## item
   item:
     related:
@@ -512,12 +514,20 @@ de:
       destroy:
         notice: "Kommentar erfolgreich gel&ouml,scht."    
     groups:
+       create:
+         notice: "Erfolgreich Gruppe erstellt."
        update:
          notice: "Erfolgreich Gruppe ge&auml;ndert."
        follow:
           error:
             alreadyFollowing: "Du folgst der Gruppe bereits."
           notice: "Du folgst nun der Gruppe '%{title}'."
+    groupings:
+       create:
+         notice: "Teilnahmeanfrage verschickt."
+         error: "Teilnahme fehlgeschlagen, vermutlich hast du schon eine Anfrage verschickt."
+       accept:
+         notice: "Teilnahmeanfrage akzeptiert."
 
   ## menu
   
@@ -610,6 +620,8 @@ de:
     description: "Beschreibung"
     holder: "Verwalter"
     memberships: "Mitglied von"
+    pending: "Anfragen"
+    members: "Mitglieder"
   
   ## friendships
   

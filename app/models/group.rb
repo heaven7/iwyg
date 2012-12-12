@@ -15,9 +15,9 @@ class Group < ActiveRecord::Base
 
   belongs_to :user
   has_many :groupings
-  has_many :users, :through => :groupings, :conditions => "accepted_at is NOT NULL"
+  has_many :members, :through => :groupings, :source => :user, :conditions => "accepted_at is NOT NULL"
   has_many :inverse_groupings, :class_name => "Grouping", :foreign_key => "group_id"
-  has_many :users_invited, :through => :inverse_groupings, :source => :user, :conditions => "accepted_at is NULL"
+  has_many :members_pending, :through => :inverse_groupings, :source => :user, :conditions => "accepted_at is NULL"
   
 	has_many :locations, :as => :locatable, :dependent => :destroy
   accepts_nested_attributes_for :locations, :allow_destroy => true, :reject_if => proc { |attrs| attrs.blank? }

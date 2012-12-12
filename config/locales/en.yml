@@ -339,7 +339,8 @@ en:
     participant:
       one: "1 Participant"
       other: "%{count} Participants"
-    
+    participate: "Participate"    
+
   ## item
   item:
     related:
@@ -508,13 +509,21 @@ en:
       destroy:
         notice: "Successfully destroyed comment."
     groups:
+       create:
+         notice: "Successfully saved group."
        update:
          notice: "Successfully updated group."
        follow:
           error:
             alreadyFollowing: "You already follow this group."
           notice: "You are following group '%{title}'."
-          
+    groupings:
+       create:
+         notice: "Participation sended to group."
+         error: "Participation failed, maybe you are attending already."
+       accept:
+         notice: "Participation accepted."
+
   ##  menu  
   
   menu:
@@ -607,6 +616,8 @@ en:
     description: "Description"
     holder: "Holder"
     memberships: "Memberships"
+    pending: "Pending members"
+    members: "Members"
 
   ## friendships
   

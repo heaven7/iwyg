@@ -82,6 +82,6 @@
     </div>
   </div>
   <%= f.actions do %>
-    <%= f.action :submit, :label => t("save").html_safe %>
+    <%= f.action :submit, :label => t("save").html_safe, :button_html => { :id => "group-save" } %>
   <% end %>
 <% end %>

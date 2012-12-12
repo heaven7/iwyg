@@ -67,7 +67,7 @@ end
 
 group :test do
   gem 'mysql2' #, '0.2.18'
-  gem 'capybara'
+  gem 'capybara', '1.1.4'
 	gem 'launchy'
 	gem 'guard'  
 	gem 'guard-rspec'
