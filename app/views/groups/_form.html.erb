@@ -42,8 +42,8 @@
     <div id="members" class="tab_content">
        <%= f.inputs do %>
 
-					<% if @group.users.size > 0 %>
-            <%= f.input :users, :as => :check_boxes, :collection => @group.users, :member_label => Proc.new { |u| "#{render :partial => "share/usertiny_unlinked", :locals => { :user => u }}".html_safe } %>
+					<% if @group.members.size > 0 %>
+            <%= f.input :members, :as => :check_boxes, :collection => @group.members, :member_label => Proc.new { |u| "#{render :partial => "share/usertiny_unlinked", :locals => { :user => u }}".html_safe } %>
           <% else %>
             <%= t("meetup.onlyFollowersAvailableToAdd").html_safe %>
           <% end %>

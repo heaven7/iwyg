@@ -128,8 +128,8 @@ class GroupsController < InheritedResources::Base
   protected
 
 	def groupUsers
-		@group.users = @user.followers
-    @group.users << @user.following_users
+		@group.members = @user.followers
+    @group.members << @user.following_users
 	end
 
   def conditional_layout

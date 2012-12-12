@@ -5,7 +5,7 @@ class AddSlugToItems < ActiveRecord::Migration
   end
 
   def self.down
-#    remove_column :items, :slug
-#    remove_index :items, :slug
+    remove_column :items, :slug
+    remove_index :items, :slug
   end
 end
