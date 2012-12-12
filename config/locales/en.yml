@@ -508,13 +508,18 @@ en:
       destroy:
         notice: "Successfully destroyed comment."
     groups:
+       create:
+         notice: "Successfully saved group."
        update:
          notice: "Successfully updated group."
        follow:
           error:
             alreadyFollowing: "You already follow this group."
           notice: "You are following group '%{title}'."
-          
+    groupings:
+       create:
+         notice: "Participation sended to group."
+         error: "Participation failed, maybe you are attending already."
   ##  menu  
   
   menu:

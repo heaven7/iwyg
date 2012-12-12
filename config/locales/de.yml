@@ -512,12 +512,18 @@ de:
       destroy:
         notice: "Kommentar erfolgreich gel&ouml,scht."    
     groups:
+       create:
+         notice: "Erfolgreich Gruppe erstellt."
        update:
          notice: "Erfolgreich Gruppe ge&auml;ndert."
        follow:
           error:
             alreadyFollowing: "Du folgst der Gruppe bereits."
           notice: "Du folgst nun der Gruppe '%{title}'."
+    groupings:
+       create:
+         notice: "Teilnahmeanfrage verschickt."
+         error: "Teilnahme fehlgeschlagen, vermutlich hast du schon eine Anfrage geschickt."
 
   ## menu
   
