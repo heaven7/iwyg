@@ -523,7 +523,9 @@ de:
     groupings:
        create:
          notice: "Teilnahmeanfrage verschickt."
-         error: "Teilnahme fehlgeschlagen, vermutlich hast du schon eine Anfrage geschickt."
+         error: "Teilnahme fehlgeschlagen, vermutlich hast du schon eine Anfrage verschickt."
+       accept:
+         notice: "Teilnahmeanfrage akzeptiert."
 
   ## menu
   
@@ -616,6 +618,8 @@ de:
     description: "Beschreibung"
     holder: "Verwalter"
     memberships: "Mitglied von"
+    pending: "Anfragen"
+    members: "Mitglieder"
   
   ## friendships
   

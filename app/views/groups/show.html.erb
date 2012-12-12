@@ -13,20 +13,32 @@
   </div>
   <div class="subcol2">
     <% if logged_in? and @group.locations.first and @group.locations.first.lat and @group.locations.first.lng %>
-      <h3><%= t("resources.location") %></h3>
-      <%= render :partial => "share/map", :locals => { :locations => @locations_json } %>
-      <%= render :partial => "locations/location", :locals => {:location => @group.locations.first} %>
+			<div id="location">
+		    <h3><%= t("resources.location") %></h3>
+		    <%= render :partial => "share/map", :locals => { :locations => @locations_json } %>
+		    <%= render :partial => "locations/location", :locals => {:location => @group.locations.first} %>
+			</div>
     <% end %>
+
+		<% if logged_in? and @group.owner == current_user and @members_pending.size > 0 %>
+			<div id="members-pending">
+				<h3><%= t("groups.pending") %></h3>
+				<% @members_pending.each do |user| %>
+					<%= render :partial => "share/usertiny", :locals => { :user => user } %>
+					<%= link_to t("accept"), accept_grouping_path(:id => Grouping.find_by_user_id_and_group_id(user.id, @group.id).id), :method => :put %>
+				<% end %> 
+			</div>
+		<% end %>
   </div>
 </div>
 <div class="clearfix" ></div>
 <h2><%= t("groups.holder") %></h2>
 <%= render :partial => "share/usertiny", :locals => { :user => @group.owner}  %>
 <div class="clear"></div>
-<% if @group.users && @group.users.count > 0 %>
-  <h2><%= t("group.participant", :count => @group.users.count) %></h2>
+<% if @members && @members.count > 0 %>
+  <h2><%= t("group.participant", :count => @members.count) %></h2>
   <ul class="users-list">
-    <% @group.users.each do |user| %>
+    <% @members.each do |user| %>
       <li class="users-list-item"><%= render :partial => "share/usertiny", :locals => { :user => user } %></li>
     <% end %>
   </ul>

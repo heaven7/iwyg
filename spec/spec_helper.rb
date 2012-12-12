@@ -42,5 +42,9 @@ RSpec.configure do |config|
 
 
 	# warden config
-	#config.include Warden::Test::ControllerHelpers #, type: :controller
+#	config.include Warden::Test::ControllerHelpers #, type: :controller
+	config.after(:each) { Warden.test_reset! }
+
+#	config.include Devise::TestHelpers #, :type => :controller
+  config.extend ControllerMacros #, :type => :controller
 end

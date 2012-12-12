@@ -10,7 +10,7 @@ class GroupingsController < InheritedResources::Base
   def create
 		@group = Group.find(params[:group_id])
     @user = current_user
-    @grouping = @group.groupings.build(:user_id => @user.id)
+    @grouping = @group.groupings.build(:user_id => @user.id, :owner_id => current_user.id)
     respond_to do |format|
       if !@grouping.exists? && @grouping.save
         flash[:notice] = t("flash.groupings.create.notice")
@@ -24,10 +24,12 @@ class GroupingsController < InheritedResources::Base
 
   def accept
     @grouping = Grouping.find(params[:id])
-    @user = User.find(@grouping.user_id)
-    @group = Group.find(@grouping.group_id)
-    if !@grouping.exists? and @group.owner == current_user
+		@group = Group.find(@grouping.group_id)
+
+		puts "Grouping: " + @grouping.inspect.to_s
+    if @grouping and @group.owner == current_user
       @grouping.update_attributes(:accepted_at => Time.now, :accepted => 1)
+      #@grouping.update_attribute(:accepted_at, Time.now)
       flash[:notice] = t("flash.groupings.accept.notice")
     else
       flash[:error] = t("flash.groupings.accept.error")

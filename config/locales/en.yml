@@ -520,6 +520,9 @@ en:
        create:
          notice: "Participation sended to group."
          error: "Participation failed, maybe you are attending already."
+       accept:
+         notice: "Participation accepted."
+
   ##  menu  
   
   menu:
@@ -612,6 +615,8 @@ en:
     description: "Description"
     holder: "Holder"
     memberships: "Memberships"
+    pending: "Pending members"
+    members: "Members"
 
   ## friendships
   
