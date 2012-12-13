@@ -1,6 +1,0 @@
-<% form.semantic_fields_for :image do |f| %>
-    <%= f.error_messages %>
-    <%= f.input :imageable_id, :as => :hidden, :value => @imageable.id %>
-    <%= f.input :imageable_type, :as => :hidden, :value => @imageable.class %>
-    <%= render 'share/image_fields', :f => f %>
-<% end %>

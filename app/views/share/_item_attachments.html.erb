@@ -4,7 +4,7 @@
   <p class="font-smaller"><%= t("resources.attachedResources").html_safe %> (<%= object.item_attachments.count %>)</p>
   <% object.item_attachments.each do |attachment| %>
     <p class="font-smaller">
-      <%= link_to image_tag(attachment.item.images.first.image.url("tiny")), item_path(attachment.item) if attachment.item && attachment.item.images && attachment.item.images.first %>
+      <%# link_to image_tag(attachment.item.images.first.image.url("tiny")), item_path(attachment.item) if attachment.item && attachment.item.images && attachment.item.images.first %>
       <%= link_to attachment.item.title, item_path(attachment.item) if attachment.item %>
     </p>
   <% end %>

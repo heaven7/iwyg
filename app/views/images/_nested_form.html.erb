@@ -1,0 +1,26 @@
+<%= content_for :head do %>
+  <script type="text/javascript">
+    $(document).ready(function (){
+			/* IMAGES */
+      $('.image .file').hide();
+    });
+  </script>
+<% end %>
+
+<% c = -1 %>
+<div class="button new">
+  <%= link_to_add_fields t("images.new").html_safe, f, :images %>
+</div>
+<%= f.semantic_fields_for :images do |image_form| %>
+  <% c += 1
+     image = nil || object.images[c].image if !object.images[c].image.url.include? "missing"
+  %>
+  <div class="image center ui-corner-all">
+    <%= link_to image_tag(image.url("small")), image.url("big") if image %>
+    <%= render 'share/image_fields', :f => image_form %>
+    <div class="options">
+			<%= link_to_function image_tag(("icons/icon_image_edit.png"), :alt => t("edit").html_safe, :title => t("edit").html_safe), "edit_field(this)" if c < object.images.count %>
+      <%= link_to_remove_fields image_tag(("icons/icon_image_remove.png"), :alt => t("remove").html_safe, :title => t("remove").html_safe), image_form if c < object.images.count %>
+    </div>
+  </div>
+<% end %>
