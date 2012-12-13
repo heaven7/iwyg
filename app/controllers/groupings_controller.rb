@@ -42,7 +42,7 @@ class GroupingsController < InheritedResources::Base
 		@group = Group.find(@grouping.group_id)
     @grouping.destroy
     flash[:notice] = t("flash.groupings.destroy.notice")
-    redirect_to @group
+    redirect_to ([@group])
   end
   
 end

@@ -528,6 +528,8 @@ de:
          error: "Teilnahme fehlgeschlagen, vermutlich hast du schon eine Anfrage verschickt."
        accept:
          notice: "Teilnahmeanfrage akzeptiert."
+       destroy:
+         notice: "Teilnahmeanfrage widerrufen."
 
   ## menu
   
@@ -622,6 +624,10 @@ de:
     memberships: "Mitglied von"
     pendingMembers: "Anfragen und eingeladene Mitglieder"
     members: "Mitglieder"
+    abort:
+      membership: "Aus Gruppe austreten"
+      request: "Anfrage abbrechen"
+      invitation: "Einladung ablehnen"
   
   ## friendships
   
@@ -780,7 +786,8 @@ de:
         title: "Titel"
         description: "Beschreibung"
         tag_list: "Tags"
-        users: "Teilnehmer"
+        members: "Teilnehmer"
+        members_pending: "Eingeladene Teilnehmer"
       event:
         from: "am / von"
         till: "bis"
@@ -824,7 +831,9 @@ de:
       event:
         from: "klicke auf das Feld um den Kalender zu sehen." 
         till: "klicke auf das Feld um den Kalender zu sehen." 
-        
+      group:
+        members: "Hier werden die Teilnehmer aufgelistet, deren Anfrage du akzeptiert hast. Um bestimmte Teilnehmer wieder zu entfernen, klicke auf diese Teilnehmer und klicke auf Speichern."   
+        members_pending: "Hier kannst du Teilnehmer einladen. Es werden alle Mitglieder aufgelistet, die dir folgen bzw. denen du folgst. Klicke auf die Teilnehmer, die du einladen m&ouml;chtest und klicke auf Speichern."   
   order:
     date: "Zeit"
     title: "Titel"

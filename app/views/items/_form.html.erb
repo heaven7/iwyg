@@ -105,14 +105,14 @@
           <%= link_to_add_fields t("images.new").html_safe, f, :images %>
         </div>
         <%= f.semantic_fields_for :images do |image_form| %>
-          <%  c+= 1
-          image = nil || @item.images[c].image if !@item.images[c].image.url.include? "missing"
-        %>
+          <% c += 1
+		         image = nil || @item.images[c].image if !@item.images[c].image.url.include? "missing"
+		      %>
           <div class="image center ui-corner-all">
             <%= link_to image_tag(image.url("small")), image.url("big") if image %>
             <%# render 'share/image_fields', :f => image_form %>
             <div class="options">
-              <%= link_to_function image_tag(("icons/icon_image_edit.png"), :alt => t("edit"), :title => t("edit")), "edit_field(this)" if c < @item.images.count %>
+							<%= link_to_function image_tag(("icons/icon_image_edit.png"), :alt => t("edit"), :title => t("edit")), "edit_field(this)" if c < @item.images.count %>
               <%= link_to_remove_fields image_tag(("icons/icon_image_remove.png"), :alt => t("remove"), :title => t("remove")), image_form if c < @item.images.count %>
             </div>
           </div>

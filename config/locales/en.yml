@@ -523,6 +523,8 @@ en:
          error: "Participation failed, maybe you are attending already."
        accept:
          notice: "Participation accepted."
+       destroy:
+         notice: "Participation aborted."
 
   ##  menu  
   
@@ -618,7 +620,10 @@ en:
     memberships: "Memberships"
     pendingMembers: "Pending and invited members"
     members: "Members"
-
+    abort:
+      membership: "Abort membership"
+      request: "Abort request"
+      invitation: "Decline invitation"
   ## friendships
   
   friendships:
@@ -775,7 +780,8 @@ en:
         title: "Title"  
         description: "Description"
         tag_list: "Tags"
-        users: "Participants"
+        members: "Participants"
+        members_pending: "Invited Participants"
       event:
         from: "from"
         till: "till"
@@ -818,6 +824,9 @@ en:
       event:
         from: "click on the field above to see the calendar." 
         till: "click on the field above to see the calendar."  
+      group:
+        members: "Here is a list of accepted members, which send a request to join the group. To cancel memberships of certain members, just click on them and save."   
+        members_pending: "Here you can invite members. All followers and members you are following will be listed here. To invite members, just click on them and save."   
   order:
     date: "Time"
     location: "Location"

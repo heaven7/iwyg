@@ -14,10 +14,10 @@ class Group < ActiveRecord::Base
   acts_as_audited
 
   belongs_to :user
-  has_many :groupings
-  has_many :members, :through => :groupings, :source => :user, :conditions => "accepted_at is NOT NULL"
-  has_many :inverse_groupings, :class_name => "Grouping", :foreign_key => "group_id"
-  has_many :members_pending, :through => :inverse_groupings, :source => :user, :conditions => { "groupings.accepted_at" => nil }
+  has_many :groupings, :dependent => :destroy
+  has_many :members, :through => :groupings, :source => :user, :conditions => "accepted_at is NOT NULL", :dependent => :destroy
+  has_many :inverse_groupings, :class_name => "Grouping", :foreign_key => "group_id", :dependent => :destroy
+  has_many :members_pending, :through => :inverse_groupings, :source => :user, :conditions => { "groupings.accepted_at" => nil }, :dependent => :destroy
   #has_many :members_invited, :through => :inverse_groupings, :source => :user, :conditions => { "groupings.accepted_at" => nil }
   
 	has_many :locations, :as => :locatable, :dependent => :destroy
@@ -26,10 +26,10 @@ class Group < ActiveRecord::Base
   accepts_nested_attributes_for :images, :allow_destroy => true#, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
   has_many :item_attachments, :dependent => :destroy
   accepts_nested_attributes_for :item_attachments, :allow_destroy => true, :reject_if => proc { |attrs| attrs[:attachment_id].blank? }
-  has_many :pings, :as => :pingable, :dependent => :destroy
-  has_many :inverse_pings, :source => "Ping", :foreign_key => :pingable_id, :conditions => 'pingable_type = Group'
+  #has_many :pings, :as => :pingable, :dependent => :destroy
+  #has_many :inverse_pings, :source => "Ping", :foreign_key => :pingable_id, :conditions => 'pingable_type = Group'
 
-  has_one :custom, :as => :customable
+  has_one :custom, :as => :customable, :dependent => :destroy
 
   validates :title, :presence => true
 

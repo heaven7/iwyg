@@ -21,7 +21,7 @@ form.formtastic fieldset ol li p.inline-hints { color:#333; }
     display:none;
 }
 .formtastic #members .inputs .choices-group {
-	margin-left: 7em;
+	margin-left: 10em;
 }
 
 form.formtastic input, form.formtastic textarea, form.formtastic select { 
