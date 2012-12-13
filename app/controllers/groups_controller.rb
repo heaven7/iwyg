@@ -80,6 +80,13 @@ class GroupsController < InheritedResources::Base
 		@members_pending = @group.members_pending
 		@members = @group.members
 
+		# check if current_user is invited
+		@invitation = @group.groupings.pending.where(:owner_id => nil, :user_id => current_user).first if current_user
+
+		# check if current_user is member
+		@membership = @group.groupings.accepted.where(:user_id => current_user).first if current_user
+
+
     # friendly_id outdated finder statuses
     #if request.path != group_path(@group)
     #  return redirect_to @group, :status => :moved_permanently
@@ -128,8 +135,7 @@ class GroupsController < InheritedResources::Base
   protected
 
 	def groupUsers
-		@group.members = @user.followers
-    @group.members << @user.following_users
+		@users = @user.followers + @user.following_users - @group.members
 	end
 
   def conditional_layout

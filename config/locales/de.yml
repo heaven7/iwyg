@@ -620,7 +620,7 @@ de:
     description: "Beschreibung"
     holder: "Verwalter"
     memberships: "Mitglied von"
-    pending: "Anfragen"
+    pendingMembers: "Anfragen und eingeladene Mitglieder"
     members: "Mitglieder"
   
   ## friendships

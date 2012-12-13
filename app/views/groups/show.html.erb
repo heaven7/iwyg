@@ -22,10 +22,17 @@
 
 		<% if logged_in? and @group.owner == current_user and @members_pending.size > 0 %>
 			<div id="members-pending">
-				<h3><%= t("groups.pending") %></h3>
+				<h3><%= t("groups.pendingMembers") %></h3>
 				<% @members_pending.each do |user| %>
 					<%= render :partial => "share/usertiny", :locals => { :user => user } %>
-					<%= link_to t("accept"), accept_grouping_path(:id => Grouping.find_by_user_id_and_group_id(user.id, @group.id).id), :method => :put %>
+					<% @grouping = Grouping.find_by_user_id_and_group_id(user.id, @group.id) %>
+					<% if not @grouping.owner_id == nil %>  					
+						<ul class="font-smaller"">
+						  <li class="button center">
+						    <%= link_to t("accept"), accept_grouping_path(:id => @grouping.id), :method => :put %>
+						  </li>
+						</ul>				
+					<% end %> 
 				<% end %> 
 			</div>
 		<% end %>

@@ -5,7 +5,16 @@
       <li class="button"><%= link_to t("delete").html_safe, group, :confirm => t("confirm_delete").html_safe, :method => :delete  %></li>
     <% else %>
       <li class="button"><%= link_to t("follow").html_safe, follow_group_path, :method => :put if not current_user.following?(group) %></li>
-			<li class="button"><%= link_to t("group.participate"), groupings_path(:group_id => group), :method => :post, :id => "group-participate" %></li>
+			<% if @invitation %>
+				<li class="button"><%= link_to link_to t("accept"), accept_grouping_path(:id => @invitation.id), :method => :put, :id =>"group-accept-invitation" %></li>			
+			<% elsif not @group.member_pending?(current_user) and not @group.member?(current_user) %>				
+				<li class="button"><%= link_to t("group.participate"), groupings_path(:group_id => group), :method => :post, :id => "group-participate" %></li>
+			<% elsif @group.member_pending?(current_user) %>				
+				<li class="button"><%= link_to "Abort request", groupings_path(), :method => :delete, :id => "group-participate" %></li>			  	  
+			<% end %>
+			<% if @membership %>				
+				<li class="button"><%= link_to "Abort membership", @membership, :method => :delete, :id => "group-participate" %></li>			  	  
+			<% end %>
     <% end %>
   </ul>
 <div class="clear" ></div>

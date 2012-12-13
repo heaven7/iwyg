@@ -616,7 +616,7 @@ en:
     description: "Description"
     holder: "Holder"
     memberships: "Memberships"
-    pending: "Pending members"
+    pendingMembers: "Pending and invited members"
     members: "Members"
 
   ## friendships
