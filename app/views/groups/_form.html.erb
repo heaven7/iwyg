@@ -43,10 +43,15 @@
        <%= f.inputs do %>
 
 					<% if @group.members.size > 0 %>
-            <%= f.input :members, :as => :check_boxes, :collection => @group.members, :member_label => Proc.new { |u| "#{render :partial => "share/usertiny_unlinked", :locals => { :user => u }}".html_safe } %>
+            <%= f.input :members, :as => :check_boxes, :hint => t("formtastic.hints.group.members"), :collection => @group.members, :member_label => Proc.new { |u| "#{render :partial => "share/usertiny_unlinked", :locals => { :user => u }}".html_safe } %>
+						<hr /> 
+          <% end %>
+					<% if @users.size > 0 %>         
+					  <%= f.input :members_pending, :as => :check_boxes, :hint => t("formtastic.hints.group.members_pending"), :collection => @users, :member_label => Proc.new { |u| "#{render :partial => "share/usertiny_unlinked", :locals => { :user => u }}".html_safe } %>
           <% else %>
             <%= t("meetup.onlyFollowersAvailableToAdd").html_safe %>
           <% end %>
+					
        <% end %>
     </div>
     <div id="where" class="tab_content">
@@ -55,30 +60,12 @@
        <% end %>
     </div>
     <div id="images" class="tab_content">
-    <%= f.inputs do %>
-      <% c = -1 %>
-      <li>
-        <div class="button new">
-          <%= link_to_add_fields t("images.new").html_safe, f, :images %>
-        </div>
-      </li>
-      <%= f.semantic_fields_for :images do |image_form| %>
-        <%  c+= 1
-          image = nil || @group.images[c].image if !@group.images[c].image.url.include? "missing"
-        %>
-        <div class="image center ui-corner-all">
-          <%= link_to image_tag(image.url("small")), image.url("big") if image %>
-          <%# render 'share/image_fields', :f => image_form %>
-          <div class="options">
-            <%= link_to_function image_tag(("icons/icon_image_edit.png"), :alt => t("edit"), :title => t("edit")), "edit_field(this)" if c < @group.images.count %>
-            <%= link_to_remove_fields image_tag(("icons/icon_image_remove.png"), :alt => t("remove"), :title => t("remove")), image_form if c < @group.images.count %>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
+      <%= f.inputs do %>
+		    <%= render :partial => "images/nested_form", :locals => { :f => f, :object => @group } %>
+		  <% end %>
     </div>
     <div id="attachments" class="tab_content">
-      <%= render :partial => "items/item_attachments", :locals => { :object => @group, :f => f } %>
+      <%= render :partial => "items/item_attachments", :locals => { :f => f, :object => @group } %>
     </div>
   </div>
   <%= f.actions do %>

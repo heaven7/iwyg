@@ -9,4 +9,8 @@ class Grouping < ActiveRecord::Base
 	def exists?
 		not Grouping.find_by_user_id_and_group_id(self.user_id, self.group_id).nil?
 	end
+
+  def owner
+    User.find(self.owner_id) if self.owner_id
+  end
 end

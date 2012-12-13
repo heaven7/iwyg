@@ -22,7 +22,7 @@ module ApplicationHelper
   	end
   end
   
-  # Add and remove fields
+  # Add and remove formfields
   def link_to_remove_fields(name, f)
     f.hidden_field(:_destroy) + link_to_function(name, 'if (confirm("Do you really want to remove this?")) remove_fields(this)', :class => "field-remove")
   end

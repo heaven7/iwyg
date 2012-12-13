@@ -50,8 +50,14 @@ Iwyg::Application.configure do
   # application configuration
   HOST = "http://localhost:3000"
   REPLY_EMAIL = "IWYG <iwyg@heavenseven.net>"
+	
+
+	# Paperclip settings
+	# set command path on windows (example)
   # Paperclip.options[:command_path] = "D:/Programme/ImageMagick-6.6.3-Q16"
-  Paperclip.options[:command_path] = "E:/Program Files/ImageMagick-6.7.4-Q16"
+
+	# set command path on linux (example)
+	# Paperclip.options[:command_path] = "/usr/local/bin/"
 end
 
 class ActionDispatch::Request

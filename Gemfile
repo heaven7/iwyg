@@ -73,6 +73,7 @@ group :test do
 	gem 'guard-rspec'
 	gem 'populator'
   gem 'faker'
-  gem 'shoulda-matchers'
+	gem 'shoulda'  
+	gem 'shoulda-matchers'
 end
 

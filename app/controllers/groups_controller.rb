@@ -59,13 +59,8 @@ class GroupsController < InheritedResources::Base
   def edit
     @user = current_user
     @group = Group.find(params[:id])
-    #    if @group.images.size == 0
-    #      @imageable = find_model
-    #      @image = @group.images.build
-    #    end
-    #@location = @group.locations.first || @group.locations.build
+    @location = @group.locations.first || @group.locations.build
     @active_menuitem_l1 = I18n.t "menu.main.groups"
-    #@active_menuitem_l1_link = user_groups_path
 
 		groupUsers
   end
@@ -79,6 +74,14 @@ class GroupsController < InheritedResources::Base
     end 
 		@members_pending = @group.members_pending
 		@members = @group.members
+
+		# check if current_user is invited
+		@invitation = @group.groupings.pending.where(:owner_id => nil, :user_id => current_user).first if current_user
+		# check if current_user is member
+		@membership = @group.groupings.accepted.where(:user_id => current_user).first if current_user
+		# check if current_user requested membership
+		@request = @group.groupings.pending.where(:user_id => current_user, :owner_id => current_user).first if current_user
+
 
     # friendly_id outdated finder statuses
     #if request.path != group_path(@group)
@@ -128,8 +131,7 @@ class GroupsController < InheritedResources::Base
   protected
 
 	def groupUsers
-		@group.members = @user.followers
-    @group.members << @user.following_users
+		@users = @user.followers + @user.following_users - @group.members
 	end
 
   def conditional_layout
