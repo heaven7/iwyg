@@ -5,7 +5,7 @@ describe Group do
  
 	before :each do
 		# create factory user
-		@user = create(:user)
+		@user = create(:user, :id => Random.rand(1000))
 		login_as(@user, :scope => :user)	
 		@anotheruser = User.create( 
 													:id => Random.rand(1000),
@@ -23,19 +23,48 @@ describe Group do
 		page.should have_content("Groups") 
 	end
 
-	it "can be participated by another user" do
-			
+	describe "can be edited by the group owner" do
+		before :each do
+			@group = create(:group, :id => Random.rand(1000), :title => "testgroup", :user_id => @user.id)
 			visit group_path(@group)
-	#			visit "/groups/#{@group.slug}"
-			# this will not work, when clicked on the Participate-Button, user is not logged in anymore
-			#click_link "another user"
-	#			click_link "Participate"
-	#			login_as(@user, :scope => :user)			
-	#			visit "/groups/#{@group.slug}"			
-	#		click_link "group-participate"
+			click_link "group-edit"			
+		end
+
+		it "can show edit form" do
+			page.should have_content("Change your group")
+		end
+
+		it "can change title" do
+			fill_in :group_title, :with => "testgroup changed"
+			click_button "group-save"
+			page.should have_content("testgroup changed")  
+      page.should have_content("Successfully updated group.") 
+		end
 		
-	#			page.should have_content("Participation sended to group.")
-			save_and_open_page	
+		it "can add location" do
+			fill_in "Address", :with => "Berlin"
+			click_button "group-save"
+      page.should have_content("Location") 
+		end
+
+		it "can add tags" do
+			fill_in "Tags", :with => "tag1, tag2"
+			click_button "group-save"
+			page.should have_content("Tags: tag1 tag2")
+#			save_and_open_page	
+		end
+	end
+
+	it "should add a location" do
+		
+	end
+
+	it "can be participated by another user" do
+		visit group_path(@group)
+		# this will not work, when clicked on the Participate-Button, user is not logged in anymore
+#		click_link "group-participate"		
+#		page.should have_content("Participation sended to group.")
+#		save_and_open_page	
 	end
 
 	describe "Groups" do

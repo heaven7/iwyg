@@ -1,4 +1,6 @@
-<%# render :partial => "share/map", :locals => { :locations => @locations_json } if @locations_json %>
+<% if @locations_json %>
+	<center><%= render :partial => "share/map", :locals => { :locations => @locations_json } %></center>
+<% end %>
 <%= f.inputs do %>
   <%= f.semantic_fields_for :locations do |location_form| %>
     <%= location_form.input :address, :required => false, :label => t("formtastic.labels.location.address") %>

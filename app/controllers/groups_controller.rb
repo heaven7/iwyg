@@ -61,6 +61,7 @@ class GroupsController < InheritedResources::Base
     @group = Group.find(params[:id])
     @location = @group.locations.first || @group.locations.build
     @active_menuitem_l1 = I18n.t "menu.main.groups"
+		#@locations_json = @location.to_gmaps4rails		
 
 		groupUsers
   end

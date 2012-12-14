@@ -63,6 +63,10 @@ gem 'rails3_acts_as_paranoid'
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'capybara-webkit' #, '~> 0.7.2'
+  gem 'database_cleaner' #, '~> 0.6.7'
+  gem 'guard-spork' #, '1.2.0'
+  gem 'spork' #, '0.9.2'
 end
 
 group :test do
