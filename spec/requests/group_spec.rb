@@ -15,7 +15,7 @@ describe Group do
 													:password_confirmation => "anotherpassword",
 													:confirmed_at => Time.now
 									)	
-		@group = create(:group, :user_id => @anotheruser.id)
+		@group = create(:group, :id => Random.rand(1000), :user_id => @anotheruser.id)
 	end 
 
 	it "GET user/groups" do
@@ -23,10 +23,29 @@ describe Group do
 		page.should have_content("Groups") 
 	end
 
-	describe "can be edited by the group owner" do
+	# this will not work: when clicked on the Participate-Button, user is not logged in anymore	
+#	it "can be participated by another user" do
+#		visit group_path(@group)
+#		click_link "group-participate"		
+#		page.should have_content("Participation sended to group.")
+#		save_and_open_page	
+#	end
+
+	it "can be created by user" do
+		visit user_groups_path(@user.login)
+		click_link('group-new')				
+		fill_in "group_title", :with => "testgroup"
+		expect { click_button "group-save" }.to change { @user.groups.count }.by(1)	
+		page.should have_content("Successfully saved group.")
+	end
+
+	describe "can be edited by group owner" do
 		before :each do
+			@user = create(:user, :id => Random.rand(1000))
+			login_as(@user, :scope => :user)	
 			@group = create(:group, :id => Random.rand(1000), :title => "testgroup", :user_id => @user.id)
 			visit group_path(@group)
+#			save_and_open_page	
 			click_link "group-edit"			
 		end
 
@@ -43,7 +62,7 @@ describe Group do
 		
 		it "can add location" do
 			fill_in "Address", :with => "Berlin"
-			click_button "group-save"
+			expect { click_button "group-save" }.to change { @group.locations.count }.by(1)	
       page.should have_content("Location") 
 		end
 
@@ -51,30 +70,6 @@ describe Group do
 			fill_in "Tags", :with => "tag1, tag2"
 			click_button "group-save"
 			page.should have_content("Tags: tag1 tag2")
-#			save_and_open_page	
-		end
-	end
-
-	it "should add a location" do
-		
-	end
-
-	it "can be participated by another user" do
-		visit group_path(@group)
-		# this will not work, when clicked on the Participate-Button, user is not logged in anymore
-#		click_link "group-participate"		
-#		page.should have_content("Participation sended to group.")
-#		save_and_open_page	
-	end
-
-	describe "Groups" do
-
-		it "can be created by a user" do
-			visit user_groups_path(@user.login)
-			click_link('group-new')				
-			fill_in "group_title", :with => "testgroup"
-			expect { click_button "group-save" }.to change { @user.groups.count }.by(1)	
-			page.should have_content("Successfully saved group.")
 		end
 	end
 
