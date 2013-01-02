@@ -24,7 +24,7 @@ end
 gem 'airbrake'
 gem 'eventmachine', '1.0.0.beta.2'
 gem 'thin'
-gem 'therubyracer', :platform => :ruby
+gem 'therubyracer', '0.10.2', :platform => :ruby
 gem 'execjs'
 gem 'geokit'
 gem 'hpricot'

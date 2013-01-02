@@ -24,12 +24,12 @@ describe Group do
 	end
 
 	# this will not work: when clicked on the Participate-Button, user is not logged in anymore	
-#	it "can be participated by another user" do
-#		visit group_path(@group)
-#		click_link "group-participate"		
-#		page.should have_content("Participation sended to group.")
-#		save_and_open_page	
-#	end
+	#	it "can be participated by another user" do
+	#		visit group_path(@group)
+	#		click_link "group-participate"		
+	#		page.should have_content("Participation sended to group.")
+	#		save_and_open_page	
+	#	end
 
 	it "can be created by user" do
 		visit user_groups_path(@user.login)

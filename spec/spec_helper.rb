@@ -12,6 +12,8 @@ Spork.prefork do
 	require 'rspec/rails'
 	require 'rspec/autorun'
 	require 'capybara/rspec'
+	require 'factory_girl'
+
 	Capybara.javascript_driver = :webkit
 
 	# Requires supporting ruby files with custom matchers and macros, etc,
@@ -26,6 +28,7 @@ Spork.prefork do
 		# config.mock_with :mocha
 		# config.mock_with :flexmock
 		# config.mock_with :rr
+
 
 		# Using core set of syntax methods of FactoryGirl
 		config.include FactoryGirl::Syntax::Methods

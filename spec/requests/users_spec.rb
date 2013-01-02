@@ -7,11 +7,13 @@ describe User do
 		# create factory user
 		@user = create(:user)
 		login_as(@user, :scope => :user)
-		visit edit_user_path(@user.id)
 	end 
 
 	describe "preferences" do 	
-		
+		before :each do
+			visit edit_user_path(@user.id)
+		end	
+
 		it "can display preferences form" do				
 			page.should have_content("Preferences") 
 		end
