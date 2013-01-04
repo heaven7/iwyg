@@ -5,7 +5,7 @@ FactoryGirl.define do
 		sequence(:id, Random.rand(1000)) { |n| n + Random.rand(1000) }
     title "a testitem"
 		description Populator.paragraphs(1..3)
-		user_id @user
+		association :user, factory: :user
 		item_type_id [1..6]
 		need [true, false]
   end

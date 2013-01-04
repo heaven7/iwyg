@@ -168,6 +168,7 @@ class User < ActiveRecord::Base
     self.custom = Custom.new(:visible => 1, :enable => 1, :visible_for => "all") 
     self.location = Location.new
     self.user_preferences = UserPreferences.new(:user_id => self.id)
+		self.userdetails ||= Userdetails.new(:user_id => self.id)
   end
 
   def pinged?(resource)
