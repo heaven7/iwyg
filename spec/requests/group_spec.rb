@@ -4,7 +4,6 @@ include Warden::Test::Helpers
 describe Group do
  
 	before :each do
-		# create factory user
 		@user = create(:user, :id => Random.rand(1000))
 		login_as(@user, :scope => :user)	
 		@anotheruser = User.create( 
@@ -68,6 +67,7 @@ describe Group do
 
 		it "can add tags" do
 			fill_in "Tags", :with => "tag1, tag2"
+			expect { click_button "group-save" }.to change { @groups.count }.by(2)	
 			click_button "group-save"
 			page.should have_content("Tags: tag1 tag2")
 		end
