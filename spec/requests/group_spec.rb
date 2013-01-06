@@ -38,6 +38,21 @@ describe Group do
 		page.should have_content("Successfully saved group.")
 	end
 
+#	describe "user participation on groups" do		
+#		it "can ask for participation on a group" do
+#	    visit "/users/sign_in"
+#			page.driver.post user_session_path, :user => {:email => @user.email, :password => @user.password }
+#		  fill_in "user_username",    :with => @user.login
+#		  fill_in "Password", 		:with => @user.password
+#		  click_button "submit"
+#			visit group_path(@group)			
+#			page.should have_content("Participate")
+#			click_link "group-participate"
+			#page.should have_content("Participation sended to group.")
+#			save_and_open_page	
+#		end
+#	end
+
 	describe "can be edited by group owner" do
 		before :each do
 			@user = create(:user, :id => Random.rand(1000))
@@ -67,8 +82,7 @@ describe Group do
 
 		it "can add tags" do
 			fill_in "Tags", :with => "tag1, tag2"
-			expect { click_button "group-save" }.to change { @groups.count }.by(2)	
-			click_button "group-save"
+			expect { click_button "group-save" }.to change { @group.tags.count }.by(2)	
 			page.should have_content("Tags: tag1 tag2")
 		end
 	end
