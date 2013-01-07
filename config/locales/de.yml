@@ -729,7 +729,10 @@ de:
         opened: " hat dir einen Ping geschickt."
     meetup:
       invitation: "%{user} hat dich zu einem Treffen eingeladen."
-  
+    group:
+      participation_request: "%{sender} hat eine Anfrage zur Teilnahme deiner Gruppe '%{title}' geschickt."
+      participation_accepted: "Deine Anfrage zur Teilnahme der Gruppe '%{title}' wurde akzeptiert."
+      participation_aborted: "%{sender} hat die Teilnahmeanfrage deiner Gruppe '%{title}' abgebrochen."  
   ## forms
   
   form:

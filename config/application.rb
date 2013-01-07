@@ -41,7 +41,7 @@ module Iwyg
     config.action_view.javascript_expansions = { :defaults => %w(jquery jquery-ui jquery_ujs ) } 
     
     # Observers
-    config.active_record.observers = :user_observer, :ping_observer, :meetup_observer, :comment_observer
+    config.active_record.observers = :user_observer, :ping_observer, :meetup_observer, :comment_observer, :grouping_observer
 
 		# testing
 		config.generators do |g|

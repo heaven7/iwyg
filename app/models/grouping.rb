@@ -13,4 +13,12 @@ class Grouping < ActiveRecord::Base
   def owner
     User.find(self.owner_id) if self.owner_id
   end
+
+	def pending?
+		self.accepted_at == nil
+	end
+
+	def accepted?
+		self.accepted_at != nil
+	end
 end

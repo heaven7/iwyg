@@ -724,6 +724,10 @@ en:
         opened: " has send a ping to you."
     meetup:
       invitation: "%{user} has invited you to meet."
+    group:
+      participation_request: "%{sender} wants to join your group: '%{title}'"
+      participation_accepted: "Your request to join the group '%{title}' is accepted."
+      participation_aborted: "%{sender} has aborted the participation request of your group: '%{title}'."
   ## forms
     
   form:
