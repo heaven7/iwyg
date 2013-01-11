@@ -116,9 +116,7 @@ class ItemsController < InheritedResources::Base
         render :layout => 'userarea'
       end
       @items_count = $search.result.count
-
     end
-    
   end
   
   def search

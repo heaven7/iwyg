@@ -21,6 +21,7 @@ group :development do
 end
 
 # gem 'iwyg_be'
+gem 'rabl'
 gem 'airbrake'
 gem 'eventmachine', '1.0.0.beta.2'
 gem 'thin'
@@ -51,7 +52,9 @@ gem 'geocoder'
 gem 'gmaps4rails', '1.4.5'
 gem 'ajaxful_rating', '2.2.8.2'
 gem 'acts-as-taggable-on', '~> 2.2.2'
-gem 'paperclip'
+gem 'paperclip', '= 3.0.4'
+gem 'cocaine', '= 0.3.2'
+gem 'rmagick' 
 #gem 'meta_search'
 gem 'will_paginate', '3.0.3'
 gem 'validates_timeliness' #, '2.3.2'
