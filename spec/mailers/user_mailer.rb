@@ -7,6 +7,6 @@ describe UserMailer do
  
   it "sends an e-mail to user after creation" do
     # @user.send_instructions
-    ActionMailer::Base.deliveries.last.to.should == [@user.email]
+    last_email.to.should == [@user.email]
   end
 end

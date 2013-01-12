@@ -21,8 +21,14 @@ describe User do
 		it "validates passwords only on action create" do
 			find("#user_submit_action input").click			
 			page.should have_content("Profile successfully updated.")  
-#			save_and_open_page	
 		end
 
+		it "can change password" do
+			fill_in "Password", :with => "newpassword"
+			fill_in "Confirm password", :with => "newpassword"
+			click_button "submit_password"
+			page.should have_content("Profile successfully updated.")
+			last_email.to.should include(@user.email)  
+		end
 	end
 end

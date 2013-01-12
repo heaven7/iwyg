@@ -35,6 +35,11 @@ Spork.prefork do
 		# config.mock_with :rr
 
 
+		# Macros
+		config.include(MailerMacros)  
+		config.before(:each) { reset_email }
+		
+
 		# Using core set of syntax methods of FactoryGirl
 		config.include FactoryGirl::Syntax::Methods
 
