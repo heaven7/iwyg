@@ -725,9 +725,12 @@ en:
     meetup:
       invitation: "%{user} has invited you to meet."
     group:
-      participation_request: "%{sender} wants to join your group: '%{title}'"
+      participation_request: "%{sender} wants to join your group '%{title}'."
+      invitation: "%{sender} invited you to join the group '%{title}'."
       participation_accepted: "Your request to join the group '%{title}' is accepted."
-      participation_aborted: "%{sender} has aborted the participation request of your group: '%{title}'."
+      invitation_accepted: "%{sender} has accepted your invitation to your group '%{title}'."
+      participation_aborted: "%{sender} has aborted the participation request of your group '%{title}'."  
+      invitation_aborted: "%{sender} has rejected your invitation of your group '%{title}'."
   ## forms
     
   form:

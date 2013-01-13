@@ -22,16 +22,17 @@ class GroupingsController < InheritedResources::Base
     end
   end
 
+	
+	# groupowner invites others when grouping.owner == nil
+	# user can 
   def accept
     @grouping = Grouping.find(params[:id])
 		@group = Group.find(@grouping.group_id)
 
-		puts "Grouping: " + @grouping.inspect.to_s
     if @grouping and (@group.owner == current_user or @grouping.owner == nil)
       @grouping.update_attributes(:accepted_at => Time.now, :accepted => 1)
-      #@grouping.update_attribute(:accepted_at, Time.now)
       flash[:notice] = t("flash.groupings.accept.notice")
-    else
+		else
       flash[:error] = t("flash.groupings.accept.error")
     end
     redirect_to ([@group])
