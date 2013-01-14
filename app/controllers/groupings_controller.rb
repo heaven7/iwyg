@@ -40,6 +40,7 @@ class GroupingsController < InheritedResources::Base
 
   def destroy
     @grouping = Grouping.find(params[:id])
+		@grouping.quit_by = current_user
 		@group = Group.find(@grouping.group_id)
     @grouping.destroy
     flash[:notice] = t("flash.groupings.destroy.notice")

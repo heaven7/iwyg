@@ -1,5 +1,6 @@
 class Grouping < ActiveRecord::Base
-  attr_accessible :user_id, :group_id, :accepted_at, :accepted, :owner_id
+  attr_accessible :user_id, :group_id, :accepted_at, :accepted, :owner_id, :quit_by
+	attr_accessor :quit_by
   belongs_to :user
   belongs_to :owner, :class_name => "User", :foreign_key => "owner_id"
   belongs_to :group

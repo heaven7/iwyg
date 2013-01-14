@@ -736,6 +736,9 @@ de:
       invitation_accepted: "%{sender} hat deine Einladung zur Gruppe '%{title}' akzeptiert."
       participation_aborted: "%{sender} hat die Teilnahmeanfrage deiner Gruppe '%{title}' abgebrochen."  
       invitation_aborted: "%{sender} hat die Teilnahme deiner Gruppe '%{title}' abgelehnt."  
+      quit_membership: "%{sender} ist aus deiner Gruppe '%{title}' ausgetreten."
+      quit_membership_by_owner: "%{sender} hat dich aus der Gruppe '%{title}' entfernt."
+  
   ## forms
   
   form:

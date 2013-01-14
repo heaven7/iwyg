@@ -3,6 +3,8 @@ class GroupMailer < ActionMailer::Base
   default :css => :mailer
   default :charset => "UTF-8"
 
+	layout 'layouts/mailer'
+
 	def participation_request(grouping)
     g = grouping
 		@group = g.group
@@ -68,5 +70,27 @@ class GroupMailer < ActionMailer::Base
 					:subject => @subject
 		)
   end
+
+	def quit_membership(grouping)
+		g = grouping
+		@group = g.group
+		@sender = g.user
+		@email_with_name = "#{@group.owner.login} <#{@group.owner.email}>"
+		@subject = t("mailer.group.quit_membership", :sender => @sender.login, :title => @group.title).html_safe
+		mail( :to => @email_with_name, 
+					:subject => @subject
+		)
+	end
+
+	def quit_membership_by_owner(grouping)
+		g = grouping
+		@group = g.group
+		@sender = @group.owner
+		@email_with_name = "#{g.user.login} <#{g.user.email}>"
+		@subject = t("mailer.group.quit_membership_by_owner", :sender => @sender.login, :title => @group.title).html_safe
+		mail( :to => @email_with_name, 
+					:subject => @subject
+		)
+	end
 
 end
