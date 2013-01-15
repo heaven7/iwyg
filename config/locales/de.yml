@@ -528,6 +528,7 @@ de:
          error: "Teilnahme fehlgeschlagen, vermutlich hast du schon eine Anfrage verschickt."
        accept:
          notice: "Teilnahmeanfrage akzeptiert."
+         error: "Es gab Probleme, die Teilnahme zu akzeptieren."
        destroy:
          notice: "Teilnahmeanfrage abgelehnt."
 

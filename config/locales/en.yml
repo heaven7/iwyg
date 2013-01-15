@@ -523,6 +523,7 @@ en:
          error: "Participation failed, maybe you are attending already."
        accept:
          notice: "Participation accepted."
+         error: "There were problems to accept the participation."
        destroy:
          notice: "Participation aborted."
 

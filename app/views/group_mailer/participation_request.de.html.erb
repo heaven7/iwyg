@@ -1,11 +1,7 @@
 Hallo <%= @group.owner.login %>,
 <br />
-<%= @sender %> möchte deiner Gruppe '<%= @group.title %>' beitreten.
+<%= @sender.login %> möchte deiner Gruppe '<%= @group.title %>' beitreten.
 <br />
 <br />
-Du kannst die Frage hier akzeptieren:
-<%= link_to @group, @group.title %>
-<br />
-<br />
-Besuche das Profil von <%= @sender.login %>.
-
+Du kannst die Anfrage hier akzeptieren:<br />
+<%= accept_grouping_url(@g) %>

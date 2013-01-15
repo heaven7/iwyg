@@ -1,0 +1,7 @@
+Hallo <%= @g.user.login %>,
+<br />
+<%= @sender.login %> hat dich eingeladen der Gruppe '<%= @group.title %>' beizutreten.
+<br />
+<br />
+Du kannst die Einladung hier akzeptieren:<br />
+<%= accept_grouping_url(@g) %>

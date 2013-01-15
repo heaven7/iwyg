@@ -3,7 +3,7 @@ class GroupingsController < InheritedResources::Base
   actions :create, :accept, :destroy
 
   layout 'userarea'
-  before_filter :login_required, :except => [:index]
+  before_filter :login_required
   
   has_scope :pending
   
@@ -22,14 +22,11 @@ class GroupingsController < InheritedResources::Base
     end
   end
 
-	
-	# groupowner invites others when grouping.owner == nil
-	# user can 
   def accept
     @grouping = Grouping.find(params[:id])
 		@group = Group.find(@grouping.group_id)
 
-    if @grouping and (@group.owner == current_user or @grouping.owner == nil)
+    if @grouping and ((@group.owner == current_user and @grouping.owner != nil) or (@user == current_user and @grouping.owner == nil))
       @grouping.update_attributes(:accepted_at => Time.now, :accepted => 1)
       flash[:notice] = t("flash.groupings.accept.notice")
 		else
