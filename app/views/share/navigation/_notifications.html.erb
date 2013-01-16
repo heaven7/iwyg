@@ -1,0 +1,10 @@
+<div id="notifications">
+	<div id="notification-icon">
+		<%= image_tag("icons/icon_notification.png") %>
+	</div>
+	<ul>
+	<% current_user.notifications.unread.each do |n| %>
+		<li><%= link_to n.title, n.notifiable %></li>
+	<% end %>
+	</ul>
+</div>
