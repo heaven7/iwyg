@@ -5,23 +5,15 @@ class GroupMailer < ActionMailer::Base
 
 	layout 'layouts/mailer'
 
-	def participation_request(grouping)
+	def participation_request(grouping, email, subject)
     @g = grouping
-		@group = @g.group
-		@sender = @g.owner
-		@email_with_name = "#{@group.owner.login} <#{@group.owner.email}>"
-		@subject = t("mailer.group.participation_request", :sender => @sender.login, :title => @group.title).html_safe
-		mail( :to => @email_with_name, 
-					:subject => @subject
+		mail( :to => email, 
+					:subject => subject
 		)
   end
 
 	def invitation(grouping)
     @g = grouping
-		@group = @g.group
-		@sender = @group.owner
-		@email_with_name = "#{@g.user.login} <#{@g.user.email}>"
-		@subject = t("mailer.group.invitation", :sender => @sender.login, :title => @group.title).html_safe
 		mail( :to => @email_with_name, 
 					:subject => @subject
 		)

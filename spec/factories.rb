@@ -16,6 +16,15 @@ FactoryGirl.define do
 		title "Inbox"
   end
 
+  factory :notification do
+    is_read false
+    title "MyString"
+    description "MyText"
+    notifiable_id 1
+    notifiable_type 'Group'
+  end
+
+
 	factory :comment do
 		body Populator.paragraphs(1)
 
@@ -86,8 +95,8 @@ FactoryGirl.define do
 
   factory :notifier do
 		user_id Random.rand(100)
-		notifyable_id Random.rand(100)
-		notifyable_type "User"
+		notifiable_id Random.rand(100)
+		notifiable_type "User"
   end
 	
 end

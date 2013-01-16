@@ -63,6 +63,7 @@
     </div>
     <%= render :partial => 'share/search/search', :locals => { :search => @search } %>
     
+    <%= render :partial => 'share/notifications' if logged_in? %>
     <%= render :partial => 'share/topnavigation' %>
   </div>
   <% if (not flash[:notice].blank?) || (not notice.blank?) %>

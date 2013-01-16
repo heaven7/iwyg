@@ -73,7 +73,10 @@ class User < ActiveRecord::Base
   # has_one :meetup, :through => :meetings
   # belongs_to :groups
   has_many :groups
-  # has_many :groupings, :dependent => :destroy
+	has_many :notifications,
+					 :source => "User",
+					 :foreign_key => "receiver_id",
+					 :dependent => :destroy
     
   # has_one
   has_one :custom, :as => :customable, :dependent => :destroy
