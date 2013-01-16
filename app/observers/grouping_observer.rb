@@ -6,49 +6,81 @@ class GroupingObserver < ActiveRecord::Observer
 	def after_create(grouping)
 		@g = grouping
 
-		if grouping.owner != nil
+		if @g.owner != nil
 			# groupowner gets noticed, when someone wants to join the group
 			@sender = @g.user
 			@receiver  = @g.group.owner
-			@email = "#{@receiver.login} <#{@receiver.email}>"
 			@email_subject = "mailer.group.participation_request"
 			
 			getSubjectAndNotification(@email_subject, @sender, @receiver, @g.group)
-			GroupMailer.participation_request(@g, @email, @subject).deliver
+			GroupMailer.participation_request(@g, @receiver, @subject).deliver
 		else
 			# user gets noticed, when groupowner invites user
 			@sender = @g.group.owner
 			@receiver = @g.user
-			@email = "#{@receiver.login} <#{@receiver.email}>"
 			@email_subject = "mailer.group.invitation"
 			
 			getSubjectAndNotification(@email_subject, @sender, @receiver, @g.group)					
-			GroupMailer.invitation(@g, @email, @subject).deliver
+			GroupMailer.invitation(@g, @receiver, @subject).deliver
 		end
 	end
 
 	def after_update(grouping)
-		if grouping.accepted?
-			if grouping.owner != nil
-				GroupMailer.participation_accepted(grouping).deliver
+		@g = grouping
+
+		if @g.accepted?
+			if @g.owner != nil
+				@sender = @g.group.owner
+				@receiver = @g.user
+				@email_subject = "mailer.group.participation_accepted"
+
+				getSubjectAndNotification(@email_subject, @sender, @receiver, @g.group)
+				GroupMailer.participation_accepted(@g, @receiver, @subject).deliver
 			else
-				GroupMailer.invitation_accepted(grouping).deliver
+				@sender = @g.user
+				@receiver = @g.group.owner
+				@email_subject = "mailer.group.invitation_accepted"
+		
+				getSubjectAndNotification(@email_subject, @sender, @receiver, @g.group)
+				GroupMailer.invitation_accepted(@g, @receiver, @subject).deliver
 			end
 		end
 	end
 
 	def after_destroy(grouping)
-		if grouping.accepted?
-			if grouping.group.owner == grouping.quit_by
-				GroupMailer.quit_membership_by_owner(grouping).deliver
+		@g = grouping
+
+		if @g.accepted?
+			if @g.group.owner == @g.quit_by
+				@sender = @g.group.owner
+				@receiver = @g.user
+				@email_subject = "mailer.group.quit_membership_by_owner"
+
+				getSubjectAndNotification(@email_subject, @sender, @receiver, @g.group)
+				GroupMailer.quit_membership_by_owner(@g, @receiver, @subject).deliver
 			else
-				GroupMailer.quit_membership(grouping).deliver
+				@sender = @g.user
+				@receiver = @g.group.owner
+				@email_subject = "mailer.group.quit_membership"
+
+				getSubjectAndNotification(@email_subject, @sender, @receiver, @g.group)
+				GroupMailer.quit_membership(@g, @receiver, @subject).deliver
 			end 
 		else
-			if grouping.owner != nil	
-				GroupMailer.participation_aborted(grouping).deliver			
+			if @g.owner != nil	
+				@sender = @g.group.owner
+				@receiver = @g.user
+				@email_subject = "mailer.group.participation_aborted"
+
+				getSubjectAndNotification(@email_subject, @sender, @receiver, @g.group)
+				GroupMailer.participation_aborted(@g, @receiver, @subject).deliver			
 			else
-				GroupMailer.invitation_aborted(grouping).deliver
+				@sender = @g.user
+				@receiver = @g.group.owner
+				@email_subject = "mailer.group.invitation_aborted"
+
+				getSubjectAndNotification(@email_subject, @sender, @receiver, @g.group)
+				GroupMailer.invitation_aborted(@g, @receiver, @subject).deliver
 			end
 		end			
 	end

@@ -1,7 +1,0 @@
-<div id="notifications">
-	<ul>
-	<% current_user.notifications.unread.each do |n| %>
-		<li><%= link_to n.title, n.notifiable %></li>
-	<% end %>
-	</ul>
-</div>

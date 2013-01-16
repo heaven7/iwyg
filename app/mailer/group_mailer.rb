@@ -5,83 +5,45 @@ class GroupMailer < ActionMailer::Base
 
 	layout 'layouts/mailer'
 
-	def participation_request(grouping, email, subject)
-    @g = grouping
-		mail( :to => email, 
-					:subject => subject
-		)
+	def participation_request(grouping, receiver, subject)
+    processEmail(grouping, receiver, subject)
   end
 
-	def invitation(grouping)
-    @g = grouping
-		mail( :to => @email_with_name, 
-					:subject => @subject
-		)
+	def invitation(grouping, receiver, subject)
+    processEmail(grouping, receiver, subject)
   end
 
-	def participation_accepted(grouping)
-		@g = grouping
-		@group = @g.group
-		@sender = @group.owner
-		@email_with_name = "#{@g.user.login} <#{@g.user.email}>"
-		@subject = t("mailer.group.participation_accepted", :sender => @sender.login, :title => @group.title).html_safe
-		mail( :to => @email_with_name, 
-					:subject => @subject
-		)
+	def participation_accepted(grouping, receiver, subject)
+    processEmail(grouping, receiver, subject)
   end
 	
-	def invitation_accepted(grouping)
-		@g = grouping
-		@group = @g.group
-		@sender = @g.user
-		@email_with_name = "#{@group.owner.login} <#{@group.owner.email}>"
-		@subject = t("mailer.group.invitation_accepted", :sender => @sender.login, :title => @group.title).html_safe
-		mail( :to => @email_with_name, 
-					:subject => @subject
-		)
+	def invitation_accepted(grouping, receiver, subject)
+    processEmail(grouping, receiver, subject)
   end
 
-	def participation_aborted(grouping)
-		@g = grouping
-		@group = @g.group
-		@sender = @group.owner
-		@email_with_name = "#{@g.user.login} <#{@g.user.email}>"
-		@subject = t("mailer.group.participation_aborted", :sender => @sender.login, :title => @group.title).html_safe
-		mail( :to => @email_with_name, 
-					:subject => @subject
-		)
+	def participation_aborted(grouping, receiver, subject)
+    processEmail(grouping, receiver, subject)
   end
 
-	def invitation_aborted(grouping)
-    @g = grouping
-		@group = @g.group
-		@sender = @g.user
-		@email_with_name = "#{@group.owner.login} <#{@group.owner.email}>"
-		@subject = t("mailer.group.invitation_aborted", :sender => @sender.login, :title => @group.title).html_safe
-		mail( :to => @email_with_name, 
-					:subject => @subject
-		)
+	def invitation_aborted(grouping, receiver, subject)
+    processEmail(grouping, receiver, subject)
   end
 
-	def quit_membership(grouping)
-		@g = grouping
-		@group = @g.group
-		@sender = @g.user
-		@email_with_name = "#{@group.owner.login} <#{@group.owner.email}>"
-		@subject = t("mailer.group.quit_membership", :sender => @sender.login, :title => @group.title).html_safe
-		mail( :to => @email_with_name, 
-					:subject => @subject
-		)
+	def quit_membership(grouping, receiver, subject)
+    processEmail(grouping, receiver, subject)
 	end
 
-	def quit_membership_by_owner(grouping)
-		@g = grouping
-		@group = @g.group
-		@sender = @group.owner
-		@email_with_name = "#{@g.user.login} <#{@g.user.email}>"
-		@subject = t("mailer.group.quit_membership_by_owner", :sender => @sender.login, :title => @group.title).html_safe
-		mail( :to => @email_with_name, 
-					:subject => @subject
+	def quit_membership_by_owner(grouping, receiver, subject)
+    processEmail(grouping, receiver, subject)
+	end
+
+	private
+
+	def processEmail(grouping, receiver, subject)
+    @g = grouping
+		email = "#{receiver.login} <#{receiver.email}>"
+		mail( :to => email, 
+					:subject => subject
 		)
 	end
 
