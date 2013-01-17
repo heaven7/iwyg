@@ -13,7 +13,7 @@ class GroupingObserver < ActiveRecord::Observer
 			@email_subject = "mailer.group.participation_request"
 			
 			getSubjectAndNotification(@email_subject, @sender, @receiver, @g.group)
-			GroupMailer.participation_request(@g, @receiver, @subject).deliver
+			GroupMailer.participation_request(@g, @sender, @receiver, @subject).deliver
 		else
 			# user gets noticed, when groupowner invites user
 			@sender = @g.group.owner
@@ -21,7 +21,7 @@ class GroupingObserver < ActiveRecord::Observer
 			@email_subject = "mailer.group.invitation"
 			
 			getSubjectAndNotification(@email_subject, @sender, @receiver, @g.group)					
-			GroupMailer.invitation(@g, @receiver, @subject).deliver
+			GroupMailer.invitation(@g, @sender, @receiver, @subject).deliver
 		end
 	end
 
@@ -35,14 +35,14 @@ class GroupingObserver < ActiveRecord::Observer
 				@email_subject = "mailer.group.participation_accepted"
 
 				getSubjectAndNotification(@email_subject, @sender, @receiver, @g.group)
-				GroupMailer.participation_accepted(@g, @receiver, @subject).deliver
+				GroupMailer.participation_accepted(@g, @sender, @receiver, @subject).deliver
 			else
 				@sender = @g.user
 				@receiver = @g.group.owner
 				@email_subject = "mailer.group.invitation_accepted"
 		
 				getSubjectAndNotification(@email_subject, @sender, @receiver, @g.group)
-				GroupMailer.invitation_accepted(@g, @receiver, @subject).deliver
+				GroupMailer.invitation_accepted(@g, @sender, @receiver, @subject).deliver
 			end
 		end
 	end
@@ -51,36 +51,41 @@ class GroupingObserver < ActiveRecord::Observer
 		@g = grouping
 
 		if @g.accepted?
+
 			if @g.group.owner == @g.quit_by
 				@sender = @g.group.owner
 				@receiver = @g.user
 				@email_subject = "mailer.group.quit_membership_by_owner"
 
 				getSubjectAndNotification(@email_subject, @sender, @receiver, @g.group)
-				GroupMailer.quit_membership_by_owner(@g, @receiver, @subject).deliver
+				GroupMailer.quit_membership_by_owner(@g, @sender, @receiver, @subject).deliver
 			else
 				@sender = @g.user
 				@receiver = @g.group.owner
 				@email_subject = "mailer.group.quit_membership"
 
 				getSubjectAndNotification(@email_subject, @sender, @receiver, @g.group)
-				GroupMailer.quit_membership(@g, @receiver, @subject).deliver
+				GroupMailer.quit_membership(@g, @sender, @receiver, @subject).deliver
 			end 
+
 		else
-			if @g.owner != nil	
-				@sender = @g.group.owner
-				@receiver = @g.user
-				@email_subject = "mailer.group.participation_aborted"
 
-				getSubjectAndNotification(@email_subject, @sender, @receiver, @g.group)
-				GroupMailer.participation_aborted(@g, @receiver, @subject).deliver			
-			else
-				@sender = @g.user
-				@receiver = @g.group.owner
+			if @g.owner == nil
+				
+				@sender = @g.quit_by
+				@receiver = @sender == @g.group.owner ? @g.user : @g.group.owner
 				@email_subject = "mailer.group.invitation_aborted"
-
 				getSubjectAndNotification(@email_subject, @sender, @receiver, @g.group)
-				GroupMailer.invitation_aborted(@g, @receiver, @subject).deliver
+				GroupMailer.invitation_aborted(@g, @sender, @receiver, @subject).deliver
+				
+			else		
+				
+				@sender = @g.quit_by
+				@receiver = @sender == @g.user ? @g.group.owner : @g.user
+				@email_subject = "mailer.group.participation_aborted"
+				getSubjectAndNotification(@email_subject, @sender, @receiver, @g.group)
+				GroupMailer.participation_aborted(@g, @sender, @receiver, @subject).deliver			
+
 			end
 		end			
 	end

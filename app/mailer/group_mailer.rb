@@ -5,42 +5,44 @@ class GroupMailer < ActionMailer::Base
 
 	layout 'layouts/mailer'
 
-	def participation_request(grouping, receiver, subject)
-    processEmail(grouping, receiver, subject)
+	def participation_request(grouping, sender, receiver, subject)
+    processEmail(grouping, sender, receiver, subject)
   end
 
-	def invitation(grouping, receiver, subject)
-    processEmail(grouping, receiver, subject)
+	def invitation(grouping, sender, receiver, subject)
+    processEmail(grouping, sender, receiver, subject)
   end
 
-	def participation_accepted(grouping, receiver, subject)
-    processEmail(grouping, receiver, subject)
+	def participation_accepted(grouping, sender, receiver, subject)
+    processEmail(grouping, sender, receiver, subject)
   end
 	
-	def invitation_accepted(grouping, receiver, subject)
-    processEmail(grouping, receiver, subject)
+	def invitation_accepted(grouping, sender, receiver, subject)
+    processEmail(grouping, sender, receiver, subject)
   end
 
-	def participation_aborted(grouping, receiver, subject)
-    processEmail(grouping, receiver, subject)
+	def participation_aborted(grouping, sender, receiver, subject)
+    processEmail(grouping, sender, receiver, subject)
   end
 
-	def invitation_aborted(grouping, receiver, subject)
-    processEmail(grouping, receiver, subject)
+	def invitation_aborted(grouping, sender, receiver, subject)
+    processEmail(grouping, sender, receiver, subject)
   end
 
-	def quit_membership(grouping, receiver, subject)
-    processEmail(grouping, receiver, subject)
+	def quit_membership(grouping, sender, receiver, subject)
+    processEmail(grouping, sender, receiver, subject)
 	end
 
-	def quit_membership_by_owner(grouping, receiver, subject)
-    processEmail(grouping, receiver, subject)
+	def quit_membership_by_owner(grouping, sender, receiver, subject)
+    processEmail(grouping, sender, receiver, subject)
 	end
 
 	private
 
-	def processEmail(grouping, receiver, subject)
+	def processEmail(grouping, sender, receiver, subject)
     @g = grouping
+		@receiver = receiver
+		@sender = sender
 		email = "#{receiver.login} <#{receiver.email}>"
 		mail( :to => email, 
 					:subject => subject

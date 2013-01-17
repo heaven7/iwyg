@@ -21,12 +21,11 @@ group :development do
   gem 'mongrel', '>= 1.2.0.pre2'
 end
 
-# gem 'iwyg_be'
+gem 'impressionist'
 gem 'airbrake'
 gem 'eventmachine', '1.0.0.beta.2'
 gem 'thin'
 gem 'therubyracer', '0.10.2', :platform => :ruby
-#gem 'execjs'
 gem 'geokit'
 gem 'hpricot'
 gem 'redis'

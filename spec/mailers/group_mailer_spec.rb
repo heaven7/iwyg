@@ -42,6 +42,15 @@ describe GroupMailer do
 		  @mail.to.should eq([@anotheruser.email])
 		end
 
+		it "sends an e-mail to groupowner when user aborts participation" do
+			@receiver = @grouping.group.owner
+			@subject = "mailer.group.participation_aborted"
+			@mail = GroupMailer.participation_aborted(@grouping, @receiver, @subject)
+			GroupMailer.should_receive(:participation_aborted).and_return(@mail)
+			@grouping.destroy		
+		  @mail.to.should eq([@grouping.group.owner.email])
+		end
+
 	end
 
 	describe "groupowner invites others" do
