@@ -53,6 +53,19 @@
 		  })();
 		</script>
   <% end %>
+	<% if logged_in? %>
+		<script type="text/javascript">
+		  $(document).ready(function (){  
+				$('#notification-icon').click(function() {
+					$('#notification-panel').toggle();
+				});
+				$('#content').click(function() {
+					$('#notification-panel').hide();
+				});
+		  });
+		</script>
+	<% end %>
+
   <title><%= @title or t("iwyg.title") %></title>
 </head>
 <body>

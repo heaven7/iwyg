@@ -90,7 +90,9 @@ class GroupingObserver < ActiveRecord::Observer
 	def getSubjectAndNotification(email_subject, sender, receiver, group)
 		
 		@subject = I18n.t(email_subject, :sender => sender.login, :title => group.title).html_safe
-		Notification.new(:receiver => receiver, 
+		Notification.new(
+								 :sender => sender, 
+								 :receiver => receiver, 
 								 :notifiable_id => group.id, 
 								 :notifiable_type => TYPE,
 								 :title => @subject

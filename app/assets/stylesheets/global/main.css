@@ -62,6 +62,50 @@ cite {
     /*quotes: "\201C" "\201D" "\2018" "\2019";*/
     font-style: normal;
 }
+.arrow-up {
+  width:0px; 
+  height:0px; 
+  border-left:10px solid transparent;  /* left arrow slant */
+  border-right:10px solid transparent; /* right arrow slant */
+  border-bottom:5px solid #2f2f2f; /* bottom, add background color here */
+  font-size:0px;
+  line-height:0px;
+}
+
+/* Arrows, thanks to: http://davidwalsh.name/css-triangles */ 
+/* create an arrow that points down */
+.arrow-down {
+  width:0px; 
+  height:0px; 
+  border-left:5px solid transparent;
+  border-right:5px solid transparent;
+  border-top:5px solid #2f2f2f;
+  font-size:0px;
+  line-height:0px;
+}
+
+/* create an arrow that points left */
+.arrow-left {
+  width:0px; 
+  height:0px; 
+  border-bottom:5px solid transparent;  /* left arrow slant */
+  border-top:5px solid transparent; /* right arrow slant */
+  border-right:5px solid #2f2f2f; /* bottom, add background color here */
+  font-size:0px;
+  line-height:0px;
+}
+
+/* create an arrow that points right */
+.arrow-right {
+  width:0px; 
+  height:0px; 
+  border-bottom:5px solid transparent;  /* left arrow slant */
+  border-top:5px solid transparent; /* right arrow slant */
+  border-left:5px solid #2f2f2f; /* bottom, add background color here */
+  font-size:0px;
+  line-height:0px;
+}
+
 
 cite:before {
     content: open-quote;
