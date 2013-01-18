@@ -1,9 +1,10 @@
 class GroupsController < InheritedResources::Base
   protect_from_forgery :except => [:tag_suggestions]
-
   layout :conditional_layout
+
   respond_to :html, :xml, :js, :json
   before_filter :authenticate_user!, :only => [:new, :edit, :create]
+	before_filter :updateNotifications, :only => [:show]
   
   def index
     params[:search] = params[:q] if params[:q]
@@ -90,6 +91,8 @@ class GroupsController < InheritedResources::Base
     #end
     @location = @group.locations.first if @group.locations && @group.locations.first
     getLocationsOnMap(@group) if @location and not @location.lat.nil? and not @location.lng.nil?
+
+		impressionist(@group)
   end
 
   def create
@@ -130,6 +133,7 @@ class GroupsController < InheritedResources::Base
 
 
   protected
+
 
 	def groupUsers
 		@users = @user.followers + @user.following_users - @group.members

@@ -12,6 +12,7 @@ class Group < ActiveRecord::Base
   acts_as_paranoid
   acts_as_taggable_on :tags
   acts_as_audited
+	is_impressionable
 
   belongs_to :user
   has_many :groupings, :dependent => :destroy

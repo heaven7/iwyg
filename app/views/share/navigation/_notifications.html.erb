@@ -1,8 +1,8 @@
 <div id="notifications">
 	<div id="notification-icon" class="circle">
 		<%= image_tag("icons/icon_notification.png") %>
-		<% if current_user.notifications.count > 0 %>
-			<div id="notifications-count" class="circle"><%= current_user.notifications.count.to_i %></div>		
+		<% if current_user.notifications.unread.count > 0 %>
+			<div id="notifications-count" class="circle"><%= current_user.notifications.unread.count.to_i %></div>		
 		<% end %>
 		<div id="notification-panel">	
 			<div id="notification-arrow">
@@ -12,10 +12,10 @@
 				<% if current_user.notifications.size > 0 %>				
 					<% current_user.notifications.each do |n| %>
 						<li class="<%= n.is_read_css %> ui-corner-all">
-							<%= link_to image_tag(microThumb(n.sender), :title => n.sender), n.sender if n.sender %>
+							<%= link_to image_tag(microThumb(n.sender), :title => n.sender.login), n.sender if n.sender %>
 							<%= link_to n.title, n.notifiable %>
 							<span class="date"><%=h distance_of_time_in_words(n.created_at, Time.now) %> <%= t("ago") %></span>
-							<%= '<hr class="divider" />' unless current_user.notifications.last %>
+							<%= '<hr class="divider" />'.html_safe unless n == current_user.notifications.last %>
 						</li>
 					<% end %>
 				<% else %>

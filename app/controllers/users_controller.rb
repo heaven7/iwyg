@@ -71,6 +71,7 @@ class UsersController < InheritedResources::Base
           @audits = Audit.where( :user_id => @user.id)
         end
       else
+				impressionist(@user)
         @audits = Audit.where( :user_id => @user.id)
       end
       @audits = @audits.sort_by(&:created_at).reverse
