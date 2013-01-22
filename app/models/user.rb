@@ -24,12 +24,11 @@ class User < ActiveRecord::Base
   # ajaxful_rater # has_many :rates
   acts_as_taggable_on :interests, :wishs, :aims
   acts_as_tagger
-  
   acts_as_follower
   acts_as_followable
-
   has_associated_audits
   # acts_as_audited #:associated_with => :meetup, :except => [:password]
+	is_impressionable
   
   # has_many
   has_many :events, :dependent => :destroy
@@ -73,7 +72,10 @@ class User < ActiveRecord::Base
   # has_one :meetup, :through => :meetings
   # belongs_to :groups
   has_many :groups
-  # has_many :groupings, :dependent => :destroy
+	has_many :notifications,
+					 :source => "User",
+					 :foreign_key => "receiver_id",
+					 :dependent => :destroy
     
   # has_one
   has_one :custom, :as => :customable, :dependent => :destroy
@@ -168,6 +170,7 @@ class User < ActiveRecord::Base
     self.custom = Custom.new(:visible => 1, :enable => 1, :visible_for => "all") 
     self.location = Location.new
     self.user_preferences = UserPreferences.new(:user_id => self.id)
+		self.userdetails ||= Userdetails.new(:user_id => self.id)
   end
 
   def pinged?(resource)

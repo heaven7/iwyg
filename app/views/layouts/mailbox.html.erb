@@ -4,9 +4,9 @@
     <div class="menu folder">
       <ul class="horizontal">
         <%# for folder in current_user.folders do %>
-          <li class="button"><%= link_to_unless_current t("mailbox.inbox"), mailbox_path(@user.inbox) %></li>
+          <li class="button"><%= link_to_unless_current t("mailbox.inbox"), mailbox_path(current_user.inbox) %></li>
         <%# end %>
-        <li class="button"><%= nav_link t("mailbox.sent"), :sent %></li>
+        <li class="button"><%= link_to_unless_current t("mailbox.sent"), :sent %></li>
       </ul>
     </div>
   </div>

@@ -162,6 +162,7 @@ class ItemsController < InheritedResources::Base
     getLocation(@item) if @location.lat and @location.lng
     @resource = @item
     getItemTypes
+		impressionist(@item)
   end
   
   def new

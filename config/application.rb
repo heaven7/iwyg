@@ -18,6 +18,7 @@ end
 module Iwyg
   class Application < Rails::Application
 
+
     # Enable the asset pipeline
     config.assets.enabled = true
 
@@ -41,7 +42,7 @@ module Iwyg
     config.action_view.javascript_expansions = { :defaults => %w(jquery jquery-ui jquery_ujs ) } 
     
     # Observers
-    config.active_record.observers = :user_observer, :ping_observer, :meetup_observer, :comment_observer
+    config.active_record.observers = :user_observer, :ping_observer, :meetup_observer, :comment_observer, :grouping_observer
 
 		# testing
 		config.generators do |g|
@@ -57,7 +58,15 @@ module Iwyg
 
   end
 end
+ActionDispatch::Callbacks.after do
+  # Reload the factories
+  return unless (Rails.env.development? || Rails.env.test?)
 
+  unless FactoryGirl.factories.blank? # first init will load factories, this should only run on subsequent reloads
+    FactoryGirl.factories.clear
+    FactoryGirl.find_definitions
+  end
+end
 
 
 # application configuration

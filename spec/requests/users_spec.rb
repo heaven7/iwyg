@@ -1,29 +1,34 @@
 require "spec_helper"
+include Warden::Test::Helpers 
 
 describe User do
 
-	before :all do
+	before :each do
 		# create factory user
 		@user = create(:user)
+		login_as(@user, :scope => :user)
 	end 
 
-	describe "GET user/edit" do
-		it "displays user preferences form" do
-			login_as(@user, :scope => :user)
-				
+	describe "preferences" do 	
+		before :each do
 			visit edit_user_path(@user.id)
+		end	
+
+		it "can display preferences form" do				
 			page.should have_content("Preferences") 
 		end
-	end
 
-	describe "POST user/edit" do
 		it "validates passwords only on action create" do
-			login_as(@user, :scope => :user)
-
-			visit "/users/#{@user.id}/edit"
 			find("#user_submit_action input").click			
 			page.should have_content("Profile successfully updated.")  
 		end
-	end
 
+		it "can change password" do
+			fill_in "Password", :with => "newpassword"
+			fill_in "Confirm password", :with => "newpassword"
+			click_button "submit_password"
+			page.should have_content("Profile successfully updated.")
+			last_email.to.should include(@user.email)  
+		end
+	end
 end

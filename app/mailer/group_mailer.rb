@@ -3,11 +3,50 @@ class GroupMailer < ActionMailer::Base
   default :css => :mailer
   default :charset => "UTF-8"
 
-	def participation(grouping)
-    @user = user
-		@group = Group.find(grouping.group_id)
-    @url = "#{HOST}/grouping/#{grouping.id}/accept"
-    email_with_name = "#{@group.owner.login} <#{@group.owner.email}>"
-    mail( :to => email_with_name, :subject => "Group #{@group.title.html_safe}")
+	layout 'layouts/mailer'
+
+	def participation_request(grouping, sender, receiver, subject)
+    processEmail(grouping, sender, receiver, subject)
   end
+
+	def invitation(grouping, sender, receiver, subject)
+    processEmail(grouping, sender, receiver, subject)
+  end
+
+	def participation_accepted(grouping, sender, receiver, subject)
+    processEmail(grouping, sender, receiver, subject)
+  end
+	
+	def invitation_accepted(grouping, sender, receiver, subject)
+    processEmail(grouping, sender, receiver, subject)
+  end
+
+	def participation_aborted(grouping, sender, receiver, subject)
+    processEmail(grouping, sender, receiver, subject)
+  end
+
+	def invitation_aborted(grouping, sender, receiver, subject)
+    processEmail(grouping, sender, receiver, subject)
+  end
+
+	def quit_membership(grouping, sender, receiver, subject)
+    processEmail(grouping, sender, receiver, subject)
+	end
+
+	def quit_membership_by_owner(grouping, sender, receiver, subject)
+    processEmail(grouping, sender, receiver, subject)
+	end
+
+	private
+
+	def processEmail(grouping, sender, receiver, subject)
+    @g = grouping
+		@receiver = receiver
+		@sender = sender
+		email = "#{receiver.login} <#{receiver.email}>"
+		mail( :to => email, 
+					:subject => subject
+		)
+	end
+
 end

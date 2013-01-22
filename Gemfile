@@ -10,6 +10,7 @@ group :assets do
   gem 'sass-rails', '~> 3.2.0'
   gem 'coffee-rails', '~> 3.2.0'
   gem 'uglifier'
+	gem 'compass-rails'
 end
 
 group :production, :stage do
@@ -20,12 +21,11 @@ group :development do
   gem 'mongrel', '>= 1.2.0.pre2'
 end
 
-# gem 'iwyg_be'
+gem 'impressionist'
 gem 'airbrake'
 gem 'eventmachine', '1.0.0.beta.2'
 gem 'thin'
-gem 'therubyracer', :platform => :ruby
-gem 'execjs'
+gem 'therubyracer', '0.10.2', :platform => :ruby
 gem 'geokit'
 gem 'hpricot'
 gem 'redis'
@@ -45,11 +45,11 @@ gem 'client_side_validations'
 gem 'client_side_validations-formtastic'
 gem 'nested_form'
 gem 'devise', '< 2.1' # , :git => 'git://github.com/plataformatec/devise.git'
-gem 'cancan'
+#gem 'cancan'
 gem 'devise_rpx_connectable'
 gem 'geocoder'
 gem 'gmaps4rails', '1.4.5'
-gem 'ajaxful_rating', '2.2.8.2'
+#gem 'ajaxful_rating', '2.2.8.2'
 gem 'acts-as-taggable-on', '~> 2.2.2'
 gem 'paperclip'
 #gem 'meta_search'
@@ -63,6 +63,10 @@ gem 'rails3_acts_as_paranoid'
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'capybara-webkit' #, '~> 0.7.2'
+  gem 'database_cleaner' #, '~> 0.6.7'
+  gem 'guard-spork' #, '1.2.0'
+  gem 'spork' #, '0.9.2'
 end
 
 group :test do
@@ -71,6 +75,7 @@ group :test do
 	gem 'launchy'
 	gem 'guard'  
 	gem 'guard-rspec'
+	gem 'rb-inotify', '~> 0.8.8'
 	gem 'populator'
   gem 'faker'
 	gem 'shoulda'  

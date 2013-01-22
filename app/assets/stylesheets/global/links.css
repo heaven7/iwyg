@@ -17,9 +17,8 @@ a:hover {
     background: transparent url(/assets/global/arrow_down_blue.gif) no-repeat center right;
     padding-right:1em;
 }
-.button {
-  margin:0.5em;
-  margin-left:0;
+.circle {
+  border-radius: 50%;
 }
 li.button {
   display:inline;

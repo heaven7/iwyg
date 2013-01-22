@@ -18,6 +18,7 @@ class Item < ActiveRecord::Base
   acts_as_followable
   has_associated_audits
   acts_as_audited
+	is_impressionable
   
   # scopes
 	scope :enable, proc { |item| joins(:user, :custom).where('customs.enable' => 1) }

@@ -39,6 +39,7 @@ Iwyg::Application.routes.draw do
  
   resources :groupings do
     member do
+      get 'accept' 
       put 'accept' 
     end
   end

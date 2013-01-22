@@ -3,7 +3,7 @@ class GroupingsController < InheritedResources::Base
   actions :create, :accept, :destroy
 
   layout 'userarea'
-  before_filter :login_required, :except => [:index]
+  before_filter :login_required
   
   has_scope :pending
   
@@ -26,12 +26,10 @@ class GroupingsController < InheritedResources::Base
     @grouping = Grouping.find(params[:id])
 		@group = Group.find(@grouping.group_id)
 
-		puts "Grouping: " + @grouping.inspect.to_s
-    if @grouping and (@group.owner == current_user or @grouping.owner == nil)
+    if @grouping and ((@group.owner == current_user and @grouping.owner != nil) or (@user == current_user and @grouping.owner == nil))
       @grouping.update_attributes(:accepted_at => Time.now, :accepted => 1)
-      #@grouping.update_attribute(:accepted_at, Time.now)
       flash[:notice] = t("flash.groupings.accept.notice")
-    else
+		else
       flash[:error] = t("flash.groupings.accept.error")
     end
     redirect_to ([@group])
@@ -39,6 +37,7 @@ class GroupingsController < InheritedResources::Base
 
   def destroy
     @grouping = Grouping.find(params[:id])
+		@grouping.quit_by = current_user
 		@group = Group.find(@grouping.group_id)
     @grouping.destroy
     flash[:notice] = t("flash.groupings.destroy.notice")

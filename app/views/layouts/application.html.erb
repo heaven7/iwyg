@@ -39,22 +39,33 @@
   </script>
   
   <%= yield :head %>
-  
-  <script type="text/javascript">
+  <% unless Rails.env.test? %>
+		<script type="text/javascript">
+		  /* Google Analytics */
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-32738329-1']);
+		  _gaq.push(['_trackPageview']);
+		
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+		</script>
+  <% end %>
+	<% if logged_in? %>
+		<script type="text/javascript">
+		  $(document).ready(function (){  
+				$('#notification-icon').click(function() {
+					$('#notification-panel').toggle();
+				});
+				$('#content').click(function() {
+					$('#notification-panel').hide();
+				});
+		  });
+		</script>
+	<% end %>
 
-    /* Google Analytics */
-    
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-32738329-1']);
-    _gaq.push(['_trackPageview']);
-  
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-  
   <title><%= @title or t("iwyg.title") %></title>
 </head>
 <body>
@@ -65,7 +76,7 @@
     </div>
     <%= render :partial => 'share/search/search', :locals => { :search => @search } %>
     
-    <%= render :partial => 'share/topnavigation' %>
+    <%= render :partial => 'share/navigation/topnavigation' %>
   </div>
   <% if (not flash[:notice].blank?) || (not notice.blank?) %>
     <div class="notice ui-corner-all" id="flash_notice">
@@ -77,23 +88,7 @@
       <%= flash[:error] || alert.html_safe %>
     </div>
   <% end %>
-  <div id="mainnavigation">
-      <ul class="menu horizontal">
-        <li id="resources"><%= link_to_unless_current t("menu.main.resources"), items_path %>
-          <ul class="submenu ui-corner-all shadowed">
-            <li><%= link_to t("good.plural").html_safe, items_path("q[item_type_id_eq]" => 1) %></li> 
-            <li><%= link_to t("transport.plural").html_safe, items_path("q[item_type_id_eq]" => 2) %></li>
-            <li><%= link_to t("service.plural").html_safe, items_path("q[item_type_id_eq]" => 3) %></li> 
-            <li><%= link_to t("sharingpoint.plural").html_safe, items_path("q[item_type_id_eq]" => 4) %></li> 
-            <li><%= link_to t("knowledge.plural").html_safe, items_path("q[item_type_id_eq]" => 5) %></li>   
-            <li><%= link_to t("skill.plural").html_safe, items_path("q[item_type_id_eq]" => 6) %></li>
-          </ul>
-        </li>
-        <li><%= link_to_unless_current t("menu.main.members"), users_path %></li>
-        <li><%= link_to_unless_current t("menu.main.groups"), groups_path %></li>
-        <li><%= link_to t("menu.main.info"), "http://info.iwyg.net" %></li>
-      </ul>
-    </div>
+  <%= render :partial => 'share/navigation/mainnavigation' %>
   <div id="content">
     <%=  yield %>
   </div>
@@ -109,20 +104,7 @@
     <%= "Rendered in #{rendering_time} seconds" %>
     -->
     <div id="footernavigation">
-      <h4>Languages</h4>
-      <ul id="languages">
-       <% I18n.available_locales.each do |locale| %>
-         <% unless locale == :locale %>
-          <li><%= link_to image_tag(
-            "flags/#{locale}.png", 
-            :alt => I18n.t("meta.language_name", :locale => locale.to_sym),
-            :title => I18n.t("meta.language_name", :locale => locale.to_sym)
-            ),
-	    "/#{locale}#{request.fullpath}"
-          %></li>
-         <% end %>
-       <% end %>
-       </ul>
+       <%= render :partial => 'share/languages' %>
        <! -- gmaps4rails -->
        <%= yield :scripts %>
     </div>

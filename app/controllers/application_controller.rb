@@ -69,12 +69,58 @@ class ApplicationController < ActionController::Base
      authenticate_user!
   end
   
+  def find_model
+    params.each do |name, value|
+      if name =~ /(.+)_id$/
+        return $1.classify.constantize.find(value)
+      end
+    end
+    nil
+  end
+	
+	def updateNotifications
+		if current_user
+			action = request[:action]
+			user = current_user
+			id = params[:id]
+			klass = params[:controller].classify.constantize
+			ressource = klass.find(id)
+
+			notifications = Notification.where(
+				:receiver_id => user,
+				:notifiable_id => ressource.id,
+				:notifiable_type => klass.to_s		
+			)
+
+			# notificatons will be set to read if
+			# user will visit page of notifying ressource
+			if notifications 
+				impressions = Impression.where(
+					:user_id => user,
+					:impressionable_id => ressource.id,
+					:impressionable_type => klass.to_s 		
+				)
+				if notifications.size > 1
+					impression = impressions.where("created_at > {notifications.first.created_at}")
+				else
+					impression = impressions.where("created_at > {notifications.created_at}")
+				end
+
+	 			if impression
+					notifications.each do |n|
+						n.update_attributes(:is_read => true)				
+					end
+				end
+
+			end
+		end
+	end
+
   private
   
   # Overwriting the sign_out redirect path method
   def after_sign_out_path_for(resource_or_scope)
     root_path
-    # users_path
   end
   
   def set_locale
@@ -94,14 +140,7 @@ class ApplicationController < ActionController::Base
     @locations_json = object.locations.to_gmaps4rails
   end
   
-  def find_model
-    params.each do |name, value|
-      if name =~ /(.+)_id$/
-        return $1.classify.constantize.find(value)
-      end
-    end
-    nil
-  end
+
 
 	def set_current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
