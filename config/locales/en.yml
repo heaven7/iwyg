@@ -607,13 +607,20 @@ en:
     
   images:
     new: "Add image"
-          
+
+  ## notifications
+
+  notifications:
+    noNotificationsYet: "No notifications yet."
+
   ## events
+
   events:
     ressource: "Ressource"
     description: "Description"
 
   ## groups
+
   groups:
     ressource: "Ressource"
     description: "Description"
@@ -625,6 +632,7 @@ en:
       membership: "Abort membership"
       request: "Abort request"
       invitation: "Decline invitation"
+
   ## friendships
   
   friendships:

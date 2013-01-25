@@ -331,6 +331,7 @@ de:
     new: "Neuer Event"
     action: "%{owner} trifft sich mit %{pinger}: %{title}"  
     status: "Event wurde %{status} von %{user}"
+
  
  ## group
   group:
@@ -602,22 +603,30 @@ de:
     multiple:
       needed: "Ressource wird mehrfach ben&ouml;tigt"
       offered: "Ressource ist mehrfach verwendbar"
-  ## item attachments
-  
+
+  ## item attachments  
+
   item_attachments:
     new: "Ressource hinzuf&uuml;gen"
   
-  ## images
-  
+  ## images  
+
   images:
     new: "Bild hinzuf&uuml;gen"
    
+  ## notifications
+
+  notifications:
+    noNotificationsYet: "Noch keine Benachrichtigungen."
+
   ## events
+
   events:
     ressource: "Resource"
     description: "Beschreibung"
 
   ## groups
+
   groups:
     ressource: "Resource"
     description: "Beschreibung"

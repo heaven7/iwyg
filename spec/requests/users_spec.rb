@@ -9,6 +9,14 @@ describe User do
 		login_as(@user, :scope => :user)
 	end 
 
+	describe "notifications" do
+		it "should have no notifications on create" do
+			@user.notifications.count.should eq 0
+			visit user_path(@user)
+			page.should have_content("No notifications yet.")
+		end
+	end
+
 	describe "preferences" do 	
 		before :each do
 			visit edit_user_path(@user.id)
