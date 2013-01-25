@@ -8,6 +8,7 @@ describe User do
 
 	subject { @user }
 
+	it { should have_many(:notifications).dependent(:destroy) }
 
 	describe "validations" do
 
