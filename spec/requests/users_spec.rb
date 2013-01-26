@@ -6,11 +6,18 @@ describe User do
 	before :each do
 		# create factory user
 		@user = create(:user)
-		login_as(@user, :scope => :user)
 	end 
+
+	describe "#show (profile)" do
+		it "can not be seen without login" do
+			visit user_path(@user)
+			page.should have_content("You need to sign in or sign up before continuing.")
+		end
+	end
 
 	describe "notifications" do
 		it "should have no notifications on create" do
+			login_as(@user, :scope => :user)
 			@user.notifications.count.should eq 0
 			visit user_path(@user)
 			page.should have_content("No notifications yet.")
@@ -19,6 +26,7 @@ describe User do
 
 	describe "preferences" do 	
 		before :each do
+			login_as(@user, :scope => :user)
 			visit edit_user_path(@user.id)
 		end	
 
