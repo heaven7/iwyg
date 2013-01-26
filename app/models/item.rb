@@ -12,7 +12,7 @@ class Item < ActiveRecord::Base
   # ajaxful_rateable :stars => 5, :dimensions => [:quality, :delivery]
   
   belongs_to :user
-
+	belongs_to :itemable, :polymorphic => true
   acts_as_taggable_on :tags
   acts_as_paranoid
   acts_as_followable
