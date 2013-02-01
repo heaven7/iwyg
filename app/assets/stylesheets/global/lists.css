@@ -17,6 +17,15 @@
 .list-item .item-status {
     font-size:75%;
     white-space: nowrap;
+		padding: 3px;
+		color: white;
+		text-align: center;
+}
+.offers .item-status {
+	background: #62B462;
+}
+.needs .item-status {
+	background: #B86748;	
 }
 .list-item .image {
     float:left;
