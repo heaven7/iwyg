@@ -47,7 +47,7 @@ class Meetup < ActiveRecord::Base
   end
 
   def find_by_meeting_user(user)
-    Meeting.joins(:meetup).where(:meetings => {:user_id => user.id}).first
+    Meeting.joins(:meetup).where(:meetings => {:user_id => user.id}).first if user
   end
   
 end

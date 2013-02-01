@@ -2,7 +2,7 @@ class MeetupsController < InheritedResources::Base
 
   layout :conditional_layout
   respond_to :html, :xml, :json
-  #  before_filter :login_required
+  before_filter :authenticate_user!
   
   def index 
     @user = User.find(params[:user_id]) if params[:user_id]
@@ -30,10 +30,10 @@ class MeetupsController < InheritedResources::Base
     @active_menuitem_l2 = @meetup.title
     @active_menuitem_l2_link = user_meetup_path(@meetup)
 
-    @meeting = @meetup.find_by_meeting_user(current_user)
-    if @meetup.owner != current_user and @meeting and !@meeting.accepted_already? 
-      @acceptlink = self.class.helpers.link_to I18n.t("meetup.accept"), accept_meeting_path(@meeting), :method => :put
-    end
+	  @meeting = @meetup.find_by_meeting_user(current_user)
+	  if @meetup.owner != current_user and @meeting and !@meeting.accepted_already? 
+	    @acceptlink = self.class.helpers.link_to I18n.t("meetup.accept"), accept_meeting_path(@meeting), :method => :put
+	  end
     show!
   end  
   
@@ -119,7 +119,7 @@ class MeetupsController < InheritedResources::Base
   def conditional_layout
     case action_name
     when "index" then "application"
-    else "userarea"
+    else "application"
     end
   end
 
