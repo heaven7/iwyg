@@ -1,12 +1,7 @@
-<% content_for :head do %>
-   
-  <script type="text/javascript">
-  $(document).ready(function (){ 
-  });
-  </script>
-<% end %>
 <% if @user %>  
+<!--
   <h2><%= t("title.pings.ofUser") %> (<%= @pings_count %>)</h2>
+-->
 <% elsif @item %>
   <h2><%= t("title.pings.of") %> <%= link_to @item.title, @item %></h2>
 <% end %>
