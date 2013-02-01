@@ -3,7 +3,7 @@ class GroupsController < InheritedResources::Base
   layout :conditional_layout
 
   respond_to :html, :xml, :js, :json
-  before_filter :authenticate_user!, :only => [:new, :edit, :create]
+  before_filter :authenticate_user!, :except => [:index]
 	before_filter :updateNotifications, :only => [:show]
   
   def index
