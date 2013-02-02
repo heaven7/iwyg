@@ -2,6 +2,6 @@
   <span class="image"><%= link_to image_tag(tinyThumb(User.find(comment.user_id)), :alt => User.find(comment.user_id).login, :title => User.find(comment.user_id).login), User.find(comment.user_id) %></span>
   <div class="description">
     <span class="date font-smaller"><%=h distance_of_time_in_words(comment.created_at, Time.now) %> <%= t("ago") %></span>   
-    <span class="text font-smaller"><%= simple_format(comment.body) %></span> 
+    <span class="text font-smaller"><%= markdown(comment.body) %></span> 
   </div>
 </div>

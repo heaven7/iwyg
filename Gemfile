@@ -22,6 +22,7 @@ group :development do
 end
 
 gem 'impressionist'
+gem 'redcarpet', '1.17.2'
 gem 'airbrake'
 gem 'eventmachine', '1.0.0.beta.2'
 gem 'thin'

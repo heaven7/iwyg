@@ -5,7 +5,7 @@
 <p><strong><%= t("mailbox.received") %>:</strong> <%= @message.created_at.to_s(:long) %></p>
 </div>
 <div class="messagebody ui-corner-all">
-<pre><%=h @message.body %></pre>
+<pre><%= markdown(@message.body) %></pre>
 </div>
 <%= render :partial => "sent/replyform" %>
 

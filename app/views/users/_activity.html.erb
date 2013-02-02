@@ -16,7 +16,7 @@
                 link_to(t("hasCreatedAnOffer", :title => item.title).html_safe, item)
               end
             when "update"
-              link_to(t("hasUpdatedAnItem", :title => item.title).html_safe, item)
+            #  link_to(t("hasUpdatedAnItem", :title => item.title).html_safe, item)
             end
 
           when "Userdetails"
@@ -24,7 +24,7 @@
             when "create"
               t("hasJoinedTheCommunity").html_safe
             when "update"
-              t("hasUpdatedtheUserdetails").html_safe
+            #  t("hasUpdatedtheUserdetails").html_safe
             end
           when "Group"
             group = Group.with_deleted.where(:id => audit.auditable_id).first
@@ -68,9 +68,9 @@
             when "create"
               link_to(t("hasCreatedAMeetup", :title => meetup.title).html_safe, meetup)
             when "update"
-              link_to(t("hasUpdatedAMeetup", :title => meetup.title).html_safe, meetup)
+            #  link_to(t("hasUpdatedAMeetup", :title => meetup.title).html_safe, meetup)
             when "destroy"
-              link_to(t("hasDestroyedAMeetup", :title => meetup.title).html_safe, meetup)
+            #  link_to(t("hasDestroyedAMeetup", :title => meetup.title).html_safe, meetup)
             end
           when "Comment"
             comment = Comment.with_deleted.where(:id => audit.auditable_id).first
@@ -80,7 +80,7 @@
               link_to(t("hasCommentedOn", :title => resource.title), resource)
             end
           else
-            "what else to say: " + audit.auditable_type.to_s
+            # "what else to say: " + audit.auditable_type.to_s
           end
         %>
           <span class="date"><%=h distance_of_time_in_words(audit.created_at, Time.now) %> <%= t("ago") %></span>

@@ -10,9 +10,9 @@
       <%= t("by") %> <%= link_to pingerOf(@ping).login, pingerOf(@ping) %>
   </p>
 
-  <em class="ping body">
-  <%=h @ping.body %>
-  </em>
+  <div class="ping-body">
+  <%= markdown(@ping.body) %>
+  </div>
   <% if @ping.created_at %>
     <p class="font-smaller"><%= t("created_at") %> <%=h @ping.created_at %></p>
   <% end %>

@@ -21,6 +21,12 @@ module ApplicationHelper
   		string
   	end
   end
+
+	# Textformatting with redcarpet
+	def markdown(text)
+		options = [:hard_wrap, :filter_html, :autolink, :no_intraemphasis, :fenced_code, :gh_blockcode]
+    Redcarpet.new(text, *options).to_html.html_safe
+	end
   
   # Add and remove formfields
   def link_to_remove_fields(name, f)

@@ -5,6 +5,10 @@
   cursor: pointer;
 }
 
+.ui-listbuilder-item-input {
+	float: left;
+}
+
 fieldset {
   border:none;
   background:#C1CCBD;
@@ -132,7 +136,6 @@ textarea:focus,
 input:hover,
 select:hover, 
 file:hover, 
-textarea:hover,
 .inputfield:hover {
   cursor: pointer;
 }

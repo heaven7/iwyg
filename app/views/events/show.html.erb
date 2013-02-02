@@ -11,7 +11,7 @@
 
 <% if @event.description %>
   <p>
-    <%= auto_link_urls(simple_format(@event.description)) %>
+    <%= markdown(@event.description) %>
   </p>
 <% end %>
   <%= render :partial => "startenddate", :locals => { :startdate => @event.from, :enddate => @event.till } %>
