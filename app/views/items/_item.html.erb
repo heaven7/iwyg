@@ -14,7 +14,7 @@
     </div>
   <% else %>
     <div class="details">
-      <p class="font-small"><%=h shorten(item.description) if item.description %></p>
+      <p class="font-small"><%= link_to shorten(item.description), item, :title => item.title if item.description %></p>
     </div>
   <% end %>
     <div class="item-bottom">

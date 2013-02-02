@@ -21,6 +21,9 @@
 		color: white;
 		text-align: center;
 }
+.list-item .item-status a {
+		color: white;
+}
 .offers .item-status {
 	background: #62B462;
 }
