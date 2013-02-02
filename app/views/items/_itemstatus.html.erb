@@ -1,1 +1,1 @@
-<%= t("resources.#{is_needed?(item)}").html_safe %>
+<%= link_to t("resources.#{is_needed?(item)}").html_safe, item, :title => item.title %>
