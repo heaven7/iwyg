@@ -24,8 +24,12 @@ module ApplicationHelper
 
 	# Textformatting with redcarpet
 	def markdown(text)
-		options = [:hard_wrap, :filter_html, :autolink, :no_intraemphasis, :fenced_code, :gh_blockcode]
-    Redcarpet.new(text, *options).to_html.html_safe
+		options = [:hard_breaks, :filter_html, :filter_classes, :filter_ids]
+    auto_link(textilize(text, *options)).html_safe
+	end
+
+	def shorten_text_cleaned(text, count = 100)
+		shorten(Sanitize.clean(markdown(text)), count)
 	end
   
   # Add and remove formfields
