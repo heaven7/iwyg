@@ -22,8 +22,8 @@ class ItemsController < InheritedResources::Base
 
   def index
     params[:search] = params[:q] if params[:q]
-    @geolocation = session[:geo_location] 
-    @finder = find_something
+    @geolocation = session[:geo_location]
+#		@itemable = find_model
     if params[:user_id] && current_user && params[:user_id].to_i == current_user.id.to_i
       @userSubtitle = "i"
     else
@@ -127,6 +127,7 @@ class ItemsController < InheritedResources::Base
   end
   
   def show
+		@itemable = find_model
     @item = Item.find(params[:id], :include => [:images, :pings, :comments, :locations, :events, :tags, :item_attachments])
     #@item = Item.where( :id => params[:id]).includes([:images, :pings, :comments, :locations, :events, :tags, :item_attachments])
     #@item = @item.first
@@ -156,7 +157,6 @@ class ItemsController < InheritedResources::Base
     
     @pings = @item.pings
     @comments = @item.comments.find(:all, :order => "created_at DESC")
-    @user = User.find(@item.user_id)
     @events = @item.events
     @location = @item.locations.first || @item.owner.location
     getLocation(@item) if @location.lat and @location.lng
@@ -166,7 +166,7 @@ class ItemsController < InheritedResources::Base
   end
   
   def new
-    
+		@itemable = find_model
     @item = Item.new
     @user = current_user
     
@@ -181,15 +181,17 @@ class ItemsController < InheritedResources::Base
   end
   
   def edit
-    @item = current_user.items.find(params[:id], :include => [:locations, :events])    
+		@itemable = find_model
+    @item = @itemable.items.find(params[:id], :include => [:locations, :events])    
     @location = @item.locations.first || @item.locations.build
     @event = @item.events.first || @item.events.build
     getLocation(@item) if @location.lat and @location.lng
-    @user = User.find(@item.user_id)
+    @user = User.find(@item.owner)
     getItemTypes
   end
   
   def update
+		@itemable = find_model
     @item = current_user.items.find(params[:id])
    # @item.images = Image.new(params[:item][:images_attributes])
     getItemTypes
@@ -203,6 +205,7 @@ class ItemsController < InheritedResources::Base
   end
   
   def create
+		@itemable = find_model
     @item = Item.new(params[:item])
     @user = current_user
     getItemTypes
@@ -211,10 +214,10 @@ class ItemsController < InheritedResources::Base
   end
   
   def destroy
-    @user = current_user
+		@itemable = find_model
     @item = Item.find(params[:id])
     @item.destroy
-    redirect_to @user
+    redirect_to @itemable
   end
 
   def follow
@@ -256,15 +259,6 @@ class ItemsController < InheritedResources::Base
   def prepare_search
     #searchlogic scopes
     $scope = Item.prepare_search_scopes(params)
-  end
-  
-  def find_something
-    params.each do |name, value|
-      if name =~ /(.+)_id$/
-        return $1.classify.constantize.find(value)
-      end
-    end
-    nil
   end
   
   def getUsersGivenAndTaken(user, itemTypes)

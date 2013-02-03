@@ -54,20 +54,23 @@
     });
   </script>
 <% end %>
-<%= semantic_form_for @item, :html => {:multipart => true}, :validate => true do |f| %>
+<%= semantic_form_for ([@itemable, @item]), :html => {:multipart => true}, :validate => true do |f| %>
   <%= render "share/error_messages", :target => @item %>
   <div id="tabs">
     <ul>
       <li><a href="#what"><%= t("form.resource.what").html_safe %></a></li>
       <li><a href="#location"><%= t("form.resource.where").html_safe %></a></li>
       <li><a href="#when"><%= t("form.resource.when").html_safe %></a></li>
+<!--
       <li><a href="#how_much"><%= t("form.resource.howMuch").html_safe %></a></li>
+-->
       <li><a href="#images"><%= t("form.resource.images").html_safe %></a></li>
       <li><a href="#attachments"><%= t("form.resource.attachments").html_safe %></a></li>
     </ul>
     <div id="what" class="tab_content ">
       <%= f.inputs do %>
-        <%= f.input :user_id, :as => :hidden, :required => false, :value => current_user.id %>
+		    <%= f.input :itemable_id, :value => @itemable.id, :as => :hidden %>
+		    <%= f.input :itemable_type, :value => @itemable.class, :as => :hidden %>
         <%= f.input :need, :as => :select, :label => t("form.resource.i"), :include_blank => false, :collection => [[t("form.resource.need"), true], [t("form.resource.have"), false]] %>
     <%# f.input :item_type_id, :as => :select, :label => t("form.resource.a"), :collection => options_for_select(ItemType.all.map { |i| [I18n.t("#{i.title}.singular").to_s.html_safe ,i.id ] } ), :include_blank => true %>
         <%= f.input :item_type_id, :as => :select, :label => t("form.resource.a"), :collection => ItemType.all.collect { |i| [I18n.t("#{i.title}.singular").to_s.html_safe ,i.id ] }, :include_blank => true  %>
@@ -80,6 +83,7 @@
         <%= f.input :description, :required => false %>
       <% end %>
     </div>
+<!--
     <div id="how_much" class="tab_content">
       <%= f.inputs do %>
         <%= f.input :amount, :required => false, :input_html => {:class => "short"}, :as => :number %>
@@ -88,6 +92,7 @@
     <%# end %>
       <% end %>
     </div>
+-->
     <div id="location">
       <%= render :partial => "locations/nested_form", :locals => { :f => f, :belongs_to => "item" } %>
     </div>

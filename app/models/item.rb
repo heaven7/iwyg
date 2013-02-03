@@ -7,7 +7,8 @@ class Item < ActiveRecord::Base
   attr_accessible :locatable_type, :locatable_id, :title, :amount, :measure_id, :measure,
     :description, :item_type_id, :need, :from, :till, :user_id,
     :locations_attributes, :images_attributes, :events_attributes,
-    :item_attachments_attributes, :tag_list, :_delete, :status, :multiple
+    :item_attachments_attributes, :tag_list, :_delete, :status, :multiple,
+		:itemable_id, :itemable_type
   
   # ajaxful_rateable :stars => 5, :dimensions => [:quality, :delivery]
   
@@ -42,13 +43,13 @@ class Item < ActiveRecord::Base
   
   
   # has_many
-  has_many :events, :as => :eventable
+  has_many :events, :as => :eventable, :dependent => :destroy
   accepts_nested_attributes_for :events, :allow_destroy => true , :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } } 
-  has_many :locations, :as => :locatable
+  has_many :locations, :as => :locatable, :dependent => :destroy
   accepts_nested_attributes_for :locations, :reject_if => lambda { |attrs| attrs[:address].blank? }, :allow_destroy => true
   has_many :accounts
-  has_many :comments, :as => :commentable
-  has_many :transfers, :as => :transferable
+  has_many :comments, :as => :commentable, :dependent => :destroy
+  has_many :transfers, :as => :transferable, :dependent => :destroy
   has_many :images, :as => :imageable, :dependent => :destroy
   accepts_nested_attributes_for :images, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }  
   has_many :item_attachments, :dependent => :destroy
@@ -148,7 +149,7 @@ class Item < ActiveRecord::Base
   end
   
   def owner
-    User.find(self.user_id)
+    self.itemable_type.classify.constantize.find(self.itemable_id)
   end
   
   def owner?

@@ -41,6 +41,7 @@ class User < ActiveRecord::Base
   has_many :sent_messages, :class_name => "Message", :foreign_key => "author_id"
   has_many :received_messages, :class_name => "MessageCopy", :foreign_key => "recipient_id"
   has_many :folders, :dependent => :destroy
+#	has_many :items, :as => :itemable, :dependent => :destroy
   has_many :items, :dependent => :destroy
   has_many :items_needed,
            :through => 'Items',
