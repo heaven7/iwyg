@@ -15,7 +15,7 @@
         </div>
       <% end %>
       <div class="box ui-corner-all">
-        <p><%= @meetup.description %></p>
+        <%= markdown(@meetup.description) %>
         <%= render :partial => "share/item_attachments", :locals => { :object => @meetup } %>
       </div>
     </div>

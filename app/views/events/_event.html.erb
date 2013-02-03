@@ -9,7 +9,7 @@
 
 <% if @event.description %>
   <p>
-    <%= auto_link_urls(@event.description) %>
+    <%= markdown(@event.description) %>
   </p>
 <% end %>
 <p>

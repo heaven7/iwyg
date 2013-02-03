@@ -4,5 +4,5 @@
 <p><strong><%= t("mailbox.sent") %>:</strong> <%= @message.created_at.to_s(:long) %></p>
 </div>
 <div class="messagebody ui-corner-all">
-<pre><%=h @message.body %></pre>
+<pre><%= markdown(@message.body) %></pre>
 </div>

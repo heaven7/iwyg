@@ -6,7 +6,7 @@
       <% if @group.tags.size > 0 or not @group.description.empty? %>
         <div class="box ui-corner-all">
           <%= render :partial => "share/tags", :locals => { :tags => @group.tags } %>
-          <p><%= @group.description.html_safe %></p>
+          <p><%= markdown(@group.description) %></p>
           <%= render :partial => "share/item_attachments", :locals => { :object => @group } %>
         </div>
       <% end %>
