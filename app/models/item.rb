@@ -30,8 +30,8 @@ class Item < ActiveRecord::Base
   scope :on_transfer, :conditions => {:status => 4}
   
   scope :multiple, :conditions => {:multiple => true}
-  scope :need, :conditions => {:need => true}
-  scope :offer, :conditions => {:need => false}
+  scope :needed, :conditions => {:need => true}
+  scope :offered, :conditions => {:need => false}
   
   scope :good, :conditions => {:item_type_id => 1}       
   scope :transport, :conditions => {:item_type_id => 2}
@@ -149,8 +149,9 @@ class Item < ActiveRecord::Base
   end
   
   def owner
-    self.itemable_type.classify.constantize.find(self.itemable_id)
-  end
+    # self.itemable_type.classify.constantize.find(self.itemable_id)
+		User.find(self.user_id)  
+	end
   
   def owner?
     self.owner == @current_user

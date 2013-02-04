@@ -69,6 +69,7 @@
     </ul>
     <div id="what" class="tab_content ">
       <%= f.inputs do %>
+		    <%= f.input :user_id, :value => current_user, :as => :hidden %>
 		    <%= f.input :itemable_id, :value => @itemable.id, :as => :hidden %>
 		    <%= f.input :itemable_type, :value => @itemable.class, :as => :hidden %>
         <%= f.input :need, :as => :select, :label => t("form.resource.i"), :include_blank => false, :collection => [[t("form.resource.need"), true], [t("form.resource.have"), false]] %>

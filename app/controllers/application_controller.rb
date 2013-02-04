@@ -43,8 +43,8 @@ class ApplicationController < ActionController::Base
       it = itemType.title.downcase
       it_sym = "#{it}".to_sym
       items = eval(scope + ".#{it}")
-      @resources_needed[it_sym] = { "needed".to_sym => items.need }
-      @resources_offered[it_sym] = { "offered".to_sym => items.offer }
+      @resources_needed[it_sym] = { "needed".to_sym => items.needed }
+      @resources_offered[it_sym] = { "offered".to_sym => items.offered }
     end
   end  
   

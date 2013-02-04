@@ -23,7 +23,7 @@ class ItemsController < InheritedResources::Base
   def index
     params[:search] = params[:q] if params[:q]
     @geolocation = session[:geo_location]
-#		@itemable = find_model
+		@itemable = find_model
     if params[:user_id] && current_user && params[:user_id].to_i == current_user.id.to_i
       @userSubtitle = "i"
     else
@@ -93,28 +93,34 @@ class ItemsController < InheritedResources::Base
       # normal listing
       @searchItemType = "Resource"
       #$search = Item.scoped(:order => "created_at DESC", :include => [:images] ).search(params[:search])
-      $search = Item.search(params[:search], :indlude => [:comments, :images, :pings])
-      @items = $search.result.paginate(
-        :page => params[:page],
-        :per_page => ITEMS_PER_PAGE,
-        :order => "created_at DESC",
-        :include => :pings
-      )
-      if @finder
-        @user = User.find(params[:user_id])
+      if @itemable
+				$search = @itemable.items.search(params[:search], :indlude => [:comments, :images, :pings])
+
         @active_menuitem_l1 = I18n.t "menu.main.resources"   
-        @active_menuitem_l1_link = user_items_path
+        @active_menuitem_l1_link = eval "#{@itemable.class.to_s.downcase}_items_path"
         
-        @items_offered = @user.items.offer
-        @items_needed = @user.items.need
-        @items_taken =  @user.items_taken
-        @items_given = @user.items_given
+        @items_offered = @itemable.items.offered
+        @items_needed = @itemable.items.needed
+        @items_taken =  @itemable.items_taken
+        @items_given = @itemable.items_given
         
-        getUsersGivenAndTaken(@user, @itemTypes)
-        getNeedsAndOffers("@user.items", @itemTypes)
-    
-        render :layout => 'userarea'
+        getUsersGivenAndTaken(@itemable, @itemTypes)
+        getNeedsAndOffers("@itemable.items", @itemTypes)
+    		case @itemable.class.to_s
+				when "User"
+					@user = @itemable
+	        render :layout => 'userarea'
+				end
+			else 
+				$search = Item.search(params[:search], :indlude => [:comments, :images, :pings])		    
       end
+	    @items = $search.result.paginate(
+	      :page => params[:page],
+	      :per_page => ITEMS_PER_PAGE,
+	      :order => "created_at DESC",
+	      :include => :pings
+	    )
+
       @items_count = $search.result.count
 
     end
@@ -143,9 +149,9 @@ class ItemsController < InheritedResources::Base
       end
       @items_related_title = I18n.t("item.related.offer").html_safe
     else
-      @items_related_tagged_same = Item.need.tagged_with(@item.tags.join(', ')).where(:item_type_id => @item.item_type_id)
+      @items_related_tagged_same = Item.needed.tagged_with(@item.tags.join(', ')).where(:item_type_id => @item.item_type_id)
       @titleParts.each do |part|
-        @items_related_titled_same = Item.need.where(:title => "%#{part}%") if part.length.to_i >= 5
+        @items_related_titled_same = Item.needed.where(:title => "%#{part}%") if part.length.to_i >= 5
       end
       @items_related_title = I18n.t("item.related.need").html_safe
     end
@@ -182,11 +188,11 @@ class ItemsController < InheritedResources::Base
   
   def edit
 		@itemable = find_model
-    @item = @itemable.items.find(params[:id], :include => [:locations, :events])    
+    @item = current_user.items.find(params[:id], :include => [:locations, :events])    
     @location = @item.locations.first || @item.locations.build
     @event = @item.events.first || @item.events.build
     getLocation(@item) if @location.lat and @location.lng
-    @user = User.find(@item.owner)
+    @user = User.find(@item.user_id)
     getItemTypes
   end
   
@@ -261,14 +267,14 @@ class ItemsController < InheritedResources::Base
     $scope = Item.prepare_search_scopes(params)
   end
   
-  def getUsersGivenAndTaken(user, itemTypes)
+  def getUsersGivenAndTaken(model, itemTypes)
     @resources_given = Hash.new
     @resources_taken = Hash.new
     for itemType in itemTypes do 
       it = itemType.title.downcase
       it_sym = "#{it}".to_sym
-      @resources_given[it_sym] = { "given".to_sym => eval("user.items_given" + ".#{it}") }
-      @resources_taken[it_sym] = { "taken".to_sym => eval("user.items_taken" + ".#{it}") }
+      @resources_given[it_sym] = { "given".to_sym => eval("model.items_given" + ".#{it}") }
+      @resources_taken[it_sym] = { "taken".to_sym => eval("model.items_taken" + ".#{it}") }
     end
   end
   

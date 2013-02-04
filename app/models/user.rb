@@ -33,7 +33,6 @@ class User < ActiveRecord::Base
   # has_many
   has_many :events, :dependent => :destroy
   accepts_nested_attributes_for :events, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
-  has_many :accounts, :dependent => :destroy
   has_many :friendships, :dependent => :destroy
   has_many :friends, :through => :friendships, :conditions => "accepted_at is NOT NULL"
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
@@ -41,14 +40,9 @@ class User < ActiveRecord::Base
   has_many :sent_messages, :class_name => "Message", :foreign_key => "author_id"
   has_many :received_messages, :class_name => "MessageCopy", :foreign_key => "recipient_id"
   has_many :folders, :dependent => :destroy
+	has_many :accounts, :dependent => :destroy
 #	has_many :items, :as => :itemable, :dependent => :destroy
   has_many :items, :dependent => :destroy
-  has_many :items_needed,
-           :through => 'Items',
-           :conditions => {:need => true}
-  has_many :items_offered,
-           :class_name => 'Item',
-           :conditions => {:need => false}
   has_many :items_taken,
            :source => :item,
            :through => :accounts,
