@@ -92,21 +92,15 @@
                      image GET      /images/:id(.:format)                                images#show
                            PUT      /images/:id(.:format)                                images#update
                            DELETE   /images/:id(.:format)                                images#destroy
-                sent_index GET      /sent(.:format)                                      sent#index
-                           POST     /sent(.:format)                                      sent#create
-                  new_sent GET      /sent/new(.:format)                                  sent#new
-                 edit_sent GET      /sent/:id/edit(.:format)                             sent#edit
-                      sent GET      /sent/:id(.:format)                                  sent#show
-                           PUT      /sent/:id(.:format)                                  sent#update
-                           DELETE   /sent/:id(.:format)                                  sent#destroy
-         accept_friendship PUT      /friendships/:id/accept(.:format)                    friendships#accept
-               friendships GET      /friendships(.:format)                               friendships#index
-                           POST     /friendships(.:format)                               friendships#create
-            new_friendship GET      /friendships/new(.:format)                           friendships#new
-           edit_friendship GET      /friendships/:id/edit(.:format)                      friendships#edit
-                friendship GET      /friendships/:id(.:format)                           friendships#show
-                           PUT      /friendships/:id(.:format)                           friendships#update
-                           DELETE   /friendships/:id(.:format)                           friendships#destroy
+           accept_grouping GET      /groupings/:id/accept(.:format)                      groupings#accept
+                           PUT      /groupings/:id/accept(.:format)                      groupings#accept
+                 groupings GET      /groupings(.:format)                                 groupings#index
+                           POST     /groupings(.:format)                                 groupings#create
+              new_grouping GET      /groupings/new(.:format)                             groupings#new
+             edit_grouping GET      /groupings/:id/edit(.:format)                        groupings#edit
+                  grouping GET      /groupings/:id(.:format)                             groupings#show
+                           PUT      /groupings/:id(.:format)                             groupings#update
+                           DELETE   /groupings/:id(.:format)                             groupings#destroy
           new_user_session GET      /users/sign_in(.:format)                             devise/sessions#new
               user_session POST     /users/sign_in(.:format)                             devise/sessions#create
       destroy_user_session DELETE   /users/sign_out(.:format)                            devise/sessions#destroy
@@ -237,13 +231,13 @@
                group_image GET      /groups/:group_id/images/:id(.:format)               images#show
                            PUT      /groups/:group_id/images/:id(.:format)               images#update
                            DELETE   /groups/:group_id/images/:id(.:format)               images#destroy
-               group_pings GET      /groups/:group_id/pings(.:format)                    pings#index
-                           POST     /groups/:group_id/pings(.:format)                    pings#create
-            new_group_ping GET      /groups/:group_id/pings/new(.:format)                pings#new
-           edit_group_ping GET      /groups/:group_id/pings/:id/edit(.:format)           pings#edit
-                group_ping GET      /groups/:group_id/pings/:id(.:format)                pings#show
-                           PUT      /groups/:group_id/pings/:id(.:format)                pings#update
-                           DELETE   /groups/:group_id/pings/:id(.:format)                pings#destroy
+               group_items GET      /groups/:group_id/items(.:format)                    items#index
+                           POST     /groups/:group_id/items(.:format)                    items#create
+            new_group_item GET      /groups/:group_id/items/new(.:format)                items#new
+           edit_group_item GET      /groups/:group_id/items/:id/edit(.:format)           items#edit
+                group_item GET      /groups/:group_id/items/:id(.:format)                items#show
+                           PUT      /groups/:group_id/items/:id(.:format)                items#update
+                           DELETE   /groups/:group_id/items/:id(.:format)                items#destroy
               follow_group PUT      /groups/:id/follow(.:format)                         groups#follow
     tag_suggestions_groups GET      /groups/tag_suggestions(.:format)                    groups#tag_suggestions
              search_groups GET|POST /groups/search(.:format)                             groups#search
@@ -254,7 +248,14 @@
                      group GET      /groups/:id(.:format)                                groups#show
                            PUT      /groups/:id(.:format)                                groups#update
                            DELETE   /groups/:id(.:format)                                groups#destroy
-             reply_message GET      /messages/:id/reply(.:format)                        messages#reply
+                sent_index GET      /sent(.:format)                                      sent#index
+                           POST     /sent(.:format)                                      sent#create
+                  new_sent GET      /sent/new(.:format)                                  sent#new
+                 edit_sent GET      /sent/:id/edit(.:format)                             sent#edit
+                      sent GET      /sent/:id(.:format)                                  sent#show
+                           PUT      /sent/:id(.:format)                                  sent#update
+                           DELETE   /sent/:id(.:format)                                  sent#destroy
+             reply_message PUT      /messages/:id/reply(.:format)                        messages#reply
           undelete_message PUT      /messages/:id/undelete(.:format)                     messages#undelete
                   messages GET      /messages(.:format)                                  messages#index
                            POST     /messages(.:format)                                  messages#create
