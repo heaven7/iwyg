@@ -94,11 +94,11 @@ class ItemsController < InheritedResources::Base
         
         @items_offered = @itemable.items.offered
         @items_needed = @itemable.items.needed
-        @items_taken =  @itemable.items_taken
-        @items_given = @itemable.items_given
+        @items_taken =  @itemable.items.taken.where('accounts.accountable_id' => @itemable.id, 'accounts.accountable_type' => @itemable.class.to_s)
+        @items_given = @itemable.items.given.where('accounts.accountable_id' => @itemable.id, 'accounts.accountable_type' => @itemable.class.to_s)
         
-        getUsersGivenAndTaken(@itemable, @itemTypes)
-        getNeedsAndOffers("@itemable.items", @itemTypes)
+        #getUsersGivenAndTaken(@itemable, @itemTypes)
+        #getNeedsAndOffers("@itemable.items", @itemTypes)
     		case @itemable.class.to_s
 				when "User"
 					@user = @itemable
@@ -106,7 +106,7 @@ class ItemsController < InheritedResources::Base
 	        render :layout => 'userarea'
 				when "Group"
 					@group = @itemable
-					@owner = @group.owner
+					@owner = @group.title
 				  render :layout => 'groups'
 				end
 			else 
@@ -273,11 +273,6 @@ class ItemsController < InheritedResources::Base
 
   private
 
-  def prepare_search
-    #searchlogic scopes
-    $scope = Item.prepare_search_scopes(params)
-  end
-
 	def saveSearch
 	  if not params[:search][:title_cont].blank?     
 		  @keywords = params[:search][:title_cont].to_s.split
@@ -296,17 +291,6 @@ class ItemsController < InheritedResources::Base
 		  end 
 		end
 	end
-  
-  def getUsersGivenAndTaken(model, itemTypes)
-    @resources_given = Hash.new
-    @resources_taken = Hash.new
-    for itemType in itemTypes do 
-      it = itemType.title.downcase
-      it_sym = "#{it}".to_sym
-      @resources_given[it_sym] = { "given".to_sym => eval("model.items_given" + ".#{it}") }
-      @resources_taken[it_sym] = { "taken".to_sym => eval("model.items_taken" + ".#{it}") }
-    end
-  end
   
   def getLocation(item)
     @locations_json = item.locations.to_gmaps4rails

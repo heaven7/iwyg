@@ -14,6 +14,7 @@ class Item < ActiveRecord::Base
   
   belongs_to :user
 	belongs_to :itemable, :polymorphic => true
+
   acts_as_taggable_on :tags
   acts_as_paranoid
   acts_as_followable
@@ -32,6 +33,8 @@ class Item < ActiveRecord::Base
   scope :multiple, :conditions => {:multiple => true}
   scope :needed, :conditions => {:need => true}
   scope :offered, :conditions => {:need => false}
+	scope :taken, proc { |item| joins(:accounts).where('accounts.has_taken' => 1 )}
+	scope :given, proc { |item| joins(:accounts).where( 'accounts.has_taken' => 0 ) }
   
   scope :good, :conditions => {:item_type_id => 1}       
   scope :transport, :conditions => {:item_type_id => 2}
@@ -43,6 +46,8 @@ class Item < ActiveRecord::Base
   
   
   # has_many
+	has_many :accounts, :as => :accountable, :dependent => :destroy   
+  
   has_many :events, :as => :eventable, :dependent => :destroy
   accepts_nested_attributes_for :events, :allow_destroy => true , :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } } 
   has_many :locations, :as => :locatable, :dependent => :destroy
@@ -72,41 +77,7 @@ class Item < ActiveRecord::Base
   # validation
   validates_associated :images, :item_attachments  
   validates_presence_of :title, :item_type_id
-  #validates_presence_of :need, :null => true
-  
 
- 
-  
-  # search
-  def self.prepare_search_scopes(params = {})
-    
-    if params[:user_id]
-      @user = User.find(params[:user_id])
-      scope = @user.items.search
-    else
-      scope = self.search
-    end 
-     
-    scope.measure_id_equals(params[:search][:measure_id_equals])  if not params[:search][:measure_id_equals].blank?
-    scope.amount_equals(params[:search][:amount_equals]) if not params[:search][:amount_equals].blank?
-    scope.need_equals(params[:search][:need_equals]) if not params[:search][:need_equals].blank?
-    scope.from_gte(params[:search][:from_gte].to_date) if not params[:search][:from_gte].blank?
-    scope.till_lte(params[:search][:till_lte].to_date) if not params[:search][:till_lte].blank?
-    scope.item_type_id_equals(params[:search][:item_type_id_equals].to_i) if not params[:search][:item_type_id_equals].blank?
-    scope.title_like_any(params[:search][:title_like_any]) if not params[:search][:title_like_any].blank?
-    scope.user_id_equals(params[:search][:user_id]) if not params[:search][:user_id].blank?
-    # if params[:search][:order]
-    #    order = params[:search][:order]
-    #    parts = order.split("_")
-    #    direction = parts[0] == "ascend" ? "ASC" : "DESC"
-    #    if parts[3]
-    #      scope.order = "#{parts[2]}_#{parts[3]} #{direction}"
-    #    elsif parts[2]
-    #     scope.order = "#{parts[2]} #{direction}"
-    #    end
-    # end
-    return scope
-  end
 
   def build_item
     self.custom = Custom.new(:enable => 1, :visible => 1, :visible_for => "all")

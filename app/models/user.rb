@@ -40,19 +40,8 @@ class User < ActiveRecord::Base
   has_many :sent_messages, :class_name => "Message", :foreign_key => "author_id"
   has_many :received_messages, :class_name => "MessageCopy", :foreign_key => "recipient_id"
   has_many :folders, :dependent => :destroy
-	has_many :accounts, :dependent => :destroy
 	has_many :items, :as => :itemable, :dependent => :destroy
 #  has_many :items, :dependent => :destroy
-  has_many :items_taken,
-           :source => :item,
-           :through => :accounts,
-           :foreign_key => "user_id",
-           :conditions => {:need => false}
-  has_many :items_given,
-           :source => :item,
-           :through => :accounts,
-           :foreign_key => "user_id",
-           :conditions => {:need => true}                     
   has_many :images, :as => :imageable, :dependent => :destroy
   accepts_nested_attributes_for :images, :allow_destroy => true, :reject_if => lambda { |a| a[:image].blank? }
   has_many :pings,
