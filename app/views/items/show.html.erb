@@ -23,7 +23,12 @@
       <% if @item.transfer %>
         <span class="float-right"><%= t("resources.status") %>: <%= link_to t(@item.itemstatus), transfer_path(@item.transfer) %></span>
       <% else %>
-        <span><%= t("resources.status") %>: <%= render :partial => "items/itemstatus_with_users", :locals => { :item => @item, :owner => @item.owner  } %></span>
+        <span>
+					<%= t("resources.#{is_needed?(@item)}").html_safe %> <%= t("by").html_safe + " " %>
+				</span>
+        <span>
+					<%= render :partial => "items/itemowner", :locals => { :item => @item } %>
+				</span>
       <% end %>
       <% if @item.from || @item.till %>
         <br /><br />

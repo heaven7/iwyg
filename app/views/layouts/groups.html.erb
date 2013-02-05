@@ -1,6 +1,6 @@
 <div class="sub2cols">
   <div id="userdescription" class="subcol1">
-    <%# render :partial => "share/avatar", :locals => {:user => @user} %>
+    <% render :partial => "share/avatar", :locals => {:model => @group} %>
     <%# render :partial => "share/userarea/usermenu", :locals => {:user => @user} %>
   </div>
   <div id="group" class="subcol2">
@@ -18,8 +18,8 @@
 				<% end %>
       <% end %>
     </h1>
-    <%  if logged_in? && @user.location %>
-      <p><%= render :partial => "locations/location", :locals => {:location => @user.location} %></p>
+    <%  if logged_in? && @group.locations %>
+      <p><%= render :partial => "locations/location", :locals => {:location => @group.locations.first} %></p>
     <% end %>
     <%= yield %>
   </div>

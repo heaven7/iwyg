@@ -39,23 +39,8 @@ class ItemsController < InheritedResources::Base
         @searchItemType = "Resource"
       end
       
-      if not params[:search][:title_cont].blank?     
-        @keywords = params[:search][:title_cont].to_s.split
-        @keyword_items = ""
-        @keywords.each do |keyword|
-          if @keywords.last == keyword then
-            @keyword_items += "(:title =~ '%#{keyword}%' )"  
-          else
-            @keyword_items += "(:title =~ '%#{keyword}%' ) | "  
-          end
-        end
-				
-        @searcher ||= current_user.id if current_user
-        # save search      
-        for keyword in @keywords
-         Search.create(:keyword => keyword, :user_id => @searcher, :ip => request.env['REMOTE_ADDR'])
-        end 
-      end
+      # save search    
+			saveSearch
       
       $search = Item.search(params[:search])
       $search.sorts ||= :ascend_by_created_at
@@ -74,7 +59,15 @@ class ItemsController < InheritedResources::Base
         @active_menuitem_l2 = @searchItemType.downcase
         @active_menuitem_l2_link = user_items_path("q" => params[:q])
         render :layout => 'userarea'
-      else
+			elsif params[:group_id]	|| params[:search][:group_id_eq]
+        @group = User.find(params[:group_id] || params[:search][:group_id_eq])       
+        $search = @group.items.search(params[:search]) 
+        @active_menuitem_l1 = I18n.t "menu.main.resources"
+        @active_menuitem_l1_link = user_items_path         
+        @active_menuitem_l2 = @searchItemType.downcase
+        @active_menuitem_l2_link = group_items_path("q" => params[:q])
+        render :layout => 'groups'
+			else
         $search = Item.search(params[:search])
       #  index!
       end
@@ -90,7 +83,7 @@ class ItemsController < InheritedResources::Base
       )
       @items_count = @items.size      
     else
-      # normal listing
+
       @searchItemType = "Resource"
       #$search = Item.scoped(:order => "created_at DESC", :include => [:images] ).search(params[:search])
       if @itemable
@@ -109,7 +102,12 @@ class ItemsController < InheritedResources::Base
     		case @itemable.class.to_s
 				when "User"
 					@user = @itemable
+					@owner = @user.login
 	        render :layout => 'userarea'
+				when "Group"
+					@group = @itemable
+					@owner = @group.owner
+				  render :layout => 'groups'
 				end
 			else 
 				$search = Item.search(params[:search], :indlude => [:comments, :images, :pings])		    
@@ -143,9 +141,9 @@ class ItemsController < InheritedResources::Base
     @titleParts = @item.title.split(" ")
 
     if @item.need == true
-      @items_related_tagged_same = Item.offer.tagged_with(@item.tags.join(', ')).where(:item_type_id => @item.item_type_id)
+      @items_related_tagged_same = Item.offered.tagged_with(@item.tags.join(', ')).where(:item_type_id => @item.item_type_id)
       @titleParts.each do |part|
-          @items_related_titled_same = Item.offer.where(:title => "%#{part}%") if part.length.to_i >= 5
+          @items_related_titled_same = Item.offered.where(:title => "%#{part}%") if part.length.to_i >= 5
       end
       @items_related_title = I18n.t("item.related.offer").html_safe
     else
@@ -160,12 +158,12 @@ class ItemsController < InheritedResources::Base
     else
       @items_related = @items_related_tagged_same
     end
-    
+
     @pings = @item.pings
     @comments = @item.comments.find(:all, :order => "created_at DESC")
     @events = @item.events
-    @location = @item.locations.first || @item.owner.location
-    getLocation(@item) if @location.lat and @location.lng
+    @location = @item.locations.first # || @item.itemable.locations.first
+    getLocation(@item) if @location and @location.lat and @location.lng
     @resource = @item
     getItemTypes
 		impressionist(@item)
@@ -177,9 +175,18 @@ class ItemsController < InheritedResources::Base
     @user = current_user
     
     @active_menuitem_l1 = I18n.t "menu.main.resources"   
-    @active_menuitem_l1_link = user_items_path
+    @active_menuitem_l1_link = eval "#{@itemable.class.to_s.downcase}_items_path"
     @item.locations.build
     @item.events.build
+		case @itemable.class.to_s
+		when "User"
+			@user = @itemable
+      render :layout => 'userarea'
+		when "Group"
+			@group = @itemable
+		  render :layout => 'groups'
+		end
+
     # @item.images.build
     # @item.item_attachments.build
     
@@ -188,7 +195,7 @@ class ItemsController < InheritedResources::Base
   
   def edit
 		@itemable = find_model
-    @item = current_user.items.find(params[:id], :include => [:locations, :events])    
+    @item = @itemable.items.find(params[:id], :include => [:locations, :events])    
     @location = @item.locations.first || @item.locations.build
     @event = @item.events.first || @item.events.build
     getLocation(@item) if @location.lat and @location.lng
@@ -223,7 +230,11 @@ class ItemsController < InheritedResources::Base
 		@itemable = find_model
     @item = Item.find(params[:id])
     @item.destroy
-    redirect_to @itemable
+		if @itemable
+    	redirect_to @itemable
+		else
+			redirect_to collection
+		end
   end
 
   def follow
@@ -266,6 +277,25 @@ class ItemsController < InheritedResources::Base
     #searchlogic scopes
     $scope = Item.prepare_search_scopes(params)
   end
+
+	def saveSearch
+	  if not params[:search][:title_cont].blank?     
+		  @keywords = params[:search][:title_cont].to_s.split
+		  @keyword_items = ""
+		  @keywords.each do |keyword|
+		    if @keywords.last == keyword then
+		      @keyword_items += "(:title =~ '%#{keyword}%' )"  
+		    else
+		      @keyword_items += "(:title =~ '%#{keyword}%' ) | "  
+		    end
+		  end
+		
+		  @searcher ||= current_user.id if current_user  
+		  for keyword in @keywords
+		   Search.create(:keyword => keyword, :user_id => @searcher, :ip => request.env['REMOTE_ADDR'])
+		  end 
+		end
+	end
   
   def getUsersGivenAndTaken(model, itemTypes)
     @resources_given = Hash.new

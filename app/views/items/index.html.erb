@@ -1,13 +1,17 @@
 <% content_for :head do %>
   <%= javascript_include_tag 'items' %>
 <% end %>
-<% if @user %>
-  <% if @user == current_user %>
-    <div class="button new">
-      <%= link_to t("resource.new"), new_user_item_path %>
-    </div>
-  <% end %>
-<% end %>             
+
+<% if @user and @user == current_user %>
+  <div class="button new">
+    <%= link_to t("resource.new"), new_user_item_path %>
+  </div>
+<% elsif @group and (@group.members.include?(current_user) or @group.owner == current_user) %>
+  <div class="button new">
+    <%= link_to t("resource.new"), new_group_item_path %>
+  </div>
+<% end %>      
+
 <% if params[:search] || @items_count %><div class="content-order-panel status-bar ui-corner-all font-smaller"><% end %>
 <% if @items_count %>
     <%= render :partial => "share/search/searchedItemType" %>
@@ -30,12 +34,12 @@
 </div>
 <% if params[:search] || @items_count %></div><% end %>
 
-<% if @user and !params[:search] %> 
+<% if @itemable and !params[:search] %> 
 
   <div class="sub2cols">
     <div class="subcol1">
       <%# if @items_needed.size > 0 %>
-        <h2><%= t("title.resources.#{@userSubtitle}Need", :user => @user.login) %> (<%= @items_needed.size %>)</h2>
+        <h2><%= t("title.resources.#{@userSubtitle}Need", :user => @owner) %> (<%= @items_needed.size %>)</h2>
         <div class="block ui-corner-all">
           <%= render :partial => "share/items_needed_offered", :locals => {:resources => @resources_needed, :itemTypes => @itemTypes, :need => 1 } %>
         </div> 
@@ -44,7 +48,7 @@
     
     <div class="subcol2">   
       <%# if @items_offered.size > 0 %>
-        <h2><%= t("title.resources.#{@userSubtitle}Have", :user => @user.login) %> (<%= @items_offered.size %>)</h2>
+        <h2><%= t("title.resources.#{@userSubtitle}Have", :user => @owner) %> (<%= @items_offered.size %>)</h2>
         <div class="block ui-corner-all">
           <%= render :partial => "share/items_needed_offered", :locals => {:resources => @resources_offered, :itemTypes => @itemTypes, :need => 0 } %>
         </div>
@@ -56,7 +60,7 @@
   
     <div class="subcol1"> 
       <%# if @items_taken.size > 0 %>
-       <h2><%= t("title.resources.#{@userSubtitle}HaveTaken", :user => @user.login) %> (<%= @items_taken.size %>)</h2>
+       <h2><%= t("title.resources.#{@userSubtitle}HaveTaken", :user => @owner) %> (<%= @items_taken.size %>)</h2>
         <div class="block ui-corner-all">
           <%= render :partial => "share/items_given_taken", :locals => {:resources => @resources_taken, :itemTypes => @itemTypes, :taken => 1 } %>
         </div>
@@ -65,7 +69,7 @@
     
     <div class="subcol1">
       <%# if @items_given.size > 0 %>
-        <h2><%= t("title.resources.#{@userSubtitle}HaveGiven", :user => @user.login) %> (<%= @user.items_given.size %>)</h2>
+        <h2><%= t("title.resources.#{@userSubtitle}HaveGiven", :user => @owner) %> (<%= @items_given.size %>)</h2>
         <div class="block ui-corner-all">
           <%= render :partial => "share/items_given_taken", :locals => {:resources => @resources_given, :itemTypes => @itemTypes, :taken => 0 } %>
         </div> 

@@ -1,10 +1,14 @@
-<% if logged_in? and current_user == model.owner %>
-  <ul class="horizontal usermenu ui-corner-all">
-    <li><%= link_to image_tag("icons/icon_edit.png", :title => t("edit").html_safe, :alt => t("edit").html_safe), {:action => "edit", :id => model} %></li>
-    <li><%= link_to image_tag("icons/icon_delete.png", :title => t("delete").html_safe, :alt => t("delete").html_safe), 
-          {:action => "destroy", :id => model},
-          :confirm => t("confirm_delete").html_safe,
-          :method => :delete %>
-    </li>
-  </ul>
-<% end %>
+
+<ul class="horizontal usermenu ui-corner-all">
+  <li>
+		<%= link_to image_tag("icons/icon_edit.png", :title => t("edit").html_safe, :alt => t("edit").html_safe), 
+				{:action => "edit", :id => model} %>
+	</li>
+  <li>
+		<%= link_to image_tag("icons/icon_delete.png", :title => t("delete").html_safe, :alt => t("delete").html_safe), 
+        {:action => "destroy", :id => model},
+        :confirm => t("confirm_delete").html_safe,
+        :method => :delete %>
+  </li>
+</ul>
+

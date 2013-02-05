@@ -149,13 +149,17 @@ class Item < ActiveRecord::Base
   end
   
   def owner
-    # self.itemable_type.classify.constantize.find(self.itemable_id)
-		User.find(self.user_id)  
+		case self.itemable.class.to_s
+		when "User"
+			title = self.itemable.login
+		else
+			title = self.itemable.title 
+		end	  
 	end
-  
-  def owner?
-    self.owner == @current_user
-  end
+
+	def creator
+		User.find(self.user_id)
+	end
   
   def multiple?
     self.multiple
