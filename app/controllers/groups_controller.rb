@@ -84,6 +84,11 @@ class GroupsController < InheritedResources::Base
 		# check if current_user requested membership
 		@request = @group.groupings.pending.where(:user_id => current_user, :owner_id => current_user).first if current_user
 
+		@items_offered = @group.items.offered
+    @items_needed = @group.items.needed
+		@used_resources = Item.where('accounts.accountable_id' => @group.id, 'accounts.accountable_type' => "Group")
+    @items_taken = @used_resources.taken 
+    @items_given = @used_resources.given
 
     # friendly_id outdated finder statuses
     #if request.path != group_path(@group)

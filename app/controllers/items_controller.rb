@@ -94,12 +94,12 @@ class ItemsController < InheritedResources::Base
         
         @items_offered = @itemable.items.offered
         @items_needed = @itemable.items.needed
-        @items_taken =  @itemable.items.taken.where('accounts.accountable_id' => @itemable.id, 'accounts.accountable_type' => @itemable.class.to_s)
-        @items_given = @itemable.items.given.where('accounts.accountable_id' => @itemable.id, 'accounts.accountable_type' => @itemable.class.to_s)
+				@used_resources = Item.where('accounts.accountable_id' => @itemable.id, 'accounts.accountable_type' => @itemable.class.to_s)
+        @items_taken = @used_resources.taken 
+        @items_given = @used_resources.given
         
-        #getUsersGivenAndTaken(@itemable, @itemTypes)
-        #getNeedsAndOffers("@itemable.items", @itemTypes)
-    		case @itemable.class.to_s
+      
+				case @itemable.class.to_s
 				when "User"
 					@user = @itemable
 					@owner = @user.login
