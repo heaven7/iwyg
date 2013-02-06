@@ -1,6 +1,4 @@
 <% content_for(:head) do %>
-  <%# GMap.header(:hl=> params[:locale]) if @map %>
-  <%# @map.to_html if @map %>
   <%= javascript_include_tag "/assets/jquery.qrcode.js" %>
   <%= javascript_include_tag "/assets/qrcode.js" %>
   <script type="text/javascript">
@@ -57,7 +55,7 @@
     </div>
   <% end %>
   <div class="box ui-corner-all tags">
-    <%= render :partial => "share/tags", :locals => { :tags => @item.tags } %>
+    <%= render :partial => "share/tags", :locals => { :tags => @item.tags, :model => :items } %>
     <% if @item.description %>
       <%= markdown(@item.description) %>
     <% end %>

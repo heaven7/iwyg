@@ -1,10 +1,4 @@
-<div class="sub2cols">
-  <div id="userdescription" class="subcol1">
-    <% render :partial => "share/avatar", :locals => {:model => @group} %>
-    <%# render :partial => "share/userarea/usermenu", :locals => {:user => @user} %>
-  </div>
-  <div id="group" class="subcol2">
-  
+<div id="group">
     <h1 class="grouptitle">
       <%=h link_to @group.title, @group %>
       <% if @active_menuitem_l1 %>
