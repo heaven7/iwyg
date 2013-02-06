@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   #geocode
   
   # GLOBALS
-#  $search = Item.search()
+  $search = Item.search()
   $priority_countries = [:DE, :AT, :CH] 
 
   # Scrub sensitive parameters from log
