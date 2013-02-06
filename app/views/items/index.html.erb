@@ -12,27 +12,7 @@
   </div>
 <% end %>      
 
-<% if params[:search] || @items_count %><div class="content-order-panel status-bar ui-corner-all font-smaller"><% end %>
-<% if @items_count %>
-    <%= render :partial => "share/search/searchedItemType" %>
-  <% if @tags || @tagtype %>  
-    <%= render :partial => "share/panel_spacer" %>
-    <%= render :partial => "share/search/tags", :locals => {:tags => @tags, :tagtype => @tagtype} %>
-  <% end %>                                                                                  
-  <%= render :partial => "share/panel_spacer" %>
-  <%= render :partial => "orderBy" %>
-<% end %>
-<% if params[:search] %>
-  <% if @keywords %>
-    <% @keywords.each do |keyword|  %>
-      <%= render :partial => "share/panel_spacer" %>
-      <%= render :partial => "share/search/keyword", :locals => { :keyword => keyword, :searchItemType => @searchItemType } %>
-    <% end %>
-  <% end %>
-<% end %>
-<div id="resource-search">
-</div>
-<% if params[:search] || @items_count %></div><% end %>
+<%= render :partial => "share/search/panel", :locals => { :count => @items_count } %>
 
 <% if @itemable and !params[:search] %> 
 

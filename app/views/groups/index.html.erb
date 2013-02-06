@@ -4,7 +4,10 @@
       <%= link_to t("group.new"), new_user_group_path, :id => "group-new" %>
     </div>
   <% end %>
-<% end %>             
+<% end %>  
+
+<%= render :partial => "share/search/panel", :locals => { :count => @groups_count } %>
+          
 <% if @groups and @groups.size > 0 %>
   <%= render :partial => "share/list_pagination", :locals => {:collection => collection} %>
   <%= render :partial => "group", :collection => collection %>

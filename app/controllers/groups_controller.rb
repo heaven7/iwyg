@@ -28,16 +28,9 @@ class GroupsController < InheritedResources::Base
       @active_menuitem_l1 = I18n.t "menu.main.groups"
       @active_menuitem_l1_link = user_groups_path
       render :layout => 'userarea'
-    elsif params[:tag]
-      # search by tag
-      @tag = params[:tag]
-      @tagtype = "tag"
-      @groups = Group.tagged_with(@tag).search(params[:search]).result.paginate(
-        :page => params[:page],
-        :per_page => ITEMS_PER_PAGE,
-        :order => "created_at DESC"
-      )
-      @groups_count = @groups.size
+    elsif params[:search] && params[:search][:tag]
+      # search by tag    
+      @groups = searchByTag(params, "Group")
     else
       @groups = Group.paginate(
         :page => params[:page],
@@ -45,6 +38,8 @@ class GroupsController < InheritedResources::Base
         :order => "created_at DESC"
       )    
     end 
+  	@searchItemType = "Group"
+    @groups_count = @groups.size if @groups
   end
 
   def new

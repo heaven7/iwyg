@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   #geocode
   
   # GLOBALS
-  $search = Item.search()
+#  $search = Item.search()
   $priority_countries = [:DE, :AT, :CH] 
 
   # Scrub sensitive parameters from log
@@ -77,6 +77,30 @@ class ApplicationController < ActionController::Base
     end
     nil
   end
+
+	def searchByTag(params, model, tagtype = "tag")
+		
+    if params[:aim]
+      @tag = params[:aim]
+      @tagtype = "aim"
+    elsif params[:wish]
+      @tag = params[:wish]
+      @tagtype = "wish"
+    elsif params[:interest]
+      @tag = params[:interest]
+      @tagtype = "interest"
+		else
+			@tag = params[:search][:tag] if params[:search]
+	    @tagtype = tagtype    
+		end
+		if @tag
+	    return model.classify.constantize.tagged_with(@tag).search(params[:search]).result.paginate(
+		    :page => params[:page],
+		    :per_page => ITEMS_PER_PAGE,
+		    :order => "created_at DESC"
+		  )
+		end
+	end
 	
 	def updateNotifications
 		if current_user

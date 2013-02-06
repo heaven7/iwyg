@@ -20,18 +20,8 @@ class UsersController < InheritedResources::Base
     @users_count = @usersearch.result.count 
     @keywords = params[:search][:title_contains].to_s.split if params[:search] and not params[:search][:title_contains].blank?
     
-    if params[:aim]
-      @tag = params[:aim]
-      @tagtype = "aim"
-    elsif params[:wish]
-      @tag = params[:wish]
-      @tagtype = "wish"
-    elsif params[:interest]
-      @tag = params[:interest]
-      @tagtype = "interest"
-    end
-    taggedUsers(@tag) if @tag
-    
+    searchByTag(params, "User", @tagtype)
+  	@searchItemType = "User"
     index!
   end
   
@@ -177,11 +167,6 @@ class UsersController < InheritedResources::Base
   end
   
   protected
-   
-  def taggedUsers(tag)
-    @usersearch = User.tagged_with(tag).search(params[:search])
-    @users, @users_count = @usersearch.result.paginate(:page => params[:page]), @usersearch.result.count
-  end
    
   def collection 
     @users ||= end_of_association_chain.paginate(
