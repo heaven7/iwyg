@@ -15,7 +15,7 @@
           %>  
         <% else %>
           <%= link_to  image_tag(("icons/icon_" + itemType.title).downcase + ".png") + t( itemType.title.downcase, :count => i.size ).html_safe, 
-              items_path("q[item_type_id_eq]" => itemType.id, 
+              polymorphic_path([@itemable, :items], "q[item_type_id_eq]" => itemType.id, 
                          "q[need_eq]" => need, 
                          "q[itemable_id_eq]" => @itemable.id,
                          "q[itemable_type_eq]" => @itemable.class.to_s

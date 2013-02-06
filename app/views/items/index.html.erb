@@ -14,7 +14,7 @@
 
 <%= render :partial => "share/search/panel", :locals => { :count => @items_count } %>
 
-<% if @itemable and !params[:search] %> 
+<% if @itemable and !params[:q] %> 
 
   <div class="sub2cols">
     <div class="subcol1">

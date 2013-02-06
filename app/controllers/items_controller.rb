@@ -21,7 +21,6 @@ class ItemsController < InheritedResources::Base
   has_scope :sharingpoint
 
   def index
-    params[:search] = params[:q] if params[:q]
     @geolocation = session[:geo_location]
 		@itemable = find_model
     if params[:user_id] && current_user && params[:user_id].to_i == current_user.id.to_i
@@ -32,12 +31,18 @@ class ItemsController < InheritedResources::Base
     @itemTypes = ItemType.all
     
     # search
-    if params[:search] and !params[:search][:tag]
+    if params[:q] and !params[:q][:tag]
             
       # save search    
 			saveSearch
       
-      @search = Item.search(params[:search])
+			# search by itemType
+    	@searchItemType = "Resource"
+		  if params[:q][:item_type_id_eq]
+		    @searchItemType = ItemType.find(params[:q][:item_type_id_eq]).title.to_s
+		  end
+
+      @search = Item.search(params[:q])
       @search.sorts ||= :ascend_by_created_at
       @items = @search.result(:distinct => true).paginate( 
         :page => params[:page],
@@ -47,9 +52,9 @@ class ItemsController < InheritedResources::Base
       @items_count = @items.count
       
 			# search users items
-      if params[:user_id] || params[:search][:user_id_eq]
-        @user = User.find(params[:user_id] || params[:search][:user_id_eq])       
-        @search = @user.items.search(params[:search]) 
+      if params[:user_id] || params[:q][:user_id_eq]
+        @user = User.find(params[:user_id] || params[:q][:user_id_eq])       
+        @search = @user.items.search(params[:q]) 
         @active_menuitem_l1 = I18n.t "menu.main.resources"
         @active_menuitem_l1_link = user_items_path         
         @active_menuitem_l2 = @searchItemType.downcase
@@ -57,25 +62,25 @@ class ItemsController < InheritedResources::Base
         render :layout => 'userarea'
 
 			# search group items
-			elsif params[:group_id]	|| params[:search][:group_id_eq]
-        @group = Group.find(params[:group_id] || params[:search][:group_id_eq])       
-        @search = @group.items.search(params[:search]) 
+			elsif params[:group_id]	|| params[:q][:group_id_eq]
+        @group = Group.find(params[:group_id] || params[:q][:group_id_eq])       
+        @search = @group.items.search(params[:q]) 
         @active_menuitem_l1 = I18n.t "menu.main.resources"
-        @active_menuitem_l1_link = user_items_path         
+        @active_menuitem_l1_link = group_items_path         
         @active_menuitem_l2 = @searchItemType.downcase
         @active_menuitem_l2_link = group_items_path("q" => params[:q])
         render :layout => 'groups'
 			else
-        @search = Item.search(params[:search])
+        @search = Item.search(params[:q])
       end
-    elsif params[:search] && params[:search][:tag]
+    elsif params[:q] && params[:q][:tag]
       # search by tag
       @items = searchByTag(params, "Item")
       @items_count = @items.size      
     else
 			# normal listing of a model's items
       if @itemable
-				@search = @itemable.items.search(params[:search], :indlude => [:comments, :images, :pings])
+				@search = @itemable.items.search(params[:q], :indlude => [:comments, :images, :pings])
 
         @active_menuitem_l1 = I18n.t "menu.main.resources"   
         @active_menuitem_l1_link = eval "#{@itemable.class.to_s.downcase}_items_path"
@@ -98,7 +103,7 @@ class ItemsController < InheritedResources::Base
 				  render :layout => 'groups'
 				end
 			else 
-				@search = Item.search(params[:search], :indlude => [:comments, :images, :pings])		    
+				@search = Item.search(params[:q], :indlude => [:comments, :images, :pings])		    
       end
 	    @items = @search.result.paginate(
 	      :page => params[:page],
@@ -109,11 +114,6 @@ class ItemsController < InheritedResources::Base
 
       @items_count = @search.result.count
 
-    end
-    if params[:search] && params[:search][:item_type_id_eq]
-      @searchItemType = ItemType.find(params[:search][:item_type_id_eq]).title.to_s
-    else
-      @searchItemType = "Resource"
     end
   end
   
@@ -266,8 +266,8 @@ class ItemsController < InheritedResources::Base
   private
 
 	def saveSearch
-	  if not params[:search][:title_cont].blank?     
-		  @keywords = params[:search][:title_cont].to_s.split
+	  if not params[:q][:title_cont].blank?     
+		  @keywords = params[:q][:title_cont].to_s.split
 		  @keyword_items = ""
 		  @keywords.each do |keyword|
 		    if @keywords.last == keyword then
