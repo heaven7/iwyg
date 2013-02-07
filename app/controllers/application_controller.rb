@@ -90,11 +90,11 @@ class ApplicationController < ActionController::Base
       @tag = params[:interest]
       @tagtype = "interest"
 		else
-			@tag = params[:search][:tag] if params[:search]
+			@tag = params[:q][:tag] if params[:q]
 	    @tagtype = tagtype    
 		end
 		if @tag
-	    return model.classify.constantize.tagged_with(@tag).search(params[:search]).result.paginate(
+	    return model.classify.constantize.tagged_with(@tag).search(params[:q]).result.paginate(
 		    :page => params[:page],
 		    :per_page => ITEMS_PER_PAGE,
 		    :order => "created_at DESC"

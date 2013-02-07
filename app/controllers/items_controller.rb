@@ -29,6 +29,7 @@ class ItemsController < InheritedResources::Base
       @userSubtitle = "user"
     end
     @itemTypes = ItemType.all
+  	@searchItemType = "Resource"
     
     # search
     if params[:q] and !params[:q][:tag]
@@ -37,14 +38,12 @@ class ItemsController < InheritedResources::Base
 			saveSearch
       
 			# search by itemType
-    	@searchItemType = "Resource"
 		  if params[:q][:item_type_id_eq]
 		    @searchItemType = ItemType.find(params[:q][:item_type_id_eq]).title.to_s
 		  end
 
-      @search = Item.search(params[:q])
-      @search.sorts ||= :ascend_by_created_at
-      @items = @search.result(:distinct => true).paginate( 
+      $search = Item.search(params[:q])
+      @items = $search.result(:distinct => true).paginate( 
         :page => params[:page],
         :order => "created_at DESC", 
         :per_page => ITEMS_PER_PAGE 
@@ -54,7 +53,7 @@ class ItemsController < InheritedResources::Base
 			# search users items
       if params[:user_id] || params[:q][:user_id_eq]
         @user = User.find(params[:user_id] || params[:q][:user_id_eq])       
-        @search = @user.items.search(params[:q]) 
+        $search = @user.items.search(params[:q]) 
         @active_menuitem_l1 = I18n.t "menu.main.resources"
         @active_menuitem_l1_link = user_items_path         
         @active_menuitem_l2 = @searchItemType.downcase
@@ -64,14 +63,14 @@ class ItemsController < InheritedResources::Base
 			# search group items
 			elsif params[:group_id]	|| params[:q][:group_id_eq]
         @group = Group.find(params[:group_id] || params[:q][:group_id_eq])       
-        @search = @group.items.search(params[:q]) 
+        $search = @group.items.search(params[:q]) 
         @active_menuitem_l1 = I18n.t "menu.main.resources"
         @active_menuitem_l1_link = group_items_path         
         @active_menuitem_l2 = @searchItemType.downcase
         @active_menuitem_l2_link = group_items_path("q" => params[:q])
         render :layout => 'groups'
 			else
-        @search = Item.search(params[:q])
+        $search = Item.search(params[:q])
       end
     elsif params[:q] && params[:q][:tag]
       # search by tag
@@ -80,7 +79,7 @@ class ItemsController < InheritedResources::Base
     else
 			# normal listing of a model's items
       if @itemable
-				@search = @itemable.items.search(params[:q], :indlude => [:comments, :images, :pings])
+				$search = @itemable.items.search(params[:q], :indlude => [:comments, :images, :pings])
 
         @active_menuitem_l1 = I18n.t "menu.main.resources"   
         @active_menuitem_l1_link = eval "#{@itemable.class.to_s.downcase}_items_path"
@@ -103,16 +102,16 @@ class ItemsController < InheritedResources::Base
 				  render :layout => 'groups'
 				end
 			else 
-				@search = Item.search(params[:q], :indlude => [:comments, :images, :pings])		    
+				$search = Item.search(params[:q], :indlude => [:comments, :images, :pings])		    
       end
-	    @items = @search.result.paginate(
+	    @items = $search.result.paginate(
 	      :page => params[:page],
 	      :per_page => ITEMS_PER_PAGE,
 	      :order => "created_at DESC",
 	      :include => :pings
 	    )
 
-      @items_count = @search.result.count
+      @items_count = $search.result.count
 
     end
   end

@@ -7,17 +7,18 @@ class GroupsController < InheritedResources::Base
 	before_filter :updateNotifications, :only => [:show]
   
   def index
-    params[:search] = params[:q] if params[:q]
-    
+
+    @groupsearch = Group.search(params[:q])
     if params[:user_id]
       @user = User.find(params[:user_id])
       
-      if @user.groups and @user.groups.size > 0
-        @groups = @user.groups.paginate(
-          :page => params[:page],
-          :per_page => PINGS_PER_PAGE,
-          :order => "created_at DESC"
-        )
+      if @user.groups and @user.groups.size > 0		
+	     @groupsearch = @user.groups.search(params[:q])
+	     @groups = @groupsearch.result(:distict => true).paginate(
+	      :page => params[:page],
+	      :per_page => PINGS_PER_PAGE,
+	      :order => "created_at DESC"
+	     )    
       end
       # get all groups with membership of current_user
       @memberships = Array.new
@@ -28,18 +29,19 @@ class GroupsController < InheritedResources::Base
       @active_menuitem_l1 = I18n.t "menu.main.groups"
       @active_menuitem_l1_link = user_groups_path
       render :layout => 'userarea'
-    elsif params[:search] && params[:search][:tag]
+    elsif params[:q] && params[:q][:tag]
       # search by tag    
       @groups = searchByTag(params, "Group")
     else
-      @groups = Group.paginate(
+			@groups = @groupsearch.result(:distict => true).paginate(
         :page => params[:page],
         :per_page => PINGS_PER_PAGE,
         :order => "created_at DESC"
-      )    
+      )   
     end 
+
   	@searchItemType = "Group"
-    @groups_count = @groups.size if @groups
+    @groups_count = @groupsearch.result.count if @groups
   end
 
   def new
