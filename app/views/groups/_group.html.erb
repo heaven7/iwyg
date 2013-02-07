@@ -14,7 +14,7 @@
     </div>
   <% end %>
     <div class="item-bottom">
-      <span class="left"><%= link_to_unless_current image_tag(microThumb(group.owner), :title => group.owner.login), group.owner %></span>
+      <span class="left"><%= link_to_unless_current image_tag(microThumb(group.owner), :title => group.owner.login) + "&nbsp;#{group.owner.login}".html_safe, group.owner %></span>
 <!--
       <span class="date right"><%= distance_of_time_in_words(group.created_at, Time.now) %> <%= t("ago") %></span>
 -->

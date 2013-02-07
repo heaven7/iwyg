@@ -14,8 +14,14 @@ class UsersController < InheritedResources::Base
   # has_scope :all_friends
 
   def index
-    @usersearch = User.active.search(params[:q])
-    @users = @usersearch.result(:distict => true).paginate(:page => params[:page]).order('id DESC')
+
+		if params[:within].present? && (params[:within].to_i > 0)
+      @usersearch = User.active.near(request.location.city,params[:within]).search(params[:q])
+    else
+	    @usersearch = User.active.search(params[:q])
+    end
+    
+		@users = @usersearch.result(:distict => true).paginate(:page => params[:page]).order('id DESC')
     @users_count = @usersearch.result.count 
     @keywords = params[:q][:title_contains].to_s.split if params[:q] and not params[:q][:title_contains].blank?
     

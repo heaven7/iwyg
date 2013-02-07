@@ -7,8 +7,13 @@ class GroupsController < InheritedResources::Base
 	before_filter :updateNotifications, :only => [:show]
   
   def index
+    
+		if params[:within].present? && (params[:within].to_i > 0)
+      @groupsearch = Group.near(request.location.city,params[:within]).search(params[:q])
+    else
+	    @groupsearch = Group.search(params[:q])
+    end
 
-    @groupsearch = Group.search(params[:q])
     if params[:user_id]
       @user = User.find(params[:user_id])
       
