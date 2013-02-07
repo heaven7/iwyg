@@ -8,23 +8,9 @@ class GroupsController < InheritedResources::Base
   
   def index
     
-		if params[:within].present? && (params[:within].to_i > 0)
-      @groupsearch = Group.near(request.location.city,params[:within]).search(params[:q])
-    else
-	    @groupsearch = Group.search(params[:q])
-    end
-
+    @groupsearch = Group.search(params[:q])
     if params[:user_id]
       @user = User.find(params[:user_id])
-      
-      if @user.groups and @user.groups.size > 0		
-	     @groupsearch = @user.groups.search(params[:q])
-	     @groups = @groupsearch.result(:distict => true).paginate(
-	      :page => params[:page],
-	      :per_page => PINGS_PER_PAGE,
-	      :order => "created_at DESC"
-	     )    
-      end
       # get all groups with membership of current_user
       @memberships = Array.new
       Group.all do |group|
@@ -33,20 +19,30 @@ class GroupsController < InheritedResources::Base
       end
       @active_menuitem_l1 = I18n.t "menu.main.groups"
       @active_menuitem_l1_link = user_groups_path
+
+      if @user.groups and @user.groups.size > 0		
+	     @groupsearch = @user.groups.search(params[:q]) 
+      end
+      
       render :layout => 'userarea'
+
     elsif params[:q] && params[:q][:tag]
       # search by tag    
       @groups = searchByTag(params, "Group")
-    else
-			@groups = @groupsearch.result(:distict => true).paginate(
+    end 
+
+		if params[:within].present? && (params[:within].to_i > 0)
+			@location_city = (request.location.city.blank?) ? "Bad Saulgau": request.location.city  
+			near = Location.near(@location_city,params[:within])
+      @groupsearch = Group.joins(:locations).merge(near).search(params[:q])
+    end
+		@groups = @groupsearch.result(:distict => true).paginate(
         :page => params[:page],
         :per_page => PINGS_PER_PAGE,
         :order => "created_at DESC"
       )   
-    end 
-
+    @groups_count = @groupsearch.result.count
   	@searchItemType = "Group"
-    @groups_count = @groupsearch.result.count if @groups
   end
 
   def new
