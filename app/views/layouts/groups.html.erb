@@ -1,12 +1,6 @@
-<div class="sub2cols">
-  <div id="userdescription" class="subcol1">
-    <%= render :partial => "share/avatar", :locals => {:model => @user} %>
-    <%= render :partial => "share/userarea/usermenu", :locals => {:user => @user} %>
-  </div>
-  <div id="userarea" class="subcol2">
-  
-    <h1 class="username">
-      <%=h link_to @user.login, @user %>
+<div id="group">
+    <h1 class="grouptitle">
+      <%=h link_to @group.title, @group %>
       <% if @active_menuitem_l1 %>
         &raquo; <%= link_to @active_menuitem_l1, @active_menuitem_l1_link %>
       <% end %>
@@ -18,8 +12,8 @@
 				<% end %>
       <% end %>
     </h1>
-    <%  if logged_in? && @user.location %>
-      <p><%= render :partial => "locations/location", :locals => {:location => @user.location} %></p>
+    <%  if logged_in? && @group.locations %>
+      <p><%= render :partial => "locations/location", :locals => {:location => @group.locations.first} %></p>
     <% end %>
     <%= yield %>
   </div>

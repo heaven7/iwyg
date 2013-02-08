@@ -73,7 +73,7 @@ Iwyg::Application.routes.draw do
   end 
   
   resources :groups do
-    resources :users, :images, :pings
+    resources :users, :images, :items
     member do
       put 'follow'
     end

@@ -7,7 +7,22 @@
       <%= link_to t("resource", :count => user.items.size), user_items_path(user) %><br />
       <%= link_to t("ping", :count => user.pings.not_closed.size), user_pings_path(user) if logged_in? %>
       <hr class="divider" />
-      <%= link_to t("resources.taken", :count => user.accounts.taken.size), user_items_path(user) %><br />
-      <%= link_to t("resources.given", :count => user.accounts.given.size), user_items_path(user) %>
+  		<%
+				items_taken =  Item.taken.where('accounts.accountable_id' => user.id, 'accounts.accountable_type' => "User")
+        items_given = Item.given.where('accounts.accountable_id' => user.id, 'accounts.accountable_type' => "User")
+      %> 
+      <%= link_to t("resources.taken", :count => items_taken.size), user_items_path(
+							user, 
+							"q[accounts_accountable_id_eq]" => user.id,
+							"q[accounts_accountable_type_eq]" => "User", 
+							"q[accounts_has_taken_eq]" => true
+			) %>
+			<br />
+      <%= link_to t("resources.given", :count => items_given.size), user_items_path(
+							user, 
+							"q[accounts_accountable_id_eq]" => user.id,
+							"q[accounts_accountable_type_eq]" => "User", 
+							"q[accounts_has_taken_eq]" => false
+			) %>
     </div>
 </div>

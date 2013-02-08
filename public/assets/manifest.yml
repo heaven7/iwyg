@@ -75,11 +75,12 @@ icons/icon_magnifier.png: icons/icon_magnifier-4326ef0480e7017f869ed51b7036adb6.
 icons/icon_map.png: icons/icon_map-3e1b8a99fdb2e9aae25e7cb11a2b8101.png
 icons/icon_meetup.png: icons/icon_meetup-3e1b8a99fdb2e9aae25e7cb11a2b8101.png
 icons/icon_meetup_.png: icons/icon_meetup_-7d22a3883c8eb69e25887d07404f5553.png
-icons/icon_message.png: icons/icon_message-d10a1cbeb98596c14961c48b15888ea7.png
+icons/icon_message.png: icons/icon_message-3f8a2d955a18e75f1bca53ba140e9961.png
 icons/icon_message_add.png: icons/icon_message_add-fa718786d9cfa0b6009457e09096c2a6.png
 icons/icon_message_delete.png: icons/icon_message_delete-444c0fe2515f78fd0c1bf146b538455c.png
 icons/icon_message_forward.png: icons/icon_message_forward-b6b47b52f023f63908680fe5e1129fd9.png
 icons/icon_message_read.png: icons/icon_message_read-877a7f30a378b9448011eebd247d28d8.png
+icons/icon_notification.png: icons/icon_notification-716d765e3fe1ab3a06519b0de57ccb25.png
 icons/icon_padlock.gif: icons/icon_padlock-061fa2d8cbed363153e924f55670030d.gif
 icons/icon_ping.png: icons/icon_ping-f31cbbd3fa568e0ccb595e7e0597bcbc.png
 icons/icon_ping_accept.png: icons/icon_ping_accept-1372773000ef087c673f044b9e897144.png
@@ -107,8 +108,8 @@ marker.png: marker-49971648c77788c340c00c2de0f17271.png
 rails.png: rails-be8732dac73d845ac5b142c8fb5f9fb0.png
 spinner.gif: spinner-1ef11460f983a370267498a01f6e5e5a.gif
 tiny_mce/spinner.gif: tiny_mce/spinner-042016a130976cacff054f182bdb3323.gif
-application.js: application-0f645f6fb1b5333a5c4cb6e17b503617.js
-application.css: application-2c634aa8dc0b49d0931fae22a22f7659.css
+application.js: application-e748c9fae8589c6fa1a3b82558be950d.js
+application.css: application-625108da7b448594dc6d0a7116e96327.css
 images/border.png: images/border-4517dd96800f1db66bad7292c9ac3022.png
 images/controls.png: images/controls-b7e68cd0fd7976df6eac3bb3e814c942.png
 images/ie6/borderBottomCenter.png: images/ie6/borderBottomCenter-5d472922bd29c8440c8a30be81b24ee6.png

@@ -5,21 +5,13 @@
       <%= render :partial => "share/images", :locals => {:images => @group.images} %>
       <% if @group.tags.size > 0 or not @group.description.empty? %>
         <div class="box ui-corner-all">
-          <%= render :partial => "share/tags", :locals => { :tags => @group.tags } %>
+          <%= render :partial => "share/tags", :locals => { :tags => @group.tags, :model => :groups } %>
           <p><%= markdown(@group.description) %></p>
           <%= render :partial => "share/item_attachments", :locals => { :object => @group } %>
         </div>
       <% end %>
   </div>
   <div class="subcol2">
-    <% if logged_in? and @group.locations.first and @group.locations.first.lat and @group.locations.first.lng %>
-			<div id="location">
-		    <h3><%= t("resources.location") %></h3>
-		    <%= render :partial => "share/map", :locals => { :locations => @locations_json } %>
-		    <%= render :partial => "locations/location", :locals => {:location => @group.locations.first} %>
-			</div>
-    <% end %>
-
 		<% if logged_in? and @group.owner == current_user and @members_pending.size > 0 %>
 			<div id="members-pending">
 				<h3><%= t("groups.pendingMembers") %></h3>
@@ -36,6 +28,28 @@
 				<% end %> 
 			</div>
 		<% end %>
+
+    <% if logged_in? and @group.locations.first and @group.locations.first.lat and @group.locations.first.lng %>
+			<div id="location">
+		    <h3><%= t("resources.location") %></h3>
+		    <%= render :partial => "share/map", :locals => { :locations => @locations_json } %>
+		    <%= render :partial => "locations/location", :locals => {:location => @group.locations.first} %>
+			</div>
+    <% end %>
+
+		<div id="resources" class="box">
+			<h3>Resources of <%= @group.title %></h3>
+			<%= link_to t("title.resources.userNeed", :user => @group.title) + "(#{@items_needed.size})", group_items_path(@group) %>
+			<br /> 
+			<%= link_to t("title.resources.userHave", :user => @group.title) + "(#{@items_offered.size})", group_items_path(@group) %>
+			<br /> 
+			<%= link_to t("title.resources.userHaveGiven", :user => @group.title) + "(#{@items_given.size})", group_items_path(@group) %>
+			<br />
+			<%= link_to t("title.resources.userHaveTaken", :user => @group.title) + "(#{@items_taken.size})", group_items_path(@group) %>
+			<br /> 
+		 
+		
+		</div>
   </div>
 </div>
 <div class="clearfix" ></div>

@@ -1,18 +1,24 @@
 <ul class="item-collection">
   <% for itemType in itemTypes do %>
     <li>
-      <% if taken == 1
-          action = :taken
-        else
-          action = :given
-        end
-      %>
-      <% if params[:user_id] %>
-        <%= image_tag(("icons/icon_" + itemType.title).downcase + ".png") + t( itemType.title.downcase, :count =>  resources[itemType.title.downcase.to_sym][action].size ).html_safe %>
+      <% i = eval "resources.#{itemType.title.downcase}" %>
+      <% if @itemable %>				
+        <% if i.size.to_i == 1 %>
+		      <%= link_to image_tag(("icons/icon_" + itemType.title).downcase + ".png") + t( itemType.title.downcase, :count => i.size ).html_safe, 
+		          i.first
+		      %>
+				<% else %>
+		      <%= link_to image_tag(("icons/icon_" + itemType.title).downcase + ".png") + t( itemType.title.downcase, :count => i.size ).html_safe, 
+		          polymorphic_path([@itemable, :items],
+								"q[item_type_id_eq]" => itemType.id, 
+								"q[accounts_accountable_id_eq]" => @itemable.id,
+								"q[accounts_accountable_type_eq]" => @itemable.class.to_s, 
+								"q[accounts_has_taken_eq]" => taken
+							)
+		      %>
+				<% end %>
       <% else %>
-        <%= link_to image_tag(("icons/icon_" + itemType.title).downcase + ".png") + t( itemType.title.downcase, :count => resources[itemType.title.downcase.to_sym][action].size ).html_safe, 
-            items_path( "q[item_type_id_eq]" => itemType.id, "q[need_equals]" => need)
-        %>
+        <%= image_tag(("icons/icon_" + itemType.title).downcase + ".png") + t( itemType.title.downcase, :count => i.size ).html_safe %>
       <% end %>
     </li>
   <% end %>

@@ -6,10 +6,16 @@
       :title => t("order.user")
     }
   %>
-  ,
   <%= render :partial => "share/search/sortlink", :locals => {
       :search => @usersearch,
-      :field => 'location_city',
+      :field => 'created_at',
+      :title => t("order.date"),
+      :params => params
+    }
+  %>
+  <%# render :partial => "share/search/sortlink", :locals => {
+      :search => @usersearch,
+      :field => 'location_address',
       :title => t("order.location")
     }
   %>

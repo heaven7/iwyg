@@ -8,7 +8,7 @@ class Notification < ActiveRecord::Base
   scope :unread, where(:is_read => false)
 
   validates_presence_of :notifiable_id, :notifiable_type
-#	validate :user_does_not_already_have_this_notification
+	validate :user_does_not_already_have_this_notification, :on => :create
   
 	
   def user_does_not_already_have_this_notification

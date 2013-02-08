@@ -43,8 +43,8 @@ class ApplicationController < ActionController::Base
       it = itemType.title.downcase
       it_sym = "#{it}".to_sym
       items = eval(scope + ".#{it}")
-      @resources_needed[it_sym] = { "needed".to_sym => items.need }
-      @resources_offered[it_sym] = { "offered".to_sym => items.offer }
+      @resources_needed[it_sym] = { "needed".to_sym => items.needed }
+      @resources_offered[it_sym] = { "offered".to_sym => items.offered }
     end
   end  
   
@@ -77,6 +77,36 @@ class ApplicationController < ActionController::Base
     end
     nil
   end
+
+	def searchByTag(params, model, tagtype = "tag")
+		
+    if params[:aim]
+      @tag = params[:aim]
+      @tagtype = "aim"
+    elsif params[:wish]
+      @tag = params[:wish]
+      @tagtype = "wish"
+    elsif params[:interest]
+      @tag = params[:interest]
+      @tagtype = "interest"
+		else
+			@tag = params[:q][:tag] if params[:q]
+	    @tagtype = tagtype    
+		end
+    return model.classify.constantize.tagged_with(@tag) if @tag
+	end
+
+	def searchByRangeIn(model)
+		if params[:within].present? && (params[:within].to_i > 0)
+			@location_city = (request.location.city.blank?) ? "Bad Saulgau": request.location.city  
+			@locations = Location.where(locatable_type: model).near(@location_city,params[:within])
+			@ids = []			
+			@locations.each do |l|
+				@ids << l.locatable_id.to_i			
+			end			
+			return model.classify.constantize.where(:id => @ids).search(params[:q])
+    end
+	end
 	
 	def updateNotifications
 		if current_user

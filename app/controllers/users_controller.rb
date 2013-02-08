@@ -14,24 +14,19 @@ class UsersController < InheritedResources::Base
   # has_scope :all_friends
 
   def index
-    params[:search] = params[:q]
-    @usersearch = User.active.search(params[:search])
-    @users = @usersearch.result(:distict => true).paginate(:page => params[:page]).order('id DESC')
-    @users_count = @usersearch.result.count 
-    @keywords = params[:search][:title_contains].to_s.split if params[:search] and not params[:search][:title_contains].blank?
-    
-    if params[:aim]
-      @tag = params[:aim]
-      @tagtype = "aim"
-    elsif params[:wish]
-      @tag = params[:wish]
-      @tagtype = "wish"
-    elsif params[:interest]
-      @tag = params[:interest]
-      @tagtype = "interest"
+
+		if params[:within].present? && (params[:within].to_i > 0)
+      @usersearch = User.active.near(request.location.city,params[:within]).search(params[:q])
+    else
+	    @usersearch = User.active.search(params[:q])
     end
-    taggedUsers(@tag) if @tag
     
+		@users = @usersearch.result(:distict => true).paginate(:page => params[:page]).order('id DESC')
+    @users_count = @usersearch.result.count 
+    @keywords = params[:q][:title_contains].to_s.split if params[:q] and not params[:q][:title_contains].blank?
+    
+    searchByTag(params, "User", @tagtype)
+  	@searchItemType = "User"
     index!
   end
   
@@ -177,11 +172,6 @@ class UsersController < InheritedResources::Base
   end
   
   protected
-   
-  def taggedUsers(tag)
-    @usersearch = User.tagged_with(tag).search(params[:search])
-    @users, @users_count = @usersearch.result.paginate(:page => params[:page]), @usersearch.result.count
-  end
    
   def collection 
     @users ||= end_of_association_chain.paginate(

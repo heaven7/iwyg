@@ -1,22 +1,24 @@
+<% if group %>
 <div class="list-item ui-corner-all">
   <%= render :partial => "share/list-item/usermenu", :locals => {:model => group} if logged_in? and group.owner == current_user %>
   <div class="item-members-count font-smaller">
     <%= image_tag "icons/icon_group.png", :alt => "#{group.title} (#{group.members.size})", :title => "#{group.title} (#{group.members.size})" %> (<%= group.members.size %>)
   </div>
-  <p class="font-small"><%= link_to shorten(group.title, 18), group, :title => group.title  if group.title %></p>
+  <p class="font-small"><%= link_to shorten_text_cleaned(group.title, 18), group, :title => group.title  if group.title %></p>
   <% if group.images.first %>
     <div class="image-big ui-corner-all">
       <%= link_to image_tag(group.images.first.image.url(:small)), group, :title => group.title, :class => "ui-corner-all" %>
     </div>
   <% else %>
     <div class="details">
-      <p class="font-small"><%=h shorten(group.description) if group.description %></p>
+      <p class="font-small"><%= link_to shorten_text_cleaned(group.description), group, :title => group.title if group.description %></p>
     </div>
   <% end %>
     <div class="item-bottom">
-      <span class="left"><%= link_to_unless_current image_tag(microThumb(group.owner), :title => group.owner.login), group.owner %></span>
+      <span class="left"><%= link_to_unless_current image_tag(microThumb(group.owner), :title => group.owner.login) + "&nbsp;#{group.owner.login}".html_safe, group.owner %></span>
 <!--
       <span class="date right"><%= distance_of_time_in_words(group.created_at, Time.now) %> <%= t("ago") %></span>
 -->
     </div>
 </div>
+<% end %>

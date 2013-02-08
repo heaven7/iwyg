@@ -7,19 +7,12 @@ class GroupsController < InheritedResources::Base
 	before_filter :updateNotifications, :only => [:show]
   
   def index
-    params[:search] = params[:q] if params[:q]
     
+    @groupsearch = Group.search(params[:q])
+    
+		# get all groups with membership of current_user
     if params[:user_id]
       @user = User.find(params[:user_id])
-      
-      if @user.groups and @user.groups.size > 0
-        @groups = @user.groups.paginate(
-          :page => params[:page],
-          :per_page => PINGS_PER_PAGE,
-          :order => "created_at DESC"
-        )
-      end
-      # get all groups with membership of current_user
       @memberships = Array.new
       Group.all do |group|
         members = group.users
@@ -27,24 +20,29 @@ class GroupsController < InheritedResources::Base
       end
       @active_menuitem_l1 = I18n.t "menu.main.groups"
       @active_menuitem_l1_link = user_groups_path
+
+      if @user.groups and @user.groups.size > 0		
+	     @groupsearch = @user.groups.search(params[:q]) 
+      end
+      
       render :layout => 'userarea'
-    elsif params[:tag]
-      # search by tag
-      @tag = params[:tag]
-      @tagtype = "tag"
-      @groups = Group.tagged_with(@tag).search(params[:search]).result.paginate(
-        :page => params[:page],
-        :per_page => ITEMS_PER_PAGE,
-        :order => "created_at DESC"
-      )
-      @groups_count = @groups.size
-    else
-      @groups = Group.paginate(
-        :page => params[:page],
-        :per_page => PINGS_PER_PAGE,
-        :order => "created_at DESC"
-      )    
+
+    # search by tag    
+    elsif params[:q] && params[:q][:tag]
+      @groupsearch = searchByTag(params, "Group").search(params[:q])
     end 
+
+		# search within certain range
+		@groupsearch = searchByRangeIn("Group") if params[:within]
+
+		# pagination
+		@groups = @groupsearch.result(:distict => true).paginate(
+      :page => params[:page],
+      :per_page => PINGS_PER_PAGE,
+      :order => "created_at DESC"
+    )   
+    @groups_count = @groupsearch.result.count
+  	@searchItemType = "Group"
   end
 
   def new
@@ -84,6 +82,11 @@ class GroupsController < InheritedResources::Base
 		# check if current_user requested membership
 		@request = @group.groupings.pending.where(:user_id => current_user, :owner_id => current_user).first if current_user
 
+		@items_offered = @group.items.offered
+    @items_needed = @group.items.needed
+		@used_resources = Item.where('accounts.accountable_id' => @group.id, 'accounts.accountable_type' => "Group")
+    @items_taken = @used_resources.taken 
+    @items_given = @used_resources.given
 
     # friendly_id outdated finder statuses
     #if request.path != group_path(@group)

@@ -12,7 +12,7 @@ db/test.sqlite3
 log/*
 tmp/*
 rdoc/*
-#public/system/*
+public/system/*
 public/assets/*
 public/.htaccess
 nbproject/*       

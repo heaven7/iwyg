@@ -30,6 +30,17 @@ describe User do
 			visit edit_user_path(@user.id)
 		end	
 
+#		it "can change password" do
+#			login_as(@user, :scope => :user)
+#			visit edit_user_path(@user.id)
+#			fill_in "Password", :with => "newpassword"
+#			fill_in "Confirm password", :with => "newpassword"
+#			click_button "Change password"
+#			#save_and_open_page			
+#			page.should have_content("Profile successfully updated.")
+#			last_email.to.should include(@user.email)  
+#		end
+
 		it "can display preferences form" do				
 			page.should have_content("Preferences") 
 		end
@@ -39,12 +50,5 @@ describe User do
 			page.should have_content("Profile successfully updated.")  
 		end
 
-		it "can change password" do
-			fill_in "Password", :with => "newpassword"
-			fill_in "Confirm password", :with => "newpassword"
-			click_button "submit_password"
-			page.should have_content("Profile successfully updated.")
-			last_email.to.should include(@user.email)  
-		end
 	end
 end

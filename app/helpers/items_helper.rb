@@ -18,7 +18,7 @@ module ItemsHelper
     end
   end
   
-
+	
     
   def transferStatus(item, ping)
     @transfer = Transfer.find_by_transferable_id_and_receiverable_id(item.id, ping.user_id)
@@ -56,7 +56,12 @@ module ItemsHelper
   
   
   def owner(item)
-    User.find(item.user_id).login
+		case item.itemable.class.to_s
+		when "User"
+			title = item.itemable.login
+		else
+			title = item.itemable.title 
+		end	
   end
   
   def holderTinyThumb(item)

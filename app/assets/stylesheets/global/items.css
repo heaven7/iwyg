@@ -33,6 +33,8 @@
 .item-bottom {
     text-align:left;
     font-size:85%;
+		height: 30px;
+    overflow: hidden;
 }
 
 #items-related {

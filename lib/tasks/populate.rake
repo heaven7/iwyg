@@ -80,6 +80,8 @@ namespace :db do
         item.status = 1..4
         item.amount = 1..100
         item.measure_id = 1..7
+        item.itemable_type = "User"
+				item.itemable_id = user.id
 
         Tag.populate 1 do |tag|
           tag.name = Populator.words(1)
@@ -144,6 +146,52 @@ namespace :db do
           item_attachment.group_id = group.id
           item_attachment.attachment_id = 1..100
         end
+
+	      Item.populate 2 do |item|
+		      item.user_id = [1..12]
+		      item.title = Populator.words(1..5).titleize
+		      item.description = Populator.paragraphs(1..3)
+		      item.item_type_id = 1..6
+		      item.multiple = [0, 1]
+		      item.from = 2.years.ago...Time.now
+		      item.till = Time.now...2.years.since
+		      item.need = [0, 1]
+		      item.status = 1..4
+		      item.amount = 1..100
+		      item.measure_id = 1..7
+		      item.itemable_type = "Group"
+					item.itemable_id = group.id
+
+		      Tag.populate 1 do |tag|
+		        tag.name = Populator.words(1)
+		        tagging = Tagging.new
+		        tagging.tag_id = Random.new.rand(1..30)
+		        tagging.taggable_type = "Item"
+		        tagging.taggable_id = item.id
+		        tagging.context = 'tags'
+		        tagging.save
+		      end
+
+		      Location.populate 1 do |location|
+		        location.address = Faker::Address.street_address
+		        location.city    = Faker::Address.city
+		        location.country = Faker::Address.country
+		        location.zip     = Faker::Address.zip_code
+		        location.lat     = Faker::Address.latitude
+		        location.lng     = Faker::Address.longitude
+		        location.gmaps   = true
+		        location.locatable_type = "Item"
+		        location.locatable_id = item.id
+		        location.user_id = user.id
+		      end
+
+		      ItemAttachment.populate 1..5 do |item_attachment|
+		        item_attachment.item_id = item.id
+		        item_attachment.attachment_id = 1..100
+		      end
+		      
+		    end # item end
+
 
       end
 

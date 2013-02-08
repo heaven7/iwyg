@@ -1,6 +1,4 @@
 <% content_for(:head) do %>
-  <%# GMap.header(:hl=> params[:locale]) if @map %>
-  <%# @map.to_html if @map %>
   <%= javascript_include_tag "/assets/jquery.qrcode.js" %>
   <%= javascript_include_tag "/assets/qrcode.js" %>
   <script type="text/javascript">
@@ -23,7 +21,12 @@
       <% if @item.transfer %>
         <span class="float-right"><%= t("resources.status") %>: <%= link_to t(@item.itemstatus), transfer_path(@item.transfer) %></span>
       <% else %>
-        <span><%= t("resources.status") %>: <%= render :partial => "items/itemstatus_with_users", :locals => { :item => @item, :owner => @item.owner  } %></span>
+        <span>
+					<%= t("resources.#{is_needed?(@item)}").html_safe %> <%= t("by").html_safe + " " %>
+				</span>
+        <span>
+					<%= render :partial => "items/itemowner", :locals => { :item => @item } %>
+				</span>
       <% end %>
       <% if @item.from || @item.till %>
         <br /><br />
@@ -52,7 +55,7 @@
     </div>
   <% end %>
   <div class="box ui-corner-all tags">
-    <%= render :partial => "share/tags", :locals => { :tags => @item.tags } %>
+    <%= render :partial => "share/tags", :locals => { :tags => @item.tags, :model => :items } %>
     <% if @item.description %>
       <%= markdown(@item.description) %>
     <% end %>

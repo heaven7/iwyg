@@ -15,7 +15,8 @@ class Group < ActiveRecord::Base
 	is_impressionable
 
   belongs_to :user
-	has_many :items, :as => :itemable
+
+  has_many :items, :as => :itemable, :dependent => :destroy                   
   has_many :groupings, :dependent => :destroy
   has_many :members, :through => :groupings, :source => :user, :conditions => "accepted_at is NOT NULL", :dependent => :destroy
   has_many :inverse_groupings, :class_name => "Grouping", :foreign_key => "group_id", :dependent => :destroy
