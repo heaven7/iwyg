@@ -30,7 +30,7 @@ gem 'airbrake'
 gem 'eventmachine', '1.0.0.beta.2'
 gem 'thin'
 gem 'therubyracer', '0.10.2', :platform => :ruby
-# gem 'geokit'
+gem 'geokit'
 gem 'hpricot'
 gem 'redis'
 gem 'sqlite3-ruby'
