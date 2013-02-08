@@ -7,7 +7,7 @@ class LocationsController < InheritedResources::Base
   before_filter :login_required, :exept => [:index, :show]
   
   def index
-    @locatable = find_locatable
+    @locatable = find_model
     if @locatable
       @locations = @locatable.locations
     else
@@ -16,18 +16,18 @@ class LocationsController < InheritedResources::Base
   end
   
   def new
-    @locatable = find_locatable
+    @locatable = find_model 
   end
   
   def edit
     @user = User.find(params[:user_id])
-    @locatable = find_locatable
+    @locatable = find_model
     @location = @locatable.location
-  end
+	end
   
   
   def show
-    @locatable = find_locatable
+    @locatable = find_model
     if @locatable
       @location = @locatable.location
     else
@@ -37,7 +37,7 @@ class LocationsController < InheritedResources::Base
   end
   
   def create
-    @locatable = find_locatable
+    @locatable = find_model
     @location = @locatable.locations.build(params[:location])
   
     if @location.save
@@ -50,7 +50,7 @@ class LocationsController < InheritedResources::Base
   
   def update
     @user = User.find(params[:user_id])
-    @locatable = find_locatable
+    @locatable = find_model
     @location = @locatable.location
     @location.address = params[:location][:address]
     @location.country = params[:location][:country]
@@ -75,16 +75,5 @@ class LocationsController < InheritedResources::Base
     flash[:notice] = t("flash.locations.destroy.notice")
     redirect_to collection_url
   end
- 
-  
-  private
 
-  def find_locatable
-    params.each do |name, value|
-      if name =~ /(.+)_id$/
-        return $1.classify.constantize.find(value)
-      end
-    end
-    nil
-  end
 end

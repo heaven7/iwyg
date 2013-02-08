@@ -23,6 +23,7 @@ class ItemsController < InheritedResources::Base
   def index
     @geolocation = session[:geo_location]
 		@itemable = find_model
+
     if params[:user_id] && current_user && params[:user_id].to_i == current_user.id.to_i
       @userSubtitle = "i"
     else
@@ -31,51 +32,53 @@ class ItemsController < InheritedResources::Base
     @itemTypes = ItemType.all
   	@searchItemType = "Resource"
     
+    $search = Item.search(params[:q], :indlude => [:comments, :images, :pings])	
     # search
     if params[:q] and !params[:q][:tag]
             
       # save search    
 			saveSearch
-      
-			# search by itemType
-		  if params[:q][:item_type_id_eq]
-		    @searchItemType = ItemType.find(params[:q][:item_type_id_eq]).title.to_s
-		  end
-
-      $search = Item.search(params[:q])
+      	
       @items = $search.result(:distinct => true).paginate( 
         :page => params[:page],
         :order => "created_at DESC", 
         :per_page => ITEMS_PER_PAGE 
       )
       @items_count = @items.count
-      
-			# search users items
-      if params[:user_id] || params[:q][:user_id_eq]
-        @user = User.find(params[:user_id] || params[:q][:user_id_eq])       
-        $search = @user.items.search(params[:q]) 
-        @active_menuitem_l1 = I18n.t "menu.main.resources"
-        @active_menuitem_l1_link = user_items_path         
-        @active_menuitem_l2 = @searchItemType.downcase
-        @active_menuitem_l2_link = user_items_path("q" => params[:q])
-        render :layout => 'userarea'
 
-			# search group items
-			elsif params[:group_id]	|| params[:q][:group_id_eq]
-        @group = Group.find(params[:group_id] || params[:q][:group_id_eq])       
-        $search = @group.items.search(params[:q]) 
-        @active_menuitem_l1 = I18n.t "menu.main.resources"
-        @active_menuitem_l1_link = group_items_path         
-        @active_menuitem_l2 = @searchItemType.downcase
-        @active_menuitem_l2_link = group_items_path("q" => params[:q])
-        render :layout => 'groups'
-			else
-        $search = Item.search(params[:q])
-      end
+			# search by itemType
+		  if params[:q][:item_type_id_eq]
+		    @searchItemType = ItemType.find(params[:q][:item_type_id_eq]).title.to_s
+		  end
+      
+			# search itemable items
+			if @itemable
+				$search = @itemable.items.search(params[:q], :indlude => [:comments, :images, :pings])
+		    case @itemable.class.to_s
+		    when "User"
+					@user = @itemable
+		      @active_menuitem_l1 = I18n.t "menu.main.resources"
+		      @active_menuitem_l1_link = user_items_path         
+		      @active_menuitem_l2 = @searchItemType.downcase
+		      @active_menuitem_l2_link = user_items_path("q" => params[:q])
+		      render :layout => 'userarea'
+				when "Group"
+		      @group = @itemable       
+		      @active_menuitem_l1 = I18n.t "menu.main.resources"
+		      @active_menuitem_l1_link = group_items_path         
+		      @active_menuitem_l2 = @searchItemType.downcase
+		      @active_menuitem_l2_link = group_items_path("q" => params[:q])
+		      render :layout => 'groups'
+		    end
+			end
+
     elsif params[:q] && params[:q][:tag]
       # search by tag
-      @items = searchByTag(params, "Item")
-      @items_count = @items.size      
+      $search = searchByTag(params, "Item").search(params[:q])
+		
+		elsif params[:within]	
+			# search within certain range
+			$search = searchByRangeIn("Item")
     else
 			# normal listing of a model's items
       if @itemable
@@ -101,19 +104,18 @@ class ItemsController < InheritedResources::Base
 					@owner = @group.title
 				  render :layout => 'groups'
 				end
-			else 
-				$search = Item.search(params[:q], :indlude => [:comments, :images, :pings])		    
       end
-	    @items = $search.result.paginate(
-	      :page => params[:page],
-	      :per_page => ITEMS_PER_PAGE,
-	      :order => "created_at DESC",
-	      :include => :pings
-	    )
-
-      @items_count = $search.result.count
-
+		
     end
+	  @items = $search.result(:distinct => true).paginate(
+	    :page => params[:page],
+	    :per_page => ITEMS_PER_PAGE,
+	    :order => "created_at DESC",
+	    :include => :pings
+	  )
+
+	  @items_count = @items.count
+
   end
   
   def search

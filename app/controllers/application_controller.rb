@@ -93,13 +93,19 @@ class ApplicationController < ActionController::Base
 			@tag = params[:q][:tag] if params[:q]
 	    @tagtype = tagtype    
 		end
-		if @tag
-	    return model.classify.constantize.tagged_with(@tag).search(params[:q]).result.paginate(
-		    :page => params[:page],
-		    :per_page => ITEMS_PER_PAGE,
-		    :order => "created_at DESC"
-		  )
-		end
+    return model.classify.constantize.tagged_with(@tag) if @tag
+	end
+
+	def searchByRangeIn(model)
+		if params[:within].present? && (params[:within].to_i > 0)
+			@location_city = (request.location.city.blank?) ? "Bad Saulgau": request.location.city  
+			@locations = Location.where(locatable_type: model).near(@location_city,params[:within])
+			@ids = []			
+			@locations.each do |l|
+				@ids << l.locatable_id.to_i			
+			end			
+			return model.classify.constantize.where(:id => @ids).search(params[:q])
+    end
 	end
 	
 	def updateNotifications

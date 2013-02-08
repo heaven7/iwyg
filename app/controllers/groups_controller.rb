@@ -9,9 +9,10 @@ class GroupsController < InheritedResources::Base
   def index
     
     @groupsearch = Group.search(params[:q])
+    
+		# get all groups with membership of current_user
     if params[:user_id]
       @user = User.find(params[:user_id])
-      # get all groups with membership of current_user
       @memberships = Array.new
       Group.all do |group|
         members = group.users
@@ -26,21 +27,20 @@ class GroupsController < InheritedResources::Base
       
       render :layout => 'userarea'
 
+    # search by tag    
     elsif params[:q] && params[:q][:tag]
-      # search by tag    
-      @groups = searchByTag(params, "Group")
+      @groupsearch = searchByTag(params, "Group").search(params[:q])
     end 
 
-		if params[:within].present? && (params[:within].to_i > 0)
-			@location_city = (request.location.city.blank?) ? "Bad Saulgau": request.location.city  
-			near = Location.near(@location_city,params[:within])
-      @groupsearch = Group.joins(:locations).merge(near).search(params[:q])
-    end
+		# search within certain range
+		@groupsearch = searchByRangeIn("Group") if params[:within]
+
+		# pagination
 		@groups = @groupsearch.result(:distict => true).paginate(
-        :page => params[:page],
-        :per_page => PINGS_PER_PAGE,
-        :order => "created_at DESC"
-      )   
+      :page => params[:page],
+      :per_page => PINGS_PER_PAGE,
+      :order => "created_at DESC"
+    )   
     @groups_count = @groupsearch.result.count
   	@searchItemType = "Group"
   end
