@@ -268,9 +268,13 @@ en:
   ping:
     one: "1 Ping"
     other: "%{count} Pings"
-    this: "Ping this"
+    this: 
+      offer: "I need it"
+      need: "I'll do it"
     of: "Ping of"
     transfer: "Apply for this transfer (make a ping)"
+    pingBodyMessageOnOffer: "Ask a question or make an appointment..."
+    pingBodyMessageOnNeed: "Offer help, give advise or a handy hint..."
     accept: "Accept"
     acceptMember: "Accept member"
     decline: "Decline"
