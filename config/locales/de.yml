@@ -351,6 +351,8 @@ de:
 
   ## item
   item:
+    singular: "Ressource"
+    plural: "Ressourcen"
     related:
       need: "Die brauchen das"
       offer: "Das k&ouml;nnte helfen"  
@@ -462,7 +464,7 @@ de:
       create:
         error:
           pingself: "Du kannst dich selbst nicht anpingen!"
-          pingown: "Du kannst %{resourceType} nicht anpingen!"
+          pingown: "Du kannst deine eigene %{resourceType} nicht anpingen!"
           pingedAlready: "Du hast schon diese(n) %{type} angepingt!"
         notice: "Ping erfolgreich gesendet."
       update:

@@ -347,6 +347,8 @@ en:
 
   ## item
   item:
+    singular: "Resource"
+    plural: "Resources"
     related:
       need: "They need this"
       offer: "This might help"  
