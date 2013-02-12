@@ -61,7 +61,7 @@
     <% end %>
     <%= render :partial => "share/item_attachments", :locals => { :object => @item } %>
   </div>
-  <%= render :partial => "share/pings", :locals => {:pings => @item.pings, :pingable => @item} %>
+  <%= render :partial => "share/pings", :locals => {:pings => @pings, :pingable => @item} %>
 </div>
 <div id="col2">
   <div class="box ui-corner-all">

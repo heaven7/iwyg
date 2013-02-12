@@ -271,9 +271,13 @@ de:
   ping:
     one: "1 Ping"
     other: "%{count} Pings"
-    this: "Ping abgeben"
+    this: 
+      offer: "Brauch' ich"
+      need: "Mach' ich"
     of: "Ping auf"
     transfer: "Diesen Transfer pingen"
+    pingBodyMessageOnOffer: "Frage stellen, einen Termin ausmachen..."
+    pingBodyMessageOnNeed: "Hilfe anbieten, einen Rat oder Tipp geben..."
     accept: "Akzeptieren"
     acceptMember: "Mitglied aufnehmen"
     decline: "Ablehnen"
