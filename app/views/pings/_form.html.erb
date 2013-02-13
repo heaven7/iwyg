@@ -1,27 +1,25 @@
 <%= content_for :head do %>
 	<script type="text/javascript">
 		  $(document).ready(function (){  
-/*
-				$msg = '<%= @ping_body_msg %>';
-				$('#ping_body').attr('value', $msg);
-				$('#ping_body').click( function () {
-					$('#ping_body').attr('value', '');
-				});
-*/
-				$('#ping_body').each(function(){
-					var defaultVal = '<%= @ping_body_msg %>';
-					$(this).focus(function(){
-						if ($(this).val() == defaultVal){
-						  $(this).removeClass('default-active').val('');
-						}
-					})
-					.blur(function(){
-						if ($(this).val() == ''){
-						  $(this).addClass('default-active').val(defaultVal);
-						}
-					})
-					.blur().addClass('default-active');
-				});
+				var defaultVal = '<%= @ping_body_msg %>';
+				$('#ping_body').focus(function(){
+					if ($(this).val() == defaultVal){
+					  $(this).removeClass('default-active').val('');
+					}
+				})
+				.blur(function(){
+					if ($(this).val() == ''){
+					  $(this).addClass('default-active').val(defaultVal);
+					}
+				})
+				.blur().addClass('default-active');
+
+				$('#ping_submit').click(function(e) {
+					target = $('#ping_body');
+					if (target.val() == defaultVal){
+						target.removeClass('default-active').val('');
+					}
+				});				
 		  });
 		</script>
 <% end %>
@@ -33,7 +31,7 @@
   <%= f.hidden_field :user_id, :value => current_user.id %>
   
   <p>
-    <%= f.text_area :body, :class => "ui-corner-all", :input_html => { :value => @ping_default_text } %>
+    <%= f.text_area :body, :class => "ui-corner-all" %>
   </p>
   <p>
     <%= f.submit @ping_submit, :class => "ui-corner-all", :id => "ping_submit" %>
