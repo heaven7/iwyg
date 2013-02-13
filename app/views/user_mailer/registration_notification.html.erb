@@ -10,7 +10,7 @@
         Du hast Dich erfolgreich bei www.iwyg.net registriert.<br/>
       </p>
       <p>
-        Logg' Dich hier ein: <%= @url %>.
+        Logg' Dich hier ein: <a href="<%= @url %>"><%= @url %></a>.
       </p>
       <%= raw("<p>Danke, dass Du dabei bist und hab' noch einen sch&ouml;nen Tag!</p>") %>
     <% end %>                    
@@ -21,7 +21,7 @@
         You have successfully signed up to www.iwyg.net.<br/>
       </p>
       <p>
-        To login to the site, just follow this link: <%= @url %>.
+        To login to the site, just follow this link: <a href="<%= @url %>"><%= @url %></a>.
       </p>
       <p>Thanks for joining and have a great day!</p>  
     <% end %>

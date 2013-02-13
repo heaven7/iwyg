@@ -8,7 +8,10 @@ Devise.setup do |config|
 
   # Configure the class responsible to send e-mails.
   config.mailer = "Devise::Mailer"
-  
+
+	  
+	config.allow_unconfirmed_access_for = 7.days
+
   # rpx
   config.rpx_application_name = 'iwyg'
   RPXNow.api_key = "0a967b4b80d7389269d6f4e929b624e4e3dfc8b0"
