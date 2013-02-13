@@ -434,7 +434,7 @@ de:
       activate:
         notice: "Profil erfolgreich aktiviert!"
       deactivated:
-        notice: "Dieses Profil wurde deaktiviert!"
+        notice: "Dieses Profil wurde deaktiviert oder ist noch nicht bestätigt!"
       update:
         notice: "Profil erfolgreich ge&auml;ndert."
       follow:
