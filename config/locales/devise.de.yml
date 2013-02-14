@@ -32,6 +32,9 @@ de:
       send_instructions: 'Du bekommst gleich eine Email von uns mit Informationen, wie Du Dein Passwort entsperren kannst.'
       unlocked: 'Dein Account wurde erfolgreich aktiviert.'
     mailer:
-      confirmation_instructions: 'Account best&auml;tigen'
-      reset_password_instructions: 'Passwort zur&uuml;cksetzen'
-      unlock_instructions: 'Entsperren des Accounts'
+      confirmation_instructions:
+        subject: 'Account best&auml;tigen'
+      reset_password_instructions: 
+        subject: 'Passwort zur&uuml;cksetzen'
+      unlock_instructions: 
+        subject: 'Entsperren des Accounts'

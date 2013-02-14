@@ -71,11 +71,17 @@ class UsersController < InheritedResources::Base
       end
       @audits = @audits.sort_by(&:created_at).reverse
 			if @user.confirmed_at == nil
-				flash[:notice] = I18n.t("devise.confirmations.notYetConfirmed") 
+				render :action => "register_completion"
 			end
     end
 
   end
+
+
+	def register_completion
+		
+				flash[:notice] = I18n.t("devise.confirmations.notYetConfirmed") 
+	end
 
 	def edit 
 		@user = current_user

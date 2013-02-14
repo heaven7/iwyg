@@ -1,5 +1,5 @@
-<%= "#{t('mailbox.messages')} (#{@messages.size})" %>
-<% if @messages.size > 0 %>
+<% if @messages and @messages.size > 0 %>
+	<%= "#{t('mailbox.messages')} (#{@messages.size})" %>
 	<table>
 		<% for message in @messages %>
 		  <% if not message.deleted %>

@@ -10,7 +10,7 @@ class SentController < InheritedResources::Base
 
   def show
     @message = current_user.sent_messages.find(params[:id])
-    @message.toggle!(:read) if @message.read.blank? # here i couldn't use update_attributes ...why?
+    @message.toggle!(:read) if @message.read.blank? 
   end
 
   def new
