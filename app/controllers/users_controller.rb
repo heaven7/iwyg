@@ -70,8 +70,18 @@ class UsersController < InheritedResources::Base
         @audits = Audit.where( :user_id => @user.id)
       end
       @audits = @audits.sort_by(&:created_at).reverse
+			if @user.confirmed_at == nil
+				render :action => "register_completion"
+			end
     end
+
   end
+
+
+	def register_completion
+		
+				flash[:notice] = I18n.t("devise.confirmations.notYetConfirmed") 
+	end
 
 	def edit 
 		@user = current_user

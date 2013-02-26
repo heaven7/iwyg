@@ -21,6 +21,7 @@ de:
       send_instructions: 'Du bekommst gleich eine Email von uns mit Informationen, wie Du Dein Passwort &auml;ndern kannst.'
       updated: 'Dein Passwort wurde erfolgreich ge&auml;ndert. Du bist jetzt eingeloggt.'
     confirmations:
+      notYetConfirmed: 'Bitte best&auml;tige deine Email, um deinen Account zu aktivieren. Dazu haben wir dir eine Email geschickt.'
       send_instructions: 'Du erh&auml;lst in K&uuml;rze eine Email mit Informationen zum Best&auml;tigen Deines Accounts von uns.'
       confirmed: 'Dein Account wurde erfolgreich best&auml;tigt. Du bist bereits eingeloggt.'
     registrations:
@@ -31,6 +32,9 @@ de:
       send_instructions: 'Du bekommst gleich eine Email von uns mit Informationen, wie Du Dein Passwort entsperren kannst.'
       unlocked: 'Dein Account wurde erfolgreich aktiviert.'
     mailer:
-      confirmation_instructions: 'Account best&auml;tigen'
-      reset_password_instructions: 'Passwort zur&uuml;cksetzen'
-      unlock_instructions: 'Entsperren des Accounts'
+      confirmation_instructions:
+        subject: 'Account best&auml;tigen'
+      reset_password_instructions: 
+        subject: 'Passwort zur&uuml;cksetzen'
+      unlock_instructions: 
+        subject: 'Entsperren des Accounts'

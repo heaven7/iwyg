@@ -429,6 +429,8 @@ en:
         notice: "Thanks for signing up!"
       activate:
         notice: "Signup complete!" 
+      deactivated:
+        notice: "This profile is deactivated or not yet confirmed!"
       update:
         notice: "Profile successfully updated."
       follow:

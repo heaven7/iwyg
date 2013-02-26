@@ -23,7 +23,7 @@
 		  });
 		</script>
 <% end %>
-
+<div id="ping-form">
 <%= form_for ([pingable, Ping.new]) do |f| %>
   <%= f.error_messages %>
   <%= f.hidden_field :pingable_id, :value => pingable.id %>
@@ -37,3 +37,4 @@
     <%= f.submit @ping_submit, :class => "ui-corner-all", :id => "ping_submit" %>
   </p>
 <% end %>
+</div>
