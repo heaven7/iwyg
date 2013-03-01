@@ -1,0 +1,6 @@
+<%= form_for(resource, :as => :user, :url => "/users/confirmation", :html => { :method => :post }) do |f| %>
+  <%= devise_error_messages! %>
+	<%= f.email_field :email, :autofocus => true, :class => "ui-corner-all" %>
+
+  <div><%= f.submit "Resend confirmation instructions", :class => "ui-corner-all" %></div>
+<% end %>
