@@ -1,4 +1,5 @@
 <div class="block ui-corner-all">
-Please verify your account...
-
+<p><b>Please verify your account...</b></p>
+<p>We sent an email to you for this, if you didn't receive it you can resend it here:</p>
+<%= render :partial => "/devise/confirmations/new", :locals => { :resource_name => "new_user" } %>
 </div>
