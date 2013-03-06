@@ -56,7 +56,12 @@ describe Message do
 		end 
 			
 		it "receiver gets the message" do
-			@receiver.inbox.messages.count.should be 1
+			@receiver.received_messages.count.should be 1
+		end
+
+		it "receiver can reply to sender" do
+			@message = @receiver.received_messages.first
+			
 		end
 
 	end

@@ -17,16 +17,14 @@ class Message < ActiveRecord::Base
   
 	def prepare_copies
     return if to.blank?
-    recipient = to
-    user = User.find(recipient)
-    m = MessageCopy.new(:recipient => user, :folder => user.inbox, :created_at => Time.now, :message_id => self.id)
-    m.custom = Custom.new
-		m.save
-    #to.each do |recipient|
-    #  recipient = User.find(recipient)
-    #  m = message_copies.build(:recipient => recipient, :folder => recipient.inbox)
-    #  m.custom = Custom.new
-    #end
+		puts "to: " + to.to_sentence
+    to.each do |recipient|
+      recipient = User.find(recipient)
+      m = MessageCopy.new(:recipient => recipient, :folder => recipient.inbox, :created_at => Time.now, :message_id => self.id)
+    	# m = message_copies.build(:recipient => recipient, :folder => recipient.inbox)
+      m.custom = Custom.new
+    	m.save
+    end
     true
   end
 end

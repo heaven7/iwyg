@@ -15,8 +15,9 @@ class MessagesController < InheritedResources::Base
     @user = current_user
     @original = @user.received_messages.find(params[:id])
     @message = @user.sent_messages.build(:to => [@original.author.login	], :subject => params[:message][:subject], :body => params[:message][:body] )
+		puts @message.subject		
 		if @message.save
-		#	flash[:notice] = "Message replied"
+		#  flash[:notice] = "Message replied"
 		end  
 		#  render :template => "sent/replyform"
   end
