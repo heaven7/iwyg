@@ -3,6 +3,7 @@ class MailboxController < InheritedResources::Base
   layout 'mailbox'
   helper :users
 
+  before_filter :authenticate_user!
     
   def index
     redirect_to new_session_path and return unless logged_in?
