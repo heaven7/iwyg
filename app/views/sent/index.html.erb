@@ -1,7 +1,7 @@
 <%= "#{t('mailbox.messages')} (#{@messages.size})" %>
 <table>
   <% for message in @messages %>
-    <% if not message.deleted %>
+    <% if message %>
       <tr>
         <td><%=h message.recipients.map(&:login).to_sentence %></td>
         <td>  

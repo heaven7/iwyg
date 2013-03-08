@@ -26,13 +26,11 @@ class SentController < InheritedResources::Base
   def create
     @message = current_user.sent_messages.build(params[:message])
     @id = params[:message][:to] || params[:message][:id]
-    @user = User.find(@id)
     @message.custom = Custom.new
     if @message.valid?
       respond_to do |format|
         if @message.save
           flash[:notice] = "Message sent."
-          format.html { redirect_to(@user, :notice => 'Message sent.') }
           format.js { render :layout => false }
         else
           format.html { redirect_to new_user_message_path(:current) }

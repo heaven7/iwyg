@@ -43,12 +43,11 @@ describe Message do
 
 	end
 
-	
 	describe "sending messages" do
 
 		before :each do
 			@receiver = create(:user)
-			@message = create(:message, author: @sender, to: @receiver)
+			@message = create(:message, author: @sender, to: [@receiver])
 		end
 
 		it "sender has sent a message" do
@@ -59,11 +58,9 @@ describe Message do
 			@receiver.received_messages.count.should be 1
 		end
 
-		it "receiver can reply to sender" do
-			@message = @receiver.received_messages.first
-			
-		end
 
 	end
 
+	end
+	
 end
