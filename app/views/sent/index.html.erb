@@ -3,7 +3,7 @@
   <% for message in @messages %>
     <% if message %>
       <tr>
-        <td><%=h message.recipients.map(&:login).to_sentence %></td>
+        <td><%= link_to message.recipients.map(&:login).to_sentence, message_path(message) %></td>
         <td>  
           <% if message.read %>
             <%= link_to h(message.subject), sent_path(message) %>
