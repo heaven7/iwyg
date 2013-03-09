@@ -12,17 +12,19 @@ class Message < ActiveRecord::Base
   attr_accessible :subject, :body, :to, :read
   
 	validates_presence_of :to, :body  
-	#validates :to, presence: true
-	#validates :body, presence: true  
+
   
 	def prepare_copies
     return if to.blank?
-		puts to.gsub(/\s+/, "").split(',')
-		@recipients = to.gsub(/\s+/, "").split(',')
-    @recipients.each do |recipient|
+		@recipients = []
+		if not to.is_a?(Array) and to.include? ","
+			@recipients = to.gsub(/\s+/, "").split(',')
+		else
+			@recipients << to
+    end
+		@recipients.each do |recipient|
       user = User.find(recipient)
       m = MessageCopy.new(:recipient => user, :folder => user.inbox, :created_at => Time.now, :message_id => self.id)
-    	# m = message_copies.build(:recipient => recipient, :folder => recipient.inbox)
       m.custom = Custom.new
     	m.save
     end
