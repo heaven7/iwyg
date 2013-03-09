@@ -47,7 +47,7 @@ class ItemsController < InheritedResources::Base
       @items_count = @items.count
 
 			# search by itemType
-		  if params[:q][:item_type_id_eq]
+		  if not params[:q][:item_type_id_eq].blank?
 		    @searchItemType = ItemType.find(params[:q][:item_type_id_eq]).title.to_s
 		  end
       
