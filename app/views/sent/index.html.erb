@@ -1,4 +1,4 @@
-<%= "#{t('mailbox.messages')} (#{@messages.size})" %>
+<%= "#{t('mailbox.messages')} (#{current_user.sent_messages.size})" %>
 <table>
   <% for message in @messages %>
     <% if message %>
