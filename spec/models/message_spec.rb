@@ -47,7 +47,7 @@ describe Message do
 
 		before :each do
 			@receiver = create(:user)
-			@message = create(:message, author: @sender, to: [@receiver])
+			@message = create(:message, author: @sender, to: @receiver.login)
 		end
 
 		it "sender has sent a message" do
@@ -57,10 +57,6 @@ describe Message do
 		it "receiver gets the message" do
 			@receiver.received_messages.count.should be 1
 		end
-
-
 	end
 
-	end
-	
 end
