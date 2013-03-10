@@ -1,6 +1,8 @@
 <p>Willkommen <%= @resource.email %>!</p>
 <p>Du kannst deinen Account mit diesem Link bestätigen:</p>
 <p><%= link_to 'Account bestätigen', user_confirmation_url(:confirmation_token => @resource.confirmation_token) %></p>
+<p>Falls der Link nicht funktioniert, kopiere einfach den nachfolgenden Link in deinen Browser:</p>
+<p><%= user_confirmation_url(:confirmation_token => @resource.confirmation_token) %></p>
 <br />
 <p>Dein iwyg-Team</p>
 

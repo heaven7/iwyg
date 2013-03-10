@@ -670,7 +670,7 @@ de:
       weHave: "Wir haben"
     login: "Login"
     mailbox: "Mailbox"
-    welcome: "Willkommen"
+    welcome: ""
     register: "Schreib' Dich ein:"
     location: "Dein Standort"
     event: "Event"

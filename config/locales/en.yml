@@ -666,7 +666,7 @@ en:
       weHave: "We have"
     login: "Login"
     mailbox: "Mailbox"
-    welcome: "Welcome"
+    welcome: ""
     register: "Join"
     location: "Your location"
     event: "Event"
