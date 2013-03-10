@@ -105,17 +105,7 @@ class ItemsController < InheritedResources::Base
 				  render :layout => 'groups'
 				end
       end
-		
     end
-	  @items = $search.result(:distinct => true).paginate(
-	    :page => params[:page],
-	    :per_page => ITEMS_PER_PAGE,
-	    :order => "created_at DESC",
-	    :include => :pings
-	  )
-
-	  @items_count = @items.count
-
   end
   
   def search

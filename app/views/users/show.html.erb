@@ -11,6 +11,7 @@
 <% end %>
 
 <% if user_signed_in? and @user == current_user %>
+	<%= render :partial => "register_completion" if current_user.confirmed_at == nil %>
 	<ul class="horizontal">
 		<li class="edit button">    
 			<%= link_to t("userarea.edit.profile").html_safe, edit_polymorphic_path([@user, "userdetails"]) %>

@@ -21,6 +21,8 @@ en:
       send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
       updated: 'Your password was changed successfully. You are now signed in.'
     confirmations:
+      verifyAccount: 'Please verify your account.'
+      resend: 'We have sent an email to you for this, if you didn\''t receive it you can resend it here&#58; '
       notYetConfirmed: 'We have sent an email to you how to fully activate your account.'
       send_instructions: 'You will receive an email with instructions about how to confirm your account in a few minutes.'
       confirmed: 'Your account was successfully confirmed. You are now signed in.'

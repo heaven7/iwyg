@@ -1,5 +1,5 @@
 class LocationsController < InheritedResources::Base
-  layout 'userarea'
+#  layout 'userarea'
   respond_to :html #, :xml, :json
   belongs_to :locatable, :polymorphic => true
   
