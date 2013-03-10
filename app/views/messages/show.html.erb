@@ -2,7 +2,7 @@
 <div class="messagehead font-small">
 <p><strong><%= t("mailbox.from") %>:</strong> <%=h @message.author.login %></p>
 <p><strong><%= t("mailbox.to") %>:</strong> <%=h @message.recipients.map(&:login).to_sentence %></p>
-<p><strong><%= t("mailbox.received") %>:</strong> <%= @message.created_at.to_s(:long) %></p>
+<p><strong><%= t("mailbox.received") %>:</strong> <%= l(@message.created_at).html_safe %></p>
 </div>
 <div class="messagebody ui-corner-all">
 <pre><%= markdown(@message.body) %></pre>

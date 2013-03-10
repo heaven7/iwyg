@@ -791,6 +791,8 @@ en:
 
   formtastic: 
     labels:
+      message:
+        body: "Message"
       meetup:
         title: "Title"
         description: "Description" 
