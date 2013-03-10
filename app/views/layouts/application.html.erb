@@ -105,7 +105,7 @@
     -->
     <div id="footernavigation">
        <%= render :partial => 'share/languages' %>
-       <! -- gmaps4rails -->
+       <!-- gmaps4rails -->
        <%= yield :scripts %>
     </div>
   </div>
@@ -113,7 +113,7 @@
 <% if ENV["RAILS_ENV"] != "production" %>
   <%= debug(params) %>
 <% end %>                   
-<! -- devise_rpx -->
+<!-- devise_rpx -->
 <%# javascript_include_rpx(user_session_url) %>
 </body>
 </html>

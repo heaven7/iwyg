@@ -194,6 +194,7 @@ de:
   between: "zwischen"
   remove: "l&ouml;schen"
   sortBy: "Sortieren nach"
+  search: "Suche"
   searchIn: "Suchen in"    
   searchedIn: "<b>%{item}</b> wurde <b>%{count}</b> mal gesucht"
   searchOptions: "Suchoptionen"
