@@ -1,8 +1,6 @@
 <% if collection %>        
-  
-	<%= render :partial => "share/search/panel", :locals => { :count => @users_count } %>
-  
-  <div class="center"><%= will_paginate collection %></div>
-  <%= render :partial => "user", :collection => collection %>
-  <div class="center"><%= will_paginate collection %></div>
+	<%= render :partial => "share/search/panel", :locals => { :count => @users_count } %>  
+  <%= render :partial => "share/list_pagination", :locals => {:collection => collection} %>
+	<%= render :partial => "user", :collection => collection %>
+  <%= render :partial => "share/list_pagination", :locals => {:collection => collection} %>
 <% end %>

@@ -104,7 +104,16 @@ class ItemsController < InheritedResources::Base
 					@owner = @group.title
 				  render :layout => 'groups'
 				end
+
+			else
+				$search = Item.search(params[:q], :indlude => [:comments, :images, :pings])
       end
+      @items = $search.result(:distinct => true).paginate( 
+        :page => params[:page],
+        :order => "created_at DESC", 
+        :per_page => ITEMS_PER_PAGE 
+      )
+      @items_count = @items.count
     end
   end
   
