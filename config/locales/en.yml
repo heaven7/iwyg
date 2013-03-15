@@ -194,6 +194,7 @@ en:
   between: "between"
   remove: "remove"
   sortBy: "Sort by"
+  search: "Search"
   searchIn: "Search in"
   searchOptions: "Search options"
   searchedIn: "<b>%{item}</b> was searched <b>%{count}</b> times"
@@ -790,6 +791,9 @@ en:
 
   formtastic: 
     labels:
+      message:
+        subject: "Subject"
+        body: "Message"
       meetup:
         title: "Title"
         description: "Description" 
@@ -868,8 +872,6 @@ en:
      page_gap: "..."
    
   ## activerecord
-  
-  #activerecord:
   errors:
     template:
       header:

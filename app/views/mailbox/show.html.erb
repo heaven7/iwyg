@@ -1,22 +1,20 @@
-<% if @messages and @messages.size > 0 %>
-	<%= "#{t('mailbox.messages')} (#{@messages.size})" %>
-	<table>
-		<% for message in @messages %>
-		  <% if not message.deleted %>
-		    <tr>
-		      <td><%=h message.author.login %></td>
-		      <td>
-		        <% if message.read %>
-		          <%= link_to h(message.subject), message_path(message) %>
-		        <% else %>
-		          <%= link_to content_tag(:strong, message.subject), message_path(message) %>
-		        <% end %> 
-		      </td>
-		      <td><%= distance_of_time_in_words(message.created_at, Time.now) %> <%= t("ago") %></td>
-		      <td><%= link_to image_tag("icons/icon_delete.png", :alt => t("remove"), :title => t("remove")), message_path(message), :method => :delete %></td>
-		    </tr>
-		  <% end %>
-		<% end %>
-	</table>
-	<%= will_paginate @messages %>
-<% end %>
+<%= "#{t('mailbox.messages')} (#{current_user.received_messages.size})" %>
+<table>
+	<% for message in @messages %>
+	  <% if message %>
+	    <tr>
+	      <td><%= link_to message.author.login, message_path(message) %></td>
+	      <td>
+	        <% if message.read %>
+	          <%= link_to h(message.subject), message_path(message) %>
+	        <% else %>
+	          <%= link_to content_tag(:strong, message.subject), message_path(message) %>
+	        <% end %> 
+	      </td>
+	      <td><%= distance_of_time_in_words(message.created_at, Time.now) %> <%= t("ago") %></td>
+	      <td><%= link_to image_tag("icons/icon_delete.png", :alt => t("remove"), :title => t("remove")), message_path(message), :method => :delete %></td>
+	    </tr>
+	  <% end %>
+	<% end %>
+</table>
+<%= will_paginate @messages %>

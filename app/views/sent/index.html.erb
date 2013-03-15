@@ -1,9 +1,9 @@
-<%= "#{t('mailbox.messages')} (#{@messages.size})" %>
+<%= "#{t('mailbox.messages')} (#{current_user.sent_messages.size})" %>
 <table>
   <% for message in @messages %>
-    <% if not message.deleted %>
+    <% if message %>
       <tr>
-        <td><%=h message.recipients.map(&:login).to_sentence %></td>
+        <td><%= link_to message.recipients.map(&:login).to_sentence, sent_path(message) %></td>
         <td>  
           <% if message.read %>
             <%= link_to h(message.subject), sent_path(message) %>

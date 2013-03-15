@@ -14,7 +14,7 @@ describe Item do
 	describe "get items" do 	
 		it "can display all items" do
 			visit items_path
-			page.should have_content("1 Resource found")
+			page.should have_content("a testitem")
 		end
 	end
 

@@ -74,7 +74,9 @@
   font-size:80%;
   padding-top:0.3em;
   padding-bottom:0.3em;
-  text-align:center;
+  text-align: center;
+	margin: 0px auto;
+	clear: both;
 }
 .pagination .current {
   color:white;

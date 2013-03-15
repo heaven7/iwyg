@@ -13,6 +13,7 @@ Spork.prefork do
 	#require 'rspec/autorun'
 	require 'capybara/rspec'
 	require 'factory_girl'
+	require File.dirname(__FILE__) + "/support/mailer_macros"
 
 	#Capybara.javascript_driver = :webkit
 

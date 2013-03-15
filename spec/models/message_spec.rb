@@ -3,7 +3,8 @@ require 'spec_helper'
 describe Message do
 
 	before :all do
-		@message = build(:message)
+		@sender = create(:user)
+		@message = build(:message, author: @sender)
 	end 
 
 	subject { @message }
@@ -23,6 +24,10 @@ describe Message do
 			@message.should be_valid
 		end
 	
+		it "has an author" do
+			@message.author.should be @sender	
+		end
+
 		it "has a subject" do
 			@message.subject.should == "test message"	
 		end
@@ -37,4 +42,21 @@ describe Message do
 		end
 
 	end
+
+	describe "sending messages" do
+
+		before :each do
+			@receiver = create(:user)
+			@message = create(:message, author: @sender, to: @receiver.login)
+		end
+
+		it "sender has sent a message" do
+			@sender.sent_messages.count.should be 1
+		end 
+			
+		it "receiver gets the message" do
+			@receiver.received_messages.count.should be 1
+		end
+	end
+
 end

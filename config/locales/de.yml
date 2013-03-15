@@ -15,8 +15,8 @@ de:
       only_day: "%e"
     day_names: [Sonntag, Montag, Dienstag, Mittwoch, Donnerstag, Freitag, Samstag]
     abbr_day_names: [So, Mo, Di, Mi, Do, Fr, Sa]
-    month_names: [~, Januar, Februar, M�rz, April, Mai, Juni, Juli, August, September, Oktober, November, Dezember]
-    abbr_month_names: [~, Jan, Feb, M�r, Apr, Mai, Jun, Jul, Aug, Sep, Okt, Nov, Dez]
+    month_names: [~, Januar, Februar, März, April, Mai, Juni, Juli, August, September, Oktober, November, Dezember]
+    abbr_month_names: [~, Jan, Feb, Mär, Apr, Mai, Jun, Jul, Aug, Sep, Okt, Nov, Dez]
     order: [ :day, :month, :year ]
 
   time:
@@ -194,6 +194,7 @@ de:
   between: "zwischen"
   remove: "l&ouml;schen"
   sortBy: "Sortieren nach"
+  search: "Suche"
   searchIn: "Suchen in"    
   searchedIn: "<b>%{item}</b> wurde <b>%{count}</b> mal gesucht"
   searchOptions: "Suchoptionen"
@@ -434,7 +435,7 @@ de:
       activate:
         notice: "Profil erfolgreich aktiviert!"
       deactivated:
-        notice: "Dieses Profil wurde deaktiviert oder ist noch nicht bestätigt!"
+        notice: "Dieses Profil wurde deaktiviert oder ist noch nicht best&auml;tigt!"
       update:
         notice: "Profil erfolgreich ge&auml;ndert."
       follow:
@@ -794,6 +795,9 @@ de:
       
   formtastic: 
     labels:
+      message:
+        subject: "Betreff"
+        body: "Nachricht"
       meetup:
         title: "Titel"
         description: "Beschreibung"

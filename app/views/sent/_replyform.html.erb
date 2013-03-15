@@ -11,6 +11,7 @@
 
   <div id= "message_errors" style="display:none"></div>
   <%= f.inputs do %>
+<!--
    <li>
       <% if params[:to] %>
         <%= f.input :to, :label => t("mailbox.to"), :input_html => { :value => params[:to] }, :validate => true, :required => true %>
@@ -18,8 +19,9 @@
         <%= f.input :to, :label => t("mailbox.to"), :input_html => { :value => @author || params[:id] }, :validate => true, :required => true %>
         <% end %>
     </li>
-    <%= f.input :subject, :required => false, :label => t("mailbox.subject") %>
-    <%= f.input :body, :as => :text, :label => t("mailbox.body"), :required => true, :validate => true, :input_html => { :value => "" } %>
+-->
+    <%= f.input :subject, :required => false %>
+    <%= f.input :body, :as => :text, :required => true, :validate => true, :input_html => { :value => "" } %>
   <% end %>
   <%= f.actions do %>
     <%= f.action :submit, :label => t("submit"), :button_html => { :class => "submit", :disable_with => "..." } %>
