@@ -21,6 +21,7 @@ group :development do
   gem 'mongrel', '>= 1.2.0.pre2'
 end
 
+gem 'sidekiq'
 gem 'impressionist'
 gem 'formatize'
 gem 'rails_autolink'
