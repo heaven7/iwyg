@@ -17,10 +17,6 @@ group :production, :stage do
   gem 'mysql2' #, '0.2.18'
 end
 
-group :development do 
-  gem 'mongrel', '>= 1.2.0.pre2'
-end
-
 gem 'sidekiq'
 gem 'impressionist'
 gem 'formatize'
@@ -75,12 +71,14 @@ gem 'acts_as_audited', '~> 2.1.0'
 gem 'rails3_acts_as_paranoid'
 
 group :development, :test do
+  gem 'mongrel', '>= 1.2.0.pre2'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'capybara-webkit' #, '~> 0.7.2'
   gem 'database_cleaner' #, '~> 0.6.7'
   gem 'guard-spork' #, '1.2.0'
   gem 'spork' #, '0.9.2'
+	gem "better_errors", ">= 0.3.2"
 end
 
 group :test do

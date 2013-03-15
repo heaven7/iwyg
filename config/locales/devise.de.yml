@@ -1,42 +1,45 @@
+---
 de:
   errors:
     messages:
-      not_found: "nicht gefunden"
-      already_confirmed: "bereits best&auml;tigt"
-      not_locked: "war nicht gesperrt"
-
+      not_found: nicht gefunden
+      already_confirmed: bereits bestätigt
+      not_locked: war nicht gesperrt
   devise:
     failure:
-      unauthenticated: 'Zum Weitermachen, bitte einloggen oder registrieren.'
-      unconfirmed: 'Zum Weitermachen, bitte vorher Deinen Account best&auml;tigen.'
-      locked: 'Dein Account ist gesperrt.'
-      invalid: 'Email oder Passwort falsch geschrieben.'
-      invalid_token: 'Ung�ltiger Authentifizierungs-Token.'
-      timeout: 'Deine Session ist abgelaufen, bitte logg Dich erneut ein.'
-      inactive: 'Dein Account ist noch nicht aktiviert.'
+      unauthenticated: Zum Weitermachen, bitte einloggen oder registrieren.
+      unconfirmed: Zum Weitermachen, bitte vorher Deinen Account bestätigen.
+      locked: Dein Account ist gesperrt.
+      invalid: Email oder Passwort falsch geschrieben.
+      invalid_token: Ungültiger Authentifizierungs-Token.
+      timeout: Deine Session ist abgelaufen, bitte logg Dich erneut ein.
+      inactive: Dein Account ist noch nicht aktiviert.
     sessions:
-      signed_in: 'Erfolgreich eingeloggt.'
-      signed_out: 'Erfolgreich ausgeloggt.'
+      signed_in: Erfolgreich eingeloggt.
+      signed_out: Erfolgreich ausgeloggt.
     passwords:
-      send_instructions: 'Du bekommst gleich eine Email von uns mit Informationen, wie Du Dein Passwort &auml;ndern kannst.'
-      updated: 'Dein Passwort wurde erfolgreich ge&auml;ndert. Du bist jetzt eingeloggt.'
+      send_instructions: Du bekommst gleich eine Email von uns mit Informationen, wie Du Dein Passwort ändern kannst.
+      updated: Dein Passwort wurde erfolgreich geändert. Du bist jetzt eingeloggt.
     confirmations:
-      resend: 'Wir haben dir dazu eine Email geschickt. Falls du sie nicht bekommen hast, kannst du sie dir hier nochmal schicken&#58; '
-      verifyAccount: 'Bitte best&auml;tige deinen Account.'
-      notYetConfirmed: 'Bitte best&auml;tige deine Email, um deinen Account zu aktivieren. Dazu haben wir dir eine Email geschickt.'
-      send_instructions: 'Du erh&auml;lst in K&uuml;rze eine Email mit Informationen zum Best&auml;tigen Deines Accounts von uns.'
-      confirmed: 'Dein Account wurde erfolgreich best&auml;tigt. Du bist bereits eingeloggt.'
+      resend: ! 'Wir haben dir dazu eine Email geschickt. Falls du sie nicht bekommen
+        hast, kannst du sie dir hier nochmal schicken&#58; '
+      verifyAccount: Bitte bestätige deinen Account.
+      notYetConfirmed: Bitte bestätige deine Email, um deinen Account zu aktivieren.
+        Dazu haben wir dir eine Email geschickt.
+      send_instructions: Du erhälst in Kürze eine Email mit Informationen zum Bestätigen
+        Deines Accounts von uns.
+      confirmed: Dein Account wurde erfolgreich bestätigt. Du bist bereits eingeloggt.
     registrations:
-      signed_up: 'Du hast Dich erfolgreich registriert.'
-      updated: '&Auml;nderungen gespeichert.'
-      destroyed: 'Dein Account wurde gel&ouml;scht'
+      signed_up: Du hast Dich erfolgreich registriert.
+      updated: änderungen gespeichert.
+      destroyed: Dein Account wurde gelöscht
     unlocks:
-      send_instructions: 'Du bekommst gleich eine Email von uns mit Informationen, wie Du Dein Passwort entsperren kannst.'
-      unlocked: 'Dein Account wurde erfolgreich aktiviert.'
+      send_instructions: Du bekommst gleich eine Email von uns mit Informationen, wie Du Dein Passwort entsperren kannst.
+      unlocked: Dein Account wurde erfolgreich aktiviert.
     mailer:
       confirmation_instructions:
-        subject: 'Account best&auml;tigen'
-      reset_password_instructions: 
-        subject: 'Passwort zur&uuml;cksetzen'
-      unlock_instructions: 
-        subject: 'Entsperren des Accounts'
+        subject: Account bestätigen
+      reset_password_instructions:
+        subject: Passwort zurücksetzen
+      unlock_instructions:
+        subject: Entsperren des Accounts
