@@ -9,17 +9,19 @@ namespace :db do
     Tagging = ActsAsTaggableOn::Tagging
     [User, Userdetails, Location, Item, Ping, Group, Tag, Tagging, ItemAttachment].each(&:delete_all)
 
-    User.populate 10 do |user|
+    User.populate 50 do |user|
       user.login              = Faker::Internet.user_name
       user.email              = Faker::Internet.email
       user.encrypted_password = "$2a$04$x0SnRTBGBc7nL1ei34Ah2OmWmuJTaHzTmzcEtYimZ5yvLtnTXTblC"
 			user.is_active					= true
+			user.confirmed_at 			= 2.years.ago...Time.now
+
       Userdetails.populate 1 do |userdetails|
         userdetails.user_id = user.id
         userdetails.firstname  = Faker::Name.first_name
         userdetails.lastname  = Faker::Name.last_name
         userdetails.birthdate = 70.years.ago...Time.now
-        userdetails.created_at  = 2.years.ago...Time.now
+        userdetails.created_at  = user.confirmed_at
       end
 
       Location.populate 1 do |location|
@@ -36,7 +38,7 @@ namespace :db do
       end
 
       # users interests
-      Tag.populate 1 do |tag|
+      Tag.populate 1..5 do |tag|
         tag.name = Populator.words(1)
         tagging = Tagging.new
         tagging.tag_id = Random.new.rand(1..30)
@@ -47,7 +49,7 @@ namespace :db do
       end
 
       # users wishes
-      Tag.populate 1 do |tag|
+      Tag.populate 1..5 do |tag|
         tag.name = Populator.words(1)
         tagging = Tagging.new
         tagging.tag_id = Random.new.rand(1..30)
@@ -58,7 +60,7 @@ namespace :db do
       end
 
       # users aims
-      Tag.populate 1 do |tag|
+      Tag.populate 1..5 do |tag|
         tag.name = Populator.words(1)
         tagging = Tagging.new
         tagging.tag_id = Random.new.rand(1..30)
@@ -82,6 +84,7 @@ namespace :db do
         item.measure_id = 1..7
         item.itemable_type = "User"
 				item.itemable_id = user.id
+				item.deleted_at = nil
 
         Tag.populate 1 do |tag|
           tag.name = Populator.words(1)
@@ -118,7 +121,7 @@ namespace :db do
         group.title = Populator.words(1..3)
         group.description = Populator.sentences(1..3)
         group.created_at  = 2.years.ago...Time.now
-
+		
         Location.populate 1 do |location|
           location.address = Faker::Address.street_address
           location.city    = Faker::Address.city
@@ -161,6 +164,7 @@ namespace :db do
 		      item.measure_id = 1..7
 		      item.itemable_type = "Group"
 					item.itemable_id = group.id
+					item.deleted_at = nil
 
 		      Tag.populate 1 do |tag|
 		        tag.name = Populator.words(1)

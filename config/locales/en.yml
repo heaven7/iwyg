@@ -792,6 +792,7 @@ en:
   formtastic: 
     labels:
       message:
+        subject: "Subject"
         body: "Message"
       meetup:
         title: "Title"
@@ -871,8 +872,6 @@ en:
      page_gap: "..."
    
   ## activerecord
-  
-  #activerecord:
   errors:
     template:
       header:
