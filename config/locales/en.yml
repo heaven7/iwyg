@@ -393,7 +393,7 @@ en:
         two: I ask my friends for transportation
         three: User has to get it on its own
         four: I transport/send it by my own
-        five: I don't know yet
+        five: ! 'I don''t know yet'
     table:
       what: What
       from: from
@@ -411,6 +411,8 @@ en:
       accept:
         notice: Friendship accepted
         error: Something went wrong.
+    message:
+      send: Message sent.
     mailbox:
       delete:
         notice: Message deleted.

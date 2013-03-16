@@ -1,0 +1,13 @@
+Hallo <%= @receiver.login %>,
+<br />
+<%= @sender.login %> hat dir folgende Nachricht geschickt:<br /><br />
+
+<pre>
+<% if @message.subject %>
+<b><%= @message.subject %></b><br /><br />
+<% end %>
+<%= markdown(@message.body) %>
+</pre>
+<br />
+Du kannst hier antworten:
+<%= message_url(@message) %>

@@ -1,4 +1,4 @@
-$("#flash_notice").html("<%= escape_javascript(flash[:notice])%>");
+$("#header").after('<div id="flash_notice" class="notice ui-corner-all"><%= escape_javascript(I18n.t("flash.message.send"))%></div>');
 $('#message_subject').attr('value', '');
 $('#message_body').attr('value', '');
 $('#new_message').slideToggle();

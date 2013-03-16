@@ -415,6 +415,8 @@ de:
       accept:
         notice: Freundschaft akzeptiert.
         error: Hm...irgendwas ging schief.
+    message:
+      send: Nachricht verschickt.
     mailbox:
       delete:
         notice: Nachricht gel&ouml;scht.
