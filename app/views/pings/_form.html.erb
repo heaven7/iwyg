@@ -1,3 +1,29 @@
+<%= content_for :head do %>
+	<script type="text/javascript">
+		  $(document).ready(function (){  
+				var defaultVal = '<%= @ping_body_msg %>';
+				$('#ping_body').focus(function(){
+					if ($(this).val() == defaultVal){
+					  $(this).removeClass('default-active').val('');
+					}
+				})
+				.blur(function(){
+					if ($(this).val() == ''){
+					  $(this).addClass('default-active').val(defaultVal);
+					}
+				})
+				.blur().addClass('default-active');
+
+				$('#ping_submit').click(function(e) {
+					target = $('#ping_body');
+					if (target.val() == defaultVal){
+						target.removeClass('default-active').val('');
+					}
+				});				
+		  });
+		</script>
+<% end %>
+<div id="ping-form">
 <%= form_for ([pingable, Ping.new]) do |f| %>
   <%= f.error_messages %>
   <%= f.hidden_field :pingable_id, :value => pingable.id %>
@@ -8,6 +34,7 @@
     <%= f.text_area :body, :class => "ui-corner-all" %>
   </p>
   <p>
-    <%= f.submit t("ping.this"), :class => "ui-corner-all" %>
+    <%= f.submit @ping_submit, :class => "ui-corner-all", :id => "ping_submit" %>
   </p>
 <% end %>
+</div>

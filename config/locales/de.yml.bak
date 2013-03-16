@@ -1,0 +1,930 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+de:
+  meta:
+    language_name: "Deutsch"
+    locale: "de"
+  ## date & time
+  
+  date:
+    formats:
+      default: "%d.%m.%Y"
+      short: "%e. %b"
+      long: "%e. %B %Y"
+      only_day: "%e"
+    day_names: [Sonntag, Montag, Dienstag, Mittwoch, Donnerstag, Freitag, Samstag]
+    abbr_day_names: [So, Mo, Di, Mi, Do, Fr, Sa]
+    month_names: [~, Januar, Februar, März, April, Mai, Juni, Juli, August, September, Oktober, November, Dezember]
+    abbr_month_names: [~, Jan, Feb, Mär, Apr, Mai, Jun, Jul, Aug, Sep, Okt, Nov, Dez]
+    order: [ :day, :month, :year ]
+
+  time:
+    formats:
+      default: "%a, %d. %B %Y, %H:%M Uhr"
+      time: "%H:%M"
+      short: "%e. %B, %H:%M Uhr"
+      long: "%A, %d. %B %Y, %H:%M Uhr"
+      only_second: "%S"
+    am: ""
+    pm: ""
+
+  datetime:
+    distance_in_words:
+      half_a_minute: 'eine halbe Minute'
+      less_than_x_seconds:
+        zero: 'weniger als 1 Sekunde'
+        one: '1 Sekunde'
+        other: '%{count} Sekunden'
+      x_seconds:
+        one: '1 Sekunde'
+        other: '%{count} Sekunden'
+      less_than_x_minutes:
+        zero: 'weniger als 1 Minute'
+        one: '1 Minute'
+        other: '%{count} Minuten'
+      x_minutes:
+        one: '1 Minute'
+        other: '%{count} Minuten'
+      about_x_hours:
+        one: 'etwa 1 Stunde'
+        other: '%{count} Stunden'
+      x_days:
+        one: '1 Tag'
+        other: '%{count} Tage'
+      about_x_months:
+        one: 'etwa 1 Monat'
+        other: '%{count} Monate'
+      x_months:
+        one: '1 Monat'
+        other: '%{count} Monate'
+      about_x_years:
+        one: 'etwa 1 Jahr'
+        other: '%{count} Jahre'
+      over_x_years:
+        one: 'mehr als 1 Jahr'
+        other: '%{count} Jahre'
+      almost_x_years:
+        one:   "fast 1 Jahr"
+        other: "fast %{count} Jahre"
+    prompts:
+      year:   "Jahr"
+      month:  "Monat"
+      day:    "Tag"
+      hour:   "Stunde"
+      minute: "Minute"
+      second: "Sekunde"
+
+  validates_timeliness:
+    error_value_formats:
+      date: '%d.%m.%Y'
+      time: '%H:%M:%S'
+      datetime: '%d.%m.%Y %H:%M:%S'
+
+  ## iwyg
+  iwyg:
+    title: "iwyg - das soziale Go-Happy-Netzwerk"
+
+  ## login
+        
+  login:
+    description: "Bitte g&uuml;ltigen Usernamen und Passwort angeben."
+    notAMember: "Noch nicht dabei?"
+    label:
+      login: "Username"
+      password: "Passwort"
+      forgotPassword: "Passwort vergessen?"
+      submit: "Einloggen"
+      remember: "Eingeloggt bleiben"
+      register: "Hier registrieren"
+  
+  ## register
+  
+  register:
+    required: "ben&ouml;tigt"
+    mandatoryFields: "Pflichtfelder"
+    signup: "Anmelden"
+    signin: "Einloggen"
+    forgotpassword: "Passwort vergessen?"
+    label:
+      login: "Username"
+      email: "Email"
+      password: "Passwort"
+      confirmPassword: "Passwort wiederholen"
+      
+  ## change password
+  
+  password:
+    change: "Passwort &auml;ndern"
+    change_submit: "Neues Passwort erstellen"    
+    
+  ## resources
+            
+  resource:
+    one: '1 Ressource'
+    other: '%{count} Ressourcen'
+    new: "Neue Ressource"
+  good:
+    one: "1 Gut"
+    other: "%{count} G&uuml;ter"
+    singular: "Gut"             
+    plural: "G&uuml;ter"
+  service:
+    one: "1 Dienst"
+    other: "%{count} Dienste"
+    singular: "Dienst"
+    plural: "Dienste"
+  transport:
+    one: "1 Transport"
+    other: "%{count} Transporte"
+    singular: "Transport"
+    plural: "Transporte"
+  idea:
+    one: "1 Idee"
+    other: "%{count} Ideen"
+    singular: "Idee"
+    plural: "Ideen"
+  knowledge:
+    one: "1 Wissen"
+    other: "%{count} Wissen"
+    singular: "Wissen"
+    plural: "Wissen" 
+  skill:
+    one: "1 F&auml;higkeit"
+    other: "%{count} F&auml;higkeiten"
+    singular: "F&auml;higkeit"
+    plural: "F&auml;higkeiten" 
+  sharingpoint:
+    one: "1 Sammelstelle"
+    other: "%{count} Sammelstellen"
+    singular: "Sammelstelle"
+    plural: "Sammelstellen"
+  user:
+    one: "1 User"
+    other: "%{count} User"
+    singular: "User"
+    aims: "Ziele"
+    aimsTo: "zielt nach"
+    canDo: "kann"
+    skills: "F&auml;higkeiten"
+    wishesTo: "w&uuml;nscht sich"
+    wishes: "W&uuml;nsche"
+    interestedIn: "interessiert sich f&uuml;r"
+    interests: "Interessen"
+    account:
+      activated: "Dein Account wurde erfolgreich aktiviert."
+      pleaseactivate: "Bitte aktiviere deinen Account."
+      created: "Dein Account wurde erstellt."
+  
+  ## general
+  
+  who: "Wer"
+  where: "Wo"
+  what: "Was"
+  when: "Wann"
+  show: "Ansehen"
+  back: "Zur&uuml;ck"
+  edit: "&auml;ndern"
+  delete: "l&ouml;schen"
+  unknown: "unbekannt"
+  with: "mit"
+  or: "oder"
+  and: "und"
+  add: "hinzuf&uuml;gen"
+  between: "zwischen"
+  remove: "l&ouml;schen"
+  sortBy: "Sortieren nach"
+  search: "Suche"
+  searchIn: "Suchen in"    
+  searchedIn: "<b>%{item}</b> wurde <b>%{count}</b> mal gesucht"
+  searchOptions: "Suchoptionen"
+  help: "Hilfe"
+  preferences: "Einstellungen"
+  changepassword: "Passwort &auml;ndern"
+  about: "&Uuml;ber uns"
+  options: "Optionen"
+  confirm_delete: "Wirklich, wirklich l&ouml;schen?"
+  ago: "her"
+  previous: "zur&uuml;ck"
+  next: "vor"
+  more: "mehr"
+  thing: 
+    one: "Ding"
+    other: "Dinge"
+  found: "gefunden"
+  send: "Senden"
+  from: "von"
+  till: "bis"
+  start: "Beginn"
+  end: "Ende"
+  duration: "Dauer"
+  to: "bis"
+  by: "von"
+  distance: "Entfernung"
+  submit: "Abschicken"
+  save: "Speichern"
+  tags: "Tags"
+  needs: "braucht"
+  offers: "bietet an"
+  accept: "Akzeptieren"
+  decline: "Ablehnen"
+  accepted: "akzeptiert"
+  declined: "abgelehnt"
+  opened: "er&ouml;ffnet"
+  closed: "geschlossen"
+  created_at: "erstellt am"
+  updated_at: "ge&auml;ndert am"
+  accepted_at: "akzeptiert am"
+  follow: "Folgen"
+  block: "Blockieren"
+  unblock: "Blockierung aufheben"
+  blockedUsers: "geblockte User"
+  hasUpdated: "hat ge&auml;ndert"
+  hasUpdatedAMeetup: "hat den Treffpunkt '%{title}' ge&auml;ndert"
+  hasUpdatedAnItem: "hat '%{title}' ge&auml;ndert"
+  hasUpdatedAGroup: "hat die Gruppe '%{title}' ge&auml;ndert"
+  hasUpdatedALocation: "hat den Ort f&uuml;r '%{title}' ge&auml;ndert"
+  hasUpdatedtheUserdetails: "hat ihre/seine Userdaten ge&auml;ndert"
+  hasJoinedTheCommunity: "ist iwyg beigetreten."
+  hasCreated: "hat erstellt"
+  hasCreatedAMeetup: "hat den Treffpunkt '%{title}' er&ouml;ffnet"
+  hasCreatedANeed: "braucht '%{title}'"
+  hasCreatedAnOffer: "bietet '%{title}' an"
+  hasCreatedAGroup: "hat die Gruppe '%{title}' er&oumlffnet"
+  hasCreatedALocation: "hat den Ort f&uuml;r '%{title}' gespeichert"
+  hasDestroyedAMeetup: "hat den Treffpunkt '%{title}' gel&ouml;scht"
+  hasPingedOn: "hat '%{title}' angepingt"
+  usersPingIsAccepted: "akzeptiert Ping auf '%{title}'"
+  usersPingIsDeclined: "lehnt Ping auf '%{title}' ab"
+  usersPingIsClosed: "schliesst Ping auf '%{title}'"
+  hasCommentedOn: "hat '%{title}' kommentiert"
+  hasDeleted: "hat gel&ouml;scht"
+  activity: "Aktivit&auml;ten"
+
+  ## links
+
+  link:
+    ping:
+      loginToPing: "Log' dich ein um zu pingen."
+   
+  ## ping
+      
+  ping:
+    one: "1 Ping"
+    other: "%{count} Pings"
+    this: 
+      offer: "Brauch' ich"
+      need: "Mach' ich"
+    of: "Ping auf"
+    transfer: "Diesen Transfer pingen"
+    pingBodyMessageOnOffer: "Frage stellen, einen Termin ausmachen..."
+    pingBodyMessageOnNeed: "Hilfe anbieten, einen Rat oder Tipp geben..."
+    accept: "Akzeptieren"
+    acceptMember: "Mitglied aufnehmen"
+    decline: "Ablehnen"
+    setTransfer: "Transfer starten"
+    setAppointment: "Termin ausmachen"
+    setMeetup: "Treffpunkt ausmachen"
+    table:
+      who: "Wer"
+      what: "Was"
+      status: "Status"
+      madeOn: "am"
+      options: "Optionen"
+    notifyOn:
+      user: 
+        opened: "%{pinger} hat dich angepingt."
+        accepted: "%{user.login} hat deinen Ping akzeptiert."
+        declined: "%{user.login} hat deinen Ping  abgelehnt."
+        closed: "Dein Ping auf '%{resource_title}' wurde geschlossen."
+      group:
+        opened: "%{pinger} hat deine Gruppe: '%{resource_title}' angepingt."
+        accepted: "Dein Ping auf Gruppe: '%{resource_title}' wurde akzeptiert."
+        declined: "Dein Ping auf Gruppe: '%{resource_title}' wurde abgelehnt."
+        closed: "Dein Ping auf Gruppe: '%{resource_title}' wurde geschlossen."
+      item:
+        good:
+          opened: "%{pinger} hat dein Gut: '%{resource_title}' angepingt."
+          accepted: "Dein Ping auf Gut: '%{resource_title}' wurde akzeptiert."
+          declined: "Dein Ping auf Gut: '%{resource_title}' wurde abgelehnt."
+          closed: "Dein Ping auf Gut: '%{resource_title}' wurde geschlossen."
+        service:
+          opened: "%{pinger} hat deinen Dienst: '%{resource_title}' angepingt."
+          accepted: "Dein Ping auf Service: '%{resource_title}' wurde akzeptiert."
+          declined: "Dein Ping auf Service: '%{resource_title}' wurde abgelehnt."
+          closed: "Dein Ping auf Service: '%{resource_title}' wurde geschlossen."
+        idea:
+          opened: "%{pinger} hat deine Idee: '%{resource_title}' angepingt."
+          accepted: "Dein Ping auf Idee: '%{resource_title}' wurde akzeptiert."
+          declined: "Dein Ping auf Idee: '%{resource_title}' wurde abgelehnt."
+          closed: "Dein Ping auf Sammelstelle: '%{resource_title}' wurde geschlossen."
+        transport:
+          opened: "%{pinger} hat deinen Transport: '%{resource_title}' angepingt."
+          accepted: "Dein Ping auf Transport: '%{resource_title}' wurde akzeptiert."
+          declined: "Dein Ping auf Transport: '%{resource_title}' wurde abgelehnt."
+          closed: "Dein Ping auf Transport: '%{resource_title}' wurde geschlossen."
+        sharingpoint:
+          opened: "%{pinger} hat deine Sammelstelle: '%{resource_title}' angepingt."
+          accepted: "Dein Ping auf Sammelstelle: '%{resource_title}' wurde akzeptiert."
+          declined: "Dein Ping auf Sammelstelle: '%{resource_title}' wurde abgelehnt."
+          closed: "Dein Ping auf Sammelstelle: '%{resource_title}' wurde geschlossen."
+  
+  ## event
+  event:
+    one: "1 Event"
+    other: "%{count} Events"
+    new: "Neuer Event"
+    action: "%{owner} trifft sich mit %{pinger}: %{title}"  
+    status: "Event wurde %{status} von %{user}"
+
+ 
+ ## group
+  group:
+    one: "1 Gruppe"
+    other: "%{count} Gruppen"
+    singular: "Gruppe"
+    plural: "Gruppen"
+    new: "Neue Gruppe"
+    participant:
+      one: "1 Teilnehmer"
+      other: "%{count} Teilnehmer"
+    participate: "Teilnehmen"
+
+  ## item
+  item:
+    singular: "Ressource"
+    plural: "Ressourcen"
+    related:
+      need: "Die brauchen das"
+      offer: "Das k&ouml;nnte helfen"  
+    
+  ## meetup
+  
+  meetup:
+    one: "1 Treffpunkt"
+    other: "%{count} Treffpunkte"
+    new: "Neuer Treffpunkt"
+    accept: "Einladung akzeptieren"
+    participants:
+      one: "1 Teilnehmer"
+      other: "%{count} Teilnehmer"
+    onlyFollowersAvailableToAdd: "Du kannst nur Follower oder Mitglieder, denen du folgst, hinzuf&uuml;gen."
+    
+  ## transfer
+  
+  transfer:
+    one: "1 Transfer"
+    other: "%{count} Transfers"
+    pinger: "Empf&auml;nger"
+    of: "Transfer von"
+    to: "nach"
+    status: "Transfer wurde %{status} von %{user}"
+    started: "Gestartet am"
+    accepted: "Akzeptiert am"
+    noSharingpointInRoute: "Es gibt keine Sammelstelle auf der Route!"
+    noFriendsInRoute: "Keiner deiner Freunde befindet sich in der N&auml;he der Route, aber du kannst einen dieser User fragen, die sind in der N&auml;he."
+    youCanDo: "Du kannst das Folgende tun: "
+    text:
+      form:  "<i>%{itemtitle}</i> soll transferiert werden.<br />
+              %{username} wird von deinen Transferaktionen benachrichtigt werden.<br />
+              Du weisst ja, nach Erhalt von <i>%{itemtitle}</i>, kann %{username} die Ware annehmen oder ablehnen,
+              so versuche dein Bestes, um %{username} zufrieden zu stellen."
+    option:
+      good:
+        one:  "Ich bringe es zu einer lokalen Sammelstelle."
+        two: "Ich frage meine Freunde"
+        three: "User muss es selbst abholen"
+        four: "Ich transportiere/sende es selbst"
+        five: "Ich weiss es nicht"
+        
+    table:
+      what: "Was"
+      from: "von"
+      to: "nach"
+      status: "Status"
+      madeOn: "am"
+      options: "Optionen"
+      
+  
+  ## flash (error and notice alerts)
+  
+  flash:
+    friendships:
+      create:
+        notice: "Freundschaft erfolgreich gebildet."
+        error: "Es war nicht m&ouml;glich die Freundschaft aufzubauen (technisch...)"
+      destroy:
+        notice: "Freundschaft gel&ouml;st."
+      accept:
+        notice: "Freundschaft akzeptiert."
+        error: "Hm...irgendwas ging schief."
+    mailbox:
+      delete:
+        notice: "Nachricht gel&ouml;scht."
+      restore:
+        notice: "Nachricht wiederhergestellt."
+    session:
+      create:
+        notice: "Erfolgreich eingeloggt"
+        error: "Login fehlgeschlagen, bitte probiere es nocheinmal."
+      destroy:
+        notice: "Du wurdest erfolgreich ausgeloggt."
+    users:
+      create:
+        notice: "Erfolgreich registriert, vielen Dank!"
+      activate:
+        notice: "Profil erfolgreich aktiviert!"
+      deactivated:
+        notice: "Dieses Profil wurde deaktiviert oder ist noch nicht best&auml;tigt!"
+      update:
+        notice: "Profil erfolgreich ge&auml;ndert."
+      follow:
+          error:
+            alreadyFollowing: "Du folgst dem User bereits."
+          notice: "Du folgst nun '%{title}'"
+      block:
+          notice: "Du hast '%{title}' erfolgreich geblockt."
+          error: "Konnte '%{title}' nicht blocken."
+      unblock:
+          notice: "Du blockst '%{title}' nicht mehr."
+          error: "Irgendwas ging schief, den Block von '%{title}' aufzuheben."
+    userdetails:
+      update:
+        notice: "Personendaten erfolgreich ge&auml;ndert."
+    items:
+      create:
+        notice: "Ressource erfolgreich erstellt."
+        error: "Ressource konnte nicht erstellt werden."
+      update:
+        notice: "Erfolgreich Ressource ge&auml;ndert."
+      follow:
+          error:
+            alreadyFollowing: "Du folgst der Ressource bereits."
+          notice: "Du folgst nun der Ressource '%{title}'."
+    pings:
+      create:
+        error:
+          pingself: "Du kannst dich selbst nicht anpingen!"
+          pingown: "Du kannst deine eigene %{resourceType} nicht anpingen!"
+          pingedAlready: "Du hast schon diese(n) %{type} angepingt!"
+        notice: "Ping erfolgreich gesendet."
+      update:
+        notice: "Ping erfolgreich ge&auml;ndert."    
+      destroy:
+        notice: "ing erfolgreich  gel&ouml;scht." 
+      accept:
+        error:
+          alreadyAccepted: "Dieser Ping ist schon akzeptiert!"     
+          notAllowed: "Du darfst diesen Ping nicht akzeptieren!" 
+        notice: "Ping wurde akzeptiert!"
+        membership: "Mitglied aufgenommen."
+      decline:
+        error:
+          alreadyDeclined: "Dieser Ping ist schon abgelehnt!" 
+          alreadyAccepted: "Dieser Ping ist schon akzeptiert und daher kannst du nicht ablehnen!"    
+          notAllowed: "Du darfst diesen Ping nicht ablehnen!" 
+        notice: "Ping wurde abgelehnt!"  
+    locations:
+      create:
+        notice: "Standort gespeichert."
+      update:
+        notice: "Erfolgreich Standort ge&auml;ndert." 
+      destroy:
+        notice: "Erfolgreich Standort gel&ouml,scht." 
+    events:
+      create:
+        notice: "Event gespeichert."
+      update:
+        notice: "Erfolgreich Event ge&auml;ndert." 
+      destroy:
+        notice: "Erfolgreich Event gel&ouml;scht."
+    meetups:
+      create:
+        notice: "Treffpunkt gespeichert."
+      update:
+        notice: "Erfolgreich Treffpunkt ge&auml;ndert." 
+      destroy:
+        notice: "Erfolgreich Treffpunkt gel&ouml;scht."
+      accept:
+        notice: "Treffen erfolgreich akzeptiert."
+    images:
+      create:
+        notice: "Bild gespeichert."
+      update:
+        notice: "Erfolgreich Bild ge&auml;ndert." 
+      destroy:
+        notice: "Erfolgreich Bild gel&ouml,scht."    
+    comments:
+      create:
+        notice: "Kommentar erfolgreich erstellt."
+      update:
+        notice: "Kommentar erfolgreich ge&auml;ndert." 
+      destroy:
+        notice: "Kommentar erfolgreich gel&ouml,scht."    
+    groups:
+       create:
+         notice: "Erfolgreich Gruppe erstellt."
+       update:
+         notice: "Erfolgreich Gruppe ge&auml;ndert."
+       follow:
+          error:
+            alreadyFollowing: "Du folgst der Gruppe bereits."
+          notice: "Du folgst nun der Gruppe '%{title}'."
+    groupings:
+       create:
+         notice: "Teilnahmeanfrage verschickt."
+         error: "Teilnahme fehlgeschlagen, vermutlich hast du schon eine Anfrage verschickt."
+       accept:
+         notice: "Teilnahmeanfrage akzeptiert."
+         error: "Es gab Probleme, die Teilnahme zu akzeptieren."
+       destroy:
+         notice: "Teilnahmeanfrage abgelehnt."
+
+  ## menu
+  
+  menu:
+    main:
+      resources: "Ressourcen"
+      members: "Mitglieder"
+      groups: "Gruppen"
+      info: "Infos"
+      about: "&Uuml;ber uns"
+      meetups: "Treffpunkte"
+    user:
+      profile: "Profil"
+      resources: "Ressourcen"
+      groups: "Gruppen"
+      pings: "Pings"
+      events: "Events"
+      meetups: "Treffpunkte"
+      transfers: "Transfer"
+      addToFriends: "Als Freund gewinnen"
+      sendMessage: "Nachricht schicken"
+      friends: "Freunde"
+      editLocation: "Standort &auml;ndern"
+      editUserdetails: "Personendaten &auml;ndern"
+      followings: "folgt"
+      followers: "wird gefolgt von"
+  
+  ## userarea
+  
+  userarea:
+    edit:
+      avatar: "Bild &auml;ndern"
+      profile: "Profil &auml;ndern"
+  
+   ## resources 
+  
+  resources:
+    taken:
+      one: "1 Ressource genommen"
+      other: "%{count} Ressourcen genommen"
+    given:
+      one: "1 Ressource gegeben"
+      other: "%{count} Ressourcen gegeben"
+    goods: "G&uuml;ter"
+    services: "Dienste"
+    transports: "Transporte"
+    ideas: "Ideen"          
+    knowledge: "Wissen"
+    skills: "F&auml;higkeiten"
+    sharingpoints: "Sammelstellen"
+    status: "Status"
+    onHold: "wartend"
+    onTransfer: "im Transfer"
+    deactive: "nicht aktiv"
+    offered: "wird angeboten"
+    needed: "wird ben&ouml;tigt"
+    requested: "angefragt" 
+    from: "von"
+    till: "bis"
+    available: "Verf&uuml;gbar" 
+    amount: "Menge" 
+    duration: "Dauer" 
+    locatedIn: "Standort"
+    location: "Standort"
+    attach: "Ressource hinzuf&uuml;gen"
+    attachedResources: "Hinzugef&uuml;gte Ressourcen"
+    notPingableOnTransfer: "Ressourcen mit Status 'Transfer' k&ouml;nnen nicht gepingt werden."
+    alreadyPingedOrResourceIsMultiple: "Du hast diese Ressource schon angepingt oder sie ist nicht mehrfach verwendbar."
+    multiple:
+      needed: "Ressource wird mehrfach ben&ouml;tigt"
+      offered: "Ressource ist mehrfach verwendbar"
+
+  ## item attachments  
+
+  item_attachments:
+    new: "Ressource hinzuf&uuml;gen"
+  
+  ## images  
+
+  images:
+    new: "Bild hinzuf&uuml;gen"
+   
+  ## notifications
+
+  notifications:
+    noNotificationsYet: "Noch keine Benachrichtigungen."
+
+  ## events
+
+  events:
+    ressource: "Resource"
+    description: "Beschreibung"
+
+  ## groups
+
+  groups:
+    ressource: "Resource"
+    description: "Beschreibung"
+    holder: "Verwalter"
+    memberships: "Mitglied von"
+    pendingMembers: "Anfragen und eingeladene Mitglieder"
+    members: "Mitglieder"
+    abort:
+      membership: "Aus Gruppe austreten"
+      request: "Anfrage abbrechen"
+      invitation: "Einladung ablehnen"
+  
+  ## friendships
+  
+  friendships:
+    pending: "Offene Freundschaftsanfragen"
+    friend: "Freunde"
+    accepted: "Akpetiert"
+  
+  ## comments
+  
+  comments:
+    comments: "Kommentare"
+    leaveAComment: "Schreibe einen Kommentar:"
+    hasCommentedYou: " hat dich kommentiert."
+    hasCommentedYour: " hat etwas von dir kommentiert: "
+    
+  ## titles
+  
+  title:
+    startpage:
+      weAre: "Wir sind"
+      weNeed: "Wir brauchen"
+      weHave: "Wir haben"
+    login: "Login"
+    mailbox: "Mailbox"
+    welcome: ""
+    register: "Schreib' Dich ein:"
+    location: "Dein Standort"
+    event: "Event"
+    events: "Events"
+    editLocation: "&Auml;ndere deinen Standort"
+    newImage: "Neuer Bildupload"
+    editAvatar: "&Auml;ndere dein Avatarbild"
+    editUserdetails: "&Auml;ndere dein Profil"
+    editResource: "&Auml;ndere deine Ressource"
+    newResource: "Neue Ressource"
+    editGroup: "&Auml;ndere deine Gruppe"
+    newGroup: "Neue Gruppe"
+    editEvent: "Event &auml;ndern"
+    newEvent: "Neuer Event"
+    meetups: "Treffpunkte"
+    editMeetup: "Treffpunkt &auml;ndern"
+    newMeetup: "Neuer Treffpunkt"      
+    resources:
+      iNeed: "Ich brauche"
+      iHave: "Ich habe"
+      iHaveTaken: "Ich habe genommen"
+      iHaveGiven: "Ich habe gegeben"
+      userNeed: "%{user} braucht"
+      userHave: "%{user} hat"
+      userHaveTaken: "%{user} hat genommen"
+      userHaveGiven: "%{user} hat gegeben"
+    pings:
+      of: "Pings von" 
+      ofUser: "Pings"
+      iPingedOn: "Ich habe gepingt"
+      othersPingedOn: "andere haben gepingt"
+    transfer:
+      myTransfers: "Meine Transfers"
+      transfersToMe: "Transfers zu mir"
+      new: "Neuer Transfer"
+      edit: "Transfer &auml;ndern"
+    
+  topnavigation:
+    mailbox: "Mailbox"
+    profile: "Profil"
+    resources: "Ressourcen"
+    register: "Registrieren"
+    login: "Login"
+    logout: "Logout"
+    
+  ## mailbox
+  
+  mailbox:
+    to: "An"
+    from: "Von"
+    received: "Erhalten"
+    reply: "Antworten"
+    inbox: "Posteingang"
+    sent: "Postausgang"
+    messages: "Nachrichten"
+    newMessage: "Neue Nachricht"
+    subject: "Betreff"
+    body: "Nachricht"
+    
+  ## mailer
+  
+  mailer:
+    ping:
+      yourping: "Dein ping wurde "
+      action:
+        accepted: "akzeptiert"
+        declined: "abgewiesen"
+        closed: "geschlossen"
+      subject:
+        accepted: " hat deinen Ping akzeptiert."
+        declined: " hat deinen Ping abgewiesen."
+        closed: " hat deinen Ping geschlossen."
+        opened: " hat dir einen Ping geschickt."
+    message:
+      invitation: "%{user} hat dir eine Nachricht geschickt."
+    meetup:
+      invitation: "%{user} hat dich zu einem Treffen eingeladen."
+    group:
+      participation_request: "%{sender} hat eine Anfrage zur Teilnahme deiner Gruppe '%{title}' geschickt."
+      invitation: "%{sender} hat dich zur Gruppe '%{title}' eingeladen."
+      participation_accepted: "Deine Anfrage zur Teilnahme der Gruppe '%{title}' wurde akzeptiert."
+      invitation_accepted: "%{sender} hat deine Einladung zur Gruppe '%{title}' akzeptiert."
+      participation_aborted: "%{sender} hat die Teilnahmeanfrage deiner Gruppe '%{title}' abgebrochen."  
+      invitation_aborted: "%{sender} hat die Teilnahme deiner Gruppe '%{title}' abgelehnt."  
+      quit_membership: "%{sender} ist aus deiner Gruppe '%{title}' ausgetreten."
+      quit_membership_by_owner: "%{sender} hat dich aus der Gruppe '%{title}' entfernt."
+  
+  ## forms
+  
+  form:
+    hint:
+      imageFormats: "Du kannst Dateien im Format JPG, GIF oder PNG uploaden. Maximal 2MB gross."
+    search:
+      description:
+        hint: ""
+    resource:
+      what: "Was"
+      howMuch: "Wieviel"
+      where: "Wo"
+      when: "Wann"
+      images: "Bilder"
+      attachments: "Anh&auml;nge"
+      i: "Ich"
+      need: "brauche"
+      have: "habe"
+      a: "ein(e,en)"
+      title: "Titel"
+    user:
+      preferences: "Einstellungen"
+      changepassword: "Passwort &auml;ndern"		    	
+      useraccount: "Konto"		    	
+      quitAccount: "Konto l&ouml;schen"
+    userdetails:
+      personality: "Pers&ouml;nlichkeit"
+      data: "Person"
+      location: "Standort"
+      avatar: "Profilbild"
+      configuration: "Einstellungen"    
+    user_preferences:
+      active: "Konto aktiv"
+      deactivateAccount: "Konto deaktivieren"
+    group:
+      members: "Teilnehmer"
+      
+  formtastic: 
+    labels:
+      message:
+        subject: "Betreff"
+        body: "Nachricht"
+      meetup:
+        title: "Titel"
+        description: "Beschreibung"
+        users: "Teilnehmer"
+        invited_users: "Teilnehmer einladen"
+        invite_users: "Teilnehmer hinzuf&uuml;gen"
+      item:
+        title: "Titel"
+        description: "Beschreibung"
+        multiple: "mehrmals verwendbar?"
+        amount: "Anzahl"
+        measure: "Einheit" 
+        tag_list: "Tags"
+      group:
+        title: "Titel"
+        description: "Beschreibung"
+        tag_list: "Tags"
+        members: "Teilnehmer"
+        members_pending: "Eingeladene Teilnehmer"
+      event:
+        from: "am / von"
+        till: "bis"
+        description: "Beschreibung"
+      location:
+        address: "Adresse"
+        city: "Stadt"
+        zip: "PLZ"
+        state: "Bundesland"
+        country: "Land" 
+      user:
+        aim_list: "Ziele"  
+        skill_list: "F&auml;higkeiten"
+        interest_list: "Interessen"
+        wish_list: "W&uuml;nsche" 
+        firstname: "Vorname"
+        login: "Login"
+        email: "Email"
+        password: "Passwort"
+        password_confirmation: "Passwort wiederholen" 
+      userdetails:
+        firstname: "Vorname"
+        lastname: "Nachname"
+        birthdate: "Geburtstag"
+        occupation: "Beruf(ung)"
+        company: "Firma"
+        language: "Sprache"
+      user_preferences:
+        active: "Konto aktiviert"
+    hints:
+      item:
+        multiple: "ben&ouml;tigst du diese Ressource mehrmals oder regelm&auml;&szlig;ig? /<br />bietest Du diese Ressource mehrmals oder  regelm&auml;&szlig;ig an?"
+        tag_list: "Getrennt durch Enter."
+      user:
+        aim_list: "Was m&ouml;chtest Du gerne erreichen? Wof&uuml;r brennt Dein Herz?"
+        skill_list: "In was bist Du gut? Was tust Du gerne?"
+        interest_list: "Wo liegen Deine Interessen?"
+        wish_list: "Was w&uuml;nscht Du Dir? F&uuml;r Dich, f&uuml;r andere?"
+        is_active: "Wenn dein Account deaktiviert wird, sind deine Ressourcen, Kommentare und Pings f&uuml;r die anderen nicht mehr sichtbar. Du kannst deinen Account wieder aktivieren, in dem du den Aktivierungs-Link anklickst, den wir dir mit einer Email schicken.<br/ ><br/ >Zum deaktivieren auf das H&auml;ckchen 'Konto aktiviert' klicken und dann speichern."
+        destroyed: "Wenn du den 'Konto l&ouml;schen'-Button klickst, werden alle deine Daten unwiderruflich gel&ouml;scht! Das kann nicht r&uuml;ckg&auml;ngig gemacht werden, so &uuml;berlege dir, ob du dein Konto nicht deaktivieren m&ouml;chtest, falls du deine Daten zu einem sp&auml;teren Zeitpunkt noch brauchst."
+      event:
+        from: "klicke auf das Feld um den Kalender zu sehen." 
+        till: "klicke auf das Feld um den Kalender zu sehen." 
+      group:
+        members: "Hier werden die Teilnehmer aufgelistet, deren Anfrage du akzeptiert hast. Um bestimmte Teilnehmer wieder zu entfernen, klicke auf diese Teilnehmer und klicke auf Speichern."   
+        members_pending: "Hier kannst du Teilnehmer einladen. Es werden alle Mitglieder aufgelistet, die dir folgen bzw. denen du folgst. Klicke auf die Teilnehmer, die du einladen m&ouml;chtest und klicke auf Speichern."   
+  order:
+    date: "Zeit"
+    title: "Titel"
+    location: "Ort"
+    user: "Name"
+    joined: "Datum"
+  
+  ## will_paginate
+  will_paginate:
+     next_label: ">>"
+     previous_label: "<<"
+     page_gap: "..."
+     
+  ## activemodel
+  
+ # activerecord:
+  errors:
+    template:
+      header:
+        one:    "1 Fehler beim speichern von %{model}"
+        other:  "%{count} Fehler beim speichern von %{model}"
+      # The variable :count is also available
+      body: "Hoppla, du hast das Formluar nicht ganz richtig ausgef&uuml;llt:"
+    messages:
+      inclusion: "ist nicht in der Liste inkludiert"
+      exclusion: "ist reserviert"
+      invalid: "ist ung&uuml;ltig"
+      confirmation: "stimmt nicht &uuml;berein"
+      accepted: "muss akzeptiert werden"
+      empty: "darf nicht leer sein"
+      blank: "darf nicht leer sein"
+      too_long: "ist zu lang (maximal %{count} Buchstaben)"
+      too_short: "ist zu kurz (mindestens %{count} Buchstaben)"
+      wrong_length: "hat die falsche L&auml;nge (sollte %{count} Buchstaben haben)"
+      taken: "ist bereits vergeben."
+      not_a_number: "ist keine Nummer"
+      not_an_integer: "ist keine Zahl"
+      greater_than: "muss gr&ouml;sser sein als %{count}"
+      greater_than_or_equal_to: "muss gr&ouml;sser oder gleich sein als %{count}"
+      equal_to: "muss gleich sein als %{count}"
+      less_than: "muss weniger sein als %{count}"
+      less_than_or_equal_to: "muss weniger oder gleich sein als %{count}"
+      odd: "muss ungerade sein"
+      even: "muss gerade sein"
+      record_invalid: "&Uuml;berpr&uuml;fung fehlgeschlagen: %{errors}"
+      invalid_date: "kein g&uuml;ltiges Datum"
+      invalid_time: "keine g&uuml;ltige Zeit"
+      invalid_datetime: "ung&uuml;ltig"
+      is_at: "muss genau %{restriction} sein"
+      before: "muss vor %{restriction} sein"
+      on_or_before: "muss gleich oder vor %{restriction} sein"
+      after: "muss anch %{restriction} sein"
+      on_or_after: "muss gleich oder nach %{restriction} sein"
+      between: "muss zwischen %{earliest} undnd %{latest} sein"
+        
+  ## misc
+  
+  # array.to_sentence
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " und "
+      last_word_connector: " und "

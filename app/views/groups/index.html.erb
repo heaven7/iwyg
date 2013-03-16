@@ -11,6 +11,7 @@
 <% if @groups and @groups.size > 0 %>
   <%= render :partial => "share/list_pagination", :locals => {:collection => collection} %>
   <%= render :partial => "group", :collection => collection %>
+	<%= render :partial => "share/list_pagination", :locals => {:collection => collection} %>
 <% end %>
 <% if @user and @user.groups.size > 0 %>
   <div class="clearfix"></div>

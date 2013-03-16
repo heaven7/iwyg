@@ -47,7 +47,7 @@ class ItemsController < InheritedResources::Base
       @items_count = @items.count
 
 			# search by itemType
-		  if params[:q][:item_type_id_eq]
+		  if not params[:q][:item_type_id_eq].blank?
 		    @searchItemType = ItemType.find(params[:q][:item_type_id_eq]).title.to_s
 		  end
       
@@ -104,18 +104,17 @@ class ItemsController < InheritedResources::Base
 					@owner = @group.title
 				  render :layout => 'groups'
 				end
+
+			else
+				$search = Item.search(params[:q], :indlude => [:comments, :images, :pings])
       end
-		
+      @items = $search.result(:distinct => true).paginate( 
+        :page => params[:page],
+        :order => "created_at DESC", 
+        :per_page => ITEMS_PER_PAGE 
+      )
+      @items_count = @items.count
     end
-	  @items = $search.result(:distinct => true).paginate(
-	    :page => params[:page],
-	    :per_page => ITEMS_PER_PAGE,
-	    :order => "created_at DESC",
-	    :include => :pings
-	  )
-
-	  @items_count = @items.count
-
   end
   
   def search
@@ -139,13 +138,18 @@ class ItemsController < InheritedResources::Base
           @items_related_titled_same = Item.offered.where(:title => "%#{part}%") if part.length.to_i >= 5
       end
       @items_related_title = I18n.t("item.related.offer").html_safe
+			@ping_body_msg = I18n.t("ping.pingBodyMessageOnNeed");
+			@ping_submit = I18n.t("ping.this.need");
     else
       @items_related_tagged_same = Item.needed.tagged_with(@item.tags.join(', ')).where(:item_type_id => @item.item_type_id)
       @titleParts.each do |part|
         @items_related_titled_same = Item.needed.where(:title => "%#{part}%") if part.length.to_i >= 5
       end
       @items_related_title = I18n.t("item.related.need").html_safe
+			@ping_body_msg = I18n.t("ping.pingBodyMessageOnOffer");
+			@ping_submit = I18n.t("ping.this.offer");
     end
+
     if not @items_related_titled_same.nil?
       @items_related = @items_related_tagged_same + @items_related_titled_same
     else
