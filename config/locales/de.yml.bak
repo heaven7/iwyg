@@ -744,6 +744,8 @@ de:
         declined: " hat deinen Ping abgewiesen."
         closed: " hat deinen Ping geschlossen."
         opened: " hat dir einen Ping geschickt."
+    message:
+      invitation: "%{user} hat dir eine Nachricht geschickt."
     meetup:
       invitation: "%{user} hat dich zu einem Treffen eingeladen."
     group:

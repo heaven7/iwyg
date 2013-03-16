@@ -11,4 +11,13 @@ class MessageMailer < ActionMailer::Base
 		  mail( :to => email_with_name, :subject => I18n.t("mailer.message.userHasSendMessage", :user => @sender.login) )
 		end
 	end
+
+	def hasRepliedMessage(message)
+		message.recipients.each do |receiver|
+			@receiver = receiver
+			@sender = message.author
+			email_with_name = "#{@receiver.login} <#{@receiver.email}>"
+		  mail( :to => email_with_name, :subject => I18n.t("mailer.message.userHasRepliedMessage", :user => @sender.login) )
+		end
+	end
 end

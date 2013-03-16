@@ -706,7 +706,6 @@ de:
         opened: ! ' hat dir einen Ping geschickt.'
     message:
       userHasSendMessage: ! '%{user} hat dir eine Nachricht geschickt.'
-      userHasRepliedMessage: ! '%{user} hat dir eine Antwort geschickt.'
     meetup:
       invitation: ! '%{user} hat dich zu einem Treffen eingeladen.'
     group:

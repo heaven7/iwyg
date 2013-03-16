@@ -740,6 +740,8 @@ en:
         declined: " has declined your ping."
         closed: " has closed your ping."
         opened: " has send a ping to you."
+    message:
+      invitation: "%{user} has sent a message to you."
     meetup:
       invitation: "%{user} has invited you to meet."
     group:
