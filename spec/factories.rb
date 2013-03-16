@@ -88,6 +88,7 @@ FactoryGirl.define do
 
   factory :message do
 		id Random.rand(100)
+		association :author, factory: :user
     to [2,3]
 		body "the body of the test message"
 		subject "test message"

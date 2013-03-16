@@ -1,0 +1,5 @@
+<div class="block ui-corner-all">
+<p><b><%= t("devise.confirmations.verifyAccount").html_safe %></b></p>
+<p><%= t("devise.confirmations.resend").html_safe %></p>
+<%= render :partial => "/devise/confirmations/new", :locals => { :resource_name => "new_user", :css_class =>"font-smaller" } %>
+</div>

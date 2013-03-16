@@ -27,7 +27,12 @@ Iwyg::Application.routes.draw do
 
   resources :mailbox
 
-  resources :locations
+  resources :locations do 
+    collection do
+      match 'search' => 'locations#search', :via => [:get, :post], :as => :search
+    end
+
+	end
 
   resources :searches
       
@@ -55,7 +60,6 @@ Iwyg::Application.routes.draw do
   resources :users do
     resources :items, :pings, :groups, :images, :accounts, :comments, :friendships, :events, :messages, :meetups
 
-    resource :location
 
     resource :userdetails
     member do

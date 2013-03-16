@@ -1,0 +1,881 @@
+---
+en:
+  meta:
+    language_name: English
+    locale: en-GB
+  date:
+    formats:
+      default: ! '%Y-%m-%d'
+      short: ! '%b %d'
+      long: ! '%B %d, %Y'
+      only_day: ! '%e'
+    day_names:
+    - Sunday
+    - Monday
+    - Tuesday
+    - Wednesday
+    - Thursday
+    - Friday
+    - Saturday
+    abbr_day_names:
+    - Sun
+    - Mon
+    - Tue
+    - Wed
+    - Thu
+    - Fri
+    - Sat
+    month_names:
+    - !!null 
+    - January
+    - February
+    - March
+    - April
+    - May
+    - June
+    - July
+    - August
+    - September
+    - October
+    - November
+    - December
+    abbr_month_names:
+    - !!null 
+    - Jan
+    - Feb
+    - Mar
+    - Apr
+    - May
+    - Jun
+    - Jul
+    - Aug
+    - Sep
+    - Oct
+    - Nov
+    - Dec
+    order:
+    - :year
+    - :month
+    - :day
+  time:
+    formats:
+      default: ! '%a, %d. %B %Y, %H:%M h'
+      time: ! '%H:%M'
+      short: ! '%d %b %H:%M'
+      long: ! '%B %d, %Y %H:%M'
+      only_second: ! '%S'
+    am: am
+    pm: pm
+  datetime:
+    distance_in_words:
+      half_a_minute: half a minute
+      less_than_x_seconds:
+        zero: less than 1 second
+        one: 1 second
+        other: less than %{count} seconds
+      x_seconds:
+        one: 1 second
+        other: ! '%{count} seconds'
+      less_than_x_minutes:
+        zero: less than a minute
+        one: 1 minute
+        other: less than %{count} minutes
+      x_minutes:
+        one: 1 minute
+        other: ! '%{count} minutes'
+      about_x_hours:
+        one: about 1 hour
+        other: about %{count} hours
+      x_days:
+        one: 1 day
+        other: ! '%{count} days'
+      about_x_months:
+        one: about 1 month
+        other: about %{count} months
+      x_months:
+        one: 1 month
+        other: ! '%{count} months'
+      about_x_years:
+        one: about 1 year
+        other: about %{count} years
+      over_x_years:
+        one: over 1 year
+        other: over %{count} years
+      almost_x_years:
+        one: almost 1 year
+        other: almost %{count} years
+    prompts:
+      year: Year
+      month: Month
+      day: Day
+      hour: Hour
+      minute: Minute
+      second: Seconds
+  validates_timeliness:
+    error_value_formats:
+      date: ! '%Y-%m-%d'
+      time: ! '%H:%M:%S'
+      datetime: ! '%Y-%m-%d %H:%M:%S'
+  iwyg:
+    title: iwyg - the social go-happy-network
+  login:
+    description: Please fill in with proper username and password to login.
+    notAMember: Not a member?
+    label:
+      login: Username
+      password: Password
+      forgotPassword: Forgot your login name or password?
+      submit: Let me in
+      remember: Remember me
+      register: Please register
+  register:
+    required: register
+    mandatoryFields: Mandatory fields
+    signup: Sign Up
+    signin: Login
+    forgotpassword: Forgot password?
+    label:
+      login: Username
+      email: Email
+      password: Password
+      confirmPassword: Confirm password
+  password:
+    change: Change your password
+    change_submit: Change my password
+  resource:
+    one: 1 Resource
+    other: ! '%{count} Resources'
+    new: New Resource
+  good:
+    one: 1 Good
+    other: ! '%{count} Goods'
+    singular: Good
+    plural: Goods
+  service:
+    one: 1 Service
+    other: ! '%{count} Services'
+    singular: Service
+    plural: Services
+  transport:
+    one: 1 Transport
+    other: ! '%{count} Transports'
+    singular: Transport
+    plural: Transports
+  idea:
+    one: 1 Idea
+    other: ! '%{count} Ideas'
+    singular: Idea
+    plural: Ideas
+  knowledge:
+    one: 1 Knowledge
+    other: ! '%{count} Knowledge'
+    singular: Knowledge
+    plural: Knowledge
+  skill:
+    one: 1 Skill
+    other: ! '%{count} Skills'
+    singular: Skill
+    plural: Skills
+  sharingpoint:
+    one: 1 Sharingpoint
+    other: ! '%{count} Sharingpoints'
+    singular: Sharingpoint
+    plural: Sharingpoints
+  user:
+    one: 1 User
+    other: ! '%{count} Users'
+    singular: User
+    aimsTo: aims to
+    aims: Aims
+    canDo: can do
+    skills: Skills
+    wishesTo: wishes
+    wishes: Wishes
+    interestedIn: is interested in
+    interests: Interests
+    account:
+      activated: Your account has been activated.
+      pleaseactivate: Please activate your new account
+      created: Your account has been created.
+  who: Who
+  where: Where
+  what: What
+  when: When
+  show: show
+  back: Back
+  edit: edit
+  delete: delete
+  unknown: unknown
+  with: with
+  or: or
+  add: add
+  and: and
+  between: between
+  remove: remove
+  sortBy: Sort by
+  search: Search
+  searchIn: Search in
+  searchOptions: Search options
+  searchedIn: <b>%{item}</b> was searched <b>%{count}</b> times
+  preferences: Preferences
+  changepassword: Change password
+  help: Help
+  about: About
+  options: Options
+  confirm_delete: Are you sure you want to delete this?
+  ago: ago
+  previous: previous
+  next: next
+  more: more
+  found: found
+  send: Send
+  from: from
+  till: till
+  start: Start
+  end: End
+  duration: Duration
+  to: to
+  by: by
+  distance: Distance
+  submit: Submit
+  save: Save
+  tags: Tags
+  needs: needs
+  offers: offers
+  accept: Accept
+  decline: Decline
+  accepted: accepted
+  declined: declined
+  opened: open
+  closed: closed
+  created_at: created on
+  updated_at: updated on
+  accepted_at: accepted on
+  follow: follow
+  block: Block
+  unblock: Unblock
+  blockedUsers: Blocked Users
+  hasUpdated: has updated
+  hasUpdatedAMeetup: has updated the meetup '%{title}'
+  hasUpdatedAnItem: has updated '%{title}'
+  hasUpdatedAGroup: has updated the group '%{title}'
+  hasUpdatedALocation: has updated the location of '%{title}'
+  hasUpdatedtheUserdetails: has updated her/his userdetails
+  hasJoinedTheCommunity: has joined iwyg.
+  hasCreated: has created
+  hasCreatedAMeetup: has opened the meetup '%{title}'
+  hasCreatedANeed: needs '%{title}'
+  hasCreatedAnOffer: offers '%{title}'
+  hasCreatedALocation: has set the location for '%{title}'
+  hasCreatedAGroup: has created the group '%{title}'
+  hasDestroyedAMeetup: has deleted the meetup '%{title}'
+  hasPingedOn: has pinged on '%{title}'
+  usersPingIsAccepted: accepted Ping on '%{title}'
+  usersPingIsDeclined: declined Ping on '%{title}'
+  usersPingIsClosed: closed Ping on '%{title}'
+  hasCommentedOn: has commented '%{title}'
+  hasDeleted: has deleted
+  activity: Activity
+  link:
+    ping:
+      loginToPing: Log in to ping this
+  ping:
+    one: 1 Ping
+    other: ! '%{count} Pings'
+    this:
+      offer: I need it
+      need: I'll do it
+    of: Ping of
+    transfer: Apply for this transfer (make a ping)
+    pingBodyMessageOnOffer: Ask a question or make an appointment...
+    pingBodyMessageOnNeed: Offer help, give advise or a handy hint...
+    accept: Accept
+    acceptMember: Accept member
+    decline: Decline
+    setTransfer: Set Transfer
+    setAppointment: Set Appointment
+    setMeetup: Set Meetup
+    table:
+      who: Who
+      what: What
+      status: Status
+      madeOn: made on
+      options: Options
+    notifyOn:
+      user:
+        opened: ! '%{pinger} has pinged you.'
+        accepted: ! '%{user.login} has accepted your ping.'
+        declined: ! '%{user.login} has declined your ping.'
+        closed: Your ping on %{resource_title} has been closed.
+      group:
+        opened: ! '%{pinger} has pinged your group (of %{resource_title}).'
+        accepted: ! 'Your ping on group: ''%{resource_title}'' has been accepted.'
+        declined: ! 'Your ping on group: ''%{resource_title}'' has been declined.'
+        closed: ! 'Your ping on group: ''%{resource_title}'' has been closed.'
+      item:
+        good:
+          opened: ! '%{pinger} has pinged your good: ''%{resource_title}''.'
+          accepted: ! 'Your ping on good: ''%{resource_title}'' has been accepted.'
+          declined: ! 'Your ping on good: ''%{resource_title}'' has been declined.'
+          closed: ! 'Your ping on good: ''%{resource_title}'' has been closed.'
+        service:
+          opened: ! '%{pinger} has pinged your service: ''%{resource_title}''.'
+          accepted: ! 'Your ping on service: ''%{resource_title}'' has been accepted.'
+          declined: ! 'Your ping on service: ''%{resource_title}'' has been declined.'
+          closed: ! 'Your ping on service: ''%{resource_title}'' has been closed.'
+        idea:
+          opened: ! '%{pinger} has pinged your idea: ''%{resource_title}''.'
+          accepted: ! 'Your ping on idea: ''%{resource_title}'' has been accepted.'
+          declined: ! 'Your ping on idea: ''%{resource_title}'' has been declined.'
+          closed: ! 'Your ping on idea: ''%{resource_title}'' has been closed.'
+        transport:
+          opened: ! '%{pinger} has pinged your transport: ''%{resource_title}''.'
+          accepted: ! 'Your ping on transport: ''%{resource_title}'' has been accepted.'
+          declined: ! 'Your ping on transport: ''%{resource_title}'' has been declined.'
+          closed: ! 'Your ping on transport: ''%{resource_title}'' has been closed.'
+        sharingpoint:
+          opened: ! '%{pinger} has pinged your sharingpoint: ''%{resource_title}''.'
+          accepted: ! 'Your ping on sharingpoint: ''%{resource_title}'' has been accepted.'
+          declined: ! 'Your ping on sharinpoint: ''%{resource_title}'' has been declined.'
+          closed: ! 'Your ping on sharingpoint: ''%{resource_title}'' has been closed.'
+  event:
+    one: 1 Event
+    other: ! '%{count} Events'
+    new: New Event
+    action: ! '%{owner} meets up with %{pinger} because of: %{title}'
+    status: Event is %{status} by %{user}
+  group:
+    one: 1 Group
+    other: ! '%{count} Groups'
+    singular: Group
+    plural: Groups
+    new: New Group
+    participant:
+      one: 1 Participant
+      other: ! '%{count} Participants'
+    participate: Participate
+  item:
+    singular: Resource
+    plural: Resources
+    related:
+      need: They need this
+      offer: This might help
+  meetup:
+    one: 1 Meetup
+    other: ! '%{count} Meetups'
+    new: New Meetup
+    accept: Accept meetup
+    participants:
+      one: 1 participant
+      other: ! '%{count} participants'
+    onlyFollowersAvailableToAdd: You can only add followers or users you are following.
+  transfer:
+    one: 1 Transfer
+    other: ! '%{count} Transfers'
+    pinger: Receiver
+    of: Transfer of
+    to: to
+    status: Transfer was %{status} by %{user}
+    started: Started on
+    accepted: Accepted on
+    noSharingpointInRoute: It seems, that no sharingpoint is between this route!
+    noFriendsInRoute: It seems, that no friend is between this route, but you can
+      ask this users living nearby this route!
+    youCanDo: ! 'You can do the following: '
+    text:
+      form: Your <i>%{itemtitle}</i> should be transfered.<br /> %{username} will
+        be noticed of your transferactions.<br /> Remember, that after receiving <i>%{itemtitle}</i>,
+        %{username} can accept or decline it, so try your best to make %{username}
+        happy.
+    option:
+      good:
+        one: I bring the good to a local SharingPoint
+        two: I ask my friends for transportation
+        three: User has to get it on its own
+        four: I transport/send it by my own
+        five: I don't know yet
+    table:
+      what: What
+      from: from
+      to: to
+      status: Status
+      madeOn: Made on
+      options: Options
+  flash:
+    friendships:
+      create:
+        notice: Friend added.
+        error: Unable to add friend.
+      destroy:
+        notice: Friendship removed.
+      accept:
+        notice: Friendship accepted
+        error: Something went wrong.
+    mailbox:
+      delete:
+        notice: Message deleted.
+      restore:
+        notice: Message restored.
+    session:
+      create:
+        notice: Logged in successfully
+        error: Login failed, please try again.
+      destroy:
+        notice: You have been logged out.
+    users:
+      create:
+        notice: Thanks for signing up!
+      activate:
+        notice: Signup complete!
+      deactivated:
+        notice: This profile is deactivated or not yet confirmed!
+      update:
+        notice: Profile successfully updated.
+      follow:
+        error:
+          alreadyFollowing: You are following this user already.
+        notice: You are following '%{title}'
+      block:
+        notice: You successfully blocked '%{title}'
+        error: Something went wrong while blocking '%{title}'
+      unblock:
+        notice: You successfully unblocked '%{title}'
+        error: Something went wrong while unblocking '%{title}'
+    userdetails:
+      update:
+        notice: Userdetails was successfully updated.
+    items:
+      create:
+        notice: Resource created successfully.
+        error: Resource could not be created.
+      update:
+        notice: Successfully updated resource.
+      follow:
+        error:
+          alreadyFollowing: You are already following this resource.
+        notice: You are following resource '%{title}'.
+    pings:
+      create:
+        error:
+          pingself: You cannot ping yourself!
+          pingown: You cannot ping your own %{resourceType}!
+          pingedAlready: You already have sent a ping to this %{type}!
+        notice: Ping was successfully sent.
+      update:
+        notice: Successfully updated ping.
+      destroy:
+        notice: Successfully destroyed ping.
+      accept:
+        error:
+          alreadyAccepted: This ping is accepted already!
+          notAllowed: You are not allowed to accept!
+        notice: Ping is accepted!
+        membership: Mitglied aufgenommen.
+      decline:
+        error:
+          alreadyDeclined: This ping is declined already!
+          alreadyAccepted: This ping is accepted already and therefore you cannot
+            decline it!
+          notAllowed: You are not allowed to decline!
+        notice: Ping is declined!
+    locations:
+      create:
+        notice: Location saved.
+      update:
+        notice: Successfully updated location.
+      destroy:
+        notice: Successfully destroyed location.
+    events:
+      create:
+        notice: Event saved.
+      update:
+        notice: Successfully updated event.
+      destroy:
+        notice: Successfully destroyed event.
+    meetups:
+      create:
+        notice: Meetup saved.
+      update:
+        notice: Successfully updated meetup.
+      destroy:
+        notice: Successfully destroyed meetup.
+      accept:
+        notice: Successfully accepted meetup.
+    images:
+      create:
+        notice: Image saved.
+      update:
+        notice: Successfully updated image.
+      destroy:
+        notice: Successfully destroyed image.
+    comments:
+      create:
+        notice: Comment saved.
+      update:
+        notice: Successfully updated comment.
+      destroy:
+        notice: Successfully destroyed comment.
+    groups:
+      create:
+        notice: Successfully saved group.
+      update:
+        notice: Successfully updated group.
+      follow:
+        error:
+          alreadyFollowing: You already follow this group.
+        notice: You are following group '%{title}'.
+    groupings:
+      create:
+        notice: Participation sended to group.
+        error: Participation failed, maybe you are attending already.
+      accept:
+        notice: Participation accepted.
+        error: There were problems to accept the participation.
+      destroy:
+        notice: Participation aborted.
+  menu:
+    main:
+      resources: Resources
+      members: Members
+      groups: Groups
+      info: Info
+      about: About
+      meetups: Meetups
+    user:
+      profile: Profile
+      resources: Resources
+      groups: Groups
+      pings: Pings
+      events: Events
+      transfers: Transfers
+      meetups: Meetups
+      addToFriends: Add to friends
+      sendMessage: Send Message
+      friends: Friends
+      editLocation: Edit Location
+      editUserdetails: Edit Personal Data
+      followings: follows
+      followers: is followed by
+  userarea:
+    edit:
+      avatar: Edit Avatar
+      profile: Edit Profile
+  resources:
+    taken:
+      one: 1 resource taken
+      other: ! '%{count} resources taken'
+    given:
+      one: 1 resource given
+      other: ! '%{count} resources given'
+    goods: Goods
+    services: Services
+    transports: Transports
+    ideas: Ideas
+    knowledge: Knowledge
+    skills: Skills
+    sharingpoints: Sharingpoints
+    status: Status
+    onHold: on hold
+    onTransfer: on Transfer
+    deactive: deactived
+    offered: offered
+    needed: needed
+    requested: requested
+    from: from
+    till: till
+    available: Available
+    amount: Amount
+    duration: Duration
+    locatedIn: Located in
+    location: Location
+    attach: Attach Resource
+    attachedResources: Attached resources
+    notPingableOnTransfer: Resources beeing on Transfer cannot be pinged.
+    alreadyPingedOrResourceIsMultiple: You already pinged this or this resource isn't
+      for multiple use.
+    multiple:
+      needed: Resource is multiple needed
+      offered: Resource is multiple useable
+  item_attachments:
+    new: Add attachment
+  images:
+    new: Add image
+  notifications:
+    noNotificationsYet: No notifications yet.
+  events:
+    ressource: Ressource
+    description: Description
+  groups:
+    ressource: Ressource
+    description: Description
+    holder: Holder
+    memberships: Memberships
+    pendingMembers: Pending and invited members
+    members: Members
+    abort:
+      membership: Abort membership
+      request: Abort request
+      invitation: Decline invitation
+  friendships:
+    pending: Pending friendships
+    friend: Friends
+    accepted: Accepted
+  comments:
+    comments: Comments
+    leaveAComment: ! 'Leave a comment:'
+    hasCommentedYou: ! ' has sent a comment.'
+    hasCommentedYour: ! ' has commented your '
+  title:
+    startpage:
+      weAre: We are
+      weNeed: We need
+      weHave: We have
+    login: Login
+    mailbox: Mailbox
+    welcome: ''
+    register: Join
+    location: Your location
+    event: Event
+    events: Events
+    editLocation: Change your location
+    newImage: New Picture upload
+    editAvatar: Change your avatar
+    editUserdetails: Change your profile
+    editResource: Change your resource
+    newResource: New resource
+    editGroup: Change your group
+    newGroup: New group
+    editEvent: Change event
+    newEvent: New event
+    meetups: Meetups
+    editMeetup: Edit meetup
+    newMeetup: New meetup
+    resources:
+      iNeed: I need
+      iHave: I have got
+      iHaveTaken: I have taken
+      iHaveGiven: I have given
+      userNeed: ! '%{user} needs'
+      userHave: ! '%{user} has got'
+      userHaveTaken: ! '%{user} has taken'
+      userHaveGiven: ! '%{user} has given'
+    pings:
+      of: Pings of
+      ofUser: Pings
+      iPingedOn: I pinged on
+      othersPingedOn: others has pinged on
+    transfer:
+      myTransfers: My Transfers
+      transfersToMe: Transfers to me
+      new: New Transfer
+      edit: Edit Transfer
+  topnavigation:
+    mailbox: Mailbox
+    profile: My Profile
+    resources: Resources
+    register: Register
+    login: Login
+    logout: Logout
+  mailbox:
+    to: To
+    from: From
+    received: Received
+    reply: Reply
+    inbox: Inbox
+    sent: Sent
+    messages: Messages
+    newMessage: New Message
+    subject: Subject
+    body: Text
+  mailer:
+    ping:
+      yourping: ! 'Your ping is '
+      action:
+        accepted: accepted
+        declined: declined
+        closed: closed
+      subject:
+        accepted: ! ' has accepted your ping.'
+        declined: ! ' has declined your ping.'
+        closed: ! ' has closed your ping.'
+        opened: ! ' has send a ping to you.'
+    message:
+      userHasSendMessage: '%{user} has sent a message to you.'
+    meetup:
+      invitation: ! '%{user} has invited you to meet.'
+    group:
+      participation_request: ! '%{sender} wants to join your group ''%{title}''.'
+      invitation: ! '%{sender} invited you to join the group ''%{title}''.'
+      participation_accepted: Your request to join the group '%{title}' is accepted.
+      invitation_accepted: ! '%{sender} has accepted your invitation to your group
+        ''%{title}''.'
+      participation_aborted: ! '%{sender} has aborted the participation request of
+        your group ''%{title}''.'
+      invitation_aborted: ! '%{sender} has rejected your invitation of your group
+        ''%{title}''.'
+      quit_membership: ! '%{sender} has left your group ''%{title}''.'
+      quit_membership_by_owner: ! '%{sender} has canceled your membership of the group
+        ''%{title}''.'
+  form:
+    hint:
+      imageFormats: You can upload a JPG, GIF or PNG file. Maximum 2MB size.
+    search:
+      description:
+        hint: ! 'Be concise and write information, what is needed to know about it. '
+    resource:
+      what: What
+      howMuch: How much
+      where: Where
+      when: When
+      images: Images
+      attachments: Attachments
+      i: I
+      need: need
+      have: have
+      a: a
+      title: Title
+    user:
+      preferences: Preferences
+      changepassword: Change password
+      useraccount: Account
+      quitAccount: Quit account
+    userdetails:
+      personality: Personality
+      data: Person
+      location: Location
+      avatar: Profilepicture
+      configuration: Configuration
+    user_preferences:
+      active: Account activated
+      deactivateAccount: Deactivate account
+    group:
+      members: Participants
+  formtastic:
+    labels:
+      message:
+        subject: Subject
+        body: Message
+      meetup:
+        title: Title
+        description: Description
+        users: Participants
+        invited_users: Invite participants
+        invite_users: Add users
+      item:
+        title: Title
+        description: Description
+        multiple: for multiple use?
+        amount: Amount
+        measure: Measure
+        tag_list: Tags
+      group:
+        title: Title
+        description: Description
+        tag_list: Tags
+        members: Participants
+        members_pending: Invited Participants
+      event:
+        from: from
+        till: till
+        description: Description
+      location:
+        address: Address
+        city: City
+        zip: Zip
+        state: State
+        country: Country
+      user:
+        aim_list: Aims
+        skill_list: Skills
+        interest_list: Interests
+        wish_list: Wishes
+        login: Login
+        email: Email
+        password: Password
+        password_confirmation: Confirm password
+      userdetails:
+        firstname: Firstname
+        lastname: Lastname
+        birthdate: Birthdate
+        occupation: Occupation
+        company: Company
+        language: Language
+      user_preferences:
+        active: Account activated
+    hints:
+      item:
+        multiple: do you need this resource occasionally or regularly? /<br />do you
+          offer this resource occasionally or regularly?
+      user:
+        aim_list: What is your heart burning for...?
+        skill_list: What can you do easily and without effort?
+        interest_list: What makes your eyes lighten up?
+        wish_list: What are your dreams?
+        is_active: When deactivating your account all your resources, pings and comments
+          are not visible to the others. You can re-activate your account by clicking
+          the activation-link, which will be send to you.
+        destroyed: By clicking the 'Quit account' button all of your data will be
+          deleted! This process cannot be reverted, so consider if your account should
+          only be deactivated, to access your data at later time.
+      event:
+        from: click on the field above to see the calendar.
+        till: click on the field above to see the calendar.
+      group:
+        members: Here is a list of accepted members, which send a request to join
+          the group. To cancel memberships of certain members, just click on them
+          and save.
+        members_pending: Here you can invite members. All followers and members you
+          are following will be listed here. To invite members, just click on them
+          and save.
+  order:
+    date: Time
+    location: Location
+    title: Title
+    user: Username
+    joined: Date
+  will_paginate:
+    next_label: ! '>>'
+    previous_label: <<
+    page_gap: ! '...'
+  errors:
+    template:
+      header:
+        one: 1 error prohibited this %{model} from being saved
+        other: ! '%{count} errors prohibited this %{model} from being saved'
+      body: Oops, something went wrong here.
+    messages:
+      inclusion: is not included in the list
+      exclusion: is reserved
+      invalid: is invalid
+      confirmation: doesn't match confirmation
+      accepted: must be accepted
+      empty: can't be empty
+      blank: can't be blank
+      too_long: is too long (maximum is %{count} characters)
+      too_short: is too short (minimum is %{count} characters)
+      wrong_length: is the wrong length (should be %{count} characters)
+      taken: has already been taken
+      not_a_number: is not a number
+      not_an_integer: must be an integer
+      greater_than: must be greater than %{count}
+      greater_than_or_equal_to: must be greater than or equal to %{count}
+      equal_to: must be equal to %{count}
+      less_than: must be less than %{count}
+      less_than_or_equal_to: must be less than or equal to %{count}
+      odd: must be odd
+      even: must be even
+      record_invalid: ! 'Validation failed: %{errors}'
+      invalid_date: is not a valid date
+      invalid_time: is not a valid time
+      invalid_datetime: is not a valid datetime
+      is_at: must be at %{restriction}
+      before: must be before %{restriction}
+      on_or_before: must be on or before %{restriction}
+      after: must be after %{restriction}
+      on_or_after: must be on or after %{restriction}
+      between: must be between %{earliest} and %{latest}
+  support:
+    array:
+      words_connector: ! ', '
+      two_words_connector: ! ' and '
+      last_word_connector: ! ' and '

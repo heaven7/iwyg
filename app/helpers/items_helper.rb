@@ -56,12 +56,17 @@ module ItemsHelper
   
   
   def owner(item)
-		case item.itemable.class.to_s
-		when "User"
-			title = item.itemable.login
+		owner = item.itemable
+		if owner
+			case owner.class.to_s
+			when "User"
+				title = owner.login
+			else
+				title = owner.title 
+			end
 		else
-			title = item.itemable.title 
-		end	
+			nil	
+		end
   end
   
   def holderTinyThumb(item)

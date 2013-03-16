@@ -1,4 +1,4 @@
-<% if logged_in? and @user != current_user %>
+<% if logged_in? and @item.owner != current_user %>
 <div class="pingarea font-smaller">
  <% if !current_user.pinged?(@resource) || @resource.multiple?  %>
     <%= render :partial => "pings/form", :locals => {:pingable => pingable} %>
