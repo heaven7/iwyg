@@ -30,7 +30,6 @@ class SentController < InheritedResources::Base
     if @message.valid?
       respond_to do |format|
         if @message.save
-          # flash[:notice] = "Message sent."
 					MessageMailer.delay.hasSendMessage(@message, params[:locale])
           format.js { render :layout => false }
         else
