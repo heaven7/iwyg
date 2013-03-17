@@ -31,7 +31,7 @@ class SentController < InheritedResources::Base
       respond_to do |format|
         if @message.save
           # flash[:notice] = "Message sent."
-					MessageMailer.delay.hasSendMessage(@message)
+					MessageMailer.delay.hasSendMessage(@message, params[:locale])
           format.js { render :layout => false }
         else
           format.html { redirect_to new_user_message_path(:current) }

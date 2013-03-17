@@ -413,6 +413,7 @@ en:
         error: Something went wrong.
     message:
       send: Message sent.
+      replied: Message replied.
     mailbox:
       delete:
         notice: Message deleted.

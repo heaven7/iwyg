@@ -417,6 +417,7 @@ de:
         error: Hm...irgendwas ging schief.
     message:
       send: Nachricht verschickt.
+      replied: Antwort verschickt.
     mailbox:
       delete:
         notice: Nachricht gel&ouml;scht.
