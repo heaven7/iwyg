@@ -2,6 +2,7 @@ class SentController < InheritedResources::Base
   respond_to :html , :js
   
   layout 'mailbox'
+	before_filter :updateNotifications, :only => [:show]
   before_filter :authenticate_user!
 
   def index
@@ -34,7 +35,7 @@ class SentController < InheritedResources::Base
 					@subject = "mailer.message.userHasSendMessage"
 					MessageMailer.delay.hasSendMessage(@message, params[:locale], @subject)
 					@message.recipients.each do |receiver|
-						@mid = @message.id.to_i - 1
+						@mid = @message.id.to_i #- 1
 						Notification.new(
 							 :sender => @message.author, 
 							 :receiver => receiver, 
