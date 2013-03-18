@@ -11,6 +11,7 @@ class SentController < InheritedResources::Base
   def show
     @message = current_user.sent_messages.find(params[:id])
     @message.toggle!(:read) if @message.read.blank? 
+		impressionist(@message)
   end
 
   def new
@@ -33,11 +34,11 @@ class SentController < InheritedResources::Base
 					@subject = "mailer.message.userHasSendMessage"
 					MessageMailer.delay.hasSendMessage(@message, params[:locale], @subject)
 					@message.recipients.each do |receiver|
-						
+						@mid = @message.id.to_i - 1
 						Notification.new(
 							 :sender => @message.author, 
 							 :receiver => receiver, 
-							 :notifiable_id => @message.id, 
+							 :notifiable_id => 	@mid, 
 							 :notifiable_type => "Message",
 							 :title => @subject
 						).save!			

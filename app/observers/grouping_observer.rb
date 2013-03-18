@@ -100,7 +100,7 @@ class GroupingObserver < ActiveRecord::Observer
 								 :receiver => receiver, 
 								 :notifiable_id => group.id, 
 								 :notifiable_type => TYPE,
-								 :title => @subject
+								 :title => email_subject
 		).save		
 
 	end
