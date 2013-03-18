@@ -38,14 +38,14 @@
     <% end %>
 
 		<div id="resources" class="box">
-			<h3>Resources of <%= @group.title %></h3>
-			<%= link_to t("title.resources.userNeed", :user => @group.title) + "(#{@items_needed.size})", group_items_path(@group) %>
+			<h3><%= t("title.resources.of").html_safe %> <%= @group.title.html_safe %></h3>
+			<%= link_to t("title.resources.userNeed", :user => @group.title).html_safe + "(#{@items_needed.size})", group_items_path(@group) %>
 			<br /> 
-			<%= link_to t("title.resources.userHave", :user => @group.title) + "(#{@items_offered.size})", group_items_path(@group) %>
+			<%= link_to t("title.resources.userHave", :user => @group.title).html_safe + "(#{@items_offered.size})", group_items_path(@group) %>
 			<br /> 
-			<%= link_to t("title.resources.userHaveGiven", :user => @group.title) + "(#{@items_given.size})", group_items_path(@group) %>
+			<%= link_to t("title.resources.userHaveGiven", :user => @group.title).html_safe + "(#{@items_given.size})", group_items_path(@group) %>
 			<br />
-			<%= link_to t("title.resources.userHaveTaken", :user => @group.title) + "(#{@items_taken.size})", group_items_path(@group) %>
+			<%= link_to t("title.resources.userHaveTaken", :user => @group.title).html_safe + "(#{@items_taken.size})", group_items_path(@group) %>
 			<br /> 
 		 
 		

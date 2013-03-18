@@ -393,7 +393,7 @@ en:
         two: I ask my friends for transportation
         three: User has to get it on its own
         four: I transport/send it by my own
-        five: ! 'I don''t know yet'
+        five: I don't know yet
     table:
       what: What
       from: from
@@ -411,9 +411,6 @@ en:
       accept:
         notice: Friendship accepted
         error: Something went wrong.
-    message:
-      send: Message sent.
-      replied: Message replied.
     mailbox:
       delete:
         notice: Message deleted.
@@ -654,7 +651,6 @@ en:
     editMeetup: Edit meetup
     newMeetup: New meetup
     resources:
-      of: Resources of
       iNeed: I need
       iHave: I have got
       iHaveTaken: I have taken
@@ -704,8 +700,7 @@ en:
         closed: ! ' has closed your ping.'
         opened: ! ' has send a ping to you.'
     message:
-      userHasSendMessage: ! '%{user} has sent a message to you.'
-      userHasRepliedMessage: ! '%{user} has sent an answer to you.'
+      userHasSendMessage: '%{user} has sent a message to you.'
     meetup:
       invitation: ! '%{user} has invited you to meet.'
     group:

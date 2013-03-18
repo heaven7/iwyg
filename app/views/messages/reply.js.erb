@@ -3,7 +3,8 @@
 
 	<%= render :partial => "share/ujs/form_errors", :locals => { :object => @message, :type => "message" } %>
 <% else %>
+	$("#header").after('<div id="flash_notice" class="notice ui-corner-all"><%= escape_javascript(I18n.t("flash.message.replied"))%></div>');
 	$('#message_subject').attr('value', '');
 	$('#message_body').attr('value', '');
-	$('#edit_message').slideToggle();
+//	$('#edit_message').slideToggle();
 <% end %>

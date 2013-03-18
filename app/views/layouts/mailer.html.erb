@@ -10,8 +10,14 @@
   </div>
 <div id="greeting">
 	<br />
+<% if I18n.locale == :de %>
 Dein
 <br />
 IWYG-Team
+<% elsif I18n.locale == :en %>
+Yours
+<br />
+IWYG-Team
+<% end %>
 </div>
 </html>

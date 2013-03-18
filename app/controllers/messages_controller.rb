@@ -1,8 +1,9 @@
 class MessagesController < InheritedResources::Base
 
   layout 'mailbox'
-
+	impressionist :actions => [:show]
 	respond_to :html, :js
+	before_filter :updateNotifications, :only => [:show]
 
   def show
     @user = current_user
@@ -16,9 +17,19 @@ class MessagesController < InheritedResources::Base
     @original = @user.received_messages.find(params[:id])
     @message = @user.sent_messages.build(:to => @original.author.login, :subject => params[:message][:subject], :body => params[:message][:body] )
 		if @message.save
-		#  flash[:notice] = "Message replied"
+			@subject = "mailer.message.userHasRepliedMessage"
+			MessageMailer.delay.hasRepliedMessage(@message, params[:locale], @subject)
+			@message.recipients.each do |receiver|	
+				@mid = @message.id.to_i					
+				Notification.new(
+					 :sender => @message.author, 
+					 :receiver => receiver, 
+					 :notifiable_id => @mid, 
+					 :notifiable_type => "Message",
+					 :title => @subject
+				).save!			 		
+			end
 		end  
-		#  render :template => "sent/replyform"
   end
   
   def forward

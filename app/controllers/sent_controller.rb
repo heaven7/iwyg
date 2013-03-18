@@ -2,6 +2,7 @@ class SentController < InheritedResources::Base
   respond_to :html , :js
   
   layout 'mailbox'
+	before_filter :updateNotifications, :only => [:show]
   before_filter :authenticate_user!
 
   def index
@@ -11,6 +12,7 @@ class SentController < InheritedResources::Base
   def show
     @message = current_user.sent_messages.find(params[:id])
     @message.toggle!(:read) if @message.read.blank? 
+		impressionist(@message)
   end
 
   def new
@@ -30,8 +32,19 @@ class SentController < InheritedResources::Base
     if @message.valid?
       respond_to do |format|
         if @message.save
-          flash[:notice] = "Message sent."
-          format.js { render :layout => false }
+					@subject = "mailer.message.userHasSendMessage"
+					MessageMailer.delay.hasSendMessage(@message, params[:locale], @subject)
+					@message.recipients.each do |receiver|
+						@mid = @message.id.to_i
+						Notification.new(
+							 :sender => @message.author, 
+							 :receiver => receiver, 
+							 :notifiable_id => 	@mid, 
+							 :notifiable_type => "Message",
+							 :title => @subject
+						).save!			
+					end          
+					format.js { render :layout => false }
         else
           format.html { redirect_to new_user_message_path(:current) }
 					format.js  { render :layout => false }

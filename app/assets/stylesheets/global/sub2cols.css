@@ -26,12 +26,10 @@
 }
 .sub2cols #usermailbox {
   width:160px;
-  min-height:450px;
 }
 .sub2cols #usermessages {
   margin-left:10em;
   padding-left:0.5em;
-  min-height:450px;
   border-left:1px solid #cbcec0;
 }
 .sub2cols #usermessages {

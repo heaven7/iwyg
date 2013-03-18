@@ -5,7 +5,7 @@ class Notification < ActiveRecord::Base
   belongs_to :notifiable, :polymorphic => true
   
 	default_scope :limit => 5, :order => 'created_at DESC'
-  scope :unread, where(:is_read => false)
+  scope :unread, where(:is_read => false || nil)
 
   validates_presence_of :notifiable_id, :notifiable_type
 	validate :user_does_not_already_have_this_notification, :on => :create

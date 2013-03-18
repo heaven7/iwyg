@@ -7,6 +7,7 @@ class Message < ActiveRecord::Base
 
   delegate :deleted, :to => :custom
   scope :undeleted, :conditions => { :deleted => nil }
+	is_impressionable
   
   attr_accessor  :to # array of people to send to
   attr_accessible :subject, :body, :to, :read

@@ -8,7 +8,7 @@ class ActionMailer::Localized < ActionMailer::Base
    end
 end
 
-class MeetupMailer < ActionMailer::Localized
+class MeetupMailer < ActionMailer::Base
   default :from => REPLY_EMAIL
   default :css => MAILER_CSS
   default :charset => MAILER_CHARSET

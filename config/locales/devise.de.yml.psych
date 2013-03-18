@@ -18,8 +18,7 @@ de:
       signed_in: Erfolgreich eingeloggt.
       signed_out: Erfolgreich ausgeloggt.
     passwords:
-      send_instructions: Du bekommst gleich eine Email von uns mit Informationen,
-        wie Du Dein Passwort ändern kannst.
+      send_instructions: Du bekommst gleich eine Email von uns mit Informationen, wie Du Dein Passwort ändern kannst.
       updated: Dein Passwort wurde erfolgreich geändert. Du bist jetzt eingeloggt.
     confirmations:
       resend: ! 'Wir haben dir dazu eine Email geschickt. Falls du sie nicht bekommen
@@ -35,8 +34,7 @@ de:
       updated: änderungen gespeichert.
       destroyed: Dein Account wurde gelöscht
     unlocks:
-      send_instructions: Du bekommst gleich eine Email von uns mit Informationen,
-        wie Du Dein Passwort entsperren kannst.
+      send_instructions: Du bekommst gleich eine Email von uns mit Informationen, wie Du Dein Passwort entsperren kannst.
       unlocked: Dein Account wurde erfolgreich aktiviert.
     mailer:
       confirmation_instructions:
