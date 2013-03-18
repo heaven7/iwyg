@@ -10,7 +10,6 @@ class MessagesController < InheritedResources::Base
     @message = @user.received_messages.find(params[:id])
 		@author = @message.author.login
     @message.update_attributes(:read => true) if @message.read.blank?
-#		impressionist(@message)
   end
   
   def reply
@@ -21,7 +20,7 @@ class MessagesController < InheritedResources::Base
 			@subject = "mailer.message.userHasRepliedMessage"
 			MessageMailer.delay.hasRepliedMessage(@message, params[:locale], @subject)
 			@message.recipients.each do |receiver|	
-				@mid = @message.id.to_i # - 1					
+				@mid = @message.id.to_i					
 				Notification.new(
 					 :sender => @message.author, 
 					 :receiver => receiver, 

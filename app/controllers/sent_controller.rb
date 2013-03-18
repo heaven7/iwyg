@@ -35,7 +35,7 @@ class SentController < InheritedResources::Base
 					@subject = "mailer.message.userHasSendMessage"
 					MessageMailer.delay.hasSendMessage(@message, params[:locale], @subject)
 					@message.recipients.each do |receiver|
-						@mid = @message.id.to_i #- 1
+						@mid = @message.id.to_i
 						Notification.new(
 							 :sender => @message.author, 
 							 :receiver => receiver, 
