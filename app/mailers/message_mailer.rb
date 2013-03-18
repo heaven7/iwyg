@@ -5,27 +5,25 @@ class MessageMailer < ActionMailer::Base
 
 	layout 'layouts/mailer'
 
-	def hasSendMessage(message, locale)	
-		I18n.locale = locale.to_sym
-		@subject = I18n.t("mailer.message.userHasSendMessage", :user => message.author.login)
-		proceed_mail_with_subject(message, @subject)
+	def hasSendMessage(message, locale, subject)	
+		proceed_mail_with_subject(message, locale, subject)
 	end
 
-	def hasRepliedMessage(message, locale)	
-		I18n.locale = locale.to_sym
-		@subject = I18n.t("mailer.message.userHasRepliedMessage", :user => message.author.login)
-		proceed_mail_with_subject(message, @subject)
+	def hasRepliedMessage(message, locale, subject)	
+		proceed_mail_with_subject(message, locale, subject)
 	end
 
 	private
 	
-	def proceed_mail_with_subject(message, subject)
+	def proceed_mail_with_subject(message, locale, subject)
+		I18n.locale = locale.to_sym
 		@message = message
 		@sender = @message.author
+		@subject = I18n.t(subject, :user => @sender.login)
 		@message.recipients.each do |receiver|
 			@receiver = receiver
 			email_with_name = "#{@receiver.login} <#{@receiver.email}>"		 
-			mail( :to => email_with_name, :subject => subject)		
+			mail( :to => email_with_name, :subject => @subject )		
 		end
 	end
 end
