@@ -20,7 +20,7 @@ class MessagesController < InheritedResources::Base
 			@subject = "mailer.message.userHasRepliedMessage"
 			MessageMailer.delay.hasRepliedMessage(@message, params[:locale], @subject)
 			@message.recipients.each do |receiver|	
-				@mid = @message.id.to_i					
+				@mid = @message.id.to_i - 1					
 				Notification.new(
 					 :sender => @message.author, 
 					 :receiver => receiver, 
