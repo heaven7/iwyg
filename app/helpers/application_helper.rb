@@ -66,10 +66,10 @@ module ApplicationHelper
 	# notification message
 	def notification_message(notification)
 		case notification.notifiable_type.to_s
-		when "Message"
+		when "Group"
 			message = I18n.t(notification.title, :user => notification.sender.login)
 			link_to message.html_safe, notification.notifiable if message
-		when "Group"
+		when "Message"
 			message = I18n.t(notification.title, :sender => notification.sender.login, :title => notification.notifiable.title)
 			link_to message.html_safe, mailbox_path(:current_user) if message
 		end
