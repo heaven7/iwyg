@@ -25,6 +25,6 @@
     <%= f.input :body, :as => :text, :required => true, :validate => true, :input_html => { :value => "" } %>
   <% end %>
   <%= f.actions do %>
-    <%= f.action :submit, :label => t("submit"), :button_html => { :class => "submit", :disable_with => "..." } %>
+    <%= f.action :submit, :label => t("submit"), :button_html => { :id => "submit_reply_message", :class => "submit", :disable_with => "..." } %>
   <% end %>
 <% end %>
