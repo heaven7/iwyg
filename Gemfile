@@ -17,6 +17,7 @@ group :production, :stage do
   gem 'mysql2' #, '0.2.18'
 end
 
+gem 'liangzan-contacts', :git => "../contacts.git"
 gem 'rails-i18n'
 gem 'daemons'
 gem 'delayed_job', '3.0.1'

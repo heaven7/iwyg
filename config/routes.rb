@@ -1,5 +1,7 @@
 Iwyg::Application.routes.draw do
 
+  resources :invitations
+
 	# mount IwygBe::Engine, :at => "/be"
   
   resources :user_preferences
