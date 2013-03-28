@@ -11,6 +11,12 @@ class InvitationsController < InheritedResources::Base
 		@invitation = current_user.invitations.find(params[:id])
 	end
 
+	def create
+		@invitation = Invitation.new(params[:invitation])
+		@invitation.sender = current_user
+		create!
+	end
+
 	def show
 		@invitation = current_user.invitations.find(params[:id])
 		@contacts = getContacts(@invitation)
