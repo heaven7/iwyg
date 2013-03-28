@@ -4,7 +4,7 @@
   <tr>
     <th>Sender</th>
     <th>Username</th>
-    <th>Password</th>
+    <th>Provider</th>
     <th>Emails</th>
     <th>Invitationmessage</th>
     <th></th>
@@ -16,16 +16,16 @@
   <tr>
     <td><%= invitation.sender_id %></td>
     <td><%= invitation.username %></td>
-    <td><%= invitation.password %></td>
+    <td><%= invitation.provider %></td>
     <td><%= invitation.emails %></td>
     <td><%= invitation.invitationmessage %></td>
-    <td><%= link_to 'Show', invitation %></td>
-    <td><%= link_to 'Edit', edit_invitation_path(invitation) %></td>
-    <td><%= link_to 'Destroy', invitation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', user_invitations_path(invitation) %></td>
+    <td><%# link_to 'Edit', edit_polymorphic_path([:user, invitation]) %></td>
+    <td><%# link_to 'Destroy', invitation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Invitation', new_invitation_path %>
+<%# link_to 'New Invitation', new_invitation_path %>

@@ -1,9 +1,18 @@
 class InvitationsController < InheritedResources::Base
   before_filter :authenticate_user!
+	protect_from_forgery
+  
 
+	def index
+		@invitations = current_user.invitations
+	end
+
+	def edit 
+		@invitation = current_user.invitations.find(params[:id])
+	end
 
 	def show
-		@invitation = Invitation.find(params[:id])
+		@invitation = current_user.invitations.find(params[:id])
 		@contacts = getContacts(@invitation)
 	
 		show!

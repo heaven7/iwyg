@@ -1,6 +1,6 @@
-<%= semantic_form_for @invitation do |f| %>
+<%= semantic_form_for [current_user, @invitation] do |f| %>
   <%= f.inputs do %>
-    <%= f.input :sender_id, :as => :hidden, :value => current_user %>
+		<%= f.input :sender_id, :as => :hidden, :value => current_user %>
 		<%= f.input :provider, :as => :select, :collection => @invitation.providerlist %>
     <%= f.input :username %>
     <%= f.input :password %>
