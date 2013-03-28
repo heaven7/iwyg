@@ -1,22 +1,28 @@
 class InvitationsController < InheritedResources::Base
   before_filter :authenticate_user!
 
-	def create
-		getContacts
-		create!
-	end	
+
+	def show
+		@invitation = Invitation.find(params[:id])
+		@contacts = getContacts(@invitation)
 	
-	def update
-		getContacts
-		update!
-	end	
+		show!
+	end
 
 	private
 
-	def getContacts
-		if params[:username] and params[:password]
-			@contacts = Contacts.guess(params[:username], params[:password]).contacts
-			puts @contacts
+	def getContacts(invitation)
+		if (invitation.username and invitation.password)
+			username = invitation.username
+			password =  invitation.password
+			case invitation.provider.to_s
+			when "GMail"
+				@contacts = Contacts.new(:gmail, username, password).contacts
+		#	else
+		#		@contacts = Contacts.guess(username, password).contacts
+			end
+			return @contacts
+			
 		end
 	end
 end
