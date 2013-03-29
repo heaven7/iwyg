@@ -9,6 +9,13 @@ class InvitationsController < InheritedResources::Base
 
 	def edit 
 		@invitation = current_user.invitations.find(params[:id])
+		@contacts = getContacts(@invitation)		
+	end
+
+	def contacts
+		@invitation = current_user.invitations.find(params[:invitation_id])
+		@contacts = getContacts(@invitation)		
+		render :json => @contacts if @contacts
 	end
 
 	def create
@@ -27,7 +34,7 @@ class InvitationsController < InheritedResources::Base
 	private
 
 	def getContacts(invitation)
-		if (invitation.username and invitation.password)
+		unless (invitation.username.blank? or invitation.password.blank?)
 			username = invitation.username
 			password =  invitation.password
 			case invitation.provider.to_s

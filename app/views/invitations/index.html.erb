@@ -19,8 +19,8 @@
     <td><%= invitation.provider %></td>
     <td><%= invitation.emails %></td>
     <td><%= invitation.invitationmessage %></td>
-    <td><%= link_to 'Show', user_invitations_path(invitation) %></td>
-    <td><%# link_to 'Edit', edit_polymorphic_path([:user, invitation]) %></td>
+    <td><%= link_to 'Show', [invitation.sender, invitation] %></td>
+    <td><%= link_to 'Edit', edit_polymorphic_path([invitation.sender, invitation]) %></td>
     <td><%# link_to 'Destroy', invitation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>

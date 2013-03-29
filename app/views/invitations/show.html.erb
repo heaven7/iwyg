@@ -32,5 +32,5 @@
 	<% end %>
 <% end %>
 
-<%= link_to 'Edit', edit_invitation_path(@invitation) %> |
-<%= link_to 'Back', invitations_path %>
+<%= link_to 'Edit', edit_polymorphic_path([@invitation.sender, @invitation]) %> |
+<%= link_to 'Back', user_invitations_path %>

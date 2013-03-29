@@ -1,3 +1,29 @@
+<%= content_for :head do %>
+  <script type="text/javascript">
+    $(document).ready(function (){
+			var current_emails = $('#invitation_emails').val().split(",");
+			
+			var url = window.location.pathname;
+			url  = url.replace("edit", "contacts");
+			$.getJSON(url, function(data) {
+				var items = current_emails;
+			 
+				$.each(data, function(key, val) {										
+					contact = val.join().split(",");
+					if(contact[1]) {
+						items.push('<' + contact[0] + '>' + contact[1]);
+					} else {
+						items.push(contact[0]);
+					} 					
+					//alert(items.join(''));				
+				});
+			 
+				$('#invitation_emails').val(items.join(', '));
+			});    
+		});
+  </script>
+<% end %>
+
 <%= semantic_form_for [current_user, @invitation] do |f| %>
   <%= f.inputs do %>
 		<%= f.input :provider, :as => :select, :collection => @invitation.providerlist %>

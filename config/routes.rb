@@ -56,7 +56,11 @@ Iwyg::Application.routes.draw do
   end
   
   resources :users do
-    resources :items, :pings, :groups, :images, :accounts, :comments, :friendships, :events, :messages, :meetups, :invitations
+    resources :items, :pings, :groups, :images, :accounts, :comments, :friendships, :events, :messages, :meetups
+
+		resources :invitations do
+			get 'contacts'
+		end
     resource :userdetails
     member do
       post 'rate'
