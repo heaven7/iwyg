@@ -13,9 +13,8 @@ class InvitationsController < InheritedResources::Base
 	end
 
 	def contacts
-		@invitation = current_user.invitations.find(params[:invitation_id])
-		@contacts = getContacts(@invitation)		
-		render :json => @contacts if @contacts
+		@contacts = getContacts(params)		
+		params[:emails] if @contacts
 	end
 
 	def create
@@ -26,18 +25,15 @@ class InvitationsController < InheritedResources::Base
 
 	def show
 		@invitation = current_user.invitations.find(params[:id])
-		@contacts = getContacts(@invitation)
-	
-		show!
 	end
 
 	private
 
-	def getContacts(invitation)
-		unless (invitation.username.blank? or invitation.password.blank?)
-			username = invitation.username
-			password =  invitation.password
-			case invitation.provider.to_s
+	def getContacts(params)
+		unless (params[:username].blank? or params[:password].blank?)
+			username = params[:username]
+			password =  params[:password]
+			case params[:provider].to_s
 			when "GMail"
 				@contacts = Contacts.new(:gmail, username, password).contacts
 		#	else

@@ -2,9 +2,6 @@
 
 <table>
   <tr>
-    <th>Sender</th>
-    <th>Username</th>
-    <th>Provider</th>
     <th>Emails</th>
     <th>Invitationmessage</th>
     <th></th>
@@ -14,9 +11,6 @@
 
 <% @invitations.each do |invitation| %>
   <tr>
-    <td><%= invitation.sender_id %></td>
-    <td><%= invitation.username %></td>
-    <td><%= invitation.provider %></td>
     <td><%= invitation.emails %></td>
     <td><%= invitation.invitationmessage %></td>
     <td><%= link_to 'Show', [invitation.sender, invitation] %></td>

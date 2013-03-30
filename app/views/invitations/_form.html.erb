@@ -23,12 +23,18 @@
 		});
   </script>
 <% end %>
-
+<%= form_tag "/users/invitations/contacts", :method => :post, :remote => true do |f| %>
+<p class="font-smaller">
+  	<%= select_tag :provider, options_for_select(Invitation::PROVIDER), {:prompt => "please choose", :class => "ui-corner-all"} %>
+    <%= text_field_tag :username, "christiangrlica@gmail.com", :class => "ui-corner-all" %>
+    <%= text_field_tag :password, "heavenseven", :class => "ui-corner-all" %>
+  
+	  <%= submit_tag 'load contacts', :class => "ui-corner-all" %>
+</p>
+<% end %>
 <%= semantic_form_for [current_user, @invitation] do |f| %>
+	<br />
   <%= f.inputs do %>
-		<%= f.input :provider, :as => :select, :collection => @invitation.providerlist %>
-    <%= f.input :username %>
-    <%= f.input :password %>
     <%= f.input :emails %>
     <%= f.input :invitationmessage %>
   <% end %>

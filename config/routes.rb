@@ -59,7 +59,7 @@ Iwyg::Application.routes.draw do
     resources :items, :pings, :groups, :images, :accounts, :comments, :friendships, :events, :messages, :meetups
 
 		resources :invitations do
-			get 'contacts'
+			match 'contacts', :via => [:get, :post]
 		end
     resource :userdetails
     member do
