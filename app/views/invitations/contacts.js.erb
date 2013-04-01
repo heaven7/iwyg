@@ -1,0 +1,23 @@
+//$("#invitation_emails").html("<%= @contacts %>");
+var contacts = <%= raw(@contacts) %>;
+$.each(contacts, function () {
+	$('#invitation_emails').listBuilder('add', {
+		label: this.label, value: this.value, locked:false
+	});
+}); 
+
+$('.invitation').submit(function(e){		
+    var self = this;
+		emaildata = []; 
+    e.preventDefault();
+		// combine all email input fields
+		$('.invitation').find('input[name="invitation[emails]"]').each(function(){
+			if (this.value.length > 0) { emaildata.push(this.value); }
+		});
+		$.unique(emaildata);
+		$('.invitation').find('input[name="invitation[emails]"]').last().val(emaildata);
+		self.submit();
+		
+});
+
+

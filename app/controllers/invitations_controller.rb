@@ -9,12 +9,10 @@ class InvitationsController < InheritedResources::Base
 
 	def edit 
 		@invitation = current_user.invitations.find(params[:id])
-		@contacts = getContacts(@invitation)		
 	end
 
 	def contacts
 		@contacts = getContacts(params)		
-		params[:emails] if @contacts
 	end
 
 	def create
@@ -39,7 +37,15 @@ class InvitationsController < InheritedResources::Base
 		#	else
 		#		@contacts = Contacts.guess(username, password).contacts
 			end
-			return @contacts
+			# make contact-list suitable for listbuilder
+			@list = @contacts.map do |c|
+				if c[1].blank?
+					{ :label => c[0] }			
+				else
+					{ :label => c[0], :value => "#{c[0]}<#{c[1]}>" }
+				end
+			end
+			return @list.to_json
 			
 		end
 	end
