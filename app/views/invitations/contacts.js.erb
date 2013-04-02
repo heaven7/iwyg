@@ -15,9 +15,8 @@ $('.invitation').submit(function(e){
 			if (this.value.length > 0) { emaildata.push(this.value); }
 		});
 		$.unique(emaildata);
-		$('.invitation').find('input[name="invitation[emails]"]').last().val(emaildata);
+		$('.invitation').find('input[name="invitation[emails]"]:last').val(emaildata);
 		self.submit();
-		
 });
 
 

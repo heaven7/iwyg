@@ -18,11 +18,16 @@ class InvitationsController < InheritedResources::Base
 	def create
 		@invitation = Invitation.new(params[:invitation])
 		@invitation.sender = current_user
-		create!
+		render :action => :sendInvitation
 	end
 
 	def show
 		@invitation = current_user.invitations.find(params[:id])
+	end
+
+	def sendInvitation
+		# create a friendship object of each recipient and
+		# invoke InvitationsMailer to send message to each
 	end
 
 	private

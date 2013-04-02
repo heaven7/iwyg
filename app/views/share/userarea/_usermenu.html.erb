@@ -4,7 +4,10 @@
       <li class="ui-corner-all"><%= link_to_unless_current t("menu.user.profile"), @user, :id => "profile",  :class =>"ui-corner-all" %></li>
       <li class="ui-corner-all"><%= link_to_unless_current t("menu.user.resources"), polymorphic_path([@user, :items]), :id => "resources",  :class =>"ui-corner-all" %></li>
       <li class="ui-corner-all"><%= link_to_unless_current t("menu.user.groups"), polymorphic_path([@user, :groups]), :id => "groups",  :class =>"ui-corner-all" %></li>
-      <li class="ui-corner-all"><%= link_to_unless_current t("menu.user.pings"), polymorphic_path([@user, :pings]), :id => "pings",  :class =>"ui-corner-all" %></li>
+			<!--      
+			<li class="ui-corner-all"><%= link_to_unless_current t("menu.user.friends"), polymorphic_path([@user, :friendships]), :id => "friends",  :class =>"ui-corner-all" %></li>
+			-->	      
+			<li class="ui-corner-all"><%= link_to_unless_current t("menu.user.pings"), polymorphic_path([@user, :pings]), :id => "pings",  :class =>"ui-corner-all" %></li>
       <li class="ui-corner-all"><%= link_to_unless_current t("menu.user.meetups"), polymorphic_path([@user, :meetups]), :id => "meetups",  :class =>"ui-corner-all" %></li>
    <% else %>
       <li class="ui-corner-all"><%= link_to_unless_current t("menu.user.profile"), @user, :id => "profile",  :class =>"ui-corner-all" %></li>

@@ -25,4 +25,15 @@
 							"q[accounts_has_taken_eq]" => false
 			) %>
     </div>
+		<!--		
+		<div class="menu">
+      <ul>
+        <li>
+          <% if !is_friend?(user) and logged_in? %>
+            <%= link_to image_tag("icons/icon_user_add.png", :alt => t("menu.user.addToFriends"), :title => t("menu.user.addToFriends")), polymorphic_path([user, Friendship], :friend_id => user.id), :method => :post %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+		-->
 </div>

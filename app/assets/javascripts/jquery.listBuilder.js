@@ -67,7 +67,9 @@ $.fn.listBuilder = function(options){
 		DELETE: 46,
 		SHIFT: 16,
 		CTRL: 17,
-		CMD: 224
+		CMD: 224,
+		ALT: 18,
+		ALTGR: 0
 	};
 	
 	$inputField.autocomplete(opts.autocompleteOptions);
@@ -84,6 +86,8 @@ $.fn.listBuilder = function(options){
 	$(window).keydown(function(ev){ 
 		shiftDown = (ev.keyCode == Keys.SHIFT);
 		ctrlDown = (ev.keyCode == Keys.CTRL || ev.keyCode == Keys.CMD);
+		altDown = (ev.keyCode == Keys.ALT);
+		altgrDown = (ev.keyCode == Keys.ALTGR);
 	});
 	$(window).keyup(function(ev){ 
 		switch(ev.keyCode){
@@ -94,10 +98,20 @@ $.fn.listBuilder = function(options){
 			case Keys.CMD:
 				ctrlDown = false;
 				break;
+			case Keys.ALTGR:
+				console.log("On KeyUp: Alt Key pressed.");
+				altgrDown = false;
+				break;
+			case Keys.ALT:
+				console.log("Alt Key pressed.");
+				altDown = false;
+				break;
 		}
 	});
 	$(window).keypress(function(ev){ 
-		// console.log([ev.keyCode, $.keyCodes])
+		console.log([ev.keyCode, $.keyCodes])
+		if(ev.keyCode == Keys.ALTGR) {console.log("AltGr Key pressed.");}
+				
 		if(ev.keyCode == Keys.DELETE || ev.keyCode == Keys.BACKSPACE){ //delete key
 			var activeItems = $container.find('ul li:has(a.active)');
 			if(activeItems.size() > 0){
@@ -111,7 +125,7 @@ $.fn.listBuilder = function(options){
 				if(activeCount > 0) $inputField.blur();
 			}
 		}
-		else if(ev.keyCode == Keys.ENTER && inInput && opts.onlyAddFromSource == false){
+		else if(ev.keyCode == Keys.ENTER && inInput && opts.onlyAddFromSource == false && ev.keyCode != Keys.ALTGR	){
 			var txt = $inputField.val();
 			$inputField.val('');
 			_addListItem($container, {label:txt, value:txt});
