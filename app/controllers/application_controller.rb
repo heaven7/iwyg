@@ -113,7 +113,8 @@ class ApplicationController < ActionController::Base
 			action = request[:action]
 			user = current_user
 			id = params[:id]
-			if params[:controller] == "Sent"
+
+			if params[:controller].to_s == "sent"
 				klass = "Message".classify.constantize
 			else
 				klass = params[:controller].classify.constantize
