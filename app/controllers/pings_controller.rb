@@ -35,11 +35,11 @@ class PingsController < InheritedResources::Base
       puts "inverse pings size: " + @inverse_pings.join("-")
       
       # attending and invited users of groups
-      @user.groups.map do |i|
-        i.pings.each do |p|
-          @pings_on_groups << p
-        end
-      end
+      # @user.groups.map do |i|
+      #  i.pings.each do |p|
+      #    @pings_on_groups << p
+      #  end
+      #end
 
       @pings_all += @inverse_pings if @inverse_pings
       @pings_all += @pings_on_groups if @pings_on_groups
