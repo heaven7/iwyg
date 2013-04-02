@@ -11,9 +11,10 @@
 			<ul id="notification-list" class="block shadowed ui-corner-all">
 				<% if current_user.notifications.size > 0 %>				
 					<% current_user.notifications.each do |n| %>
+												
 						<li class="<%= n.is_read_css %> ui-corner-all">
 							<%= link_to image_tag(microThumb(n.sender), :title => n.sender.login), n.sender if n.sender %>
-							<%= link_to t(n.title, :user => n.sender.login), n.notifiable %>
+							<%= notification_message(n) %>
 							<span class="date"><%=h distance_of_time_in_words(n.created_at, Time.now) %> <%= t("ago") %></span>
 							<%= '<hr class="divider" />'.html_safe unless n == current_user.notifications.last %>
 						</li>

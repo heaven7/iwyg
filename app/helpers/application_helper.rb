@@ -63,7 +63,17 @@ module ApplicationHelper
     end
   end
 
-  
+	# notification message
+	def notification_message(notification)
+		case notification.notifiable_type.to_s
+		when "Message"
+			message = I18n.t(notification.title, :user => notification.sender.login)
+		when "Group"
+			message = I18n.t(notification.title, :sender => notification.sender.login, :title => notification.notifiable.title)
+		end
+		link_to message.html_safe, notification.notifiable if message
+	end  
+
   # nested layouts
   def parent_layout(layout)
     # rails < 3.2

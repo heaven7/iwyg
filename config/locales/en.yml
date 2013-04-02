@@ -654,6 +654,7 @@ en:
     editMeetup: Edit meetup
     newMeetup: New meetup
     resources:
+      of: Resources of
       iNeed: I need
       iHave: I have got
       iHaveTaken: I have taken
