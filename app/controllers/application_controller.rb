@@ -122,7 +122,7 @@ class ApplicationController < ActionController::Base
 
 			notifications = Notification.where(
 				:receiver_id => user,
-				:notifiable_id => ressource.id,
+				:notifiable_id => resource.id,
 				:notifiable_type => klass.to_s		
 			)
 
