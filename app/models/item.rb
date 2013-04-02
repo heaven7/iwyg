@@ -118,8 +118,12 @@ class Item < ActiveRecord::Base
   def tag_list_name=(name)
     self.tag_list = Tag.find_or_create_by_name(name) unless name.blank?
   end
-  
+
   def owner
+		self.itemable	  
+	end
+  
+  def ownerName
 		case self.itemable.class.to_s
 		when "User"
 			title = self.itemable.login
