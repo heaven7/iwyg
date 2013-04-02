@@ -17,9 +17,15 @@ describe Invitation do
 			@invitation.should be_valid
 		end
 	
-		it "should not be valid without emails"
+		it "should not be valid without emails" do
+			@invitation.emails = ""
+			@invitation.should_not be_valid
+		end
 
-		it "should not be valid without invitationmessage"
+		it "should not be valid without invitationmessage" do
+			@invitation.invitationmessage = ""
+			@invitation.should_not be_valid
+		end
 
 		it "should not be valid if email is already registered"
 	end

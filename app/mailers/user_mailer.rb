@@ -24,13 +24,12 @@ class UserMailer < ActionMailer::Base
     email_with_name = "#{@user.login} <#{@user.email}>"
 		mail( :to => email_with_name, :subject => "IWYG account activation")
 	end
-  
-  protected
-    def setup_email(user)
-      @recipients  = "#{user.email}"
-      @from        = "#{REPLY_EMAIL}"
-      @subject     = "IWYG: "
-      @sent_on     = Time.now
-      @body[:user] = user
-    end
+
+	def sendInvitation(invitation, friend, signup_url)
+		@user = invitation.sender
+		@name = friend.name
+		@email = friend.email
+		@signup_url = signup_url
+		mail( :to => "#{@name}<#{@email}>", :subject => "Invitation from #{@name}")
+	end
 end

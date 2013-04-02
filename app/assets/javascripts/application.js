@@ -72,6 +72,28 @@ $(document).ready(function (){
 
 }); 
 
+// flash messages
+
+$(document).ajaxError(function(event, request) {
+  var msg = request.getResponseHeader('X-Message');
+	var type = request.getResponseHeader('X-Message-Type');
+  if (msg) set_flash(msg, type);
+});
+
+function clear_flash() {
+	var el = $('#flash_notice,#flash_error');
+	var flash_length =	el.length;
+	if(flash_length > 0) {
+		el.remove();
+	}
+}
+
+function set_flash(msg, type) {
+	clear_flash();
+	$("#header").after('<div id="flash_' + type + '" class="' + type + ' ui-corner-all">' + msg + '</div>');
+}
+
+
 // Add and remove fields
 
 function remove_fields(link) {  

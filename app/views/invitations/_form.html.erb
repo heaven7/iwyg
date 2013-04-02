@@ -17,12 +17,12 @@
 		});
   </script>
 <% end %>
-<%= form_tag "#{request.url.gsub('edit','')}/contacts", :method => :post, :remote => true do |f| %>
+<%= form_tag @contacts_url, :method => :post, :remote => true, :id => "providerform" do |f| %>
 	<p class="font-smaller">
-			<%= select_tag :provider, options_for_select(Invitation::PROVIDER), {:prompt => "please choose", :class => "ui-corner-all"} %>
-		  <%= text_field_tag :username, "christiangrlica@gmail.com", :class => "ui-corner-all" %>
-		  <%= text_field_tag :password, "heavenseven", :class => "ui-corner-all" %>
-		
+			<%= select_tag :provider, options_for_select(Invitation::PROVIDERS), {:prompt => "please choose", :class => "ui-corner-all"} %>
+		  <%= text_field_tag :username, t("register.label.email"), :class => "ui-corner-all" %>
+		  <%= password_field_tag :password, t("register.label.password"), :class => "ui-corner-all" %>
+			
 			<%= submit_tag 'load contacts', :class => "ui-corner-all" %>
 	</p>
 <% end %>

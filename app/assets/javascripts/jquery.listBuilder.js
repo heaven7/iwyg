@@ -99,7 +99,7 @@ $.fn.listBuilder = function(options){
 				ctrlDown = false;
 				break;
 			case Keys.ALTGR:
-				console.log("On KeyUp: Alt Key pressed.");
+				//console.log("On KeyUp: Alt Key pressed.");
 				altgrDown = false;
 				break;
 			case Keys.ALT:
@@ -109,8 +109,8 @@ $.fn.listBuilder = function(options){
 		}
 	});
 	$(window).keypress(function(ev){ 
-		console.log([ev.keyCode, $.keyCodes])
-		if(ev.keyCode == Keys.ALTGR) {console.log("AltGr Key pressed.");}
+		//console.log([ev.keyCode, $.keyCodes])
+		//if(ev.keyCode == Keys.ALTGR) {console.log("AltGr Key pressed.");}
 				
 		if(ev.keyCode == Keys.DELETE || ev.keyCode == Keys.BACKSPACE){ //delete key
 			var activeItems = $container.find('ul li:has(a.active)');
