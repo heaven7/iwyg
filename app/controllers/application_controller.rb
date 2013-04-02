@@ -126,21 +126,26 @@ class ApplicationController < ActionController::Base
 			action = request[:action]
 			user = current_user
 			id = params[:id]
-			klass = params[:controller].classify.constantize
-			ressource = klass.find(id)
+
+			if params[:controller].to_s == "sent"
+				klass = "Message".classify.constantize
+			else
+				klass = params[:controller].classify.constantize
+			end			
+			resource = klass.find(id)
 
 			notifications = Notification.where(
 				:receiver_id => user,
-				:notifiable_id => ressource.id,
+				:notifiable_id => resource.id,
 				:notifiable_type => klass.to_s		
 			)
 
 			# notificatons will be set to read if
-			# user will visit page of notifying ressource
+			# user will visit page of notifying resource
 			if notifications 
 				impressions = Impression.where(
 					:user_id => user,
-					:impressionable_id => ressource.id,
+					:impressionable_id => resource.id,
 					:impressionable_type => klass.to_s 		
 				)
 				if notifications.size > 1
