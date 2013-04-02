@@ -75,6 +75,7 @@ module ApplicationHelper
 		end
 	end  
 
+
   # nested layouts
   def parent_layout(layout)
     # rails < 3.2
