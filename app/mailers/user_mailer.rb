@@ -28,6 +28,7 @@ class UserMailer < ActionMailer::Base
 	def sendInvitation(invitation, friend, signup_url)
 		@user = invitation.sender
 		@name = friend.name
+		@message = invitation.invitationmessage
 		@email = friend.email
 		@signup_url = signup_url
 		mail( :to => "#{@name}<#{@email}>", :subject => "Invitation from #{@name}")
