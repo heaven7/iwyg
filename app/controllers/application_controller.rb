@@ -123,7 +123,7 @@ class ApplicationController < ActionController::Base
 
 			notifications = Notification.where(
 				:receiver_id => user,
-				:notifiable_id => resource.id,
+				:notifiable_id => id,
 				:notifiable_type => klass.to_s		
 			)
 
@@ -132,7 +132,7 @@ class ApplicationController < ActionController::Base
 			if notifications 
 				impressions = Impression.where(
 					:user_id => user,
-					:impressionable_id => resource.id,
+					:impressionable_id => id,
 					:impressionable_type => klass.to_s 		
 				)
 				if notifications.size > 1
