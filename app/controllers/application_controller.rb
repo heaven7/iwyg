@@ -68,7 +68,19 @@ class ApplicationController < ActionController::Base
   def login_required
      authenticate_user!
   end
-  
+
+	def likeOf(user, model)
+		@thing = model
+    user.like!(@thing)
+    redirect_to(@thing)
+	end
+
+	def unlikeOf(user, model)
+		@thing = model
+    user.unlike!(@thing)
+    redirect_to(@thing)
+	end
+    
   def find_model
     params.each do |name, value|
       if name =~ /(.+)_id$/

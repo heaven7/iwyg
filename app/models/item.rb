@@ -18,8 +18,9 @@ class Item < ActiveRecord::Base
   acts_as_taggable_on :tags
   acts_as_paranoid
   acts_as_followable
-  has_associated_audits
+	acts_as_likeable
   acts_as_audited
+  has_associated_audits
 	is_impressionable
   
   # scopes
