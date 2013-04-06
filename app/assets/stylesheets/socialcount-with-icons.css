@@ -18,12 +18,13 @@
 .socialcount > li > a:focus,
 .socialcount > li:hover,
 .socialcount > li.hover /* fix for IE and iframes */ {
-	background-color: #464646;
 }
 /* Special class added to count when it's >= the minimum */
 .socialcount .count.minimum {
 }
-
+.socialcount .count {
+	display:none;
+}
 
 /* Base CSS */
 
@@ -46,8 +47,6 @@
 	zoom: 1;
 	position: relative;
 	vertical-align: top;
-	min-width: 80px;
-	min-height: 30px;
 	text-align: center;
 	white-space: nowrap;
 	*margin-right: 4px;
@@ -116,6 +115,7 @@
 	width: 75px; /* like */
 }
 
+/*
 .socialcount .button {
 	display: none;
 	width: 100%;
@@ -124,6 +124,12 @@
 	top: 5px;
 	text-align: center;
 	pointer-events: none;
+}
+*/
+.socialcount .button a {
+	text-align:left;
+	padding-right: 0.3em;
+	width: 20px;
 }
 .socialcount .button iframe {
 	pointer-events: auto;

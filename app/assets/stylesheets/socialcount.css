@@ -115,7 +115,7 @@
 .socialcount.like.de_DE .facebook iframe {
 	width: 75px; /* like */
 }
-
+/*
 .socialcount .button {
 	display: none;
 	width: 100%;
@@ -124,6 +124,11 @@
 	top: 5px;
 	text-align: center;
 	pointer-events: none;
+}
+*/
+.socialcount .button a {
+	text-align:left;
+	padding-right: 0.3em;
 }
 .socialcount .button iframe {
 	pointer-events: auto;

@@ -21,6 +21,7 @@ a:hover {
   border-radius: 50%;
 }
 li.button {
+	border-radius: 5px;
   display:inline;
 }
 .button {

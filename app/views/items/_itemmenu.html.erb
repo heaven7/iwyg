@@ -10,11 +10,6 @@
 		<% if not current_user.following?(item) %>
     	<li class="button"><%= link_to t("follow"), follow_item_path, :method => :put %></li>
 	  <% end %>
-		<% if not current_user.likes?(item) %>
-    	<li class="button"><%= link_to t("like"), like_item_path, :method => :put %></li>
-	  <% else %>
-	  	<li class="button"><%= link_to t("unlike"), unlike_item_path, :method => :put %></li>
-	  <% end %>
   <% end %>
   </ul>
 <div class="clear" ></div>
