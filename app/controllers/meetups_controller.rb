@@ -93,6 +93,17 @@ class MeetupsController < InheritedResources::Base
     @user = current_user
     update!
   end
+
+	
+	def like
+    @meetup = Meetup.find(params[:id])
+		likeOf(current_user, @meetup)
+	end
+
+	def unlike
+    @meetup = Meetup.find(params[:id])
+		likeOf(current_user, @meetup)
+	end
   
   def accept
 

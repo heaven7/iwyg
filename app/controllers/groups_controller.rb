@@ -129,6 +129,17 @@ class GroupsController < InheritedResources::Base
     redirect_to(@group)
   end
 
+	def like
+    @group = Group.find(params[:id])
+		likeOf(current_user, @group)
+	end
+
+	def unlike
+    @group = Group.find(params[:id])
+		unlikeOf(current_user, @group)
+	end
+
+
   def tag_suggestions
     @tags = Group.tag_counts_on("tags").find(:all, :conditions => ["name LIKE ?", "%#{params[:term]}%"], :limit=> params[:limit] || 5)
     render  :json => @tags.join(',').split(',')
