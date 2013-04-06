@@ -5,10 +5,14 @@
 	<%= javascript_include_tag "socialcount" %>
 	<!-- facebook -->
 	<meta property="og:site_name" content="iwyg"/>
-	<meta property="og:image" content="<%= asset_path('iwyg_logo_new_250x250.png') %>" />
-	<meta property="og:title" content="iwyg: thing.title"/>
+	<% if thing.images.first %>
+		<meta property="og:image" content="<%= @item.images.first.image.url %>" />
+	<% else %>
+		<meta property="og:image" content="<%= asset_path('iwyg_logo_new_250x250.png') %>" />
+	<% end %>	
+	<meta property="og:title" content="<%= @item.title || @title %>"/>
 	<meta property="og:url" content="<%= request.url %>"/>
-	<meta property="og:description" content="here comes the description" />
+	<meta property="og:description" content="<%= @item.description %>" />
 	<!-- google -->
 	<link rel="canonical" href="<%= request.url %>" />
 <% end %>
