@@ -8,7 +8,7 @@
 	<% if thing.images.first %>
 		<meta property="og:image" content="<%= @item.images.first.image.url %>" />
 	<% else %>
-		<meta property="og:image" content="<%= request.host + asset_path('iwyg_logo_new_250x250.png') %>" />
+		<meta property="og:image" content="<%= "http://" + request.host + asset_path('iwyg_logo_new_250x250.png') %>" />
 	<% end %>	
 	<meta property="og:title" content="<%= @item.title || @title %>"/>
 	<meta property="og:url" content="<%= request.url %>"/>
