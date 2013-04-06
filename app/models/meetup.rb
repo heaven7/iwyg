@@ -12,8 +12,9 @@ class Meetup < ActiveRecord::Base
  # has_paper_trail
   acts_as_followable
   acts_as_paranoid
-  has_associated_audits
+	acts_as_likeable
   acts_as_audited
+  has_associated_audits
   
   belongs_to :owner, :class_name => 'User', :foreign_key => "owner_id"
   has_many :locations, :as => :locatable, :dependent => :destroy

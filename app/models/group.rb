@@ -12,6 +12,7 @@ class Group < ActiveRecord::Base
   acts_as_paranoid
   acts_as_taggable_on :tags
   acts_as_audited
+	acts_as_likeable
 	is_impressionable
 
   belongs_to :user

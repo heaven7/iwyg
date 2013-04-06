@@ -18,7 +18,6 @@ group :production, :stage do
 end
 
 gem 'socialization'
-gem 'thumbs_up'
 gem 'rails-i18n'
 gem 'daemons'
 gem 'delayed_job', '3.0.1'
