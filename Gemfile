@@ -17,6 +17,7 @@ group :production, :stage do
   gem 'mysql2' #, '0.2.18'
 end
 
+gem 'socialization'
 gem 'rails-i18n'
 gem 'daemons'
 gem 'delayed_job', '3.0.1'

@@ -8,7 +8,7 @@
     </li>
   <% else %>
 		<% if not current_user.following?(item) %>
-    <li class="button"><%= link_to t("follow"), follow_item_path, :method => :put %></li>
+    	<li class="button"><%= link_to t("follow"), follow_item_path, :method => :put %></li>
 	  <% end %>
   <% end %>
   </ul>

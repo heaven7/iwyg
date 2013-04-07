@@ -54,6 +54,7 @@
       <% end %>
     </div>
   <% end %>
+	<%= render :partial => "share/social", :locals => { :thing => @item } %>
   <div class="box ui-corner-all tags">
     <%= render :partial => "share/tags", :locals => { :tags => @item.tags, :model => :items } %>
     <% if @item.description %>
