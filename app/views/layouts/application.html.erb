@@ -3,6 +3,7 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="imagetoolbar" content="false">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag "style", "mobile", "token-input", "formtastic", "formtastic_changes", "jquery.autocomplete" %>
   <!--[if IE 6]><%= stylesheet_link_tag 'formtastic_ie6' %><![endif]-->
@@ -15,14 +16,6 @@
   <%= stylesheet_link_tag "themes/iwyg/agents/#{users_browser}" if File.exist?("app/assets/stylesheets/themes/iwyg/agents/#{users_browser}.css") %>
 	
   <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag "jquery-ui.js" %>
-  <%= javascript_include_tag "i18n/jquery-ui-i18n.js" %>
-  <%# javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" %> 
-  <%= javascript_include_tag "jquery-ui-timepicker-addon.js" %>                                               
-  <%= javascript_include_tag "jquery.tokeninput" %>
-  <%# javascript_include_tag "jquery.colorbox" %>
-  <%= javascript_include_tag "gmaps4rails/gmaps4rails.base" %>
-  <%= javascript_include_tag "gmaps4rails/gmaps4rails.googlemaps" %>
 
   <%= csrf_meta_tag %>
   
