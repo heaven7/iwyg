@@ -31,8 +31,7 @@
 	background: #B86748;	
 }
 .list-item .image {
-    float:left;
-    margin-right:0.5em;
+    text-align:center;
     border:1px solid transparent;
     height:50px;
 }
