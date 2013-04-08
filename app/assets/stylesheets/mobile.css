@@ -10,9 +10,6 @@ and (max-width : 1024px) {
 @media only screen 
 and (min-width : 320px) 
 and (max-width : 480px) {
-	#content {
-		background: yellow !important;
-	}
 }
 
 /* Smartphones (landscape) ----------- */
@@ -47,6 +44,7 @@ and (max-width : 768px) {
 		width: 63%;
 	}
 	h2 {
+		font-size: 125%;
 		margin-bottom: 0.3em;
 	}
 	.new {

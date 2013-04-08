@@ -5,8 +5,9 @@
 *= require formtastic
 *= require formtastic_changes
 *= require jquery.autocomplete
-*= require colorbox.css
-*= require gmaps4rails.css
-*= require themes/iwyg/jquery.ui.theme.css
+*= require colorbox
+*= require gmaps4rails
+*= require themes/iwyg/jquery.ui.theme
+*= require themes/iwyg/jquery-ui-1.8.11.custom
 *= require mobile
 */
