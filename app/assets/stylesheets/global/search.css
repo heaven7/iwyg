@@ -1,4 +1,4 @@
-/* Search */
+	/* Search */
 #search {
     position:relative;
     left:13%;
@@ -38,7 +38,7 @@
     margin-right:1em;
 }
 #search #searchextended {
-    margin-top:1.5em;
+    margin-top:2em;
     padding:0.5em;
     padding-left:8.5em;
     text-decoration: none;

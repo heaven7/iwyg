@@ -33,7 +33,6 @@
 .list-item .image {
     text-align:center;
     border:1px solid transparent;
-    height:50px;
 }
 .list-item #description {
     clear:left;

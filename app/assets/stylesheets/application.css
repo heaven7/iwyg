@@ -1,4 +1,12 @@
 /*
 *= require_self
-*= require_tree .
+*= require style
+*= require token-input
+*= require formtastic
+*= require formtastic_changes
+*= require jquery.autocomplete
+*= require colorbox.css
+*= require gmaps4rails.css
+*= require themes/iwyg/jquery.ui.theme.css
+*= require mobile
 */
