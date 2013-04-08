@@ -1,0 +1,122 @@
+/* Smaller than standard 960 (devices and browsers) */
+@media only screen 
+and (min-width : 768px) 
+and (max-width : 1024px) {
+	#content {
+		width: 92.5%;
+	} 
+}
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen 
+and (min-width : 320px) 
+and (max-width : 480px) {
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen 
+and (min-width : 321px) {
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen 
+and (max-width : 320px) {
+}
+
+@media only screen 
+and (max-width : 480px) {
+}
+
+@media only screen 
+and (min-width : 480px) 
+and (max-width : 768px) {
+
+	body {
+		font-size:80%;
+	}
+	.list-item {
+		width: 110px;
+	}
+	.sub2cols #userarea {
+		width: 63%;
+	}
+	h2 {
+		font-size: 125%;
+		margin-bottom: 0.3em;
+	}
+	.new {
+	max-width: 180px;
+	}
+	#topnavigation {
+		top: 1em;
+		right: 2em;
+		padding: 0.3em;
+	}
+	#search {
+		left: 25%;
+		padding-top: 4em;
+	}
+	#search #submit-search {
+		position: absolute;
+		top: 9px;
+		left: 102%;
+		width: 18px;
+	}
+	#logo {
+		left: 50%; 
+	}
+	#logo a img {
+		width: 38px;
+	}
+	.list-item .image-big {
+		width: 100px;
+	}
+
+}
+/* iPads (portrait and landscape) ----------- */
+@media only screen 
+and (min-width : 768px) 
+and (max-width : 1024px) {
+	.sub2cols #userarea {
+		width: 74%;
+	}
+}
+
+/* iPads (landscape) ----------- */
+@media only screen 
+and (min-width : 768px) 
+and (max-width : 1024px) 
+and (orientation : landscape) {
+/*
+	#content {
+		background: blue !important;
+	}
+*/
+
+}
+
+/* iPads (portrait) ----------- */
+@media only screen 
+and (min-width : 768px) 
+and (max-width : 1024px) 
+and (orientation : portrait) {
+/* Styles */
+}
+
+/* Desktops and laptops ----------- */
+@media only screen 
+and (min-width : 1224px) {
+/* Styles */
+}
+
+/* Large screens ----------- */
+@media only screen 
+and (min-width : 1824px) {
+/* Styles */
+}
+
+/* iPhone 4 ----------- */
+@media
+only screen and (-webkit-min-pixel-ratio : 1.5),
+only screen and (min-pixel-ratio : 1.5) {
+/* Styles */
+}	

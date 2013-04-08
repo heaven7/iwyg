@@ -1,16 +1,17 @@
 <div class="user list-item ui-corner-all">
   <div class="image ui-corner-all"><%= link_to image_tag( tinyThumb(user), :alt => user.login, :title => user.login ), user %></div>
-    <div class="font-small left">
+    <div class="font-small center">
       <%= link_to user.login, user %><br />
     </div>
+    <hr class="divider" />
     <div id="description" class="font-smaller">
       <%= link_to t("resource", :count => user.items.size), user_items_path(user) %><br />
       <%= link_to t("ping", :count => user.pings.not_closed.size), user_pings_path(user) if logged_in? %>
-      <hr class="divider" />
   		<%
 				items_taken =  Item.taken.where('accounts.accountable_id' => user.id, 'accounts.accountable_type' => "User")
         items_given = Item.given.where('accounts.accountable_id' => user.id, 'accounts.accountable_type' => "User")
       %> 
+			<br />
       <%= link_to t("resources.taken", :count => items_taken.size), user_items_path(
 							user, 
 							"q[accounts_accountable_id_eq]" => user.id,

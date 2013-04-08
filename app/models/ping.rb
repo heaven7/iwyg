@@ -15,6 +15,7 @@ class Ping < ActiveRecord::Base
   scope :open, :conditions => { :status => 1 }
   scope :not_closed, :conditions => "status < 4"
   scope :accepted, :conditions => { :status => 2 }
+	scope :open_or_accepted, :conditions => "status < 3" 
   scope :declined, :conditions => { :status => 3 }
   scope :closed, :conditions => { :status => 4 }
   scope :created_at_desc, order("pings.created_at DESC")
