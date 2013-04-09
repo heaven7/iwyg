@@ -1,0 +1,26 @@
+<%# thing.likers(User).size %>
+<%= content_for :head do %>
+  <%# stylesheet_link_tag "socialcount.css" %>
+  <%= stylesheet_link_tag "socialcount-with-icons.css" %>
+	<%= javascript_include_tag "socialcount" %>
+	<!-- facebook -->
+	<meta property="og:site_name" content="iwyg"/>
+	<% if thing.images.first %>
+		<meta property="og:image" content="<%= @item.images.first.image.url %>" />
+	<% else %>
+		<meta property="og:image" content="<%= "http://" + request.host + asset_path('iwyg_logo_new_250x250.png') %>" />
+	<% end %>	
+	<meta property="og:title" content="<%= @item.title || @title %>"/>
+	<meta property="og:url" content="<%= request.url %>"/>
+	<meta property="og:description" content="<%= @item.description %>" />
+	<!-- google -->
+	<link rel="canonical" href="<%= request.url %>" />
+<% end %>
+
+<div class="box">
+	<ul class="horizontal socialcount socialcount-small" data-url="<%= request.url %>" data-counts="true" data-share-text="iwyg - don't worry, be happy!">
+		<li class="facebook button"><a href="https://www.facebook.com/sharer/sharer.php?u=<%= request.url %>" title="Share on Facebook"><span class="social-icon icon-facebook"></span><span class="count"></span></a></li>
+		<li class="twitter button"><a href="https://twitter.com/intent/tweet?text=<%= request.url %>" title="Share on Twitter"><span class="social-icon icon-twitter"></span><span class="count"></span></a></li>
+		<li class="googleplus button"><a href="https://plus.google.com/share?url=<%= request.url %>" title="Share on Google Plus"><span class="social-icon icon-googleplus"></span><span class="count"></span></a></li>
+	</ul> 
+</div>

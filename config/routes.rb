@@ -11,6 +11,10 @@ Iwyg::Application.routes.draw do
   
   resources :meetups do
     resources :users
+		member do
+      put 'like'
+      put 'unlike'
+		end
   end
 
   resources :meetings do
@@ -19,7 +23,12 @@ Iwyg::Application.routes.draw do
     end
   end
   
-  resources :events
+  resources :events do
+		member do
+      put 'like'
+      put 'unlike'
+		end
+	end
 
   resources :userdetails
 
@@ -38,7 +47,14 @@ Iwyg::Application.routes.draw do
   
   resources :item_attatchments 
 
-  resources :images
+  resources :images do
+		member do
+      put 'like'
+      put 'unlike'
+			put 'voteup'
+			put 'votedown'
+		end
+	end
  
   resources :groupings do
     member do
@@ -65,6 +81,10 @@ Iwyg::Application.routes.draw do
     member do
       post 'rate'
       put 'follow'
+      put 'like'
+      put 'unlike'
+			put 'voteup'
+			put 'votedown'
       put 'block'
       put 'unblock'
       get 'followings'
@@ -80,6 +100,10 @@ Iwyg::Application.routes.draw do
     resources :users, :images, :items
     member do
       put 'follow'
+      put 'like'
+      put 'unlike'
+			put 'voteup'
+			put 'votedown'
     end
     collection do
       get 'tag_suggestions'
@@ -105,6 +129,8 @@ Iwyg::Application.routes.draw do
   resources :pings do 
     resources :comments
     member do
+      put 'like'
+      put 'unlike'
       put 'accept'
       put 'decline'
     end
@@ -116,6 +142,10 @@ Iwyg::Application.routes.draw do
     member do
       post 'rate'
       put 'follow'
+      put 'like'
+      put 'unlike'
+			put 'voteup'
+			put 'votedown'
     end
     collection do
       get 'tag_suggestions'

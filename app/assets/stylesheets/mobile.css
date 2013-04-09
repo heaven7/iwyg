@@ -1,0 +1,158 @@
+@media only screen 
+and (min-width : 1824px) {
+/* Styles */
+}
+
+@media only screen 
+and (min-width : 1224px) {
+/* Styles */
+}
+
+@media only screen 
+and (min-width : 768px) 
+and (max-width : 1024px) {
+	#content {
+		width: 92.5%;
+	} 
+	.sub2cols #userarea {
+		width: 74%;
+	}
+}
+
+@media only screen 
+and (max-width : 780px) {
+	
+	.ui-listbuilder-items {
+		overflow: shown !important;
+		width: auto;
+	}	
+
+	.ui-tabs {
+		padding: 0em;
+	}
+	
+	#content {
+		width: 90%;
+	}
+
+	.ui-tabs .ui-tabs-nav li a,
+	.ui-tabs .ui-tabs-nav li,
+	.sub2cols .subcol2,
+	.sub2cols .subcol1,
+	#col1, #col2 {
+		width: 100%;
+	}
+
+	body {
+		font-size:80%;
+	}
+	.list-item {
+		width: 110px;
+	}
+	.sub2cols #userarea {
+		width: 58%;	
+	}
+
+	.sub2cols #usermessages {
+		width: 75%;
+	}
+
+	h2 {
+		font-size: 125%;
+		margin-bottom: 0.3em;
+	}
+	.new {
+	max-width: 180px;
+	}
+	#topnavigation {
+		top: 1em;
+		right: 2em;
+		padding: 0.3em;
+	}
+	#search {
+		margin-top: 3.1em;
+		position: relative;
+		left: 4%;
+		font-size: 90%;
+	}
+	#search #submit-search {
+		position: absolute;
+		top: 9px;
+		left: 102%;
+		width: 17px;
+	}
+	#search #searchmenu {
+		font-size: 75%;
+		left: -5em;
+		position: relative;
+		top: 4.3em;
+	}
+	#search #searchmenu a {
+		text-decoration:none;
+	}		
+	#search #searchmenu a:hover {
+		text-decoration:none;
+		font-style: italic;
+	}	
+	#logo {
+		left: 4%; 
+		top: 7px;
+	}
+	#logo a img {
+		width: 45px;
+	}
+	.list-item .image-big {
+		width: 100px;
+	}
+
+}
+
+@media only screen 
+and (max-width : 480px)
+and (max-width : 700px) {
+
+	.sub2cols #usermessages {
+		margin: 0;
+		padding: 0;
+		border: none;
+	}
+
+	#mainnavigation {
+		margin-bottom: 1em;
+	}
+	
+	#search {
+		margin-top: 3.1em;
+			left: 4%;
+	}
+
+	.sub2cols #userarea,
+	.sub2cols #userdescription,
+	.sub2cols #usermailbox {
+		width: 100%;
+	}
+
+	.sub2cols #userdescription {
+		margin-bottom: 2em;
+	}
+
+	#userarea {
+		padding: 0em;	
+	}
+
+	form.formtastic input[type="submit"], .submit {
+		width: auto;
+	}
+}
+
+@media only screen 
+and (min-width : 320px) 
+and (max-width : 480px) {
+}
+
+/* iPhone 4 ----------- */
+@media
+only screen and (-webkit-min-pixel-ratio : 1.5),
+only screen and (min-pixel-ratio : 1.5) {
+/* Styles */
+}	

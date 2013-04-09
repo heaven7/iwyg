@@ -75,7 +75,16 @@ class ImagesController < InheritedResources::Base
     flash[:notice] = t("flash.images.destroy.notice")
     redirect_to collection_url
   end
- 
+	
+	def like
+    @image = Image.find(params[:id])
+		likeOf(current_user, @image)
+	end
+
+	def unlike
+    @image = Image.find(params[:id])
+		unlikeOf(current_user, @image)
+	end
   
   private
 

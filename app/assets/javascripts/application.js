@@ -6,7 +6,12 @@
 //= require rails.validations
 //= require rails.validations.formtastic
 //= require rails.validations.nested_form
+//= require jquery-ui
+//= require i18n/jquery-ui-i18n
+//= require jquery-ui-timepicker-addon                                               
+//= require jquery.tokeninput
 //= require_self
+
 
 /*
 jQuery.ajaxSetup({

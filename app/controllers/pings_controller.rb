@@ -8,10 +8,11 @@ class PingsController < InheritedResources::Base
   before_filter :login_required
   
   has_scope :open
-  has_scope :non_open
   has_scope :accepted
+  has_scope :open_or_accepted
   has_scope :declined
   has_scope :closed
+  has_scope :non_closed
 
   def index
     @pingable = find_pingable
@@ -32,7 +33,7 @@ class PingsController < InheritedResources::Base
         end
       end
 
-      puts "inverse pings size: " + @inverse_pings.join("-")
+      # puts "inverse pings size: " + @inverse_pings.join("-")
       
       # attending and invited users of groups
       # @user.groups.map do |i|

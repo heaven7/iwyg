@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
   acts_as_tagger
   acts_as_follower
   acts_as_followable
+	acts_as_liker
   has_associated_audits
   # acts_as_audited #:associated_with => :meetup, :except => [:password]
 	is_impressionable

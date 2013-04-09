@@ -4,6 +4,7 @@ class MessagesController < InheritedResources::Base
 	impressionist :actions => [:show]
 	respond_to :html, :js
 	before_filter :updateNotifications, :only => [:show]
+  before_filter :authenticate_user!
 
   def show
     @user = current_user

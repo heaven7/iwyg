@@ -81,7 +81,19 @@ class ApplicationController < ActionController::Base
   def login_required
      authenticate_user!
   end
-  
+
+	def likeOf(user, model)
+		@thing = model
+    user.like!(@thing)
+    redirect_to(@thing)
+	end
+
+	def unlikeOf(user, model)
+		@thing = model
+    user.unlike!(@thing)
+    redirect_to(@thing)
+	end
+    
   def find_model
     params.each do |name, value|
       if name =~ /(.+)_id$/
@@ -136,7 +148,7 @@ class ApplicationController < ActionController::Base
 
 			notifications = Notification.where(
 				:receiver_id => user,
-				:notifiable_id => resource.id,
+				:notifiable_id => id,
 				:notifiable_type => klass.to_s		
 			)
 
@@ -145,7 +157,7 @@ class ApplicationController < ActionController::Base
 			if notifications 
 				impressions = Impression.where(
 					:user_id => user,
-					:impressionable_id => resource.id,
+					:impressionable_id => id,
 					:impressionable_type => klass.to_s 		
 				)
 				if notifications.size > 1

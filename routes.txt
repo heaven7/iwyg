@@ -209,6 +209,7 @@
                            DELETE   /users/:user_id/userdetails(.:format)                userdetails#destroy
                  rate_user POST     /users/:id/rate(.:format)                            users#rate
                follow_user PUT      /users/:id/follow(.:format)                          users#follow
+                 like_user PUT      /users/:id/like(.:format)                            users#like
                 block_user PUT      /users/:id/block(.:format)                           users#block
               unblock_user PUT      /users/:id/unblock(.:format)                         users#unblock
            followings_user GET      /users/:id/followings(.:format)                      users#followings
@@ -244,6 +245,7 @@
                            PUT      /groups/:group_id/items/:id(.:format)                items#update
                            DELETE   /groups/:group_id/items/:id(.:format)                items#destroy
               follow_group PUT      /groups/:id/follow(.:format)                         groups#follow
+                like_group PUT      /groups/:id/like(.:format)                           groups#like
     tag_suggestions_groups GET      /groups/tag_suggestions(.:format)                    groups#tag_suggestions
              search_groups GET|POST /groups/search(.:format)                             groups#search
                     groups GET      /groups(.:format)                                    groups#index
@@ -284,6 +286,7 @@
               ping_comment GET      /pings/:ping_id/comments/:id(.:format)               comments#show
                            PUT      /pings/:ping_id/comments/:id(.:format)               comments#update
                            DELETE   /pings/:ping_id/comments/:id(.:format)               comments#destroy
+                 like_ping PUT      /pings/:id/like(.:format)                            pings#like
                accept_ping PUT      /pings/:id/accept(.:format)                          pings#accept
               decline_ping PUT      /pings/:id/decline(.:format)                         pings#decline
                      pings GET      /pings(.:format)                                     pings#index
@@ -343,6 +346,7 @@ edit_item_item_attatchment GET      /items/:item_id/item_attatchments/:id/edit(.
                            DELETE   /items/:item_id/location(.:format)                   locations#destroy
                  rate_item POST     /items/:id/rate(.:format)                            items#rate
                follow_item PUT      /items/:id/follow(.:format)                          items#follow
+                 like_item PUT      /items/:id/like(.:format)                            items#like
      tag_suggestions_items GET      /items/tag_suggestions(.:format)                     items#tag_suggestions
               search_items GET|POST /items/search(.:format)                              items#search
                      items GET      /items(.:format)                                     items#index

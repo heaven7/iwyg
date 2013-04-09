@@ -156,7 +156,7 @@ class ItemsController < InheritedResources::Base
       @items_related = @items_related_tagged_same
     end
 
-    @pings = @item.pings
+    @pings = @item.pings.open_or_accepted
     @comments = @item.comments.find(:all, :order => "created_at DESC")
     @events = @item.events
     @location = @item.locations.first # || @item.itemable.locations.first
@@ -245,6 +245,16 @@ class ItemsController < InheritedResources::Base
     
     redirect_to(@item)
   end
+
+	def like
+    @item = Item.find(params[:id])
+		likeOf(current_user, @item)
+	end
+
+	def unlike
+    @item = Item.find(params[:id])
+		unlikeOf(current_user, @item)
+	end
   
   def rate
     @item = Item.find(params[:id])
