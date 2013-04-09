@@ -52,6 +52,11 @@ and (max-width : 780px) {
 	.sub2cols #userarea {
 		width: 58%;	
 	}
+
+	.sub2cols #usermessages {
+		width: 75%;
+	}
+
 	h2 {
 		font-size: 125%;
 		margin-bottom: 0.3em;
@@ -106,6 +111,12 @@ and (max-width : 780px) {
 and (max-width : 480px)
 and (max-width : 700px) {
 
+	.sub2cols #usermessages {
+		margin: 0;
+		padding: 0;
+		border: none;
+	}
+
 	#mainnavigation {
 		margin-bottom: 1em;
 	}
@@ -116,7 +127,8 @@ and (max-width : 700px) {
 	}
 
 	.sub2cols #userarea,
-	.sub2cols #userdescription {
+	.sub2cols #userdescription,
+	.sub2cols #usermailbox {
 		width: 100%;
 	}
 
