@@ -22,6 +22,9 @@
     <br />
     <p><%= f.check_box :remember_me %><label for="user_remember_me"><%= t("login.label.remember") %></label></p>
 
-    <div class="formbutton"><%= submit_tag t("login.label.submit"), :id => "submit" %></div>
+    <div class="formbutton">
+			<label>&nbsp;</label>
+			<%= submit_tag t("login.label.submit"), :id => "submit" %>
+		</div>
   <% end -%>
 </fieldset>
