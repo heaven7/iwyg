@@ -158,9 +158,8 @@ textarea {
 }
 .formbutton {
   margin-top:0.5em;
-  padding-left:12.5em;
   text-align:left;
-  
+	width: 101%;  
 }
 .formbutton input {
   background:#b8cab6 none repeat scroll 0 0;
