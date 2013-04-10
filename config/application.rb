@@ -86,6 +86,7 @@ MAILER_CHARSET = "UTF-8"
 # default date/time format
 Time::DATE_FORMATS[:mailbox] = "%A, %B %d, %Y"
 Time::DATE_FORMATS[:default] = "%B %d, %Y"
+Time::DATE_FORMATS[:forms] = "%d.%m.%Y %H:%M"
 
 # hirb
 if $0 == 'irb'
