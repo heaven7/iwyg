@@ -195,6 +195,8 @@ class ItemsController < InheritedResources::Base
     @item = @itemable.items.find(params[:id], :include => [:locations, :events])    
     @location = @item.locations.first || @item.locations.build
     @event = @item.events.first || @item.events.build
+		@event.from = @event.from.to_s(:forms) if @event.from
+		@event.till = @event.till.to_s(:forms) if @event.till
     getLocation(@item) if @location.lat and @location.lng
     @user = User.find(@item.user_id)
     getItemTypes

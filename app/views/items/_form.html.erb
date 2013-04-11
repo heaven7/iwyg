@@ -50,6 +50,12 @@
     
       /* Add Styles */
       $('.ui-listbuilder-input').addClass('ui-corner-all');
+
+			/* Datetimepicker */
+			myDate = $.datepicker.parseDate("dd.mm.yy", "01.02.2013");
+			$(".event-from").datetimepicker({dateFormat: "dd.mm.yy", timeFormat: "hh:mm", changeYear: true, defaultDate: "01.01.2013" });
+			$(".event-till").datetimepicker({dateFormat: "dd.mm.yy", timeFormat: "hh:mm", changeYear: true, defaultDate: myDate });
+
   
     });
   </script>
