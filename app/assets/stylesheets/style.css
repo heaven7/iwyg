@@ -87,7 +87,9 @@ body {
     top:12px;
     z-index: 99;
 }
-
+#logo a img {
+	width: 80px;
+}
 /* Content  */
 #content {
 /*    background:transparent url(/assets/content_bg.png);
