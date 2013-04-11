@@ -24,9 +24,9 @@
       locale = '<%= t ("meta.locale") %>'; 
       $.timepicker.setDefaults($.timepicker.regional[locale]);
       $.datepicker.setDefaults($.datepicker.regional[locale]);
-      
-      $('#searchextended #from').datetimepicker({inline:true, stepMinute: 5});
-      $('#searchextended #till').datetimepicker({inline:true, stepMinute: 5});
+      options = {dateFormat: "dd.mm.yy", timeFormat: "hh:mm", inline:true, stepMinute: 5, changeYear: true};
+      $('#searchextended #from').datetimepicker(options);
+      $('#searchextended #till').datetimepicker({dateFormat: "dd.mm.yy", timeFormat: "hh:mm", inline:true, stepMinute: 5, changeYear: true});
       $('.ui-datepicker').addClass('shadowed');  
     });
   </script>
