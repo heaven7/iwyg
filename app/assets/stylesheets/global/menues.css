@@ -94,16 +94,17 @@
 .pagination em,
 .pagination a {
   padding:0.5em;
-  height:40px;
-  width:40px;
+	height: 10px;
+	width: 10px;
   -moz-border-radius: 4px 4px 4px 4px;
   -webkit-border-radius: 4px 4px 4px 4px;
   border-radius: 4px 4px 4px 4px;
   border: 1px solid #B8C2B3;
   -moz-border: 1px solid #B8C2B3;
   -webkit-border: 1px solid #B8C2B3;
-
+	display: inline-block;
   text-decoration:none;
+	line-height: 1em;
 }
 .pagination span:hover,
 .pagination a:hover {

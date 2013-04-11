@@ -1,9 +1,9 @@
 <%= content_for :head do %>   
    <script type="text/javascript">
   $(document).ready(function (){
-
-  	$(".event-from").datetimepicker({dateFormat: "dd.mm.yy", timeFormat: "hh:mm", changeYear: true });
-  	$(".event-till").datetimepicker({dateFormat: "dd.mm.yy", timeFormat: "hh:mm", changeYear: true });
+		options = {dateFormat: "dd.mm.yy", timeFormat: "hh:mm", stepMinute: 5, changeYear: true };	
+  	$(".event-from").datetimepicker(options);
+  	$(".event-till").datetimepicker(options);
   	
   });
   </script>
