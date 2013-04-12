@@ -17,8 +17,8 @@ class PageController < InheritedResources::Base
       randomUser = User.random
       @users.push(randomUser) if !@users.include?(randomUser)
     end
-    @items_needed = Item.need
-    @items_offered = Item.offer
+    @items_needed = Item.needed
+    @items_offered = Item.offered
     @itemTypes = ItemType.all
     
     getNeedsAndOffers("Item", @itemTypes)
