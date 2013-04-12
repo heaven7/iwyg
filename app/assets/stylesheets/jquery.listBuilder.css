@@ -12,11 +12,17 @@
 * Dual licensed under the MIT or GPL Version 2 licenses.
 * <https://raw.github.com/th3uiguy/jquery-listbuilder/master/GPL-LICENSE.txt> <https://raw.github.com/th3uiguy/jquery-listbuilder/master/MIT-LICENSE.txt>
 */
-.listBuilder{
+.listBuilder {
 	border: 1px solid #ccc;
-	background-color: #fff;
-	padding:0.2em 0.3em;
-	cursor:text;
+	background: #EDEFDF;
+	width: 56.5%;
+	padding: 0.5em;
+	cursor: text;
+	display: inline-block;
+	border-radius: 5px;
+	moz-border-radius: 5px;
+	webkit-border-radius: 5px;
+	margin-top: 0.5em;
 }
 .listBuilder ul{
 	margin: 0;
@@ -31,6 +37,7 @@
 	display: inline;
 	padding: 0;
 	margin: 0;
+	margin-bottom: 0px !important;
 }
 .listBuilder ul a{
 	display: inline-block;
