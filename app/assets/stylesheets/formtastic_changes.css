@@ -31,10 +31,11 @@ form.formtastic input, form.formtastic textarea, form.formtastic select {
 
 }
 form.formtastic input[type="submit"], .submit {
-    background:#EDEFDF;
-    border: 1px solid;
-    width: 200px;
-
+	background: #EDEFDF;
+	border: 1px solid;
+	width: auto;
+	text-align: center;
+	min-width: 120px;
 }
 form.formtastic input[type="submit"]:hover, .submit:hover {
     background:white;
