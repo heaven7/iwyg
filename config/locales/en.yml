@@ -217,7 +217,6 @@ en:
   searchIn: Search in
   searchOptions: Search options
   searchedIn: <b>%{item}</b> was searched <b>%{count}</b> times
-  preferences: Preferences
   changepassword: Change password
   help: Help
   about: About
@@ -560,6 +559,7 @@ en:
       followings: follows
       followers: is followed by
       invite: Invite friends
+      preferences: Preferences
   userarea:
     edit:
       avatar: Edit Avatar
