@@ -4,3 +4,9 @@
 	margin-left: 0.6em;
 }
 
+.ping-submit {
+	text-align:center;
+	display: inline-block;
+	padding: 0.5em;
+}
+

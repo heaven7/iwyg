@@ -5,8 +5,8 @@
  <% end %>
 </div>
 <% elsif not logged_in? %>
-  <div class="button">
-    <%= link_to t("link.ping.loginToPing") , login_path %>
+  <div class="button ping-submit">   
+		<%= link_to @ping_submit, login_path %>
   </div>
 <% end %>
 <% if pings.size > 0 %>
