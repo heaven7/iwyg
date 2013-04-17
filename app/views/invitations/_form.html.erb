@@ -19,20 +19,20 @@
 <% end %>
 <%= form_tag @contacts_url, :method => :post, :remote => true, :id => "providerform" do |f| %>
 	<p class="font-smaller">
-			<%= select_tag :provider, options_for_select(Invitation::PROVIDERS), {:prompt => "please choose", :class => "ui-corner-all"} %>
-		  <%= text_field_tag :username, t("register.label.email"), :class => "ui-corner-all" %>
-		  <%= password_field_tag :password, t("register.label.password"), :class => "ui-corner-all" %>
+			<%= select_tag :provider, options_for_select(Invitation::PROVIDERS), {:prompt => t("pleaseChoose").html_safe, :class => "ui-corner-all"} %>
+		  <%= text_field_tag :username, t("formtastic.labels.invitation.email"), :class => "ui-corner-all" %>
+		  <%= password_field_tag :password, t("formtastic.labels.invitation.password"), :class => "ui-corner-all" %>
 			
-			<%= submit_tag 'load contacts', :class => "ui-corner-all" %>
+			<%= submit_tag t("formtastic.labels.invitation.importContacts"), :class => "ui-corner-all" %>
 	</p>
 <% end %>
 <%= semantic_form_for [current_user, @invitation] do |f| %>
   <%= f.inputs do %>
-    <%= f.input "emails", :as => :string %>
+    <%= f.input "emails", :as => :string, :label => t("formtastic.labels.invitation.emails").html_safe %>
     <%= f.input :invitationmessage %>
   <% end %>
 
   <%= f.actions do %>
-    <%= f.action :submit, :as => :input %>
+    <%= f.action :submit, :as => :input, :label => t("formtastic.labels.invitation.sendInvitation").html_safe %>
   <% end %>
 <% end %>

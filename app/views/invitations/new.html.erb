@@ -1,6 +1,4 @@
-<h1><%= t("invitations.inviteYourFriends") %></h1>
-<p>
-Please choose your mail provider or just use your own email-adresses. 	
-</p>
+<h1><%= t("invitations.inviteYourFriends").html_safe %></h1>
+<p><%= t("invitations.chooseProvider").html_safe %></p>
 <%= render 'form' %>
 

@@ -275,6 +275,7 @@ en:
   hasCommentedOn: has commented '%{title}'
   hasDeleted: has deleted
   activity: Activity
+  pleaseChoose: Please choose
   link:
     ping:
       loginToPing: Log in to ping this
@@ -629,6 +630,9 @@ en:
     leaveAComment: ! 'Leave a comment:'
     hasCommentedYou: ! ' has sent a comment.'
     hasCommentedYour: ! ' has commented your '
+  invitations:
+    inviteYourFriends: Invite your friends, family or colleagues.
+    chooseProvider: Please choose your mail provider or just use your own email-adresses.
   title:
     startpage:
       weAre: We are
@@ -758,6 +762,13 @@ en:
       members: Participants
   formtastic:
     labels:
+      invitation: 
+        email: emailaddress
+        password: password
+        importContacts: Import contacts
+        emails: Email-Addresses
+        invitationmessage: Invitationtext
+        sendInvitation: Send invitation
       message:
         subject: Subject
         body: Message
