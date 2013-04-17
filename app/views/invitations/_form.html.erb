@@ -28,8 +28,8 @@
 <% end %>
 <%= semantic_form_for [current_user, @invitation] do |f| %>
   <%= f.inputs do %>
-    <%= f.input "emails", :as => :string, :label => t("formtastic.labels.invitation.emails").html_safe %>
-    <%= f.input :invitationmessage %>
+    <%= f.input "emails", :as => :string, :label => t("formtastic.labels.invitation.emails").html_safe, :validate => true %>
+    <%= f.input :invitationmessage, :validate => true %>
   <% end %>
 
   <%= f.actions do %>

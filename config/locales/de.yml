@@ -540,6 +540,10 @@ de:
         error: Es gab Probleme, die Teilnahme zu akzeptieren.
       destroy:
         notice: Teilnahmeanfrage abgelehnt.
+    invitations:
+      contactsImported: Kontakte erfolgreich importiert
+      chooseProvider: Bitte w&auml;hle einen Email-Anbieter
+      credentialsRequired: Email-Adresse und Passwort werden ben&ouml;tigt
   menu:
     main:
       resources: Ressourcen

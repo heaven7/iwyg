@@ -18,7 +18,7 @@ class InvitationsController < InheritedResources::Base
 	end
 
 	def contacts
-		@contacts = getContacts(params)		
+		@contacts = getContacts(params)
 	end
 
 	def create
@@ -76,7 +76,7 @@ class InvitationsController < InheritedResources::Base
 			
 			begin
 				@contacts = Contacts.new(provider.to_sym, username, password).contacts
-				
+				flash[:notice] = "Contacts imported"		
 				# make contact-list suitable for listbuilder
 				@list = @contacts.map do |c|
 					if c[1].blank?
@@ -85,7 +85,6 @@ class InvitationsController < InheritedResources::Base
 						{ :label => c[0], :value => "#{c[0]}<#{c[1]}>" }
 					end
 				end
-				flash[:notice] = "Contacts imported"
 				return @list.to_json
 
 			rescue => ex
@@ -96,11 +95,11 @@ class InvitationsController < InheritedResources::Base
 				wrong_credentials = ["password", "username"].any?{ |o| msg.include? o }	
 				no_credentials = ["not", "blank"].any?{ |o| msg.include? o }
 				if !no_provider.blank?
-					flash[:error] = "Please choose a provider"				
+					flash[:error] = t("flash.invitations.chooseProvider")				
 				elsif(!no_credentials.blank? or password.blank? or username.blank?)
-					flash[:error] = "Username and password are required"				
+					flash[:error] = t("flash.invitations.credentialsRequired")
 				elsif !wrong_credentials.blank?
-					flash[:error] = I18n.t("devise.failure.invalid").html_safe
+					flash[:error] = t("devise.failure.invalid").html_safe
 				else
 					flash[:error] = msg
 				end

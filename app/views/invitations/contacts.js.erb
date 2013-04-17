@@ -1,5 +1,6 @@
 var contacts = <%= raw(@contacts) %>;
-
+clear_flash();
+$("#header").after('<div id="flash_notice" class="notice ui-corner-all"><%= escape_javascript(I18n.t("flash.invitations.contactsImported"))%></div>');
 if (contacts.length > 0) {
 	// add contacts to list
 	$.each(contacts, function () {

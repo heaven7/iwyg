@@ -536,6 +536,10 @@ en:
         error: There were problems to accept the participation.
       destroy:
         notice: Participation aborted.
+    invitations:
+      contactsImported: Contacts imported successfully
+      chooseProvider: Please choose an email-provider
+      credentialsRequired: Emailaddress and password are required
   menu:
     main:
       resources: Resources
