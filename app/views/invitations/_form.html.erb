@@ -26,10 +26,10 @@
 			<%= submit_tag t("formtastic.labels.invitation.importContacts"), :class => "ui-corner-all" %>
 	</p>
 <% end %>
-<%= semantic_form_for [current_user, @invitation] do |f| %>
+<%= semantic_form_for [current_user, @invitation], :validate => true do |f| %>
   <%= f.inputs do %>
-    <%= f.input "emails", :as => :string, :label => t("formtastic.labels.invitation.emails").html_safe, :validate => true %>
-    <%= f.input :invitationmessage, :validate => true %>
+    <%= f.input "emails", :as => :string, :label => t("formtastic.labels.invitation.emails").html_safe %>
+    <%= f.input :invitationmessage %>
   <% end %>
 
   <%= f.actions do %>

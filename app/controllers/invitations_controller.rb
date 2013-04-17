@@ -73,7 +73,7 @@ class InvitationsController < InheritedResources::Base
 			username = params[:username]
 			password = params[:password]
 			provider = params[:provider].to_s
-			
+
 			begin
 				@contacts = Contacts.new(provider.to_sym, username, password).contacts
 				flash[:notice] = "Contacts imported"		
@@ -95,11 +95,11 @@ class InvitationsController < InheritedResources::Base
 				wrong_credentials = ["password", "username"].any?{ |o| msg.include? o }	
 				no_credentials = ["not", "blank"].any?{ |o| msg.include? o }
 				if !no_provider.blank?
-					flash[:error] = t("flash.invitations.chooseProvider")				
+					flash[:error] = I18n.t("flash.invitations.chooseProvider")				
 				elsif(!no_credentials.blank? or password.blank? or username.blank?)
-					flash[:error] = t("flash.invitations.credentialsRequired")
+					flash[:error] = I18n.t("flash.invitations.credentialsRequired")
 				elsif !wrong_credentials.blank?
-					flash[:error] = t("devise.failure.invalid").html_safe
+					flash[:error] = I18n.t("devise.failure.invalid").html_safe
 				else
 					flash[:error] = msg
 				end
