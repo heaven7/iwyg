@@ -218,7 +218,7 @@ de:
   searchedIn: <b>%{item}</b> wurde <b>%{count}</b> mal gesucht
   searchOptions: Suchoptionen
   help: Hilfe
-  preferences: Einstellungen
+  preferences: Einstellungen	
   changepassword: Passwort &auml;ndern
   about: ! '&Uuml;ber uns'
   options: Optionen
@@ -563,6 +563,7 @@ de:
       editUserdetails: Personendaten &auml;ndern
       followings: folgt
       followers: wird gefolgt von
+      invite: Freunde einladen
   userarea:
     edit:
       avatar: Bild &auml;ndern

@@ -19,6 +19,9 @@
     <li class="button preferences">    
 			<%= link_to t("preferences"), edit_user_path(@user) %>
   	</li>
+		<li class="button invite">    
+			<%= link_to t("menu.user.invite"), new_user_invitation_path(@user) %>
+  	</li>
 	</ul>
 <% else %>
   <%= render :partial => "share/userarea/profileusermenu", :locals => { :user => @user } %>
