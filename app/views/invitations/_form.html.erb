@@ -19,6 +19,7 @@
 <% end %>
 <%= form_tag @contacts_url, :method => :post, :remote => true, :id => "providerform" do |f| %>
 	<p class="font-smaller">
+			<%= hidden_field_tag :locale, params[:locale] %>
 			<%= select_tag :provider, options_for_select(Invitation::PROVIDERS), {:prompt => t("pleaseChoose").html_safe, :class => "ui-corner-all"} %>
 		  <%= text_field_tag :username, t("formtastic.labels.invitation.email"), :class => "ui-corner-all" %>
 		  <%= password_field_tag :password, t("formtastic.labels.invitation.password"), :class => "ui-corner-all" %>
