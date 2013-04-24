@@ -1,3 +1,29 @@
+<%= content_for :facebook do %>
+	<div id="fb-root"></div>
+   <script src="http://connect.facebook.net/<%= I18n.locale %>/all.js">
+   </script>
+   <script>
+     FB.init({ 
+       appId:'277426012290100', cookie:true, 
+       status:true, xfbml:true 
+     });
+		function FacebookInviteFriends()
+		{
+		FB.ui({ 
+			method: 'apprequests', 
+			message: 'My diaolog...',
+			name: 'My name',
+			caption: 'this is the caption',
+			description: (
+				'hello' +
+				'world'			
+			),
+			picture: 'https://www.iwyg.net/assets/iwyg_logo_new_250x250.png',			
+			link: 'https://www.iwyg.net/users/'
+			});
+		}
+		</script>
+<% end %>
 <%= content_for :head do %>
   <%= stylesheet_link_tag 'jquery.listBuilder.css' %>
   <%= javascript_include_tag 'jquery.listBuilder' %>
@@ -33,6 +59,8 @@
     <%= f.input :invitationmessage %>
   <% end %>
 
+	<h2>Invite Facebook-Friends</h2>
+	<a href='#' onclick="FacebookInviteFriends();"> Facebook Invite Friends</a>
   <%= f.actions do %>
     <%= f.action :submit, :as => :input, :label => t("formtastic.labels.invitation.sendInvitation").html_safe %>
   <% end %>
