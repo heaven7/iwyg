@@ -194,6 +194,13 @@
                user_meetup GET      /users/:user_id/meetups/:id(.:format)                meetups#show
                            PUT      /users/:user_id/meetups/:id(.:format)                meetups#update
                            DELETE   /users/:user_id/meetups/:id(.:format)                meetups#destroy
+          user_invitations GET      /users/:user_id/invitations(.:format)                invitations#index
+                           POST     /users/:user_id/invitations(.:format)                invitations#create
+       new_user_invitation GET      /users/:user_id/invitations/new(.:format)            invitations#new
+      edit_user_invitation GET      /users/:user_id/invitations/:id/edit(.:format)       invitations#edit
+           user_invitation GET      /users/:user_id/invitations/:id(.:format)            invitations#show
+                           PUT      /users/:user_id/invitations/:id(.:format)            invitations#update
+                           DELETE   /users/:user_id/invitations/:id(.:format)            invitations#destroy
           user_userdetails POST     /users/:user_id/userdetails(.:format)                userdetails#create
       new_user_userdetails GET      /users/:user_id/userdetails/new(.:format)            userdetails#new
      edit_user_userdetails GET      /users/:user_id/userdetails/edit(.:format)           userdetails#edit

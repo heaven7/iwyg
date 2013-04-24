@@ -99,5 +99,22 @@ FactoryGirl.define do
 		notifiable_id Random.rand(100)
 		notifiable_type "User"
   end
+
+  factory :friendship do
+		association :user
+		association :friend, factory: :user
+		association :invitation
+    name "contacted_user"
+    email "test@test.com"
+    token "#10430sdogljsf4"
+    accepted false
+    accepted_at nil
+  end
+
+  factory :invitation do
+    sender_id 1
+    emails "test@test.com"
+    invitationmessage "This is an invitation"
+  end
 	
 end

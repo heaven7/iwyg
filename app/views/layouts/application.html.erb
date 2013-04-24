@@ -62,6 +62,7 @@
   <title><%= @title or t("iwyg.title") %></title>
 </head>
 <body>
+<%= yield :facebook %>
 <div id="container">
   <div id="header">
     <div id="logo">
@@ -99,6 +100,9 @@
     <%= "Rendered in #{rendering_time} seconds" %>
     -->
     <div id="footernavigation">
+			<ul>
+				<li><a href="#">testlink</a></li>
+			</ul>
        <!-- gmaps4rails -->
        <%= yield :scripts %>
     </div>

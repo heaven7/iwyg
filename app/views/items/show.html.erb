@@ -1,7 +1,8 @@
 <% content_for(:head) do %>
-  <%= javascript_include_tag "/assets/jquery.qrcode.js" %>
-  <%= javascript_include_tag "/assets/qrcode.js" %>
+  <%# javascript_include_tag "/assets/jquery.qrcode.js" %>
+  <%# javascript_include_tag "/assets/qrcode.js" %>
   <script type="text/javascript">
+	/*
     $(document).ready(function (){
       $('#qrcode').qrcode({
         width: 128,
@@ -9,6 +10,7 @@
         text    : "<%= request.url %>"
       });
     });
+	*/
   </script>
 <% end %>
 <div id="col1">
@@ -16,6 +18,7 @@
   <h1><%=h @item.title %></h1>         
   <%= render :partial => "items/itemmenu", :locals => { :item => @item } %>
 	<span class="float-right"><%= render :partial => "share/social", :locals => { :thing => @item } %></span>
+
   <%= render :partial => "share/images", :locals => {:images => @item.images} %>
   <% if @item.status %>
     <div class="left box ui-corner-all font-small">
@@ -55,7 +58,7 @@
       <% end %>
     </div>
   <% end %>
-  <div class="box ui-corner-all tags">
+	<div class="box ui-corner-all tags">
     <%= render :partial => "share/tags", :locals => { :tags => @item.tags, :model => :items } %>
     <% if @item.description %>
       <%= markdown(@item.description) %>

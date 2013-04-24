@@ -17,6 +17,8 @@ group :production, :stage do
   gem 'mysql2' #, '0.2.18'
 end
 
+gem 'liangzan-contacts', :require => 'contacts' #, :git => "../contacts.git"
+#gem 'contacts'
 gem 'socialization'
 gem 'rails-i18n'
 gem 'daemons'

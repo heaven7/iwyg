@@ -83,15 +83,14 @@ li.button {
 	background-position: 7px 8px;
   background-repeat: no-repeat;
 }
-.edit a:hover {
+.invite a {
   padding:0.5em;
   padding-left:2em;
-  background-image: url("/assets/icons/icon_button_edit.png");
-	background-position:  9px  8px;
-	background-repeat: no-repeat;
-}
-.preferences a:hover {
-  background-image: url("/assets/icons/icon_button_preferences.png");
+  background-image: url("/assets/icons/icon_invitation.png");
 	background-position: 7px 8px;
-	background-repeat: no-repeat;
+  background-repeat: no-repeat;
+
 }
+
+
+

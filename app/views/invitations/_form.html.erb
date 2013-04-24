@@ -1,0 +1,67 @@
+<%= content_for :facebook do %>
+	<div id="fb-root"></div>
+   <script src="http://connect.facebook.net/<%= I18n.locale %>/all.js">
+   </script>
+   <script>
+     FB.init({ 
+       appId:'277426012290100', cookie:true, 
+       status:true, xfbml:true 
+     });
+		function FacebookInviteFriends()
+		{
+		FB.ui({ 
+			method: 'apprequests', 
+			message: 'My diaolog...',
+			name: 'My name',
+			caption: 'this is the caption',
+			description: (
+				'hello' +
+				'world'			
+			),
+			picture: 'https://www.iwyg.net/assets/iwyg_logo_new_250x250.png',			
+			link: 'http://www.iwyg.net/'
+			});
+		}
+		</script>
+<% end %>
+<%= content_for :head do %>
+  <%= stylesheet_link_tag 'jquery.listBuilder.css' %>
+  <%= javascript_include_tag 'jquery.listBuilder' %>
+
+  <script type="text/javascript">
+    $(document).ready(function (){
+      /* AUTOCOMPLETE & LISTBUILDER */
+			$( "#invitation_emails" ).listBuilder({
+				onlyAddFromSource: true
+			});
+/*
+			$(".ui-listbuilder-input").addClass("noEnterSubmit");
+			$(".noEnterSubmit").keypress(function(e){
+				if ( e.which == 13 ) return false;
+			});    
+*/
+		});
+  </script>
+<% end %>
+<%= form_tag @contacts_url, :method => :post, :remote => true, :id => "providerform" do |f| %>
+	<p class="font-smaller">
+			<%= hidden_field_tag :locale, params[:locale] %>
+			<%= select_tag :provider, options_for_select(Invitation::PROVIDERS), {:prompt => t("pleaseChoose").html_safe, :class => "ui-corner-all"} %>
+		  <%= text_field_tag :username, t("formtastic.labels.invitation.email"), :class => "ui-corner-all" %>
+		  <%= password_field_tag :password, t("formtastic.labels.invitation.password"), :class => "ui-corner-all" %>
+			
+			<%= submit_tag t("formtastic.labels.invitation.importContacts"), :class => "ui-corner-all" %>
+	</p>
+<% end %>
+<%= semantic_form_for [current_user, @invitation], :validate => true do |f| %>
+  <%= f.inputs do %>
+    <%= f.input "emails", :as => :string, :label => t("formtastic.labels.invitation.emails").html_safe %>
+    <%= f.input :invitationmessage %>
+  <% end %>
+
+	<h2>Invite Facebook-Friends</h2>
+	<a href='#' onclick="FacebookInviteFriends();"> Facebook Invite Friends</a>
+  <%= f.actions do %>
+    <%= f.action :submit, :as => :input, :label => t("formtastic.labels.invitation.sendInvitation").html_safe %>
+  <% end %>
+<% end %>

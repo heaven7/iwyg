@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Sender:</b>
+  <%= @invitation.sender_id %>
+</p>
+
+<p>
+  <b>Username:</b>
+  <%= @invitation.username %>
+</p>
+
+<p>
+  <b>Password:</b>
+  <%= @invitation.password %>
+</p>
+
+<p>
+  <b>Emails:</b>
+  <%= @invitation.emails %>
+</p>
+
+<p>
+  <b>Invitationmessage:</b>
+  <%= @invitation.invitationmessage %>
+</p>
+
+<% if @contacts and @contacts.count > 0 %>
+	<% for contact in @contacts do %>
+		<span>Name:<%= contact[0] %></span>
+		<span>Email:<%= contact[1] %></span>
+	<% end %>
+<% end %>
+
+<%= link_to 'Edit', edit_polymorphic_path([@invitation.sender, @invitation]) %> |
+<%= link_to 'Back', user_invitations_path %>

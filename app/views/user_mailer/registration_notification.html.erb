@@ -5,25 +5,58 @@
   </head>
   <body>
     <% if I18n.locale.to_s == "de" %>
-      <h2>Willkommen <%= @user.login %></h2>
+      <%= raw("
+			<h2>Willkommen <%= @user.login %></h2>
       <p>
         Du hast Dich erfolgreich bei www.iwyg.net registriert.<br/>
       </p>
-      <p>
-        Logg' Dich hier ein: <a href="<%= @url %>"><%= @url %></a>.
+			<h3>Wie geht's weiter?</h3>
+			<p>
+				<b>Erzähle ein bisschen über dich</b>
+				In deinem Profil kannst du deine Ziele, Wünsche und Interessen beschreiben.<br />
+				Außerdem kannst du deine persönlichen Daten (Adresse, Telefonnummer,...) angeben.
+			</p>
+			<p>
+				<b>Lege Ressourcen an</b><br />
+				Du kannst Ressourcen anbieten und anfragen. Das können Güter, Dienste, Transporte, Plätze, Fähigkeiten und Wissen sein.
+			</p>
+			<p>
+				<b>Lade Freunde, Familie, Bekannte oder Kollegen ein</b><br />
+				Du kannst über deinen Mail-Account Einladungen verschicken oder auf Twitter und Facebook deine Ressourcen bekannt machen.
+			</p>	
+			") %>      
+			<p>
+        Logg' dich hier ein: <a href="<%= @url %>"><%= @url %></a>.
       </p>
       <%= raw("<p>Danke, dass Du dabei bist und hab' noch einen sch&ouml;nen Tag!</p>") %>
     <% end %>                    
 
     <% if I18n.locale.to_s == "en" %>
-       <h2>Welcome <%= @user.login %></h2>
+      <%= raw("
+			<h2>Welcome <%= @user.login %></h2>
       <p>
         You have successfully signed up to www.iwyg.net.<br/>
       </p>
-      <p>
-        To login to the site, just follow this link: <a href="<%= @url %>"><%= @url %></a>.
+				<h3>Whats next?</h3>
+			<p>
+				<b>Tell us something about you</b>
+				In your profile you can describe your aims, wishes and interests.<br />
+				Your can also add your personal data.
+			</p>
+			<p>
+				<b>Request and offer resources</b><br />
+				Resources can be goods, services, transports, sharingpoints, skills and knowledge.
+			</p>
+			<p>
+				<b>Invite friends, family or colleagues</b><br />
+				You can invite your friends with your email-Accounts or you can post your resources on twitter or facebook.
+			</p>	
+      ") %>
+			<p>
+        To log in to the site, just follow this link: <a href="<%= @url %>"><%= @url %></a>.
       </p>
       <p>Thanks for joining and have a great day!</p>  
+			
     <% end %>
   </body>
 </head>

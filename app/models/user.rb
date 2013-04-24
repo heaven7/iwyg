@@ -61,6 +61,7 @@ class User < ActiveRecord::Base
 					 :source => "User",
 					 :foreign_key => "receiver_id",
 					 :dependent => :destroy
+	has_many :invitations, :foreign_key => "sender_id"
     
   # has_one
   has_one :custom, :as => :customable, :dependent => :destroy

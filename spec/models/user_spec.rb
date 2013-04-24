@@ -8,8 +8,12 @@ describe User do
 
 	subject { @user }
 
+	it { should have_many(:friendships).dependent(:destroy) }
 	it { should have_many(:notifications).dependent(:destroy) }
-
+  it { should have_many(:friends).through(:friendships) }
+  it { should have_many(:inverse_friendships).class_name("Friendship") }
+  it { should have_many(:inverse_friends).through(:inverse_friendships) }
+  
 	describe "validations" do
 
 		it "should be valid" do

@@ -217,7 +217,6 @@ en:
   searchIn: Search in
   searchOptions: Search options
   searchedIn: <b>%{item}</b> was searched <b>%{count}</b> times
-  preferences: Preferences
   changepassword: Change password
   help: Help
   about: About
@@ -276,6 +275,7 @@ en:
   hasCommentedOn: has commented '%{title}'
   hasDeleted: has deleted
   activity: Activity
+  pleaseChoose: Please choose
   link:
     ping:
       loginToPing: Log in to ping this
@@ -536,6 +536,10 @@ en:
         error: There were problems to accept the participation.
       destroy:
         notice: Participation aborted.
+    invitations:
+      contactsImported: Contacts imported successfully
+      chooseProvider: Please choose an email-provider
+      credentialsRequired: Emailaddress and password are required
   menu:
     main:
       resources: Resources
@@ -559,6 +563,8 @@ en:
       editUserdetails: Edit Personal Data
       followings: follows
       followers: is followed by
+      invite: Invite friends
+      preferences: Preferences
   userarea:
     edit:
       avatar: Edit Avatar
@@ -628,6 +634,9 @@ en:
     leaveAComment: ! 'Leave a comment:'
     hasCommentedYou: ! ' has sent a comment.'
     hasCommentedYour: ! ' has commented your '
+  invitations:
+    inviteYourFriends: Invite your friends, family or colleagues.
+    chooseProvider: Please choose your mail provider or just use your own email-adresses.
   title:
     startpage:
       weAre: We are
@@ -757,6 +766,13 @@ en:
       members: Participants
   formtastic:
     labels:
+      invitation: 
+        email: emailaddress
+        password: password
+        importContacts: Import contacts
+        emails: Email-Addresses
+        invitationmessage: Invitationtext
+        sendInvitation: Send invitation
       message:
         subject: Subject
         body: Message

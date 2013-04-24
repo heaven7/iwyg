@@ -218,7 +218,6 @@ de:
   searchedIn: <b>%{item}</b> wurde <b>%{count}</b> mal gesucht
   searchOptions: Suchoptionen
   help: Hilfe
-  preferences: Einstellungen
   changepassword: Passwort &auml;ndern
   about: ! '&Uuml;ber uns'
   options: Optionen
@@ -278,6 +277,7 @@ de:
   usersPingIsClosed: schliesst Ping auf '%{title}'
   hasCommentedOn: hat '%{title}' kommentiert
   hasDeleted: hat gel&ouml;scht
+  pleaseChoose: Bitte w&auml;hlen
   activity: Aktivit&auml;ten
   link:
     ping:
@@ -540,6 +540,10 @@ de:
         error: Es gab Probleme, die Teilnahme zu akzeptieren.
       destroy:
         notice: Teilnahmeanfrage abgelehnt.
+    invitations:
+      contactsImported: Kontakte erfolgreich importiert
+      chooseProvider: Bitte w&auml;hle einen Email-Anbieter
+      credentialsRequired: Email-Adresse und Passwort werden ben&ouml;tigt
   menu:
     main:
       resources: Ressourcen
@@ -563,6 +567,8 @@ de:
       editUserdetails: Personendaten &auml;ndern
       followings: folgt
       followers: wird gefolgt von
+      invite: Freunde einladen
+      preferences: Einstellungen	
   userarea:
     edit:
       avatar: Bild &auml;ndern
@@ -627,12 +633,15 @@ de:
   friendships:
     pending: Offene Freundschaftsanfragen
     friend: Freunde
-    accepted: Akpetiert
+    accepted: Akzeptiert
   comments:
     comments: Kommentare
     leaveAComment: ! 'Schreibe einen Kommentar:'
     hasCommentedYou: ! ' hat dich kommentiert.'
     hasCommentedYour: ! ' hat etwas von dir kommentiert: '
+  invitations:
+    inviteYourFriends: Lade deine Freunde, Familie oder Kollegen ein.
+    chooseProvider: ! 'Bitte w&auml;hle einen Email-Provider. Du kannst auch einfach Email-Addressen angeben.'	  
   title:
     startpage:
       weAre: Wir sind
@@ -768,6 +777,13 @@ de:
       message:
         subject: Betreff
         body: Nachricht
+      invitation: 
+        email: Emailaddresse
+        password: Passwort
+        importContacts: Kontakte importieren
+        emails: Email-Adressen
+        invitationmessage: Einladungstext
+        sendInvitation: Einladung verschicken
       meetup:
         title: Titel
         description: Beschreibung

@@ -74,7 +74,10 @@ module ApplicationHelper
 			link_to message.html_safe, notification.notifiable if message
 		end
 	end  
+<<<<<<< HEAD
 
+=======
+>>>>>>> ed13322e0da4e9da99c3a74b8c5d8753a9252568
 
   # nested layouts
   def parent_layout(layout)
