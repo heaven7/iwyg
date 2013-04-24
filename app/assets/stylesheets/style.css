@@ -145,11 +145,12 @@ a#new-message:hover {
     padding:.5em;
 }
 #footer #footernavigation {
-    width:1000px;
+    width:100%;
     margin: 0px auto;
-    display:block;
+    text-align:center;
 }
 #footer a {
+		padding: 0.5em;
     color:#5c5e5f;
 }
 

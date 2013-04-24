@@ -9,6 +9,15 @@ class PageController < InheritedResources::Base
   def help
   end
 
+	def agb
+	end
+
+	def privacypolicy
+	end
+
+	def imprint
+	end
+
   def about
     @users = Array.new
     @resources_needed = Hash.new
