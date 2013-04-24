@@ -15,6 +15,7 @@
   <%= render :partial => "items/itemtype", :locals => { :item => @item } %>
   <h1><%=h @item.title %></h1>         
   <%= render :partial => "items/itemmenu", :locals => { :item => @item } %>
+	<span class="float-right"><%= render :partial => "share/social", :locals => { :thing => @item } %></span>
   <%= render :partial => "share/images", :locals => {:images => @item.images} %>
   <% if @item.status %>
     <div class="left box ui-corner-all font-small">
@@ -54,7 +55,6 @@
       <% end %>
     </div>
   <% end %>
-	<%= render :partial => "share/social", :locals => { :thing => @item } %>
   <div class="box ui-corner-all tags">
     <%= render :partial => "share/tags", :locals => { :tags => @item.tags, :model => :items } %>
     <% if @item.description %>
