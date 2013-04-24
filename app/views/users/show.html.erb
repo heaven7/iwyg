@@ -16,9 +16,11 @@
 		<li class="edit button">    
 			<%= link_to t("userarea.edit.profile").html_safe, edit_polymorphic_path([@user, "userdetails"]) %>
 		</li>
+<!--
 		<li class="button invite">    
 			<%= link_to t("menu.user.invite"), new_user_invitation_path(@user) %>
   	</li>
+-->
     <li class="button preferences">    
 			<%= link_to t("menu.user.preferences"), edit_user_path(@user) %>
   	</li>
