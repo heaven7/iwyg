@@ -94,17 +94,15 @@
     </div>
   </div>
   <div id="footer">
-    <!--
-    <% rendering_stop = Time.now %>
-    <% rendering_time = rendering_stop - rendering_start %>
-    <%= "Rendered in #{rendering_time} seconds" %>
-    -->
-    <div id="footernavigation">
+		<div id="footernavigation">
 			<ul>
 				<li><a href="/imprint"><%= t("footer.imprint") %></a></li>
 				<li><a href="/agb"><%= t("footer.agb") %></a></li>
 				<li><a href="/privacypolicy"><%= t("footer.privacypolicy") %></a></li>
+				<li><a href="http://www.github.com/heaven7/iwyg" title="iwyg on github" target="_blank"><img src="/assets/icons/social/github.png" /></a>
+				<li><a href="http://www.facebook.com/iwantyouget" title="iwyg on facebook" target="_blank"><img src="/assets/icons/social/facebook.png" /></a>
 			</ul>
+    </div>
        <!-- gmaps4rails -->
        <%= yield :scripts %>
     </div>
