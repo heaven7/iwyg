@@ -648,6 +648,12 @@ de:
       weNeed: Wir brauchen
       weHave: Wir haben
     login: Login
+    footer:
+      imprint: Impressum
+      tos: AGB
+      privacypolicy: Datenschutzerklärung
+      facebook: iwyg auf facebook
+      github: iwyg auf github
     mailbox: Mailbox
     welcome: ''
     register: ! 'Schreib'' Dich ein:'

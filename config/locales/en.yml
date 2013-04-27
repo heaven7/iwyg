@@ -643,6 +643,12 @@ en:
       weNeed: We need
       weHave: We have
     login: Login
+    footer:
+      imprint: Imprint
+      tos: Terms of service
+      privacypolicy: Privacy policy
+      facebook: iwyg on facebook
+      github: iwyg on github
     mailbox: Mailbox
     welcome: ''
     register: Join
