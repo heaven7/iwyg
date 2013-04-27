@@ -6,7 +6,7 @@
   clear:both;
 }
 .horizontal li {
-  float:left;
+  display: inline;
 }
 .horizontal li #ajaxful-rating-item-5 {
   float: left;

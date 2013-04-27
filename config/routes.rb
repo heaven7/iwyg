@@ -165,8 +165,9 @@ Iwyg::Application.routes.draw do
 
   # resources :transfer_options
 
-  match 'page/about', :to => 'page#about'                                      
-  match 'page/help', :to => 'page#help'
+  match 'privacypolicy', :to => 'page#privacypolicy'
+  match 'agb', :to => 'page#agb'
+  match 'imprint', :to => 'page#imprint'
 
   #  match "/profile/:login" => 'users#show', :login => :login, :as => :profile
   # match 'signup', :to => 'devise/session#new'

@@ -4,6 +4,7 @@ describe Group do
 
 	before :all do
 		@group = build(:group)
+		I18n.locale = :en
 	end 
 
 	subject { @group }
