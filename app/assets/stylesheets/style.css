@@ -148,8 +148,7 @@ a#new-message:hover {
     width:100%;
     margin: 0px auto;
     text-align:center;
-		position: relative;
-		left: 4%;
+		padding-top:3em;
 }
 #footer a {
 		padding: 0.5em;
