@@ -77,6 +77,7 @@ gem 'acts_as_audited', '~> 2.1.0'
 gem 'rails3_acts_as_paranoid'
 
 group :development, :test do
+  gem 'meta_request'
   gem 'mongrel', '>= 1.2.0.pre2'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
