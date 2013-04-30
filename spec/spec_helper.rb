@@ -15,7 +15,7 @@ Spork.prefork do
 	require 'factory_girl'
 	require File.dirname(__FILE__) + "/support/mailer_macros"
 
-	#Capybara.javascript_driver = :webkit
+	Capybara.javascript_driver = :webkit
 
 	# FacoryGirl 
 	# FactoryGirl.sequences.clear
