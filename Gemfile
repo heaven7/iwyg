@@ -4,7 +4,7 @@ source :rubygems
 # source 'http://gems.github.com'
 # source 'http://gemcutter.org'
 
-gem 'rails', '3.2.9'
+gem 'rails', '3.2.13'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.0'
