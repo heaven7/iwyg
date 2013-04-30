@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Message do
 
-	before :all do
+	before :each do
 		@sender = create(:user)
 		@message = build(:message, author: @sender)
 	end 
@@ -60,11 +60,14 @@ describe Message do
 
 		it "receiver can reply to user" do
 			@original = @receiver.received_messages.first
-			@message = @receiver.sent_messages.build(
-				:to => @original.author.login, 
-				:subject => @original.subject, :body => "this is a reply"
-			)
-			expect{@message.save}.to change{@sender.received_messages.count}.by(1)
+			@message = create(
+				:message,
+				id: Random.rand(1000), 
+				to: @sender.login, 
+				subject: @original.subject, 
+				body: "this is a reply"
+			).save
+			@sender.received_messages.count.should be 1
 		end
 	end
 
