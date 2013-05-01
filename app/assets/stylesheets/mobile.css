@@ -21,6 +21,23 @@ and (max-width : 1024px) {
 
 @media only screen 
 and (max-width : 830px) {
+	
+	#notification-arrow {
+		left: -4.2em;
+	}
+
+	#notification-panel {
+		width: 250px;
+	}
+
+	#notification-list {
+		right: 23em;
+	}
+
+	#notifications {
+		right: 3%;
+		top: 9.2em;
+	}
 
 	#languages {
 		margin-top: 0px;
@@ -118,6 +135,10 @@ and (max-width : 830px) {
 and (max-width : 480px)
 and (max-width : 700px) {
 
+	#notifications {
+		top: 11em;
+	}
+
 	.sub2cols #usermessages {
 		margin: 0;
 		padding: 0;
@@ -126,6 +147,7 @@ and (max-width : 700px) {
 
 	#mainnavigation {
 		margin-bottom: 1em;
+		margin-top: 0.3em;
 	}
 	
 	#search {

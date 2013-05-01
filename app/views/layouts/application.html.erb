@@ -83,7 +83,6 @@
     </div>
   <% end %>
   <%= render :partial => 'share/navigation/mainnavigation' %>
-  <%= render :partial => 'share/languages' %>
 	<%= render :partial => 'share/navigation/notifications' if logged_in? %>
   <div id="content">   
 		<%=  yield %>
@@ -105,6 +104,7 @@
 				<li><a href="http://www.github.com/heaven7/iwyg" title="<%= t("title.footer.github") %>" target="_blank"><img src="/assets/icons/social/github.png" /></a>						
 				<li><a href="http://www.facebook.com/iwantyouget" title="<%= t("title.footer.facebook") %>" target="_blank"><img src="/assets/icons/social/facebook.png" /></a>
 			</ul>
+		  <%= render :partial => 'share/languages' %>
     </div>
        <!-- gmaps4rails -->
        <%= yield :scripts %>
