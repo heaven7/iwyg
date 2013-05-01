@@ -125,8 +125,6 @@ class ItemsController < InheritedResources::Base
   def show
 		@itemable = find_model
     @item = Item.find(params[:id], :include => [:images, :pings, :comments, :locations, :events, :tags, :item_attachments])
-    #@item = Item.where( :id => params[:id]).includes([:images, :pings, :comments, :locations, :events, :tags, :item_attachments])
-    #@item = @item.first
     @user = current_user
 
     # related resources

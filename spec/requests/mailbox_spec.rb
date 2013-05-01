@@ -36,7 +36,7 @@ describe User, :type => :request do
 	describe "sending messages (with javascript)" do
 
 		before :all do
-			@anotheruser = create(:user, :id => Random.rand(1000))
+			@anotheruser = create(:user, id:  Random.rand(1000), email: "another@user.com")
 
 		end
 
@@ -46,6 +46,7 @@ describe User, :type => :request do
 			fill_in "message_subject", :with => "hello"
 			fill_in "message_body", :with => "World"
 			click_button "submit_new_message"
+		#	save_and_open_page
 			page.should have_content("Message sent")
 		end
 

@@ -1,14 +1,11 @@
 /* Notifications */
 
 #notifications {
-	width: 50px;
 	position: absolute;
-	float: right;
 	clear: both;
-	right: 0.7em;
-	margin-top: 1em;
+	right: 2.5%;
+	top: 8.3em;
 }
-
 #notifications-count {
 	font-weight: bold;
 	font-size: 0.8em;
@@ -25,8 +22,10 @@
 	display: none;
 	position: relative;
 	z-index:99;
-	right: 0.5em;
+	left: 22.3em;
 	top: 2px;
+	float: right;
+	width: 350px;;
 }
 
 #notification-icon {
@@ -42,11 +41,10 @@
 }
 
 #notification-list {
-	width: 350px;
 	text-align: left;
 	position: relative;
 	font-size: 0.9em;
-	right: 25em;
+	right: 22em;
 }
 
 #notification-list li {
@@ -86,7 +84,7 @@
     font-weight: bold;
     left: 4%;
     position: relative;
-    top:0px;
+    top: 5px;
     text-align: left;
 }
 

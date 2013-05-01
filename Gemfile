@@ -4,7 +4,7 @@ source :rubygems
 # source 'http://gems.github.com'
 # source 'http://gemcutter.org'
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.13'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.0'
@@ -51,7 +51,7 @@ gem 'has_scope'
 gem 'squeel'
 gem 'ransack'
 gem 'routing-filter', '0.3.0'
-gem 'friendly_id', '4.0'
+gem 'friendly_id', '4.0.9'
 gem 'paper_trail'
 gem 'json_pure', '1.6.1'   
 gem 'jquery-rails' #, '>= 1.0.12'
@@ -77,6 +77,7 @@ gem 'acts_as_audited', '~> 2.1.0'
 gem 'rails3_acts_as_paranoid'
 
 group :development, :test do
+  gem 'meta_request'
   gem 'mongrel', '>= 1.2.0.pre2'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
