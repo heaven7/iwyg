@@ -39,13 +39,6 @@ and (max-width : 830px) {
 		top: 9.2em;
 	}
 
-	#languages {
-		margin-top: 0px;
-		position: relative;
-		top: -20px;
-		left: 87%;
-	}
-	
 	.ui-listbuilder-items {
 		overflow: shown !important;
 		width: auto;
