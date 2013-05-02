@@ -14,7 +14,7 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta http-equiv="imagetoolbar" content="false">
+	<meta http-equiv="imagetoolbar" content="no">
 
   <%= csrf_meta_tag %>
   
@@ -101,8 +101,8 @@
 				<li><a href="https://www.transifex.com/projects/p/iwyg/" target="_blank"><%= t("title.footer.helptotranslate") %></a></li>
 			</ul>
 			<ul class="horizontal">
-				<li><a href="http://www.github.com/heaven7/iwyg" title="<%= t("title.footer.github") %>" target="_blank"><img src="/assets/icons/social/github.png" /></a>						
-				<li><a href="http://www.facebook.com/iwantyouget" title="<%= t("title.footer.facebook") %>" target="_blank"><img src="/assets/icons/social/facebook.png" /></a>
+				<li><a href="http://www.github.com/heaven7/iwyg" title="<%= t("title.footer.github") %>" alt="<%= t("title.footer.github") %>" target="_blank"><img src="/assets/icons/social/github.png" /></a>						
+				<li><a href="http://www.facebook.com/iwantyouget" title="<%= t("title.footer.facebook") %>" alt="<%= t("title.footer.facebook") %>" target="_blank"><img src="/assets/icons/social/facebook.png" /></a>
 			</ul>
 		  <%= render :partial => 'share/languages' %>
     </div>
