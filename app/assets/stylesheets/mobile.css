@@ -22,6 +22,12 @@ and (max-width : 1024px) {
 @media only screen 
 and (max-width : 830px) {
 	
+	
+	#notifications {
+		right: 3%;
+		top: 9.2em;
+	}
+
 	#notification-arrow {
 		left: -4.2em;
 	}
@@ -32,11 +38,6 @@ and (max-width : 830px) {
 
 	#notification-list {
 		right: 23em;
-	}
-
-	#notifications {
-		right: 3%;
-		top: 9.2em;
 	}
 
 	.ui-listbuilder-items {
