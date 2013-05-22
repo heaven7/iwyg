@@ -8,9 +8,14 @@
       <% end %>
       
       <%= f.text_field :title_cont  %>
+      <input id="near" name="near" size="15" type="text" class="ui-corner-all">
       <div id="searchextended" class="ui-corner-all">
         <h3 class="bold"></h3>
         <table>
+					<tr>
+						<td class="label">Radius</td>
+      			<td class="row-big"><input id="within" name="within" size="15" type="text" class="ui-corner-all"></td>
+					</tr>
           <tr>
             <td class="label"><%= t("resources.available").html_safe %><br /> (<%= t("from") %> - <%= t("till") %>)</td>
             <td class="row-big">

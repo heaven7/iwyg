@@ -76,9 +76,9 @@ class ItemsController < InheritedResources::Base
       # search by tag
       $search = searchByTag(params, "Item").search(params[:q])
 		
-		elsif params[:within]	
+		elsif params[:within]	or params[:near]
 			# search within certain range
-			$search = searchByRangeIn("Item")
+			$search = searchByRangeIn("Item", params[:near]).search(params[:q])
     else
 			# normal listing of a model's items
       if @itemable
