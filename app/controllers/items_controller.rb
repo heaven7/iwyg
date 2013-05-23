@@ -78,7 +78,7 @@ class ItemsController < InheritedResources::Base
 		
 		elsif params[:within]	or params[:near]
 			# search within certain range
-			$search = searchByRangeIn("Item", params[:near]).search(params[:q])
+			$search = searchByRangeIn("Item")
     else
 			# normal listing of a model's items
       if @itemable
