@@ -34,7 +34,7 @@ class ItemsController < InheritedResources::Base
     
     $search = Item.search(params[:q], :indlude => [:comments, :images, :pings])	
     # search
-    if params[:q] and !params[:q][:tag]
+    if params[:q] and !params[:q][:tag] and params[:near].blank?
             
       # save search    
 			saveSearch
@@ -76,9 +76,15 @@ class ItemsController < InheritedResources::Base
       # search by tag
       $search = searchByTag(params, "Item").search(params[:q])
 		
-		elsif params[:within]	or params[:near]
+		elsif params[:q] && (params[:within]	or params[:near])
 			# search within certain range
 			$search = searchByRangeIn("Item")
+			@items = $search.result(:distinct => true).paginate( 
+        :page => params[:page],
+        :order => "created_at DESC", 
+        :per_page => ITEMS_PER_PAGE 
+      )
+      @items_count = @items.count
     else
 			# normal listing of a model's items
       if @itemable
