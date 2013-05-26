@@ -8,7 +8,7 @@
       <% end %>
       
       <%= f.text_field :title_cont  %>
-      <input id="near" name="near" size="15" type="text" class="ui-corner-all">
+      <input id="near" name="near" size="15" type="text" class="ui-corner-all" value="<%= params[:near] || @near %>">
       <div id="searchextended" class="ui-corner-all">
         <h3 class="bold"></h3>
         <table>

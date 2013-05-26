@@ -23,22 +23,19 @@ class ItemsController < InheritedResources::Base
   def index
     @geolocation = session[:geo_location]
 		@itemable = find_model
-
+    @itemTypes = ItemType.all
+  	@searchItemType = "Resource"
+		@near = (request.location.city.blank?) ? params[:near] : request.location.city 
     if params[:user_id] && current_user && params[:user_id].to_i == current_user.id.to_i
       @userSubtitle = "i"
     else
       @userSubtitle = "user"
     end
-    @itemTypes = ItemType.all
-  	@searchItemType = "Resource"
     
-    $search = Item.search(params[:q], :indlude => [:comments, :images, :pings])	
     # search
+    $search = Item.search(params[:q], :indlude => [:comments, :images, :pings])	
     if params[:q] and !params[:q][:tag] and params[:near].blank?
-            
-      # save search    
-			saveSearch
-      	
+                  	
       @items = $search.result(:distinct => true).paginate( 
         :page => params[:page],
         :order => "created_at DESC", 
@@ -121,6 +118,9 @@ class ItemsController < InheritedResources::Base
       )
       @items_count = @items.count
     end
+	
+    # save search    
+		saveSearch
   end
   
   def search
