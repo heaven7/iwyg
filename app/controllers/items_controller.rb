@@ -32,8 +32,8 @@ class ItemsController < InheritedResources::Base
       @userSubtitle = "user"
     end
     
-    # search
-    $search = Item.search(params[:q], :indlude => [:comments, :images, :pings])	
+    # execute search
+    $search = Item.search(params[:q], :indlude => [:comments, :images, :pings])			
     if params[:q] and !params[:q][:tag] and params[:near].blank?
                   	
       @items = $search.result(:distinct => true).paginate( 
@@ -67,7 +67,8 @@ class ItemsController < InheritedResources::Base
 		      @active_menuitem_l2_link = group_items_path("q" => params[:q])
 		      render :layout => 'groups'
 		    end
-			end
+			end			
+			
 
     elsif params[:q] && params[:q][:tag]
       # search by tag
@@ -118,9 +119,10 @@ class ItemsController < InheritedResources::Base
       )
       @items_count = @items.count
     end
+		  # save search    
+			saveSearch
+
 	
-    # save search    
-		saveSearch
   end
   
   def search
@@ -289,6 +291,7 @@ class ItemsController < InheritedResources::Base
 	def saveSearch
 	  if not params[:q][:title_cont].blank?     
 		  @keywords = params[:q][:title_cont].to_s.split
+			puts "SEARCH: " + params[:q][:title_cont]
 		  @keyword_items = ""
 		  @keywords.each do |keyword|
 		    if @keywords.last == keyword then
