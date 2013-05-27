@@ -290,7 +290,7 @@ class ItemsController < InheritedResources::Base
   private
 
 	def saveSearch(params)
-	  if not params[:q][:title_cont].blank?     
+	  if params and not params[:q][:title_cont].blank?     
 		  @keywords = params[:q][:title_cont].to_s.split
 			puts "SEARCH: " + params[:q][:title_cont]
 		  @keyword_items = ""
