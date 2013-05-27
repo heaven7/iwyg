@@ -119,10 +119,9 @@ class ItemsController < InheritedResources::Base
       )
       @items_count = @items.count
     end
-		  # save search    
-			saveSearch
+	  # save search    
+		saveSearch(params)
 
-	
   end
   
   def search
@@ -288,7 +287,7 @@ class ItemsController < InheritedResources::Base
 
   private
 
-	def saveSearch
+	def saveSearch(params)
 	  if not params[:q][:title_cont].blank?     
 		  @keywords = params[:q][:title_cont].to_s.split
 			puts "SEARCH: " + params[:q][:title_cont]
