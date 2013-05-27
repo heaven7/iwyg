@@ -35,13 +35,17 @@ class ItemsController < InheritedResources::Base
     # execute search
     $search = Item.search(params[:q], :indlude => [:comments, :images, :pings])			
     if params[:q] and !params[:q][:tag] and params[:near].blank?
-                  	
+
+			# load all items                  	
       @items = $search.result(:distinct => true).paginate( 
         :page => params[:page],
         :order => "created_at DESC", 
         :per_page => ITEMS_PER_PAGE 
       )
       @items_count = @items.count
+			
+			# save search    
+			saveSearch(params)
 
 			# search by itemType
 		  if not params[:q][:item_type_id_eq].blank?
@@ -119,8 +123,6 @@ class ItemsController < InheritedResources::Base
       )
       @items_count = @items.count
     end
-	  # save search    
-		saveSearch(params)
 
   end
   
