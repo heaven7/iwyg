@@ -167,7 +167,7 @@ class ItemsController < InheritedResources::Base
     @comments = @item.comments.find(:all, :order => "created_at DESC")
     @events = @item.events
     @location = @item.locations.first || request.location
-    getLocation(@item) if @location and @location.lat and @location.lng
+    getLocation(@item) if @location # and @location.lat and @location.lng
     @resource = @item
     getItemTypes
 		impressionist(@item)
