@@ -1,6 +1,7 @@
-<% if logged_in? and location and (location.country || location.city) %>
+<% if location and (location.country || location.city) %>
   <span class="font-smaller">
-    <%= location.city if location.city %> 
-    <% if not location.country.blank? %> <%=h t( location.country, :scope => "countries" ) %><% end %> 
+    <%= location.city if not location.city.blank? %>
+		<% @country = location.country || request.location.country %> 
+    <%= t(@country, :scope => "countries" ) if not @country.blank? %> 
   </span>
 <% end %>

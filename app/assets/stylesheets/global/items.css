@@ -27,10 +27,15 @@
 .item-bottom {
     text-align:left;
     font-size:85%;
-		height: 30px;
+		height: 40px;
     overflow: hidden;
 }
-
+.item-bottom .distance {
+	display: block;
+}
+.item-bottom .distance:hover a {
+	cursor: default;
+}
 #items-related {
 
 }                   

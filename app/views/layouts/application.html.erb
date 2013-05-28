@@ -7,14 +7,14 @@
   <!--[if IE 6]><%= stylesheet_link_tag 'formtastic_ie6' %><![endif]-->
   <!--[if IE 7]><%= stylesheet_link_tag 'formtastic_ie7' %><![endif]-->
 	<!--[if lt IE 9]><script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script><![endif]-->
-	<link href="http://fonts.googleapis.com/css?family=Signika+Negative:600,400" rel="stylesheet" type="text/css">
+	<link href="//fonts.googleapis.com/css?family=Signika+Negative:600,400" rel="stylesheet" type="text/css">
   <%= stylesheet_link_tag "themes/iwyg/agents/#{users_browser}" if File.exist?("app/assets/stylesheets/themes/iwyg/agents/#{users_browser}.css") %>
 	
   <%= javascript_include_tag "application" %>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta http-equiv="imagetoolbar" content="no" />
+	<meta http-equiv="imagetoolbar" content="no">
 
   <%= csrf_meta_tag %>
   
@@ -84,7 +84,7 @@
   <% end %>
   <%= render :partial => 'share/navigation/mainnavigation' %>
 	<%= render :partial => 'share/navigation/notifications' if logged_in? %>
-  <div id="content">   
+	<div id="content">   
 		<%=  yield %>
   </div>
   

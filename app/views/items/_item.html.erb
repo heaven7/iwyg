@@ -21,9 +21,8 @@
     <div class="item-bottom">
       <span class="left">
 				<%= render :partial => "itemowner", :locals => { :item => item } %>			
-			</span>
-			<!--      
-				<span class="date right"><%= distance_of_time_in_words(item.created_at, Time.now) %> <%= t("ago") %></span>
-			-->
+			</span>   
+				<span class="distance right"><a href="javascript: return false;" title="<%= t("distance") + " " + t("transfer.to") + " " + @near %>: <%= showDistanceOfSearcher(item) %>"><%= showDistanceOfSearcher(item) %></a></span>
+
     </div>
 </div>

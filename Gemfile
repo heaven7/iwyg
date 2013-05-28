@@ -36,7 +36,7 @@ gem 'thin'
 gem 'therubyracer', '0.10.2', :platform => :ruby
 
 gem 'geokit'
-gem 'geocoder'
+gem 'geocoder', '1.1.8'
 gem 'gmaps4rails', '1.4.5'
 gem 'rgeo'
 gem 'rgeo-geojson'
@@ -99,5 +99,6 @@ group :test do
   gem 'faker'
 	gem 'shoulda'  
 	gem 'shoulda-matchers'
+	gem 'fakeweb'
 end
 

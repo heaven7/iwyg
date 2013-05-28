@@ -1,32 +1,65 @@
 	/* Search */
 #search {
-    position:relative;
-    left:13%;
-    text-align:left;
-    padding-top:2em;
+  position:relative;
+  left: 15%;
+	text-align: left;
+	padding-top: 2em;
 }
 
 #search input {
-    padding-left:2px;
+  padding-left:2px;
 }
+#search .search-field input,
+#search .search-field select {
+	width: 130px;
+}
+
 #search option{
-    background:#EDEFDF;
+  background:#EDEFDF;
+}
+#search .search-field {
+	float:left;
+	position: relative;
+	left: 0px;
+	top: -14px;
+	width: 130px;
+	margin-right: 0.5em;
+}
+#search .search-field .search-field-broad {
+	width: 120px;
+}
+#search .search-field #q_need_eq {
+	padding: 0.25em;
+}
+#search label {
+	font-size:80%;
+	clear: both;
+	text-align: left;
+	position: relative;
+	left: 3px;
+	color: white;
+  -webkit-text-stroke: 1px rgba(0,0,0,0.4);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgba(0, 0, 0, 0.199219);
+  -moz-text-stroke: 1px rgba(0,0,0,0.4);
+  -moz-text-stroke-width: 1px;
+  -moz-text-stroke-color: rgba(0, 0, 0, 0.199219);
 
 }
-
 #advanced_search {
     display:none; /* if javascript is disabled */
 }
 #search #searchform {
     float:left;
     position:relative;
-    margin-right:0.5em;
+    margin-right:4em;
 }
 #search #submit-search {
-    position: absolute;
-    top: 10px;
-    left: 102%;
-    width: 21px;
+  position: absolute;
+	top: 11px;
+	left: 101%;
+	width: 21px;
+	padding: 0.28em;
 }
 
 #search #searchform #search_title_contains,
@@ -38,23 +71,24 @@
     margin-right:1em;
 }
 #search #searchextended {
-    margin-top:2em;
+    margin-top:4em;
     padding:0.5em;
     padding-left:8.5em;
     text-decoration: none;
     padding: 0.5em;
+		display:none;
 }
 #search #searchextended table .label {
     vertical-align: top;
     font-size:1.4em;
     color:white;
-    text-shadow: 0 -1px 1px white;
+		padding:0;
     -webkit-text-stroke: 1px rgba(0,0,0,0.4);
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: rgba(0, 0, 0, 0.199219);
 }
 #search #searchextended table tr {
-    height:57px;
+    height: 40px;
 }
 #search #searchextended input,
 #search #searchextended select {
@@ -76,7 +110,7 @@
 }
 #search #searchmenu {
     font-size: 70%;
-    left: -5em;
+    left: -11em;
     position: relative;
     top: 4.5em;
 }

@@ -18,7 +18,17 @@ module ItemsHelper
     end
   end
   
-	
+	def showDistanceOfSearcher(item)
+		itemlocation = item.locations.first if item.locations.size > 0
+		userlocation = params[:near] || request.location.city
+		if userlocation and itemlocation
+			distance = itemlocation.distance_to(userlocation)		 
+			if distance.class.to_s == "Float" 
+				return number_with_precision(distance, :precision => 0) + " km" if distance.to_s != "NaN"
+			end
+		end
+		nil
+	end
     
   def transferStatus(item, ping)
     @transfer = Transfer.find_by_transferable_id_and_receiverable_id(item.id, ping.user_id)

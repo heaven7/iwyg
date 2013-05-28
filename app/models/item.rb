@@ -4,11 +4,13 @@ class Item < ActiveRecord::Base
   friendly_id :title, :use => :slugged
   before_create :build_item
 
-  attr_accessible :locatable_type, :locatable_id, :title, :amount, :measure_id, :measure,
+	attr_accessor :near  
+	attr_accessible :locatable_type, :locatable_id, :title, :amount, :measure_id, :measure,
     :description, :item_type_id, :need, :from, :till, :user_id,
     :locations_attributes, :images_attributes, :events_attributes,
     :item_attachments_attributes, :tag_list, :_delete, :status, :multiple,
-		:itemable_id, :itemable_type
+		:itemable_id, :itemable_type, :near
+	
   
   # ajaxful_rateable :stars => 5, :dimensions => [:quality, :delivery]
   

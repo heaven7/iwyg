@@ -11,11 +11,10 @@
     <%= link_to t("resource.new"), new_group_item_path %>
   </div>
 <% end %>      
-
 <%= render :partial => "share/search/panel", :locals => { :count => @items_count } %>
 
 <% if @itemable and !params[:q] %> 
-
+	
   <div class="sub2cols">
     <div class="subcol1">
       <%# if @items_needed.size > 0 %>

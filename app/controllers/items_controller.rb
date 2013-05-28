@@ -23,28 +23,30 @@ class ItemsController < InheritedResources::Base
   def index
     @geolocation = session[:geo_location]
 		@itemable = find_model
-
+    @itemTypes = ItemType.all
+  	@searchItemType = "Resource"
+		@near = params[:near] || request.location.city 
+		@within = params[:within] || 100
     if params[:user_id] && current_user && params[:user_id].to_i == current_user.id.to_i
       @userSubtitle = "i"
     else
       @userSubtitle = "user"
     end
-    @itemTypes = ItemType.all
-  	@searchItemType = "Resource"
     
-    $search = Item.search(params[:q], :indlude => [:comments, :images, :pings])	
-    # search
-    if params[:q] and !params[:q][:tag]
-            
-      # save search    
-			saveSearch
-      	
+    # execute search
+    $search = Item.search(params[:q], :indlude => [:comments, :images, :pings])			
+    if params[:q] and !params[:q][:tag] and params[:near].blank?
+
+			# load all items                  	
       @items = $search.result(:distinct => true).paginate( 
         :page => params[:page],
         :order => "created_at DESC", 
         :per_page => ITEMS_PER_PAGE 
       )
       @items_count = @items.count
+			
+			# save search    
+			saveSearch(params)
 
 			# search by itemType
 		  if not params[:q][:item_type_id_eq].blank?
@@ -70,15 +72,21 @@ class ItemsController < InheritedResources::Base
 		      @active_menuitem_l2_link = group_items_path("q" => params[:q])
 		      render :layout => 'groups'
 		    end
-			end
+			end			
+			
 
     elsif params[:q] && params[:q][:tag]
       # search by tag
       $search = searchByTag(params, "Item").search(params[:q])
 		
-		elsif params[:within]	
+		elsif params[:q] && (params[:within]	or params[:near])
 			# search within certain range
 			$search = searchByRangeIn("Item")
+			@items = $search.result(:distinct => true).paginate( 
+        :page => params[:page],
+        :per_page => ITEMS_PER_PAGE 
+      )
+      @items_count = @items.count
     else
 			# normal listing of a model's items
       if @itemable
@@ -115,6 +123,7 @@ class ItemsController < InheritedResources::Base
       )
       @items_count = @items.count
     end
+
   end
   
   def search
@@ -157,7 +166,7 @@ class ItemsController < InheritedResources::Base
     @pings = @item.pings.open_or_accepted
     @comments = @item.comments.find(:all, :order => "created_at DESC")
     @events = @item.events
-    @location = @item.locations.first # || @item.itemable.locations.first
+    @location = @item.locations.first
     getLocation(@item) if @location and @location.lat and @location.lng
     @resource = @item
     getItemTypes
@@ -280,9 +289,10 @@ class ItemsController < InheritedResources::Base
 
   private
 
-	def saveSearch
-	  if not params[:q][:title_cont].blank?     
+	def saveSearch(params)
+	  if params and not params[:q][:title_cont].blank?     
 		  @keywords = params[:q][:title_cont].to_s.split
+			puts "SEARCH: " + params[:q][:title_cont]
 		  @keyword_items = ""
 		  @keywords.each do |keyword|
 		    if @keywords.last == keyword then

@@ -200,6 +200,7 @@ en:
   who: Who
   where: Where
   what: What
+  whatexactly: What exactly
   when: When
   show: show
   back: Back
@@ -214,6 +215,7 @@ en:
   remove: remove
   sortBy: Sort by
   search: Search
+  searchradius: Search radius (km)
   searchIn: Search in
   searchOptions: Search options
   searchedIn: <b>%{item}</b> was searched <b>%{count}</b> times

@@ -24,6 +24,16 @@ FactoryGirl.define do
     notifiable_type 'Group'
   end
 
+	factory :location do
+		locatable_id (1 + Random.rand(1000))
+		locatable_type "Item"
+		address "Jakob-Kaiser-Str. 46, Nord Florentinedorf, Swasiland"
+		city "Nord Florentinedorf"
+		country "Swasiland"		
+		zip "96372"
+		lat "62.579169021611"
+		lng "80.505119743147"	
+	end
 
 	factory :comment do
 		body Populator.paragraphs(1)

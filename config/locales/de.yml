@@ -200,6 +200,7 @@ de:
   who: Wer
   where: Wo
   what: Was
+  whatexactly: Was genau
   when: Wann
   show: Ansehen
   back: Zur&uuml;ck
@@ -214,6 +215,7 @@ de:
   remove: l&ouml;schen
   sortBy: Sortieren nach
   search: Suche
+  searchradius: Suchradius (km)
   searchIn: Suchen in
   searchedIn: <b>%{item}</b> wurde <b>%{count}</b> mal gesucht
   searchOptions: Suchoptionen
