@@ -6,7 +6,8 @@ class Location < ActiveRecord::Base
   
   belongs_to :locatable, :polymorphic => true 
   geocoded_by :address, :latitude  => :lat, :longitude => :lng, :units => :km
-  after_validation :geocode, :if => :address_changed?
+	reverse_geocoded_by :lat, :lng
+  after_validation :geocode, :reverse_geocode, :if => :address_changed?
    
   acts_as_gmappable :lat => "lat", :lng => "lng", :validation => false, :process_geocoding => false
   acts_as_taggable_on :tags
@@ -25,6 +26,14 @@ class Location < ActiveRecord::Base
 			self.locatable.title 
 		else
 			self.login if self.login
+		end
+	end
+
+	reverse_geocoded_by :lat, :lng do |obj,results|
+		if geo = results.first
+		  obj.city    = geo.city
+		  obj.zip = geo.postal_code
+		  obj.country = geo.country_code
 		end
 	end
 

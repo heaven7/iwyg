@@ -70,7 +70,7 @@
 <div id="col2">
   <div class="box ui-corner-all">
     <div class="location">			
-        <%= render :partial => "locations/location", :locals => {:location => @location} %>
+        <%= render :partial => "locations/location", :locals => { :location => @location } %>
       <% if logged_in? and ( @location && !@locations_json.blank? ) %>
         <%= render :partial => "share/map", :locals => { :locations => @locations_json } %>
       <% end %>
