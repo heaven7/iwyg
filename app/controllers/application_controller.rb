@@ -125,7 +125,7 @@ class ApplicationController < ActionController::Base
 		if ( params[:within].present? && params[:within].to_i > 0 ) or params[:near]
 			@location_city = (request.location.city.blank?) ? params[:near] : request.location.city 
 				puts "LOCATION: " + @location_city.to_s 
-			@locations = Location.where(locatable_type: model).near(@location_city,params[:within])
+			@locations = Location.where(locatable_type: model).near(@location_city,params[:within]).order("distance")
 			if @locations 
 				puts "NEAR: " + @locations.to_json
 				@ids = []			

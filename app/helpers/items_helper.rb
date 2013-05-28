@@ -24,7 +24,7 @@ module ItemsHelper
 		if userlocation and itemlocation
 			distance = itemlocation.distance_to(userlocation)		 
 			if distance.class.to_s == "Float" 
-				return number_with_precision(distance, :precision => 2) + " km" if distance.to_s != "NaN"
+				return number_with_precision(distance, :precision => 0) + " km" if distance.to_s != "NaN"
 			end
 		end
 		nil
