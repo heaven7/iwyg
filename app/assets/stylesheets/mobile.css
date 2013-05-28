@@ -103,11 +103,14 @@ and (max-width : 830px) {
 	#search .search-field select {		
 		width: 120px;
 	}
+	#search .search-field .search-field-broad {
+		width: 90%;
+	}
 	#search label {
 		top: 2px;
 	}
 	#search .search-field #q_need_eq {
-		width: 107px;
+		width: 100%;
 	}
 	#search #submit-search {
 		position: absolute;
@@ -162,12 +165,7 @@ and (max-width : 700px) {
 		margin-bottom: 1em;
 		margin-top: 0.3em;
 	}
-	
-	#search {
-		margin-top: 3.1em;
-			left: 4%;
-	}
-
+		
 	.sub2cols #userarea,
 	.sub2cols #userdescription,
 	.sub2cols #usermailbox {
