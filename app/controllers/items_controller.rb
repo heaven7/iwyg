@@ -25,7 +25,8 @@ class ItemsController < InheritedResources::Base
 		@itemable = find_model
     @itemTypes = ItemType.all
   	@searchItemType = "Resource"
-		@near = (request.location.city.blank?) ? params[:near] : request.location.city 
+		@near = params[:near] || request.location.city 
+		@within = params[:within] || 50
     if params[:user_id] && current_user && params[:user_id].to_i == current_user.id.to_i
       @userSubtitle = "i"
     else

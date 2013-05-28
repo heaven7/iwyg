@@ -22,7 +22,7 @@
       <span class="left">
 				<%= render :partial => "itemowner", :locals => { :item => item } %>			
 			</span>   
-				<span class="date right"><%= showDistanceOfSearcher(item) %></span>
+				<span class="distance right"><a href="#" title="<%= t("distance") %>: <%= showDistanceOfSearcher(item) %>"><%= showDistanceOfSearcher(item) %></a></span>
 
     </div>
 </div>
