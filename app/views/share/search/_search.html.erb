@@ -11,18 +11,18 @@
 			</div>
       <div class="search-field">			
 				<label><%= t("whatexactly") %></label>
-      	<%= f.text_field :title_cont, :size => "15"  %>
+      	<%= f.text_field :title_cont, :size => "15", :class => "search-field-broad"  %>
 			</div>
       <div class="search-field">			      
 				<label><%= t("where") %></label>
-		    <input id="near" name="near" size="15" type="text" class="ui-corner-all" value="<%= @near %>">
+		    <input id="near" name="near" size="15" type="text" class="ui-corner-all search-field-broad" value="<%= @near %>" />
       </div>
       <div id="searchextended" class="ui-corner-all">
         <h3 class="bold"></h3>
         <table>
 					<tr>
 						<td class="label"><%= t("searchradius") %></td>
-      			<td class="row-big"><input id="within" name="within" size="8" type="text" class="ui-corner-all" value="<%= @within %>"></td>
+      			<td class="row-big"><input id="within" name="within" size="8" type="text" class="ui-corner-all" value="<%= @within %>" /></td>
 					</tr>
           <tr>
             <td class="label"><%= t("resources.available").html_safe %><br /> (<%= t("from") %> - <%= t("till") %>)</td>

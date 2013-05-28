@@ -88,22 +88,41 @@ and (max-width : 830px) {
 		padding: 0.3em;
 	}
 	#search {
-		margin-top: 3.1em;
+		margin-top: 3.6em;
 		position: relative;
 		left: 4%;
 		font-size: 90%;
 	}
+	#search #searchform {
+		max-width: 350px;
+	}
+	#search .search-field {
+		max-width: 30%;
+	}
+	#search .search-field input,
+	#search .search-field select {		
+		width: 120px;
+	}
+	#search label {
+		top: 2px;
+	}
+	#search .search-field #q_need_eq {
+		width: 107px;
+	}
 	#search #submit-search {
 		position: absolute;
-		top: 9px;
-		left: 102%;
+		top: 5px !important;
+		left: 96%;
 		width: 17px;
+	}
+	#search #searchextended {
+		margin-top: 2em;
 	}
 	#search #searchmenu {
 		font-size: 75%;
-		left: -5em;
+		left: -12em;
 		position: relative;
-		top: 4.3em;
+		top: 4em;
 	}
 	#search #searchmenu a {
 		text-decoration:none;

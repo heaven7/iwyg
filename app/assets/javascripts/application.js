@@ -34,6 +34,7 @@ $(document).ready(function (){
     $('fieldset').find('textarea').addClass('ui-corner-all');
     
     $('#advanced_search').click(function (event) {
+			$('#searchextended').fadeToggle(200);
       event.preventDefault();
       headerHeight = $('#header').css("height");
       if (headerHeight == "110px") {
