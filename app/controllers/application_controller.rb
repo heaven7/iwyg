@@ -124,15 +124,15 @@ class ApplicationController < ActionController::Base
 	def searchByRangeIn(model)
 		if ( params[:within].present? && params[:within].to_i > 0 ) or params[:near]
 			@location_city = (request.location.city.blank?) ? params[:near] : request.location.city 
-				puts "LOCATION: " + @location_city.to_s 
-			@locations = Location.where(locatable_type: model).near(@location_city,params[:within]).order("distance")
+			#	puts "LOCATION: " + @location_city.to_s 
+			@locations = Location.where(locatable_type: model).near(@location_city, params[:within])
 			if @locations 
-				puts "NEAR: " + @locations.to_json
+			#	puts "NEAR: " + @locations.to_json
 				@ids = []			
 				@locations.each do |l|
 					@ids << l.locatable_id.to_i
 				end			
-				puts "IDs: " + @ids.to_json
+			#	puts "IDs: " + @ids.to_json
 				return model.classify.constantize.where(:id => @ids).search(params[:q])
 			end
     end
