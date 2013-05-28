@@ -33,7 +33,7 @@
 .item-bottom .distance {
 	display: block;
 }
-.item-bottom .distance:hover {
+.item-bottom .distance:hover a {
 	cursor: default;
 }
 #items-related {
