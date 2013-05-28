@@ -16,7 +16,15 @@ class Location < ActiveRecord::Base
   end
   
   def gmaps4rails_infowindow
-     "<h2>#{address}</h2>"
+     "<b>#{getTitle}</b><br /><p>#{address}</p>"
   end
   
+	def getTitle
+		if self.locatable.title
+			self.locatable.title 
+		else
+			self.login if self.login
+		end
+	end
+
 end

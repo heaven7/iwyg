@@ -7,7 +7,7 @@
         <%= f.select :need_eq, options_for_select([ [], [t("title.resources.iNeed"), 0], [t("title.resources.iHave"), 1]]) %> 
       <% end %>
       
-      <%= f.text_field :title_cont  %>
+      <%= f.text_field :title_cont, :size => "15"  %>
       <input id="near" name="near" size="15" type="text" class="ui-corner-all" value="<%= params[:near] || @near %>">
       <div id="searchextended" class="ui-corner-all">
         <h3 class="bold"></h3>

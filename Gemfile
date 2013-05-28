@@ -99,5 +99,6 @@ group :test do
   gem 'faker'
 	gem 'shoulda'  
 	gem 'shoulda-matchers'
+	gem 'fakeweb'
 end
 

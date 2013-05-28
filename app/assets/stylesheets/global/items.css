@@ -27,10 +27,12 @@
 .item-bottom {
     text-align:left;
     font-size:85%;
-		height: 30px;
+		height: 40px;
     overflow: hidden;
 }
-
+.item-bottom .date {
+	display: block;
+}
 #items-related {
 
 }                   

@@ -7,6 +7,7 @@ describe Search do
 		before :each do 
 			@itemsearch = Item.search()
 			@item = create(:item, title: "testitem", item_type_id: 1)
+			@item.locations.first = create(:location)
 		end
 
 		it "should be items, which are searched" do

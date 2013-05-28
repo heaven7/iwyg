@@ -20,10 +20,12 @@ module ItemsHelper
   
 	def showDistanceOfSearcher(item)
 		itemlocation = item.locations.first if item.locations.size > 0
-		userlocation = request.location.city 
+		userlocation = params[:near] || request.location.city
 		if userlocation and itemlocation
-			distance = itemlocation.distance_to(request.location)		 
-			return distance if distance > 0 and distanc != NaN
+			distance = itemlocation.distance_to(userlocation)		 
+			if distance.class.to_s == "Float" 
+				return number_with_precision(distance, :precision => 2)
+			end
 		end
 		nil
 	end
