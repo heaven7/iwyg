@@ -13,19 +13,10 @@ module ApplicationHelper
 			if shortened.include?(" ")  		
 				splitted = shortened.split(/\s/)
 				words = splitted.length
-				puts "Words: " + words.to_s
-			else 
-				string
+				return splitted[0, count].join(" ") + '...'  	
 			end
-			
-			if words.to_i == 1
-				string
-			else
-					splitted[0, words -1].join(" ") + '...'
-			end  	
-		else 
-  		string
   	end
+		return string
   end
 
 	# Textformatting with redcarpet
