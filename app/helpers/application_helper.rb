@@ -8,16 +8,22 @@ module ApplicationHelper
 
   # Description helper 
   def shorten (string, count = 100)
-  	if string.length >= count 
+  	if string.strip.length >= count 
   		shortened = string[0, count]
-  		splitted = shortened.split(/\s/)
-  		words = splitted.length
-		if words == 1
-			string
-		else
-	  		splitted[0, words-1].join(" ") + '...'
-		end  	
-	else 
+			if shortened.include?(" ")  		
+				splitted = shortened.split(/\s/)
+				words = splitted.length
+				puts "Words: " + words.to_s
+			else 
+				string
+			end
+			
+			if words.to_i == 1
+				string
+			else
+					splitted[0, words -1].join(" ") + '...'
+			end  	
+		else 
   		string
   	end
   end
