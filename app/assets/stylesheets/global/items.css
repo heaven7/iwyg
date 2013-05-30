@@ -14,6 +14,11 @@
     right: 60px;
 }
 
+/* item show */
+.itemtype {
+	display: inline-block;
+}
+
 .item-collection li img {
     padding-right:0.5em;
 }
