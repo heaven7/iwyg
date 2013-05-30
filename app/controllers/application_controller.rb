@@ -130,8 +130,9 @@ class ApplicationController < ActionController::Base
 				@ids = []			
 				@locations.each do |l|
 					@ids << l.locatable_id.to_i
-				end			
-				return model.classify.constantize.where(:id => @ids).order("field(id, #{@ids.join(',')})").search(params[:q])
+				end		
+				return model.classify.constantize.where(:id => @ids).order("field(id, #{@ids.join(',')})").search(params[:q]) if @ids.size > 0
+						
 			end
     end
 	end
