@@ -17,8 +17,9 @@ group :production, :stage do
   gem 'mysql2' #, '0.2.18'
 end
 
-gem 'liangzan-contacts', :require => 'contacts' #, :git => "../contacts.git"
+gem 'liangzan-contacts', :require => 'contacts' #, :git => '../contacts.git'
 #gem 'contacts'
+gem 'rails-settings-cached', '0.2.4'
 gem 'socialization'
 gem 'rails-i18n'
 gem 'daemons'
@@ -85,7 +86,7 @@ group :development, :test do
   gem 'database_cleaner' #, '~> 0.6.7'
   gem 'guard-spork' #, '1.2.0'
   gem 'spork' #, '0.9.2'
-	gem "better_errors", ">= 0.3.2"
+	gem 'better_errors', '>= 0.3.2'
 end
 
 group :test do

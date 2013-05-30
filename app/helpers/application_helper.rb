@@ -8,18 +8,15 @@ module ApplicationHelper
 
   # Description helper 
   def shorten (string, count = 100)
-  	if string.length >= count 
+  	if string.strip.length >= count 
   		shortened = string[0, count]
-  		splitted = shortened.split(/\s/)
-  		words = splitted.length
-		if words == 1
-			string
-		else
-	  		splitted[0, words-1].join(" ") + '...'
-		end  	
-	else 
-  		string
+			if shortened.include?(" ")  		
+				splitted = shortened.split(/\s/)
+				words = splitted.length
+				return splitted[0, count].join(" ") + '...'  	
+			end
   	end
+		return string
   end
 
 	# Textformatting with redcarpet
