@@ -7,9 +7,8 @@
   <%= stylesheet_link_tag "themes/iwyg/jquery-ui-1.8.11.custom", :media => "screen" %>
   <!--[if IE 6]><%= stylesheet_link_tag 'formtastic_ie6' %><![endif]-->
   <!--[if IE 7]><%= stylesheet_link_tag 'formtastic_ie7' %><![endif]-->
-	<!--[if lt IE 9]><script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script><![endif]-->
 	<link href="//fonts.googleapis.com/css?family=Signika+Negative:600,400" rel="stylesheet" type="text/css">
-  <%= stylesheet_link_tag "themes/iwyg/agents/#{users_browser}" if File.exist?("app/assets/stylesheets/themes/iwyg/agents/#{users_browser}.css") %>
+	<%= stylesheet_link_tag "themes/iwyg/agents/#{users_browser}" if File.exist?("app/assets/stylesheets/themes/iwyg/agents/#{users_browser}.css") %>
 	
   <%= javascript_include_tag "application" %>
 

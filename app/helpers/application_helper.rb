@@ -12,11 +12,11 @@ module ApplicationHelper
   		shortened = string[0, count]
 			if shortened.include?(" ")  		
 				splitted = shortened.split(/\s/)
-				words = splitted.length
-				return splitted[0, count].join(" ") + '...'  	
+				words = splitted.length				
+				return (splitted[0, count].join(" ") + '...').html_safe  	
 			end
   	end
-		return string
+		return string.html_safe
   end
 
 	# Textformatting with redcarpet
