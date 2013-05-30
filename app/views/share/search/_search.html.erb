@@ -22,7 +22,7 @@
         <table>
 					<tr>
 						<td class="label"><%= t("searchradius") %></td>
-      			<td class="row-big"><%= text_field_tag :within, params[:within], :size => 8, :class => "ui-corner-all" %></td>
+      			<td class="row-big"><%= text_field_tag :within, params[:within] || @within, :size => 8, :class => "ui-corner-all" %></td>
 					</tr>
           <tr>
             <td class="label"><%= t("resources.available").html_safe %><br /> (<%= t("from") %> - <%= t("till") %>)</td>
