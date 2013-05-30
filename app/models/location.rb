@@ -22,10 +22,10 @@ class Location < ActiveRecord::Base
   end
   
 	def getTitle
-		if self.locatable.title
+		if self.locatable.respond_to?(:title)
 			self.locatable.title 
-		else
-			self.login if self.login
+		elsif self.locatable.login
+			self.locatable.login 
 		end
 	end
 

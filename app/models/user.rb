@@ -166,6 +166,11 @@ class User < ActiveRecord::Base
       :user_id => self.id
     ).exists?
   end
+
+	# friend_id
+	def normalize_friendly_id(string)
+		super.upcase.gsub("-", ".")
+	end
   
 
   protected
