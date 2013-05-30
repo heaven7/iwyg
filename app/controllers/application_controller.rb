@@ -132,7 +132,7 @@ class ApplicationController < ActionController::Base
 					@ids << l.locatable_id.to_i
 				end		
 				return model.classify.constantize.where(:id => @ids).order("field(id, #{@ids.join(',')})").search(params[:q]) if @ids.size > 0
-						
+				return model.classify.constantize.search(params[:q])						
 			end
     end
 	end
