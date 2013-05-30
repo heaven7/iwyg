@@ -10,9 +10,10 @@ class User < ActiveRecord::Base
                   :aim_tokens, :skill_tokens, :interest_tokens, :wish_tokens,
 									:user_preferences_attributes, :is_active
 
-
   extend FriendlyId
   friendly_id :login
+
+  include RailsSettings::Extend 
 
   devise :registerable, :confirmable, :database_authenticatable, :rememberable, :recoverable, :trackable, :lockable, :lock_strategy => :none, :unlock_strategy => :both 
 
