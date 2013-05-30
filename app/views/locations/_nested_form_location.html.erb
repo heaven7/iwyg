@@ -1,6 +1,9 @@
-<center>
-	<%= render :partial => "share/map", :locals => { :locations => @locations_json } if @locations_json %>
-</center>
+<% if @locations_json %>
+	<center>
+		<%= render :partial => "share/map", :locals => { :locations => @locations_json } %>
+	</center>
+	<br /><br />
+<% end %>
 <%= f.inputs do %>
   <% f.semantic_fields_for :location do |location_form| %>
     

@@ -125,8 +125,9 @@ class ApplicationController < ActionController::Base
 		if params[:near]
 			@location_city = (request.location.city.blank?) ? params[:near] : request.location.city 
 			@radius = params[:within] || 100
-			@locations = Location.where(locatable_type: model).near(@location_city, @radius, :units => :km, :order => "distance")
+			@locations = Location.where(locatable_type: model).near(@location_city, @radius, :order => "distance")
 	  	if @locations 
+				puts "LOCATIONS: " + @locations.join(", ")
 				@ids = []			
 				@locations.each do |l|
 					@ids << l.locatable_id.to_i
