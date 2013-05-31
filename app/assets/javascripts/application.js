@@ -10,6 +10,7 @@
 //= require i18n/jquery-ui-i18n
 //= require jquery-ui-timepicker-addon                                               
 //= require jquery.tokeninput
+//= require jquery.ui.addresspicker
 //= require_self
 
 

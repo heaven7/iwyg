@@ -31,6 +31,7 @@ gem 'rails_autolink'
 gem 'sanitize'
 
 gem 'rabl'
+gem 'oj'
 gem 'airbrake'
 gem 'eventmachine', '1.0.0.beta.2'
 gem 'thin'
