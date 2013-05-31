@@ -5,6 +5,10 @@
   <script type="text/javascript">
   $(document).ready(function (){
 
+		/* ADDRESSPICKER */
+		pickAddressOn('#user_location_attributes_address', <%= raw @json_location %>);
+		
+
     /* TABS */
     $("#tabs").tabs(); 	
     showErrorTabs();
@@ -36,7 +40,6 @@
   });
 	</script>
 <% end %>
-
 <%= semantic_form_for @user, :html => {:multipart => true} do |form| %>
   <%= render "share/error_messages", :target => @user %>
   <div id="tabs">  

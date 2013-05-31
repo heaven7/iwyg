@@ -31,9 +31,10 @@
       $('#searchextended #till').datetimepicker({dateFormat: "dd.mm.yy", timeFormat: "hh:mm", inline:true, stepMinute: 5, changeYear: true});
       $('.ui-datepicker').addClass('shadowed');  
 
-			// addresspicker
-			$('#near').addresspicker();
-
+			// addresspicker for search panel
+			$('#near').addresspicker({
+				regionBias: "<%= I18n.locale.to_s %>" 
+			});
     });
   </script>
   

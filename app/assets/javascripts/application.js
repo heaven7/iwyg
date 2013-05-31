@@ -79,6 +79,36 @@ $(document).ready(function (){
 
 }); 
 
+// addresspicker
+
+function pickAddressOn(el, location) {
+	var pos = new Object();
+	pos.lat = (location != undefined) ? location.lat : <%= request.location.latitude %>;
+	pos.lng = (location != undefined) ? location.lng : <%= request.location.longitude %>;
+	var addresspickerMap = $(el).addresspicker({
+			regionBias: "<%= I18n.locale.to_s %>",
+			reverseGeocode: true,
+			updateCallback: showCallback,
+			mapOptions: {
+				zoom: 2,
+        center: new google.maps.LatLng(pos.lat, pos.lng)
+	    },
+			elements: {
+		    map:      "#map",
+				locality: "#user_location_attributes_city",
+				administrative_area_level_1: "#user_location_attributes_state",
+				postal_code: "#user_location_attributes_zip",
+				country: "#user_location_attributes_country"
+			}
+		});
+		var gmarker = addresspickerMap.addresspicker( "marker");
+		gmarker.setVisible(true);
+		addresspickerMap.addresspicker( "updatePosition");
+		function showCallback(geocodeResult, parsedGeocodeResult){
+      $('#callback_result').text(JSON.stringify(parsedGeocodeResult, null, 4));
+    }
+}
+
 // flash messages
 
 $(document).ajaxError(function(event, request) {

@@ -4,6 +4,9 @@
 
   <script type="text/javascript">
     $(document).ready(function (){
+			
+			/* ADDRESSPICKER */
+			pickAddressOn('#item_location_address'<%= ", " + raw(@json_location) if not @json_location.blank? %>);
   
       /* TABS */
       $("#tabs").tabs();
@@ -100,7 +103,7 @@
     </div>
 -->
     <div id="location">
-      <%= render :partial => "locations/nested_form", :locals => { :f => f, :belongs_to => "item" } %>
+      <%= render :partial => "locations/nested_form_location", :locals => { :f => f, :belongs_to => "item" } %>
     </div>
     <div id="when" class="tab_content">
       <%= f.inputs do %>
