@@ -80,7 +80,7 @@ $(document).ready(function (){
 }); 
 
 // addresspicker
-var addresspickerMap = {};
+var addresspickerMap;
 function pickAddressOn(el, location) {
 	var ids = [];
 	$('#location > .inputs > ol > li > input').not(':first').each(function() {
@@ -105,16 +105,16 @@ function pickAddressOn(el, location) {
 	});
 	var gmarker = addresspickerMap.addresspicker("marker");
 	gmarker.setVisible(true);
-	
+
 	google.maps.event.addDomListener(window, 'resize', function() {
 		resizeAndSetCenter();
 	});
+
 }
 
 function resizeAndSetCenter() {
 	map = addresspickerMap.addresspicker("map");
 	var center = map.getCenter();
-	console.log(center);
 	addresspickerMap.addresspicker("resize");
 	map.setCenter(center);
 	addresspickerMap.addresspicker("recenter");
