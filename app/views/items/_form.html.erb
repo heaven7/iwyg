@@ -11,7 +11,9 @@
 
 			/* ADDRESSPICKER */
 			pickAddressOn('#item_location_address', <%= raw( @json_location ) %>);
-
+			$('#locationbutton').click(function() {
+				resizeAndSetCenter();
+			});
       /* VALIDATION */
       // $('#new_item').railsAjaxValidation();
 
@@ -67,7 +69,7 @@
   <div id="tabs">
     <ul>
       <li><a href="#what"><%= t("form.resource.what").html_safe %></a></li>
-      <li><a href="#location"><%= t("form.resource.where").html_safe %></a></li>
+      <li><a href="#location" id="locationbutton"><%= t("form.resource.where").html_safe %></a></li>
       <li><a href="#when"><%= t("form.resource.when").html_safe %></a></li>
 <!--
       <li><a href="#how_much"><%= t("form.resource.howMuch").html_safe %></a></li>
