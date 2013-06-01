@@ -4,13 +4,13 @@
 
   <script type="text/javascript">
     $(document).ready(function (){
-			
-			/* ADDRESSPICKER */
-			pickAddressOn('#item_location_address', <%= raw( @json_location ) %>);
-  
+			 
       /* TABS */
       $("#tabs").tabs();
       showErrorTabs();
+
+			/* ADDRESSPICKER */
+			pickAddressOn('#item_location_address', <%= raw( @json_location ) %>);
 
       /* VALIDATION */
       // $('#new_item').railsAjaxValidation();
