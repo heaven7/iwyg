@@ -80,13 +80,13 @@ $(document).ready(function (){
 }); 
 
 // addresspicker
-
+var addresspickerMap = {};
 function pickAddressOn(el, location) {
 	var ids = [];
 	$('#location > .inputs > ol > li > input').not(':first').each(function() {
 		ids.push("#" + this.id);
 	});
-	var addresspickerMap = $(el).addresspicker({
+	addresspickerMap = $(el).addresspicker({
 			regionBias: "<%= I18n.locale.to_s %>",
 			reverseGeocode: true,
 			mapOptions: {
@@ -102,13 +102,22 @@ function pickAddressOn(el, location) {
 				postal_code:ids[2],
 				country: ids[3]
 			}
-		});
-		var gmarker = addresspickerMap.addresspicker( "marker");
-		gmarker.setVisible(true);
-		addresspickerMap.addresspicker( "updatePosition");
-		function showCallback(geocodeResult, parsedGeocodeResult){
-      $('#callback_result').text(JSON.stringify(parsedGeocodeResult, null, 4));
-    }
+	});
+	var gmarker = addresspickerMap.addresspicker("marker");
+	gmarker.setVisible(true);
+	
+	google.maps.event.addDomListener(window, 'resize', function() {
+		resizeAndSetCenter();
+	});
+}
+
+function resizeAndSetCenter() {
+	map = addresspickerMap.addresspicker("map");
+	var center = map.getCenter();
+	console.log(center);
+	addresspickerMap.addresspicker("resize");
+	map.setCenter(center);
+	addresspickerMap.addresspicker("recenter");
 }
 
 // flash messages

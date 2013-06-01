@@ -5,13 +5,15 @@
   <script type="text/javascript">
   $(document).ready(function (){
 
-    /* TABS */
+		/* TABS */
     $("#tabs").tabs(); 	
     showErrorTabs();
 
 		/* ADDRESSPICKER */
 		pickAddressOn('#user_location_attributes_address', <%= raw @json_location %>);
-		  	
+		$('#locationbutton').click(function() {
+			resizeAndSetCenter();
+		});
     /* DATEPICKER */
     $("#user_userdetails_attributes_birthdate").datetimepicker(
      {
@@ -35,7 +37,7 @@
   
     /* STYLING */
     $('.ui-listbuilder-input').addClass('ui-corner-all');
-      
+			
   });
 	</script>
 <% end %>
@@ -44,7 +46,7 @@
   <div id="tabs">  
     <ul>   
         <li><a href="#avatar"><%= t("form.userdetails.avatar").html_safe %></a></li>        
-        <li><a href="#location"><%= t("form.userdetails.location").html_safe %></a></li>  
+        <li><a href="#location" id="locationbutton"><%= t("form.userdetails.location").html_safe %></a></li>  
         <li><a href="#interests"><%= t("form.userdetails.personality").html_safe %></a></li>
         <li><a href="#personal"><%= t("form.userdetails.data").html_safe %></a></li>       
       <!--  
