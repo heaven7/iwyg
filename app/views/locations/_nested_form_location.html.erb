@@ -5,7 +5,7 @@
 <%= f.inputs do %>
   <% f.semantic_fields_for :location do |location_form| %>
     
-    <%= location_form.input :address, :required => false, :label => t("formtastic.labels.location.address"), :value => "hallo" %>
+    <%= location_form.input :address, :required => false, :label => t("formtastic.labels.location.address") %>
     <%= location_form.input :city, :required => false, :label => t("formtastic.labels.location.city") %>
     <%= location_form.input :state, :required => false, :label => t("formtastic.labels.location.state") %>
     <%= location_form.input :zip, :required => false, :input_html => {:class => "short"}, :label => t("formtastic.labels.location.zip")  %>

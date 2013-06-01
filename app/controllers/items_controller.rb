@@ -174,6 +174,7 @@ class ItemsController < InheritedResources::Base
   end
   
   def new
+    @json_location = getJSonLocation
 		@itemable = find_model
     @item = Item.new
     @user = current_user
@@ -193,7 +194,6 @@ class ItemsController < InheritedResources::Base
     # @item.images.build
     # @item.item_attachments.build
     
-    getJSonLocation
     getItemTypes
   end
   

@@ -6,7 +6,7 @@
     $(document).ready(function (){
 			
 			/* ADDRESSPICKER */
-			pickAddressOn('#item_location_address'<%= ", " + raw(@json_location) if not @json_location.blank? %>);
+			pickAddressOn('#item_location_address', <%= raw( @json_location ) %>);
   
       /* TABS */
       $("#tabs").tabs();
@@ -77,9 +77,9 @@
     </ul>
     <div id="what" class="tab_content ">
       <%= f.inputs do %>
-		    <%= f.input :user_id, :value => current_user.id, :as => :hidden %>
-		    <%= f.input :itemable_id, :value => @itemable.id, :as => :hidden %>
-		    <%= f.input :itemable_type, :value => @itemable.class, :as => :hidden %>
+		    <%= f.input :user_id, :input_html => { :value => current_user.id }, :as => :hidden %>
+		    <%= f.input :itemable_id, :input_html => { :value => @itemable.id }, :as => :hidden %>
+		    <%= f.input :itemable_type, :input_html => { :value => @itemable.class }, :as => :hidden %>
         <%= f.input :need, :as => :select, :label => t("form.resource.i"), :include_blank => false, :collection => [[t("form.resource.need"), true], [t("form.resource.have"), false]] %>
     <%# f.input :item_type_id, :as => :select, :label => t("form.resource.a"), :collection => options_for_select(ItemType.all.map { |i| [I18n.t("#{i.title}.singular").to_s.html_safe ,i.id ] } ), :include_blank => true %>
         <%= f.input :item_type_id, :as => :select, :label => t("form.resource.a"), :collection => ItemType.all.collect { |i| [I18n.t("#{i.title}.singular").to_s.html_safe ,i.id ] }, :include_blank => true  %>

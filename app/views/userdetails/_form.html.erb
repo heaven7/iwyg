@@ -44,10 +44,10 @@
   <%= render "share/error_messages", :target => @user %>
   <div id="tabs">  
     <ul>   
-        <li><a href="#avatar"><%= t("form.userdetails.avatar").html_safe %></a></li>    
+        <li><a href="#avatar"><%= t("form.userdetails.avatar").html_safe %></a></li>        
+        <li><a href="#location"><%= t("form.userdetails.location").html_safe %></a></li>  
         <li><a href="#interests"><%= t("form.userdetails.personality").html_safe %></a></li>
-        <li><a href="#personal"><%= t("form.userdetails.data").html_safe %></a></li>          
-        <li><a href="#location"><%= t("form.userdetails.location").html_safe %></a></li>   
+        <li><a href="#personal"><%= t("form.userdetails.data").html_safe %></a></li>       
       <!--  
         <li><a href="#configuration"><%= t("form.userdetails.configuration").html_safe %></a></li>
       -->
@@ -80,8 +80,8 @@
       <div class="image">
           <p class="center"><%= image_tag smallThumb(@user) %></p>
           <%= form.semantic_fields_for :images do |image_form| %>
-            <%= image_form.input :imageable_id, :as => :hidden, :value => @imageable.id if @user.images.count == 0 %>
-            <%= image_form.input :imageable_type, :as => :hidden, :value => @imageable.class if @user.images.count == 0 %>
+            <%= image_form.input :imageable_id, :as => :hidden, :input_html => { :value => @imageable.id } if @user.images.count == 0 %>
+            <%= image_form.input :imageable_type, :as => :hidden, :input_html => { :value => @imageable.class } if @user.images.count == 0 %>
             <div class="options center">
               <%= link_to_remove_fields  image_tag(("icons/icon_delete.png"), :alt => t("remove").html_safe, :title => t("remove").html_safe), image_form if @user.images.count != 0 %>
             </div>

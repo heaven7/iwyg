@@ -82,23 +82,25 @@ $(document).ready(function (){
 // addresspicker
 
 function pickAddressOn(el, location) {
-	var pos = new Object();
-	pos.lat = (location != undefined) ? location.lat : <%= request.location.latitude %>;
-	pos.lng = (location != undefined) ? location.lng : <%= request.location.longitude %>;
+	var ids = [];
+	$('#location > .inputs > ol > li > input').not(':first').each(function() {
+		ids.push("#" + this.id);
+	});
 	var addresspickerMap = $(el).addresspicker({
 			regionBias: "<%= I18n.locale.to_s %>",
 			reverseGeocode: true,
-			updateCallback: showCallback,
 			mapOptions: {
-				zoom: 2,
-        center: new google.maps.LatLng(pos.lat, pos.lng)
+				zoom: 5,
+        center: new google.maps.LatLng(location.lat, location.lng)
 	    },
 			elements: {
 		    map:      "#map",
-				locality: "#user_location_attributes_city",
-				administrative_area_level_1: "#user_location_attributes_state",
-				postal_code: "#user_location_attributes_zip",
-				country: "#user_location_attributes_country"
+		    lat:      "#lat",
+		    lng:      "#lng",
+				locality: ids[0],
+				administrative_area_level_1: ids[1],
+				postal_code:ids[2],
+				country: ids[3]
 			}
 		});
 		var gmarker = addresspickerMap.addresspicker( "marker");
