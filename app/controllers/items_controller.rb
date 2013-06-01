@@ -174,10 +174,10 @@ class ItemsController < InheritedResources::Base
   end
   
   def new
+    @json_location = getJSonLocation
 		@itemable = find_model
     @item = Item.new
     @user = current_user
-    
     @active_menuitem_l1 = I18n.t "menu.main.resources"   
     @active_menuitem_l1_link = eval "#{@itemable.class.to_s.downcase}_items_path"
     @item.locations.build
@@ -311,6 +311,13 @@ class ItemsController < InheritedResources::Base
   
   def getLocation(item)
     @locations_json = item.locations.to_gmaps4rails
+  end
+
+  def getJSonLocation
+		@json_location = Hash.new
+		@json_location = {'lat' => current_user.location.lat.to_s || request.location.latitude.to_s,
+			'lng' => current_user.location.lng.to_s || request.location.longitude.to_s
+		}.to_json
   end
   
   def getItemTypes

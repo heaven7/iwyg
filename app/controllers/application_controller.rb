@@ -138,6 +138,16 @@ class ApplicationController < ActionController::Base
 			end
     end
 	end
+
+  def getJSonLocation
+		puts "Json from application-controller: "
+		@json_location = Hash.new
+		@json_location = {'lat' => current_user.location.lat.to_s || request.location.latitude.to_s,
+			'lng' => current_user.location.lng.to_s || request.location.longitude.to_s
+		}.to_json
+		
+		puts @json_location
+  end
 	
 	def updateNotifications
 		if current_user

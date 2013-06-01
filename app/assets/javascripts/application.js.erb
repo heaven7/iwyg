@@ -10,6 +10,7 @@
 //= require i18n/jquery-ui-i18n
 //= require jquery-ui-timepicker-addon                                               
 //= require jquery.tokeninput
+//= require jquery.ui.addresspicker
 //= require_self
 
 
@@ -77,6 +78,38 @@ $(document).ready(function (){
     });
 
 }); 
+
+// addresspicker
+
+function pickAddressOn(el, location) {
+	var ids = [];
+	$('#location > .inputs > ol > li > input').not(':first').each(function() {
+		ids.push("#" + this.id);
+	});
+	var addresspickerMap = $(el).addresspicker({
+			regionBias: "<%= I18n.locale.to_s %>",
+			reverseGeocode: true,
+			mapOptions: {
+				zoom: 5,
+        center: new google.maps.LatLng(location.lat, location.lng)
+	    },
+			elements: {
+		    map:      "#map",
+		    lat:      "#lat",
+		    lng:      "#lng",
+				locality: ids[0],
+				administrative_area_level_1: ids[1],
+				postal_code:ids[2],
+				country: ids[3]
+			}
+		});
+		var gmarker = addresspickerMap.addresspicker( "marker");
+		gmarker.setVisible(true);
+		addresspickerMap.addresspicker( "updatePosition");
+		function showCallback(geocodeResult, parsedGeocodeResult){
+      $('#callback_result').text(JSON.stringify(parsedGeocodeResult, null, 4));
+    }
+}
 
 // flash messages
 
