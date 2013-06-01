@@ -11,9 +11,11 @@
 
 		/* ADDRESSPICKER */
 		pickAddressOn('#user_location_attributes_address', <%= raw @json_location %>);
+
 		$('#locationbutton').click(function() {
 			resizeAndSetCenter();
 		});
+
     /* DATEPICKER */
     $("#user_userdetails_attributes_birthdate").datetimepicker(
      {
