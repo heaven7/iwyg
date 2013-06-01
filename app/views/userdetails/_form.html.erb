@@ -5,14 +5,13 @@
   <script type="text/javascript">
   $(document).ready(function (){
 
-		/* ADDRESSPICKER */
-		pickAddressOn('#user_location_attributes_address', <%= raw @json_location %>);
-		
-
     /* TABS */
     $("#tabs").tabs(); 	
     showErrorTabs();
-  	
+
+		/* ADDRESSPICKER */
+		pickAddressOn('#user_location_attributes_address', <%= raw @json_location %>);
+		  	
     /* DATEPICKER */
     $("#user_userdetails_attributes_birthdate").datetimepicker(
      {
