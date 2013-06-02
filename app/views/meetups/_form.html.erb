@@ -6,19 +6,25 @@
       $("#tabs").tabs();
       showErrorTabs();
 
-  <% if params[:item] && params[:item][:attachable_id] %>
+			/* ADDRESSPICKER */
+			pickAddressOn('#meetup_locations_attributes_0_address', <%= raw( @json_location ) %>);
+			$('#locationbutton').click(function() {
+				resizeAndSetCenter();
+			});
+
+	  <% if params[:item] && params[:item][:attachable_id] %>
       /* preselect pinged resource (item) */
       id = <%= params[:item][:attachable_id] %>;
       $('#attachments .field-add').click();
       $('#attachments select').val(id);
-  <% end %>
-  <% if params[:action] == "new" and !params[:item] %>
+	  <% end %>
+	  <% if params[:action] == "new" and !params[:item] %>
       /* blank memberlist */
       $("#who .choices-group").find("input ").removeAttr("checked");
-  <% elsif params[:action] == "create" and params[:item] %>
+	  <% elsif params[:action] == "create" and params[:item] %>
       /* unhide members */
       $("#who .choices-group").find("div").removeClass("ui-tabs-hide");
-  <% end %>
+	  <% end %>
     /* hide additional location fields */
     $("#meetup_locations_attributes_1_address_input, #meetup_locations_attributes_1_city_input, #meetup_locations_attributes_1_zip_input, #meetup_locations_attributes_1_country").hide();
     $("#meetup_locations_attributes_1_country").parent().find("label").hide();
@@ -34,7 +40,7 @@
     <div id="tabs">
       <ul>
         <li><a href="#what"><%= t("what") %></a></li>
-        <li><a href="#where"><%= t("where") %></a></li>
+        <li><a href="#location" id="locationbutton"><%= t("where") %></a></li>
         <li><a href="#when"><%= t("when") %></a></li>
         <li><a href="#who"><%= t("who") %></a></li>
         <li><a href="#attachments"><%= t("menu.user.resources") %></a></li>
@@ -50,10 +56,8 @@
           <%= f.input :description, :label => I18n.t("formtastic.labels.meetup.description") %>
         <% end %>
       </div>
-      <div id="where">
-        <%= f.inputs do %>
-          <%= render :partial => "locations/nested_form", :locals => { :f => f, :belongs_to => "meetup" } %>
-        <% end %>
+      <div id="location">
+        <%= render :partial => "locations/nested_form", :locals => { :f => f, :belongs_to => "meetup" } %>
       </div>
       <div id="when">
         <%= f.inputs do %>
@@ -86,7 +90,7 @@
     <div id="tabs">
       <ul>
         <li><a href="#what"><%= t("what") %></a></li>
-        <li><a href="#where"><%= t("where") %></a></li>
+        <li><a href="#location" id="locationbutton"><%= t("where") %></a></li>
         <li><a href="#when"><%= t("when") %></a></li>
         <li><a href="#who"><%= t("who") %></a></li>
         <li><a href="#attachments"><%= t("menu.user.resources") %></a></li>
@@ -102,7 +106,7 @@
           <%= f.input :description, :label => I18n.t("formtastic.labels.meetup.description") %>
         <% end %>
       </div>
-      <div id="where">
+      <div id="location">
         <%= f.inputs do %>
           <%= render :partial => "locations/nested_form", :locals => { :f => f, :belongs_to => "meetup" } %>
         <% end %>

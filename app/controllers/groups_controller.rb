@@ -48,6 +48,7 @@ class GroupsController < InheritedResources::Base
   def new
     @user = current_user
     @group = Group.new
+    getJSonLocation(@group)
     @group.locations.build
     @active_menuitem_l1 = I18n.t "menu.main.groups"
     @active_menuitem_l1_link = user_groups_path
@@ -58,6 +59,7 @@ class GroupsController < InheritedResources::Base
   def edit
     @user = current_user
     @group = Group.find(params[:id])
+    getJSonLocation(@group)
     @location = @group.locations.first || @group.locations.build
     @active_menuitem_l1 = I18n.t "menu.main.groups"
 		#@locations_json = @location.to_gmaps4rails		

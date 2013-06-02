@@ -44,6 +44,7 @@ class MeetupsController < InheritedResources::Base
     @active_menuitem_l1 = I18n.t "menu.user.meetups" 
     @active_menuitem_l1_link = polymorphic_path([@user, :meetups])
     @meetup = Meetup.new
+    getJSonLocation(@meetup)
     @meetup.locations.build 
     @meetup.events.build
 
@@ -54,7 +55,7 @@ class MeetupsController < InheritedResources::Base
     @user = current_user 
     @eventable = find_model
     @meetup = Meetup.new(params[:meetup])
-
+    getJSonLocation(@meetup)
     @meetup.locations.build if @meetup.locations.size == 0
     @meetup.events.build if @meetup.events.size == 0
 
@@ -129,8 +130,8 @@ class MeetupsController < InheritedResources::Base
   
   def conditional_layout
     case action_name
-    when "index" then "application"
-    else "application"
+    when "index", "show" then "application"
+    else "userarea"
     end
   end
 

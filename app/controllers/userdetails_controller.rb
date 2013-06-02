@@ -28,12 +28,12 @@ class UserdetailsController < InheritedResources::Base
   # GET /userdetails/1/edit
   def edit
     @user = current_user
+    getJSonLocation(@user)
     @userdetails = @user.userdetails
     if @user.images.size == 0
       @imageable = find_imageable
       @image = @user.images.build
     end
-    getJSonLocation
   end
 
   # POST /userdetails
