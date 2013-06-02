@@ -8,6 +8,12 @@
     /* TABS */
     $("#tabs").tabs();
     showErrorTabs();
+
+		/* ADDRESSPICKER */
+		pickAddressOn('#group_locations_attributes_0_address', <%= raw( @json_location ) %>);
+		$('#locationbutton').click(function() {
+			resizeAndSetCenter();
+		});
         
     /* AUTOCOMPLETE AND LISTBUILDER */
     $(" #group_tag_list ").listbuilder({autocomplete:{source: '/groups/tag_suggestions.js'}});
@@ -27,7 +33,7 @@
     <ul>
         <li><a href="#what"><%= t("what") %></a></li>
         <li><a href="#members"><%= t("form.group.members") %></a></li>
-        <li><a href="#where"><%= t("where") %></a></li>
+        <li><a href="#location" id="locationbutton"><%= t("where") %></a></li>
         <li><a href="#images"><%= t("form.resource.images") %></a></li>
         <li><a href="#attachments"><%= t("menu.user.resources") %></a></li>      
     </ul>
@@ -54,10 +60,8 @@
 					
        <% end %>
     </div>
-    <div id="where" class="tab_content">
-       <%= f.inputs do %>
-        <%= render :partial => "locations/nested_form", :locals => { :f => f, :belongs_to => "group" } %>
-       <% end %>
+    <div id="location" class="tab_content">
+      <%= render :partial => "locations/nested_form", :locals => { :f => f, :belongs_to => "group" } %>
     </div>
     <div id="images" class="tab_content">
       <%= f.inputs do %>

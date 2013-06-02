@@ -872,7 +872,7 @@ de:
           aufgelistet, die dir folgen bzw. denen du folgst. Klicke auf die Teilnehmer,
           die du einladen m&ouml;chtest und klicke auf Speichern.
       location:
-        map: Für die Angabe des Standorts kannst die Position des Markers beliebig verschieben oder gib in den unteren Feldern die Adresse ein.
+        map: Für die Angabe des Standorts kannst du die Position des Markers beliebig verschieben oder gib in den unteren Feldern die Adresse ein.
   order:
     date: Zeit
     title: Titel
