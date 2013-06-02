@@ -10,7 +10,7 @@
       showErrorTabs();
 
 			/* ADDRESSPICKER */
-			pickAddressOn('#item_location_address', <%= raw( @json_location ) %>);
+			pickAddressOn('#item_locations_attributes_0_address', <%= raw( @json_location ) %>);
 			$('#locationbutton').click(function() {
 				resizeAndSetCenter();
 			});
@@ -18,18 +18,6 @@
       /* VALIDATION */
       // $('#new_item').railsAjaxValidation();
 
-      /* LOCATION */
-      var address = $("#item_location_attributes_address").attr('value');
-      var city =  $("#item_location_attributes_address").attr('value');
-      $("#self_location:checkbox").click(function () {
-        checked = $(this).attr('checked')
-        if (!checked) {
-          $("#item_location_attributes_address").attr('value','');
-          $("#item_location_attributes_city").attr('value','');
-          $("#item_location_attributes_country").find("option:first").attr('value','');
-          $("#item_location_attributes_country").find("option:first").html('');
-        }
-      });
      
       /* AUTOCOMPLETE & LISTBUILDER */
       $( "#item_tag_list" ).listbuilder({autocomplete:{source: '/items/tag_suggestions.js'}});
@@ -106,7 +94,7 @@
     </div>
 -->
     <div id="location">
-      <%= render :partial => "locations/nested_form_location", :locals => { :f => f, :belongs_to => "item" } %>
+      <%= render :partial => "locations/nested_form", :locals => { :f => f, :belongs_to => "item" } %>
     </div>
     <div id="when" class="tab_content">
       <%= f.inputs do %>

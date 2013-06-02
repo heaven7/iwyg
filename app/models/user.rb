@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
 
   extend FriendlyId
-  friendly_id :login
+  friendly_id :login, :use => :slugged
 
   devise :registerable, :confirmable, :database_authenticatable, :rememberable, :recoverable, :trackable, :lockable, :lock_strategy => :none, :unlock_strategy => :both 
 
@@ -169,7 +169,7 @@ class User < ActiveRecord::Base
 
 	# friend_id
 	def normalize_friendly_id(string)
-		super.upcase.gsub("-", ".")
+		super.gsub(".", "-")
 	end
   
 

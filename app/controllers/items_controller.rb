@@ -174,7 +174,7 @@ class ItemsController < InheritedResources::Base
   end
   
   def new
-    @json_location = getJSonLocation
+    getJSonLocation
 		@itemable = find_model
     @item = Item.new
     @user = current_user
@@ -198,6 +198,7 @@ class ItemsController < InheritedResources::Base
   end
   
   def edit
+    getJSonLocation
 		@itemable = find_model
     @item = @itemable.items.find(params[:id], :include => [:locations, :events])    
     @location = @item.locations.first || @item.locations.build
@@ -239,7 +240,7 @@ class ItemsController < InheritedResources::Base
 		if @itemable
     	redirect_to @itemable
 		else
-			redirect_to collection
+			redirect_to current_user
 		end
   end
 
