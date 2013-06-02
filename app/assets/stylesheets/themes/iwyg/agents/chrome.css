@@ -1,5 +1,9 @@
 /* chrome css */
 
+html {
+	-webkit-text-stroke: 0.25px;
+}
+
 .ui-listbuilder {
   position:relative;
   left: 26%;
