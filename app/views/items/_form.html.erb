@@ -10,7 +10,7 @@
       showErrorTabs();
 
 			/* ADDRESSPICKER */
-			pickAddressOn('item_locations_attributes_0_address', <%= raw( @json_location ) %>);
+			pickAddressOn('#item_locations_attributes_0_address', <%= raw( @json_location ) %>);
 			$('#locationbutton').click(function() {
 				resizeAndSetCenter();
 			});
