@@ -239,7 +239,7 @@ class ItemsController < InheritedResources::Base
 		if @itemable
     	redirect_to @itemable
 		else
-			redirect_to collection
+			redirect_to current_user
 		end
   end
 

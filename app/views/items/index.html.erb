@@ -2,9 +2,9 @@
   <%= javascript_include_tag 'items' %>
 <% end %>
 
-<% if @user and @user == current_user %>
+<% if logged_in? and current_user %>
   <div class="button new">
-    <%= link_to t("resource.new"), new_user_item_path %>
+    <%= link_to t("resource.new"), new_polymorphic_path([current_user, Item.new]) %>
   </div>
 <% elsif @group and (@group.members.include?(current_user) or @group.owner == current_user) %>
   <div class="button new">
