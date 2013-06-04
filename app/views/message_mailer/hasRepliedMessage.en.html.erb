@@ -1,7 +1,7 @@
 <%= @sender.login %> has replied:<br /><br />
 <pre>
 <% if not @message.subject.blank? %>
-<b><%= @message.subject %></b><br /><br />
+<b><%= @message.subject %></b><br />
 <% end %>
 <%= markdown(@message.body) %>
 </pre>
