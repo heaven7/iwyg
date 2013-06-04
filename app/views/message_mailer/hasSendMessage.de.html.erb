@@ -1,10 +1,10 @@
 <%= @sender.login %> hat dir folgende Nachricht geschickt:<br /><br />
 <pre>
 <% if not @message.subject.blank? %>
-<b><%= @message.subject %></b><br /><br />
+<b><%= @message.subject %></b><br />
 <% end %>
 <%= markdown(@message.body) %>
 </pre>
 <br />
-<a href="<%= message_url(@message) %>">Zur Nachricht</a><br />
-<%= message_url(@message) %>
+<a href="<%= mailbox_url(@message) %>">Zur Nachricht</a><br />
+<%= mailbox_url(@message) %>
