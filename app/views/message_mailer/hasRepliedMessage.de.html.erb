@@ -6,5 +6,5 @@
 <%= markdown(@message.body) %>
 </pre>
 <br />
-<a href="<%= message_url(@message) %>">Zur Nachricht</a><br />
-<%= message_url(@message) %>
+<a href="<%= mailbox_url(@message) %>">Zur Nachricht</a><br />
+<%= mailbox_url(@message) %>
