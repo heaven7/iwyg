@@ -9,11 +9,11 @@
 		<%= link_to @ping_submit, login_path %>
   </div>
 <% end %>
-<% if pings.size > 0 %>
+<% if pings.size > 0 and logged_in? %>
   <div class="list">
     <% pings.each do |ping| %>  
       <div class="ping ui-corner-all <%=h ping.statusTitle %>">    
-        <% if ping && ping.statusTitle != "closed" %>
+        <% if ping and ping.statusTitle != "closed" and (@item.owner == current_user or ping.owner == current_user) %>
           <% if ping.owner? %>
             <%= render :partial => "share/usermicro", :locals => { :user => pingerOf(ping) } %>
           <% else %>
