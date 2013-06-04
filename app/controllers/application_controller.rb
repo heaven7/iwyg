@@ -118,21 +118,23 @@ class ApplicationController < ActionController::Base
 			@tag = params[:q][:tag] if params[:q]
 	    @tagtype = tagtype    
 		end
-    return model.classify.constantize.tagged_with(@tag) if @tag
+    return model.classify.constantize.tagged_with(@tag, :any => true) if @tag
 	end
 
 	def searchByRangeIn(model)
 		if params[:near]
 			@location_city = (request.location.city.blank?) ? params[:near] : request.location.city 
-			@radius = params[:within] || 100
+			if not params[:within].blank? && params[:within].to_i > 0
+				@radius = params[:within]
+			else
+				@radius = 200
+			end			
 			@locations = Location.where(locatable_type: model).near(@location_city, @radius, :order => "distance")
 	  	if @locations 
-				puts "LOCATIONS: " + @locations.join(", ")
 				@ids = []			
 				@locations.each do |l|
 					@ids << l.locatable_id.to_i
 				end		
-				puts "IDS: " + @ids.join(", ")
 				return model.classify.constantize.where(:id => @ids).order("field(id, #{@ids.join(',')})").search(params[:q]) if @ids.size > 0
 				return model.classify.constantize.where(:id => @ids).search(params[:q])					
 			end

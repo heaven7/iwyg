@@ -18,7 +18,7 @@ class Location < ActiveRecord::Base
   end
   
   def gmaps4rails_infowindow
-     "<b>#{getTitle}</b><br /><p>#{address}</p>"
+     "<b>#{getTitle}</b><br /><p class=\"font-smaller\">#{address}<br />#{city} #{I18n.t(country, :scope => "countries" )}</p>"
   end
   
 	def getTitle

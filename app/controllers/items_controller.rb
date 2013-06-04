@@ -77,7 +77,13 @@ class ItemsController < InheritedResources::Base
 
     elsif params[:q] && params[:q][:tag]
       # search by tag
+			puts "search by tag"
       $search = searchByTag(params, "Item").search(params[:q])
+			@items = $search.result(:distinct => true).paginate( 
+        :page => params[:page],
+        :per_page => ITEMS_PER_PAGE 
+      )
+      @items_count = @items.count
 		
 		elsif params[:q] && (params[:within]	or params[:near])
 			# search within certain range
