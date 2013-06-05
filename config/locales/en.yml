@@ -857,6 +857,8 @@ en:
         members_pending: Here you can invite members. All followers and members you
           are following will be listed here. To invite members, just click on them
           and save.
+      location:
+        map: You can drag and drop the marker to the correct location or just enter your location in the address field.
   order:
     date: Time
     location: Location

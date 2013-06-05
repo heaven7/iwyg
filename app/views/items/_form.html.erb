@@ -4,26 +4,20 @@
 
   <script type="text/javascript">
     $(document).ready(function (){
-  
+			 
       /* TABS */
       $("#tabs").tabs();
       showErrorTabs();
 
+			/* ADDRESSPICKER */
+			pickAddressOn('#item_locations_attributes_0_address', <%= raw( @json_location ) %>);
+			$('#locationbutton').click(function() {
+				resizeAndSetCenter();
+			});
+
       /* VALIDATION */
       // $('#new_item').railsAjaxValidation();
 
-      /* LOCATION */
-      var address = $("#item_location_attributes_address").attr('value');
-      var city =  $("#item_location_attributes_address").attr('value');
-      $("#self_location:checkbox").click(function () {
-        checked = $(this).attr('checked')
-        if (!checked) {
-          $("#item_location_attributes_address").attr('value','');
-          $("#item_location_attributes_city").attr('value','');
-          $("#item_location_attributes_country").find("option:first").attr('value','');
-          $("#item_location_attributes_country").find("option:first").html('');
-        }
-      });
      
       /* AUTOCOMPLETE & LISTBUILDER */
       $( "#item_tag_list" ).listbuilder({autocomplete:{source: '/items/tag_suggestions.js'}});
@@ -64,7 +58,7 @@
   <div id="tabs">
     <ul>
       <li><a href="#what"><%= t("form.resource.what").html_safe %></a></li>
-      <li><a href="#location"><%= t("form.resource.where").html_safe %></a></li>
+      <li><a href="#location" id="locationbutton"><%= t("form.resource.where").html_safe %></a></li>
       <li><a href="#when"><%= t("form.resource.when").html_safe %></a></li>
 <!--
       <li><a href="#how_much"><%= t("form.resource.howMuch").html_safe %></a></li>
@@ -74,9 +68,9 @@
     </ul>
     <div id="what" class="tab_content ">
       <%= f.inputs do %>
-		    <%= f.input :user_id, :value => current_user.id, :as => :hidden %>
-		    <%= f.input :itemable_id, :value => @itemable.id, :as => :hidden %>
-		    <%= f.input :itemable_type, :value => @itemable.class, :as => :hidden %>
+		    <%= f.input :user_id, :input_html => { :value => current_user.id }, :as => :hidden %>
+		    <%= f.input :itemable_id, :input_html => { :value => @itemable.id }, :as => :hidden %>
+		    <%= f.input :itemable_type, :input_html => { :value => @itemable.class }, :as => :hidden %>
         <%= f.input :need, :as => :select, :label => t("form.resource.i"), :include_blank => false, :collection => [[t("form.resource.need"), true], [t("form.resource.have"), false]] %>
     <%# f.input :item_type_id, :as => :select, :label => t("form.resource.a"), :collection => options_for_select(ItemType.all.map { |i| [I18n.t("#{i.title}.singular").to_s.html_safe ,i.id ] } ), :include_blank => true %>
         <%= f.input :item_type_id, :as => :select, :label => t("form.resource.a"), :collection => ItemType.all.collect { |i| [I18n.t("#{i.title}.singular").to_s.html_safe ,i.id ] }, :include_blank => true  %>

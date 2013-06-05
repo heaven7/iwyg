@@ -25,7 +25,7 @@ class ItemsController < InheritedResources::Base
 		@itemable = find_model
     @itemTypes = ItemType.all
   	@searchItemType = "Resource"
-		@near = params[:near] || request.location.city 
+		@near = params[:near] # || request.location.city 
 		@within = params[:within] || 100
     if params[:user_id] && current_user && params[:user_id].to_i == current_user.id.to_i
       @userSubtitle = "i"
@@ -77,7 +77,13 @@ class ItemsController < InheritedResources::Base
 
     elsif params[:q] && params[:q][:tag]
       # search by tag
+			puts "search by tag"
       $search = searchByTag(params, "Item").search(params[:q])
+			@items = $search.result(:distinct => true).paginate( 
+        :page => params[:page],
+        :per_page => ITEMS_PER_PAGE 
+      )
+      @items_count = @items.count
 		
 		elsif params[:q] && (params[:within]	or params[:near])
 			# search within certain range
@@ -176,8 +182,8 @@ class ItemsController < InheritedResources::Base
   def new
 		@itemable = find_model
     @item = Item.new
+    getJSonLocation(@item)
     @user = current_user
-    
     @active_menuitem_l1 = I18n.t "menu.main.resources"   
     @active_menuitem_l1_link = eval "#{@itemable.class.to_s.downcase}_items_path"
     @item.locations.build
@@ -200,6 +206,7 @@ class ItemsController < InheritedResources::Base
   def edit
 		@itemable = find_model
     @item = @itemable.items.find(params[:id], :include => [:locations, :events])    
+    getJSonLocation(@item)
     @location = @item.locations.first || @item.locations.build
     @event = @item.events.first || @item.events.build
 		@event.from = @event.from.to_s(:forms) if @event.from
@@ -239,7 +246,7 @@ class ItemsController < InheritedResources::Base
 		if @itemable
     	redirect_to @itemable
 		else
-			redirect_to collection
+			redirect_to current_user
 		end
   end
 

@@ -7,7 +7,7 @@ class Location < ActiveRecord::Base
   belongs_to :locatable, :polymorphic => true 
   geocoded_by :address, :latitude  => :lat, :longitude => :lng, :units => :km
 	reverse_geocoded_by :lat, :lng
-  after_validation :geocode, :reverse_geocode, :if => :address_changed?
+  after_validation :geocode, :reverse_geocode #, :if => :address_changed?
    
   acts_as_gmappable :lat => "lat", :lng => "lng", :validation => false, :process_geocoding => false
   acts_as_taggable_on :tags
@@ -18,7 +18,7 @@ class Location < ActiveRecord::Base
   end
   
   def gmaps4rails_infowindow
-     "<b>#{getTitle}</b><br /><p>#{address}</p>"
+     "<b>#{getTitle}</b><br /><p class=\"font-smaller\">#{address}<br />#{city} #{I18n.t(country, :scope => "countries" )}</p>"
   end
   
 	def getTitle
@@ -32,7 +32,8 @@ class Location < ActiveRecord::Base
 	reverse_geocoded_by :lat, :lng do |obj,results|
 		if geo = results.first
 		  obj.city    = geo.city
-		  obj.zip = geo.postal_code
+			obj.state   = geo.state
+		  obj.zip 		= geo.postal_code
 		  obj.country = geo.country_code
 		end
 	end

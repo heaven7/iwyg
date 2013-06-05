@@ -748,8 +748,7 @@ de:
         entfernt.'
   form:
     hint:
-      imageFormats: Du kannst Dateien im Format JPG, GIF oder PNG uploaden. Maximal
-        2MB gross.
+      imageFormats: Du kannst Dateien im Format JPG, GIF oder PNG uploaden. Maximal 2MB gross.
     search:
       description:
         hint: ''
@@ -781,6 +780,7 @@ de:
       deactivateAccount: Konto deaktivieren
     group:
       members: Teilnehmer
+
   formtastic:
     labels:
       message:
@@ -871,6 +871,8 @@ de:
         members_pending: Hier kannst du Teilnehmer einladen. Es werden alle Mitglieder
           aufgelistet, die dir folgen bzw. denen du folgst. Klicke auf die Teilnehmer,
           die du einladen m&ouml;chtest und klicke auf Speichern.
+      location:
+        map: Für die Angabe des Standorts kannst du die Position des Markers beliebig verschieben oder gib in den unteren Feldern die Adresse ein.
   order:
     date: Zeit
     title: Titel

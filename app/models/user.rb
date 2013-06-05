@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 									:user_preferences_attributes, :is_active
 
   extend FriendlyId
-  friendly_id :login
+  friendly_id :login, :use => :slugged
 
   include RailsSettings::Extend 
 
@@ -170,7 +170,7 @@ class User < ActiveRecord::Base
 
 	# friend_id
 	def normalize_friendly_id(string)
-		super.upcase.gsub("-", ".")
+		super.gsub(".", "-")
 	end
   
 

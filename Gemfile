@@ -17,6 +17,7 @@ group :production, :stage do
   gem 'mysql2' #, '0.2.18'
 end
 
+gem 'i18n_country_select'
 gem 'liangzan-contacts', :require => 'contacts' #, :git => '../contacts.git'
 #gem 'contacts'
 gem 'rails-settings-cached', '0.2.4'
@@ -31,6 +32,7 @@ gem 'rails_autolink'
 gem 'sanitize'
 
 gem 'rabl'
+gem 'oj'
 gem 'airbrake'
 gem 'eventmachine', '1.0.0.beta.2'
 gem 'thin'

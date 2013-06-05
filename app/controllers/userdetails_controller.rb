@@ -28,15 +28,11 @@ class UserdetailsController < InheritedResources::Base
   # GET /userdetails/1/edit
   def edit
     @user = current_user
+    getJSonLocation(@user)
     @userdetails = @user.userdetails
     if @user.images.size == 0
       @imageable = find_imageable
       @image = @user.images.build
-    end
-    if @user.location and @user.location.lat and @user.location.lng
-      getLocation(@user.location)
-    else
-     # @user.location = Location.new
     end
   end
 
@@ -73,15 +69,10 @@ class UserdetailsController < InheritedResources::Base
     end
   end
 
-  
   protected
 
   def begin_of_association_chain
     @current_user
-  end
-  
-  def getLocation(location)
-    @locations_json = location.to_gmaps4rails
   end
   
   private

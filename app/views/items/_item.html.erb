@@ -19,10 +19,9 @@
     </div>
   <% end %>
     <div class="item-bottom">
-      <span class="left">
-				<%= render :partial => "itemowner", :locals => { :item => item } %>			
-			</span>   
+      <span class="left"><%= render :partial => "itemowner", :locals => { :item => item } %></span>   
+			<% if @near and showDistanceOfSearcher(item) %>
 				<span class="distance right"><a href="javascript: return false;" title="<%= t("distance") + " " + t("transfer.to") + " " + @near %>: <%= showDistanceOfSearcher(item) %>"><%= showDistanceOfSearcher(item) %></a></span>
-
+			<% end %>
     </div>
 </div>

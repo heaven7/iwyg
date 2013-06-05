@@ -1,17 +1,12 @@
-<center>
-	<%= render :partial => "share/map", :locals => { :locations => @locations_json } if @locations_json %>
-</center>
+<%= render :partial => "locations/map" %>
 <%= f.inputs do %>
   <% f.semantic_fields_for :location do |location_form| %>
     
-    <%= location_form.input :address, :required => false, :label => t("formtastic.labels.location.address") %>
-<!--
+    <%= location_form.input :address, :required => false, :label => t("formtastic.labels.location.address") + "&nbsp;" + image_tag("icons/icon_map.png") %>
     <%= location_form.input :city, :required => false, :label => t("formtastic.labels.location.city") %>
-    <%= location_form.input :zip, :required => false, :input_html => {:class => "short"}, :label => t("formtastic.labels.location.zip") %>
-    <li class="string input optional stringish">
-      <label><%= t ("formtastic.labels.location.country") %></label>
-      <%= location_form.localized_country_select :country, [], :include_blank => '' %>
-    </li>
- -->
+    <%= location_form.input :state, :required => false, :label => t("formtastic.labels.location.state") %>
+    <%= location_form.input :zip, :required => false, :input_html => {:class => "short"}, :label => t("formtastic.labels.location.zip")  %>
+    <%= location_form.input :country, :required => false, :label => t("formtastic.labels.location.country"), :as => :string %>
+
   <% end %>
 <% end %>

@@ -14,8 +14,9 @@
   </script>
 <% end %>
 <div id="col1">
-  <%= render :partial => "items/itemtype", :locals => { :item => @item } %>
-  <h1><%=h @item.title %></h1>         
+  <%= render :partial => "items/itemtype", :locals => { :item => @item } %><%= render :partial => "locations/location", :locals => { :location => @location } %>    
+
+  <h1><%=h @item.title %></h1>     
   <%= render :partial => "items/itemmenu", :locals => { :item => @item } %>
 	<span class="float-right"><%= render :partial => "share/social", :locals => { :thing => @item } %></span>
 
@@ -70,7 +71,6 @@
 <div id="col2">
   <div class="box ui-corner-all">
     <div class="location">			
-        <%= render :partial => "locations/location", :locals => { :location => @location } %>
       <% if logged_in? and ( @location && !@locations_json.blank? ) %>
         <%= render :partial => "share/map", :locals => { :locations => @locations_json } %>
       <% end %>

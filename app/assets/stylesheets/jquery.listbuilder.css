@@ -28,8 +28,9 @@ div.ui-state-active {display:none !important;}
 .ui-listbuilder .ui-listbuilder-item-input,
 .ui-listbuilder .ui-autocomplete-input {
   clear: left;
-  width: 450px !important;
+  width: 95% !important;
 }
+
 
 
 

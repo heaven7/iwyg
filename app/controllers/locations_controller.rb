@@ -1,10 +1,10 @@
 class LocationsController < InheritedResources::Base
 #  layout 'userarea'
-  respond_to :html #, :xml, :json
+  respond_to :xml, :json
   belongs_to :locatable, :polymorphic => true
   
   
-  before_filter :login_required, :exept => [:index, :show]
+  before_filter :login_required, :exept => [:index]
   
   def index
     @locatable = find_model
