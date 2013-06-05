@@ -49,7 +49,7 @@ class PingsController < InheritedResources::Base
       @pings_count = @pings_all.size
       @pings_all = @pings_all.paginate(
         :page => params[:page],
-        :per_page => PINGS_PER_PAGE,
+        :per_page => AppSettings.pings.per_page,
         :order => "created_at DESC"
       )
       
@@ -58,7 +58,7 @@ class PingsController < InheritedResources::Base
       @pings = @item.pings
       @pings_all = @pings.paginate(
         :page => params[:page],
-        :per_page => PINGS_PER_PAGE,
+        :per_page => AppSettings.pings.per_page,
         :order => "created_at DESC"
       )
       render :layout => 'application'
@@ -69,7 +69,7 @@ class PingsController < InheritedResources::Base
      
       @pings_all = @pings.paginate(
         :page => params[:page],
-        :per_page => PINGS_PER_PAGE,
+        :per_page => AppSettings.pings.per_page,
         :order => "created_at DESC"
       )
       render :layout => 'application'
@@ -77,7 +77,7 @@ class PingsController < InheritedResources::Base
       @pings = Ping.find(:all, :order => "pings.created_at DESC" )
       @pings.paginate(
         :page => params[:page],
-        :per_page => PINGS_PER_PAGE,
+        :per_page => AppSettings.pings.per_page,
         :order => "created_at DESC"
       )   
     end

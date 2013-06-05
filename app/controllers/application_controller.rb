@@ -1,6 +1,10 @@
 # encoding: utf-8
 class ApplicationController < ActionController::Base
 
+  # GLOBALS
+  $search = Item.search()
+  $priority_countries = [:DE, :AT, :CH] 
+
   #rescue_from ActiveRecord::RecordNotFound, :with => :not_found
   #rescue_from ActiveRecord::StatementInvalid, :with => :not_found
 
@@ -18,9 +22,6 @@ class ApplicationController < ActionController::Base
 
   #geocode
   
-  # GLOBALS
-  $search = Item.search()
-  $priority_countries = [:DE, :AT, :CH] 
 
   # Scrub sensitive parameters from log
   config.filter_parameters :password

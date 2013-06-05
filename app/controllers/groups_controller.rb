@@ -38,7 +38,7 @@ class GroupsController < InheritedResources::Base
 		# pagination
 		@groups = @groupsearch.result(:distict => true).paginate(
       :page => params[:page],
-      :per_page => PINGS_PER_PAGE,
+      :per_page => AppSettings.groups.per_page,
       :order => "created_at DESC"
     )   
     @groups_count = @groupsearch.result.count
