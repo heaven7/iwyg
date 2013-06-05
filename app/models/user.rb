@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   extend FriendlyId
   friendly_id :login, :use => :slugged
 
-  include RailsSettings::Extend 
+#  include RailsSettings::Extend 
 
   devise :registerable, :confirmable, :database_authenticatable, :rememberable, :recoverable, :trackable, :lockable, :lock_strategy => :none, :unlock_strategy => :both 
 
