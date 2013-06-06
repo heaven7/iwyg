@@ -1,0 +1,28 @@
+# count of max. objects in index view 
+items:
+  per_page: 24
+  related_per_page: 6
+users:
+  per_page: 24
+groups:
+  per_page: 24
+pings:
+  per_page: 30
+
+# mailer
+mailer:
+  # default mailer css
+  css: :mailer
+  charset: UTF-8
+
+# google
+google:
+  analytics_id: UA-XXXXXXXX-X
+
+# time/date format
+time:
+  date_formats:
+    default: "%B %d, %Y"
+    mailbox: "%A, %B %d, %Y"
+    forms: "%d.%m.%Y %H:%M"
+
