@@ -286,8 +286,9 @@ en:
     other: ! '%{count} Pings'
     this:
       offer: I need it
-      need: I'll do it
+      need: "I'll do it"
     of: Ping of
+    interestedcount: ! '%{count} are interested in'
     transfer: Apply for this transfer (make a ping)
     pingBodyMessageOnOffer: Ask a question or make an appointment...
     pingBodyMessageOnNeed: Offer help, give advise or a handy hint...
@@ -296,7 +297,7 @@ en:
     decline: Decline
     setTransfer: Set Transfer
     setAppointment: Set Appointment
-    setMeetup: Set Meetup
+    setMeetup: Meet up / Make appointment
     table:
       who: Who
       what: What

@@ -1,3 +1,7 @@
+<%= if pings.size > 0 %>
+	<%= t("ping.interestedcount", :count => pings.size).html_safe %>
+<% end %>
+
 <% if logged_in? and @item.owner != current_user %>
 <div class="pingarea font-smaller">
  <% if !current_user.pinged?(@resource) || @resource.multiple?  %>
@@ -12,8 +16,8 @@
 <% if pings.size > 0 and logged_in? %>
   <div class="list">
     <% pings.each do |ping| %>  
-      <div class="ping ui-corner-all <%=h ping.statusTitle %>">    
-        <% if ping and ping.statusTitle != "closed" and (@item.owner == current_user or ping.owner == current_user) %>
+      <% if ping and ping.statusTitle != "closed" and (@item.owner == current_user or ping.owner == current_user) %>
+	      <div class="ping ui-corner-all <%=h ping.statusTitle %>">    
           <% if ping.owner? %>
             <%= render :partial => "share/usermicro", :locals => { :user => pingerOf(ping) } %>
           <% else %>
@@ -35,8 +39,8 @@
             <p class="font-smaller"><%= eventStatus(@item, ping) %></p>
           <% end %>
           <%= render :partial => "pings/pingmenu", :locals => { :ping => ping} %>
-        <% end %>
-      </div>
+      	</div>
+      <% end %>
     <% end %>
   </div>
 <% end %>
