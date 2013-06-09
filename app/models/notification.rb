@@ -1,4 +1,7 @@
 class Notification < ActiveRecord::Base
+
+  include RailsSettings::Extend 
+
   attr_accessible :description, :is_read, :notifiable_id, :notifiable_type, :receiver, :sender, :receiver_id, :sender_id, :title
   belongs_to :receiver, :class_name => "User", touch: true
   belongs_to :sender, :class_name => "User", touch: true

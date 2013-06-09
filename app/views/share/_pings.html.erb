@@ -1,5 +1,5 @@
 <% if pings.size > 0 %>
-	<%= t("ping.interestedcount", :count => pings.size).html_safe %>
+	<p class="font-small"><%= t("ping.interestedcount", :count => pings.size).html_safe %></p>
 <% end %>
 
 <% if logged_in? and @item.owner != current_user %>

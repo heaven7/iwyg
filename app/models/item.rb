@@ -2,6 +2,7 @@ class Item < ActiveRecord::Base
 
   extend FriendlyId
   friendly_id :title, :use => :slugged
+
   include RailsSettings::Extend 
 
   before_create :build_item

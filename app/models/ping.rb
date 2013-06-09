@@ -1,4 +1,7 @@
 class Ping < ActiveRecord::Base
+
+  include RailsSettings::Extend 
+
   belongs_to :pingable, :polymorphic => true
   has_many :comments, :as => :commentable
 	has_one :event, :as => :eventable
