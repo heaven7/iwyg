@@ -88,7 +88,16 @@ module ApplicationHelper
   def users_browser
 		if request.env['HTTP_USER_AGENT']
 		  user_agent =  request.env['HTTP_USER_AGENT'].downcase 
-		  @users_browser ||= begin
+			os = '';
+			if(user_agent.index('linux')) 
+				os = 'linux';
+			elsif(user_agent.index('windows') or user_agent.index('win32'))
+				os = 'windows';
+			elsif(user_agent.index('macintosh') or user_agent.index('mac os x'))
+				os = 'macintosh';
+			end
+
+		  browser ||= begin
 		    if user_agent.index('msie') && !user_agent.index('opera') && !user_agent.index('webtv')
 		        'ie'+user_agent[user_agent.index('msie')+5].chr
 		    elsif user_agent.index('gecko/')
@@ -120,7 +129,9 @@ module ApplicationHelper
 		        'unknown'
 		    end
 		  end
-		  return @users_browser
+			browser = browser + "-" + os;
+			puts browser;
+		  return stylesheet_link_tag "themes/iwyg/agents/#{browser}" if File.exist?("app/assets/stylesheets/themes/iwyg/agents/#{browser}.css")
 		end
   end
    

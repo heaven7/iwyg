@@ -1,8 +1,4 @@
-/* chrome css */
-
-html {
-	-webkit-text-stroke: 0.25px;
-}
+/* chrome base css */
 
 .ui-listbuilder {
   position:relative;
