@@ -45,6 +45,13 @@ FactoryGirl.define do
 		end
 	end
 
+	factory :ping do 
+		id (1 + Random.rand(1000))
+		association :user, factory: :user
+		association :pingable, factory: :item
+		body "this is a ping on a item"
+  end
+
   factory :group do
 		id (1 + Random.rand(1000))
     title "a Testgroup"
@@ -65,7 +72,8 @@ FactoryGirl.define do
     title "a testitem"
 		description Populator.paragraphs(1..3)
 		association :user, factory: :user
-		item_type_id [1..6]
+		association :item_type, factory: :item_type
+		#item_type_id [1..6]
 		need [true, false]
   end
 	

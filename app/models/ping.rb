@@ -5,6 +5,7 @@ class Ping < ActiveRecord::Base
   belongs_to :pingable, :polymorphic => true
   has_many :comments, :as => :commentable
 	has_one :event, :as => :eventable
+	belongs_to :user
 
   attr_accessible :body, :user_id, :pingable_type, :pingable_id, :status, 
                   :created_at, :updated_at, :accepted_at, :status, :follow

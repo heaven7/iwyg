@@ -13,7 +13,11 @@ describe User do
   it { should have_many(:friends).through(:friendships) }
   it { should have_many(:inverse_friendships).class_name("Friendship") }
   it { should have_many(:inverse_friends).through(:inverse_friendships) }
-  
+
+	it "should have settings" do
+		@user.settings.all.size.should eq(0)
+	end  
+
 	describe "validations" do
 
 		it "should be valid" do
