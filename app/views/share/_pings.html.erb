@@ -16,6 +16,7 @@
   <div class="list">
     <% pings.each do |ping| %>  
       <% if ping and ping.is_visible_for?(current_user, logged_in?) %>
+				<%= "options" if ping.item.owner == current_user %>
 				<div id="#<%= ping.id %>" class="ping ui-corner-all <%=h ping.statusTitle %>">    
           <% if ping.owner? %>
             <%= render :partial => "share/usermicro", :locals => { :user => pingerOf(ping) } %>
