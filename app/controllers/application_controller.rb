@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery :secret => "123456789012345678901234567890iwyg0815"   
 
 	# filters
-  before_filter :set_locale, :measures, :itemtypes, :itemstatuses, :set_current_user
+  before_filter :set_locale, :measures, :itemtypes, :itemstatuses, :set_current_user, :load_settings
 	after_filter :flash_to_headers
 
 	# layout
@@ -73,6 +73,15 @@ class ApplicationController < ActionController::Base
     flash.discard # don't want the flash to appear when you reload page
   end
 
+	# settings
+	
+	def load_settings
+
+	end
+
+	def update_settings
+
+	end
 
   # replacement for the former restful_authentication plugin
   def logged_in?

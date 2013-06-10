@@ -129,8 +129,7 @@ module ApplicationHelper
 		        'unknown'
 		    end
 		  end
-			browser = browser + "-" + os;
-			puts browser;
+			browser = browser + "-" + os
 		  return stylesheet_link_tag "themes/iwyg/agents/#{browser}" if File.exist?("app/assets/stylesheets/themes/iwyg/agents/#{browser}.css")
 		end
   end

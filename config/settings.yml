@@ -1,3 +1,5 @@
+## general settings
+
 # count of max. objects in index view 
 items:
   per_page: 24
@@ -26,3 +28,13 @@ time:
     mailbox: "%A, %B %d, %Y"
     forms: "%d.%m.%Y %H:%M"
 
+
+## model based settings
+
+# user
+
+# item
+
+# ping
+ping:
+  visible_for: owners
