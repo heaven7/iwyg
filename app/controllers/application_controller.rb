@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery :secret => "123456789012345678901234567890iwyg0815"   
 
 	# filters
-  before_filter :set_locale, :measures, :itemtypes, :itemstatuses, :set_current_user, :load_settings
+  before_filter :set_locale, :measures, :itemtypes, :itemstatuses, :set_current_user
 	after_filter :flash_to_headers
 
 	# layout
@@ -73,15 +73,6 @@ class ApplicationController < ActionController::Base
     flash.discard # don't want the flash to appear when you reload page
   end
 
-	# settings
-	
-	def load_settings
-
-	end
-
-	def update_settings
-
-	end
 
   # replacement for the former restful_authentication plugin
   def logged_in?
@@ -91,6 +82,18 @@ class ApplicationController < ActionController::Base
   def login_required
      authenticate_user!
   end
+		
+	# settings
+	def changesetting
+		model = params[:model_type].classify.constantize.find(params[:model_id])
+		if model.settings.where(:var => params[:setting]).count > 0
+			model.settings[params[:setting]] = params[:value]
+			flash[:notice] = "Settings changed"
+		else
+			flash[:error] = "There were problems on change settings"
+		end		
+		render :text => model.settings[params[:setting]]
+	end
 
 	def likeOf(user, model)
 		@thing = model

@@ -15,8 +15,12 @@
 <% if pings.size > 0 %>
   <div class="list">
     <% pings.each do |ping| %>  
+			<%= ping.is_visible_for?(current_user, logged_in?) %>
       <% if ping and ping.is_visible_for?(current_user, logged_in?) %>
-				<%= "options" if ping.item.owner == current_user %>
+				<%= link_to "all", changesetting_ping_path(:model_type => "Ping", :model_id => ping, :setting => "visible_for", :value => "all"), :method => :put, :remote => true if ping.item.owner == current_user %>
+				<%= link_to "members", changesetting_ping_path(:model_type => "Ping", :model_id => ping, :setting => "visible_for", :value => "members"), :method => :put, :remote => true if ping.item.owner == current_user %>
+				<%= link_to "owners", changesetting_ping_path(:model_type => "Ping", :model_id => ping, :setting => "visible_for", :value => "owners"), :method => :put, :remote => true if ping.item.owner == current_user %>
+				<%= link_to "me", changesetting_ping_path(:model_type => "Ping", :model_id => ping, :setting => "visible_for", :value => "me"), :method => :put, :remote => true if ping.item.owner == current_user %>
 				<div id="#<%= ping.id %>" class="ping ui-corner-all <%=h ping.statusTitle %>">    
           <% if ping.owner? %>
             <%= render :partial => "share/usermicro", :locals => { :user => pingerOf(ping) } %>

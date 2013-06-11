@@ -35,7 +35,7 @@ class Ping < ActiveRecord::Base
 	def is_visible_for?(user, logged_in)
 		setting = self.settings.visible_for || AppSettings.ping.visible_for
 		if logged_in == true
-			if user == self.item.owner or setting == "me"
+			if user == self.item.owner
 				return true
 			elsif setting	== "members" or setting == "all"
 				return true
