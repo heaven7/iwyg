@@ -1,0 +1,10 @@
+<div class="setting-visibility right">
+	<%= link_to image_tag("icons/icon_visibility.png", :alt => "setting visibility", :title => "setting visibility"), "#", :class => "setting-visibility-icon" %>	
+		<div class="arrow-up"></div>
+	<ul class="menu font-smaller ui-corner-all button">
+		<li><%= link_to "all", self.send("changesetting_#{model_type.downcase}_path", :model_type => model_type, :model_id => model_id, :setting => "visible_for", :value => "all"), :method => :put, :remote => true if model_id.item.owner == current_user %></li>
+		<li><%= link_to "members", self.send("changesetting_#{model_type.downcase}_path", :model_type => model_type, :model_id => model_id, :setting => "visible_for", :value => "members"), :method => :put, :remote => true if model_id.item.owner == current_user %></li>
+		<li><%= link_to "owner", self.send("changesetting_#{model_type.downcase}_path", :model_type => model_type, :model_id => model_id, :setting => "visible_for", :value => "owners"), :method => :put, :remote => true if model_id.item.owner == current_user %></li>
+		<li><%= link_to "me", self.send("changesetting_#{model_type.downcase}_path", :model_type => model_type, :model_id => model_id, :setting => "visible_for", :value => "me"), :method => :put, :remote => true if model_id.item.owner == current_user %></li>		
+	</ul>
+</div>
