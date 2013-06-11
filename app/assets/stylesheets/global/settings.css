@@ -1,0 +1,23 @@
+/* setting visibility on pings */
+
+.setting-visibility {
+	position: absolute;
+	left: 90%;
+	z-index: 2; 
+}
+.setting-visibility .panel {
+	position: relative;
+	text-align: right;
+	width: 100px;
+	right: 5em;
+	top: -10px;
+}
+.setting-visibility .panel .setting-arrow {
+	position: relative;
+	top: 5px;
+	left: 4.9em;
+		
+}
+.setting-visibility .panel .setting-arrow .arrow-up {
+	border-bottom: 10px solid #B8C2B3;
+}

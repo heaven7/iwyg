@@ -13,6 +13,7 @@
 @import url(user.css);
 @import url(events.css);
 @import url(items.css);
+@import url(settings.css);
  
 body, html {
   margin-left: 0px;
