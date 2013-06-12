@@ -92,7 +92,7 @@ class ApplicationController < ActionController::Base
 		else
 			flash[:error] = "There were problems on change settings"
 		end		
-		render :text => model.settings[params[:setting]]
+		#render :text => model.settings[params[:setting]]
 	end
 
 	def likeOf(user, model)

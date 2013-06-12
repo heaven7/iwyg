@@ -4,9 +4,7 @@
 	<%= render :partial => "share/ujs/form_errors", :locals => { :object => @message, :type => "message" } %>
 <% else %>
 	var notice_length =	$('#flash_notice').length;
-	if(notice_length > 0) {
-		$('#flash_notice').remove();
-	}
+	clear_flash();
 	$("#header").after('<div id="flash_notice" class="notice ui-corner-all"><%= escape_javascript(I18n.t("flash.message.replied"))%></div>');
 	$('#message_subject').attr('value', '');
 	$('#message_body').attr('value', '');

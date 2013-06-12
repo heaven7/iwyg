@@ -38,3 +38,4 @@ time:
 # ping
 ping:
   visible_for: owners
+  visible_to: ['all', 'members', 'owner', 'me']
