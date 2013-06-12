@@ -16,7 +16,7 @@
   <div class="list">
     <% pings.each do |ping| %>  
       <% if ping and ping.is_visible_for?(current_user, logged_in?) %>			
-				<div id="#<%= ping.id %>" class="ping ui-corner-all <%=h ping.statusTitle %>">    
+				<div id="<%= ping.id %>" class="ping ui-corner-all <%=h ping.statusTitle %>">    
 					<%= render :partial => "share/settings/visibility", :locals => {:model_type => "Ping", :model_id => ping } %>	
           <% if ping.owner? %>
             <%= render :partial => "share/usermicro", :locals => { :user => pingerOf(ping) } %>

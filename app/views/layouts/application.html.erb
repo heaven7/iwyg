@@ -35,6 +35,11 @@
 			$('#near').addresspicker({
 				regionBias: "<%= I18n.locale.to_s %>" 
 			});
+
+			<% if logged_in? %>
+				// notification panel			
+				togglePanel('#notification-icon', '#notification-panel');
+			<% end %>
     });
   </script>
   
@@ -42,19 +47,7 @@
   <% unless Rails.env.test? %>
 		<%= render :partial => "share/googleanalytics" %>
   <% end %>
-	<% if logged_in? %>
-		<script type="text/javascript">
-		  $(document).ready(function (){  
-				$('#notification-icon').click(function() {
-					$('#notification-panel').toggle();
-				});
-				$('#content').click(function() {
-					$('#notification-panel').hide();
-				});
-		  });
-		</script>
-	<% end %>
-
+	
   <title><%= @title or t("iwyg.title") %></title>
 </head>
 <body>

@@ -1,23 +1,34 @@
 /* setting visibility on pings */
 
-.setting-visibility {
+.ping .setting-visibility {
 	position: absolute;
 	left: 90%;
 	z-index: 2; 
+	display:none;
 }
-.setting-visibility .panel {
+.ping:hover .setting-visibility {
+	display:block
+}
+.ping .setting-visibility:hover {
+	cursor: pointer;
+}
+.ping .setting-visibility .panel {
 	position: relative;
-	text-align: right;
+	text-align: left;
 	width: 100px;
 	right: 5em;
-	top: -10px;
+	top: -8px;
+	display:none;
 }
-.setting-visibility .panel .setting-arrow {
+.ping .setting-visibility .panel .button {
+	line-height: 1.5em;
+}
+.ping .setting-visibility .panel .setting-arrow {
 	position: relative;
 	top: 5px;
 	left: 4.9em;
 		
 }
-.setting-visibility .panel .setting-arrow .arrow-up {
-	border-bottom: 10px solid #B8C2B3;
+.ping .setting-visibility .panel .setting-arrow .arrow-up {
+	border-bottom: 5px solid #A4B895;
 }

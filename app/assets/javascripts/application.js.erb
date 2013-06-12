@@ -79,6 +79,22 @@ $(document).ready(function (){
 
 }); 
 
+/**
+ * Helper functions
+*/
+
+// toggle for panels
+function togglePanel(button, el) {
+	$('#content').click(function() {
+		console.log($(el).css('display'));
+		if($(el).css('display') == 'none') $(el).hide();
+	});
+	$(button).click(function(event) {
+		event.preventDefault();
+		$(this).parent().find(el).toggle();
+	});
+}
+
 // addresspicker
 var addresspickerMap;
 function pickAddressOn(el, location) {
