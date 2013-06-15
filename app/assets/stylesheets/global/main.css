@@ -13,6 +13,7 @@
 @import url(user.css);
 @import url(events.css);
 @import url(items.css);
+@import url(settings.css);
  
 body, html {
   margin-left: 0px;
@@ -35,6 +36,12 @@ body {
 	margin:0px auto;
 }
 
+#map {
+	width: 90%;
+	height: 300px;
+	margin: 10px 0 10px 0;
+	-webkit-box-shadow: #AAA 0px 0px 15px;
+}
 
 .clearfix {
 	clear:both;

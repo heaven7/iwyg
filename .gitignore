@@ -21,4 +21,7 @@ Gemfile.lock
 /nbproject/private/
 config/database.yml
 config/email.yml
-
+config/settings.yml
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml

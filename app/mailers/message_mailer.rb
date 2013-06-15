@@ -1,7 +1,7 @@
 class MessageMailer < ActionMailer::Base
   default :from => REPLY_EMAIL
-  default :css => MAILER_CSS
-  default :charset => MAILER_CHARSET
+  default :css => AppSettings.mailer.css
+  default :charset => AppSettings.mailer.charset
 
 	layout 'layouts/mailer'
 

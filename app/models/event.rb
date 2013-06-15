@@ -1,5 +1,7 @@
 class Event < ActiveRecord::Base
 
+  include RailsSettings::Extend 
+
   belongs_to :eventable, :polymorphic => true
   
   

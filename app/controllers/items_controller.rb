@@ -41,7 +41,7 @@ class ItemsController < InheritedResources::Base
       @items = $search.result(:distinct => true).paginate( 
         :page => params[:page],
         :order => "created_at DESC", 
-        :per_page => ITEMS_PER_PAGE 
+        :per_page => AppSettings.items.per_page 
       )
       @items_count = @items.count
 			
@@ -81,7 +81,7 @@ class ItemsController < InheritedResources::Base
       $search = searchByTag(params, "Item").search(params[:q])
 			@items = $search.result(:distinct => true).paginate( 
         :page => params[:page],
-        :per_page => ITEMS_PER_PAGE 
+        :per_page => AppSettings.items.per_page 
       )
       @items_count = @items.count
 		
@@ -90,7 +90,7 @@ class ItemsController < InheritedResources::Base
 			$search = searchByRangeIn("Item")
 			@items = $search.result(:distinct => true).paginate( 
         :page => params[:page],
-        :per_page => ITEMS_PER_PAGE 
+        :per_page => AppSettings.items.per_page 
       )
       @items_count = @items.count
     else
@@ -125,7 +125,7 @@ class ItemsController < InheritedResources::Base
       @items = $search.result(:distinct => true).paginate( 
         :page => params[:page],
         :order => "created_at DESC", 
-        :per_page => ITEMS_PER_PAGE 
+        :per_page => AppSettings.items.per_page 
       )
       @items_count = @items.count
     end

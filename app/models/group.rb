@@ -3,6 +3,8 @@ class Group < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, :use => [:slugged, :history]
 
+  include RailsSettings::Extend 
+
   attr_accessible :user_id, :member_ids, :members_pending_ids, :title, :description, :tag_list, :tag_tokens, :locations, :users,
     :images_attributes, :locations_attributes, :image_file_name, :image_content_type, :image_file_size
 

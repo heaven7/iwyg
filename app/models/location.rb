@@ -1,5 +1,7 @@
 class Location < ActiveRecord::Base
 
+  include RailsSettings::Extend 
+
 	set_rgeo_factory_for_column(:latlon, RGeo::Geographic.spherical_factory(:srid => 4326))
   attr_accessible :item_id, :country, :city, :address, :zip, :locatable_type, :locatable_id, :user_id, :meetup_id, 
                   :location, :created_at, :updated_at, :lng, :lat, :state

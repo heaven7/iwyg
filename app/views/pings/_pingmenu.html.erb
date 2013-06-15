@@ -10,4 +10,5 @@
   <% if ping.open? and ping.user and ping.user == current_user %>
     <li class="button"><%= link_to t("ping.decline"), decline_ping_path(ping), :method => :put %></li>
   <% end %>
+
 </ul>

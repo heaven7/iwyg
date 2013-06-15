@@ -10,8 +10,8 @@ end
 
 class PingMailer < ActionMailer::Localized
   default :from => REPLY_EMAIL
-  default :css => MAILER_CSS
-  default :charset => MAILER_CHARSET
+  default :css => AppSettings.mailer.css
+  default :charset => AppSettings.mailer.charset
 
   def ping_opened(resource, user, holder, message, ping)
     @host = HOST

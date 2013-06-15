@@ -283,7 +283,7 @@ de:
   activity: Aktivit&auml;ten
   link:
     ping:
-      loginToPing: Log' dich ein um zu pingen.
+      loginToPing: Log dich ein um zu pingen.
   ping:
     one: 1 Ping
     other: ! '%{count} Pings'
@@ -291,6 +291,7 @@ de:
       offer: Brauch' ich
       need: Mach' ich
     of: Ping auf
+    interestedcount: ! '%{count} sind daran interessiert'
     transfer: Diesen Transfer pingen
     pingBodyMessageOnOffer: Frage stellen, einen Termin ausmachen...
     pingBodyMessageOnNeed: Hilfe anbieten, einen Rat oder Tipp geben...
@@ -299,7 +300,7 @@ de:
     decline: Ablehnen
     setTransfer: Transfer starten
     setAppointment: Termin ausmachen
-    setMeetup: Treffpunkt ausmachen
+    setMeetup: Treffpunkt/Termin ausmachen
     table:
       who: Wer
       what: Was

@@ -3,6 +3,8 @@ class Meetup < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title
 
+  include RailsSettings::Extend 
+
   attr_accessible :title, :description,
     :events, :events_attributes, :eventable_id, :eventable_type,
     :locations, :locations_attributes,

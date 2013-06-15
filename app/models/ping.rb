@@ -1,7 +1,11 @@
 class Ping < ActiveRecord::Base
+
+  include RailsSettings::Extend 
+
   belongs_to :pingable, :polymorphic => true
   has_many :comments, :as => :commentable
 	has_one :event, :as => :eventable
+	belongs_to :user
 
   attr_accessible :body, :user_id, :pingable_type, :pingable_id, :status, 
                   :created_at, :updated_at, :accepted_at, :status, :follow
@@ -27,6 +31,22 @@ class Ping < ActiveRecord::Base
   def exists?
    not Ping.find_by_pingable_id_and_pingable_type_and_user_id(self.pingable_id, self.pingable_type, self.user_id).nil?
   end 
+
+	def is_visible_for?(user, logged_in)
+		setting = self.settings.visible_for || AppSettings.ping.visible_for
+		if logged_in == true
+			if user == self.item.owner
+				return true
+			elsif setting	== "members" or setting == "all"
+				return true
+			elsif setting == "owners" and (user == self.owner or user == self.item.owner)
+				return true
+			end
+		elsif setting == "all"
+			return true
+		end
+		false
+	end
   
   def open?
     self.status == 1

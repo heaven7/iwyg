@@ -8,7 +8,7 @@
   <!--[if IE 6]><%= stylesheet_link_tag 'formtastic_ie6' %><![endif]-->
   <!--[if IE 7]><%= stylesheet_link_tag 'formtastic_ie7' %><![endif]-->
 	<link href="//fonts.googleapis.com/css?family=Signika+Negative:600,400" rel="stylesheet" type="text/css">
-	<%= stylesheet_link_tag "themes/iwyg/agents/#{users_browser}" if File.exist?("app/assets/stylesheets/themes/iwyg/agents/#{users_browser}.css") %>
+	<%= users_browser %>	
 	<%= javascript_include_tag "//maps.google.com/maps/api/js?sensor=false" %>
   <%= javascript_include_tag "application" %>
 
@@ -35,37 +35,19 @@
 			$('#near').addresspicker({
 				regionBias: "<%= I18n.locale.to_s %>" 
 			});
+
+			<% if logged_in? %>
+				// notification panel			
+				togglePanel('#notification-icon', '#notification-panel');
+			<% end %>
     });
   </script>
   
   <%= yield :head %>
   <% unless Rails.env.test? %>
-		<script type="text/javascript">
-		  /* Google Analytics */
-		  var _gaq = _gaq || [];
-		  _gaq.push(['_setAccount', 'UA-32738329-1']);
-		  _gaq.push(['_trackPageview']);
-		
-		  (function() {
-		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		  })();
-		</script>
+		<%= render :partial => "share/googleanalytics" %>
   <% end %>
-	<% if logged_in? %>
-		<script type="text/javascript">
-		  $(document).ready(function (){  
-				$('#notification-icon').click(function() {
-					$('#notification-panel').toggle();
-				});
-				$('#content').click(function() {
-					$('#notification-panel').hide();
-				});
-		  });
-		</script>
-	<% end %>
-
+	
   <title><%= @title or t("iwyg.title") %></title>
 </head>
 <body>

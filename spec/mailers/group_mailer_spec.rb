@@ -7,6 +7,13 @@ describe GroupMailer do
 		@anotheruser = create(:user)
 		@group = create(:group, user: @user)
 	end
+
+	describe "defaults" do
+		it "should have right defaults" do
+			GroupMailer.default[:css].should be :mailer
+			GroupMailer.default[:charset].should eq 'UTF-8'
+		end
+	end
 	
 	describe "anotheruser participates to a group" do
 

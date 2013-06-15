@@ -129,6 +129,7 @@ Iwyg::Application.routes.draw do
   resources :pings do 
     resources :comments
     member do
+      put 'changesetting'
       put 'like'
       put 'unlike'
       put 'accept'

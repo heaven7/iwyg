@@ -1,6 +1,10 @@
 # encoding: utf-8
 class ApplicationController < ActionController::Base
 
+  # GLOBALS
+  $search = Item.search()
+  $priority_countries = [:DE, :AT, :CH] 
+
   #rescue_from ActiveRecord::RecordNotFound, :with => :not_found
   #rescue_from ActiveRecord::StatementInvalid, :with => :not_found
 
@@ -18,9 +22,6 @@ class ApplicationController < ActionController::Base
 
   #geocode
   
-  # GLOBALS
-  $search = Item.search()
-  $priority_countries = [:DE, :AT, :CH] 
 
   # Scrub sensitive parameters from log
   config.filter_parameters :password
@@ -81,6 +82,18 @@ class ApplicationController < ActionController::Base
   def login_required
      authenticate_user!
   end
+		
+	# settings
+	def changesetting
+		model = params[:model_type].classify.constantize.find(params[:model_id])
+		if model.settings.where(:var => params[:setting]).count > 0
+			model.settings[params[:setting]] = params[:value]
+			flash[:notice] = "Settings changed"
+		else
+			flash[:error] = "There were problems on change settings"
+		end		
+		#render :text => model.settings[params[:setting]]
+	end
 
 	def likeOf(user, model)
 		@thing = model

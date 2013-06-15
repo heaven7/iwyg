@@ -1,5 +1,5 @@
 <% if ping && ping.class.to_s == "Ping" %>
-  <% if ping.not_closed? %>
+  <% if ping.not_closed? and ping.is_visible_for?(current_user, logged_in?) %>
   <tr class="ping font-smaller">
     <td>
       <%= render :partial => "share/usermicro", :locals => { :user => ping.owner } %>

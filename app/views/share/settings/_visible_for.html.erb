@@ -1,0 +1,20 @@
+<div class="setting-visible_for">
+	<div class="setting-visible_for-icon">
+		<%= image_tag("icons/icon_visibility.png", :alt => "setting visible_for", :title => "setting visible_for") %>	
+		<div class="panel">
+			<div class="setting-arrow">
+				<div class="arrow-up"></div>
+			</div>		
+			<ul class="font-smaller ui-corner-all button">
+				<li class="explanation"><%= t('settings.visible_for') %></li>
+				<% AppSettings.ping.visible_to.each do |setting| %>
+					<% if setting.to_s == current.to_s %>
+						<li class="current"><%= link_to t("settings.visible_to.#{setting}"), self.send("changesetting_#{model_type.downcase}_path", :model_type => model_type, :model_id => model_id.to_i, :setting => "visible_for", :value => setting, :css_id => css_id), :method => :put, :remote => true %></li>
+					<% else %>				
+						<li><%= link_to t("settings.visible_to.#{setting}"), self.send("changesetting_#{model_type.downcase}_path", :model_type => model_type, :model_id => model_id.to_i, :setting => "visible_for", :value => setting, :css_id => css_id), :method => :put, :remote => true %></li>
+					<% end %>	
+				<% end %>			
+			</ul>
+		</div>
+	</div>
+</div>
