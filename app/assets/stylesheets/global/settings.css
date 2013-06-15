@@ -24,7 +24,11 @@
 	display:block;
 }
 .ping .setting-visible_for .panel .current {
-	font-weight: bold;
+	background: url('/assets/icons/icon_setting_set.png') right center no-repeat;
+	color: white;
+}
+.ping .setting-visible_for .panel .explanation {
+	font-style: italic;
 }
 .ping .setting-visible_for .panel .button {
 	line-height: 1.5em;

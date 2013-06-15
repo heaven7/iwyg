@@ -277,6 +277,13 @@ en:
   hasCommentedOn: has commented '%{title}'
   hasDeleted: has deleted
   activity: Activity
+  settings:
+    visible_for:
+      explanation: Visible for
+      all: All
+      members: Members
+      owner: ! '%{owner}'
+      me: Me
   pleaseChoose: Please choose
   link:
     ping:
@@ -405,6 +412,8 @@ en:
       madeOn: Made on
       options: Options
   flash:
+    settings:
+      changed: ! 'Setting "%{setting}" changed to "%{value}"' 
     friendships:
       create:
         notice: Friend added.

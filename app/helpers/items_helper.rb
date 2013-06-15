@@ -64,21 +64,6 @@ module ItemsHelper
     ItemType.find(id).title.to_s
   end
   
-  
-  def owner(item)
-		owner = item.itemable
-		if owner
-			case owner.class.to_s
-			when "User"
-				title = owner.login
-			else
-				title = owner.title 
-			end
-		else
-			nil	
-		end
-  end
-  
   def holderTinyThumb(item)
     if item.user_id    
       @user = User.find(item.user_id, :include => [:images])
