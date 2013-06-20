@@ -7,6 +7,7 @@
 }
 .horizontal li {
   display: inline;
+	float: left;
 }
 .horizontal li #ajaxful-rating-item-5 {
   float: left;
@@ -32,10 +33,10 @@
 .usermenu {
   position:absolute;
   text-align:left;
-  background: #59674c;
-  margin-top:0.1em;
+  margin-top:0em;
   z-index:9999;
   padding:0.2em;
+	padding-top: 0px;
 }
 .centered .usermenu {
   left: 45%;

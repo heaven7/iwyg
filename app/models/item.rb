@@ -126,7 +126,7 @@ class Item < ActiveRecord::Base
   end
 
   def owner
-		self.itemable	  
+		self.itemable	if self.itemable
 	end
   
   def ownerName
@@ -139,11 +139,11 @@ class Item < ActiveRecord::Base
 	end
 
 	def creator
-		User.find(self.user_id)
+		User.find(self.user_id) if self.user_id > 0
 	end
   
   def multiple?
-    self.multiple
+    self.multiple if self.multiple
   end
   
   def on_transfer?
@@ -185,15 +185,15 @@ class Item < ActiveRecord::Base
   end
   
   def itemtype
-    ItemType.find(self.item_type_id).title.to_s
+    ItemType.find(self.item_type_id).title.to_s if self.item_type_id
   end
   
   def localized_itemtype
-    I18n.translate(itemtype.downcase, :count => 1).gsub("1 ", "")
+    I18n.translate(itemtype.downcase, :count => 1).gsub("1 ", "") if itemtype
   end
   
   def itemstatus
-    ItemStatus.find(self.status).title.to_s
+    ItemStatus.find(self.status).title.to_s if self.status
   end
   
   def icon

@@ -88,11 +88,8 @@ class ApplicationController < ActionController::Base
 		model = params[:model_type].classify.constantize.find(params[:model_id])
 		if model.settings.where(:var => params[:setting]).count > 0
 			model.settings[params[:setting]] = params[:value]
-			flash[:notice] = "Settings changed"
-		else
-			flash[:error] = "There were problems on change settings"
-		end		
-		#render :text => model.settings[params[:setting]]
+			@changed = true
+		end
 	end
 
 	def likeOf(user, model)

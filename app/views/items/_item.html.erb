@@ -1,6 +1,6 @@
 <div class="list-item <%=h item.itemtype.downcase if item.item_type_id? %> <%=h is_need?(item) %> ui-corner-all">
 
-	<%# render :partial => "share/list-item/usermenu", :locals => {:model => item } if logged_in? and item.creator == current_user %>
+	<%= render :partial => "share/list-item/usermenu", :locals => {:model => item } if logged_in? and item.creator == current_user %>
   <div class="item-type font-smaller">
 		<%= t("#{item.itemtype.downcase}.singular").html_safe %>    
 		<%= image_tag "icons/icon_#{item.itemtype.downcase}.png", :title => item.localized_itemtype.html_safe, :alt => item.localized_itemtype.html_safe %>
