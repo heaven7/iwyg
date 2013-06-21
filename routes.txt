@@ -226,6 +226,7 @@
               unblock_user PUT      /users/:id/unblock(.:format)                                  users#unblock
            followings_user GET      /users/:id/followings(.:format)                               users#followings
             followers_user GET      /users/:id/followers(.:format)                                users#followers
+        changesetting_user PUT      /users/:id/changesetting(.:format)                            users#changesetting
      aim_suggestions_users GET      /users/aim_suggestions(.:format)                              users#aim_suggestions
               search_users GET|POST /users/search(.:format)                                       users#search
                      users GET      /users(.:format)                                              users#index
@@ -261,6 +262,7 @@
               unlike_group PUT      /groups/:id/unlike(.:format)                                  groups#unlike
               voteup_group PUT      /groups/:id/voteup(.:format)                                  groups#voteup
             votedown_group PUT      /groups/:id/votedown(.:format)                                groups#votedown
+       changesetting_group PUT      /groups/:id/changesetting(.:format)                           groups#changesetting
     tag_suggestions_groups GET      /groups/tag_suggestions(.:format)                             groups#tag_suggestions
              search_groups GET|POST /groups/search(.:format)                                      groups#search
                     groups GET      /groups(.:format)                                             groups#index
@@ -301,11 +303,11 @@
               ping_comment GET      /pings/:ping_id/comments/:id(.:format)                        comments#show
                            PUT      /pings/:ping_id/comments/:id(.:format)                        comments#update
                            DELETE   /pings/:ping_id/comments/:id(.:format)                        comments#destroy
-        changesetting_ping PUT      /pings/:id/changesetting(.:format)                            pings#changesetting
                  like_ping PUT      /pings/:id/like(.:format)                                     pings#like
                unlike_ping PUT      /pings/:id/unlike(.:format)                                   pings#unlike
                accept_ping PUT      /pings/:id/accept(.:format)                                   pings#accept
               decline_ping PUT      /pings/:id/decline(.:format)                                  pings#decline
+        changesetting_ping PUT      /pings/:id/changesetting(.:format)                            pings#changesetting
                      pings GET      /pings(.:format)                                              pings#index
                            POST     /pings(.:format)                                              pings#create
                   new_ping GET      /pings/new(.:format)                                          pings#new
@@ -367,6 +369,7 @@ edit_item_item_attatchment GET      /items/:item_id/item_attatchments/:id/edit(.
                unlike_item PUT      /items/:id/unlike(.:format)                                   items#unlike
                voteup_item PUT      /items/:id/voteup(.:format)                                   items#voteup
              votedown_item PUT      /items/:id/votedown(.:format)                                 items#votedown
+        changesetting_item PUT      /items/:id/changesetting(.:format)                            items#changesetting
      tag_suggestions_items GET      /items/tag_suggestions(.:format)                              items#tag_suggestions
               search_items GET|POST /items/search(.:format)                                       items#search
                      items GET      /items(.:format)                                              items#index

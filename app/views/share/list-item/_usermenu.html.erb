@@ -4,6 +4,10 @@
 		<%= link_to image_tag("icons/icon_edit.png", :title => t("edit").html_safe, :alt => t("edit").html_safe), 
 				{:action => "edit", :id => model} %>
 	</li>
+	<li>
+		<%= render :partial => "share/settings/visible_for", :locals => { :owner => model.owner.login, :settings => AppSettings.item.visible_for.values, :model_type => "Item", :model_id => model.id, :current => model.settings.visible_for || AppSettings.item.visible_for.default, :css_id => "item-#{model.id}" } if model.owner == current_user %>	
+          
+	</li>
   <li>
 		<%= link_to image_tag("icons/icon_delete.png", :title => t("delete").html_safe, :alt => t("delete").html_safe), 
         {:action => "destroy", :id => model},

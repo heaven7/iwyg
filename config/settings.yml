@@ -34,7 +34,10 @@ time:
 # user
 
 # item
-
+item:
+  visible_for:
+    default: all
+    values: ['all', 'members',  'me']
 # ping
 ping:
   visible_for:
