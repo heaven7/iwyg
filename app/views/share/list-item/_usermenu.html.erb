@@ -5,7 +5,7 @@
 				{:action => "edit", :id => model} %>
 	</li>
 	<li>
-		<%= render :partial => "share/settings/visible_for", :locals => { :owner => model.owner.login, :settings => AppSettings.item.visible_for.values, :model_type => "Item", :model_id => model.id, :current => model.settings.visible_for || AppSettings.item.visible_for.default, :css_id => "item-#{model.id}" } if model.owner == current_user %>	
+		<%= render :partial => "share/settings/visible_for", :locals => { :owner => model.owner.login, :settings => AppSettings.item.visible_for.values, :model_type => "Items", :model_id => model.id, :current => model.settings.visible_for || AppSettings.item.visible_for.default, :css_id => "item-#{model.id}" } if model.owner == current_user %>	
           
 	</li>
   <li>

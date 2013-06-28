@@ -143,15 +143,16 @@ Iwyg::Application.routes.draw do
     resources :images, :pings, :comments, :transfers, :item_attatchments, :events
     resource :location
     member do
+      put 'changesetting'
       post 'rate'
       put 'follow'
       put 'like'
       put 'unlike'
 			put 'voteup'
 			put 'votedown'
-      put 'changesetting'
     end
     collection do
+      put 'changesetting'
       get 'tag_suggestions'
       match 'search' => 'items#search', :via => [:get, :post], :as => :search
     end
