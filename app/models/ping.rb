@@ -32,15 +32,17 @@ class Ping < ActiveRecord::Base
    not Ping.find_by_pingable_id_and_pingable_type_and_user_id(self.pingable_id, self.pingable_type, self.user_id).nil?
   end 
 
+	# checks if ping is visible for user
+  # depending on setting visible_for
 	def is_visible_for?(user, logged_in)
 		setting = self.settings.visible_for || AppSettings.ping.visible_for
 		if logged_in == true
-			if user == self.item.owner
+			if user == self.item.owner # setting == "me"
 				return true
 			elsif setting	== "members" or setting == "all"
 				return true
 			elsif setting == "owners" and (user == self.owner or user == self.item.owner)
-				return true
+				return true			
 			end
 		elsif setting == "all"
 			return true

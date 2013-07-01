@@ -16,7 +16,6 @@ class PingsController < InheritedResources::Base
 
   def index
     @pingable = find_pingable
-
     
     if @pingable.class.to_s == "User"
       @user = User.find(params[:user_id])

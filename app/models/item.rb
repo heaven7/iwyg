@@ -5,8 +5,6 @@ class Item < ActiveRecord::Base
 
   include RailsSettings::Extend 
 
-  before_create :build_item
-
 	attr_accessor :near  
 	attr_accessible :locatable_type, :locatable_id, :title, :amount, :measure_id, :measure,
     :description, :item_type_id, :need, :from, :till, :user_id,
@@ -72,7 +70,7 @@ class Item < ActiveRecord::Base
   has_one :item_type
   has_one :item_status, :as => :status
   has_one :measure
-  has_one :custom, :as => :customable
+  #has_one :custom, :as => :customable
   
   # delegations
   delegate :city, :lat, :lng, :to => :locations
@@ -84,10 +82,23 @@ class Item < ActiveRecord::Base
   validates_associated :images, :item_attachments  
   validates_presence_of :title, :item_type_id
 
-
-  def build_item
-    self.custom = Custom.new(:enable => 1, :visible => 1, :visible_for => "all")
-  end
+	# checks if item is visible for user
+  # depending on setting visible_for
+	def is_visible_for?(user, logged_in)
+		setting = self.settings.visible_for || AppSettings.item.visible_for
+		if logged_in == true
+			if user == self.owner # setting == "me"
+				return true
+			elsif setting	== "members" or setting == "all"
+				return true
+			elsif setting == "me" and (user == self.owner or user == self.item.owner)
+				return true
+			end
+		elsif setting == "all"
+			return true
+		end
+		false
+	end
   
 	def can_be_read_by?(user)
 		p = self.custom.visible_for

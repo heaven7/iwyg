@@ -73,7 +73,6 @@ class ItemsController < InheritedResources::Base
 		      render :layout => 'groups'
 		    end
 			end			
-			
 
     elsif params[:q] && params[:q][:tag]
       # search by tag
@@ -122,11 +121,13 @@ class ItemsController < InheritedResources::Base
 			else
 				$search = Item.search(params[:q], :indlude => [:comments, :images, :pings])
       end
+			# output of normal listing
       @items = $search.result(:distinct => true).paginate( 
         :page => params[:page],
         :order => "created_at DESC", 
         :per_page => AppSettings.items.per_page 
-      )
+      ).with_settings_for('visible_for').find(:all, :conditions => "settings.value LIKE '%all%'")
+
       @items_count = @items.count
     end
 
