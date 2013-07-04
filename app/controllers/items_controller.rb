@@ -42,7 +42,7 @@ class ItemsController < InheritedResources::Base
         :page => params[:page],
         :order => "created_at DESC", 
         :per_page => AppSettings.items.per_page 
-      )
+      ).with_settings_for('visible_for').find(:all, :conditions => "settings.value LIKE '%all%'")
       @items_count = @items.count
 			
 			# save search    
