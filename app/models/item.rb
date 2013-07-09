@@ -48,10 +48,13 @@ class Item < ActiveRecord::Base
   scope :knowledge, :conditions => {:item_type_id => 5}
   scope :skill, :conditions => {:item_type_id => 6}
   
-  
+	## rails_settings_cached
+	# be sure to call this scopes like: Item.with_settings_for('visible_for').all
+	scope :visible_for_all, -> { where("settings.value LIKE '%all%'") }
+	scope :visible_for_members, lambda { |user| where("(settings.value LIKE '%all%' OR settings.value LIKE '%members%') OR 'items.owner_id' = ?", user.id) }
+	
   # has_many
-	has_many :accounts, :as => :accountable, :dependent => :destroy   
-  
+	has_many :accounts, :as => :accountable, :dependent => :destroy     
   has_many :events, :as => :eventable, :dependent => :destroy
   accepts_nested_attributes_for :events, :allow_destroy => true , :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } } 
   has_many :locations, :as => :locatable, :dependent => :destroy
@@ -84,7 +87,7 @@ class Item < ActiveRecord::Base
 
 	# checks if item is visible for user
   # depending on setting visible_for
-	def is_visible_for?(user, logged_in)
+	def self.is_visible_for?(user, logged_in)
 		setting = self.settings.visible_for || AppSettings.item.visible_for
 		if logged_in == true
 			if user == self.owner # setting == "me"

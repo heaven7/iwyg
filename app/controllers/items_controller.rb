@@ -26,24 +26,17 @@ class ItemsController < InheritedResources::Base
     @itemTypes = ItemType.all
   	@searchItemType = "Resource"
 		@near = params[:near] # || request.location.city 
-		@within = params[:within] || 100
+		@within = params[:within]# || 100
     if params[:user_id] && current_user && params[:user_id].to_i == current_user.id.to_i
       @userSubtitle = "i"
     else
       @userSubtitle = "user"
     end
     
-    # execute search
-    $search = Item.search(params[:q], :indlude => [:comments, :images, :pings])			
     if params[:q] and !params[:q][:tag] and params[:near].blank?
 
 			# load all items                  	
-      @items = $search.result(:distinct => true).paginate( 
-        :page => params[:page],
-        :order => "created_at DESC", 
-        :per_page => AppSettings.items.per_page 
-      ).with_settings_for('visible_for').find(:all, :conditions => "settings.value LIKE '%all%'")
-      @items_count = @items.count
+      listItems(@itemable)
 			
 			# save search    
 			saveSearch(params)
@@ -55,7 +48,7 @@ class ItemsController < InheritedResources::Base
       
 			# search itemable items
 			if @itemable
-				$search = @itemable.items.search(params[:q], :indlude => [:comments, :images, :pings])
+				#$search = @itemable.items.search(params[:q], :indlude => [:comments, :images, :pings])
 		    case @itemable.class.to_s
 		    when "User"
 					@user = @itemable
@@ -74,29 +67,9 @@ class ItemsController < InheritedResources::Base
 		    end
 			end			
 
-    elsif params[:q] && params[:q][:tag]
-      # search by tag
-			puts "search by tag"
-      $search = searchByTag(params, "Item").search(params[:q])
-			@items = $search.result(:distinct => true).paginate( 
-        :page => params[:page],
-        :per_page => AppSettings.items.per_page 
-      )
-      @items_count = @items.count
-		
-		elsif params[:q] && (params[:within]	or params[:near])
-			# search within certain range
-			$search = searchByRangeIn("Item")
-			@items = $search.result(:distinct => true).paginate( 
-        :page => params[:page],
-        :per_page => AppSettings.items.per_page 
-      )
-      @items_count = @items.count
     else
 			# normal listing of a model's items
       if @itemable
-				$search = @itemable.items.search(params[:q], :indlude => [:comments, :images, :pings])
-
         @active_menuitem_l1 = I18n.t "menu.main.resources"   
         @active_menuitem_l1_link = eval "#{@itemable.class.to_s.downcase}_items_path"
         
@@ -117,18 +90,9 @@ class ItemsController < InheritedResources::Base
 					@owner = @group.title
 				  render :layout => 'groups'
 				end
-
-			else
-				$search = Item.search(params[:q], :indlude => [:comments, :images, :pings])
       end
 			# output of normal listing
-      @items = $search.result(:distinct => true).paginate( 
-        :page => params[:page],
-        :order => "created_at DESC", 
-        :per_page => AppSettings.items.per_page 
-      ).with_settings_for('visible_for').find(:all, :conditions => "settings.value LIKE '%all%'")
-
-      @items_count = @items.count
+      listItems(@itemable)
     end
 
   end
@@ -297,10 +261,40 @@ class ItemsController < InheritedResources::Base
 
   private
 
+	# list items depending on if user is logged in or not
+	# and on visibility settings of users
+	def listItems(itemable)		
+		if params[:q] and params[:q][:tag]
+			puts "search by tag"
+			search = searchByTag(params, "Item").with_settings_for('visible_for').search(params[:q], :indlude => [:comments, :images, :pings]).result(:distinct => true)
+		elsif params[:q] and (not params[:within].blank? or not params[:near].blank?)
+			puts "location based search"
+			search = searchByRangeIn("Item").with_settings_for('visible_for').search(params[:q], :indlude => [:comments, :images, :pings]).result(:distinct => true)		
+		elsif itemable
+			puts "itemable"
+			search = itemable.items.with_settings_for('visible_for').search(params[:q], :indlude => [:comments, :images, :pings]).result(:distinct => true)		
+		else		
+			puts "normal listing"
+			search = Item.with_settings_for('visible_for').search(params[:q], :indlude => [:comments, :images, :pings]).result(:distinct => true)
+		end
+	
+		if logged_in?
+			items = search.visible_for_members(current_user)
+		else
+			items = search.visible_for_all
+		end
+		@items = items.paginate( 
+      :page => params[:page],
+      :order => "created_at DESC", 
+      :per_page => AppSettings.items.per_page 
+    )
+    @items_count = @items.count
+	end
+
 	def saveSearch(params)
 	  if params and not params[:q][:title_cont].blank?     
 		  @keywords = params[:q][:title_cont].to_s.split
-			puts "SEARCH: " + params[:q][:title_cont]
+			#puts "SEARCH: " + params[:q][:title_cont]
 		  @keyword_items = ""
 		  @keywords.each do |keyword|
 		    if @keywords.last == keyword then
