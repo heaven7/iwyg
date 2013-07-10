@@ -150,6 +150,9 @@ a#new-message:hover {
     text-align:center;
 		padding-top:3em;
 }
+#footer #footernavigation ul li {
+	display: inline;
+}
 #footer a {
 		padding: 0.5em;
     color:#5c5e5f;
