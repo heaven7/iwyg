@@ -131,7 +131,7 @@ class ApplicationController < ActionController::Base
     return model.classify.constantize.tagged_with(@tag, :any => true) if @tag
 	end
 
-	def searchByRangeIn(model)
+	def searchByRangeIn(model, params=nil)
 		if params[:near]
 			@location_city = (request.location.city.blank?) ? params[:near] : request.location.city 
 			if not params[:within].blank? && params[:within].to_i > 0

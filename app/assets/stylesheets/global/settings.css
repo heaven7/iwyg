@@ -7,6 +7,9 @@
 	z-index: 2; 
 	display:none;
 }
+.item .setting-visible_for {
+	padding-left: 3px;
+}
 .item:hover .setting-visible_for,
 .ping:hover .setting-visible_for {
 	display:block

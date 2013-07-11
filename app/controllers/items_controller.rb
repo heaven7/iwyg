@@ -269,7 +269,7 @@ class ItemsController < InheritedResources::Base
 			search = searchByTag(params, "Item").with_settings_for('visible_for').search(params[:q], :indlude => [:comments, :images, :pings]).result(:distinct => true)
 		elsif params[:q] and (not params[:within].blank? or not params[:near].blank?)
 			puts "location based search"
-			search = searchByRangeIn("Item").with_settings_for('visible_for').search(params[:q], :indlude => [:comments, :images, :pings]).result(:distinct => true)		
+			search = searchByRangeIn("Item", params).with_settings_for('visible_for').search(params[:q], :indlude => [:comments, :images, :pings]).result(:distinct => true)		
 		elsif itemable
 			puts "itemable"
 			search = itemable.items.with_settings_for('visible_for').search(params[:q], :indlude => [:comments, :images, :pings]).result(:distinct => true)		
