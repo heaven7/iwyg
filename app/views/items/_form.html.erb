@@ -65,6 +65,7 @@
 -->
       <li><a href="#images"><%= t("form.resource.images").html_safe %></a></li>
       <li><a href="#attachments"><%= t("form.resource.attachments").html_safe %></a></li>
+      <li><a href="#settings"><%= t("form.resource.settings").html_safe %></a></li>
     </ul>
     <div id="what" class="tab_content ">
       <%= f.inputs do %>
@@ -110,6 +111,9 @@
       <%= render :partial => "items/item_attachments", :locals => { :f => f, :object => @item } %>
     </div>
   </div>
+	<div id="settings">
+		Here is the settings form
+	<div>
   <%= f.actions do %>
     <%= f.submit t("save") %>
   <% end %>

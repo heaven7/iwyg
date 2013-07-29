@@ -153,6 +153,7 @@ class ItemsController < InheritedResources::Base
     @active_menuitem_l1_link = eval "#{@itemable.class.to_s.downcase}_items_path"
     @item.locations.build
     @item.events.build
+		@item.settings.visible_for = AppSettings.item.visible_for
 		case @itemable.class.to_s
 		when "User"
 			@user = @itemable
