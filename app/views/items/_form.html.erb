@@ -111,8 +111,10 @@
       <%= render :partial => "items/item_attachments", :locals => { :f => f, :object => @item } %>
     </div>
   </div>
-	<div id="settings">
-		Here is the settings form
+	<div id="settings" class="tab_content">
+		<%= f.semantic_fields_for :settings do |settings_form| %>
+			<%= settings_form.input :visible_for, :as => :select, :collection => AppSettings.item.visible_for.values %>
+		<% end %>
 	<div>
   <%= f.actions do %>
     <%= f.submit t("save") %>

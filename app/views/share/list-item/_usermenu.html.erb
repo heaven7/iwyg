@@ -10,7 +10,7 @@
 	</li>
   <li>
 		<%= link_to image_tag("icons/icon_delete.png", :title => t("delete").html_safe, :alt => t("delete").html_safe), 
-        {:action => "destroy", :id => model},
+        edit_polymorphic_path([@user, model]),
         :confirm => t("confirm_delete").html_safe,
         :method => :delete %>
   </li>

@@ -5,6 +5,7 @@ class ItemsController < InheritedResources::Base
   layout :conditional_layout
   respond_to :html, :xml, :js, :json
   before_filter :authenticate_user!, :only => [:new, :edit, :create]
+
   helper :users, :transfers
   
   has_scope :on_hold
@@ -153,7 +154,7 @@ class ItemsController < InheritedResources::Base
     @active_menuitem_l1_link = eval "#{@itemable.class.to_s.downcase}_items_path"
     @item.locations.build
     @item.events.build
-		@item.settings.visible_for = AppSettings.item.visible_for
+#		@item.settings.visible_for = AppSettings.item.visible_for
 		case @itemable.class.to_s
 		when "User"
 			@user = @itemable
@@ -166,8 +167,31 @@ class ItemsController < InheritedResources::Base
     # @item.images.build
     # @item.item_attachments.build
     
-    getItemTypes
+    getItemTypes		
   end
+
+	def create 
+		@itemable = find_model
+		@params = params[:item]
+		@item = Item.new(@params) 
+		@user = current_user
+    getItemTypes
+    
+		# save settings related to item			
+		if params[:item][:settings]
+			formsettings = params[:item][:settings]
+			formsettings.each do |k,v|
+				setting = RailsSettings::Settings.new				
+				setting.var = k.to_s
+				setting.value = v.to_s
+				setting.thing_id = @item.id
+				setting.thing_type = "Item"				
+				setting.save
+			end
+		end
+	  create!
+	end
+
   
   def edit
 		@itemable = find_model
@@ -189,20 +213,20 @@ class ItemsController < InheritedResources::Base
     getItemTypes
   
     if @item.update_attributes(params[:item])
+			
+			# save settings related to item			
+			if params[:item][:settings]
+				settings = params[:item][:settings]
+				settings.each do |k,v|
+					@item.settings[k.to_s] = v.to_s
+				end
+			end
+
       flash[:notice] = t("flash.items.update.notice")
       redirect_to @item
     else
       render :action => 'edit'
     end
-  end
-  
-  def create
-		@itemable = find_model
-    @item = Item.new(params[:item])
-    @user = current_user
-    getItemTypes
-    #@item.location = Location.new(params[:item][:location_attributes])
-    create!
   end
   
   def destroy

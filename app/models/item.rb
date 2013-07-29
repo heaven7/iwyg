@@ -5,12 +5,12 @@ class Item < ActiveRecord::Base
 
   include RailsSettings::Extend 
 
-	attr_accessor :near  
+	attr_accessor :near, :settings  
 	attr_accessible :locatable_type, :locatable_id, :title, :amount, :measure_id, :measure,
     :description, :item_type_id, :need, :from, :till, :user_id,
     :locations_attributes, :images_attributes, :events_attributes,
     :item_attachments_attributes, :tag_list, :_delete, :status, :multiple,
-		:itemable_id, :itemable_type, :near
+		:itemable_id, :itemable_type, :near, :settings
 	
   
   # ajaxful_rateable :stars => 5, :dimensions => [:quality, :delivery]
@@ -88,7 +88,7 @@ class Item < ActiveRecord::Base
 	# checks if item is visible for user
   # depending on setting visible_for
 	def self.is_visible_for?(user, logged_in)
-		setting = self.settings.visible_for || AppSettings.item.visible_for
+		setting = self.settings.visible_for || AppSettings.item.visible_for.default
 		if logged_in == true
 			if user == self.owner # setting == "me"
 				return true
