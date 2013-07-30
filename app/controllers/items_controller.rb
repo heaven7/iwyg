@@ -154,7 +154,6 @@ class ItemsController < InheritedResources::Base
     @active_menuitem_l1_link = eval "#{@itemable.class.to_s.downcase}_items_path"
     @item.locations.build
     @item.events.build
-#		@item.settings.visible_for = AppSettings.item.visible_for
 		case @itemable.class.to_s
 		when "User"
 			@user = @itemable
@@ -164,8 +163,8 @@ class ItemsController < InheritedResources::Base
 		  render :layout => 'groups'
 		end
 
-    # @item.images.build
-    # @item.item_attachments.build
+		# load default settings into form
+    @setting_visible_for = AppSettings.item.visible_for.default
     
     getItemTypes		
   end
@@ -204,6 +203,11 @@ class ItemsController < InheritedResources::Base
     getLocation(@item) if @location.lat and @location.lng
     @user = User.find(@item.user_id)
     getItemTypes
+
+		# find all settings related to this item
+		# and assign them
+		@settings = RailsSettings::Settings.where(thing_id: @item.id, thing_type: "Item").all
+		@setting_visible_for = @settings[0].value.gsub(/[-. ]/, '')
   end
   
   def update
@@ -218,7 +222,9 @@ class ItemsController < InheritedResources::Base
 			if params[:item][:settings]
 				settings = params[:item][:settings]
 				settings.each do |k,v|
-					@item.settings[k.to_s] = v.to_s
+					@setting = RailsSettings::Settings.where(thing_id: @item.id, thing_type: "Item", var: k).first
+					@setting.send("value=",v)
+					@setting.save
 				end
 			end
 

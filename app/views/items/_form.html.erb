@@ -113,7 +113,11 @@
   </div>
 	<div id="settings" class="tab_content">
 		<%= f.semantic_fields_for :settings do |settings_form| %>
-			<%= settings_form.input :visible_for, :as => :select, :collection => AppSettings.item.visible_for.values %>
+			<%= settings_form.input :visible_for, :as => :select, 
+					:collection => AppSettings.item.visible_for.values.map { |v| [t("settings.visible_for.#{v}").html_safe, v] }, 
+					:prompt => t("settings.visible_for.#{@setting_visible_for}").html_safe,
+					:label => t("settings.visible_for.explanation").html_safe					
+			 %>
 		<% end %>
 	<div>
   <%= f.actions do %>
