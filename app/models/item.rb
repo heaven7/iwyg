@@ -1,16 +1,16 @@
 class Item < ActiveRecord::Base
 
+  include RailsSettings::Extend
   extend FriendlyId
   friendly_id :title, :use => :slugged
 
-  include RailsSettings::Extend 
 
-	attr_accessor :near, :settings  
+	attr_accessor :near, :itemsettings  
 	attr_accessible :locatable_type, :locatable_id, :title, :amount, :measure_id, :measure,
     :description, :item_type_id, :need, :from, :till, :user_id,
     :locations_attributes, :images_attributes, :events_attributes,
     :item_attachments_attributes, :tag_list, :_delete, :status, :multiple,
-		:itemable_id, :itemable_type, :near, :settings
+		:itemable_id, :itemable_type, :near, :itemsettings
 	
   
   # ajaxful_rateable :stars => 5, :dimensions => [:quality, :delivery]

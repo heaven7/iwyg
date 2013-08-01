@@ -94,7 +94,7 @@
       <% end %>
     </div>
 -->
-    <div id="location">
+    <div id="location" class="tab_content">
       <%= render :partial => "locations/nested_form", :locals => { :f => f, :belongs_to => "item" } %>
     </div>
     <div id="when" class="tab_content">
@@ -110,16 +110,15 @@
     <div id="attachments" class="tab_content">
       <%= render :partial => "items/item_attachments", :locals => { :f => f, :object => @item } %>
     </div>
+		<div id="settings" class="tab_content">
+			<%= f.semantic_fields_for :itemsettings do |settings_form| %>
+				<li class="select input required" id="item_settings_visible_for_input">
+					<label class=" label" for="item_settings_visible_for">Sichtbar für</label>
+					<%= settings_form.select :visible_for, options_for_select(AppSettings.item.visible_for.values.map { |v| [t("settings.visible_for.#{v}").html_safe, v] }, @setting_visible_for) %>
+				</li>
+				<% end %>
+		</div>
   </div>
-	<div id="settings" class="tab_content">
-		<%= f.semantic_fields_for :settings do |settings_form| %>
-			<%= settings_form.input :visible_for, :as => :select, 
-					:collection => AppSettings.item.visible_for.values.map { |v| [t("settings.visible_for.#{v}").html_safe, v] }, 
-					:prompt => t("settings.visible_for.#{@setting_visible_for}").html_safe,
-					:label => t("settings.visible_for.explanation").html_safe					
-			 %>
-		<% end %>
-	<div>
   <%= f.actions do %>
     <%= f.submit t("save") %>
   <% end %>

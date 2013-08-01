@@ -177,15 +177,17 @@ class ItemsController < InheritedResources::Base
     getItemTypes
     
 		# save settings related to item			
-		if params[:item][:settings]
-			formsettings = params[:item][:settings]
+		if @item.save and params[:item][:itemsettings]
+			formsettings = params[:item][:itemsettings]
 			formsettings.each do |k,v|
-				setting = RailsSettings::Settings.new				
-				setting.var = k.to_s
-				setting.value = v.to_s
-				setting.thing_id = @item.id
-				setting.thing_type = "Item"				
-				setting.save
+				unless v.blank?
+					setting = RailsSettings::Settings.new				
+					setting.var = k.to_s
+					setting.value = v.to_s
+					setting.thing_id = @item.id
+					setting.thing_type = "Item"				
+					setting.save
+				end
 			end
 		end
 	  create!
@@ -219,8 +221,8 @@ class ItemsController < InheritedResources::Base
     if @item.update_attributes(params[:item])
 			
 			# save settings related to item			
-			if params[:item][:settings]
-				settings = params[:item][:settings]
+			if params[:item][:itemsettings]
+				settings = params[:item][:itemsettings]
 				settings.each do |k,v|
 					@setting = RailsSettings::Settings.where(thing_id: @item.id, thing_type: "Item", var: k).first
 					@setting.send("value=",v)
@@ -297,16 +299,16 @@ class ItemsController < InheritedResources::Base
 	def listItems(itemable)		
 		if params[:q] and params[:q][:tag]
 			puts "search by tag"
-			search = searchByTag(params, "Item").with_settings_for('visible_for').search(params[:q], :indlude => [:comments, :images, :pings]).result(:distinct => true)
+			search = searchByTag(params, "Item").with_settings_for('visible_for').search(params[:q], :include => [:pings]).result(:distinct => true)
 		elsif params[:q] and (not params[:within].blank? or not params[:near].blank?)
 			puts "location based search"
-			search = searchByRangeIn("Item", params).with_settings_for('visible_for').search(params[:q], :indlude => [:comments, :images, :pings]).result(:distinct => true)		
+			search = searchByRangeIn("Item", params).with_settings_for('visible_for').search(params[:q], :include => [:pings]).result(:distinct => true)		
 		elsif itemable
 			puts "itemable"
-			search = itemable.items.with_settings_for('visible_for').search(params[:q], :indlude => [:comments, :images, :pings]).result(:distinct => true)		
+			search = itemable.items.with_settings_for('visible_for').search(params[:q], :include => [:pings]).result(:distinct => true)		
 		else		
 			puts "normal listing"
-			search = Item.with_settings_for('visible_for').search(params[:q], :indlude => [:comments, :images, :pings]).result(:distinct => true)
+			search = Item.with_settings_for('visible_for').search(params[:q], :include => [:pings]).result(:distinct => true)
 		end
 	
 		if logged_in?
@@ -314,6 +316,7 @@ class ItemsController < InheritedResources::Base
 		else
 			items = search.visible_for_all
 		end
+
 		@items = items.paginate( 
       :page => params[:page],
       :order => "created_at DESC", 
