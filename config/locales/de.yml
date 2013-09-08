@@ -281,6 +281,13 @@ de:
   hasDeleted: hat gel&ouml;scht
   pleaseChoose: Bitte w&auml;hlen
   activity: Aktivit&auml;ten
+  settings:
+    visible_for: 
+      explanation: Sichtbar für
+      all: Alle
+      members: Mitglieder
+      owner: ! '%{owner}'
+      me: Mich
   link:
     ping:
       loginToPing: Log dich ein um zu pingen.
@@ -409,6 +416,8 @@ de:
       madeOn: am
       options: Optionen
   flash:
+    settings:
+      changed: ! 'Einstellung "%{setting}" geändert zu "%{value}"' 
     friendships:
       create:
         notice: Freundschaft erfolgreich gebildet.
