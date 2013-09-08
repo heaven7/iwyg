@@ -96,9 +96,9 @@ module UsersHelper
         when "create"
 					case resource.class
 					when "Item"
-						link_to(t("hasCommentedOn", :title => resource.title), resource) + resource.class
+						link_to(t("hasCommentedOn", :title => resource.title), resource)
 					when "Ping"
-						link_to(t("hasCommentedOn", :title => resource.body), resource) + resource.class
+						link_to(t("hasCommentedOn", :title => resource.body), resource)
 					when "Group"
            #link_to(t("hasCommentedOn", :title => resource.title), resource)
 					end
