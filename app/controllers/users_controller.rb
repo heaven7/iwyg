@@ -14,7 +14,6 @@ class UsersController < InheritedResources::Base
   # has_scope :all_friends
 
   def index
-
 		if params[:within].present? && (params[:within].to_i > 0)
       @usersearch = User.active.near(request.location.city,params[:within]).search(params[:q])
     else
@@ -71,13 +70,10 @@ class UsersController < InheritedResources::Base
       end
       @audits = @audits.sort_by(&:created_at).reverse
     end
-
   end
 
-
 	def register_completion
-		
-				flash[:notice] = I18n.t("devise.confirmations.notYetConfirmed") 
+		flash[:notice] = I18n.t("devise.confirmations.notYetConfirmed") 
 	end
 
 	def edit 

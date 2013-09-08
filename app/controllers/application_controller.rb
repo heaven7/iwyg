@@ -88,11 +88,8 @@ class ApplicationController < ActionController::Base
 		model = params[:model_type].classify.constantize.find(params[:model_id])
 		if model.settings.where(:var => params[:setting]).count > 0
 			model.settings[params[:setting]] = params[:value]
-			flash[:notice] = "Settings changed"
-		else
-			flash[:error] = "There were problems on change settings"
-		end		
-		#render :text => model.settings[params[:setting]]
+			@changed = true
+		end
 	end
 
 	def likeOf(user, model)
@@ -134,7 +131,7 @@ class ApplicationController < ActionController::Base
     return model.classify.constantize.tagged_with(@tag, :any => true) if @tag
 	end
 
-	def searchByRangeIn(model)
+	def searchByRangeIn(model, params=nil)
 		if params[:near]
 			@location_city = (request.location.city.blank?) ? params[:near] : request.location.city 
 			if not params[:within].blank? && params[:within].to_i > 0
@@ -148,8 +145,8 @@ class ApplicationController < ActionController::Base
 				@locations.each do |l|
 					@ids << l.locatable_id.to_i
 				end		
-				return model.classify.constantize.where(:id => @ids).order("field(id, #{@ids.join(',')})").search(params[:q]) if @ids.size > 0
-				return model.classify.constantize.where(:id => @ids).search(params[:q])					
+				return model.classify.constantize.where(:id => @ids).order("field(#{model.downcase.pluralize}.id, #{@ids.join(',')})") if @ids.size > 0
+				return model.classify.constantize.where(:id => @ids)			
 			end
     end
 	end

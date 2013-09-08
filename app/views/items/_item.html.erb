@@ -1,27 +1,26 @@
-<div class="list-item <%=h item.itemtype.downcase if item.item_type_id? %> <%=h is_need?(item) %> ui-corner-all">
-
-	<%# render :partial => "share/list-item/usermenu", :locals => {:model => item } if logged_in? and item.creator == current_user %>
-  <div class="item-type font-smaller">
+<div id="item-<%= item.id %>" class="item list-item <%=h item.itemtype.downcase if item.item_type_id? %> <%=h is_need?(item) %> ui-corner-all">
+	<%= render :partial => "share/list-item/usermenu", :locals => { :model => item } if logged_in? and item.creator == current_user %>
+	<div class="item-type font-smaller">
 		<%= t("#{item.itemtype.downcase}.singular").html_safe %>    
 		<%= image_tag "icons/icon_#{item.itemtype.downcase}.png", :title => item.localized_itemtype.html_safe, :alt => item.localized_itemtype.html_safe %>
-  </div>
-  <div class="item-status ui-corner-all">
-    <%= render :partial => "items/itemstatus", :locals => { :item => item } %>    
-  </div>
-  <p class="font-small title"><%= link_to shorten_text_cleaned(item.title, 35), item, :title => item.title.html_safe  if item.title %></p>
-  <% if item.images.first %>
-    <div class="details image-big ui-corner-all">
-      <%= link_to image_tag(item.images.first.image.url(:small)), item, :title => item.title, :class => "ui-corner-all" %>
-    </div>
-  <% else %>
-    <div class="details">
-      <p class="font-small"><%= link_to shorten_text_cleaned(item.description), item, :title => item.title.html_safe if item.description %></p>
-    </div>
-  <% end %>
-    <div class="item-bottom">
-      <span class="left"><%= render :partial => "itemowner", :locals => { :item => item } %></span>   
+	</div>
+	<div class="item-status ui-corner-all">
+	  <%= render :partial => "items/itemstatus", :locals => { :item => item } %>    
+	</div>
+	<p class="font-small title"><%= link_to shorten_text_cleaned(item.title, 35), item, :title => item.title.html_safe  if item.title %></p>
+	<% if item.images.first %>
+	  <div class="details image-big ui-corner-all">
+	    <%= link_to image_tag(item.images.first.image.url(:small)), item, :title => item.title, :class => "ui-corner-all" %>
+	  </div>
+	<% else %>
+	  <div class="details">
+	    <p class="font-small"><%= link_to shorten_text_cleaned(item.description), item, :title => item.title.html_safe if item.description %></p>
+	  </div>
+	<% end %>
+	  <div class="item-bottom">
+	    <span class="left"><%= render :partial => "itemowner", :locals => { :item => item } %></span>   
 			<% if @near and showDistanceOfSearcher(item) %>
 				<span class="distance right"><a href="javascript: return false;" title="<%= t("distance") + " " + t("transfer.to") + " " + @near %>: <%= showDistanceOfSearcher(item) %>"><%= showDistanceOfSearcher(item) %></a></span>
 			<% end %>
-    </div>
+	  </div>
 </div>

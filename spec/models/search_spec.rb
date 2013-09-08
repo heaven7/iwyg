@@ -7,7 +7,7 @@ describe Search do
 		before :each do 
 			@itemsearch = Item.search()
 			@item = create(:item, title: "testitem", item_type_id: 1)
-			@item.locations.first = create(:location)
+			@location = create(:location, city: "Berlin", country: "Deutschland", locatable_id: @item.id, locatable_type: "Item")
 		end
 
 		it "should be items, which are searched" do
@@ -17,9 +17,6 @@ describe Search do
 		it "should search by title" do 
 			@itemsearch = Item.search(:title_cont => "testitem")
 			expect(@itemsearch.result.size).to eq(1)
-		end
-
-		it "should search by location" do 
 		end
 	end
 end

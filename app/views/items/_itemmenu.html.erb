@@ -2,7 +2,7 @@
   <ul class="font-smaller horizontal">
   <% if current_user == item.creator %>
     <li class="button"><%= link_to t("edit").html_safe, edit_polymorphic_path([@user, item]) %></li>
-    <li class="button"><%= link_to t("delete").html_safe, {:action => "destroy", :id => item},
+    <li class="button"><%= link_to t("delete").html_safe, polymorphic_path([@user, item]),
           :confirm => t("confirm_delete").html_safe,
           :method => :delete %>
     </li>

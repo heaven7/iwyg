@@ -1,18 +1,16 @@
 class Item < ActiveRecord::Base
 
+  include RailsSettings::Extend
   extend FriendlyId
   friendly_id :title, :use => :slugged
 
-  include RailsSettings::Extend 
 
-  before_create :build_item
-
-	attr_accessor :near  
+	attr_accessor :near, :itemsettings  
 	attr_accessible :locatable_type, :locatable_id, :title, :amount, :measure_id, :measure,
     :description, :item_type_id, :need, :from, :till, :user_id,
     :locations_attributes, :images_attributes, :events_attributes,
     :item_attachments_attributes, :tag_list, :_delete, :status, :multiple,
-		:itemable_id, :itemable_type, :near
+		:itemable_id, :itemable_type, :near, :itemsettings
 	
   
   # ajaxful_rateable :stars => 5, :dimensions => [:quality, :delivery]
@@ -50,10 +48,14 @@ class Item < ActiveRecord::Base
   scope :knowledge, :conditions => {:item_type_id => 5}
   scope :skill, :conditions => {:item_type_id => 6}
   
-  
+	## rails_settings_cached
+	# be sure to call this scopes like Item.with_settings_for('visible_for').visible_for_all or ...visible_for_members(current_user)
+	scope :visible_for_all, -> { where("settings.value LIKE '%all%'") }
+	scope :visible_for_members, lambda { |user| where("(settings.value LIKE '%all%' OR settings.value LIKE '%members%') OR (items.user_id = #{user.id} AND settings.value LIKE '%me%') ") }
+	scope :visible_for_me, lambda { |user| where(user_id: user.id) }
+	
   # has_many
-	has_many :accounts, :as => :accountable, :dependent => :destroy   
-  
+	has_many :accounts, :as => :accountable, :dependent => :destroy     
   has_many :events, :as => :eventable, :dependent => :destroy
   accepts_nested_attributes_for :events, :allow_destroy => true , :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } } 
   has_many :locations, :as => :locatable, :dependent => :destroy
@@ -72,7 +74,7 @@ class Item < ActiveRecord::Base
   has_one :item_type
   has_one :item_status, :as => :status
   has_one :measure
-  has_one :custom, :as => :customable
+  #has_one :custom, :as => :customable
   
   # delegations
   delegate :city, :lat, :lng, :to => :locations
@@ -84,10 +86,23 @@ class Item < ActiveRecord::Base
   validates_associated :images, :item_attachments  
   validates_presence_of :title, :item_type_id
 
-
-  def build_item
-    self.custom = Custom.new(:enable => 1, :visible => 1, :visible_for => "all")
-  end
+	# checks if item is visible for user
+  # depending on setting visible_for
+	def self.is_visible_for?(user, logged_in)
+		setting = self.settings.visible_for || AppSettings.item.visible_for.default
+		if logged_in == true
+			if user == self.owner # setting == "me"
+				return true
+			elsif setting	== "members" or setting == "all"
+				return true
+			elsif setting == "me" and (user == self.owner or user == self.item.owner)
+				return true
+			end
+		elsif setting == "all"
+			return true
+		end
+		false
+	end
   
 	def can_be_read_by?(user)
 		p = self.custom.visible_for
@@ -126,7 +141,7 @@ class Item < ActiveRecord::Base
   end
 
   def owner
-		self.itemable	  
+		self.itemable	if self.itemable
 	end
   
   def ownerName
@@ -139,11 +154,11 @@ class Item < ActiveRecord::Base
 	end
 
 	def creator
-		User.find(self.user_id)
+		User.find(self.user_id) if self.user_id > 0
 	end
   
   def multiple?
-    self.multiple
+    self.multiple if self.multiple
   end
   
   def on_transfer?
@@ -185,15 +200,15 @@ class Item < ActiveRecord::Base
   end
   
   def itemtype
-    ItemType.find(self.item_type_id).title.to_s
+    ItemType.find(self.item_type_id).title.to_s if self.item_type_id
   end
   
   def localized_itemtype
-    I18n.translate(itemtype.downcase, :count => 1).gsub("1 ", "")
+    I18n.translate(itemtype.downcase, :count => 1).gsub("1 ", "") if itemtype
   end
   
   def itemstatus
-    ItemStatus.find(self.status).title.to_s
+    ItemStatus.find(self.status).title.to_s if self.status
   end
   
   def icon

@@ -5,16 +5,19 @@
 			<div class="setting-arrow">
 				<div class="arrow-up"></div>
 			</div>		
-			<ul class="font-smaller ui-corner-all button">
+			<ol class="panel-options font-smaller ui-corner-all button">
 				<li class="explanation"><%= t('settings.visible_for.explanation') %></li>
 				<% settings.each do |setting| %>
 					<% if setting.to_s == current.to_s %>
-						<li class="current"><%= link_to t("settings.visible_for.#{setting}", :owner => owner.to_s), self.send("changesetting_#{model_type.downcase}_path", :owner => owner.to_s, :settings => settings, :model_type => model_type, :model_id => model_id.to_i, :setting => "visible_for", :value => setting, :css_id => css_id), :method => :put, :remote => true %></li>
+						<li class="current">
+							<%= link_to t("settings.visible_for.#{setting}", :owner => owner.to_s), self.send("changesetting_#{model_type.downcase}_path", :owner => owner.to_s, :settings => settings, :model_type => model_type, :model_id => model_id.to_i, :setting => "visible_for", :value => setting, :css_id => css_id), :method => :put, :remote => true %>
+							<%# link_to t("settings.visible_for.#{setting}", :owner => owner.to_s), :action => :changesetting, :controller => model_type.pluralize.downcase.to_sym %>
+						</li>
 					<% else %>				
 						<li><%= link_to t("settings.visible_for.#{setting}", :owner => owner.to_s), self.send("changesetting_#{model_type.downcase}_path", :owner => owner.to_s, :settings => settings, :model_type => model_type, :model_id => model_id.to_i, :setting => "visible_for", :value => setting, :css_id => css_id), :method => :put, :remote => true %></li>
 					<% end %>	
 				<% end %>			
-			</ul>
+			</ol>
 		</div>
 	</div>
 </div>

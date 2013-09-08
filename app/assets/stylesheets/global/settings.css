@@ -1,17 +1,23 @@
-/* setting visible_for on pings */
+/* setting visible_for */
 
+.item .setting-visible_for,
 .ping .setting-visible_for {
 	position: absolute;
 	left: 90%;
 	z-index: 2; 
 	display:none;
 }
+.item .setting-visible_for {
+	padding-left: 3px;
+}
+.item:hover .setting-visible_for,
 .ping:hover .setting-visible_for {
 	display:block
 }
 .ping .setting-visible_for:hover {
 	cursor: pointer;
 }
+.item .setting-visible_for .panel,
 .ping .setting-visible_for .panel {
 	position: relative;
 	text-align: left;
@@ -20,25 +26,42 @@
 	top: -8px;
 	display:none;
 }
+.item .setting-visible_for .panel a,
+.ping .setting-visible_for .panel a {
+	text-align: left;
+	width: 90px;
+	font-weight: normal;
+}
+.item .setting-visible_for-icon:hover .panel,
 .ping .setting-visible_for-icon:hover .panel {
 	display:block;
 }
+.item .setting-visible_for-icon:hover .panel .panel-options,
+.ping .setting-visible_for-icon:hover .panel .panel-options {
+	height: auto;
+	min-height: 80px;
+}
+.item .setting-visible_for .panel .current,
 .ping .setting-visible_for .panel .current {
 	background: url('/assets/icons/icon_setting_set.png') right center no-repeat;
 	color: white;
 }
+.item .setting-visible_for .panel .explanation,
 .ping .setting-visible_for .panel .explanation {
 	font-style: italic;
 }
+.item .setting-visible_for .panel .button,
 .ping .setting-visible_for .panel .button {
 	line-height: 1.5em;
 }
+.item .setting-visible_for .panel .setting-arrow,
 .ping .setting-visible_for .panel .setting-arrow {
 	position: relative;
 	top: 5px;
 	left: 4.9em;
 		
 }
+.item .setting-visible_for .panel .setting-arrow .arrow-up,
 .ping .setting-visible_for .panel .setting-arrow .arrow-up {
 	border-bottom: 5px solid #A4B895;
 }

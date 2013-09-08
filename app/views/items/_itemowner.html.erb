@@ -1,1 +1,2 @@
-<%= link_to image_tag(microThumb(item.itemable), :title => item.owner.login, :class => "ui-corner-all") + "&nbsp;#{item.owner.login}".html_safe, item.itemable if item.itemable %>
+<%= link_to image_tag(microThumb(item.itemable), :title => item.ownerName, :class => "ui-corner-all") + "&nbsp;#{item.ownerName}".html_safe, item.itemable if item.itemable %>
+

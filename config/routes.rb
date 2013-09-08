@@ -89,6 +89,7 @@ Iwyg::Application.routes.draw do
       put 'unblock'
       get 'followings'
       get 'followers'
+      put 'changesetting'
     end
     collection do
       get 'aim_suggestions'
@@ -104,6 +105,7 @@ Iwyg::Application.routes.draw do
       put 'unlike'
 			put 'voteup'
 			put 'votedown'
+      put 'changesetting'
     end
     collection do
       get 'tag_suggestions'
@@ -129,11 +131,11 @@ Iwyg::Application.routes.draw do
   resources :pings do 
     resources :comments
     member do
-      put 'changesetting'
       put 'like'
       put 'unlike'
       put 'accept'
       put 'decline'
+      put 'changesetting'
     end
   end
   
@@ -141,6 +143,7 @@ Iwyg::Application.routes.draw do
     resources :images, :pings, :comments, :transfers, :item_attatchments, :events
     resource :location
     member do
+      put 'changesetting'
       post 'rate'
       put 'follow'
       put 'like'
@@ -149,6 +152,7 @@ Iwyg::Application.routes.draw do
 			put 'votedown'
     end
     collection do
+      put 'changesetting'
       get 'tag_suggestions'
       match 'search' => 'items#search', :via => [:get, :post], :as => :search
     end

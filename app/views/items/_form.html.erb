@@ -65,6 +65,7 @@
 -->
       <li><a href="#images"><%= t("form.resource.images").html_safe %></a></li>
       <li><a href="#attachments"><%= t("form.resource.attachments").html_safe %></a></li>
+      <li><a href="#settings"><%= t("form.resource.settings").html_safe %></a></li>
     </ul>
     <div id="what" class="tab_content ">
       <%= f.inputs do %>
@@ -93,7 +94,7 @@
       <% end %>
     </div>
 -->
-    <div id="location">
+    <div id="location" class="tab_content">
       <%= render :partial => "locations/nested_form", :locals => { :f => f, :belongs_to => "item" } %>
     </div>
     <div id="when" class="tab_content">
@@ -109,6 +110,18 @@
     <div id="attachments" class="tab_content">
       <%= render :partial => "items/item_attachments", :locals => { :f => f, :object => @item } %>
     </div>
+		<div id="settings" class="tab_content">
+			<fieldset class="inputs">
+				<ol>
+					<%= f.semantic_fields_for :itemsettings do |settings_form| %>
+						<li class="select input" id="item_settings_visible_for_input">
+							<label class=" label" for="item_settings_visible_for">Sichtbar für</label>
+							<%= settings_form.select :visible_for, options_for_select(AppSettings.item.visible_for.values.map { |v| [t("settings.visible_for.#{v}").html_safe, v] }, @setting_visible_for) %>
+						</li>
+					<% end %>
+				</ol>
+			</fieldset>
+		</div>
   </div>
   <%= f.actions do %>
     <%= f.submit t("save") %>
