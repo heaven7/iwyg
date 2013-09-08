@@ -8,7 +8,6 @@ class Notification < ActiveRecord::Base
   belongs_to :notifiable, :polymorphic => true, touch: true
   
 	default_scope :limit => 5, :order => 'created_at DESC'
-
   scope :unread, where(:is_read => 0)
 
   validates_presence_of :notifiable_id, :notifiable_type

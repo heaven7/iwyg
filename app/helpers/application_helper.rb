@@ -72,6 +72,10 @@ module ApplicationHelper
 		end
 	end  
 
+
+
+
+
   # nested layouts
   def parent_layout(layout)
     @view_flow.set(:layout,output_buffer)

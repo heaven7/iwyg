@@ -91,13 +91,18 @@ module UsersHelper
 				end
       when "Comment"
         comment = Comment.with_deleted.where(:id => audit.auditable_id).first
-        resource = comment.commentable_type.constantize.with_deleted.find(comment.commentable_id)
-        if not resource.deleted? 
-					case audit.action
-		      when "create"
-		        link_to(t("hasCommentedOn", :title => resource.title), resource)
-		      end
-				end
+        resource = comment.commentable
+        case audit.action
+        when "create"
+					case resource.class
+					when "Item"
+						link_to(t("hasCommentedOn", :title => resource.title), resource) + resource.class
+					when "Ping"
+						link_to(t("hasCommentedOn", :title => resource.body), resource) + resource.class
+					when "Group"
+           #link_to(t("hasCommentedOn", :title => resource.title), resource)
+					end
+        end
       else
 				nil
       end
