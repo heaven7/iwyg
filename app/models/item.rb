@@ -103,6 +103,21 @@ class Item < ActiveRecord::Base
 		end
 		false
 	end
+
+  def self.settings_attr_accessor(*args)
+    args.each do |method_name|
+      eval "
+        def #{method_name}
+          self.settings.send(:#{method_name})
+        end
+        def #{method_name}=(value)
+          self.settings.send(:#{method_name}=, value)
+        end
+      "
+    end
+  end
+
+  settings_attr_accessor :visible_for
   
 	def can_be_read_by?(user)
 		p = self.custom.visible_for
