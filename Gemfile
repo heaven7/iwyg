@@ -17,6 +17,7 @@ group :production, :stage do
   gem 'mysql2' #, '0.2.18'
 end
 
+gem 'meta-tags', :require => 'meta_tags'
 gem 'i18n_country_select'
 gem 'liangzan-contacts', :require => 'contacts' #, :git => '../contacts.git'
 #gem 'contacts'
@@ -65,7 +66,7 @@ gem 'formtastic' #, '2.1.0.beta1'
 gem 'client_side_validations'
 gem 'client_side_validations-formtastic'
 gem 'nested_form'
-gem 'devise', '~> 2.1' # , :git => 'git://github.com/plataformatec/devise.git'
+gem 'devise', '~> 2.0.6' #, :git => 'git://github.com/plataformatec/devise.git'
 gem 'cancan'
 gem 'devise_rpx_connectable'
 #gem 'ajaxful_rating', '2.2.8.2'

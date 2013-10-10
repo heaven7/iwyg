@@ -98,6 +98,8 @@ class GroupsController < InheritedResources::Base
     getLocationsOnMap(@group) if @location and not @location.lat.nil? and not @location.lng.nil?
 
 		impressionist(@group)
+
+		@page_title = @group.title unless @group.title.blank?
   end
 
   def create

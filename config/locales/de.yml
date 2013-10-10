@@ -3,6 +3,8 @@ de:
   meta:
     language_name: Deutsch
     locale: de
+    keywords: 'soziales netzwerk, herz, geben, nehmen, von herzen, teilen, tauschen, glücklich sein'
+    description: 'Das soziale Go.Happy-Netzwerk. Hier kannst du machen, was du gerne tust, für dich und andere.'
   date:
     formats:
       default: ! '%d.%m.%Y'
@@ -117,7 +119,7 @@ de:
       time: ! '%H:%M:%S'
       datetime: ! '%d.%m.%Y %H:%M:%S'
   iwyg:
-    title: iwyg - das soziale Go-Happy-Netzwerk
+    title: das soziale Go-Happy-Netzwerk
   login:
     description: Bitte g&uuml;ltigen Usernamen und Passwort angeben.
     notAMember: Noch nicht dabei?

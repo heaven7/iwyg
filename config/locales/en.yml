@@ -3,6 +3,8 @@ en:
   meta:
     language_name: English
     locale: en-GB
+    keywords: 'social network, heart, give, take, by heart, share, swap, be happy'
+    description: 'the social go happy-network. Here here you can do, what you like - for you and others.'
   date:
     formats:
       default: ! '%Y-%m-%d'
@@ -117,7 +119,7 @@ en:
       time: ! '%H:%M:%S'
       datetime: ! '%Y-%m-%d %H:%M:%S'
   iwyg:
-    title: iwyg - the social go-happy-network
+    title: the social go-happy-network
   login:
     description: Please fill in with proper username and password to login.
     notAMember: Not a member?

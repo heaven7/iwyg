@@ -1,0 +1,44 @@
+<% content_for :head do %>
+  <%# javascript_include_tag 'startpage' %>
+  <%# stylesheet_link_tag 'global/startpage' %>
+<% end %>
+
+<h1><%=h t("title.welcome") %></h1>
+<div class="sub2cols">
+  <div class="subcol1">
+    <h2>
+      <b>iwyg</b> - the social "go happy"-network. Here here you can do, what you like - for you and others.
+    </h2>
+		<div class="box ui-corner-all">
+			<h3>
+				It's all about you:
+			</h3>
+			<ul>
+				<li>&raquo; what do you need?</li>
+				<li>&raquo; what do you want to do?</li>
+				<li>&raquo; what are your dreams and wishes?</li>
+			</ul>
+    <div class="box ui-corner-all">
+		</div>
+		  <h3>
+				Let's get connected:
+			</h3>
+			<ul>
+				<li>&raquo; to help.</li>
+				<li>&raquo; to create.</li>
+				<li>&raquo; to grow.</li>
+				<li>&raquo; to learn from eachother.</li>
+			</ul>
+    </div>
+    <div class="box ui-corner-all">
+      <cite>The mind is rich of what he receives, the heart of what it gives.</cite>
+    </div>
+    <div class="right font-smaller">
+      (Victor Hugo)
+    </div>
+  </div>  
+  <div class="subcol2">
+    <h3><b><%= t("title.login") %></b></h3>
+    <%= render :partial => "share/login" %>
+  </div>  
+</div>

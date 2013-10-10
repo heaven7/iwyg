@@ -70,6 +70,8 @@ class UsersController < InheritedResources::Base
       end
       @audits = @audits.sort_by(&:created_at).reverse
     end
+
+		@page_title = @user.login unless @user.login.blank?
   end
 
 	def register_completion
