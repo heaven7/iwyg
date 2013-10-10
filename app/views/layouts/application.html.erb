@@ -4,8 +4,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<% set_meta_tags site: 'iwyg', title: @page_title || t('iwyg.title'), separator: '-' %>
-	<% description t('meta.description') %>
-	<% keywords t('meta.keywords') %>
+	<% description @page_description || t('meta.description') %>
+	<% keywords @page_keywords || t('meta.keywords') %>
 	<%= display_meta_tags :site => 'iwyg' %>
   <%= stylesheet_link_tag "application", :media => "screen" %>
   <%= stylesheet_link_tag "themes/iwyg/jquery-ui-1.8.11.custom", :media => "screen" %>

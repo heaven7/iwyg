@@ -144,7 +144,9 @@ class ItemsController < InheritedResources::Base
     getItemTypes
 		impressionist(@item)
 
-		@page_title = @item.title unless @item.title.blank?
+		@page_title = @item.localized_itemtype + ": " + @item.title unless @item.title.blank? or @item.itemtype.blank?
+    @page_description = @item.description unless @item.description.blank?
+    @page_keywords = @item.tag_list unless @item.tag_list.count < 1
   end
   
   def new
