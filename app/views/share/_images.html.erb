@@ -3,7 +3,7 @@
     <% images.each do |i| %>
       <% if !i.image.url.include? "missing" %>
         <span class="image">
-          <%= link_to image_tag(i.image.url(:small)), i.image.url(:big), class: "colorbox" %>
+          <%= link_to image_tag(i.image.url(:small), class: "ui-corner-all"), i.image.url(:big), class: "colorbox" %>
         </span>
      <% end %>
     <% end %>

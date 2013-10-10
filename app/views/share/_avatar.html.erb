@@ -2,9 +2,9 @@
 <div id="avatar"> 
   <span>
   	<% if model.images.first %>
-    	<%= link_to image_tag(smallThumb(model)), bigThumb(model), class: "colorbox" %>
+    	<%= link_to image_tag(smallThumb(model), class: "ui-corner-all"), bigThumb(model), class: "colorbox" %>
     <% else %>
-    	<%= image_tag smallThumb(model) %>
+    	<%= image_tag smallThumb(model), class: "ui-corner-all" %>
     <% end %>
   </span>
 </div>

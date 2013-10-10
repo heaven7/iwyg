@@ -64,6 +64,11 @@ body {
 	/* Opera 9+, IE 9+ */
 	opacity: 0.5;
 }
+.rounded-all-2px {
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+}
 
 .clearfix {
 	clear:both;
