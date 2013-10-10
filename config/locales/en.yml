@@ -764,6 +764,7 @@ en:
       when: When
       images: Images
       attachments: Attachments
+      settings: Settings
       i: I
       need: need
       have: have
@@ -810,6 +811,7 @@ en:
         amount: Amount
         measure: Measure
         tag_list: Tags
+        settings_visible_for: Visible for
       group:
         title: Title
         description: Description
