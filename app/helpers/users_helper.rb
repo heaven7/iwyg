@@ -1,3 +1,4 @@
+
 module UsersHelper
   
   def microThumb(user)
@@ -10,6 +11,10 @@ module UsersHelper
   
   def smallThumb(user)
     getUserImage(user, "small")
+  end
+  
+  def bigThumb(user)
+    getUserImage(user, "big")
   end
   
 	def auditText(audit)
@@ -104,7 +109,7 @@ module UsersHelper
 					end
         end
       else
-				nil
+		nil
       end
 	end
   
@@ -117,10 +122,10 @@ module UsersHelper
   
   def getUserImage(user, size)
     if user && user.images.first
-      user.images.first.image.url(size)
+    	user.images.first.image.url(size)
     else
-			counter = user.id.to_i % 6
-      "global/avatar_dummy_#{size}_#{counter}.png"
+		counter = user.id.to_i % 6
+    	"global/avatar_dummy_#{size}_#{counter}.png"
     end
   end
   
