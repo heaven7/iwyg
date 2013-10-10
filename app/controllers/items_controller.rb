@@ -143,6 +143,8 @@ class ItemsController < InheritedResources::Base
     @resource = @item
     getItemTypes
 		impressionist(@item)
+
+		@page_title = @item.title unless @item.title.blank?
   end
   
   def new
