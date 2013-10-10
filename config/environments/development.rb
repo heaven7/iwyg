@@ -57,7 +57,7 @@ Iwyg::Application.configure do
   # Paperclip.options[:command_path] = "D:/Programme/ImageMagick-6.6.3-Q16"
 
 	# set command path on linux (example)
-	Paperclip.options[:command_path] = "/usr/local/bin/"
+	#Paperclip.options[:command_path] = "/usr/lib/"
 end
 
 class ActionDispatch::Request
