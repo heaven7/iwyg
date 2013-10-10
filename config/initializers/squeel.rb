@@ -13,7 +13,7 @@ Squeel.configure do |config|
 
   # To load both hash and symbol extensions:
   #
-  config.load_core_extensions :hash, :symbol
+  # config.load_core_extensions :hash, :symbol
 
   # Alias an existing predicate to a new name. Use the non-grouped
   # name -- the any/all variants will also be created. For example,
