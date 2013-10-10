@@ -3,6 +3,10 @@
 <html lang="<%= I18n.locale.to_s %>">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<% set_meta_tags site: 'iwyg', title: t('iwyg.title'), separator: '-' %>
+	<% description t('meta.description') %>
+	<% keywords t('meta.keywords') %>
+	<%= display_meta_tags :site => 'iwyg' %>
   <%= stylesheet_link_tag "application", :media => "screen" %>
   <%= stylesheet_link_tag "themes/iwyg/jquery-ui-1.8.11.custom", :media => "screen" %>
   <!--[if IE 6]><%= stylesheet_link_tag 'formtastic_ie6' %><![endif]-->
@@ -47,8 +51,6 @@
   <% unless Rails.env.test? %>
 		<%= render :partial => "share/googleanalytics" %>
   <% end %>
-	
-  <title><%= @title or t("iwyg.title") %></title>
 </head>
 <body>
 <%= yield :facebook %>
@@ -74,7 +76,7 @@
   <%= render :partial => 'share/navigation/mainnavigation' %>
 	<%= render :partial => 'share/navigation/notifications' if logged_in? %>
 	<div id="content">   
-		<%=  yield %>
+		<%= yield %>
   </div>
   
   <div id="footerwrap">

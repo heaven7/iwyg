@@ -17,6 +17,7 @@ group :production, :stage do
   gem 'mysql2' #, '0.2.18'
 end
 
+gem 'meta-tags', :require => 'meta_tags'
 gem 'i18n_country_select'
 gem 'liangzan-contacts', :require => 'contacts' #, :git => '../contacts.git'
 #gem 'contacts'
