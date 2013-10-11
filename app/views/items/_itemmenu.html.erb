@@ -11,9 +11,9 @@
     	<li class="button"><%= link_to t("follow"), follow_item_path, :method => :put %></li>
 	  <% end %>
     <% if not current_user.likes?(item) %>
-      <li class="button" id="likebutton"><%= link_to t("like"), self.send("like_item_path", user: current_user, model_id: item.id, model_type: "Item" ), :method => :put, :remote => true %></li>
+      <%= render :partial => "share/social/like", :locals => { user: current_user, model_id: item.id, model_type: "Item"} %>
     <% else %>
-      <li class="button" id="unlikebutton"><%= link_to t("unlike"), self.send("unlike_item_path", user: current_user, model_id: item.id, model_type: "Item"), :method => :put, :remote => true %></li>
+      <%= render :partial => "share/social/unlike", :locals => { user: current_user, model_id: item.id, model_type: "Item"} %>
     <% end %>
   <% end %>
   </ul>
