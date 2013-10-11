@@ -1,0 +1,1 @@
+$('#unlikebutton').replaceWith('<%= escape_javascript(render(:partial => "share/social/like", :locals => {user: params[:user], model_id: params[:model_id], model_type: params[:model_type] })) %>');

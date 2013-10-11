@@ -264,15 +264,15 @@ class ItemsController < InheritedResources::Base
     redirect_to(@item)
   end
 
-	def like
-    @item = Item.find(params[:id])
-		likeOf(current_user, @item)
-	end
+#	def like
+#    @item = Item.find(params[:id])
+#		likeOf(current_user, @item)
+#	end
 
-	def unlike
-    @item = Item.find(params[:id])
-		unlikeOf(current_user, @item)
-	end
+#	def unlike
+#    @item = Item.find(params[:id])
+#		unlikeOf(current_user, @item)
+#	end
   
   def rate
     @item = Item.find(params[:id])

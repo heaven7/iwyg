@@ -1,0 +1,3 @@
+<li class="button" id="likebutton">
+	<%= link_to t("like"), self.send("like_#{model_type.downcase}_path", user: user, model_id: model_id, model_type: model_type), :method => :put, :remote => true %>
+</li>

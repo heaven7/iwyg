@@ -1,0 +1,3 @@
+<li class="button" id="unlikebutton">
+	<%= link_to t("unlike"), self.send("unlike_#{model_type.downcase}_path", user: user, model_id: model_id, model_type: model_type), :method => :put, :remote => true %>
+</li>

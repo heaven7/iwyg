@@ -1,0 +1,2 @@
+$('#likebutton').replaceWith('<%= escape_javascript(render(:partial => "share/social/unlike", :locals => {user: params[:user], model_id: params[:model_id], model_type: params[:model_type] })) %>');
+// do to: listing of users who like that thing and proper update
