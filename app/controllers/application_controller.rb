@@ -98,7 +98,7 @@ class ApplicationController < ActionController::Base
     user = User.find(params[:user])
     user.like!(@thing)
     @likers = getLikers(@thing)
-    @likes_count = @likers.count
+    @likes_count = @likers.size
 	end
 
 	def unlike
@@ -107,7 +107,7 @@ class ApplicationController < ActionController::Base
     user = User.find(params[:user])
     user.unlike!(@thing)
     @likers = getLikers(@thing)
-    @likes_count = @likers.count
+    @likes_count = @likers.size
 	end
 
   def getLikers(model)
