@@ -416,8 +416,10 @@ en:
       madeOn: Made on
       options: Options
   flash:
+    like: ! "You like '%{title}'."
+    unlike: ! "You don't like '%{title}' anymore." 
     settings:
-      changed: ! 'Setting "%{setting}" changed to "%{value}"' 
+      changed: Setting %{setting} changed to %{value}.
     friendships:
       create:
         notice: Friend added.

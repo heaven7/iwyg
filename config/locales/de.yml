@@ -420,8 +420,10 @@ de:
       madeOn: am
       options: Optionen
   flash:
+    like: Du magst nun '%{title}'.
+    unlike: Du magst '%{title}' nicht mehr.
     settings:
-      changed: ! 'Einstellung "%{setting}" geändert zu "%{value}"' 
+      changed: Einstellung %{setting} geändert zu %{value}. 
     friendships:
       create:
         notice: Freundschaft erfolgreich gebildet.
