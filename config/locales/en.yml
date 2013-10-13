@@ -255,6 +255,8 @@ en:
   updated_at: updated on
   accepted_at: accepted on
   follow: follow
+  like: like
+  unlike: "don't like anymore"
   block: Block
   unblock: Unblock
   blockedUsers: Blocked Users

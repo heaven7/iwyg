@@ -174,10 +174,10 @@ de:
     singular: Wissen
     plural: Wissen
   skill:
-    one: 1 F&auml;higkeit
-    other: ! '%{count} F&auml;higkeiten'
-    singular: F&auml;higkeit
-    plural: F&auml;higkeiten
+    one: 1 Fähigkeit
+    other: ! '%{count} Fähigkeiten'
+    singular: Fähigkeit
+    plural: Fähigkeiten
   sharingpoint:
     one: 1 Sammelstelle
     other: ! '%{count} Sammelstellen'
@@ -190,7 +190,7 @@ de:
     aims: Ziele
     aimsTo: zielt nach
     canDo: kann
-    skills: F&auml;higkeiten
+    skills: Fähigkeiten
     wishesTo: w&uuml;nscht sich
     wishes: W&uuml;nsche
     interestedIn: interessiert sich f&uuml;r
@@ -258,6 +258,8 @@ de:
   updated_at: ge&auml;ndert am
   accepted_at: akzeptiert am
   follow: Folgen
+  like: Mag ich
+  unlike: Mag ich nicht mehr
   block: Blockieren
   unblock: Blockierung aufheben
   blockedUsers: geblockte User
@@ -388,7 +390,7 @@ de:
   transfer:
     one: 1 Transfer
     other: ! '%{count} Transfers'
-    pinger: Empf&auml;nger
+    pinger: EmpFänger
     of: Transfer von
     to: nach
     status: Transfer wurde %{status} von %{user}
@@ -599,7 +601,7 @@ de:
     transports: Transporte
     ideas: Ideen
     knowledge: Wissen
-    skills: F&auml;higkeiten
+    skills: Fähigkeiten
     sharingpoints: Sammelstellen
     status: Status
     onHold: wartend
@@ -838,7 +840,7 @@ de:
         country: Land
       user:
         aim_list: Ziele
-        skill_list: F&auml;higkeiten
+        skill_list: Fähigkeiten
         interest_list: Interessen
         wish_list: W&uuml;nsche
         firstname: Vorname
