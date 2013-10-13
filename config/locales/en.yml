@@ -255,6 +255,9 @@ en:
   updated_at: updated on
   accepted_at: accepted on
   follow: follow
+  like: like
+  unlike: "don't like anymore"
+  liked_by: Liked by
   block: Block
   unblock: Unblock
   blockedUsers: Blocked Users
@@ -414,8 +417,10 @@ en:
       madeOn: Made on
       options: Options
   flash:
+    like: ! "You like '%{title}'."
+    unlike: ! "You don't like '%{title}' anymore." 
     settings:
-      changed: ! 'Setting "%{setting}" changed to "%{value}"' 
+      changed: Setting %{setting} changed to %{value}.
     friendships:
       create:
         notice: Friend added.
@@ -764,6 +769,7 @@ en:
       when: When
       images: Images
       attachments: Attachments
+      settings: Settings
       i: I
       need: need
       have: have
@@ -810,6 +816,7 @@ en:
         amount: Amount
         measure: Measure
         tag_list: Tags
+        settings_visible_for: Visible for
       group:
         title: Title
         description: Description

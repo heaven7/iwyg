@@ -92,18 +92,37 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
-	def likeOf(user, model)
-		@thing = model
+	def like
+		@thing = params[:model_type].classify.constantize.find(params[:model_id])
+    @title = getTitle(@thing)
+    user = User.find(params[:user])
     user.like!(@thing)
-    redirect_to(@thing)
+    @likers = getLikers(@thing)
+    @likes_count = @likers.size
 	end
 
-	def unlikeOf(user, model)
-		@thing = model
+	def unlike
+		@thing = params[:model_type].classify.constantize.find(params[:model_id])
+    @title = getTitle(@thing)
+    user = User.find(params[:user])
     user.unlike!(@thing)
-    redirect_to(@thing)
+    @likers = getLikers(@thing)
+    @likes_count = @likers.size
 	end
-    
+
+  def getLikers(model)
+    model.likers(User)
+  end
+
+  def getTitle(model)
+    case model.class.to_s
+    when "User"
+      @title = @thing.login
+    else
+      @title = @thing.title
+    end
+  end
+
   def find_model
     params.each do |name, value|
       if name =~ /(.+)_id$/

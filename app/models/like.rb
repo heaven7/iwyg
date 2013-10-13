@@ -1,2 +1,2 @@
-#class Like <  Socialization::ActiveRecordStores::Like
-#end
+class Like < Socialization::ActiveRecordStores::Like
+end

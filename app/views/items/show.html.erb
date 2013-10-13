@@ -69,16 +69,15 @@
   <%= render :partial => "share/pings", :locals => {:pings => @pings, :pingable => @item}  %>
 </div>
 <div id="col2">
+  <% if logged_in? and ( @location && !@locations_json.blank? ) %>
   <div class="box ui-corner-all">
     <div class="location">			
-      <% if logged_in? and ( @location && !@locations_json.blank? ) %>
         <%= render :partial => "share/map", :locals => { :locations => @locations_json } %>
-      <% end %>
-    </div>
-    <div id="qrcode">
     </div>
   </div>
+  <% end %>
   <div class="clear"></div>
+  <%= render :partial => 'share/social/likers', :locals => { :likes_count => @likes_count, :likers => @likers} %>
   <% if @items_related.size > 0 && @item.tags.size > 0 %>
     <div id="items-related">
       <h3><%= @items_related_title %> (<%= @items_related.size %>)</h3>
@@ -105,3 +104,4 @@
       <%# render :partial => "share/comments", :locals => {:commentable => @item, :comments => @comments} %>
     </div>
     <div class="clearfix"></div>
+

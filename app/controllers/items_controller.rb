@@ -144,6 +144,11 @@ class ItemsController < InheritedResources::Base
     getItemTypes
 		impressionist(@item)
 
+    # likes
+    @likers = @item.likers(User)
+    @likes_count = @likers.count
+
+    # seo
 		@page_title = @item.localized_itemtype + ": " + @item.title unless @item.title.blank? or @item.itemtype.blank?
     @page_description = @item.description unless @item.description.blank?
     @page_keywords = @item.tag_list unless @item.tag_list.count < 1
@@ -264,15 +269,15 @@ class ItemsController < InheritedResources::Base
     redirect_to(@item)
   end
 
-	def like
-    @item = Item.find(params[:id])
-		likeOf(current_user, @item)
-	end
+#	def like
+#    @item = Item.find(params[:id])
+#		likeOf(current_user, @item)
+#	end
 
-	def unlike
-    @item = Item.find(params[:id])
-		unlikeOf(current_user, @item)
-	end
+#	def unlike
+#    @item = Item.find(params[:id])
+#		unlikeOf(current_user, @item)
+#	end
   
   def rate
     @item = Item.find(params[:id])

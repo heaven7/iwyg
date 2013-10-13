@@ -258,8 +258,7 @@ table td {
   padding:0.5em;
   margin-bottom:8px;
   margin-top:8px;
-}
-.box {
+  border: 1px solid transparent;
 }
 .status-bar {
   border:1px solid #d8e0d0;

@@ -10,6 +10,11 @@
 		<% if not current_user.following?(item) %>
     	<li class="button"><%= link_to t("follow"), follow_item_path, :method => :put %></li>
 	  <% end %>
+    <% if not current_user.likes?(item) %>
+      <%= render :partial => "share/social/like", :locals => { user: current_user, model_id: item.id, model_type: "Item"} %>
+    <% else %>
+      <%= render :partial => "share/social/unlike", :locals => { user: current_user, model_id: item.id, model_type: "Item"} %>
+    <% end %>
   <% end %>
   </ul>
 <div class="clear" ></div>
