@@ -97,6 +97,8 @@ class ApplicationController < ActionController::Base
     @title = getTitle(@thing)
     user = User.find(params[:user])
     user.like!(@thing)
+    @likers = getLikers(@thing)
+    @likes_count = @likers.count
 	end
 
 	def unlike
@@ -104,7 +106,13 @@ class ApplicationController < ActionController::Base
     @title = getTitle(@thing)
     user = User.find(params[:user])
     user.unlike!(@thing)
+    @likers = getLikers(@thing)
+    @likes_count = @likers.count
 	end
+
+  def getLikers(model)
+    model.likers(User)
+  end
 
   def getTitle(model)
     case model.class.to_s
