@@ -9,11 +9,12 @@ iwyg is a social exchange system built in rails. this system can be seen on [www
 
 Just clone, migrate the database and set the config yaml files for you own environment:
 
-git clone https://github.com/heaven7/iwyg
-cd iwyg
-bundle install
-rake db:create:all
-rake db:migrate
-
-
-
+  `git clone https://github.com/heaven7/iwyg`
+  
+  `cd iwyg`
+  
+  `bundle install`
+  
+  `rake db:create:all`
+  
+  `rake db:migrate`
