@@ -18,3 +18,5 @@ Just clone, migrate the database and set the config yaml files for you own envir
   `rake db:create:all`
   
   `rake db:migrate`
+
+ 
