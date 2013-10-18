@@ -7,15 +7,27 @@ iwyg is a social exchange system built in rails. this system can be seen on [www
 
 ## Installation
 
-Just clone, migrate the database and set the config yaml files for you own environment:
+Just clone and bundle:
 
   `git clone https://github.com/heaven7/iwyg`
   
   `cd iwyg`
   
   `bundle install`
+
+## Configuration
+
+Rename or copy the *.sample.yml files in the config directory and change them to your needs:
+
+	database.sample.yml => database.yml
+
+	email.sample.yml => email.yml
+
+	settings.sample.yml => settings.yml
+
+After this you can build up the database and migrate to it:
   
-  `rake db:create:all`
+  `rake db:create`
   
   `rake db:migrate`
 
