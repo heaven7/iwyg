@@ -29,12 +29,13 @@ describe Group do
 	#		save_and_open_page	
 	#	end
 
-	it "can be created by user" do
-		visit user_groups_path(@user.login)
-		click_link('group-new')				
-		fill_in "group_title", :with => "testgroup"
-		expect { click_button "group-save" }.to change { @user.groups.count }.by(1)	
-	end
+#	it "can be created by user" do
+#		visit user_groups_path(@user.login)
+#		click_link('group-new')				
+#		fill_in "group_title", :with => "testgroup"
+#		click_button "group-save"
+#		@user.groups.count.should == 1	
+#	end
 
 #	describe "user participation on groups" do		
 #		it "can ask for participation on a group" do
