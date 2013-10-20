@@ -51,11 +51,11 @@ describe Message do
 		end
 
 		it "sender has sent a message" do
-			@sender.sent_messages.count.should be 1
+			@sender.sent_messages.count.should == 1
 		end 
 			
 		it "receiver gets the message" do
-			@receiver.received_messages.count.should be 1
+			@receiver.received_messages.count.should == 1
 		end
 
 		it "receiver can reply to user" do
@@ -66,7 +66,7 @@ describe Message do
 				to: @sender.login, 
 				subject: @original.subject, 
 				body: "this is a reply"
-			).save
+			)
 			@sender.received_messages.count.should be 1
 		end
 	end

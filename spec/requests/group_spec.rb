@@ -4,21 +4,20 @@ include Warden::Test::Helpers
 describe Group do
  
 	before :each do
+		I18n.locale = :en
 		@user = create(:user, :id => Random.rand(1000))
 		login_as(@user, :scope => :user)	
-		@anotheruser = User.create( 
+		@anotheruser = create(:user, 
 													:id => Random.rand(1000),
 													:login => "another user",
-													:email => "another@email.com",
-												  :password => "anotherpassword", 
-													:password_confirmation => "anotherpassword",
-													:confirmed_at => Time.now
+													:email => "another@email.com"
 									)	
 		@group = create(:group, :id => Random.rand(1000), :user_id => @anotheruser.id)
 	end 
 
 	it "GET user/groups" do
 		visit "/users/#{@user.login}/groups"
+#		save_and_open_page	
 		page.should have_content("Groups") 
 	end
 
@@ -59,15 +58,16 @@ describe Group do
 			login_as(@user, :scope => :user)	
 			@group = create(:group, :id => Random.rand(1000), :title => "testgroup", :user_id => @user.id)
 			visit group_path(@group)
-#			save_and_open_page	
-			click_link "group-edit"			
 		end
 
 		it "can show edit form" do
+			click_link "group-edit"			
 			page.should have_content("Change your group")
+#			save_and_open_page	
 		end
 
 		it "can change title" do
+			click_link "group-edit"			
 			fill_in :group_title, :with => "testgroup changed"
 			click_button "group-save"
 			page.should have_content("testgroup changed")  
@@ -75,12 +75,14 @@ describe Group do
 		end
 		
 		it "can add location" do
+			click_link "group-edit"			
 			fill_in "Address", :with => "Berlin"
 			expect { click_button "group-save" }.to change { @group.locations.count }.by(1)	
       page.should have_content("Location") 
 		end
 
 		it "can add tags" do
+			click_link "group-edit"			
 			fill_in "Tags", :with => "tag1, tag2"
 			expect { click_button "group-save" }.to change { @group.tags.count }.by(2)	
 			page.should have_content("Tags: tag1 tag2")
