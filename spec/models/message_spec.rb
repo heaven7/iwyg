@@ -5,6 +5,8 @@ describe Message do
 	before :each do
 		@sender = create(:user)
 		@message = build(:message, author: @sender)
+		@receiver = create(:user)
+		@message2 = create(:message, author: @sender, to: @receiver.login)
 	end 
 
 	subject { @message }
@@ -44,11 +46,6 @@ describe Message do
 	end
 
 	describe "sending messages" do
-
-		before :each do
-			@receiver = create(:user)
-			@message = create(:message, author: @sender, to: @receiver.login)
-		end
 
 		it "sender has sent a message" do
 			@sender.sent_messages.count.should == 1
