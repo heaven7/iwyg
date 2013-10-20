@@ -9,13 +9,13 @@ test:
   database: db/test.sqlite3
   pool: 5
   timeout: 5000
- 
+
 production:
   adapter: mysql2
   encoding: utf8
   database: iwyg_production
   username: username
   password: password
-	host: localhost
+  host: localhost
 
 
