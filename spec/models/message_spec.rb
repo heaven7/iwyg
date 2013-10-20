@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe Message do
 
-	before :each do
+
+	before :all do
 		@sender = create(:user)
 		@message = build(:message, author: @sender)
 		@receiver = create(:user)

@@ -16,7 +16,7 @@ describe Group do
 	end 
 
 	it "GET user/groups" do
-		visit "/users/#{@user.login}/groups"
+		visit user_groups_path(@user)
 #		save_and_open_page	
 		page.should have_content("Groups") 
 	end
@@ -34,7 +34,6 @@ describe Group do
 		click_link('group-new')				
 		fill_in "group_title", :with => "testgroup"
 		expect { click_button "group-save" }.to change { @user.groups.count }.by(1)	
-		page.should have_content("Successfully saved group.")
 	end
 
 #	describe "user participation on groups" do		
