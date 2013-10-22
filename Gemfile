@@ -95,11 +95,13 @@ group :development, :test do
 end
 
 group :test do
-	gem 'cucumber-rails'
+	gem "cucumber-rails", ">= 1.2.1", :require => false
   gem 'email_spec'
   gem 'mysql2' #, '0.2.18'
   gem 'capybara', '1.1.4'
 	gem 'selenium-webdriver'
+	gem 'selenium'
+	gem 'selenium-client'
 	gem 'launchy'
 	gem 'guard'  
 	gem 'guard-rspec'

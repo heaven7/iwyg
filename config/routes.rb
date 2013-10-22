@@ -70,7 +70,8 @@ Iwyg::Application.routes.draw do
     get "/login", :to => "devise/sessions#new"
     get "/signup", :to => "devise/registrations#new"
   end
-  
+
+=begin  
   resources :users do
     resources :items, :pings, :groups, :images, :accounts, :comments, :friendships, :events, :messages, :meetups
 
@@ -96,6 +97,7 @@ Iwyg::Application.routes.draw do
       match 'search' => 'users#search', :via => [:get, :post], :as => :search
     end
   end 
+=end
   
   resources :groups do
     resources :users, :images, :items

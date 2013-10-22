@@ -10,6 +10,13 @@ require 'cucumber/rails'
 require 'email_spec' # add this line if you use spork
 require 'email_spec/cucumber'
 
+ENV["RAILS_ENV"] = "test"
+require File.expand_path(File.dirname(__FILE__) + '/../../config/environment')
+require 'cucumber/rails/world'
+require 'cucumber/formatter/unicode'
+#require 'webrat/integrations/rspec-rails'
+require 'cucumber/rails/rspec'
+
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any
 # selectors in your step definitions to use the XPath syntax.
