@@ -4,8 +4,8 @@ module NavigationHelpers
     
     when /the homepage/
       root_path
-    when /the list of articles/
-      articles_path
+    when /the list of items/
+      items_path
     
     # Add more page name => path mappings here
     
