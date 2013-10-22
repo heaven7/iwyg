@@ -95,6 +95,8 @@ group :development, :test do
 end
 
 group :test do
+	gem 'cucumber-rails'
+  gem 'email_spec'
   gem 'mysql2' #, '0.2.18'
   gem 'capybara', '1.1.4'
 	gem 'launchy'
