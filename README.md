@@ -25,10 +25,12 @@ Rename or copy the *.sample.yml files in the config directory and change them to
 
 	settings.sample.yml => settings.yml
 
-After this you can build up the database and migrate to it:
+After this you can build up the database, migrate and seed to it:
   
   `rake db:create`
   
   `rake db:migrate`
+
+  `rake db:seed`
 
  
