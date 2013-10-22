@@ -99,6 +99,7 @@ group :test do
   gem 'email_spec'
   gem 'mysql2' #, '0.2.18'
   gem 'capybara', '1.1.4'
+	gem 'selenium-webdriver'
 	gem 'launchy'
 	gem 'guard'  
 	gem 'guard-rspec'
