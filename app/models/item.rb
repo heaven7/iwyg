@@ -25,6 +25,9 @@ class Item < ActiveRecord::Base
   acts_as_audited
   has_associated_audits
 	is_impressionable
+
+  # callbacks
+  after_create :set_defaultsettings
   
   # scopes
 	scope :enable, proc { |item| joins(:user, :custom).where('customs.enable' => 1) }
@@ -146,6 +149,18 @@ class Item < ActiveRecord::Base
 			return true
 		end
 	end
+
+  # save defaultsettings related to item 
+  def set_defaultsettings
+    AppSettings.item.to_hash.each do |setting, value|
+        s = RailsSettings::Settings.new       
+        s.var = setting.to_s
+        s.value = value[:default]
+        s.thing_id = self.id
+        s.thing_type = "Item"       
+        s.save
+    end
+  end
 
   def tag_list_name
     self.tag_list if tag_list
