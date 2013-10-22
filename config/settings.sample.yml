@@ -26,3 +26,18 @@ time:
     mailbox: "%A, %B %d, %Y"
     forms: "%d.%m.%Y %H:%M"
 
+## model based settings
+
+# user
+
+# item
+item:
+  visible_for:
+    default: all
+    values: ['all', 'members',  'me']
+# ping
+ping:
+  visible_for:
+    default: owner
+    values: ['all', 'members', 'owner', 'me']
+
