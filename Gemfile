@@ -31,7 +31,7 @@ gem 'delayed_job', '3.0.1'
 gem 'delayed_job_active_record'
 gem 'impressionist'
 gem 'formatize'
-gem 'rails_autolink'
+gem 'rails_autolink', '1.1.4'
 gem 'sanitize'
 
 gem 'rabl'
