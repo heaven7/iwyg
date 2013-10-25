@@ -185,20 +185,6 @@ class ItemsController < InheritedResources::Base
 		@user = current_user
     getItemTypes
     
-		# save settings related to item			
-		if @item.save and params[:item][:itemsettings]
-			formsettings = params[:item][:itemsettings]
-			formsettings.each do |k,v|
-				unless v.blank?
-					setting = RailsSettings::Settings.new				
-					setting.var = k.to_s
-					setting.value = v.to_s
-					setting.thing_id = @item.id
-					setting.thing_type = "Item"				
-					setting.save
-				end
-			end
-		end
 	  create!
 	end
 

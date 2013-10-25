@@ -31,7 +31,7 @@ gem 'delayed_job', '3.0.1'
 gem 'delayed_job_active_record'
 gem 'impressionist'
 gem 'formatize'
-gem 'rails_autolink'
+gem 'rails_autolink', '1.1.4'
 gem 'sanitize'
 
 gem 'rabl'
@@ -85,8 +85,8 @@ gem 'rails3_acts_as_paranoid'
 group :development, :test do
   gem 'meta_request'
   gem 'mongrel', '>= 1.2.0.pre2'
-  gem 'rspec-rails'
-  gem 'factory_girl_rails'
+  gem 'rspec-rails', ">= 2.8.1"
+  gem 'factory_girl_rails', '>= 1.6.0'
   gem 'capybara-webkit' #, '~> 0.7.2'
   gem 'database_cleaner' #, '~> 0.6.7'
   gem 'guard-spork' #, '1.2.0'
@@ -95,8 +95,13 @@ group :development, :test do
 end
 
 group :test do
+	gem "cucumber-rails", ">= 1.2.1", :require => false
+  gem 'email_spec'
   gem 'mysql2' #, '0.2.18'
   gem 'capybara', '1.1.4'
+	gem 'selenium-webdriver'
+	gem 'Selenium'
+	gem 'selenium-client', '1.2.16'
 	gem 'launchy'
 	gem 'guard'  
 	gem 'guard-rspec'

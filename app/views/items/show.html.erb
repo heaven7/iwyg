@@ -18,7 +18,7 @@
 
   <h1><%=h @item.title %></h1>     
   <%= render :partial => "items/itemmenu", :locals => { :item => @item } %>
-	<span class="float-right"><%= render :partial => "share/social", :locals => { :thing => @item } %></span>
+	
 
   <%= render :partial => "share/images", :locals => {:images => @item.images} %>
   <% if @item.status %>
@@ -69,13 +69,15 @@
   <%= render :partial => "share/pings", :locals => {:pings => @pings, :pingable => @item}  %>
 </div>
 <div id="col2">
-  <% if logged_in? and ( @location && !@locations_json.blank? ) %>
+  <% if @location && !@locations_json.blank? %>
   <div class="box ui-corner-all">
     <div class="location">			
         <%= render :partial => "share/map", :locals => { :locations => @locations_json } %>
     </div>
   </div>
   <% end %>
+  <div class="clear"></div>
+  <span class="float-right"><%= render :partial => "share/social", :locals => { :thing => @item } %></span>
   <div class="clear"></div>
   <%= render :partial => 'share/social/likers', :locals => { :likes_count => @likes_count, :likers => @likers} %>
   <% if @items_related.size > 0 && @item.tags.size > 0 %>

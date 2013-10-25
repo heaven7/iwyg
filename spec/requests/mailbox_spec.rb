@@ -32,35 +32,4 @@ describe User, :type => :request do
 			page.should have_content("Messages (0)") 
 		end
 	end
-
-	describe "sending messages (with javascript)" do
-
-		before :all do
-			@anotheruser = create(:user, id:  Random.rand(1000), email: "another@user.com")
-
-		end
-
-		it "should send message to anotheruser", :js => true do
-			visit user_path(@anotheruser)
-			click_link "send_message"
-			fill_in "message_subject", :with => "hello"
-			fill_in "message_body", :with => "World"
-			click_button "submit_new_message"
-		#	save_and_open_page
-			page.should have_content("Message sent")
-		end
-
-		it "should reply to received message", :js => true do
-			login_as(@anotheruser, :scope => :user)
-			@messageparams = { :author => @user, :to => @anotheruser.login, :subject => "message from user", :body => "whats up?" }
-			@message = @user.sent_messages.build(@messageparams).save			
-
-			visit mailbox_path(@anotheruser)
-			page.should have_content("Messages (1)") 
-			click_link "message from user"
-			fill_in "message_body", :with => "this is the reply from another user"
-			click_button "submit_reply_message"
-			page.should have_content("Message replied")
-		end
-	end
 end

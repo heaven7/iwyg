@@ -27,7 +27,7 @@ describe Invitation do
 			@invitation.should_not be_valid
 		end
 
-		it "should not be valid if email is already registered"
+#		it "should not be valid if email is already registered"
 	end
 
 	describe "methods" do

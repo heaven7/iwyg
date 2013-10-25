@@ -25,6 +25,9 @@ class Item < ActiveRecord::Base
   acts_as_audited
   has_associated_audits
 	is_impressionable
+
+  # callbacks
+  after_create :set_defaultsettings
   
   # scopes
 	scope :enable, proc { |item| joins(:user, :custom).where('customs.enable' => 1) }
@@ -147,6 +150,18 @@ class Item < ActiveRecord::Base
 		end
 	end
 
+  # save defaultsettings related to item 
+  def set_defaultsettings
+    AppSettings.item.to_hash.each do |setting, value|
+        s = RailsSettings::Settings.new       
+        s.var = setting.to_s
+        s.value = value[:default]
+        s.thing_id = self.id
+        s.thing_type = "Item"       
+        s.save
+    end
+  end
+
   def tag_list_name
     self.tag_list if tag_list
   end
@@ -169,7 +184,7 @@ class Item < ActiveRecord::Base
 	end
 
 	def creator
-		User.find(self.user_id) if self.user_id > 0
+		User.find(self.user_id) unless self.user_id.nil?
 	end
   
   def multiple?

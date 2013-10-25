@@ -40,6 +40,8 @@ Spork.prefork do
 		config.include(MailerMacros)  
 		config.before(:each) { reset_email }
 		
+		# use of capybara
+		config.include Capybara::DSL
 
 		# Using core set of syntax methods of FactoryGirl
 		config.include FactoryGirl::Syntax::Methods
