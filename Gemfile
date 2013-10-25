@@ -85,8 +85,8 @@ gem 'rails3_acts_as_paranoid'
 group :development, :test do
   gem 'meta_request'
   gem 'mongrel', '>= 1.2.0.pre2'
-  gem 'rspec-rails'
-  gem 'factory_girl_rails'
+  gem 'rspec-rails', ">= 2.8.1"
+  gem 'factory_girl_rails', '>= 1.6.0'
   gem 'capybara-webkit' #, '~> 0.7.2'
   gem 'database_cleaner' #, '~> 0.6.7'
   gem 'guard-spork' #, '1.2.0'
@@ -103,7 +103,6 @@ group :test do
 	gem 'Selenium'
 	gem 'selenium-client', '1.2.16'
 	gem 'launchy'
-  gem 'webrat', '0.5.1'
 	gem 'guard'  
 	gem 'guard-rspec'
 	gem 'rb-inotify', '~> 0.8.8'

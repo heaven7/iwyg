@@ -9,8 +9,8 @@ Feature: User accounts
     And I fill in "user_email" with "<email>"
     And I fill in "user_password" with "<password>"
     And I fill in "user_password_confirmation" with "<password>"
-    And I press "Anmelden"
-    Then I should see "Bitte bestätige deinen Account."
+    And I press "Sign Up"
+    Then I should see "Please verify your account."
 
     Examples:
       | login   | email           | password   |
