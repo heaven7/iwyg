@@ -4,7 +4,10 @@ module NavigationHelpers
     
     when /the homepage/
       root_path
+    when /logout/
+      '/logout'
     when /the list of items/
+    when /resources/
       items_path
     when /register/
       new_user_registration_path   

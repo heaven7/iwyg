@@ -105,3 +105,8 @@ end
 Then /^the "([^\"]*)" checkbox should be checked$/ do |label|
   field_labeled(label).should be_checked
 end
+
+Then /^I should (not )?see an element "([^"]*)"$/ do |negate, selector|
+  expectation = negate ? :should_not : :should
+  page.send(expectation, have_css(selector))
+end
