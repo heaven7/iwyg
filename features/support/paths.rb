@@ -7,6 +7,7 @@ module NavigationHelpers
     when /logout/
       '/logout'
     when /the list of items/
+      items_path
     when /resources/
       items_path
     when /register/
