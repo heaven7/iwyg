@@ -6,9 +6,8 @@ module NavigationHelpers
       root_path
     when /the list of items/
       items_path
-    
-    # Add more page name => path mappings here
-    
+    when /register/
+      new_user_registration_path   
     else
       raise "Can't find mapping from \"#{page_name}\" to a path."
     end

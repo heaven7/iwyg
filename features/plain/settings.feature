@@ -1,6 +1,6 @@
 Feature: Settings
   In Order to set settings
-  I want to set, edit, create and delete settings
+  I want to set defaults, edit, create and delete settings
 
   Scenario: Default ItemSettings: visible_for: "all"
     Given I have a good titled "Hello World"

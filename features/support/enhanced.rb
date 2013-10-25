@@ -8,9 +8,13 @@ end
 # when writing steps that match against the response body returned by selenium
 World(Webrat::Selenium::Matchers)
 
-Before do
+Before do 
+  	require File.dirname(__FILE__) + '/../../db/seeds.rb'	
+end
+
+After do
   # truncate your tables here, since you can't use transactional fixtures*
 	require 'database_cleaner'
 	DatabaseCleaner.clean_with :truncation
-	DatabaseCleaner.strategy = :transaction
+#	DatabaseCleaner.strategy = :transaction
 end

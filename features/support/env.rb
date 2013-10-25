@@ -42,6 +42,7 @@ require 'email_spec/cucumber'
 # recommended as it will mask a lot of errors for you!
 #
 ActionController::Base.allow_rescue = false
+ActionMailer::Base.delivery_method = :test
 
 # Remove/comment out the lines below if your app doesn't have a database.
 # For some databases (like MongoDB and CouchDB) you may need to use :truncation instead.
@@ -54,12 +55,12 @@ end
 # You may also want to configure DatabaseCleaner to use different strategies for certain features and scenarios.
 # See the DatabaseCleaner documentation for details. Example:
 #
-#   Before('@no-txn,@selenium,@culerity,@celerity,@javascript') do
-#     # { :except => [:widgets] } may not do what you expect here
+   Before('@no-txn,@selenium,@culerity,@celerity,@javascript') do
+     # { :except => [:widgets] } may not do what you expect here
 #     # as Cucumber::Rails::Database.javascript_strategy overrides
 #     # this setting.
-#     DatabaseCleaner.strategy = :truncation
-#   end
+     DatabaseCleaner.strategy = :truncation
+   end
 #
 #   Before('~@no-txn', '~@selenium', '~@culerity', '~@celerity', '~@javascript') do
 #     DatabaseCleaner.strategy = :transaction

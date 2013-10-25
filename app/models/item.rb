@@ -184,7 +184,7 @@ class Item < ActiveRecord::Base
 	end
 
 	def creator
-		User.find(self.user_id) if self.user_id > 0
+		User.find(self.user_id) unless self.user_id.nil?
 	end
   
   def multiple?
