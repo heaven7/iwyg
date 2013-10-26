@@ -32,7 +32,6 @@ module Iwyg
     #config.time_zone = 'UTC'
     config.encoding = 'utf-8' 
     I18n.available_locales = [:de, :en]
-    I18n.default_locale = :de
     # Custom directories with classes and modules you want to be autoloadable.    
     config.autoload_paths += %W(#{config.root}/lib)
 

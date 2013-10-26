@@ -248,11 +248,14 @@ class ApplicationController < ActionController::Base
   end
   
   def set_locale
-    # if params[:locale] is nil then I18n.default_locale will be used
-    # I18n.locale = params[:locale]  || 'de'
-
-    # get the language set in the browser
-    I18n.locale = params[:locale] || ((lang = request.env['HTTP_ACCEPT_LANGUAGE']) && lang[/^[a-z]{2}/])
+    # in test-environment en is default
+    if Rails.env.test?
+      # if params[:locale] is nil then I18n.default_locale will be used
+      I18n.locale = params[:locale]  || I18n.default_locale
+    else
+      # get the language set in the browser
+      I18n.locale = params[:locale] || ((lang = request.env['HTTP_ACCEPT_LANGUAGE']) && lang[/^[a-z]{2}/])
+    end
   end 
   
   def set_user_language
