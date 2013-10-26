@@ -110,3 +110,7 @@ Then /^I should (not )?see an element "([^"]*)"$/ do |negate, selector|
   expectation = negate ? :should_not : :should
   page.send(expectation, have_css(selector))
 end
+
+Given /^my locale is "([^"]*)"$/ do |locale|
+  I18n.locale = locale
+end

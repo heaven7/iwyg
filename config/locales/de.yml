@@ -127,7 +127,7 @@ de:
       login: Username
       password: Passwort
       forgotPassword: Passwort vergessen?
-      submit: Einloggen
+      submit: Auf geht's
       remember: Eingeloggt bleiben
       register: Hier registrieren
   register:

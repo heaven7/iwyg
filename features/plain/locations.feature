@@ -4,7 +4,8 @@ Feature: Locations
   of items, meetups or groups
 
   Background:
-    Given I am an authenticated user
+    Given my locale is ":en"
+    And I am an authenticated user
 	And I am on resources
 	And I follow "New Resource"
 	And I select "Good" from "a" 

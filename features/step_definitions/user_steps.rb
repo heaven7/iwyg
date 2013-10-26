@@ -15,7 +15,7 @@ Given /^I am an authenticated user$/ do
   visit '/users/sign_in'
   fill_in "user_username", :with => email
   fill_in "user_password", :with => password
-  click_button "Login"
+  click_button "Let me in"
 end
 
 Given /^I am not authenticated$/ do
