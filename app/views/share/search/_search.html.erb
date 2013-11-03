@@ -10,7 +10,7 @@
     <%= search_form_for $search, :url => search_items_path, :html => {:method => :post} do |f| %>
 			<div class="search-field">			
 				<label><%= t("what") %></label>
-		    <% if params[:q] && params[:q][:need_eq] %>
+		    <% if !params[:q].blank? && params[:q][:need_eq] %>
 		      <%= f.select :need_eq, options_for_select([ [], [t("title.resources.iNeed"), 0], [t("title.resources.iHave"), 1]], :selected => params[:q][:need_eq]), :size => "15" %> 
 		    <% else %>
 		      <%= f.select :need_eq, options_for_select([ [], [t("title.resources.iNeed"), 0], [t("title.resources.iHave"), 1]]), :size => "15" %> 

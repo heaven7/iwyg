@@ -34,7 +34,7 @@ class ItemsController < InheritedResources::Base
       @userSubtitle = "user"
     end
     
-    if params[:q] and !params[:q][:tag] and params[:near].blank?
+    if !params[:q].blank? and !params[:q][:tag] and params[:near].blank?
 
 			# load all items                  	
       listItems(@itemable)
@@ -93,7 +93,7 @@ class ItemsController < InheritedResources::Base
 				end
       end
 			# output of normal listing
-      listItems(@itemable)
+      listItems(@itemable) if !params[:q].blank?
     end
 
   end
