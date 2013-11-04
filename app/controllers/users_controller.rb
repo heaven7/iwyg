@@ -159,6 +159,9 @@ class UsersController < InheritedResources::Base
     @active_menuitem_l1 = I18n.t "menu.user.followings"
     @active_menuitem_l1_link = followings_user_path
     @followings = @user.all_following
+    @following_users = @user.following_users
+    @following_items = @user.following_items
+    @following_groups = @user.following_groups
   end
 
   def followers
