@@ -149,7 +149,6 @@ class User < ActiveRecord::Base
 
   # following helper
   def all_following
-    puts self.id
     Follow.where(follower_id: self.id, follower_type: "User").all
   end
   

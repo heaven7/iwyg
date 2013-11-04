@@ -10,6 +10,8 @@ module NavigationHelpers
       items_path
     when /resources/
       items_path
+    when /the list of users/
+      users_path
     when /register/
       new_user_registration_path   
     else

@@ -45,9 +45,9 @@ class UsersController < InheritedResources::Base
       @user.userdetails ||= Userdetails.new
       @itemTypes = ItemType.all
       @followings = @user.all_following
-      @followings_count = @followings.count
+      @followings_count = @followings.size
       @followers = @user.followers(User)
-      @followers_count = @followers.count
+      @followers_count = @followers.size
 
       if current_user == @user
         @inverse_audits = Array.new
@@ -165,8 +165,8 @@ class UsersController < InheritedResources::Base
     @user = User.find(params[:id])
     @active_menuitem_l1 = I18n.t "menu.user.followers"
     @active_menuitem_l1_link = followers_user_path
-    @followers = @user.followers
-    @blocked_users = @user.blocks
+    @followers = @user.followers(User)
+    #@blocked_users = @user.blocks
   end
 
   private
