@@ -56,3 +56,15 @@
 .username {
   margin:0;
 }
+
+#followings{}
+
+#followings h2{
+  clear:left;
+  display:block;
+}
+
+#followings ul li{
+  display:inline;
+  float:left;
+}

@@ -81,6 +81,7 @@ Iwyg::Application.routes.draw do
     member do
       post 'rate'
       put 'follow'
+      put 'unfollow'
       put 'like'
       put 'unlike'
 			put 'voteup'
@@ -146,6 +147,7 @@ Iwyg::Application.routes.draw do
       put 'changesetting'
       post 'rate'
       put 'follow'
+      put 'unfollow'
       put 'like'
       put 'unlike'
 			put 'voteup'

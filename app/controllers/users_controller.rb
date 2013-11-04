@@ -45,9 +45,9 @@ class UsersController < InheritedResources::Base
       @user.userdetails ||= Userdetails.new
       @itemTypes = ItemType.all
       @followings = @user.all_following
-      @followings_count = @followings.count
-      @followers = @user.followers
-      @followers_count = @followers.count
+      @followings_count = @followings.size
+      @followers = @user.followers(User)
+      @followers_count = @followers.size
 
       if current_user == @user
         @inverse_audits = Array.new
@@ -117,17 +117,17 @@ class UsersController < InheritedResources::Base
     redirect_to :controller => "users", :action => "show", :id => current_user.id
   end
 
-  def follow
-    @user = User.find(params[:id])
-    if current_user.following?(@user)
-      flash[:notice] = t("flash.users.follow.error.alreadyFollowing")
-    else
-      current_user.follow(@user)
-      flash[:notice] = t("flash.users.follow.notice", :title => @user.login)
-    end
+  # def follow
+  #   @user = User.find(params[:id])
+  #   if current_user.following?(@user)
+  #     flash[:notice] = t("flash.users.follow.error.alreadyFollowing")
+  #   else
+  #     current_user.follow(@user)
+  #     flash[:notice] = t("flash.users.follow.notice", :title => @user.login)
+  #   end
 
-    redirect_to(@user)
-  end
+  #   redirect_to(@user)
+  # end
 
   def block
     @follower = User.find(params[:id])
@@ -159,14 +159,17 @@ class UsersController < InheritedResources::Base
     @active_menuitem_l1 = I18n.t "menu.user.followings"
     @active_menuitem_l1_link = followings_user_path
     @followings = @user.all_following
+    @following_users = @user.following_users
+    @following_items = @user.following_items
+    @following_groups = @user.following_groups
   end
 
   def followers
     @user = User.find(params[:id])
     @active_menuitem_l1 = I18n.t "menu.user.followers"
     @active_menuitem_l1_link = followers_user_path
-    @followers = @user.followers
-    @blocked_users = @user.blocks
+    @followers = @user.followers(User)
+    #@blocked_users = @user.blocks
   end
 
   private

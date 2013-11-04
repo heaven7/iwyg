@@ -146,6 +146,23 @@ class User < ActiveRecord::Base
   def aim_list_name=(name)
     self.aim_list = Tag.find_or_create_by_name(name) unless name.blank?
   end
+
+  # following helper
+  def all_following
+    Follow.where(follower_id: self.id, follower_type: "User").all
+  end
+
+  def following_users
+    Follow.where(follower_id: self.id, follower_type: "User", followable_type: "User").all
+  end
+
+  def following_items
+    Follow.where(follower_id: self.id, follower_type: "User", followable_type: "Item").all
+  end
+
+  def following_groups
+    Follow.where(follower_id: self.id, follower_type: "User", followable_type: "Group").all
+  end
   
   # mailbox
   def inbox

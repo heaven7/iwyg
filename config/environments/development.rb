@@ -5,6 +5,8 @@ Iwyg::Application.configure do
   # Caching
   config.perform_caching = false
 
+  I18n.default_locale = :de   
+
   # Raise exception on mass assignment protection for Active Record models
   config.active_record.mass_assignment_sanitizer = :strict
 

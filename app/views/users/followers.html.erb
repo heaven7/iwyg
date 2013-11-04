@@ -2,13 +2,7 @@
 <% @followers.each do |follower| %>
   <li>
     <%= render :partial => "share/usertiny", :locals => { :user => follower } %>
-    <% if current_user == @user %>
-      <ul class="font-smaller"">
-        <li class="button center">
-          <%= link_to t("block"), block_user_path(follower), :method => :put %>
-        </li>
-      </ul>
-    <% end %>
+    
   </li>
 <% end %>
 </ul>

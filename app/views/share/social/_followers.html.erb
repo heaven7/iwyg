@@ -1,0 +1,13 @@
+<div id="follows" class="box ui-corner-all">
+	<% if followers_count and followers_count > 0 %>
+		<div id="followers-count">
+			<span>
+				<%= image_tag("icons/icon_followers.png", alt: t("followed_by"), title: t("followed_by")) %>&nbsp;
+			</span>
+			<span class="font-small">(<%= followers_count %>)</span>
+		</div>
+		<div id="followers">
+			<%= followers.collect{|u| link_to u.login, user_path(u), title: u.login}.to_sentence.html_safe %>
+		</div>
+	<% end %>
+</div>

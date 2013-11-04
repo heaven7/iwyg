@@ -1,13 +1,20 @@
-<ul>
-<% @followings.each do |following| %>
-  <li><%=
-     if following.class.to_s == "User"
-      render :partial => "share/usertiny", :locals => { :user => following }
-     elsif following.class.to_s == "Item"
-      render :partial => "share/itemtiny", :locals => { :item => following }
-     elsif following.class.to_s == "Group"
-      render :partial => "share/grouptiny", :locals => { :group => following }
-     end
-  %></li>
-<% end %>
-</ul>
+<div id="followings">
+	<h2><%= t("menu.main.members") %> (<%= @following_users.size %>)</h2>
+	<ul id="following-users">
+		<% @following_users.each do |f| %>
+		  <li><%= render :partial => "share/usertiny", :locals => { :user => f.followable } %></li>
+		<% end %>
+	</ul>
+	<h2><%= t("menu.main.resources") %> (<%= @following_items.size %>)</h2>
+	<ul id="following-items">
+		<% @following_items.each do |f| %>
+		  <li><%= render :partial => "share/itemtiny", :locals => { :item => f.followable } %></li>
+		<% end %>
+	</ul>
+	<h2><%= t("menu.main.groups") %> (<%= @following_groups.size %>)</h2>
+	<ul id="following-groups">
+		<% @following_groups.each do |f| %>
+		  <li><%= render :partial => "share/grouptiny", :locals => { :group => f.followable } %></li>
+		<% end %>
+	</ul>
+</div>

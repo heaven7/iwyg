@@ -1,18 +1,3 @@
-<% content_for(:head) do %>
-  <%# javascript_include_tag "/assets/jquery.qrcode.js" %>
-  <%# javascript_include_tag "/assets/qrcode.js" %>
-  <script type="text/javascript">
-	/*
-    $(document).ready(function (){
-      $('#qrcode').qrcode({
-        width: 128,
-        height: 128,
-        text    : "<%= request.url %>"
-      });
-    });
-	*/
-  </script>
-<% end %>
 <div id="col1">
   <%= render :partial => "items/itemtype", :locals => { :item => @item } %><%= render :partial => "locations/location", :locals => { :location => @location } %>    
 
@@ -80,6 +65,7 @@
   <span class="float-right"><%= render :partial => "share/social", :locals => { :thing => @item } %></span>
   <div class="clear"></div>
   <%= render :partial => 'share/social/likers', :locals => { :likes_count => @likes_count, :likers => @likers} %>
+  <%= render :partial => 'share/social/followers', :locals => { :followers_count => @followers_count, :followers => @followers} %>
   <% if @items_related.size > 0 && @item.tags.size > 0 %>
     <div id="items-related">
       <h3><%= @items_related_title %> (<%= @items_related.size %>)</h3>

@@ -127,7 +127,7 @@ de:
       login: Username
       password: Passwort
       forgotPassword: Passwort vergessen?
-      submit: Einloggen
+      submit: Auf geht's
       remember: Eingeloggt bleiben
       register: Hier registrieren
   register:
@@ -258,9 +258,11 @@ de:
   updated_at: ge&auml;ndert am
   accepted_at: akzeptiert am
   follow: Folgen
+  unfollow: Nicht mehr folgen
+  followed_by: Gefolgt von
   like: Mag ich
   unlike: Mag ich nicht mehr
-  liked_by: Wird gemocht von
+  liked_by: Gemocht von
   block: Blockieren
   unblock: Blockierung aufheben
   blockedUsers: geblockte User
@@ -423,6 +425,8 @@ de:
   flash:
     like: Du magst nun '%{title}'.
     unlike: Du magst '%{title}' nicht mehr.
+    follow: Du folgst nun '%{title}'.
+    unfollow: Du folgst '%{title}' nicht mehr.
     settings:
       changed: Einstellung %{setting} geändert zu %{value}. 
     friendships:

@@ -2,6 +2,7 @@ Given /^I have one\s+user "([^\"]*)" with email "([^\"]*)" and password "([^\"]*
   @user = User.new(:login => login,
                    :email => email, 
                    :password => password, 
+                   :confirmed_at => Time.now,
                    :password_confirmation => password).save!
 
 end
@@ -15,9 +16,14 @@ Given /^I am an authenticated user$/ do
   visit '/users/sign_in'
   fill_in "user_username", :with => email
   fill_in "user_password", :with => password
-  click_button "Einloggen"
+  click_button "Let me in"
 end
 
 Given /^I am not authenticated$/ do
   visit destroy_user_session_path
+end
+
+Then(/^the following count of user "(.*?)" should be (\d+)$/) do |name, count|
+  user = User.where(login: name).first
+  user.followers(User).size
 end
