@@ -257,9 +257,9 @@ de:
   created_at: erstellt am
   updated_at: ge&auml;ndert am
   accepted_at: akzeptiert am
-  follow: Beobachten
-  unfollow: Nicht mehr beobachten
-  followed_by: Beobachtet von
+  follow: Folgen
+  unfollow: Nicht mehr folgen
+  followed_by: Gefolgt von
   like: Mag ich
   unlike: Mag ich nicht mehr
   liked_by: Gemocht von
@@ -425,6 +425,8 @@ de:
   flash:
     like: Du magst nun '%{title}'.
     unlike: Du magst '%{title}' nicht mehr.
+    follow: Du folgst nun '%{title}'.
+    unfollow: Du folgst '%{title}' nicht mehr.
     settings:
       changed: Einstellung %{setting} geändert zu %{value}. 
     friendships:

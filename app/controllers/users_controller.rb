@@ -46,7 +46,7 @@ class UsersController < InheritedResources::Base
       @itemTypes = ItemType.all
       @followings = @user.all_following
       @followings_count = @followings.count
-      @followers = @user.followers
+      @followers = @user.followers(User)
       @followers_count = @followers.count
 
       if current_user == @user
@@ -117,17 +117,17 @@ class UsersController < InheritedResources::Base
     redirect_to :controller => "users", :action => "show", :id => current_user.id
   end
 
-  def follow
-    @user = User.find(params[:id])
-    if current_user.following?(@user)
-      flash[:notice] = t("flash.users.follow.error.alreadyFollowing")
-    else
-      current_user.follow(@user)
-      flash[:notice] = t("flash.users.follow.notice", :title => @user.login)
-    end
+  # def follow
+  #   @user = User.find(params[:id])
+  #   if current_user.following?(@user)
+  #     flash[:notice] = t("flash.users.follow.error.alreadyFollowing")
+  #   else
+  #     current_user.follow(@user)
+  #     flash[:notice] = t("flash.users.follow.notice", :title => @user.login)
+  #   end
 
-    redirect_to(@user)
-  end
+  #   redirect_to(@user)
+  # end
 
   def block
     @follower = User.find(params[:id])
