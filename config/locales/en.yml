@@ -255,6 +255,8 @@ en:
   updated_at: updated on
   accepted_at: accepted on
   follow: follow
+  unfollow: "don't follow anymore"
+  followed_by: Followed by
   like: like
   unlike: "don't like anymore"
   liked_by: Liked by

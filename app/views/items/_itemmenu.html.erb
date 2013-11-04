@@ -7,9 +7,11 @@
           :method => :delete %>
     </li>
   <% else %>
-		<% if not current_user.following?(item) %>
-    	<li class="button"><%= link_to t("follow"), follow_item_path, :method => :put %></li>
-	  <% end %>
+    <% if not item.followed_by?(current_user) %>
+      <%= render :partial => "share/social/follow", :locals => { user: current_user, model_id: item.id, model_type: "Item"} %>
+    <% else %>
+      <%= render :partial => "share/social/unfollow", :locals => { user: current_user, model_id: item.id, model_type: "Item"} %>
+    <% end %>
     <% if not current_user.likes?(item) %>
       <%= render :partial => "share/social/like", :locals => { user: current_user, model_id: item.id, model_type: "Item"} %>
     <% else %>

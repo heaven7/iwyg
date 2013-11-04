@@ -145,8 +145,12 @@ class ItemsController < InheritedResources::Base
 		impressionist(@item)
 
     # likes
-    @likers = @item.likers(User)
+    @likers = getLikers(@item)
     @likes_count = @likers.count
+
+    # followers
+    @followers = getFollowers(@item)
+    @followers_count = @followers.count
 
     # seo
 		@page_title = @item.localized_itemtype + ": " + @item.title unless @item.title.blank? or @item.itemtype.blank?
@@ -243,27 +247,17 @@ class ItemsController < InheritedResources::Base
 		end
   end
 
-  def follow
-    @item = Item.find(params[:id])
-    if current_user.following?(@item)
-      flash[:notice] = t("flash.items.follow.error.alreadyFollowing")
-    else
-      current_user.follow(@item)
-      flash[:notice] = t("flash.items.follow.notice", :title => @item.title)
-    end
+  # def follow
+  #   @item = Item.find(params[:id])
+  #   if current_user.following?(@item)
+  #     flash[:notice] = t("flash.items.follow.error.alreadyFollowing")
+  #   else
+  #     current_user.follow(@item)
+  #     flash[:notice] = t("flash.items.follow.notice", :title => @item.title)
+  #   end
     
-    redirect_to(@item)
-  end
-
-#	def like
-#    @item = Item.find(params[:id])
-#		likeOf(current_user, @item)
-#	end
-
-#	def unlike
-#    @item = Item.find(params[:id])
-#		unlikeOf(current_user, @item)
-#	end
+  #   redirect_to(@item)
+  # end
   
   def rate
     @item = Item.find(params[:id])

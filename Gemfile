@@ -78,7 +78,7 @@ gem 'rmagick'
 gem 'will_paginate', '3.0.3'
 gem 'validates_timeliness' #, '2.3.2'
 gem 'roadie'
-gem 'acts_as_follower'
+#gem 'acts_as_follower'
 gem 'acts_as_audited', '~> 2.1.0'
 gem 'rails3_acts_as_paranoid'
 

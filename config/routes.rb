@@ -146,6 +146,7 @@ Iwyg::Application.routes.draw do
       put 'changesetting'
       post 'rate'
       put 'follow'
+      put 'unfollow'
       put 'like'
       put 'unlike'
 			put 'voteup'

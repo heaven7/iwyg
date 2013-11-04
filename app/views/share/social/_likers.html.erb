@@ -1,6 +1,10 @@
 <div id="likes" class="box ui-corner-all">
 	<% if likes_count and likes_count > 0 %>
-		<div id="likes-count"><span><%= image_tag("icons/icon_likes.png", :alt => t("liked_by"), :title => t("liked_by")) %>&nbsp;</span><span>(<%= likes_count %>)</span>
+		<div id="likes-count">	
+			<span>
+				<%= image_tag("icons/icon_likes.png", :alt => t("liked_by"), :title => t("liked_by")) %>&nbsp;
+			</span>
+			<span class="font-small">(<%= likes_count %>)</span>
 		</div>
 		<div id="likers">
 			<%= likers.collect{|u| link_to u.login, user_path(u), :title => u.login}.to_sentence.html_safe %>

@@ -257,10 +257,12 @@ de:
   created_at: erstellt am
   updated_at: ge&auml;ndert am
   accepted_at: akzeptiert am
-  follow: Folgen
+  follow: Beobachten
+  unfollow: Nicht mehr beobachten
+  followed_by: Beobachtet von
   like: Mag ich
   unlike: Mag ich nicht mehr
-  liked_by: Wird gemocht von
+  liked_by: Gemocht von
   block: Blockieren
   unblock: Blockierung aufheben
   blockedUsers: geblockte User

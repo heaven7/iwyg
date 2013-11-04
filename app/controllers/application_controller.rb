@@ -92,6 +92,8 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
+  # sozial interactions
+  # likes
 	def like
 		@thing = params[:model_type].classify.constantize.find(params[:model_id])
     @title = getTitle(@thing)
@@ -110,8 +112,31 @@ class ApplicationController < ActionController::Base
     @likes_count = @likers.size
 	end
 
+  # follows
+  def follow
+    @thing = params[:model_type].classify.constantize.find(params[:model_id])
+    @title = getTitle(@thing)
+    user = User.find(params[:user])
+    user.follow!(@thing)
+    @followers = getFollowers(@thing)
+    @followers_count = @followers.size
+  end
+
+  def unfollow
+    @thing = params[:model_type].classify.constantize.find(params[:model_id])
+    @title = getTitle(@thing)
+    user = User.find(params[:user])
+    user.unfollow!(@thing)
+    @followers = getFollowers(@thing)
+    @followers_count = @followers.size
+  end
+
   def getLikers(model)
     model.likers(User)
+  end
+
+  def getFollowers(model)
+    model.followers(User)
   end
 
   def getTitle(model)
