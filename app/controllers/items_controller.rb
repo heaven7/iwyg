@@ -93,7 +93,7 @@ class ItemsController < InheritedResources::Base
 				end
       end
 			# output of normal listing
-      listItems(@itemable) if !params[:q].blank?
+      listItems(@itemable) #if !params[:q].blank?
     end
 
   end
