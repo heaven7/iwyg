@@ -1,6 +1,6 @@
 Geocoder.configure(
 	:timeout  => 5,
-	:lookup   => :yandex, #:google,
+	:lookup   => :google, # :yandex, # :freegeoip,
 	:units    => :km,
 	:language => :de
 )

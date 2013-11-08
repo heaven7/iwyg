@@ -14,12 +14,13 @@ Feature: Locations
     When I fill in "Address" with "Berlin, Deutschland"
     And I press "Save"
 
-  @javascript
+  @javascript @focus
   Scenario: Set location
     Then I should see "My first resource"
-    And I should see "Berlin Germany"
     And I should see an element "div.map_container"
-
+    And the locations count of item "My first resource" should be 1
+    And I should see "Berlin Germany"
+    
   @javascript
   Scenario: Item maps can be seen even not logged in
   	Given I am on logout
@@ -37,5 +38,6 @@ Feature: Locations
     And I press "Save"
     Then I should see "Successfully saved group."
     And I should see "testgroup"
+    And I should see "München Germany"
     And I should see an element "div.map_container"
     And the locations count of group "testgroup" should be 1

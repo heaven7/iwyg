@@ -8,25 +8,25 @@ class Location < ActiveRecord::Base
   
 	belongs_to :locatable, :polymorphic => true 
 	geocoded_by :address, :latitude  => :lat, :longitude => :lng, :units => :km
-	#reverse_geocoded_by :lat, :lng
-	after_validation :geocode, :if => :address_changed?
+	reverse_geocoded_by :lat, :lng
+	#after_validation :geocode, :reverse_geocode, :if => :address_changed?
 
 	acts_as_gmappable :lat => "lat", :lng => "lng", :validation => false, :process_geocoding => false
 	acts_as_taggable_on :tags
 
 	def gmaps4rails_address
-		[address, city, zip, country].compact.join(', ') # if not address.nil? or not city.nil? or not zip.nil? or not country.nil?
+		[address, city, zip, country].compact.join(', ') # if not address.nil? and not city.nil? and not zip.nil? and not country.nil?
 	end
 
 	def gmaps4rails_infowindow
 		if Thread.current[:current_user]
-			"<b>#{getTitle}</b><br /><p class=\"font-smaller\">#{address}<br />#{city} #{I18n.t(country, :scope => "countries" )}</p>"
+			"<b>#{getTitleForWindow}</b><br /><p class=\"font-smaller\">#{address}<br />#{city} #{I18n.t('country', :scope => "countries" )}</p>"
 		else
-			"<b>#{getTitle}</b><br /><p class=\"font-smaller\">#{city} #{I18n.t(country, :scope => "countries" )}</p>"
+			"<b>#{getTitleForWindow}</b><br /><p class=\"font-smaller\">#{city} #{I18n.t('country', :scope => "countries" )}</p>"
 		end
 	end
   
-	def getTitle
+	def getTitleForWindow
 		if self.locatable.respond_to?(:title)
 			self.locatable.title 
 		elsif self.locatable.respond_to?(:login)
@@ -34,13 +34,13 @@ class Location < ActiveRecord::Base
 		end
 	end
 
-	# reverse_geocoded_by :lat, :lng do |obj,results|
-	# 	if geo = results.first
-	# 		obj.city    	= geo.city
-	# 		obj.state   	= geo.state
-	# 		obj.zip 		= geo.postal_code
-	# 		obj.country 	= geo.country_code
-	# 	end
-	# end
+	reverse_geocoded_by :lat, :lng do |obj,results|
+		if geo = results.first
+			obj.city    	= geo.city
+			obj.state   	= geo.state
+			obj.zip 		= geo.postal_code
+			obj.country 	= geo.country_code
+		end
+	end
 
 end

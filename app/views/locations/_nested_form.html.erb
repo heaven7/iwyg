@@ -7,6 +7,8 @@
     <%= location_form.input :state, :required => false, :label => t("formtastic.labels.location.state") %>
     <%= location_form.input :zip, :required => false, :input_html => {:class => "short"}, :label => t("formtastic.labels.location.zip")  %>
     <%= location_form.input :country, :required => false, :label => t("formtastic.labels.location.country"), :as => :string %>
-
+    <hr class="divider" />
+    <%= location_form.input :lat, :required => false, :label => t("formtastic.labels.location.lat"), :as => :string %>
+    <%= location_form.input :lng, :required => false, :label => t("formtastic.labels.location.lng"), :as => :string %>
   <% end %>
 <% end %>

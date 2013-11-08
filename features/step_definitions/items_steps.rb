@@ -8,14 +8,19 @@ Given(/^I need a good titled "(.*?)"$/) do |title|
   Item.create!(:title => title, :item_type_id => 1, :need => true)
 end
 
-Then(/^the following count of item "(.*?)" should be (\d+)$/) do |itemtitle, count|
-  item = Item.where(title: itemtitle).first
+Then(/^the following count of item "(.*?)" should be (\d+)$/) do |title, count|
+  item = Item.where(title: title).first
   item.followers(User).size
 end
 
-Then(/^the liking count of item "(.*?)" should be (\d+)$/) do |itemtitle, count|
-  item = Item.where(title: itemtitle).first
+Then(/^the liking count of item "(.*?)" should be (\d+)$/) do |title, count|
+  item = Item.where(title: title).first
   item.likers(User).size
+end
+
+Then(/^the locations count of item "(.*?)" should be (\d+)$/) do |title, count|
+  item = Item.where(title: title).first
+  item.locations.size
 end
 
 Then(/^I should have (\d+) items?$/) do |count|
