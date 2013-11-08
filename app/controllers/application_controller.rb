@@ -302,7 +302,7 @@ class ApplicationController < ActionController::Base
 
   
   def measures
-    @measures ||= Measure.find(:all)
+    @measures ||= Measure.all
   end 
   
   def itemtypes

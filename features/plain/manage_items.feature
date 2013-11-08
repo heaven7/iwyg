@@ -4,7 +4,9 @@ Feature: Manage Resources (Items)
   I want to list, edit, create and delete items
 
   Background:
-    Given I have a good titled "Hello World"
+    Given my locale is ":en"
+    And I am an authenticated user
+    And I have a good titled "Hello World"
     And I need a good titled "A good day"
 
   @focus
