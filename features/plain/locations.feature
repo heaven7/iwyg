@@ -7,7 +7,7 @@ Feature: Locations
     Given my locale is ":en"
     And I am an authenticated user
   	And I am on resources
-  	And I follow "New Resource"
+  	And I follow "New resource"
   	And I select "Good" from "a" 
   	And I fill in "Title" with "My first resource"
     Given I click "Where"
