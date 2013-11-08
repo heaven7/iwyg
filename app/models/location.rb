@@ -20,7 +20,11 @@ class Location < ActiveRecord::Base
   end
   
   def gmaps4rails_infowindow
-     "<b>#{getTitle}</b><br /><p class=\"font-smaller\">#{address}<br />#{city} #{I18n.t(country, :scope => "countries" )}</p>"
+  	if Thread.current[:current_user]
+		"<b>#{getTitle}</b><br /><p class=\"font-smaller\">#{address}<br />#{city} #{I18n.t(country, :scope => "countries" )}</p>"
+	else
+		"<b>#{getTitle}</b><br /><p class=\"font-smaller\">#{city} #{I18n.t(country, :scope => "countries" )}</p>"
+	end
   end
   
 	def getTitle
