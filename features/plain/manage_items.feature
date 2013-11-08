@@ -37,7 +37,7 @@ Feature: Manage Resources (Items)
     And I should see "Transport testitem2"
     And I should see "offered by"
 
-  @focus @javascript
+  @javascript
   Scenario: Destroy an item
     And I click "delete"
     And I confirm popup

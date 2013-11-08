@@ -26,3 +26,16 @@ Feature: Locations
   	And I am on resources
   	And I follow "My first resource"
     And I should see an element "div.map_container"
+
+  @focus
+  Scenario: Create group and add location to it
+    And I am on groups
+    And I follow "New group"
+    And I fill in "Title" with "testgroup"
+    And I click "Where"
+    And I fill in "Address" with "München, Germany"
+    And I press "Save"
+    Then I should see "Successfully saved group."
+    And I should see "testgroup"
+    And I should see an element "div.map_container"
+    And the locations count of group "testgroup" should be 1

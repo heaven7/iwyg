@@ -366,7 +366,7 @@ en:
     other: ! '%{count} Groups'
     singular: Group
     plural: Groups
-    new: New Group
+    new: New group
     participant:
       one: 1 Participant
       other: ! '%{count} Participants'
