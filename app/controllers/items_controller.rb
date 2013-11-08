@@ -105,7 +105,7 @@ class ItemsController < InheritedResources::Base
   
   def show
 		@itemable = find_model
-    @item = Item.find(params[:id], :include => [:images, :pings, :comments, :locations, :events, :tags, :item_attachments])
+    @item = Item.find(params[:id])
     @user = current_user
 
     # related resources
@@ -136,7 +136,7 @@ class ItemsController < InheritedResources::Base
     end
 
     @pings = @item.pings.open_or_accepted
-    @comments = @item.comments.find(:all, :order => "created_at DESC")
+    #@comments = @item.comments.find(:all, :order => "created_at DESC")
     @events = @item.events
     @location = @item.locations.first
     getLocation(@item) if @location and @location.lat and @location.lng
@@ -240,6 +240,7 @@ class ItemsController < InheritedResources::Base
 		@itemable = find_model
     @item = Item.find(params[:id])
     @item.destroy
+    flash[:notice] = t("flash.items.destroy.notice")
 		if @itemable
     	redirect_to @itemable
 		else
