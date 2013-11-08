@@ -28,6 +28,7 @@ class User < ActiveRecord::Base
   acts_as_follower
   acts_as_followable
 	acts_as_liker
+  acts_as_likeable
   has_associated_audits
   # acts_as_audited #:associated_with => :meetup, :except => [:password]
 	is_impressionable

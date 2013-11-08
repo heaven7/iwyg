@@ -146,16 +146,16 @@ class ItemsController < InheritedResources::Base
 
     # likes
     @likers = getLikers(@item)
-    @likes_count = @likers.count
+    @likes_count = @likers.size
 
     # followers
     @followers = getFollowers(@item)
-    @followers_count = @followers.count
+    @followers_count = @followers.size
 
     # seo
 		@page_title = @item.localized_itemtype + ": " + @item.title unless @item.title.blank? or @item.itemtype.blank?
     @page_description = @item.description unless @item.description.blank?
-    @page_keywords = @item.tag_list unless @item.tag_list.count < 1
+    @page_keywords = @item.tag_list unless @item.tag_list.size < 1
   end
   
   def new
@@ -311,7 +311,7 @@ class ItemsController < InheritedResources::Base
       :order => "created_at DESC", 
       :per_page => AppSettings.items.per_page 
     )
-    @items_count = @items.count
+    @items_count = @items.size
 	end
 
 	def saveSearch(params)

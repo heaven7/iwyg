@@ -8,5 +8,10 @@
     <% else %>
       <%= render :partial => "share/social/unfollow", :locals => { user: current_user, model_id: user.id, model_type: "User"} %>
     <% end %>
+    <% if not current_user.likes?(user) %>
+      <%= render :partial => "share/social/like", :locals => { user: current_user, model_id: user.id, model_type: "User"} %>
+    <% else %>
+      <%= render :partial => "share/social/unlike", :locals => { user: current_user, model_id: user.id, model_type: "User"} %>
+    <% end %>
   </ul>
 <% end %>

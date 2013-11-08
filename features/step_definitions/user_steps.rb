@@ -27,3 +27,8 @@ Then(/^the following count of user "(.*?)" should be (\d+)$/) do |name, count|
   user = User.where(login: name).first
   user.followers(User).size
 end
+
+Then(/^the liking count of user "(.*?)" should be (\d+)$/) do |name, count|
+  user = User.where(login: name).first
+  user.likers(User).size
+end

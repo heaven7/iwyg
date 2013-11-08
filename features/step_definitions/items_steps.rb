@@ -13,6 +13,11 @@ Then(/^the following count of item "(.*?)" should be (\d+)$/) do |itemtitle, cou
   item.followers(User).size
 end
 
+Then(/^the liking count of item "(.*?)" should be (\d+)$/) do |itemtitle, count|
+  item = Item.where(title: itemtitle).first
+  item.likers(User).size
+end
+
 Then(/^I should have (\d+) items?$/) do |count|
   Item.count.should == count.to_i 
 end
