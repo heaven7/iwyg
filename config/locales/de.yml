@@ -847,6 +847,8 @@ de:
         zip: PLZ
         state: Bundesland
         country: Land
+        lat: Latitude
+        lng: Longitude
       user:
         aim_list: Ziele
         skill_list: Fähigkeiten

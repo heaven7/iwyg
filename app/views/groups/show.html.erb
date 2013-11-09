@@ -1,4 +1,5 @@
 <h1><%= @group.title.html_safe %></h1>
+<%= render :partial => "locations/location", :locals => { :location => @location } %>    
 <%= render :partial => "groupmenu", :locals => { :group => @group } %>
 <div class="sub2cols">
   <div class="subcol1">

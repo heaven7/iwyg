@@ -839,6 +839,8 @@ en:
         zip: Zip
         state: State
         country: Country
+        lat: Latitude
+        lng: Longitude
       user:
         aim_list: Aims
         skill_list: Skills
