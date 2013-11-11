@@ -14,8 +14,8 @@ Feature: Locations
     When I fill in "Address" with "Berlin, Deutschland"
     And I fill in "City" with "Berlin"
     And I fill in "Country" with "Deutschland"
-    And I fill in "Lat" with "52.52000659999999"
-    And I fill in "Lng" with "13.404953999999975"
+    And I fill in "Latitude" with "52.52000659999999"
+    And I fill in "Longitude" with "13.404953999999975"
     And I press "Save"
 
   @javascript @focus
@@ -41,8 +41,8 @@ Feature: Locations
     And I fill in "Address" with "München, Germany"
     And I fill in "City" with "München"
     And I fill in "Country" with "Deutschland"
-    And I fill in "Lat" with "48.1351253"
-    And I fill in "Lng" with "11.581980599999952"
+    And I fill in "Latitude" with "48.1351253"
+    And I fill in "Longitude" with "11.581980599999952"
     And I press "Save"
     Then I should see "Successfully saved group."
     And I should see "testgroup"
