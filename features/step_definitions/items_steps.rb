@@ -8,6 +8,16 @@ Given(/^I need a good titled "(.*?)"$/) do |title|
   Item.create!(:title => title, :item_type_id => 1, :need => true)
 end
 
+Given(/^I see the item titled "(.+)"$/) do |title|
+  item = Item.where(title: title).first
+  visit item_path(item.id)
+end
+
+Then(/^the pings count of item "(.*?)" should be (\d+)$/) do |title, count|
+  item = Item.where(title: title).first
+  item.pings.size
+end
+
 Then(/^the following count of item "(.*?)" should be (\d+)$/) do |title, count|
   item = Item.where(title: title).first
   item.followers(User).size
