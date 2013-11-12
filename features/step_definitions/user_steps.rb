@@ -13,17 +13,26 @@ Given /^I am an authenticated user$/ do
   password = 'secretpass'
   step %{I have one user "#{login}" with email "#{email}" and password "#{password}"}
   
-  visit '/users/sign_in'
-  fill_in "user_username", :with => email
-  fill_in "user_password", :with => password
-  click_button "Let me in"
+  step("I login with 'testuser' and 'secretpass'")
 end
 
 Given /^I am not authenticated$/ do
-  visit destroy_user_session_path
+  visit '/logout'
+end
+
+Given /^I login with "(.*?)" and "(.*?)"$/ do |login, password|
+  visit '/users/sign_in'
+  fill_in "user_username", :with => login
+  fill_in "user_password", :with => password
+  click_button "Let me in"
 end
 
 Then(/^the following count of user "(.*?)" should be (\d+)$/) do |name, count|
   user = User.where(login: name).first
   user.followers(User).size
+end
+
+Then(/^the liking count of user "(.*?)" should be (\d+)$/) do |name, count|
+  user = User.where(login: name).first
+  user.likers(User).size
 end

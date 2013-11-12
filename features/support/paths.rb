@@ -13,7 +13,9 @@ module NavigationHelpers
     when /the list of users/
       users_path
     when /register/
-      new_user_registration_path   
+      new_user_registration_path  
+    when /groups/
+      groups_path   
     else
       raise "Can't find mapping from \"#{page_name}\" to a path."
     end

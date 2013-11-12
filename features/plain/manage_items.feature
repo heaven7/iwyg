@@ -3,10 +3,44 @@ Feature: Manage Resources (Items)
   As an user
   I want to list, edit, create and delete items
 
-  Scenario: List Items
-    Given I have a good titled "Hello World"
-    And I need a good titled "A good day"
+  Background:
+    Given my locale is ":en"
+    And I am an authenticated user
+    And I have a good titled "Hello World"
+    And I go to the list of items
+    And I click "New resource"
+    And I select "need" from "I"
+    And I select "Service" from "a"
+    And I fill in "Title" with "testitem"
+    And I press "Save"
+
+  Scenario: List items
     When I go to the list of items
     Then I should see "Hello World"
-    And I should see "A good day"
+    And I should see "testitem"
     And I should have 2 items
+
+  Scenario: Create an item (needed)
+    Then I should see "Resource created successfully."
+    And I should see "Service testitem"
+    And I should see "needed by"
+    And I should have 2 items
+
+  Scenario: Edit an item (needed)
+    And I click "edit"
+    And I should see "testitem" in field "item_title"
+    And I select "Transport" from "a"
+    And I select "have" from "I"
+    And I fill in "Title" with "testitem2"
+    And I press "Save"
+    Then I should see "Successfully updated resource."
+    And I should see "Transport testitem2"
+    And I should see "offered by"
+
+  @javascript
+  Scenario: Destroy an item
+    And I click "delete"
+    And I confirm popup
+    Then I should see "Successfully deleted resource."
+    Then I should have 1 item
+

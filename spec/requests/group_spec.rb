@@ -63,7 +63,6 @@ describe Group do
 		it "can show edit form" do
 			click_link "group-edit"			
 			page.should have_content("Change your group")
-#			save_and_open_page	
 		end
 
 		it "can change title" do
@@ -71,14 +70,7 @@ describe Group do
 			fill_in :group_title, :with => "testgroup changed"
 			click_button "group-save"
 			page.should have_content("testgroup changed")  
-      page.should have_content("Successfully updated group.") 
-		end
-		
-		it "can add location" do
-			click_link "group-edit"			
-			fill_in "Address", :with => "Berlin"
-			expect { click_button "group-save" }.to change { @group.locations.count }.by(1)	
-      page.should have_content("Location") 
+      		page.should have_content("Successfully updated group.") 
 		end
 
 		it "can add tags" do

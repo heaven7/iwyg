@@ -480,6 +480,8 @@ de:
         error: Ressource konnte nicht erstellt werden.
       update:
         notice: Erfolgreich Ressource ge&auml;ndert.
+      destroy:
+        notice: Erfolgreich Ressource gel&ouml;scht.
       follow:
         error:
           alreadyFollowing: Du folgst der Ressource bereits.
@@ -845,6 +847,8 @@ de:
         zip: PLZ
         state: Bundesland
         country: Land
+        lat: Latitude
+        lng: Longitude
       user:
         aim_list: Ziele
         skill_list: Fähigkeiten

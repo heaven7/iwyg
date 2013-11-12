@@ -1,6 +1,6 @@
 <div id="col1">
-  <%= render :partial => "items/itemtype", :locals => { :item => @item } %><%= render :partial => "locations/location", :locals => { :location => @location } %>    
-
+  <%= render :partial => "items/itemtype", :locals => { :item => @item } %>
+  <%= render :partial => "locations/location", :locals => { :location => @location } %>    
   <h1><%=h @item.title %></h1>     
   <%= render :partial => "items/itemmenu", :locals => { :item => @item } %>
 	

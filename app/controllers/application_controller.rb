@@ -296,13 +296,14 @@ class ApplicationController < ActionController::Base
 
 	def set_current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    Thread.current[:current_user] = @current_user
   end
 
   protected
 
   
   def measures
-    @measures ||= Measure.find(:all)
+    @measures ||= Measure.all
   end 
   
   def itemtypes

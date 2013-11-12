@@ -15,6 +15,10 @@ Iwyg::Application.configure do
   # Generate digests for assets URLs.
   config.assets.digest = true
 
+
+  # Add the fonts path
+  config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
 
@@ -51,6 +55,7 @@ Iwyg::Application.configure do
   # In production, Apache or nginx will already do this
   config.serve_static_assets = true
 	config.assets.precompile += %w[*.png *.jpg *.jpeg *.gif]
+  config.assets.precompile << /\.(?:svg|eot|woff|ttf|png|jpg|jpeg|gif)$/
 
   # Enable serving of images, stylesheets, and javascripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"

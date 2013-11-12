@@ -147,7 +147,7 @@ en:
   resource:
     one: 1 Resource
     other: ! '%{count} Resources'
-    new: New Resource
+    new: New resource
   good:
     one: 1 Good
     other: ! '%{count} Goods'
@@ -366,7 +366,7 @@ en:
     other: ! '%{count} Groups'
     singular: Group
     plural: Groups
-    new: New Group
+    new: New group
     participant:
       one: 1 Participant
       other: ! '%{count} Participants'
@@ -476,6 +476,8 @@ en:
         error: Resource could not be created.
       update:
         notice: Successfully updated resource.
+      destroy:
+        notice: Successfully deleted resource.
       follow:
         error:
           alreadyFollowing: You are already following this resource.
@@ -837,6 +839,8 @@ en:
         zip: Zip
         state: State
         country: Country
+        lat: Latitude
+        lng: Longitude
       user:
         aim_list: Aims
         skill_list: Skills

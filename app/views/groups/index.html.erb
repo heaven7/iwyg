@@ -1,9 +1,7 @@
-<% if @user %>
-  <% if @user == current_user %>
-    <div class="button new">
-      <%= link_to t("group.new"), new_user_group_path, :id => "group-new" %>
-    </div>
-  <% end %>
+<% if logged_in? %>
+  <div class="button new">
+    <%= link_to t("group.new"), new_user_group_path(current_user), :id => "group-new" %>
+  </div>
 <% end %>  
 
 <%= render :partial => "share/search/panel", :locals => { :count => @groups_count } %>

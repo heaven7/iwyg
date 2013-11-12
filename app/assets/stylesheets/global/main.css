@@ -6,7 +6,7 @@
 @import url(links.css);
 @import url(sub2cols.css);
 @import url(lists.css);
-@import url(font.css);
+@import url(../fonts.css);
 @import url(userarea.css);
 @import url(comments.css);
 @import url(pings.css);

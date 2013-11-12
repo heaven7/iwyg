@@ -52,7 +52,7 @@
             <%= f.input :members, :as => :check_boxes, :hint => t("formtastic.hints.group.members"), :collection => @group.members, :member_label => Proc.new { |u| "#{render :partial => "share/usertiny_unlinked", :locals => { :user => u }}".html_safe } %>
 						<hr /> 
           <% end %>
-					<% if @users.size > 0 %>         
+					<% if @users && @users.size > 0 %>         
 					  <%= f.input :members_pending, :as => :check_boxes, :hint => t("formtastic.hints.group.members_pending"), :collection => @users, :member_label => Proc.new { |u| "#{render :partial => "share/usertiny_unlinked", :locals => { :user => u }}".html_safe } %>
           <% else %>
             <%= t("meetup.onlyFollowersAvailableToAdd").html_safe %>
