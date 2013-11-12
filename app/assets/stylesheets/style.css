@@ -2,8 +2,6 @@
  * General iwyg style definition.
  * 
 */
-@import url(global/main.css);
-@import url(extensions.css);
 
 body {
 	font-family: 'Signika Negative', serif;

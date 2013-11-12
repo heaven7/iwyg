@@ -41,7 +41,6 @@ gem 'eventmachine', '1.0.0.beta.2'
 gem 'thin'
 gem 'therubyracer', '0.10.2', :platform => :ruby
 
-#gem 'geokit'
 gem 'geocoder', '1.1.8'
 gem 'gmaps4rails', '1.4.5'
 gem 'rgeo'

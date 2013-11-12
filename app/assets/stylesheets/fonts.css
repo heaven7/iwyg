@@ -2,21 +2,21 @@
   font-family: 'Signika Negative';
   font-style: normal;
   font-weight: 400;
-  src: url('signikanegative-regular-webfont.eot'); 
-  src: url('signikanegative-regular-webfont.eot?#iefix') format('embedded-opentype'),
-	   url('signikanegative-regular-webfont.svg#signikanegative-regular-webfont') format('svg'),
-	   url('signikanegative-regular-webfont.woff') format('woff'),
-	   url('signikanegative-regular-webfont.ttf')  format('truetype');
+  src: url('/assets/signikanegative-regular-webfont.eot'); 
+  src: url('/assets/signikanegative-regular-webfont.eot?#iefix') format('embedded-opentype'),
+	   url('/assets/signikanegative-regular-webfont.svg#signikanegative-regular-webfont') format('svg'),
+	   url('/assets/signikanegative-regular-webfont.woff') format('woff'),
+	   url('/assets/signikanegative-regular-webfont.ttf')  format('truetype');
 }
 @font-face {
   font-family: 'Signika Negative';
   font-style: normal;
   font-weight: 600;
-  src: url('signikanegative-semibold-webfont.eot'); 
-  src: url('signikanegative-semibold-webfont.eot?#iefix') format('embedded-opentype'),
-  	   url('signikanegative-semibold-webfont.svg#signikanegative-semibold-webfont') format('svg'),
-  	   url('signikanegative-semibold-webfont.woff') format('woff'),
-  	   url('signikanegative-semibold-webfont.ttf')  format('truetype');
+  src: url('/assets/signikanegative-semibold-webfont.eot'); 
+  src: url('/assets/signikanegative-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+  	   url('/assets/signikanegative-semibold-webfont.svg#signikanegative-semibold-webfont') format('svg'),
+  	   url('/assets/signikanegative-semibold-webfont.woff') format('woff'),
+  	   url('/assets/signikanegative-semibold-webfont.ttf')  format('truetype');
 }
 
 .font-small {
