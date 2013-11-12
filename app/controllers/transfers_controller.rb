@@ -1,4 +1,3 @@
-require 'geokit'
 class TransfersController < InheritedResources::Base
   
   layout :conditional_layout
