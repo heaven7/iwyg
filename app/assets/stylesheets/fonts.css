@@ -1,0 +1,34 @@
+@font-face {
+  font-family: 'Signika Negative';
+  font-style: normal;
+  font-weight: 400;
+  src: url('signikanegative-regular-webfont.eot'); 
+  src: url('signikanegative-regular-webfont.eot?#iefix') format('embedded-opentype'),
+	   url('signikanegative-regular-webfont.svg#signikanegative-regular-webfont') format('svg'),
+	   url('signikanegative-regular-webfont.woff') format('woff'),
+	   url('signikanegative-regular-webfont.ttf')  format('truetype');
+}
+@font-face {
+  font-family: 'Signika Negative';
+  font-style: normal;
+  font-weight: 600;
+  src: url('signikanegative-semibold-webfont.eot'); 
+  src: url('signikanegative-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+  	   url('signikanegative-semibold-webfont.svg#signikanegative-semibold-webfont') format('svg'),
+  	   url('signikanegative-semibold-webfont.woff') format('woff'),
+  	   url('signikanegative-semibold-webfont.ttf')  format('truetype');
+}
+
+.font-small {
+  font-size:90%;  
+}
+.font-smaller {
+  font-size:80%;  
+}
+.bold {
+  font-weight:bold;
+}
+.hint {
+  font-size:90%;
+  color:#6b716a;
+}
