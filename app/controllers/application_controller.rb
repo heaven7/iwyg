@@ -313,9 +313,6 @@ class ApplicationController < ActionController::Base
   def itemstatuses
     @itemstatuses ||= ItemStatus.all
   end
-  
-  def ip
-  #  @user_location ||= GeoKit::Geocoders::MultiGeocoder.geocode(request.remote_ip)
-  end
+
     
 end

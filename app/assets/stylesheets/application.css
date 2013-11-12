@@ -1,6 +1,24 @@
 /*
 *= require_self
+*= require global/menues
+*= require global/mainnavigation
+*= require global/topnavigation
+*= require global/search
+*= require global/forms
+*= require global/links
+*= require global/sub2cols
+*= require global/lists
+*= require global/userarea
+*= require global/comments
+*= require global/pings
+*= require global/user
+*= require global/events
+*= require global/items
+*= require global/settings
+*= require global/main
 *= require style
+*= require fonts
+*= require extensions
 *= require token-input
 *= require formtastic
 *= require formtastic_changes
