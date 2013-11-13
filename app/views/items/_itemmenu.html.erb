@@ -8,11 +8,7 @@
     </li>
   <% else %>
     <%= render partial: "share/social/followbuttons", :locals => { user: current_user, model: item } %>
-    <% if not current_user.likes?(item) %>
-      <%= render :partial => "share/social/like", :locals => { user: current_user, model_id: item.id, model_type: "Item"} %>
-    <% else %>
-      <%= render :partial => "share/social/unlike", :locals => { user: current_user, model_id: item.id, model_type: "Item"} %>
-    <% end %>
+    <%= render partial: "share/social/likebuttons", :locals => { user: current_user, model: item } %>
   <% end %>
   </ul>
 <div class="clear" ></div>

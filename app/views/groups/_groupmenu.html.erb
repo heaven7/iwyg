@@ -5,6 +5,7 @@
       <li class="button"><%= link_to t("delete").html_safe, group, :confirm => t("confirm_delete").html_safe, :method => :delete, :id => "group-delete"  %></li>
     <% else %>
 			<%= render partial: "share/social/followbuttons", :locals => { user: current_user, model: group } %>
+			<%= render partial: "share/social/likebuttons", :locals => { user: current_user, model: group } %>
     		<% if @invitation %>
 				<li class="button"><%= link_to link_to t("accept"), accept_grouping_path(:id => @invitation.id), :method => :put, :id =>"group-accept-invitation" %></li>			
 			<% end %>
