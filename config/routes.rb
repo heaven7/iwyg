@@ -102,6 +102,7 @@ Iwyg::Application.routes.draw do
     resources :users, :images, :items
     member do
       put 'follow'
+      put 'unfollow'
       put 'like'
       put 'unlike'
 			put 'voteup'

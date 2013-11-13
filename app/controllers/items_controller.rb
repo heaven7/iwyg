@@ -6,7 +6,7 @@ class ItemsController < InheritedResources::Base
   respond_to :html, :xml, :js, :json
   before_filter :authenticate_user!, :only => [:new, :edit, :create]
 
-  helper :users, :transfers
+  helper :users
   
   has_scope :on_hold
   has_scope :accepted 

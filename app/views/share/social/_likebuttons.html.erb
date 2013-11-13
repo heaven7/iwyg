@@ -1,0 +1,5 @@
+<% if not user.likes?(model) %>
+  <%= render :partial => "share/social/like", :locals => { user: user, model_id: model.id, model_type: model.class.name } %>
+<% else %>
+  <%= render :partial => "share/social/unlike", :locals => { user: user, model_id: model.id, model_type: model.class.name } %>
+<% end %>

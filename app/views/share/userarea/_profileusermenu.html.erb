@@ -3,15 +3,7 @@
     <li class="button">
       <%= link_to t("menu.user.sendMessage"), new_sent_path(:to => user), :remote => true, :id => "send_message" %>
     </li>
-    <% if not user.followed_by?(current_user) %>
-      <%= render :partial => "share/social/follow", :locals => { user: current_user, model_id: user.id, model_type: "User"} %>
-    <% else %>
-      <%= render :partial => "share/social/unfollow", :locals => { user: current_user, model_id: user.id, model_type: "User"} %>
-    <% end %>
-    <% if not current_user.likes?(user) %>
-      <%= render :partial => "share/social/like", :locals => { user: current_user, model_id: user.id, model_type: "User"} %>
-    <% else %>
-      <%= render :partial => "share/social/unlike", :locals => { user: current_user, model_id: user.id, model_type: "User"} %>
-    <% end %>
+    <%= render partial: "share/social/followbuttons", :locals => { user: current_user, model: user } %>
+    <%= render partial: "share/social/likebuttons", :locals => { user: current_user, model: user } %>
   </ul>
 <% end %>
