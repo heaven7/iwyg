@@ -13,7 +13,7 @@ Given /^I am an authenticated user$/ do
   password = 'secretpass'
   step %{I have one user "#{login}" with email "#{email}" and password "#{password}"}
   
-  step("I login with 'testuser' and 'secretpass'")
+  step('I login with "testuser" and "secretpass"')
 end
 
 Given /^I am not authenticated$/ do

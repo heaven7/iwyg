@@ -121,29 +121,6 @@ class GroupsController < InheritedResources::Base
     end
   end
 
-  def follow
-    @group = Group.find(params[:id])
-    if current_user.following?(@group)
-      flash[:notice] = t("flash.groups.follow.error.alreadyFollowing")
-    else
-      current_user.follow(@group)
-      flash[:notice] = t("flash.groups.follow.notice", :title => @group.title)
-    end
-
-    redirect_to(@group)
-  end
-
-	def like
-    @group = Group.find(params[:id])
-		likeOf(current_user, @group)
-	end
-
-	def unlike
-    @group = Group.find(params[:id])
-		unlikeOf(current_user, @group)
-	end
-
-
   def tag_suggestions
     @tags = Group.tag_counts_on("tags").find(:all, :conditions => ["name LIKE ?", "%#{params[:term]}%"], :limit=> params[:limit] || 5)
     render  :json => @tags.join(',').split(',')
