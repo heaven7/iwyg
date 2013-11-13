@@ -564,7 +564,7 @@ de:
         notice: Teilnahmeanfrage akzeptiert.
         error: Es gab Probleme, die Teilnahme zu akzeptieren.
       destroy:
-        notice: Teilnahmeanfrage abgelehnt.
+        notice: Teilnahmeanfrage abgebrochen.
     invitations:
       contactsImported: Kontakte erfolgreich importiert
       chooseProvider: Bitte w&auml;hle einen Email-Anbieter
@@ -647,7 +647,7 @@ de:
   groups:
     ressource: Resource
     description: Beschreibung
-    holder: Verwalter
+    holder: Verwaltet von
     memberships: Mitglied von
     pendingMembers: Anfragen und eingeladene Mitglieder
     members: Mitglieder

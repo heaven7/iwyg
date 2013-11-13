@@ -5,6 +5,7 @@ development:
   :user_name: 'username@gmail.com'
   :password: 'secret'
   :enable_starttls_auto: true
+  :openssl_verify_mode: 'none'
 test:
   :address: smtp.gmail.com
   :port: 587
@@ -12,6 +13,7 @@ test:
   :user_name: 'username@gmail.com'
   :password: 'secret'
   :enable_starttls_auto: true
+  :openssl_verify_mode: 'none'
 production:
   :address: smtp.gmail.com
   :port: 587
@@ -19,3 +21,4 @@ production:
   :user_name: 'username@gmail.com'
   :password: 'secret'
   :enable_starttls_auto: true
+  :openssl_verify_mode: 'none'
