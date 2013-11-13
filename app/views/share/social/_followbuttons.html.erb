@@ -1,0 +1,6 @@
+<% if not model.followed_by?(user) %>
+  <%= render :partial => "share/social/follow", :locals => { user: user, model_id: model.id, model_type: model.class.name } %>
+<% else %>
+  <%= render :partial => "share/social/unfollow", :locals => { user: user, model_id: model.id, model_type: model.class.name } %>
+<% end %>
+    
