@@ -1,5 +1,5 @@
 <% if group %>
-<div class="list-item ui-corner-all">
+<div id="group-<%= group.id %>" class="group list-item ui-corner-all">
   <%= render :partial => "share/list-item/usermenu", :locals => {:model => group} if logged_in? and group.owner == current_user %>
   <div class="item-members-count font-smaller">
     <%= image_tag "icons/icon_group.png", :alt => "#{group.title} - #{t('group.participant', :count => group.members.size)}", :title => "#{group.title} - #{t('group.participant', :count => group.members.size)}" %> (<%= group.members.size %>)

@@ -424,7 +424,7 @@ en:
     follow: ! "You are following '%{title}'."
     unfollow: ! "You don't follow '%{title}' anymore."
     settings:
-      changed: Setting %{setting} changed to %{value}.
+      changed: Setting '%{setting}' changed to '%{value}'.
     friendships:
       create:
         notice: Friend added.
