@@ -42,5 +42,5 @@ Feature: Manage groups
     And I click "delete"
     And I confirm popup
     Then I should see "Group was successfully destroyed."
-    Then I should have 1 group
+    Then I should have 0 groups
 
