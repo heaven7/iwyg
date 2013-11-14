@@ -1,17 +1,30 @@
-
 <ul class="horizontal usermenu ui-corner-all">
   <li>
-		<%= link_to image_tag("icons/icon_edit.png", :title => t("edit").html_safe, :alt => t("edit").html_safe), 
-				edit_polymorphic_path([model.owner, model]) %>
+		<%= link_to image_tag("icons/icon_edit.png",
+        title: t("edit").html_safe, 
+        alt: t("edit").html_safe), 
+        edit_polymorphic_path([model.owner, model]) 
+    %>
 	</li>
 	<li>
-		<%= render :partial => "share/settings/visible_for", :locals => { :owner => model.owner.login, :settings => AppSettings.item.visible_for.values, :model_type => "Items", :model_id => model.id, :current => model.settings.visible_for || AppSettings.item.visible_for.default, :css_id => "item-#{model.id}" } %>	
+		<%= render partial: "share/settings/visible_for", 
+        locals: { 
+          owner: model.owner.login, 
+          settings: eval("AppSettings.#{model.class.name.downcase}.visible_for.values"),
+          model_type: "#{model.class.name.pluralize.titleize}", 
+          model_id: model.id,
+          current: model.settings.visible_for || eval("AppSettings.#{model.class.name.downcase}.visible_for.default"),
+          css_id: "#{model.class.name.downcase}-#{model.id}" 
+        }
+    %>	
   </li>
   <li>
-		<%= link_to image_tag("icons/icon_delete.png", :title => t("delete").html_safe, :alt => t("delete").html_safe), 
+		<%= link_to image_tag("icons/icon_delete.png", 
+        title: t("delete").html_safe, alt: t("delete").html_safe), 
         polymorphic_path([model.owner, model]),
-        :confirm => t("confirm_delete").html_safe,
-        :method => :delete %>
+        confirm: t("confirm_delete").html_safe,
+        method: :delete
+    %>
   </li>
 </ul>
 

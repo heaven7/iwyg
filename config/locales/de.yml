@@ -428,7 +428,7 @@ de:
     follow: Du folgst nun '%{title}'.
     unfollow: Du folgst '%{title}' nicht mehr.
     settings:
-      changed: Einstellung %{setting} geändert zu %{value}. 
+      changed: Einstellung '%{setting}' geändert zu '%{value}'. 
     friendships:
       create:
         notice: Freundschaft erfolgreich gebildet.

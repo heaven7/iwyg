@@ -13,6 +13,10 @@ Given(/^I see the item titled "(.+)"$/) do |title|
   visit item_path(item.id)
 end
 
+Given(/^I create an item with "(.+)"$/) do |args|
+  Item.create!(args)
+end
+
 Then(/^the pings count of item "(.*?)" should be (\d+)$/) do |title, count|
   item = Item.where(title: title).first
   item.pings.size
@@ -34,6 +38,6 @@ Then(/^the locations count of item "(.*?)" should be (\d+)$/) do |title, count|
 end
 
 Then(/^I should have (\d+) items?$/) do |count|
-  Item.count.should == count.to_i 
+  Item.size.should == count.to_i 
 end
 

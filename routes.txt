@@ -218,6 +218,7 @@
                            DELETE   /users/:user_id/userdetails(.:format)                         userdetails#destroy
                  rate_user POST     /users/:id/rate(.:format)                                     users#rate
                follow_user PUT      /users/:id/follow(.:format)                                   users#follow
+             unfollow_user PUT      /users/:id/unfollow(.:format)                                 users#unfollow
                  like_user PUT      /users/:id/like(.:format)                                     users#like
                unlike_user PUT      /users/:id/unlike(.:format)                                   users#unlike
                voteup_user PUT      /users/:id/voteup(.:format)                                   users#voteup
@@ -258,6 +259,7 @@
                            PUT      /groups/:group_id/items/:id(.:format)                         items#update
                            DELETE   /groups/:group_id/items/:id(.:format)                         items#destroy
               follow_group PUT      /groups/:id/follow(.:format)                                  groups#follow
+            unfollow_group PUT      /groups/:id/unfollow(.:format)                                groups#unfollow
                 like_group PUT      /groups/:id/like(.:format)                                    groups#like
               unlike_group PUT      /groups/:id/unlike(.:format)                                  groups#unlike
               voteup_group PUT      /groups/:id/voteup(.:format)                                  groups#voteup
@@ -363,13 +365,15 @@ edit_item_item_attatchment GET      /items/:item_id/item_attatchments/:id/edit(.
                            GET      /items/:item_id/location(.:format)                            locations#show
                            PUT      /items/:item_id/location(.:format)                            locations#update
                            DELETE   /items/:item_id/location(.:format)                            locations#destroy
+        changesetting_item PUT      /items/:id/changesetting(.:format)                            items#changesetting
                  rate_item POST     /items/:id/rate(.:format)                                     items#rate
                follow_item PUT      /items/:id/follow(.:format)                                   items#follow
+             unfollow_item PUT      /items/:id/unfollow(.:format)                                 items#unfollow
                  like_item PUT      /items/:id/like(.:format)                                     items#like
                unlike_item PUT      /items/:id/unlike(.:format)                                   items#unlike
                voteup_item PUT      /items/:id/voteup(.:format)                                   items#voteup
              votedown_item PUT      /items/:id/votedown(.:format)                                 items#votedown
-        changesetting_item PUT      /items/:id/changesetting(.:format)                            items#changesetting
+       changesetting_items PUT      /items/changesetting(.:format)                                items#changesetting
      tag_suggestions_items GET      /items/tag_suggestions(.:format)                              items#tag_suggestions
               search_items GET|POST /items/search(.:format)                                       items#search
                      items GET      /items(.:format)                                              items#index

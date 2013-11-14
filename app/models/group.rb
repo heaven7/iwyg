@@ -5,10 +5,16 @@ class Group < ActiveRecord::Base
 
   include RailsSettings::Extend 
 
-  attr_accessible :user_id, :member_ids, :members_pending_ids, :title, :description, :tag_list, :tag_tokens, :locations, :users,
-    :images_attributes, :locations_attributes, :image_file_name, :image_content_type, :image_file_size
+  attr_accessor :near, :groupsettings  
+  attr_accessible :user_id, :member_ids, :members_pending_ids, 
+    :title, :description, :tag_list, :tag_tokens, :locations, :users,
+    :images_attributes, :locations_attributes, :image_file_name, 
+    :image_content_type, :image_file_size, :groupsettings
 
   attr_reader :tag_tokens
+
+  # callbacks
+  after_create :set_defaultsettings
 
   acts_as_followable
   acts_as_paranoid
@@ -18,6 +24,13 @@ class Group < ActiveRecord::Base
 	is_impressionable
 
   belongs_to :user
+
+  ## rails_settings_cached
+  # be sure to call this scopes like Group.with_settings_for('visible_for').visible_for_all or ...visible_for_members(current_user)
+  scope :visible_for_all, -> { where("settings.value LIKE '%all%'") }
+  scope :visible_for_members, lambda { |user| where("(settings.value LIKE '%all%' OR settings.value LIKE '%members%') OR (groups.user_id = #{user.id} AND settings.value LIKE '%me%') ") }
+  scope :visible_for_me, lambda { |user| where(user_id: user.id) }
+  
 
   has_many :items, :as => :itemable, :dependent => :destroy                   
   has_many :groupings, :dependent => :destroy
@@ -69,5 +82,17 @@ class Group < ActiveRecord::Base
 
   def tag_list_name=(name)
     self.tag_list = Tag.find_or_create_by_name(name) unless name.blank?
+  end
+
+  # save defaultsettings related to group 
+  def set_defaultsettings
+    AppSettings.item.to_hash.each do |setting, value|
+        s = RailsSettings::Settings.new       
+        s.var = setting.to_s
+        s.value = value[:default]
+        s.thing_id = self.id
+        s.thing_type = "Group"       
+        s.save
+    end
   end
 end

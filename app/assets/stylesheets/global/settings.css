@@ -1,5 +1,6 @@
 /* setting visible_for */
 
+.group .setting-visible_for,
 .item .setting-visible_for,
 .ping .setting-visible_for {
 	position: absolute;
@@ -10,6 +11,7 @@
 .item .setting-visible_for {
 	padding-left: 3px;
 }
+.group:hover .setting-visible_for,
 .item:hover .setting-visible_for,
 .ping:hover .setting-visible_for {
 	display:block
@@ -17,6 +19,8 @@
 .ping .setting-visible_for:hover {
 	cursor: pointer;
 }
+
+.group .setting-visible_for .panel,
 .item .setting-visible_for .panel,
 .ping .setting-visible_for .panel {
 	position: relative;
@@ -26,41 +30,56 @@
 	top: -8px;
 	display:none;
 }
+
+.group .setting-visible_for .panel a,
 .item .setting-visible_for .panel a,
 .ping .setting-visible_for .panel a {
 	text-align: left;
 	width: 90px;
 	font-weight: normal;
 }
+
+.group .setting-visible_for-icon:hover .panel,
 .item .setting-visible_for-icon:hover .panel,
 .ping .setting-visible_for-icon:hover .panel {
 	display:block;
 }
+
+.group .setting-visible_for-icon:hover .panel .panel-options,
 .item .setting-visible_for-icon:hover .panel .panel-options,
 .ping .setting-visible_for-icon:hover .panel .panel-options {
 	height: auto;
 	min-height: 80px;
 }
+
+.group .setting-visible_for .panel .current,
 .item .setting-visible_for .panel .current,
 .ping .setting-visible_for .panel .current {
 	background: url('/assets/icons/icon_setting_set.png') right center no-repeat;
 	color: white;
 }
+
+.group .setting-visible_for .panel .explanation,
 .item .setting-visible_for .panel .explanation,
 .ping .setting-visible_for .panel .explanation {
 	font-style: italic;
 }
+
+.group .setting-visible_for .panel .button,
 .item .setting-visible_for .panel .button,
 .ping .setting-visible_for .panel .button {
 	line-height: 1.5em;
 }
+
+.group .setting-visible_for .panel .setting-arrow,
 .item .setting-visible_for .panel .setting-arrow,
 .ping .setting-visible_for .panel .setting-arrow {
 	position: relative;
 	top: 5px;
-	left: 4.9em;
-		
+	left: 4.9em;	
 }
+
+.group .setting-visible_for .panel .setting-arrow .arrow-up,
 .item .setting-visible_for .panel .setting-arrow .arrow-up,
 .ping .setting-visible_for .panel .setting-arrow .arrow-up {
 	border-bottom: 5px solid #A4B895;

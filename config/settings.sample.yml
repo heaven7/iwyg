@@ -40,4 +40,14 @@ ping:
   visible_for:
     default: owner
     values: ['all', 'members', 'owner', 'me']
+# group
+group:
+  visible_for:
+    default: all
+    values: ['all', 'members', 'groupmembers', 'me']
+# meetup
+meetup:
+  visible_for:
+    default: owner
+    values: ['all', 'members', 'meetupmembers', 'me']
 

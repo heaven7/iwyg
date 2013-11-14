@@ -18,7 +18,7 @@ Feature: Locations
     And I fill in "Longitude" with "13.404953999999975"
     And I press "Save"
 
-  @javascript @focus
+  @javascript
   Scenario: Set location on item
     Then I should see "My first resource"
     And I should see an element "div.map_container"
@@ -32,7 +32,7 @@ Feature: Locations
   	And I follow "My first resource"
     And I should see an element "div.map_container"
 
-  @javascript @focus
+  @javascript
   Scenario: Create group and add location to it
     And I am on groups
     And I follow "New group"

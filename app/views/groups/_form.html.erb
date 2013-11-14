@@ -35,7 +35,8 @@
         <li><a href="#members"><%= t("form.group.members") %></a></li>
         <li><a href="#location" id="locationbutton"><%= t("where") %></a></li>
         <li><a href="#images"><%= t("form.resource.images") %></a></li>
-        <li><a href="#attachments"><%= t("menu.user.resources") %></a></li>      
+        <li><a href="#attachments"><%= t("menu.user.resources") %></a></li>    
+        <li><a href="#settings"><%= t("form.resource.settings").html_safe %></a></li>  
     </ul>
     <div id="what">
       <%= f.inputs do %>
@@ -70,6 +71,18 @@
     </div>
     <div id="attachments" class="tab_content">
       <%= render :partial => "items/item_attachments", :locals => { :f => f, :object => @group } %>
+    </div>
+    <div id="settings" class="tab_content">
+      <fieldset class="inputs">
+        <ol>
+          <%= f.semantic_fields_for :groupsettings do |settings_form| %>
+            <li class="select input optional stringish" id="group_settings_visible_for_input">
+              <label class="label" for="group_groupsettings_visible_for"><%= t("formtastic.labels.item.settings_visible_for") %></label>
+              <%= settings_form.select :visible_for, options_for_select(AppSettings.group.visible_for.values.map { |v| [t("settings.visible_for.#{v}").html_safe, v] }, @setting_visible_for) %>
+            </li>
+          <% end %>
+        </ol>
+      </fieldset>
     </div>
   </div>
   <%= f.actions do %>
