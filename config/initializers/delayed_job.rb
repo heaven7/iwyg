@@ -4,7 +4,7 @@ DELAYED_JOB_PID_PATH = "#{Rails.root}/tmp/pids/delayed_job.pid"
 
 def start_delayed_job
   Thread.new do 
-    `ruby script/delayed_job start`
+    'RAILS_ENV=production ruby script/delayed_job start'
   end
 end
 
