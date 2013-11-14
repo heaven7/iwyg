@@ -33,7 +33,8 @@ Feature: Settings
   	And I go to the list of items
   	Then I should not see "testitem"
   	And this "item" with title "testitem" should have a setting "visible_for" with value "me"
-    
+    And the count of items visible for all should be 0
+
   @focus
   Scenario: By Edit GroupSetting 'visible_for' to "me", the group will no longer be listed
     And I am on the list of groups
@@ -46,5 +47,7 @@ Feature: Settings
     And I go to the list of groups
     Then I should not see "testgroup"
     And this "group" with title "testgroup" should have a setting "visible_for" with value "me"
+    And the count of groups visible for all should be 0
+    
 
   

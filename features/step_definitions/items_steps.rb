@@ -37,6 +37,10 @@ Then(/^the locations count of item "(.*?)" should be (\d+)$/) do |title, count|
   item.locations.size
 end
 
+Then(/^the count of items visible for all should be (\d+)$/) do |count|
+  Item.with_settings_for('visible_for').visible_for_all.size
+end
+
 Then(/^I should have (\d+) items?$/) do |count|
   Item.size.should == count.to_i 
 end
