@@ -19,6 +19,13 @@ class Group < ActiveRecord::Base
 
   belongs_to :user
 
+  ## rails_settings_cached
+  # be sure to call this scopes like Item.with_settings_for('visible_for').visible_for_all or ...visible_for_members(current_user)
+  scope :visible_for_all, -> { where("settings.value LIKE '%all%'") }
+  scope :visible_for_members, lambda { |user| where("(settings.value LIKE '%all%' OR settings.value LIKE '%members%') OR (items.user_id = #{user.id} AND settings.value LIKE '%me%') ") }
+  scope :visible_for_me, lambda { |user| where(user_id: user.id) }
+  
+
   has_many :items, :as => :itemable, :dependent => :destroy                   
   has_many :groupings, :dependent => :destroy
   has_many :members, :through => :groupings, :source => :user, :conditions => "accepted_at is NOT NULL", :dependent => :destroy

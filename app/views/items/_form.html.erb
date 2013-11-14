@@ -115,7 +115,7 @@
 				<ol>
 					<%= f.semantic_fields_for :itemsettings do |settings_form| %>
 						<li class="select input optional stringish" id="item_settings_visible_for_input">
-							<label class="label" for="item_settings_visible_for"><%= t("formtastic.labels.item.settings_visible_for") %></label>
+							<label class="label" for="item_itemsettings_visible_for"><%= t("formtastic.labels.item.settings_visible_for") %></label>
 							<%= settings_form.select :visible_for, options_for_select(AppSettings.item.visible_for.values.map { |v| [t("settings.visible_for.#{v}").html_safe, v] }, @setting_visible_for) %>
 						</li>
 					<% end %>
