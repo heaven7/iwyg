@@ -38,6 +38,6 @@ Then(/^the locations count of item "(.*?)" should be (\d+)$/) do |title, count|
 end
 
 Then(/^I should have (\d+) items?$/) do |count|
-  Item.count.should == count.to_i 
+  Item.size.should == count.to_i 
 end
 

@@ -11,11 +11,18 @@ Feature: Settings
     And I select "Service" from "a"
     And I fill in "Title" with "testitem"
     And I press "Save"
+    And I am on the list of groups
+    And I click "New group"
+    And I fill in "Title" with "testgroup"
+    And I press "Save"
 
   Scenario: Default ItemSettings
     Then this "item" with title "testitem" should have a setting "visible_for" with value "all"
-  @javascript @focus
-  Scenario: Edit ItemSetting 'visible_for' to "me"
+  
+  Scenario: Default GroupSettings
+    Then this "group" with title "testgroup" should have a setting "visible_for" with value "all"
+
+  Scenario: Edit ItemSetting 'visible_for' to "me", the item will no longer be listed
     And I am on the list of items
   	And I click "testitem"
   	And I click "edit"
@@ -26,3 +33,18 @@ Feature: Settings
   	And I go to the list of items
   	Then I should not see "testitem"
   	And this "item" with title "testitem" should have a setting "visible_for" with value "me"
+    
+  @focus
+  Scenario: By Edit GroupSetting 'visible_for' to "me", the group will no longer be listed
+    And I am on the list of groups
+    And I click "testgroup"
+    And I click "edit"
+    Given I click "Settings"
+    And I select "Me" from "group_groupsettings_visible_for"
+    And I press "Save"
+    When I am on logout
+    And I go to the list of groups
+    Then I should not see "testgroup"
+    And this "group" with title "testgroup" should have a setting "visible_for" with value "me"
+
+  

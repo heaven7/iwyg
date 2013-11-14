@@ -8,7 +8,6 @@ class GroupsController < InheritedResources::Base
   
   def index
     
-    @groupsearch = Group.search(params[:q])
     
 		# get all groups with membership of current_user
     if params[:user_id]
@@ -30,18 +29,29 @@ class GroupsController < InheritedResources::Base
     # search by tag    
     elsif params[:q] && params[:q][:tag]
       @groupsearch = searchByTag(params, "Group").search(params[:q])
+    
+    # normal listing
+    else
+      @groupsearch = Group.with_settings_for('visible_for').search(params[:q])
     end 
 
 		# search within certain range
-		@groupsearch = searchByRangeIn("Group") if params[:within]
+    if params[:within]
+  		@groupsearch = searchByRangeIn("Group").search(params[:q])
+    end
 
-		# pagination
-		@groups = @groupsearch.result(:distict => true).paginate(
+    if logged_in?
+      groups = @groupsearch.result(:distict => true).visible_for_members(current_user)
+    else
+      groups = @groupsearch.result(:distict => true).visible_for_all
+    end
+
+		@groups = groups.paginate(
       :page => params[:page],
       :per_page => AppSettings.groups.per_page,
       :order => "created_at DESC"
     )   
-    @groups_count = @groupsearch.result.count
+    @groups_count = @groups.size
   	@searchItemType = "Group"
   end
 
@@ -115,8 +125,18 @@ class GroupsController < InheritedResources::Base
 
   def update
     @group = Group.find(params[:id])
-    # gropu.images = Image.new(params[:group][:images_attributes])
     if @group.update_attributes(params[:group])
+
+      # save settings related to group     
+      if params[:group][:groupsettings]
+        settings = params[:group][:groupsettings]
+        settings.each do |k,v|
+          @setting = RailsSettings::Settings.where(thing_id: @group.id, thing_type: "Group", var: k).first
+          @setting.send("value=",v)
+          @setting.save
+        end
+      end
+
       flash[:notice] = t("flash.groups.update.notice")
       redirect_to @group
     else

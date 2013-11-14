@@ -192,7 +192,6 @@ class ItemsController < InheritedResources::Base
 	  create!
 	end
 
-  
   def edit
 		@itemable = find_model
     @item = @itemable.items.find(params[:id], :include => [:locations, :events])    
@@ -247,18 +246,6 @@ class ItemsController < InheritedResources::Base
 			redirect_to current_user
 		end
   end
-
-  # def follow
-  #   @item = Item.find(params[:id])
-  #   if current_user.following?(@item)
-  #     flash[:notice] = t("flash.items.follow.error.alreadyFollowing")
-  #   else
-  #     current_user.follow(@item)
-  #     flash[:notice] = t("flash.items.follow.notice", :title => @item.title)
-  #   end
-    
-  #   redirect_to(@item)
-  # end
   
   def rate
     @item = Item.find(params[:id])

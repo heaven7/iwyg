@@ -18,6 +18,9 @@ class Item < ActiveRecord::Base
   belongs_to :user
 	belongs_to :itemable, :polymorphic => true
 
+  # callbacks
+  after_create :set_defaultsettings
+
   acts_as_taggable_on :tags
   acts_as_paranoid
   acts_as_followable
@@ -25,9 +28,6 @@ class Item < ActiveRecord::Base
   acts_as_audited
   has_associated_audits
 	is_impressionable
-
-  # callbacks
-  after_create :set_defaultsettings
   
   # scopes
 	scope :enable, proc { |item| joins(:user, :custom).where('customs.enable' => 1) }
