@@ -79,6 +79,7 @@ Iwyg::Application.routes.draw do
 		end
     resource :userdetails
     member do
+      put 'changesetting'
       post 'rate'
       put 'follow'
       put 'unfollow'
@@ -90,9 +91,9 @@ Iwyg::Application.routes.draw do
       put 'unblock'
       get 'followings'
       get 'followers'
-      put 'changesetting'
     end
     collection do
+      put 'changesetting'
       get 'aim_suggestions'
       match 'search' => 'users#search', :via => [:get, :post], :as => :search
     end
@@ -101,15 +102,16 @@ Iwyg::Application.routes.draw do
   resources :groups do
     resources :users, :images, :items
     member do
+      put 'changesetting'
       put 'follow'
       put 'unfollow'
       put 'like'
       put 'unlike'
 			put 'voteup'
 			put 'votedown'
-      put 'changesetting'
     end
     collection do
+      put 'changesetting'
       get 'tag_suggestions'
       match 'search' => 'groups#search', :via => [:get, :post], :as => :search
     end
