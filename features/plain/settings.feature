@@ -20,7 +20,7 @@ Feature: Settings
   	And I click "testitem"
   	And I click "edit"
   	Given I click "Settings"
-  	And I select "me" from "item_itemsettings_visible_for"
+  	And I select "Me" from "item_itemsettings_visible_for"
     And I press "Save"
   	When I am on logout
   	And I go to the list of items

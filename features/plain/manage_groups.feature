@@ -22,7 +22,7 @@ Feature: Manage groups
     And I should see "testgroup"
     And I should have 1 group
 
-  @javascript @focus
+  @javascript
   Scenario: See a group
     And I go to the list of groups
     Then I should see "testgroup"
