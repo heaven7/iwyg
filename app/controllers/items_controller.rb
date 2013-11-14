@@ -293,13 +293,13 @@ class ItemsController < InheritedResources::Base
 		else
 			items = search.visible_for_all
 		end
-
 		@items = items.paginate( 
       :page => params[:page],
       :order => "created_at DESC", 
       :per_page => AppSettings.items.per_page 
     )
     @items_count = @items.size
+    @locations_json = getLocationsOnMap(Item.all)
 	end
 
 	def saveSearch(params)
