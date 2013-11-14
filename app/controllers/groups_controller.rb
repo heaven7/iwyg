@@ -53,6 +53,9 @@ class GroupsController < InheritedResources::Base
     @active_menuitem_l1 = I18n.t "menu.main.groups"
     @active_menuitem_l1_link = user_groups_path
 
+    # load default settings into form
+    @setting_visible_for = AppSettings.group.visible_for.default
+
 		groupUsers
   end
 
