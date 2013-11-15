@@ -242,7 +242,8 @@ class Item < ActiveRecord::Base
   end
   
   def itemtype
-    ITEMTYPES[self.item_type_id].to_s if self.item_type_id
+    index = self.item_type_id.to_i - 1
+    ITEMTYPES[index].to_s if self.item_type_id
   end
   
   def localized_itemtype
