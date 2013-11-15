@@ -81,6 +81,7 @@ PINGS_PER_PAGE = 30
 GOOGLE_ANALYTICS_ID = 'UA-32738329-1'
 MAILER_CSS = :mailer
 MAILER_CHARSET = "UTF-8"
+ITEMTYPES = ["good", "transport", "service", "sharingpoint", "knowledge", "skill"]
 
 # default date/time format
 Time::DATE_FORMATS[:mailbox] = "%A, %B %d, %Y"

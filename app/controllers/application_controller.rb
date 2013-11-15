@@ -321,7 +321,11 @@ class ApplicationController < ActionController::Base
   end 
   
   def itemtypes
-    @itemtypes ||= ItemType.all
+    @itemtypes ||= ITEMTYPES
+    @localized_itemtypes = []
+    @itemtypes.each do |it|
+      @localized_itemtypes << [I18n.t("#{it.downcase}.plural").html_safe, it]
+    end
   end 
   
   def itemstatuses

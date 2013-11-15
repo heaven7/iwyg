@@ -337,8 +337,8 @@ class ItemsController < InheritedResources::Base
   
   def getItemTypes
     @itemTypes = Hash.new
-    ItemType.all.each do |it|
-      localized_title = t(it.title.downcase, :count => 1).gsub("1 ", "")
+    ITEMTYPES.all.each do |it|
+      localized_title = t(it.singular)
       @itemTypes[localized_title] = it.id 
     end
   end

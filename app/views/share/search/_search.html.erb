@@ -51,8 +51,8 @@
           <tr>
             <td class="label"><%= t("searchIn") %></td>
             <td class="row-big">
-              <%= f.collection_select :item_type_id_eq, @itemtypes, :id, :localized_title, :include_blank => true if @itemtypes %>
-              <%# select_tag( :search[item_type].contains, options_from_collection_for_select(@itemtypes, :id, :localized_title), :include_blank => true) %>
+              <%# f.collection_select :item_type_id_eq, @itemtypes, :id, @localized_itemtypes, :include_blank => true if @itemtypes %>
+              <%= select_tag( :item_type_id_eq, options_for_select(@localized_itemtypes), :include_blank => true) %>
             </td>
           </tr>
         </table>
