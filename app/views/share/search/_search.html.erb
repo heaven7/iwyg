@@ -20,6 +20,7 @@
 				<label><%= t("whatexactly") %></label>
       	<%= f.text_field :title_cont, :size => "15", :class => "search-field-broad" %>
 			</div>
+
       <div class="search-field">			      
 				<label><%= t("where") %></label>
 				<%= text_field_tag :near, params[:near] || @near, :size => 15, :class =>"ui-corner-all search-field-broad" %>
@@ -27,10 +28,12 @@
       <div id="searchextended" class="ui-corner-all">
         <h3 class="bold"></h3>
         <table>
+        <!--
 					<tr>
 						<td class="label"><%= t("searchradius") %></td>
       			<td class="row-big"><%= text_field_tag :within, params[:within] || @within, :size => 8, :class => "ui-corner-all" %></td>
 					</tr>
+        -->
           <tr>
             <td class="label"><%= t("resources.available").html_safe %><br /> (<%= t("from") %> - <%= t("till") %>)</td>
             <td class="row-big">
@@ -52,7 +55,7 @@
             <td class="label"><%= t("searchIn") %></td>
             <td class="row-big">
               <%# f.collection_select :item_type_id_eq, @itemtypes, :id, @localized_itemtypes, :include_blank => true if @itemtypes %>
-              <%= select_tag( :item_type_id_eq, options_for_select(@localized_itemtypes), :include_blank => true) %>
+              <%= select_tag( :item_type_id_eq, options_for_select(@localized_itemtypes), :include_blank => true, :name => "q[item_type_id_eq]") %>
             </td>
           </tr>
         </table>

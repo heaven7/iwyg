@@ -17,6 +17,18 @@ Given(/^I create an item with "(.+)"$/) do |args|
   Item.create!(args)
 end
 
+Given(/^I tag the item "(.+)" with "(.+)"$/) do |title, tag|
+  item = Item.where(title: title).first
+  item.tag_list.add(tag)
+  item.save!
+end
+
+Given(/^I add to item "(.+)" the location "(.+)"$/) do |title, address|
+  item = Item.where(title: title).first
+  item.locations.build(address: address)
+  item.save!
+end
+
 Then(/^the pings count of item "(.*?)" should be (\d+)$/) do |title, count|
   item = Item.where(title: title).first
   item.pings.size

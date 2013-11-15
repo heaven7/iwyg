@@ -178,19 +178,13 @@ class ApplicationController < ActionController::Base
 	def searchByRangeIn(model, params=nil)
 		if params[:near]
 			@location_city = (request.location.city.blank?) ? params[:near] : request.location.city 
-			if not params[:within].blank? && params[:within].to_i > 0
-				@radius = params[:within]
-			else
-				@radius = 200
-			end			
-			@locations = Location.where(locatable_type: model).near(@location_city, @radius, :order => "distance")
+			@locations = Location.where(locatable_type: model).near(@location_city)
 	  	if @locations 
 				@ids = []			
 				@locations.each do |l|
 					@ids << l.locatable_id.to_i
 				end		
-				return model.classify.constantize.where(:id => @ids).order("field(#{model.downcase.pluralize}.id, #{@ids.join(',')})") if @ids.size > 0
-				return model.classify.constantize.where(:id => @ids)			
+			  return model.classify.constantize.where(:id => @ids).order("field(#{model.downcase.pluralize}.id, #{@ids.join(',')})") if @ids.size > 0
 			end
     end
 	end
@@ -323,8 +317,10 @@ class ApplicationController < ActionController::Base
   def itemtypes
     @itemtypes ||= ITEMTYPES
     @localized_itemtypes = []
+    i = 1
     @itemtypes.each do |it|
-      @localized_itemtypes << [I18n.t("#{it.downcase}.plural").html_safe, it]
+      @localized_itemtypes << [I18n.t("#{it.downcase}.plural").html_safe, i]
+      i += 1
     end
   end 
   
