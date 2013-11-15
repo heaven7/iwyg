@@ -26,11 +26,12 @@ class Location < ActiveRecord::Base
 	 		path = "/users/#{resource.id}"
 	 		header = "this is a user"
 	 	when "Item"
-	 		path = "/items/#{resource.id}"
-	 		itemtype = resource.localized_itemtype
-	 		icon = resource.icon
+	 		item = resource
+	 		path = "/items/#{item.slug || item.id}"
+	 		itemtype = item.localized_itemtype
+	 		icon = item.icon
+	 		status = I18n.t("resources.#{item.needed?}").html_safe
 
-	 		status = I18n.t("resources.#{resource.needed?}").html_safe
 	 		header = "#{icon} #{itemtype} #{status}"
 	 	when "Group"
 	 		path = "/groups/#{resource.id}"
@@ -49,7 +50,7 @@ class Location < ActiveRecord::Base
 			#{header}
 		</p>
 		<b><a href=\"#{path}\" title=\"#{getTitleForWindow}\">#{getTitleForWindow}</a></b>
-		<br />
+		<hr />
 		<p class=\"font-smaller left\">
 		 #{infoaddress} #{country}
 		</p>"

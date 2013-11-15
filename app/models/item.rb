@@ -1,5 +1,9 @@
 class Item < ActiveRecord::Base
 
+  ITEMTYPES = [
+   "good", "transport", "service", "sharingpoint", "knowledge", "skill"
+  ]
+
   include RailsSettings::Extend
   extend FriendlyId
   friendly_id :title, :use => :slugged
@@ -238,11 +242,11 @@ class Item < ActiveRecord::Base
   end
   
   def itemtype
-    ItemType.find(self.item_type_id).title.to_s if self.item_type_id
+    ITEMTYPES[self.item_type_id].to_s if self.item_type_id
   end
   
   def localized_itemtype
-    I18n.translate(itemtype.downcase, :count => 1).gsub("1 ", "") if itemtype
+    I18n.t("#{itemtype}.singular") if self.item_type_id
   end
   
   def itemstatus
@@ -250,8 +254,8 @@ class Item < ActiveRecord::Base
   end
   
   def icon
-    it = self.itemtype.downcase
-    lit = self.localized_itemtype.html_safe
+    it = itemtype.downcase
+    lit = localized_itemtype#.html_safe
     "<img src=\"/assets/icons/icon_#{it}.png\" title =\"#{lit}\" alt =\"#{lit}\" />"
     #image_tag "icons/icon_#{it}.png", title: lit, alt: lit
   end
