@@ -17,6 +17,14 @@ module ItemsHelper
       image_tag item.images.first.image.url(:small)
     end
   end
+
+  def itemType(item)
+    I18n.t("#{item.itemtype.downcase}.singular").html_safe
+  end
+
+  def itemIcon(item)
+    image_tag "icons/icon_#{item.itemtype.downcase}.png", title: item.localized_itemtype.html_safe, alt: item.localized_itemtype.html_safe
+  end
   
 	def showDistanceOfSearcher(item)
 		itemlocation = item.locations.first if item.locations.size > 0

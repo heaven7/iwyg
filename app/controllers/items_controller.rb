@@ -298,7 +298,7 @@ class ItemsController < InheritedResources::Base
       :order => "created_at DESC", 
       :per_page => AppSettings.items.per_page 
     )
-    @items_count = @items.size
+    @items_count = items.size
     @locations_json = getLocationsOnMap(items.all)
 	end
 
