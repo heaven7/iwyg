@@ -1,6 +1,7 @@
+
 class Location < ActiveRecord::Base
 
-  	include RailsSettings::Extend 
+  	include RailsSettings::Extend
 
 	set_rgeo_factory_for_column(:latlon, RGeo::Geographic.spherical_factory(:srid => 4326))
   	attr_accessible :item_id, :country, :city, :address, :zip, :locatable_type, :locatable_id, :user_id, :meetup_id, 
@@ -19,11 +20,40 @@ class Location < ActiveRecord::Base
 	end
 
 	def gmaps4rails_infowindow
+		resource = self.locatable
+		case resource.class.name.to_s
+	 	when "User"
+	 		path = "/users/#{resource.id}"
+	 		header = "this is a user"
+	 	when "Item"
+	 		path = "/items/#{resource.id}"
+	 		itemtype = resource.localized_itemtype
+	 		icon = resource.icon
+
+	 		status = I18n.t("resources.#{resource.needed?}").html_safe
+	 		header = "#{icon} #{itemtype} #{status}"
+	 	when "Group"
+	 		path = "/groups/#{resource.id}"
+	 		header = "this is a group"
+	 	end 
+
+		
 		if Thread.current[:current_user]
-			"<b>#{getTitleForWindow}</b><br /><p class=\"font-smaller\">#{address}<br />#{city} #{I18n.t('country', :scope => "countries" )}</p>"
+			infoaddress = "#{address}<br />#{city}"
 		else
-			"<b>#{getTitleForWindow}</b><br /><p class=\"font-smaller\">#{city} #{I18n.t('country', :scope => "countries" )}</p>"
+			infoaddress = "#{city}"
 		end
+
+		"
+		<p class=\"font-smaller left\">
+			#{header}
+		</p>
+		<b><a href=\"#{path}\" title=\"#{getTitleForWindow}\">#{getTitleForWindow}</a></b>
+		<br />
+		<p class=\"font-smaller left\">
+		 #{infoaddress} #{country}
+		</p>"
+		
 	end
   
 	def getTitleForWindow
