@@ -299,7 +299,7 @@ class ItemsController < InheritedResources::Base
       :per_page => AppSettings.items.per_page 
     )
     @items_count = @items.size
-    @locations_json = getLocationsOnMap(Item.all)
+    @locations_json = getLocationsOnMap(items.all)
 	end
 
 	def saveSearch(params)
