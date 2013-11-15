@@ -288,8 +288,22 @@ class ApplicationController < ActionController::Base
   end
 
 
- 	def getLocationsOnMap(object)
-    @locations_json = object.locations.to_gmaps4rails
+ 	def getLocationsOnMap(objects)
+    locations = []
+    if objects.is_a?(Array)
+      objects.each do |object|
+        if object.class.name.to_s == "User"
+         locations << object.location
+        else
+         object.locations.each do |l|
+           locations << l
+        end
+        end
+      end
+    else
+      locations = objects.locations  
+    end
+    return locations.to_gmaps4rails
   end
   
 

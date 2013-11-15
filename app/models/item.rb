@@ -200,6 +200,14 @@ class Item < ActiveRecord::Base
   def transfer
     @transfer = Transfer.find_by_transferable_id_and_transferable_type(self.id, "Item") if self.on_transfer?
   end
+
+  def needed?
+    if self.need == true
+      "needed"
+    else
+      "offered"
+    end
+  end
   
   def good?
     self.item_type_id == 1
@@ -243,8 +251,9 @@ class Item < ActiveRecord::Base
   
   def icon
     it = self.itemtype.downcase
-    lit = self.localized_itemtype
-    "<img src=\"/images/icons/icon_#{it}.png\" title =\"#{lit}\" alt =\"#{lit}\" />"
+    lit = self.localized_itemtype.html_safe
+    "<img src=\"/assets/icons/icon_#{it}.png\" title =\"#{lit}\" alt =\"#{lit}\" />"
+    #image_tag "icons/icon_#{it}.png", title: lit, alt: lit
   end
     
 end

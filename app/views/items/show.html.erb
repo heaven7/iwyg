@@ -54,6 +54,7 @@
   <%= render :partial => "share/pings", :locals => {:pings => @pings, :pingable => @item}  %>
 </div>
 <div id="col2">
+  <%= @locations_json %>
   <% if @location && !@locations_json.blank? %>
   <div class="box ui-corner-all">
     <div class="location">			
