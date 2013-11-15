@@ -30,7 +30,7 @@ Feature: Search
 
   @focus @javascript
   Scenario: Search by location
-    When I fill in "near" with "München"
+    When I fill in "near" with "München, Deutschland"
     And I press "submit-search"
     Then I should see "Hello World"
     And I should see "1 Resource found"

@@ -221,6 +221,7 @@ en:
   searchIn: Search in
   searchOptions: Search options
   searchedIn: <b>%{item}</b> was searched <b>%{count}</b> times
+  searchNothingFound: Sorry, nothing found.
   changepassword: Change password
   help: Help
   about: About

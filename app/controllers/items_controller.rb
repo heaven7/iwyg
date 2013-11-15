@@ -285,21 +285,20 @@ class ItemsController < InheritedResources::Base
 	def listItems(itemable)		
 		if params[:q] and params[:q][:tag]
 			puts "search by tag"
-			search = searchByTag(params, "Item").with_settings_for('visible_for').search(params[:q], :include => [:pings]).result(:distinct => true)
+			search = searchByTag(params, "Item").with_settings_for('visible_for').search(params[:q], :include => [:pings]).result(distinct: true)
 		elsif params[:q] and not params[:near].blank?
-			puts "location based search" + params[:near].to_json 
+			puts "location based search: " + params[:near].to_json 
       if not searchByRangeIn("Item", params).nil?
-  			search = searchByRangeIn("Item", params).with_settings_for('visible_for').search(params[:q], :include => [:pings]).result(:distinct => true)		
+  			search = searchByRangeIn("Item", params).with_settings_for('visible_for').search(params[:q], :include => [:pings]).result(distinct: true)		
       else
-        @items_count = 0
-        return @items_count
+        return flash[:error] = t("searchNothingFound")
       end
 		elsif itemable
 			puts "itemable"
-			search = itemable.items.with_settings_for('visible_for').search(params[:q], :include => [:pings]).result(:distinct => true)		
+			search = itemable.items.with_settings_for('visible_for').search(params[:q], :include => [:pings]).result(distinct: true)		
 		else		
 			puts "normal listing: " + params[:q].to_json 
-			search = Item.with_settings_for('visible_for').search(params[:q], :include => [:pings]).result(:distinct => true)
+			search = Item.with_settings_for('visible_for').search(params[:q], :include => [:pings]).result(distinct: true)
 		end
 	
 		if logged_in?
@@ -308,9 +307,9 @@ class ItemsController < InheritedResources::Base
 			items = search.visible_for_all
 		end
 		@items = items.paginate( 
-      :page => params[:page],
-      :order => "created_at DESC", 
-      :per_page => AppSettings.items.per_page 
+      page: params[:page],
+      order: "created_at DESC", 
+      per_page: AppSettings.items.per_page 
     )
     @items_count = items.size
     @locations_json = getLocationsOnMap(items.includes([:locations]).all)
