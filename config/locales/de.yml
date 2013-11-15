@@ -605,6 +605,7 @@ de:
     given:
       one: 1 Ressource gegeben
       other: ! '%{count} Ressourcen gegeben'
+    notFound: Ressource nicht gefunden oder nicht sichtbar.
     goods: G&uuml;ter
     services: Dienste
     transports: Transporte

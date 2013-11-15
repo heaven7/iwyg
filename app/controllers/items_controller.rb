@@ -105,7 +105,16 @@ class ItemsController < InheritedResources::Base
   
   def show
 		@itemable = find_model
-    @item = Item.find(params[:id])
+    if logged_in?
+      @item = Item.with_settings_for('visible_for').visible_for_members(current_user).find(params[:id])
+    else
+      begin
+        @item = Item.with_settings_for('visible_for').visible_for_all.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+        redirect_to :action => 'index'
+        return flash[:error] = I18n.t("resources.notFound")
+      end
+    end
     @user = current_user
 
     # related resources
@@ -299,7 +308,7 @@ class ItemsController < InheritedResources::Base
       :per_page => AppSettings.items.per_page 
     )
     @items_count = items.size
-    @locations_json = getLocationsOnMap(items.all)
+    @locations_json = getLocationsOnMap(items.includes(:locations).all)
 	end
 
 	def saveSearch(params)
