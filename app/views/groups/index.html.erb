@@ -2,7 +2,6 @@
   <div class="button new">
     <%= link_to t("group.new"), new_user_group_path(current_user), :id => "group-new" %>
   </div>
-  <br />
 <% end %>  
 
 <%= render :partial => "share/search/panel", :locals => { :count => @groups_count } %>
