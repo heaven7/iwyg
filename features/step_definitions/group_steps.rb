@@ -1,5 +1,5 @@
-Then(/^I should have (\d+) groups?$/) do |count|
-  Group.size.should == count.to_i 
+Then(/^I should have (\d+) group?$/) do |count|
+  Group.all.size.should == count.to_i 
 end
 
 Then(/^the locations count of group "(.*?)" should be (\d+)$/) do |title, count|

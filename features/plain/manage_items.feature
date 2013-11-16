@@ -42,5 +42,5 @@ Feature: Manage Resources (Items)
     And I click "delete"
     And I confirm popup
     Then I should see "Successfully deleted resource."
-    Then I should have 1 item
+    Then I should have 0 item
 
