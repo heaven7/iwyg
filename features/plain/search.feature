@@ -20,7 +20,8 @@ Feature: Search
     And I press "submit-search" 
     Then I should not see "Hello World"
     And I should see "0 Transports found"
-
+  
+  @javascript @focus
   Scenario: Search by tag
     When I click "Hello World"
     And I click "testtag"
@@ -28,7 +29,7 @@ Feature: Search
     And I should see "with tag: testtag"
     And I should see "1 Resource found"
 
-  @focus @javascript
+  @javascript
   Scenario: Search by location
     When I fill in "near" with "München, Deutschland"
     And I press "submit-search"
