@@ -17,31 +17,43 @@ Given(/^I create an item with "(.+)"$/) do |args|
   Item.create!(args)
 end
 
+Given(/^I tag the item "(.+)" with "(.+)"$/) do |title, tag|
+  item = Item.where(title: title).first
+  item.tag_list.add(tag)
+  item.save!
+end
+
+Given(/^I add to item "(.+)" the location "(.+)"$/) do |title, address|
+  item = Item.where(title: title).first
+  item.locations.build(address: address)
+  item.save!
+end
+
 Then(/^the pings count of item "(.*?)" should be (\d+)$/) do |title, count|
   item = Item.where(title: title).first
-  item.pings.size
+  item.pings.size.should == count.to_i  
 end
 
 Then(/^the following count of item "(.*?)" should be (\d+)$/) do |title, count|
   item = Item.where(title: title).first
-  item.followers(User).size
+  item.followers(User).size.should == count.to_i 
 end
 
 Then(/^the liking count of item "(.*?)" should be (\d+)$/) do |title, count|
   item = Item.where(title: title).first
-  item.likers(User).size
+  item.likers(User).size.should == count.to_i 
 end
 
 Then(/^the locations count of item "(.*?)" should be (\d+)$/) do |title, count|
   item = Item.where(title: title).first
-  item.locations.size
+  item.locations.size.should == count.to_i 
 end
 
 Then(/^the count of items visible for all should be (\d+)$/) do |count|
-  Item.with_settings_for('visible_for').visible_for_all.size
+  Item.with_settings_for('visible_for').visible_for_all.size.should == count.to_i
 end
 
 Then(/^I should have (\d+) items?$/) do |count|
-  Item.size.should == count.to_i 
+  Item.all.size.should == count.to_i 
 end
 

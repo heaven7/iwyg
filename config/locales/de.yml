@@ -221,6 +221,7 @@ de:
   searchIn: Suchen in
   searchedIn: <b>%{item}</b> wurde <b>%{count}</b> mal gesucht
   searchOptions: Suchoptionen
+  searchNothingFound: Sorry, nichts gefunden.
   help: Hilfe
   changepassword: Passwort &auml;ndern
   about: ! '&Uuml;ber uns'
@@ -650,6 +651,7 @@ de:
     description: Beschreibung
     holder: Verwaltet von
     memberships: Mitglied von
+    owning: Eigene Gruppen
     pendingMembers: Anfragen und eingeladene Mitglieder
     members: Mitglieder
     abort:

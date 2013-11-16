@@ -29,10 +29,10 @@ end
 
 Then(/^the following count of user "(.*?)" should be (\d+)$/) do |name, count|
   user = User.where(login: name).first
-  user.followers(User).size
+  user.followers(User).size.should == count.to_i
 end
 
 Then(/^the liking count of user "(.*?)" should be (\d+)$/) do |name, count|
   user = User.where(login: name).first
-  user.likers(User).size
+  user.likers(User).size.should == count.to_i
 end

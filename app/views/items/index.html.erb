@@ -58,7 +58,7 @@
   </div>
   
 <% else %>
-  <% if !@locations_json.blank? %>
+  <% if !@locations_json.blank? and @locations_json.size > 2 %>
   <div class="box ui-corner-all">
     <div class="location">      
         <center>
@@ -67,7 +67,7 @@
     </div>
   </div>
   <% end %>  
-  <%= render :partial => "share/list_pagination", :locals => {:collection => collection} %>
-  <%= render :partial => "item", :collection => collection %>
-  <%= render :partial => "share/list_pagination", :locals => {:collection => collection} %>
+  <%= render :partial => "share/list_pagination", :locals => {:collection => @items} %>
+  <%= render :partial => "item", :collection => @items %>
+  <%= render :partial => "share/list_pagination", :locals => {:collection => @items} %>
 <% end %>

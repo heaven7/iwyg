@@ -22,7 +22,6 @@ Feature: Manage groups
     And I should see "testgroup"
     And I should have 1 group
 
-  @javascript
   Scenario: See a group
     And I go to the list of groups
     Then I should see "testgroup"
@@ -42,5 +41,5 @@ Feature: Manage groups
     And I click "delete"
     And I confirm popup
     Then I should see "Group was successfully destroyed."
-    Then I should have 0 groups
+    Then the count of groups visible for all should be 0
 

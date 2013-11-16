@@ -221,6 +221,7 @@ en:
   searchIn: Search in
   searchOptions: Search options
   searchedIn: <b>%{item}</b> was searched <b>%{count}</b> times
+  searchNothingFound: Sorry, nothing found.
   changepassword: Change password
   help: Help
   about: About
@@ -645,6 +646,7 @@ en:
     description: Description
     holder: Holder
     memberships: Memberships
+    owning: Own groups
     pendingMembers: Pending and invited members
     members: Members
     abort:

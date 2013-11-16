@@ -1,16 +1,16 @@
 <ul class="item-collection">
-  <% for itemType in itemTypes do %>
+  <% @itemtypes.each_with_index do |itemType, index| %>
     <li>
-      <% i = eval "resources.#{itemType.title.downcase}" %>
+      <% i = eval "resources.#{itemType.downcase}" %>
       <% if @itemable %>
         <% if i.size.to_i == 1 %>
-          <%= link_to image_tag(("icons/icon_" + itemType.title).downcase + ".png") + t( itemType.title.downcase, :count => i.size ).html_safe,
+          <%= link_to image_tag(("icons/icon_" + itemType).downcase + ".png") + t(itemType, :count => i.size ).html_safe,
               i.first 
           %>  
         <% else %>
-          <%= link_to image_tag(("icons/icon_" + itemType.title).downcase + ".png") + t( itemType.title.downcase, :count => i.size ).html_safe, 
+          <%= link_to image_tag(("icons/icon_" + itemType).downcase + ".png") + t( itemType, :count => i.size ).html_safe, 
               polymorphic_path([@itemable, :items], 
-							 "q[item_type_id_eq]" => itemType.id, 
+							 "q[item_type_id_eq]" => index + 1, 
 							 "q[need_eq]" => need, 
 							 "q[itemable_id_eq]" => @itemable.id,
 							 "q[itemable_type_eq]" => @itemable.class.to_s

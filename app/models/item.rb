@@ -1,9 +1,5 @@
 class Item < ActiveRecord::Base
 
-  ITEMTYPES = [
-   "good", "transport", "service", "sharingpoint", "knowledge", "skill"
-  ]
-
   include RailsSettings::Extend
   extend FriendlyId
   friendly_id :title, :use => :slugged

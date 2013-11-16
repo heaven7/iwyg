@@ -8,22 +8,23 @@ class GroupsController < InheritedResources::Base
   
   def index
     
-    
-		# get all groups with membership of current_user
+		# get all groups and groups with membership of user
     if params[:user_id]
       @user = User.find(params[:user_id])
-      @memberships = Array.new
-      Group.all do |group|
-        members = group.users
-        @memberships << group if group.users.include?(@user)
-      end
+      
       @active_menuitem_l1 = I18n.t "menu.main.groups"
       @active_menuitem_l1_link = user_groups_path
 
       if @user.groups and @user.groups.size > 0		
-	     @groupsearch = @user.groups.search(params[:q]) 
+	     @groupsearch = @user.groups.with_settings_for('visible_for').search(params[:q]) 
       end
       
+      @memberships = []
+      Grouping.accepted.includes(:group).where(user_id: @user).each do |g|
+        @memberships << g.group
+      end
+      @memberships = @memberships.paginate(page: params[:page])
+      @usergroups = @user.groups.paginate(page: params[:page])
       render :layout => 'userarea'
 
     # search by tag    
@@ -41,9 +42,9 @@ class GroupsController < InheritedResources::Base
     end
 
     if logged_in?
-      groups = @groupsearch.result(:distict => true).visible_for_members(current_user)
+      groups = @groupsearch.result(distinct: true).visible_for_members(current_user)
     else
-      groups = @groupsearch.result(:distict => true).visible_for_all
+      groups = @groupsearch.result(distinct: true).visible_for_all
     end
 
 		@groups = groups.paginate(
@@ -51,7 +52,7 @@ class GroupsController < InheritedResources::Base
       :per_page => AppSettings.groups.per_page,
       :order => "created_at DESC"
     )   
-    @groups_count = @groups.size
+    @groups_count = groups.size
   	@searchItemType = "Group"
   end
 
