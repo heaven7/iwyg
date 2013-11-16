@@ -14,17 +14,18 @@ Feature: Manage Resources (Items)
     And I fill in "Title" with "testitem"
     And I press "Save"
 
+  @javascript
   Scenario: List items
     When I go to the list of items
     Then I should see "Hello World"
     And I should see "testitem"
-    And I should have 2 items
+    And the count of items visible for all should be 2
 
   Scenario: Create an item (needed)
     Then I should see "Resource created successfully."
     And I should see "Service testitem"
     And I should see "needed by"
-    And I should have 2 items
+    And the count of items visible for all should be 2
 
   Scenario: Edit an item (needed)
     And I click "edit"
@@ -42,5 +43,5 @@ Feature: Manage Resources (Items)
     And I click "delete"
     And I confirm popup
     Then I should see "Successfully deleted resource."
-    Then I should have 0 item
+    Then the count of items visible for all should be 1
 
