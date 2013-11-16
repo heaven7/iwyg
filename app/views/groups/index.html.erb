@@ -2,17 +2,21 @@
   <div class="button new">
     <%= link_to t("group.new"), new_user_group_path(current_user), :id => "group-new" %>
   </div>
+  <br />
 <% end %>  
 
 <%= render :partial => "share/search/panel", :locals => { :count => @groups_count } %>
           
 <% if @groups and @groups.size > 0 %>
-  <%= render :partial => "share/list_pagination", :locals => {:collection => collection} %>
-  <%= render :partial => "group", :collection => collection %>
-	<%= render :partial => "share/list_pagination", :locals => {:collection => collection} %>
+  <%= render partial: "collection", locals: { collection: collection } %>
 <% end %>
-<% if @user and @user.groups.size > 0 %>
+<% if @user and @memberships.size > 0 %>
   <div class="clearfix"></div>
-  <h2><%= t("groups.memberships") %></h2>
-  <%= @memberships.size %>
+  <h2><%= t("groups.memberships") %> (<%= @memberships.size %>)</h2>
+  <%= render partial: "collection", locals: { collection: @memberships } %>
+<% end %>
+<% if @user and @usergroups.size > 0 %>
+  <div class="clearfix"></div>
+  <h2><%= t("groups.owning") %> (<%= @usergroups.size %>)</h2>
+  <%= render partial: "collection", locals: { collection: @usergroups } %>
 <% end %>

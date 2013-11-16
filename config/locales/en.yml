@@ -646,6 +646,7 @@ en:
     description: Description
     holder: Holder
     memberships: Memberships
+    owning: Own groups
     pendingMembers: Pending and invited members
     members: Members
     abort:

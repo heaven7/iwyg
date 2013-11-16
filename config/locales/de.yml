@@ -651,6 +651,7 @@ de:
     description: Beschreibung
     holder: Verwaltet von
     memberships: Mitglied von
+    owning: Eigene Gruppen
     pendingMembers: Anfragen und eingeladene Mitglieder
     members: Mitglieder
     abort:
