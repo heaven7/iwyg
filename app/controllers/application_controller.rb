@@ -166,7 +166,7 @@ class ApplicationController < ActionController::Base
       end
     else
       begin
-        return model.classify.constantize.with_settings_for('visible_for').visible_for_all.find(params[:id])
+        return model.with_settings_for('visible_for').visible_for_all.find(params[:id])
       rescue ActiveRecord::RecordNotFound
         flash[:error] = I18n.t("resources.notFound")
         redirect_to :action => 'index'
@@ -243,8 +243,11 @@ class ApplicationController < ActionController::Base
 			else
 				klass = params[:controller].classify.constantize
 			end			
-			resource = klass.find(id)
-
+      # begin
+      #   resource = klass.find(id)
+      # rescue ActiveRecord::RecordNotFound
+      #   flash[:error] = I18n.t("resources.notFound")
+      # end
 			notifications = Notification.where(
 				:receiver_id => user,
 				:notifiable_id => id,

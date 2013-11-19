@@ -1,8 +1,8 @@
 <% if logged_in? %>
   <ul class="font-smaller horizontal">
     <% if current_user == group.owner %>
-      <li class="button"><%= link_to t("edit").html_safe, edit_polymorphic_path([@user, group]), :id => "group-edit" %></li>
-      <li class="button"><%= link_to t("delete").html_safe, group, :confirm => t("confirm_delete").html_safe, :method => :delete, :id => "group-delete"  %></li>
+      <li class="button"><%= link_to t("edit").html_safe, edit_polymorphic_path([current_user, group]), :id => "group-edit" %></li>
+      <li class="button"><%= link_to t("delete").html_safe, polymorphic_path([current_user, group]), :confirm => t("confirm_delete").html_safe, :method => :delete, :id => "group-delete"  %></li>
     <% else %>
 			<%= render partial: "share/social/followbuttons", :locals => { user: current_user, model: group } %>
 			<%= render partial: "share/social/likebuttons", :locals => { user: current_user, model: group } %>
