@@ -148,7 +148,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def getModel(modeltype)
+  def getVisibleModel(modeltype)
     if params[:user_id]
       @user = User.find(params[:user_id])
       modeltype = modeltype.downcase.pluralize
@@ -166,7 +166,7 @@ class ApplicationController < ActionController::Base
       end
     else
       begin
-        return modeltype.classify.constantize.with_settings_for('visible_for').visible_for_all.find(params[:id])
+        return model.classify.constantize.with_settings_for('visible_for').visible_for_all.find(params[:id])
       rescue ActiveRecord::RecordNotFound
         flash[:error] = I18n.t("resources.notFound")
         redirect_to :action => 'index'

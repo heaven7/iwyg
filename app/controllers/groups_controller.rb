@@ -82,7 +82,7 @@ class GroupsController < InheritedResources::Base
   end
 
   def show
-    @group = getModel("Group")
+    @group = getVisibleModel("Group")
 
     if @group 
   		@members_pending = @group.members_pending

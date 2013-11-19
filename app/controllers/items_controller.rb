@@ -105,7 +105,7 @@ class ItemsController < InheritedResources::Base
   
   def show
 		@itemable = find_model
-    @item = getModel("Item")
+    @item = getVisibleModel("Item")
 
     if @item
       # related resources
