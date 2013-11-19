@@ -177,7 +177,7 @@ class ApplicationController < ActionController::Base
 
 	def searchByRangeIn(model, params=nil)
 		if params[:near]
-			@location_city = (request.location.city.blank?) ? params[:near] : request.location.city 
+			@location_city = (request.location.city.blank?) ? params[:near] : request.location.try(:city) 
       box = Geocoder::Calculations.bounding_box(@location_city, 200)
       @locations = Location.where(locatable_type: model).within_bounding_box(box)
       #@locations = Location.where(locatable_type: model).near(@location_city,200, units: :km)
