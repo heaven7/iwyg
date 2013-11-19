@@ -81,6 +81,10 @@ gem 'roadie'
 gem 'acts_as_audited', '~> 2.1.0'
 gem 'rails3_acts_as_paranoid'
 
+group :development do 
+  gem 'better_errors', '>= 0.3.2'
+end
+
 group :development, :test do
   gem 'meta_request'
   gem 'mongrel', '>= 1.2.0.pre2'
@@ -90,7 +94,6 @@ group :development, :test do
   gem 'database_cleaner' #, '~> 0.6.7'
   gem 'guard-spork' #, '1.2.0'
   gem 'spork' #, '0.9.2'
-	gem 'better_errors', '>= 0.3.2'
   gem 'rack-mini-profiler'
 end
 
