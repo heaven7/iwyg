@@ -35,6 +35,13 @@ Feature: Settings
   	And this "item" with title "testitem" should have a setting "visible_for" with value "me"
     And the count of items visible for all should be 0
 
+  @focus @javascript
+  Scenario: Show item, when not logged in and not visible
+    When I set the visibility of item "testitem" to "me"
+    And I am not authenticated
+    And I set path to /items/testitem
+    Then I should see "Resource not found or not visible."
+
   @focus
   Scenario: By Edit GroupSetting 'visible_for' to "me", the group will no longer be listed
     And I am on the list of groups

@@ -23,11 +23,19 @@ Given(/^I tag the item "(.+)" with "(.+)"$/) do |title, tag|
   item.save!
 end
 
+Given(/^I set the visibility of item "(.*?)" to "(.*?)"$/) do |title, value|
+  item = Item.where(title: title).first
+  item.settings.visible_for = value
+  item.save!
+end
+
 Given(/^I add to item "(.+)" the location "(.+)"$/) do |title, address|
   item = Item.where(title: title).first
   item.locations.build(address: address)
   item.save!
 end
+
+# countings
 
 Then(/^the pings count of item "(.*?)" should be (\d+)$/) do |title, count|
   item = Item.where(title: title).first
@@ -48,6 +56,8 @@ Then(/^the locations count of item "(.*?)" should be (\d+)$/) do |title, count|
   item = Item.where(title: title).first
   item.locations.size.should == count.to_i 
 end
+
+# settings
 
 Then(/^the count of items visible for all should be (\d+)$/) do |count|
   Item.with_settings_for('visible_for').visible_for_all.size.should == count.to_i

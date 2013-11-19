@@ -105,66 +105,59 @@ class ItemsController < InheritedResources::Base
   
   def show
 		@itemable = find_model
-    if logged_in?
-      @item = Item.with_settings_for('visible_for').visible_for_members(current_user).find(params[:id])
-    else
-      begin
-        @item = Item.with_settings_for('visible_for').visible_for_all.find(params[:id])
-      rescue ActiveRecord::RecordNotFound
-        redirect_to :action => 'index'
-        return flash[:error] = I18n.t("resources.notFound")
-      end
-    end
+    @item = getModel("Item")
     @user = current_user
 
-    # related resources
-    @titleParts = @item.title.split(" ")
+    if @item
+      # related resources
+      @titleParts = @item.title.split(" ")
 
-    if @item.need == true
-      @items_related_tagged_same = Item.offered.tagged_with(@item.tags.join(', ')).where(:item_type_id => @item.item_type_id)
-      @titleParts.each do |part|
-          @items_related_titled_same = Item.offered.where(:title => "%#{part}%") if part.length.to_i >= 5
+      if @item.need == true
+        @items_related_tagged_same = Item.offered.tagged_with(@item.tags.join(', ')).where(:item_type_id => @item.item_type_id)
+        @titleParts.each do |part|
+            @items_related_titled_same = Item.offered.where(:title => "%#{part}%") if part.length.to_i >= 5
+        end
+        @items_related_title = I18n.t("item.related.offer").html_safe
+  			@ping_body_msg = I18n.t("ping.pingBodyMessageOnNeed");
+  			@ping_submit = I18n.t("ping.this.need");
+      else
+        @items_related_tagged_same = Item.needed.tagged_with(@item.tags.join(', ')).where(:item_type_id => @item.item_type_id)
+        @titleParts.each do |part|
+          @items_related_titled_same = Item.needed.where(:title => "%#{part}%") if part.length.to_i >= 5
+        end
+        @items_related_title = I18n.t("item.related.need").html_safe
+  			@ping_body_msg = I18n.t("ping.pingBodyMessageOnOffer");
+  			@ping_submit = I18n.t("ping.this.offer");
       end
-      @items_related_title = I18n.t("item.related.offer").html_safe
-			@ping_body_msg = I18n.t("ping.pingBodyMessageOnNeed");
-			@ping_submit = I18n.t("ping.this.need");
-    else
-      @items_related_tagged_same = Item.needed.tagged_with(@item.tags.join(', ')).where(:item_type_id => @item.item_type_id)
-      @titleParts.each do |part|
-        @items_related_titled_same = Item.needed.where(:title => "%#{part}%") if part.length.to_i >= 5
+
+      if not @items_related_titled_same.nil?
+        @items_related = @items_related_tagged_same + @items_related_titled_same
+      else
+        @items_related = @items_related_tagged_same
       end
-      @items_related_title = I18n.t("item.related.need").html_safe
-			@ping_body_msg = I18n.t("ping.pingBodyMessageOnOffer");
-			@ping_submit = I18n.t("ping.this.offer");
+
+      @pings = @item.pings.open_or_accepted
+      #@comments = @item.comments.find(:all, :order => "created_at DESC")
+      @events = @item.events
+      @location = @item.locations.first
+      getLocation(@item) if @location and @location.lat and @location.lng
+      @resource = @item
+     
+  		impressionist(@item)
+
+      # likes
+      @likers = getLikers(@item)
+      @likes_count = @likers.size
+
+      # followers
+      @followers = getFollowers(@item)
+      @followers_count = @followers.size
+
+      # seo
+  		@page_title = @item.localized_itemtype + ": " + @item.title unless @item.title.blank? or @item.itemtype.blank?
+      @page_description = @item.description unless @item.description.blank?
+      @page_keywords = @item.tag_list unless @item.tag_list.size < 1
     end
-
-    if not @items_related_titled_same.nil?
-      @items_related = @items_related_tagged_same + @items_related_titled_same
-    else
-      @items_related = @items_related_tagged_same
-    end
-
-    @pings = @item.pings.open_or_accepted
-    #@comments = @item.comments.find(:all, :order => "created_at DESC")
-    @events = @item.events
-    @location = @item.locations.first
-    getLocation(@item) if @location and @location.lat and @location.lng
-    @resource = @item
-   
-		impressionist(@item)
-
-    # likes
-    @likers = getLikers(@item)
-    @likes_count = @likers.size
-
-    # followers
-    @followers = getFollowers(@item)
-    @followers_count = @followers.size
-
-    # seo
-		@page_title = @item.localized_itemtype + ": " + @item.title unless @item.title.blank? or @item.itemtype.blank?
-    @page_description = @item.description unless @item.description.blank?
-    @page_keywords = @item.tag_list unless @item.tag_list.size < 1
   end
   
   def new

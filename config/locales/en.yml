@@ -602,7 +602,7 @@ en:
     given:
       one: 1 resource given
       other: ! '%{count} resources given'
-    notFound: Resource not found oder not visible.
+    notFound: Resource not found or not visible.
     goods: Goods
     services: Services
     transports: Transports

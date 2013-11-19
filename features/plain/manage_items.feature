@@ -21,6 +21,12 @@ Feature: Manage Resources (Items)
     And I should see "testitem"
     And the count of items visible for all should be 2
 
+  Scenario: Show item, when not logged in
+    When I am not authenticated
+    And I go to the list of items
+    And I click "Hello World"
+    Then I should see "Hello World"
+
   Scenario: Create an item (needed)
     Then I should see "Resource created successfully."
     And I should see "Service testitem"

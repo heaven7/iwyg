@@ -148,6 +148,20 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def getModel(modeltype)
+    if logged_in?
+      return modeltype.classify.constantize.with_settings_for('visible_for').visible_for_members(current_user).find(params[:id])
+    else
+      begin
+        model = modeltype.classify.constantize.with_settings_for('visible_for').visible_for_all.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+        flash[:error] = I18n.t("resources.notFound")
+        redirect_to :action => 'index'
+        return 
+      end
+    end
+  end
+
   def find_model
     params.each do |name, value|
       if name =~ /(.+)_id$/
