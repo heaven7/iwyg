@@ -106,7 +106,6 @@ class ItemsController < InheritedResources::Base
   def show
 		@itemable = find_model
     @item = getModel("Item")
-    @user = current_user
 
     if @item
       # related resources

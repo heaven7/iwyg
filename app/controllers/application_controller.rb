@@ -149,11 +149,24 @@ class ApplicationController < ActionController::Base
   end
 
   def getModel(modeltype)
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+      modeltype = modeltype.downcase.pluralize
+      model = eval("@user.#{modeltype}")
+    else
+      model = modeltype.classify.constantize # i.e Items
+    end
     if logged_in?
-      return modeltype.classify.constantize.with_settings_for('visible_for').visible_for_members(current_user).find(params[:id])
+      begin
+        return model.with_settings_for('visible_for').visible_for_members(current_user).find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+        flash[:error] = I18n.t("resources.notFound")
+        redirect_to :action => 'index'
+        return 
+      end
     else
       begin
-        model = modeltype.classify.constantize.with_settings_for('visible_for').visible_for_all.find(params[:id])
+        return modeltype.classify.constantize.with_settings_for('visible_for').visible_for_all.find(params[:id])
       rescue ActiveRecord::RecordNotFound
         flash[:error] = I18n.t("resources.notFound")
         redirect_to :action => 'index'

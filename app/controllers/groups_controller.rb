@@ -82,38 +82,36 @@ class GroupsController < InheritedResources::Base
   end
 
   def show
-    if params[:user_id]
-      @user = User.find(params[:user_id])
-      @group = @user.groups.find(params[:id])
-    else
-      @group = Group.find(params[:id])
-    end 
-		@members_pending = @group.members_pending
-		@members = @group.members
+    @group = getModel("Group")
 
-		# check if current_user is invited
-		@invitation = @group.groupings.pending.where(:owner_id => nil, :user_id => current_user).first if current_user
-		# check if current_user is member
-		@membership = @group.groupings.accepted.where(:user_id => current_user).first if current_user
-		# check if current_user requested membership
-		@request = @group.groupings.pending.where(:user_id => current_user, :owner_id => current_user).first if current_user
+    if @group 
+  		@members_pending = @group.members_pending
+  		@members = @group.members
 
-		@items_offered = @group.items.offered
-    @items_needed = @group.items.needed
-		@used_resources = Item.where('accounts.accountable_id' => @group.id, 'accounts.accountable_type' => "Group")
-    @items_taken = @used_resources.taken 
-    @items_given = @used_resources.given
+  		# check if current_user is invited
+  		@invitation = @group.groupings.pending.where(:owner_id => nil, :user_id => current_user).first if current_user
+  		# check if current_user is member
+  		@membership = @group.groupings.accepted.where(:user_id => current_user).first if current_user
+  		# check if current_user requested membership
+  		@request = @group.groupings.pending.where(:user_id => current_user, :owner_id => current_user).first if current_user
 
-    # friendly_id outdated finder statuses
-    #if request.path != group_path(@group)
-    #  return redirect_to @group, :status => :moved_permanently
-    #end
-    @location = @group.locations.first if @group.locations && @group.locations.first
-    getLocationsOnMap(@group) if @location and not @location.lat.nil? and not @location.lng.nil?
+  		@items_offered = @group.items.offered
+      @items_needed = @group.items.needed
+  		@used_resources = Item.where('accounts.accountable_id' => @group.id, 'accounts.accountable_type' => "Group")
+      @items_taken = @used_resources.taken 
+      @items_given = @used_resources.given
 
-		impressionist(@group)
+      # friendly_id outdated finder statuses
+      #if request.path != group_path(@group)
+      #  return redirect_to @group, :status => :moved_permanently
+      #end
+      @location = @group.locations.first if @group.locations && @group.locations.first
+      getLocationsOnMap(@group) if @location and not @location.lat.nil? and not @location.lng.nil?
 
-		@page_title = @group.title unless @group.title.blank?
+  		impressionist(@group)
+
+  		@page_title = @group.title unless @group.title.blank?
+    end
   end
 
   def create
