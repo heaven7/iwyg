@@ -77,7 +77,8 @@ li.button {
 .follow a,
 .unfollow a,
 .like a,
-.unlike a {
+.unlike a,
+.message a {
   padding:0.5em;
   padding-left:2em;
   background-repeat: no-repeat;
@@ -118,6 +119,9 @@ li.button {
   background-image: url("/assets/icons/icon_unfollow.png");
 }
 
+.message a {
+  background-image: url("/assets/icons/icon_message.png");
+}
 
 
 

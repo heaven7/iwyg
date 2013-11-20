@@ -1,6 +1,6 @@
 <% if user_signed_in? and user.login != current_user.login %>
   <ul class="font-smaller horizontal">
-    <li class="button message button-small">
+    <li class="button message button-small message">
       <%= link_to t("menu.user.sendMessage"), new_sent_path(:to => user), remote: true, id: "send_message" %>
     </li>
     <%= render partial: "share/social/followbuttons", :locals => { user: current_user, model: user } %>
