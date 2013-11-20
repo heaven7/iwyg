@@ -1,5 +1,22 @@
-<%# gmaps4rails(locations) %>
-<%= gmaps({
-    "map_options" => {"auto_zoom" => true, "detect_location" => true, "auto_adjust" => true},
-    "markers" => {"data" => locations}
-  }) %>
+<% if params[:action] == "show" %>
+	<%= gmaps({
+	    "map_options" => {
+	    	"auto_zoom" => false, 
+	    	"zoom" => 8, 
+	    	"detect_location" => true, 
+	    	"auto_adjust" => true
+	    },
+	    "markers" => {"data" => locations}
+	  }) 
+	%>
+<% else %>
+	<%= gmaps({
+	    "map_options" => {
+	    	"auto_zoom" => true,
+	    	"detect_location" => true, 
+	    	"auto_adjust" => true
+	    },
+	    "markers" => {"data" => locations}
+	  }) 
+	%>
+<% end %>
