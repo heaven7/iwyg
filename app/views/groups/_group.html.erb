@@ -1,4 +1,4 @@
-<% if group %>
+<% if not group.nil? %>
 <div id="group-<%= group.id %>" class="group list-item ui-corner-all">
   <%= render :partial => "share/list-item/usermenu", :locals => { model: group } if logged_in? and group.owner == current_user %>
   <div class="item-members-count font-smaller">
