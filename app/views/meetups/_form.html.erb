@@ -78,7 +78,7 @@
     </div>
     <%= f.actions do %>
       <br />
-      <%= f.action :submit, :label => t("save").html_safe %>
+      <%= f.submit, t("save").html_safe, class: "button" %>
     <% end %>
   <% end %>
 
@@ -131,7 +131,7 @@
     </div>
     <%= f.actions do %>
       <br />
-    <%= f.action :submit, :label => t("save").html_safe %>
+    <%= f.submit, t("save").html_safe, class: "button" %>
     <% end %>
   <% end %>
 

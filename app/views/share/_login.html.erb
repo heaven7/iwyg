@@ -9,7 +9,7 @@
 
 <fieldset class="formular login shadowed ui-corner-all">
   <br/>
-  <%= form_for(@user, :as => :user, :url => session_path(:user)) do |f| -%>
+  <%= form_for(@user, as: :user, url: session_path(:user)) do |f| -%>
     <p>
       <label for="user_username"><%= t("login.label.login") %></label>
       <%= f.text_field :username %>
@@ -24,7 +24,7 @@
 
     <div class="formbutton">
 			<label>&nbsp;</label>
-			<%= submit_tag t("login.label.submit"), :id => "submit" %>
+			<%= submit_tag t("login.label.submit"), id: "submit", class: "button" %>
 		</div>
   <% end -%>
 </fieldset>

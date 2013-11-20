@@ -56,6 +56,6 @@
 	<h2>Invite Facebook-Friends</h2>
 	<a href='#' onclick="FacebookInviteFriends();"> Facebook Invite Friends</a>
   <%= f.actions do %>
-    <%= f.action :submit, :as => :input, :label => t("formtastic.labels.invitation.sendInvitation").html_safe %>
+    <%= f.submit, t("formtastic.labels.invitation.sendInvitation").html_safe, class: "button" %>
   <% end %>
 <% end %>

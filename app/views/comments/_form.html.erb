@@ -1,14 +1,14 @@
-<%= semantic_form_for ([commentable, Comment.new]), :remote => true do |f| %>
+<%= semantic_form_for ([commentable, Comment.new]), remote: true do |f| %>
   <p class="font-small">
     <%= t("comments.leaveAComment") %>
   </p>
   <%= f.inputs do %>
-    <%= f.hidden_field :commentable_id, :value => commentable.id %>
-    <%= f.hidden_field :commentable_type, :value => commentable.class %>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-    <%= f.text_area :body, :class => "ui-corner-all" %>
+    <%= f.hidden_field :commentable_id, value: commentable.id %>
+    <%= f.hidden_field :commentable_type, value: commentable.class %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.text_area :body, class: "ui-corner-all" %>
   <% end %>
   <%= f.actions do %>
-    <%= f.submit t("send"), :class => "ui-corner-all" %>
+    <%= f.submit t("send"), class: "button ui-corner-all" %>
   <% end %>
 <% end %>
