@@ -1,0 +1,13 @@
+<ul class="horizontal">
+	<li class="edit button button-big">    
+		<%= link_to t("userarea.edit.profile").html_safe, edit_polymorphic_path([user, "userdetails"]) %>
+	</li>
+<!--
+	<li class="button invite button-big">    
+		<%= link_to t("menu.user.invite"), new_user_invitation_path(user) %>
+	</li>
+-->
+	<li class="button preferences button-big">    
+		<%= link_to t("menu.user.preferences"), edit_user_path(user) %>
+	</li>
+</ul>

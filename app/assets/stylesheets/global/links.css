@@ -26,7 +26,9 @@ li.button {
 }
 .button {
   padding:0.2em;
-	margin:0.4em;
+  padding-left:0.4em;
+  padding-right:0.4em;
+	margin:0.5em;
 	margin-left: 0px;
   border:1px solid #A4B895; 
   -webkit-border-radius: 5px;
@@ -36,14 +38,14 @@ li.button {
   -moz-box-shadow:1px 1px 2px #969E93;
   -webkit-box-shadow:1px 1px 2px #969E93;
   box-shadow:1px 1px 2px #969E93;
-    background: #edefdf; /* Old browsers */
-    background: -moz-linear-gradient(top,  #edefdf 0%, #d3d6ad 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#edefdf), color-stop(100%,#d3d6ad)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  #edefdf 0%,#d3d6ad 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  #edefdf 0%,#d3d6ad 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  #edefdf 0%,#d3d6ad 100%); /* IE10+ */
-    background: linear-gradient(top,  #edefdf 0%,#d3d6ad 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#edefdf', endColorstr='#d3d6ad',GradientType=0 ); /* IE6-9 */
+  background: #edefdf; /* Old browsers */
+  background: -moz-linear-gradient(top,  #edefdf 0%, #d3d6ad 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#edefdf), color-stop(100%,#d3d6ad)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #edefdf 0%,#d3d6ad 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #edefdf 0%,#d3d6ad 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #edefdf 0%,#d3d6ad 100%); /* IE10+ */
+  background: linear-gradient(top,  #edefdf 0%,#d3d6ad 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#edefdf', endColorstr='#d3d6ad',GradientType=0 ); /* IE6-9 */
 }
 .button a {
 	text-align:center;
@@ -69,28 +71,53 @@ li.button {
   background:white url("/assets/icons/icon_button_add.png") 0px  1px no-repeat;
 }
 
-.edit a {
+.edit a,
+.preferences a,
+.invite a,
+.follow a,
+.unfollow a,
+.like a,
+.unlike a {
   padding:0.5em;
   padding-left:2em;
-  background-image: url("/assets/icons/icon_button_edit.png");
-	background-position:  9px  8px;
   background-repeat: no-repeat;
+}
+.button-big a {
+  background-position: 7px 8px;  
+}
+.button-small a {
+  background-position: 2px 6px;
+}
+
+.edit a {
+  background-image: url("/assets/icons/icon_button_edit.png");
 }
 .preferences a {
-  padding:0.5em;
-  padding-left:2em;
   background-image: url("/assets/icons/icon_button_preferences.png");
-	background-position: 7px 8px;
-  background-repeat: no-repeat;
 }
 .invite a {
-  padding:0.5em;
-  padding-left:2em;
   background-image: url("/assets/icons/icon_invitation.png");
-	background-position: 7px 8px;
-  background-repeat: no-repeat;
-
 }
+
+.like a {
+  background-image: url("/assets/icons/icon_like.png");
+}
+
+.box .like a {
+  background-image: none;
+}
+.unlike a {
+  background-image: url("/assets/icons/icon_unlike.png");
+}
+
+.follow a {
+  background-image: url("/assets/icons/icon_follow.png");
+}
+
+.unfollow a {
+  background-image: url("/assets/icons/icon_unfollow.png");
+}
+
 
 
 

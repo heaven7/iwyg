@@ -1,3 +1,3 @@
-<li class="button" id="followbutton">
-	<%= link_to t("follow"), self.send("follow_#{model_type.downcase}_path", user: user, model_id: model_id, model_type: model_type), :method => :put, :remote => true %>
+<li class="button button-small follow" id="followbutton">
+	<%= link_to t("follow"), self.send("follow_#{model_type.downcase}_path", user: user, model_id: model_id, model_type: model_type), method: :put, remote: true %>
 </li>
