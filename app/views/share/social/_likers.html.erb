@@ -2,12 +2,15 @@
 	<% if likes_count and likes_count > 0 %>
 		<div id="likes-count">	
 			<span>
-				<%= image_tag("icons/icon_likes.png", :alt => t("liked_by"), :title => t("liked_by")) %>&nbsp;
+				<%= image_tag("icons/icon_likes.png", :alt => t("liked_by"), title: t("liked_by")) %>&nbsp;
 			</span>
+			<span><%= t("liked_by") %></span>
 			<span class="font-small">(<%= likes_count %>)</span>
 		</div>
 		<div id="likers">
-			<%= likers.collect{|u| link_to u.login, user_path(u), :title => u.login}.to_sentence.html_safe %>
+			<% likers.each do |liker| %>
+				<%= link_to image_tag(microThumb(liker)), user_path(liker), title: liker.login %>
+			<% end %>
 		</div>
 	<% end %>
 </div>

@@ -4,10 +4,13 @@
 			<span>
 				<%= image_tag("icons/icon_followers.png", alt: t("followed_by"), title: t("followed_by")) %>&nbsp;
 			</span>
+			<span><%= t("followed_by") %></span>
 			<span class="font-small">(<%= followers_count %>)</span>
 		</div>
 		<div id="followers">
-			<%= followers.collect{|u| link_to u.login, user_path(u), title: u.login}.to_sentence.html_safe %>
+			<% followers.each do |follower| %>
+				<%= link_to image_tag(microThumb(follower)), user_path(follower), title: follower.login %>
+			<% end %>
 		</div>
 	<% end %>
 </div>
