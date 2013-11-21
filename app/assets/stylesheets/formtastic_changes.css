@@ -83,7 +83,7 @@ form.formtastic fieldset ol li fieldset ol li { padding:0; border:0; }
 
 /* meetup form */
 #who .choices .choices-group {
-    width: 80%;
+    width: 70%;
     margin-left: 11em;
 }
 
