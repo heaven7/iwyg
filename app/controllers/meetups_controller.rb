@@ -95,16 +95,6 @@ class MeetupsController < InheritedResources::Base
     update!
   end
 
-	
-	def like
-    @meetup = Meetup.find(params[:id])
-		likeOf(current_user, @meetup)
-	end
-
-	def unlike
-    @meetup = Meetup.find(params[:id])
-		likeOf(current_user, @meetup)
-	end
   
   def accept
 
@@ -123,7 +113,7 @@ class MeetupsController < InheritedResources::Base
       @item = Item.find(@attachable_id)
       @meetup.users = Array[@ping.owner]
     else
-      @meetup.users = @user.followers
+      @meetup.users = getFollowers(@user)
       @meetup.users << @user.following_users
     end
   end

@@ -154,7 +154,12 @@ class User < ActiveRecord::Base
   end
 
   def following_users
-    Follow.where(follower_id: self.id, follower_type: "User", followable_type: "User").all
+    follows = Follow.where(follower_id: self.id, follower_type: "User", followable_type: "User").all
+    users = []
+    follows.each do |follow|
+      users << User.find(follow.followable_id) 
+    end
+    users
   end
 
   def following_items
