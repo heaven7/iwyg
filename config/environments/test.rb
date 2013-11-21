@@ -56,10 +56,13 @@ Iwyg::Application.configure do
     GROUPS_PER_PAGE = AppSettings.groups.per_page
     PINGS_PER_PAGE = AppSettings.pings.per_page
     GOOGLE_ANALYTICS_ID = AppSettings.google.analytics_id
-    FACEBOOK_KEY = AppSettings.fb_key
-    FACEBOOK_SECRET = AppSettings.fb_secret
     MAILER_CSS = AppSettings.mailer.css
     MAILER_CHARSET = AppSettings.mailer.charset
+  end
+  
+  config.before_initialize do 
+    FACEBOOK_KEY = AppSettings.fb_key
+    FACEBOOK_SECRET = AppSettings.fb_secret
   end
   # Paperclip.options[:command_path] = "D:/Programme/ImageMagick-6.6.3-Q16"
 
