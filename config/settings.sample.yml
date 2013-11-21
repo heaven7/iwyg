@@ -1,5 +1,5 @@
 # itemtypes
-itemtypes = ["good", "transport", "service", "sharingpoint", "knowledge", "skill"]
+itemtypes: ["good", "transport", "service", "sharingpoint", "knowledge", "skill"]
 
 # count of max. objects in index view 
 items:

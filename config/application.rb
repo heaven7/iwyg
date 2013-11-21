@@ -1,5 +1,4 @@
 require File.expand_path('../boot', __FILE__)
-
 require 'rails/all'
 
 # rails < 3.1
@@ -17,7 +16,6 @@ end
 
 module Iwyg
   class Application < Rails::Application
-
 
     # Enable the asset pipeline
     config.assets.enabled = true
@@ -55,7 +53,6 @@ module Iwyg
 			g.fixture_replacement :factory_girl, :dir => "spec"
 			g.form_builder :formtastic		
 		end
-
   end
 end
 ActionDispatch::Callbacks.after do
@@ -67,22 +64,6 @@ ActionDispatch::Callbacks.after do
     FactoryGirl.find_definitions
   end
 end
-
-
-# application configuration
-DB_STRING_MAX_LENGTH = 255
-HTML_TEXT_FIELD_SIZE = 30
-ITEMS_PER_PAGE = AppSettings.items.per_page
-ITEMS_RELATED_PER_PAGE = AppSettings.items.related_per_page
-USERS_PER_PAGE = AppSettings.users.per_page
-GROUPS_PER_PAGE = AppSettings.groups.per_page
-PINGS_PER_PAGE = AppSettings.pings.per_page
-GOOGLE_ANALYTICS_ID = AppSettings.google.analytics_id
-FACEBOOK_KEY = AppSettings.fb_key
-FACEBOOK_SECRET = AppSettings.fb_secret
-MAILER_CSS = AppSettings.mailer.css
-MAILER_CHARSET = AppSettings.mailer.charset
-ITEMTYPES = AppSettings.itemstypes
 
 # default date/time format
 Time::DATE_FORMATS[:mailbox] = "%A, %B %d, %Y"

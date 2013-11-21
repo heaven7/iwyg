@@ -46,7 +46,22 @@ Iwyg::Application.configure do
   # application configuration
   HOST = "http://localhost:3000"
   REPLY_EMAIL = "iwyg@heavenseven.net"
+  config.after_initialize do    
+    DB_STRING_MAX_LENGTH = 255
+    HTML_TEXT_FIELD_SIZE = 30
+    ITEMTYPES = AppSettings.itemtypes
+    ITEMS_PER_PAGE = AppSettings.items.per_page
+    ITEMS_RELATED_PER_PAGE = AppSettings.items.related_per_page
+    USERS_PER_PAGE = AppSettings.users.per_page
+    GROUPS_PER_PAGE = AppSettings.groups.per_page
+    PINGS_PER_PAGE = AppSettings.pings.per_page
+    GOOGLE_ANALYTICS_ID = AppSettings.google.analytics_id
+    FACEBOOK_KEY = AppSettings.fb_key
+    FACEBOOK_SECRET = AppSettings.fb_secret
+    MAILER_CSS = AppSettings.mailer.css
+    MAILER_CHARSET = AppSettings.mailer.charset
+  end
   # Paperclip.options[:command_path] = "D:/Programme/ImageMagick-6.6.3-Q16"
-  Paperclip.options[:command_path] = "E:/Program Files/ImageMagick-6.7.4-Q16"
+
 end
 

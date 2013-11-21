@@ -78,4 +78,19 @@ Iwyg::Application.configure do
   # application configuration
   HOST = "http://www.iwyg.net"
   REPLY_EMAIL = "IWYG <iwyg@heavenseven.net>"
+  config.after_initialize do    
+    DB_STRING_MAX_LENGTH = 255
+    HTML_TEXT_FIELD_SIZE = 30
+    ITEMTYPES = AppSettings.itemtypes
+    ITEMS_PER_PAGE = AppSettings.items.per_page
+    ITEMS_RELATED_PER_PAGE = AppSettings.items.related_per_page
+    USERS_PER_PAGE = AppSettings.users.per_page
+    GROUPS_PER_PAGE = AppSettings.groups.per_page
+    PINGS_PER_PAGE = AppSettings.pings.per_page
+    GOOGLE_ANALYTICS_ID = AppSettings.google.analytics_id
+    FACEBOOK_KEY = AppSettings.fb_key
+    FACEBOOK_SECRET = AppSettings.fb_secret
+    MAILER_CSS = AppSettings.mailer.css
+    MAILER_CHARSET = AppSettings.mailer.charset
+  end
 end
