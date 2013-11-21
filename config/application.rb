@@ -72,16 +72,17 @@ end
 # application configuration
 DB_STRING_MAX_LENGTH = 255
 HTML_TEXT_FIELD_SIZE = 30
-ITEMS_PER_PAGE = 24
-ITEMS_RELATED_PER_PAGE = 6
-USERS_PER_PAGE = 24
-GROUPS_PER_PAGE = 24
-TRANSFERS_PER_PAGE = 30
-PINGS_PER_PAGE = 30
-GOOGLE_ANALYTICS_ID = 'UA-32738329-1'
-MAILER_CSS = :mailer
-MAILER_CHARSET = "UTF-8"
-ITEMTYPES = ["good", "transport", "service", "sharingpoint", "knowledge", "skill"]
+ITEMS_PER_PAGE = AppSettings.items.per_page
+ITEMS_RELATED_PER_PAGE = AppSettings.items.related_per_page
+USERS_PER_PAGE = AppSettings.users.per_page
+GROUPS_PER_PAGE = AppSettings.groups.per_page
+PINGS_PER_PAGE = AppSettings.pings.per_page
+GOOGLE_ANALYTICS_ID = AppSettings.google.analytics_id
+FACEBOOK_KEY = AppSettings.fb_key
+FACEBOOK_SECRET = AppSettings.fb_secret
+MAILER_CSS = AppSettings.mailer.css
+MAILER_CHARSET = AppSettings.mailer.charset
+ITEMTYPES = AppSettings.itemstypes
 
 # default date/time format
 Time::DATE_FORMATS[:mailbox] = "%A, %B %d, %Y"

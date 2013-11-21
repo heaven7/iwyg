@@ -1,3 +1,6 @@
+# itemtypes
+itemtypes = ["good", "transport", "service", "sharingpoint", "knowledge", "skill"]
+
 # count of max. objects in index view 
 items:
   per_page: 24
@@ -14,6 +17,10 @@ mailer:
   # default mailer css
   css: :mailer
   charset: UTF-8
+
+# facebook authentication
+fb_key: 183760235163626
+fb_secret: fb4d6c2c0fc10cf276ef2b14b8203615
 
 # google
 google:
