@@ -113,8 +113,9 @@ class MeetupsController < InheritedResources::Base
       @item = Item.find(@attachable_id)
       @meetup.users = Array[@ping.owner]
     else
-      @meetup.users = getFollowers(@user)
-      @meetup.users << @user.following_users
+      @meetup.users << getFollowers(@user) << @user.following_users
+      @meetup.users.flatten!
+      @meetup.users.uniq!
     end
   end
   

@@ -159,7 +159,7 @@ class User < ActiveRecord::Base
     follows.each do |follow|
       users << User.find(follow.followable_id) 
     end
-    users
+    return users
   end
 
   def following_items
