@@ -41,18 +41,20 @@ class GroupsController < InheritedResources::Base
   		@groupsearch = searchByRangeIn("Group").search(params[:q])
     end
 
-    if logged_in?
-      groups = @groupsearch.result(distinct: true).visible_for_members(current_user)
-    else
-      groups = @groupsearch.result(distinct: true).visible_for_all
-    end
+    if @groupsearch && @groupsearch.size > 0
+      if logged_in?
+        groups = @groupsearch.result(distinct: true).visible_for_members(current_user)
+      else
+        groups = @groupsearch.result(distinct: true).visible_for_all
+      end
 
-		@groups = groups.paginate(
-      :page => params[:page],
-      :per_page => AppSettings.groups.per_page,
-      :order => "created_at DESC"
-    )   
-    @groups_count = groups.size
+  		@groups = groups.paginate(
+        :page => params[:page],
+        :per_page => AppSettings.groups.per_page,
+        :order => "created_at DESC"
+      )   
+      @groups_count = groups.size
+    end
   	@searchItemType = "Group"
   end
 

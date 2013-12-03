@@ -67,7 +67,8 @@ module ApplicationHelper
 			message = I18n.t(notification.title, :user => notification.sender.login)
 			link_to message.html_safe, mailbox_path(current_user) if message
 		when "Group"
-			message = I18n.t(notification.title, :sender => notification.sender.login, :title => notification.notifiable.title)
+			group = Group.with_deleted.where(id: notification.notifiable_id).first
+			message = I18n.t(notification.title, :sender => notification.sender.login, :title => group.title) if group
 			link_to message.html_safe, notification.notifiable if message
 		end
 	end  

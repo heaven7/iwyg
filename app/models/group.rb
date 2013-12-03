@@ -72,9 +72,9 @@ class Group < ActiveRecord::Base
     self.members_pending.include?(user)
   end
 
-  def self.title
-    self.title.html_safe if self.title
-  end
+  #def title
+  #  self.title.html_safe if self.title
+  #end
 
   def tag_list_name
     self.tag_list if tag_list
