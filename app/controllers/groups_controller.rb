@@ -41,7 +41,7 @@ class GroupsController < InheritedResources::Base
   		@groupsearch = searchByRangeIn("Group").search(params[:q])
     end
 
-    if @groupsearch && @groupsearch.size > 0
+    if @groupsearch
       if logged_in?
         groups = @groupsearch.result(distinct: true).visible_for_members(current_user)
       else
