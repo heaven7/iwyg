@@ -100,6 +100,7 @@ end
 
 group :test do
 	gem "cucumber-rails", ">= 1.2.1", :require => false
+  gem 'fakeweb'
   gem 'email_spec'
   gem 'mysql2' #, '0.2.18'
   gem 'capybara', '1.1.4'

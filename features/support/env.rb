@@ -22,6 +22,9 @@ require 'cucumber/rails/rspec'
 require 'email_spec' # add this line if you use spork
 require 'email_spec/cucumber'
 
+# using fakeweb for geocoding
+require Rails.root.join("spec/support/geocoding")
+
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any
 # selectors in your step definitions to use the XPath syntax.
