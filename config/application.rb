@@ -51,7 +51,8 @@ module Iwyg
 				:controller_specs => true,
 				:request_specs => true
 			g.fixture_replacement :factory_girl, :dir => "spec"
-			g.form_builder :formtastic		
+			g.form_builder :formtastic	
+  		g.stylesheets false  	
 		end
   end
 end

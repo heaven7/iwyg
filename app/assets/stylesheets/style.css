@@ -99,10 +99,9 @@ body {
     color:#3f1504;
     height:auto !important;
     min-height:700px;
-    margin:0 auto 0 4%;
+    margin:0 auto;
     padding:1em;
     text-align:left;
-    width:90%;
     float:left;
 }
 /* Mailbox */

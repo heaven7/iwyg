@@ -72,10 +72,10 @@
       <%= flash[:error] || alert.html_safe %>
     </div>
   <% end %>
-  <%= render :partial => 'share/navigation/mainnavigation' %>
 	<%= render :partial => 'share/navigation/notifications' if logged_in? %>
-	<div id="content">   
-		<%= yield %>
+  <%= render :partial => 'share/navigation/mainnavigation' %>
+  <div id="content">   
+  	<%= yield %>
   </div>
   
   <div id="footerwrap">

@@ -18,7 +18,11 @@
 .itemtype {
 	display: inline-block;
 }
-
+.item-list {
+    padding-left: 0;
+    padding-right: 0;
+}
+}
 .item-collection li img {
     padding-right:0.5em;
 }

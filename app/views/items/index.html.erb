@@ -68,6 +68,8 @@
   </div>
   <% end %>  
   <%= render :partial => "share/list_pagination", :locals => {:collection => @items} %>
-  <%= render :partial => "item", :collection => @items %>
+  <div class="item-list">
+    <%= render :partial => "item", :collection => @items %>
+  </div>
   <%= render :partial => "share/list_pagination", :locals => {:collection => @items} %>
 <% end %>
