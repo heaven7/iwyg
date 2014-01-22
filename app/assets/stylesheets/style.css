@@ -103,6 +103,7 @@ body {
     padding:1em;
     text-align:left;
     float:left;
+    width: 98%;
 }
 /* Mailbox */
 #mailbox {
