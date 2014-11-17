@@ -78,6 +78,7 @@ gem 'rmagick'
 gem 'will_paginate', '3.0.3'
 gem 'validates_timeliness' #, '2.3.2'
 gem 'roadie'
+gem 'roadie-rails'
 #gem 'acts_as_follower'
 gem 'acts_as_audited', '~> 2.1.0'
 gem 'rails3_acts_as_paranoid'
@@ -100,11 +101,12 @@ end
 
 group :test do
 	gem "cucumber-rails", ">= 1.2.1", :require => false
+  gem 'rubyzip', '~> 0.9.9'
   gem 'fakeweb'
   gem 'email_spec'
   gem 'mysql2' #, '0.2.18'
   gem 'capybara', '1.1.4'
-	gem 'selenium-webdriver'
+	gem 'selenium-webdriver' #, '2.25.0'
 	gem 'Selenium'
 	gem 'selenium-client', '1.2.16'
 	gem 'launchy'
